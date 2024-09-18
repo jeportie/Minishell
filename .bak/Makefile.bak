@@ -15,7 +15,8 @@ NAME = Minishell
 ### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
-  src/test.c 
+  src/test.c \
+  src/other.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #
