@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/16 16:40:08 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/24 16:24:56 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = Minishell
 ### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
-  src/test.c 
+	src/init_shell/ms_init_shell.c \
+	src/init_shell/ms_get_user_input.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #

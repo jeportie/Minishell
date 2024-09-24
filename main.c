@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/24 12:58:37 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:21:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,23 @@
  *->End step one
  */
 
-#include <stdio.h>
+#include "include/minishell.h"
 
-int main(void)
+int	main(int argc, char **argv, char **envp)
 {
-	printf("Hello, World!\n");	
-	return (0);
+	t_shell	shell;
+
+	shell = ms_init_shell(argc, envp);
+	while (1)
+	{
+		ms_get_user_input(&shell);
+		if (!shell.user_input)
+		{
+			rl_clear_history();
+			exit (shell.error_code);
+		}
+		printf("user_input : %s\n", shell.user_input);
+	}
+	shell.error_code = 666;
+	return (shell.error_code);
 }

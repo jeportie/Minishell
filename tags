@@ -10,300 +10,135 @@
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
 $(NAME)	Makefile	/^$(NAME): $(OBJ) $(OBJ_DIR)\/main.o$/;"	t
-$(NAME)	make_interface/config/Makefile	/^$(NAME): $(OBJ) $(OBJ_DIR)\/main.o$/;"	t
 $(OBJ_DIR)	Makefile	/^$(OBJ_DIR):$/;"	t
-$(OBJ_DIR)	make_interface/config/Makefile	/^$(OBJ_DIR):$/;"	t
 $(OBJ_DIR)/%.o	Makefile	/^$(OBJ_DIR)\/%.o: $(SRC_DIR)\/%.c | $(OBJ_DIR)$/;"	t
-$(OBJ_DIR)/%.o	make_interface/config/Makefile	/^$(OBJ_DIR)\/%.o: $(SRC_DIR)\/%.c | $(OBJ_DIR)$/;"	t
 $(OBJ_DIR)/main.o	Makefile	/^$(OBJ_DIR)\/main.o: main.c | $(OBJ_DIR)$/;"	t
-$(OBJ_DIR)/main.o	make_interface/config/Makefile	/^$(OBJ_DIR)\/main.o: main.c | $(OBJ_DIR)$/;"	t
 %	Makefile	/^%:$/;"	t
-%	make_interface/config/Makefile	/^%:$/;"	t
 0	.vimspector.json	/^          {$/;"	o	array:configurations.C Debugging.configuration.setupCommands
 0	.vimspector.json	/^        "~\/.vscode\/cpptools\/debugAdapters\/OpenDebugAD7"$/;"	s	array:adapters.vscode-cpptools.command
-0	make_interface/config/.vimspector.json	/^          {$/;"	o	array:configurations.C Debugging.configuration.setupCommands
-0	make_interface/config/.vimspector.json	/^        "~\/.vscode\/cpptools\/debugAdapters\/OpenDebugAD7"$/;"	s	array:adapters.vscode-cpptools.command
 1. Introduction	README.md	/^## 1. Introduction$/;"	s	chapter:Minishell Project README
 2. Requirements	README.md	/^## 2. Requirements$/;"	s	chapter:Minishell Project README
 3. Development Environment	README.md	/^## 3. Development Environment$/;"	s	chapter:Minishell Project README
 4. Project Structure	README.md	/^## 4. Project Structure$/;"	s	chapter:Minishell Project README
 5. Tools and Frameworks	README.md	/^## 5. Tools and Frameworks$/;"	s	chapter:Minishell Project README
 6. Development Strategy	README.md	/^## 6. Development Strategy$/;"	s	chapter:Minishell Project README
-<C-M>	make_interface/config/.vimrc	/^nnoremap <C-M> :bnext<CR>$/;"	m
-<C-N>	make_interface/config/.vimrc	/^nnoremap <C-N> :bprev<CR>$/;"	m
-<F2>	make_interface/config/.vimrc	/^nnoremap <F2> :NERDTreeToggle<CR>$/;"	m
-<F3>	make_interface/config/.vimrc	/^nmap <F3> :TagbarToggle<CR>$/;"	m
-<F4>	make_interface/config/.vimrc	/^nnoremap <F4> :Files<CR>$/;"	m
-<Leader>cc	make_interface/config/.vimrc	/^nnoremap <Leader>cc :set colorcolumn=80<CR>$/;"	m
-<Leader>n	make_interface/config/.vimrc	/^nnoremap <Leader>n :NorminetteRun<CR>$/;"	m
-<Leader>ncc	make_interface/config/.vimrc	/^nnoremap <Leader>ncc :set colorcolumn-=80<CR>$/;"	m
-<c-h>	make_interface/config/.vimrc	/^nnoremap <c-h> :set hlsearch!<CR>$/;"	m
-<leader>L	make_interface/config/.vimrc	/^nnoremap <leader>L :set list!<CR> $/;"	m
-<leader>bd	make_interface/config/.vimrc	/^nnoremap <leader>bd :bdelete<CR>$/;"	m
-<leader>nr	make_interface/config/.vimrc	/^nnoremap <leader>nr :set norelativenumber<CR>$/;"	m
-<leader>r	make_interface/config/.vimrc	/^nnoremap <leader>r :set relativenumber<CR>$/;"	m
-<leader>s	make_interface/config/.vimrc	/^nnoremap <leader>s :split<CR>$/;"	m
-<leader>t	make_interface/config/.vimrc	/^nnoremap <leader>t :terminal<CR>$/;"	m
-<leader>u	make_interface/config/.vimrc	/^nnoremap <leader>u :NERDTreeRefreshRoot<CR>$/;"	m
-<leader>vs	make_interface/config/.vimrc	/^nnoremap <leader>vs :vertical split<CR>$/;"	m
-<leader>vt	make_interface/config/.vimrc	/^nnoremap <leader>vt :vertical terminal<CR>$/;"	m
 Allowed External Functions	README.md	/^### Allowed External Functions$/;"	S	section:Minishell Project README""2. Requirements
-Automatic Build Process	make_interface/README.md	/^### Automatic Build Process$/;"	S	section:Make Interface Project""Usage
-BAR_WIDTH	make_interface/src/progress.c	/^#define BAR_WIDTH /;"	d	file:
 BLUE	Makefile	/^BLUE    = \\033[34m$/;"	m
-BLUE	make_interface/config/Makefile	/^BLUE    = \\033[34m$/;"	m
 BOLD	Makefile	/^BOLD    = \\033[1m$/;"	m
-BOLD	make_interface/config/Makefile	/^BOLD    = \\033[1m$/;"	m
 Bonus Features	README.md	/^### Bonus Features$/;"	S	section:Minishell Project README""2. Requirements
 C Debugging	.vimspector.json	/^    "C Debugging": {$/;"	o	object:configurations
-C Debugging	make_interface/config/.vimspector.json	/^    "C Debugging": {$/;"	o	object:configurations
 CC	Makefile	/^CC = 		cc$/;"	m
 CC	Makefile	/^default: CC = cc$/;"	m
 CC	Makefile	/^san: CC = clang$/;"	m
 CC	Makefile	/^val: CC = cc$/;"	m
-CC	make_interface/config/Makefile	/^CC = 		{{CC}}$/;"	m
-CC	make_interface/config/Makefile	/^default: CC = cc$/;"	m
-CC	make_interface/config/Makefile	/^san: CC = clang$/;"	m
-CC	make_interface/config/Makefile	/^val: CC = cc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = 	-Wall -Wextra -Werror$/;"	m
-CFLAGS	make_interface/config/Makefile	/^CFLAGS = 	{{CFLAGS}}$/;"	m
 Check + CTest	README.md	/^### Check + CTest$/;"	S	section:Minishell Project README""5. Tools and Frameworks
-Contributing	make_interface/README.md	/^## Contributing$/;"	s	chapter:Make Interface Project
 DEPFLAGS	Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
-DEPFLAGS	make_interface/config/Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
 DEPS	Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
-DEPS	make_interface/config/Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
-Debugging	make_interface/README.md	/^### Debugging$/;"	S	section:Make Interface Project""Usage
 Directory Layout:	README.md	/^### Directory Layout:$/;"	S	section:Minishell Project README""4. Project Structure
 DirectoryOfThisScript	ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
-DisableNERDTreeForSpecificFiles	make_interface/config/.vimrc	/^function! DisableNERDTreeForSpecificFiles()$/;"	f
-EOF	make_interface/config/build.sh	/^    cat <<EOF > "$YCM_EXTRA_CONF"$/;"	h
 Example TDD Cycle	README.md	/^### Example TDD Cycle$/;"	S	section:Minishell Project README""6. Development Strategy
 Example Usage of libgc:	README.md	/^### Example Usage of libgc:$/;"	S	section:Minishell Project README""5. Tools and Frameworks
 Example: Directory Structure for Command Implementations	README.md	/^### Example: Directory Structure for Command Implementations$/;"	S	section:Minishell Project README""4. Project Structure
 FlagsForFile	ycm_extra_conf.py	/^def FlagsForFile(filename):$/;"	f
 GREEN	Makefile	/^GREEN   = \\033[32m$/;"	m
-GREEN	make_interface/config/Makefile	/^GREEN   = \\033[32m$/;"	m
-GREEN	make_interface/src/make_prompt.c	/^#define GREEN /;"	d	file:
 Git Workflow	README.md	/^### Git Workflow$/;"	S	section:Minishell Project README""6. Development Strategy
 HELG	Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
-HELG	make_interface/config/Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
 IDE Benefits	README.md	/^### IDE Benefits$/;"	S	section:Minishell Project README""3. Development Environment
 IDE Configuration	README.md	/^### IDE Configuration$/;"	S	section:Minishell Project README""3. Development Environment
 INCLUDES	Makefile	/^INCLUDES =   $/;"	m
-INCLUDES	make_interface/config/Makefile	/^INCLUDES =  {{INCLUDES}} $/;"	m
-Installation	make_interface/README.md	/^## Installation$/;"	s	chapter:Make Interface Project
 Key Rules:	README.md	/^### Key Rules:$/;"	S	section:Minishell Project README""4. Project Structure
 LIBS	Makefile	/^LIBS =		-lft $/;"	m
-LIBS	make_interface/config/Makefile	/^LIBS =		{{LIBS}} $/;"	m
 LIB_DIR	Makefile	/^LIB_DIR =	$/;"	m
-LIB_DIR	make_interface/config/Makefile	/^LIB_DIR =	{{DIRLIBS}}$/;"	m
 Libft	README.md	/^#### Libft$/;"	t	subsection:Minishell Project README""5. Tools and Frameworks""Personal Libraries
-License	make_interface/README.md	/^## License$/;"	s	chapter:Make Interface Project
-MAX_FILES	make_interface/src/interactive_select.c	/^#define MAX_FILES /;"	d	file:
-MAX_SLEEP_USEC	make_interface/src/progress.c	/^#define MAX_SLEEP_USEC /;"	d	file:
 MIMode	.vimspector.json	/^        "MIMode": "gdb",$/;"	s	object:configurations.C Debugging.configuration
-MIMode	make_interface/config/.vimspector.json	/^        "MIMode": "gdb",$/;"	s	object:configurations.C Debugging.configuration
 MINISHELL_H	include/minishell.h	/^# define MINISHELL_H$/;"	d
-MIN_SLEEP_USEC	make_interface/src/progress.c	/^#define MIN_SLEEP_USEC /;"	d	file:
-Make Interface Project	make_interface/README.md	/^# Make Interface Project$/;"	c
 MakeRelativePathsAbsolute	ycm_extra_conf.py	/^def MakeRelativePathsAbsolute(flags, working_directory):$/;"	f
-Makefile Structure	make_interface/README.md	/^## Makefile Structure$/;"	s	chapter:Make Interface Project
 Mandatory Features	README.md	/^### Mandatory Features$/;"	S	section:Minishell Project README""2. Requirements
 Minishell Project README	README.md	/^# Minishell Project README$/;"	c
 NAME	Makefile	/^NAME = Minishell$/;"	m
-NAME	make_interface/config/Makefile	/^NAME = {{NAME}}$/;"	m
-NC	make_interface/src/make_prompt.c	/^#define NC /;"	d	file:
-NERDTreeMinimalMenu	make_interface/config/.vimrc	/^let NERDTreeMinimalMenu = 1        " Use minimal menu in NERDTree$/;"	v
-NERDTreeShowBookmarks	make_interface/config/.vimrc	/^let NERDTreeShowBookmarks = 1      " Show bookmarks in NERDTree$/;"	v
-NERDTreeShowHidden	make_interface/config/.vimrc	/^let NERDTreeShowHidden = 1         " Show hidden files in NERDTree$/;"	v
-NERDTreeShowLineNumbers	make_interface/config/.vimrc	/^let NERDTreeShowLineNumbers = 0    " Hide line numbers in NERDTree$/;"	v
-NERDTreeWinSize	make_interface/config/.vimrc	/^let NERDTreeWinSize = 31           " Set NERDTree panel width$/;"	v
 OBJ	Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
-OBJ	make_interface/config/Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
 OBJ_DIR	Makefile	/^OBJ_DIR = 	obj$/;"	m
-OBJ_DIR	make_interface/config/Makefile	/^OBJ_DIR = 	obj$/;"	m
-Other Utilities	make_interface/README.md	/^### Other Utilities$/;"	S	section:Make Interface Project""Usage
 Pair Programming Approach	README.md	/^### Pair Programming Approach$/;"	S	section:Minishell Project README""6. Development Strategy
 Personal Libraries	README.md	/^### Personal Libraries$/;"	S	section:Minishell Project README""5. Tools and Frameworks
-Project Overview	make_interface/README.md	/^## Project Overview$/;"	s	chapter:Make Interface Project
 RED	Makefile	/^RED     = \\033[31m$/;"	m
-RED	make_interface/config/Makefile	/^RED     = \\033[31m$/;"	m
-RED	make_interface/src/make_prompt.c	/^#define RED /;"	d	file:
 RESET	Makefile	/^RESET   = \\033[0m$/;"	m
-RESET	make_interface/config/Makefile	/^RESET   = \\033[0m$/;"	m
-Running the Make Prompt	make_interface/README.md	/^### Running the Make Prompt$/;"	S	section:Make Interface Project""Usage
 SANITIZE	Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
-SANITIZE	make_interface/config/Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
 SCRIPT_URL	Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeromeDev94\/make_interface.git$/;"	m
-SCRIPT_URL	make_interface/config/Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeromeDev94\/make_interface.git$/;"	m
 SRC	Makefile	/^SRC = \\$/;"	m
-SRC	make_interface/config/Makefile	/^SRC =$/;"	m
 SRC_DIR	Makefile	/^SRC_DIR = 	src$/;"	m
-SRC_DIR	make_interface/config/Makefile	/^SRC_DIR = 	src$/;"	m
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_initialization)$/;"	f
 TOTAL_STEPS	Makefile	/^TOTAL_STEPS := $(words $(OBJ))$/;"	m
-TOTAL_STEPS	make_interface/config/Makefile	/^TOTAL_STEPS := $(words $(OBJ))$/;"	m
-Table of Contents	make_interface/README.md	/^## Table of Contents$/;"	s	chapter:Make Interface Project
-Targets	make_interface/README.md	/^### Targets$/;"	S	section:Make Interface Project""Makefile Structure
 Testing-Driven Development (TDD)	README.md	/^### Testing-Driven Development (TDD)$/;"	S	section:Minishell Project README""6. Development Strategy
-UML Diagram Management	make_interface/README.md	/^### UML Diagram Management$/;"	S	section:Make Interface Project""Usage
-Usage	make_interface/README.md	/^## Usage$/;"	s	chapter:Make Interface Project
 VALG	Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
-VALG	make_interface/config/Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
 VERBOSE	Makefile	/^VERBOSE ?= @$/;"	m
 VERBOSE	Makefile	/^classic: VERBOSE =$/;"	m
-VERBOSE	make_interface/config/Makefile	/^VERBOSE ?= @$/;"	m
-VERBOSE	make_interface/config/Makefile	/^classic: VERBOSE =$/;"	m
 VFLAGS	Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
-VFLAGS	make_interface/config/Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
-Variables	make_interface/README.md	/^### Variables$/;"	S	section:Make Interface Project""Makefile Structure
 YELLOW	Makefile	/^YELLOW  = \\033[33m$/;"	m
-YELLOW	make_interface/config/Makefile	/^YELLOW  = \\033[33m$/;"	m
 adapter	.vimspector.json	/^      "adapter": "vscode-cpptools",$/;"	s	object:configurations.C Debugging
-adapter	make_interface/config/.vimspector.json	/^      "adapter": "vscode-cpptools",$/;"	s	object:configurations.C Debugging
 adapters	.vimspector.json	/^  "adapters": {$/;"	o
-adapters	make_interface/config/.vimspector.json	/^  "adapters": {$/;"	o
 all	Makefile	/^all: $(NAME)$/;"	t
-all	make_interface/config/Makefile	/^all: $(NAME)$/;"	t
 args	.vimspector.json	/^        "args": [],$/;"	a	object:configurations.C Debugging.configuration
-args	make_interface/config/.vimspector.json	/^        "args": [],$/;"	a	object:configurations.C Debugging.configuration
-bak	make_interface/config/Makefile	/^bak:$/;"	t
 build	Makefile	/^build:$/;"	t
-build	make_interface/config/Makefile	/^build:$/;"	t
 calendar	Makefile	/^calendar: create-cal$/;"	t
-calendar	make_interface/config/Makefile	/^calendar: create-cal$/;"	t
 classic	Makefile	/^classic: $(NAME)$/;"	t
 classic	Makefile	/^classic: VERBOSE =$/;"	t
-classic	make_interface/config/Makefile	/^classic: $(NAME)$/;"	t
-classic	make_interface/config/Makefile	/^classic: VERBOSE =$/;"	t
 clean	Makefile	/^clean:$/;"	t
-clean	make_interface/config/Makefile	/^clean:$/;"	t
 command	.vimspector.json	/^      "command": [$/;"	a	object:adapters.vscode-cpptools
-command	make_interface/config/.vimspector.json	/^      "command": [$/;"	a	object:adapters.vscode-cpptools
 compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
 configuration	.vimspector.json	/^      "configuration": {$/;"	o	object:configurations.C Debugging
-configuration	make_interface/config/.vimspector.json	/^      "configuration": {$/;"	o	object:configurations.C Debugging
 configurations	.vimspector.json	/^  "configurations": {$/;"	o
-configurations	make_interface/config/.vimspector.json	/^  "configurations": {$/;"	o
 create-cal	Makefile	/^create-cal:$/;"	t
-create-cal	make_interface/config/Makefile	/^create-cal:$/;"	t
-create_ycm_extra_conf	make_interface/config/build.sh	/^create_ycm_extra_conf() {$/;"	f
 cwd	.vimspector.json	/^        "cwd": "${workspaceRoot}",$/;"	s	object:configurations.C Debugging.configuration
-cwd	make_interface/config/.vimspector.json	/^        "cwd": "${workspaceRoot}",$/;"	s	object:configurations.C Debugging.configuration
 debug	Makefile	/^debug:$/;"	t
-debug	make_interface/config/Makefile	/^debug:$/;"	t
 default	Makefile	/^default: CC = cc$/;"	t
 default	Makefile	/^default: CFLAGS -= $(SANITIZE)$/;"	t
 default	Makefile	/^default: CFLAGS -= $(VFLAGS)$/;"	t
 default	Makefile	/^default: re$/;"	t
-default	make_interface/config/Makefile	/^default: CC = cc$/;"	t
-default	make_interface/config/Makefile	/^default: CFLAGS -= $(SANITIZE)$/;"	t
-default	make_interface/config/Makefile	/^default: CFLAGS -= $(VFLAGS)$/;"	t
-default	make_interface/config/Makefile	/^default: re$/;"	t
 description	.vimspector.json	/^            "description": "Enable pretty-printing for gdb",$/;"	s	object:configurations.C Debugging.configuration.setupCommands.0
-description	make_interface/config/.vimspector.json	/^            "description": "Enable pretty-printing for gdb",$/;"	s	object:configurations.C Debugging.configuration.setupCommands.0
-display_menu	make_interface/src/interactive_select.c	/^void	display_menu(WINDOW *menu_win, char *choices[], int n_choices, int hl)$/;"	f	typeref:typename:void
 download-script	Makefile	/^download-script:$/;"	t
-download-script	make_interface/config/Makefile	/^download-script:$/;"	t
 environment	.vimspector.json	/^        "environment": [],$/;"	a	object:configurations.C Debugging.configuration
-environment	make_interface/config/.vimspector.json	/^        "environment": [],$/;"	a	object:configurations.C Debugging.configuration
 error_code	include/minishell.h	/^	int		error_code;$/;"	m	struct:s_shell	typeref:typename:int
 externalConsole	.vimspector.json	/^        "externalConsole": false,$/;"	b	object:configurations.C Debugging.configuration
-externalConsole	make_interface/config/.vimspector.json	/^        "externalConsole": false,$/;"	b	object:configurations.C Debugging.configuration
 fclean	Makefile	/^fclean: clean$/;"	t
-fclean	make_interface/config/Makefile	/^fclean: clean$/;"	t
 flags	ycm_extra_conf.py	/^flags = [$/;"	v
-ft_count_words	make_interface/src/make_prompt.c	/^static size_t	ft_count_words(char *str, char c)$/;"	f	typeref:typename:size_t	file:
-ft_extract	make_interface/src/make_prompt.c	/^static char	*ft_extract(const char **s, char c, char **tab, size_t i)$/;"	f	typeref:typename:char *	file:
-ft_free_memory	make_interface/src/make_prompt.c	/^static void	ft_free_memory(char **tab, size_t i)$/;"	f	typeref:typename:void	file:
-ft_split	make_interface/src/make_prompt.c	/^char	**ft_split(char const *s, char c)$/;"	f	typeref:typename:char **
-ft_strlcpy	make_interface/src/make_prompt.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f	typeref:typename:size_t
-ft_substr_len	make_interface/src/make_prompt.c	/^static size_t	ft_substr_len(char *str, char c)$/;"	f	typeref:typename:size_t	file:
 fullclean	Makefile	/^fullclean: fclean$/;"	t
-fullclean	make_interface/config/Makefile	/^fullclean: fclean$/;"	t
-g:AutoPairsShortcutToggle	make_interface/config/.vimrc	/^let g:AutoPairsShortcutToggle = '<C-P>'  " Auto-pairs toggle shortcut$/;"	v
-g:NERDTreeHijackNetrw	make_interface/config/.vimrc	/^    let g:NERDTreeHijackNetrw = 0$/;"	v
-g:NERDTreeHijackNetrw	make_interface/config/.vimrc	/^  let g:NERDTreeHijackNetrw = 1$/;"	v
-g:NERDTreeQuitOnOpen	make_interface/config/.vimrc	/^    let g:NERDTreeQuitOnOpen = 1$/;"	v
-g:NERDTreeQuitOnOpen	make_interface/config/.vimrc	/^  let g:NERDTreeQuitOnOpen = 0$/;"	v
-g:mail42	make_interface/config/.vimrc	/^let g:mail42 = 'jeportie@student.42.fr'  " 42 email$/;"	v
-g:plantuml_executable_script	make_interface/config/.vimrc	/^let g:plantuml_executable_script = "~\/bin\/plantuml.sh"$/;"	v
-g:tagbar_autofocus	make_interface/config/.vimrc	/^let g:tagbar_autofocus = 1         " Auto-focus tagbar$/;"	v
-g:tagbar_autoshowtag	make_interface/config/.vimrc	/^let g:tagbar_autoshowtag = 1       " Highlight active tag$/;"	v
-g:tagbar_position	make_interface/config/.vimrc	/^let g:tagbar_position = 'botright vertical'$/;"	v
-g:user42	make_interface/config/.vimrc	/^let g:user42 = 'jeportie'          " 42 username$/;"	v
-g:user_emmet_leader_key	make_interface/config/.vimrc	/^let g:user_emmet_leader_key=','     " Emmet leader key$/;"	v
-generate_src_list	make_interface/exec/update_makefile.sh	/^generate_src_list() {$/;"	f
-get_uml_files	make_interface/src/interactive_select.c	/^void	get_uml_files(char *directory, char *file_list[], int *count)$/;"	f	typeref:typename:void
 git	Makefile	/^git:$/;"	t
-git	make_interface/config/Makefile	/^git:$/;"	t
 helgrind	Makefile	/^helgrind:$/;"	t
-helgrind	make_interface/config/Makefile	/^helgrind:$/;"	t
 help	Makefile	/^help:$/;"	t
-help	make_interface/config/Makefile	/^help:$/;"	t
 ignoreFailures	.vimspector.json	/^            "ignoreFailures": true$/;"	b	object:configurations.C Debugging.configuration.setupCommands.0
-ignoreFailures	make_interface/config/.vimspector.json	/^            "ignoreFailures": true$/;"	b	object:configurations.C Debugging.configuration.setupCommands.0
 libgc	README.md	/^#### libgc$/;"	t	subsection:Minishell Project README""5. Tools and Frameworks""Personal Libraries
-main	main.c	/^int main(void)$/;"	f	typeref:typename:int
-main	make_interface/src/interactive_select.c	/^int	main(void)$/;"	f	typeref:typename:int
-main	make_interface/src/make_prompt.c	/^int	main(void)$/;"	f	typeref:typename:int
-main	make_interface/src/progress.c	/^int	main(int argc, char **argv)$/;"	f	typeref:typename:int
+main	main.c	/^int	main(int argc, char **argv, char **envp)$/;"	f	typeref:typename:int
+main	test_src/init_shell/test_ms_init_shell.c	/^int main(void) {$/;"	f	typeref:typename:int
 miDebuggerPath	.vimspector.json	/^        "miDebuggerPath": "\/usr\/bin\/gdb",$/;"	s	object:configurations.C Debugging.configuration
-miDebuggerPath	make_interface/config/.vimspector.json	/^        "miDebuggerPath": "\/usr\/bin\/gdb",$/;"	s	object:configurations.C Debugging.configuration
+minishell_suite	test_src/init_shell/test_ms_init_shell.c	/^Suite *minishell_suite(void) {$/;"	f	typeref:typename:END_TEST Suite *
+ms_get_user_input	src/init_shell/ms_get_user_input.c	/^void	ms_get_user_input(t_shell *shell)$/;"	f	typeref:typename:void
+ms_init_shell	src/init_shell/ms_init_shell.c	/^t_shell	ms_init_shell(int argc, char **envp)$/;"	f	typeref:typename:t_shell
 name	.vimspector.json	/^      "name": "cpptools"$/;"	s	object:adapters.vscode-cpptools
-name	make_interface/config/.vimspector.json	/^      "name": "cpptools"$/;"	s	object:adapters.vscode-cpptools
 norm	Makefile	/^norm:$/;"	t
-norm	make_interface/config/Makefile	/^norm:$/;"	t
 preLaunchTask	.vimspector.json	/^        "preLaunchTask": "build"$/;"	s	object:configurations.C Debugging.configuration
-preLaunchTask	make_interface/config/.vimspector.json	/^        "preLaunchTask": "build"$/;"	s	object:configurations.C Debugging.configuration
-print_progress	make_interface/src/progress.c	/^void	print_progress(int step, int total)$/;"	f	typeref:typename:void
 program	.vimspector.json	/^        "program": "${workspaceRoot}\/a.out",$/;"	s	object:configurations.C Debugging.configuration
-program	make_interface/config/.vimspector.json	/^        "program": "${workspaceRoot}\/a.out",$/;"	s	object:configurations.C Debugging.configuration
-progressive_sleep	make_interface/src/progress.c	/^void	progressive_sleep(int step, int total)$/;"	f	typeref:typename:void
 re	Makefile	/^re: fclean all$/;"	t
-re	make_interface/config/Makefile	/^re: fclean all$/;"	t
 readline	README.md	/^### readline$/;"	S	section:Minishell Project README""5. Tools and Frameworks
-remove_newline	make_interface/src/make_prompt.c	/^void	remove_newline(char *str)$/;"	f	typeref:typename:void
 request	.vimspector.json	/^        "request": "launch",$/;"	s	object:configurations.C Debugging.configuration
-request	make_interface/config/.vimspector.json	/^        "request": "launch",$/;"	s	object:configurations.C Debugging.configuration
 run	Makefile	/^run:$/;"	t
-run	make_interface/config/Makefile	/^run:$/;"	t
 run-prompt	Makefile	/^run-prompt: download-script$/;"	t
-run-prompt	make_interface/config/Makefile	/^run-prompt: download-script$/;"	t
-run_make_command	make_interface/src/make_prompt.c	/^void run_make_command(char *target, char *args)$/;"	f	typeref:typename:void
 s_shell	include/minishell.h	/^typedef struct s_shell$/;"	s
 san	Makefile	/^san: CC = clang$/;"	t
 san	Makefile	/^san: CFLAGS += $(SANITIZE)$/;"	t
 san	Makefile	/^san: CFLAGS -= $(VFLAGS)$/;"	t
 san	Makefile	/^san: re$/;"	t
-san	make_interface/config/Makefile	/^san: CC = clang$/;"	t
-san	make_interface/config/Makefile	/^san: CFLAGS += $(SANITIZE)$/;"	t
-san	make_interface/config/Makefile	/^san: CFLAGS -= $(VFLAGS)$/;"	t
-san	make_interface/config/Makefile	/^san: re$/;"	t
 setupCommands	.vimspector.json	/^        "setupCommands": [$/;"	a	object:configurations.C Debugging.configuration
-setupCommands	make_interface/config/.vimspector.json	/^        "setupCommands": [$/;"	a	object:configurations.C Debugging.configuration
 stopAtEntry	.vimspector.json	/^        "stopAtEntry": true,$/;"	b	object:configurations.C Debugging.configuration
-stopAtEntry	make_interface/config/.vimspector.json	/^        "stopAtEntry": true,$/;"	b	object:configurations.C Debugging.configuration
 t_shell	include/minishell.h	/^}			t_shell;$/;"	t	typeref:struct:s_shell
 text	.vimspector.json	/^            "text": "-enable-pretty-printing",$/;"	s	object:configurations.C Debugging.configuration.setupCommands.0
-text	make_interface/config/.vimspector.json	/^            "text": "-enable-pretty-printing",$/;"	s	object:configurations.C Debugging.configuration.setupCommands.0
 todo	Makefile	/^todo:$/;"	t
-todo	make_interface/config/Makefile	/^todo:$/;"	t
 uml	Makefile	/^uml:$/;"	t
-uml	make_interface/config/Makefile	/^uml:$/;"	t
 update	Makefile	/^update:$/;"	t
-update	make_interface/config/Makefile	/^update:$/;"	t
-update_makefile	make_interface/config/build.sh	/^update_makefile() {$/;"	f
 user_input	include/minishell.h	/^	char	*user_input;$/;"	m	struct:s_shell	typeref:typename:char *
 val	Makefile	/^val: CC = cc$/;"	t
 val	Makefile	/^val: CFLAGS += $(VFLAGS) $/;"	t
 val	Makefile	/^val: CFLAGS -= $(SANITIZE)$/;"	t
 val	Makefile	/^val: re$/;"	t
-val	make_interface/config/Makefile	/^val: CC = cc$/;"	t
-val	make_interface/config/Makefile	/^val: CFLAGS += $(VFLAGS) $/;"	t
-val	make_interface/config/Makefile	/^val: CFLAGS -= $(SANITIZE)$/;"	t
-val	make_interface/config/Makefile	/^val: re$/;"	t
 valgrind	Makefile	/^valgrind:$/;"	t
-valgrind	make_interface/config/Makefile	/^valgrind:$/;"	t
 vscode-cpptools	.vimspector.json	/^    "vscode-cpptools": {$/;"	o	object:adapters
-vscode-cpptools	make_interface/config/.vimspector.json	/^    "vscode-cpptools": {$/;"	o	object:adapters
