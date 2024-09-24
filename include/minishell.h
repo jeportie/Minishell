@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/24 12:58:37 by jeportie         ###   ########.fr       */
+/*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
+/*   Updated: 2024/09/24 12:58:07 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
- *NOTE: Step 1: 
- *->Files creation
- *->structure 
- *->open minishell and display a prompt
- *->first test unit for main and diplsay function
- *->Coding + Test green
- *->Refactoring
- *->Next Test coding
- *->End step one
- */
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
-#include <stdio.h>
-
-int main(void)
+typedef struct s_shell
 {
-	printf("Hello, World!\n");	
-	return (0);
-}
+	char	*user_input;
+	int		error_code;
+}			t_shell;
+
+#endif /*MINISHELL_H*/

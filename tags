@@ -104,6 +104,7 @@ MAX_FILES	make_interface/src/interactive_select.c	/^#define MAX_FILES /;"	d	file
 MAX_SLEEP_USEC	make_interface/src/progress.c	/^#define MAX_SLEEP_USEC /;"	d	file:
 MIMode	.vimspector.json	/^        "MIMode": "gdb",$/;"	s	object:configurations.C Debugging.configuration
 MIMode	make_interface/config/.vimspector.json	/^        "MIMode": "gdb",$/;"	s	object:configurations.C Debugging.configuration
+MINISHELL_H	include/minishell.h	/^# define MINISHELL_H$/;"	d
 MIN_SLEEP_USEC	make_interface/src/progress.c	/^#define MIN_SLEEP_USEC /;"	d	file:
 Make Interface Project	make_interface/README.md	/^# Make Interface Project$/;"	c
 MakeRelativePathsAbsolute	ycm_extra_conf.py	/^def MakeRelativePathsAbsolute(flags, working_directory):$/;"	f
@@ -206,6 +207,7 @@ download-script	Makefile	/^download-script:$/;"	t
 download-script	make_interface/config/Makefile	/^download-script:$/;"	t
 environment	.vimspector.json	/^        "environment": [],$/;"	a	object:configurations.C Debugging.configuration
 environment	make_interface/config/.vimspector.json	/^        "environment": [],$/;"	a	object:configurations.C Debugging.configuration
+error_code	include/minishell.h	/^	int		error_code;$/;"	m	struct:s_shell	typeref:typename:int
 externalConsole	.vimspector.json	/^        "externalConsole": false,$/;"	b	object:configurations.C Debugging.configuration
 externalConsole	make_interface/config/.vimspector.json	/^        "externalConsole": false,$/;"	b	object:configurations.C Debugging.configuration
 fclean	Makefile	/^fclean: clean$/;"	t
@@ -269,6 +271,7 @@ run	make_interface/config/Makefile	/^run:$/;"	t
 run-prompt	Makefile	/^run-prompt: download-script$/;"	t
 run-prompt	make_interface/config/Makefile	/^run-prompt: download-script$/;"	t
 run_make_command	make_interface/src/make_prompt.c	/^void run_make_command(char *target, char *args)$/;"	f	typeref:typename:void
+s_shell	include/minishell.h	/^typedef struct s_shell$/;"	s
 san	Makefile	/^san: CC = clang$/;"	t
 san	Makefile	/^san: CFLAGS += $(SANITIZE)$/;"	t
 san	Makefile	/^san: CFLAGS -= $(VFLAGS)$/;"	t
@@ -281,6 +284,7 @@ setupCommands	.vimspector.json	/^        "setupCommands": [$/;"	a	object:configu
 setupCommands	make_interface/config/.vimspector.json	/^        "setupCommands": [$/;"	a	object:configurations.C Debugging.configuration
 stopAtEntry	.vimspector.json	/^        "stopAtEntry": true,$/;"	b	object:configurations.C Debugging.configuration
 stopAtEntry	make_interface/config/.vimspector.json	/^        "stopAtEntry": true,$/;"	b	object:configurations.C Debugging.configuration
+t_shell	include/minishell.h	/^}			t_shell;$/;"	t	typeref:struct:s_shell
 text	.vimspector.json	/^            "text": "-enable-pretty-printing",$/;"	s	object:configurations.C Debugging.configuration.setupCommands.0
 text	make_interface/config/.vimspector.json	/^            "text": "-enable-pretty-printing",$/;"	s	object:configurations.C Debugging.configuration.setupCommands.0
 todo	Makefile	/^todo:$/;"	t
@@ -290,6 +294,7 @@ uml	make_interface/config/Makefile	/^uml:$/;"	t
 update	Makefile	/^update:$/;"	t
 update	make_interface/config/Makefile	/^update:$/;"	t
 update_makefile	make_interface/config/build.sh	/^update_makefile() {$/;"	f
+user_input	include/minishell.h	/^	char	*user_input;$/;"	m	struct:s_shell	typeref:typename:char *
 val	Makefile	/^val: CC = cc$/;"	t
 val	Makefile	/^val: CFLAGS += $(VFLAGS) $/;"	t
 val	Makefile	/^val: CFLAGS -= $(SANITIZE)$/;"	t
