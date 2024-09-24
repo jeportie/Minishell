@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/24 16:21:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/24 21:20:34 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_shell	shell;
 
+	(void)argv;
 	shell = ms_init_shell(argc, envp);
 	while (1)
 	{

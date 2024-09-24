@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:18 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/24 16:43:50 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/24 19:34:48 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 START_TEST(test_ms_init_shell_initialization)
 {
-	int argc = 0;
-	char **envp = NULL;
+    int argc = 0;
+    char **envp = NULL;
 
 	t_shell shell = ms_init_shell(argc, envp);
 	ck_assert_ptr_null(shell.user_input);
-	ck_assert_ptr_null(shell.error_code);
+	ck_assert_int_eq(shell.error_code, 0);
 	// Add other assertions as needed
 }
 END_TEST

@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/24 16:24:56 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/24 21:21:43 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ SRC = \
 
 CC = 		cc
 CFLAGS = 	-Wall -Wextra -Werror
-LIBS =		-lft 
 VFLAGS = 	-g3 -fPIC 
 SANITIZE = 	-g3 -fPIC -fsanitize=thread
 VALG =		valgrind --leak-check=full --show-leak-kinds=all \
@@ -33,12 +32,12 @@ VALG =		valgrind --leak-check=full --show-leak-kinds=all \
 HELG =      valgrind --tool=helgrind --history-level=full \
 			--track-lockorders=yes --show-below-main=yes --free-is-write=yes
 
+LDFLAGS = -lreadline #-L./lib/libft -lft -L./lib/libgc -lgc
 DEPFLAGS =  -MMD -MP
-INCLUDES =   
+INCLUDES = -I./include #-I./lib/libft/include -I./lib/libgc/include
 
 SRC_DIR = 	src
 OBJ_DIR = 	obj
-LIB_DIR =	
 
 # **************************************************************************** #
 #                                 Files                                        #
@@ -79,10 +78,10 @@ run-prompt: download-script
 all: $(NAME)
 
 $(NAME): $(OBJ) $(OBJ_DIR)/main.o
-	@echo "Compiling..."
-	$(CC) $(CFLAGS) $(INCLUDES) $(LIB_DIR) $(OBJ) $(OBJ_DIR)/main.o -o $(NAME) $(LIB) > .compile.log 2>&1
+	@echo "Compiling $(NAME)..."
+	$(CC) $(CFLAGS) $(OBJ) $(OBJ_DIR)/main.o -o $(NAME) $(LDFLAGS) > .compile.log 2>&1
 	@if [ "$(VERBOSE)" = "@" ]; then \
-		./make_interface/exec/progress $(TOTAL_STEPS) .compile.log; \
+		./make_interface/exec/progress $(words $(OBJ)) .compile.log; \
 	else \
 		cat .compile.log; \
 	fi
@@ -91,10 +90,9 @@ $(NAME): $(OBJ) $(OBJ_DIR)/main.o
 classic: VERBOSE =
 classic: $(NAME)
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+# Ensure obj subdirectories for object files exist
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)  # Create subdirectories as needed
 	$(VERBOSE)$(CC) $(CFLAGS) $(DEPFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJ_DIR)/main.o: main.c | $(OBJ_DIR)
