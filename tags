@@ -1,0 +1,108 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/jeportie/Documents/Minishell/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+$(NAME)	Makefile	/^$(NAME): $(OBJ) $(OBJ_DIR)\/main.o$/;"	t
+$(OBJ_DIR)	Makefile	/^$(OBJ_DIR):$/;"	t
+$(OBJ_DIR)/%.o	Makefile	/^$(OBJ_DIR)\/%.o: $(SRC_DIR)\/%.c | $(OBJ_DIR)$/;"	t
+$(OBJ_DIR)/main.o	Makefile	/^$(OBJ_DIR)\/main.o: main.c | $(OBJ_DIR)$/;"	t
+%	Makefile	/^%:$/;"	t
+0	.vimspector.json	/^          {$/;"	o	array:configurations.C Debugging.configuration.setupCommands
+0	.vimspector.json	/^        "~\/.vscode\/cpptools\/debugAdapters\/OpenDebugAD7"$/;"	s	array:adapters.vscode-cpptools.command
+BLUE	Makefile	/^BLUE    = \\033[34m$/;"	m
+BOLD	Makefile	/^BOLD    = \\033[1m$/;"	m
+C Debugging	.vimspector.json	/^    "C Debugging": {$/;"	o	object:configurations
+CC	Makefile	/^CC = 		cc$/;"	m
+CC	Makefile	/^default: CC = cc$/;"	m
+CC	Makefile	/^san: CC = clang$/;"	m
+CC	Makefile	/^val: CC = cc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = 	-Wall -Wextra -Werror$/;"	m
+DEPFLAGS	Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
+DEPS	Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
+DirectoryOfThisScript	ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+FlagsForFile	ycm_extra_conf.py	/^def FlagsForFile(filename):$/;"	f
+GREEN	Makefile	/^GREEN   = \\033[32m$/;"	m
+HELG	Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
+INCLUDES	Makefile	/^INCLUDES =   $/;"	m
+LIBS	Makefile	/^LIBS =		-lft $/;"	m
+LIB_DIR	Makefile	/^LIB_DIR =	$/;"	m
+MIMode	.vimspector.json	/^        "MIMode": "gdb",$/;"	s	object:configurations.C Debugging.configuration
+MakeRelativePathsAbsolute	ycm_extra_conf.py	/^def MakeRelativePathsAbsolute(flags, working_directory):$/;"	f
+NAME	Makefile	/^NAME = Minishell$/;"	m
+OBJ	Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
+OBJ_DIR	Makefile	/^OBJ_DIR = 	obj$/;"	m
+RED	Makefile	/^RED     = \\033[31m$/;"	m
+RESET	Makefile	/^RESET   = \\033[0m$/;"	m
+SANITIZE	Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
+SCRIPT_URL	Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeromeDev94\/make_interface.git$/;"	m
+SRC	Makefile	/^SRC = \\$/;"	m
+SRC_DIR	Makefile	/^SRC_DIR = 	src$/;"	m
+TOTAL_STEPS	Makefile	/^TOTAL_STEPS := $(words $(OBJ))$/;"	m
+VALG	Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
+VERBOSE	Makefile	/^VERBOSE ?= @$/;"	m
+VERBOSE	Makefile	/^classic: VERBOSE =$/;"	m
+VFLAGS	Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
+YELLOW	Makefile	/^YELLOW  = \\033[33m$/;"	m
+adapter	.vimspector.json	/^      "adapter": "vscode-cpptools",$/;"	s	object:configurations.C Debugging
+adapters	.vimspector.json	/^  "adapters": {$/;"	o
+all	Makefile	/^all: $(NAME)$/;"	t
+args	.vimspector.json	/^        "args": [],$/;"	a	object:configurations.C Debugging.configuration
+build	Makefile	/^build:$/;"	t
+calendar	Makefile	/^calendar: create-cal$/;"	t
+classic	Makefile	/^classic: $(NAME)$/;"	t
+classic	Makefile	/^classic: VERBOSE =$/;"	t
+clean	Makefile	/^clean:$/;"	t
+command	.vimspector.json	/^      "command": [$/;"	a	object:adapters.vscode-cpptools
+compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+configuration	.vimspector.json	/^      "configuration": {$/;"	o	object:configurations.C Debugging
+configurations	.vimspector.json	/^  "configurations": {$/;"	o
+create-cal	Makefile	/^create-cal:$/;"	t
+cwd	.vimspector.json	/^        "cwd": "${workspaceRoot}",$/;"	s	object:configurations.C Debugging.configuration
+debug	Makefile	/^debug:$/;"	t
+default	Makefile	/^default: CC = cc$/;"	t
+default	Makefile	/^default: CFLAGS -= $(SANITIZE)$/;"	t
+default	Makefile	/^default: CFLAGS -= $(VFLAGS)$/;"	t
+default	Makefile	/^default: re$/;"	t
+description	.vimspector.json	/^            "description": "Enable pretty-printing for gdb",$/;"	s	object:configurations.C Debugging.configuration.setupCommands.0
+download-script	Makefile	/^download-script:$/;"	t
+environment	.vimspector.json	/^        "environment": [],$/;"	a	object:configurations.C Debugging.configuration
+externalConsole	.vimspector.json	/^        "externalConsole": false,$/;"	b	object:configurations.C Debugging.configuration
+fclean	Makefile	/^fclean: clean$/;"	t
+flags	ycm_extra_conf.py	/^flags = [$/;"	v
+fullclean	Makefile	/^fullclean: fclean$/;"	t
+git	Makefile	/^git:$/;"	t
+helgrind	Makefile	/^helgrind:$/;"	t
+help	Makefile	/^help:$/;"	t
+ignoreFailures	.vimspector.json	/^            "ignoreFailures": true$/;"	b	object:configurations.C Debugging.configuration.setupCommands.0
+miDebuggerPath	.vimspector.json	/^        "miDebuggerPath": "\/usr\/bin\/gdb",$/;"	s	object:configurations.C Debugging.configuration
+name	.vimspector.json	/^      "name": "cpptools"$/;"	s	object:adapters.vscode-cpptools
+norm	Makefile	/^norm:$/;"	t
+preLaunchTask	.vimspector.json	/^        "preLaunchTask": "build"$/;"	s	object:configurations.C Debugging.configuration
+program	.vimspector.json	/^        "program": "${workspaceRoot}\/a.out",$/;"	s	object:configurations.C Debugging.configuration
+re	Makefile	/^re: fclean all$/;"	t
+request	.vimspector.json	/^        "request": "launch",$/;"	s	object:configurations.C Debugging.configuration
+run	Makefile	/^run:$/;"	t
+run-prompt	Makefile	/^run-prompt: download-script$/;"	t
+san	Makefile	/^san: CC = clang$/;"	t
+san	Makefile	/^san: CFLAGS += $(SANITIZE)$/;"	t
+san	Makefile	/^san: CFLAGS -= $(VFLAGS)$/;"	t
+san	Makefile	/^san: re$/;"	t
+setupCommands	.vimspector.json	/^        "setupCommands": [$/;"	a	object:configurations.C Debugging.configuration
+stopAtEntry	.vimspector.json	/^        "stopAtEntry": true,$/;"	b	object:configurations.C Debugging.configuration
+text	.vimspector.json	/^            "text": "-enable-pretty-printing",$/;"	s	object:configurations.C Debugging.configuration.setupCommands.0
+todo	Makefile	/^todo:$/;"	t
+uml	Makefile	/^uml:$/;"	t
+update	Makefile	/^update:$/;"	t
+val	Makefile	/^val: CC = cc$/;"	t
+val	Makefile	/^val: CFLAGS += $(VFLAGS) $/;"	t
+val	Makefile	/^val: CFLAGS -= $(SANITIZE)$/;"	t
+val	Makefile	/^val: re$/;"	t
+valgrind	Makefile	/^valgrind:$/;"	t
+vscode-cpptools	.vimspector.json	/^    "vscode-cpptools": {$/;"	o	object:adapters
