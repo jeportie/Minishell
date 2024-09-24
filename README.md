@@ -41,6 +41,70 @@ The project requires implementing the following features:
 ### Bonus Features
 - **Logical Operators**: Support `&&` and `||` for conditional execution of commands.
 - **Wildcards**: Handle `*` to match files in the current directory.
+### Allowed External Functions
+
+In the Minishell project, we are allowed to use a wide range of external functions, categorized into specific groups for ease of reference:
+
+1. **Readline Library Functions**:
+   - `readline`: Reads a line of input with line editing capabilities.
+   - `rl_clear_history`: Clears the command history.
+   - `rl_on_new_line`: Updates the state of the input line after editing.
+   - `rl_replace_line`: Replaces the current input line with a new string.
+   - `rl_redisplay`: Refreshes the input line display after changes.
+   - `add_history`: Adds the most recent command to the command history.
+
+2. **Input/Output and Memory Functions**:
+   - `printf`: Prints formatted output to the console.
+   - `malloc`: Allocates memory dynamically.
+   - `free`: Frees dynamically allocated memory.
+   - `write`: Writes data to a file descriptor.
+   - `read`: Reads data from a file descriptor.
+   - `open`: Opens a file.
+   - `close`: Closes a file descriptor.
+   - `access`: Checks accessibility of a file.
+
+3. **Process Management**:
+   - `fork`: Creates a new process.
+   - `wait`: Waits for a child process to change state.
+   - `waitpid`, `wait3`, `wait4`: Waits for a process with additional options.
+   - `execve`: Executes a program, replacing the current process image.
+   - `kill`: Sends a signal to a process.
+   - `exit`: Exits the current process with a status.
+
+4. **Signal Handling**:
+   - `signal`: Sets a signal handler for a given signal.
+   - `sigaction`: Examines and changes the action taken by a signal.
+   - `sigemptyset`, `sigaddset`: Initializes and manipulates signal sets.
+
+5. **File Management and Status**:
+   - `getcwd`: Gets the current working directory.
+   - `chdir`: Changes the current working directory.
+   - `stat`, `lstat`, `fstat`: Retrieves information about files.
+   - `unlink`: Removes a file.
+   - `opendir`, `readdir`, `closedir`: Handles directory reading.
+
+6. **File Descriptors and Duplication**:
+   - `dup`, `dup2`: Duplicates file descriptors.
+   - `pipe`: Creates a pipe for inter-process communication.
+
+7. **Error Handling**:
+   - `strerror`: Returns a string describing the error number.
+   - `perror`: Prints a description of the last error.
+
+8. **Terminal and Device Control**:
+   - `isatty`: Checks if a file descriptor refers to a terminal.
+   - `ttyname`: Returns the name of the terminal associated with a file descriptor.
+   - `ttyslot`: Returns the index of the current terminal.
+   - `ioctl`: Controls the I/O settings of file descriptors.
+
+9. **Environment Variables**:
+   - `getenv`: Retrieves the value of an environment variable.
+
+10. **Terminal Control Functions**:
+    - `tcsetattr`, `tcgetattr`: Sets and gets terminal attributes.
+    - `tgetent`, `tgetflag`, `tgetnum`, `tgetstr`: Handles terminal capability information.
+    - `tgoto`: Moves the cursor to a specified position.
+    - `tputs`: Sends control strings to the terminal.
 
 ---
 
