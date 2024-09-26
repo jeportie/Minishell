@@ -1,0 +1,37 @@
+Start testing: Sep 25 14:38 UTC
+----------------------------------------------------------
+1/2 Testing: test_ms_get_user_input
+1/2 Test: test_ms_get_user_input
+Command: "/root/projects/minishell/test_src/test_ms_get_user_input"
+Directory: /root/projects/minishell/test_src
+"test_ms_get_user_input" start time: Sep 25 14:38 UTC
+Output:
+----------------------------------------------------------
+Running suite(s): Minishell
+100%: Checks: 3, Failures: 0, Errors: 0
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_ms_get_user_input" end time: Sep 25 14:38 UTC
+"test_ms_get_user_input" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: test_ms_init_shell
+2/2 Test: test_ms_init_shell
+Command: "/root/projects/minishell/test_src/test_ms_init_shell"
+Directory: /root/projects/minishell/test_src
+"test_ms_init_shell" start time: Sep 25 14:38 UTC
+Output:
+----------------------------------------------------------
+Running suite(s): Minishell
+100%: Checks: 1, Failures: 0, Errors: 0
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_ms_init_shell" end time: Sep 25 14:38 UTC
+"test_ms_init_shell" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 25 14:38 UTC
