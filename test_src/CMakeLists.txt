@@ -23,18 +23,21 @@ file(GLOB TEST_SRC_FILES "${TEST_SRC_DIR}/**/*.c")
 
 # Add the test executable for each test source file
 foreach(TEST_FILE ${TEST_SRC_FILES})
-    # Extract the name of the test (e.g., "test_ft_split" from "test_ft_split.c")
-    get_filename_component(TEST_NAME ${TEST_FILE} NAME_WE)
-    
-    # Create a test executable
-    add_executable(${TEST_NAME} ${TEST_FILE} ${SRC_FILES})
+    # Extract the executable name (e.g., "test_ms_get_user_input" from "test_ms_get_user_input.c")
+    get_filename_component(EXEC_NAME ${TEST_FILE} NAME_WE)
+
+    # Remove the "test_" prefix from the test name for display purposes
+    string(REGEX REPLACE "^test_" "" TEST_NAME ${EXEC_NAME})
+
+    # Create a test executable with the original name
+    add_executable(${EXEC_NAME} ${TEST_FILE} ${SRC_FILES})
 
     # Link the Check and Readline libraries
-    target_link_libraries(${TEST_NAME} ${CHECK_LIBRARIES} ${READLINE_LIBRARIES})
-    target_include_directories(${TEST_NAME} PUBLIC ${CHECK_INCLUDE_DIRS})
+    target_link_libraries(${EXEC_NAME} ${CHECK_LIBRARIES} ${READLINE_LIBRARIES})
+    target_include_directories(${EXEC_NAME} PUBLIC ${CHECK_INCLUDE_DIRS})
 
-    # Add the test to CTest
-    add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+    # Add the test to CTest with the test name without the prefix, but command is the executable with prefix
+    add_test(NAME ${TEST_NAME} COMMAND ${EXEC_NAME})
 
     # Add custom CTest options (e.g., timeout) for each test
     set_tests_properties(${TEST_NAME} PROPERTIES TIMEOUT 5)
