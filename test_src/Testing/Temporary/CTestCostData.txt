@@ -1,3 +1,5 @@
 test_ms_get_user_input 2 0.0012274
 test_ms_init_shell 2 0.00147193
+ms_get_user_input 2 0.000784979
+ms_init_shell 2 0.000548207
 ---
