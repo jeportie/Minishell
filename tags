@@ -57,9 +57,9 @@ CC	Makefile	/^default: CC = cc$/;"	m
 CC	Makefile	/^san: CC = clang$/;"	m
 CC	Makefile	/^val: CC = cc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = 	-Wall -Wextra -Werror$/;"	m
-CMAKE_BINARY_DIR	test_src/Makefile	/^CMAKE_BINARY_DIR = \/root\/projects\/minishell\/test_src$/;"	m
+CMAKE_BINARY_DIR	test_src/Makefile	/^CMAKE_BINARY_DIR = \/root\/projects\/Minishell\/test_src$/;"	m
 CMAKE_COMMAND	test_src/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
-CMAKE_SOURCE_DIR	test_src/Makefile	/^CMAKE_SOURCE_DIR = \/root\/projects\/minishell\/test_src$/;"	m
+CMAKE_SOURCE_DIR	test_src/Makefile	/^CMAKE_SOURCE_DIR = \/root\/projects\/Minishell\/test_src$/;"	m
 COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	109;"	d	file:
 COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	117;"	d	file:
 COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	123;"	d	file:

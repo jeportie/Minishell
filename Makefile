@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/24 21:21:43 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/30 09:29:52 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -175,6 +175,9 @@ uml:
 build:
 	@bash ./make_interface/config/build.sh
 	make update
+
+test_clean:
+	@bash ./make_interface/exec/clean_test.sh
 
 update:
 	./make_interface/exec/update_makefile.sh
