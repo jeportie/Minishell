@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/30 09:29:52 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/30 13:37:53 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,13 +28,14 @@ CFLAGS = 	-Wall -Wextra -Werror
 VFLAGS = 	-g3 -fPIC 
 SANITIZE = 	-g3 -fPIC -fsanitize=thread
 VALG =		valgrind --leak-check=full --show-leak-kinds=all \
-			--track-origins=yes --error-exitcode=1
+			--track-origins=yes --error-exitcode=1 \
+			--suppressions=assets/supp.supp
 HELG =      valgrind --tool=helgrind --history-level=full \
 			--track-lockorders=yes --show-below-main=yes --free-is-write=yes
 
-LDFLAGS = -lreadline #-L./lib/libft -lft -L./lib/libgc -lgc
+LDFLAGS = -lreadline -L./lib/libgc -lgc #-L./lib/libgc -lgc
 DEPFLAGS =  -MMD -MP
-INCLUDES = -I./include #-I./lib/libft/include -I./lib/libgc/include
+INCLUDES = -I./include -I./lib/libgc/include #-I./lib/libgc/include
 
 SRC_DIR = 	src
 OBJ_DIR = 	obj
@@ -78,6 +79,7 @@ run-prompt: download-script
 all: $(NAME)
 
 $(NAME): $(OBJ) $(OBJ_DIR)/main.o
+	make -C lib/libgc
 	@echo "Compiling $(NAME)..."
 	$(CC) $(CFLAGS) $(OBJ) $(OBJ_DIR)/main.o -o $(NAME) $(LDFLAGS) > .compile.log 2>&1
 	@if [ "$(VERBOSE)" = "@" ]; then \

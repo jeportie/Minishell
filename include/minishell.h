@@ -6,13 +6,14 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/24 15:05:00 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:38:41 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include "../lib/libgc/include/libgc.h"
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <stdio.h>
