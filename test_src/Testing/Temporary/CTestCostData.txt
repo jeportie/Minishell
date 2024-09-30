@@ -1,4 +1,3 @@
-ms_get_user_input 1 0.00215999
-ms_init_shell 0 0
+ms_get_user_input 6 0.000760013
+ms_init_shell 3 0.00317479
 ---
-ms_init_shell

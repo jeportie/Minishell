@@ -1,10 +1,10 @@
-Start testing: Sep 30 15:57 UTC
+Start testing: Sep 30 16:14 UTC
 ----------------------------------------------------------
 1/2 Testing: ms_get_user_input
 1/2 Test: ms_get_user_input
 Command: "/root/projects/Minishell/test_src/test_ms_get_user_input"
 Directory: /root/projects/Minishell/test_src
-"ms_get_user_input" start time: Sep 30 15:57 UTC
+"ms_get_user_input" start time: Sep 30 16:14 UTC
 Output:
 ----------------------------------------------------------
 Running suite(s): Minishell
@@ -13,7 +13,7 @@ Running suite(s): Minishell
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"ms_get_user_input" end time: Sep 30 15:57 UTC
+"ms_get_user_input" end time: Sep 30 16:14 UTC
 "ms_get_user_input" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -21,26 +21,17 @@ Test Passed.
 2/2 Test: ms_init_shell
 Command: "/root/projects/Minishell/test_src/test_ms_init_shell"
 Directory: /root/projects/Minishell/test_src
-"ms_init_shell" start time: Sep 30 15:57 UTC
+"ms_init_shell" start time: Sep 30 16:14 UTC
 Output:
 ----------------------------------------------------------
 Running suite(s): ms_init_shell
-0%: Checks: 9, Failures: 0, Errors: 9
-/root/projects/Minishell/test_src/init_shell/test_ms_init_shell.c:17:E:Core:test_ms_init_shell_basic:0: (after this point) Received signal 11 (Segmentation fault)
-/root/projects/Minishell/test_src/init_shell/test_ms_init_shell.c:26:E:Core:test_ms_init_shell_with_envp:0: (after this point) Received signal 11 (Segmentation fault)
-/root/projects/Minishell/test_src/init_shell/test_ms_init_shell.c:36:E:Core:test_ms_init_shell_with_argc:0: (after this point) Received signal 11 (Segmentation fault)
-/root/projects/Minishell/test_src/init_shell/test_ms_init_shell.c:45:E:Core:test_ms_init_shell_with_large_argc:0: (after this point) Received signal 11 (Segmentation fault)
-/root/projects/Minishell/test_src/init_shell/test_ms_init_shell.c:54:E:Core:test_ms_init_shell_with_empty_envp:0: (after this point) Received signal 11 (Segmentation fault)
-/root/projects/Minishell/test_src/init_shell/test_ms_init_shell.c:64:E:Core:test_ms_init_shell_with_null_envp:0: (after this point) Received signal 11 (Segmentation fault)
-/root/projects/Minishell/test_src/init_shell/test_ms_init_shell.c:73:E:Core:test_ms_init_shell_with_special_chars_in_envp:0: (after this point) Received signal 11 (Segmentation fault)
-/root/projects/Minishell/test_src/init_shell/test_ms_init_shell.c:83:E:Core:test_ms_init_shell_with_long_envp:0: (after this point) Received signal 11 (Segmentation fault)
-/root/projects/Minishell/test_src/init_shell/test_ms_init_shell.c:93:E:Core:test_ms_init_shell_with_multiple_envp:0: (after this point) Received signal 11 (Segmentation fault)
+100%: Checks: 9, Failures: 0, Errors: 0
 <end of output>
-Test time =   0.48 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
-Test Failed.
-"ms_init_shell" end time: Sep 30 15:57 UTC
+Test Passed.
+"ms_init_shell" end time: Sep 30 16:14 UTC
 "ms_init_shell" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Sep 30 15:57 UTC
+End testing: Sep 30 16:14 UTC

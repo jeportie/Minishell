@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:18 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/30 15:31:03 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:13:17 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 START_TEST(test_ms_init_shell_basic)
 {
-    t_shell shell = ms_init_shell(0, NULL);
+    t_shell shell = ms_init_shell(0, NULL, NULL);
     ck_assert_ptr_null(shell.user_input);
     ck_assert_int_eq(shell.error_code, 0);
     ck_assert_ptr_nonnull(shell.gcl);
@@ -26,7 +26,7 @@ END_TEST
 START_TEST(test_ms_init_shell_with_envp)
 {
     char *envp[] = {"PATH=/usr/bin", "HOME=/home/user", NULL};
-    t_shell shell = ms_init_shell(2, envp);
+    t_shell shell = ms_init_shell(2, NULL, envp);
     ck_assert_ptr_null(shell.user_input);
     ck_assert_int_eq(shell.error_code, 0);
     ck_assert_ptr_nonnull(shell.gcl);
@@ -35,7 +35,7 @@ END_TEST
 
 START_TEST(test_ms_init_shell_with_argc)
 {
-    t_shell shell = ms_init_shell(5, NULL);
+    t_shell shell = ms_init_shell(5, NULL, NULL);
     ck_assert_ptr_null(shell.user_input);
     ck_assert_int_eq(shell.error_code, 0);
     ck_assert_ptr_nonnull(shell.gcl);
@@ -44,7 +44,7 @@ END_TEST
 
 START_TEST(test_ms_init_shell_with_large_argc)
 {
-    t_shell shell = ms_init_shell(1000, NULL);
+    t_shell shell = ms_init_shell(1000, NULL, NULL);
     ck_assert_ptr_null(shell.user_input);
     ck_assert_int_eq(shell.error_code, 0);
     ck_assert_ptr_nonnull(shell.gcl);
@@ -54,7 +54,7 @@ END_TEST
 START_TEST(test_ms_init_shell_with_empty_envp)
 {
     char *envp[] = {NULL};
-    t_shell shell = ms_init_shell(1, envp);
+    t_shell shell = ms_init_shell(1, NULL, envp);
     ck_assert_ptr_null(shell.user_input);
     ck_assert_int_eq(shell.error_code, 0);
     ck_assert_ptr_nonnull(shell.gcl);
@@ -63,7 +63,7 @@ END_TEST
 
 START_TEST(test_ms_init_shell_with_null_envp)
 {
-    t_shell shell = ms_init_shell(1, NULL);
+    t_shell shell = ms_init_shell(1, NULL, NULL);
     ck_assert_ptr_null(shell.user_input);
     ck_assert_int_eq(shell.error_code, 0);
     ck_assert_ptr_nonnull(shell.gcl);
@@ -73,7 +73,7 @@ END_TEST
 START_TEST(test_ms_init_shell_with_special_chars_in_envp)
 {
     char *envp[] = {"PATH=/usr/bin", "SPECIAL=*&^%$#@!", NULL};
-    t_shell shell = ms_init_shell(2, envp);
+    t_shell shell = ms_init_shell(2, NULL, envp);
     ck_assert_ptr_null(shell.user_input);
     ck_assert_int_eq(shell.error_code, 0);
     ck_assert_ptr_nonnull(shell.gcl);
@@ -83,7 +83,7 @@ END_TEST
 START_TEST(test_ms_init_shell_with_long_envp)
 {
     char *envp[] = {"PATH=/usr/bin", "LONG_ENV=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz", NULL};
-    t_shell shell = ms_init_shell(2, envp);
+    t_shell shell = ms_init_shell(2, NULL, envp);
     ck_assert_ptr_null(shell.user_input);
     ck_assert_int_eq(shell.error_code, 0);
     ck_assert_ptr_nonnull(shell.gcl);
@@ -93,7 +93,7 @@ END_TEST
 START_TEST(test_ms_init_shell_with_multiple_envp)
 {
     char *envp[] = {"PATH=/usr/bin", "HOME=/home/user", "SHELL=/bin/bash", "USER=test", NULL};
-    t_shell shell = ms_init_shell(4, envp);
+    t_shell shell = ms_init_shell(4, NULL, envp);
     ck_assert_ptr_null(shell.user_input);
     ck_assert_int_eq(shell.error_code, 0);
     ck_assert_ptr_nonnull(shell.gcl);
