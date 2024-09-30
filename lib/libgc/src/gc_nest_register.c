@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:23:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/30 14:00:06 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:50:28 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	gc_nest_register(void *ptr, t_gc gcl)
 	array = (void **)ptr;
 	while (*array)
 	{
-		gc_register(*array);
+		gc_register(*array, gcl);
 		array++;
 	}
 	new_node = malloc(sizeof(t_gc_node));

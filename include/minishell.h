@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/30 13:38:41 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:14:28 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_shell
 {
 	char	*user_input;
 	int		error_code;
+	t_gc 	*gcl;
 }			t_shell;
 
 t_shell	ms_init_shell(int argc, char **envp); /*A tester*/

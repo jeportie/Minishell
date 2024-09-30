@@ -6,7 +6,7 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 21:02:39 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/30 13:14:39 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/30 15:50:04 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ CFLAGS = -Wall -Wextra -Werror
 SRC = src/gc_cleanup.c \
 	  src/gc_collect.c \
 	  src/gc_fd_register.c \
-	  src/gc_globals.c \
 	  src/gc_malloc.c \
 	  src/gc_nest_register.c \
 	  src/gc_register.c \

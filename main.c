@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/30 13:46:09 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:32:00 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_shell	shell;
 
-	char *test;
-
-	test = gc_malloc(sizeof(char) * 5);
-	test[0] = 'a';
-	gc_lock(test);
-	gc_collect();
 
 	(void)argv;
 	shell = ms_init_shell(argc, envp);
@@ -43,7 +37,7 @@ int	main(int argc, char **argv, char **envp)
 		if (!shell.user_input)
 		{
 			rl_clear_history();
-			gc_cleanup();
+			gc_cleanup(*shell.gcl);
 			exit (shell.error_code);
 		}
 		printf("user_input : %s\n", shell.user_input);

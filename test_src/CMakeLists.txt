@@ -9,13 +9,17 @@ set(SRC_DIR "${CMAKE_SOURCE_DIR}/../src")
 set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/../include")
 set(TEST_SRC_DIR "${CMAKE_SOURCE_DIR}")
 
+# Set libgc directories
+set(LIBGC_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/../lib/libgc/include")
+set(LIBGC_LIB "${CMAKE_SOURCE_DIR}/../lib/libgc/libgc.a")
+
 # Find Check and Readline libraries using pkg-config
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(CHECK REQUIRED check)
 pkg_check_modules(READLINE REQUIRED readline)
 
-# Include the header files
-include_directories(${INCLUDE_DIR} ${READLINE_INCLUDE_DIRS})
+# Include the header files, including libgc
+include_directories(${INCLUDE_DIR} ${READLINE_INCLUDE_DIRS} ${LIBGC_INCLUDE_DIR})
 
 # Automatically include all .c files from src/ and test_src/
 file(GLOB SRC_FILES "${SRC_DIR}/**/*.c")
@@ -32,9 +36,11 @@ foreach(TEST_FILE ${TEST_SRC_FILES})
     # Create a test executable with the original name
     add_executable(${EXEC_NAME} ${TEST_FILE} ${SRC_FILES})
 
-    # Link the Check and Readline libraries
-    target_link_libraries(${EXEC_NAME} ${CHECK_LIBRARIES} ${READLINE_LIBRARIES})
-    target_include_directories(${EXEC_NAME} PUBLIC ${CHECK_INCLUDE_DIRS})
+    # Link the Check, Readline, and libgc libraries
+    target_link_libraries(${EXEC_NAME} ${CHECK_LIBRARIES} ${READLINE_LIBRARIES} ${LIBGC_LIB})
+    
+    # Add libgc include directories
+    target_include_directories(${EXEC_NAME} PUBLIC ${CHECK_INCLUDE_DIRS} ${LIBGC_INCLUDE_DIR})
 
     # Add the test to CTest with the test name without the prefix, but command is the executable with prefix
     add_test(NAME ${TEST_NAME} COMMAND ${EXEC_NAME})
@@ -42,3 +48,4 @@ foreach(TEST_FILE ${TEST_SRC_FILES})
     # Add custom CTest options (e.g., timeout) for each test
     set_tests_properties(${TEST_NAME} PROPERTIES TIMEOUT 5)
 endforeach()
+

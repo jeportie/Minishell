@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/30 13:37:53 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/30 15:01:48 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,9 +115,12 @@ fclean: clean
 	@echo "Cleaning $(NAME)"
 	@rm -f $(NAME)
 
+tclean:
+	@bash ./make_interface/exec/clean_test.sh
+
 fullclean: fclean
 	@echo "Cleaning Interface"
-	@rm -rf make_interface .download.log .compile.log
+	@rm -rf make_interface .download.log .compile.log tags
 
 # **************************************************************************** #
 #                                Other Rules                                   #
@@ -178,14 +181,13 @@ build:
 	@bash ./make_interface/config/build.sh
 	make update
 
-test_clean:
-	@bash ./make_interface/exec/clean_test.sh
+
 
 update:
 	./make_interface/exec/update_makefile.sh
 
 git:
-	@vim -c ":GV"
+	@tig
 
 debug:
 	@echo "Searching for '# define DEBUG' in headers..."
@@ -228,6 +230,7 @@ help:
 	@echo "$(GREEN)  debug          $(RESET)- Set the DEBUG flag in the project .h file(s)."
 	@echo "$(GREEN)  clean          $(RESET)- Removes object files."
 	@echo "$(GREEN)  fclean         $(RESET)- Removes object files and the executable."
+	@echo "$(GREEN)  tclean         $(RESET)- Removes test files and the test executables."
 	@echo "$(GREEN)  fullclean      $(RESET)- Removes the interface, object files, and executable."
 	@echo "$(GREEN)  re             $(RESET)- Cleans and recompiles the project."
 	@echo "$(GREEN)  build          $(RESET)- Run the Makefile builder script."
