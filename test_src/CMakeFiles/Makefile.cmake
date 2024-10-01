@@ -43,6 +43,9 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/test_ms_env_add_back.dir/DependInfo.cmake"
+  "CMakeFiles/test_ms_env_create_node.dir/DependInfo.cmake"
   "CMakeFiles/test_ms_get_user_input.dir/DependInfo.cmake"
+  "CMakeFiles/test_ms_init_env.dir/DependInfo.cmake"
   "CMakeFiles/test_ms_init_shell.dir/DependInfo.cmake"
   )

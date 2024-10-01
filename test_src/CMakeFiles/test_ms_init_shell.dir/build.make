@@ -83,10 +83,38 @@ CMakeFiles/test_ms_init_shell.dir/init_shell/test_ms_init_shell.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/test_ms_init_shell.dir/init_shell/test_ms_init_shell.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/projects/Minishell/test_src/init_shell/test_ms_init_shell.c -o CMakeFiles/test_ms_init_shell.dir/init_shell/test_ms_init_shell.c.s
 
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o: CMakeFiles/test_ms_init_shell.dir/flags.make
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o: /root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o: CMakeFiles/test_ms_init_shell.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o -MF CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o.d -o CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o -c /root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c
+
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c > CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.i
+
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c -o CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.s
+
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o: CMakeFiles/test_ms_init_shell.dir/flags.make
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o: /root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o: CMakeFiles/test_ms_init_shell.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o -MF CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o.d -o CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o -c /root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c
+
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c > CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.i
+
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c -o CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.s
+
 CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o: CMakeFiles/test_ms_init_shell.dir/flags.make
 CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o: /root/projects/Minishell/src/init_shell/ms_get_user_input.c
 CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o: CMakeFiles/test_ms_init_shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o -MF CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o.d -o CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o -c /root/projects/Minishell/src/init_shell/ms_get_user_input.c
 
 CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.i: cmake_force
@@ -97,10 +125,24 @@ CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/projects/Minishell/src/init_shell/ms_get_user_input.c -o CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.s
 
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o: CMakeFiles/test_ms_init_shell.dir/flags.make
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o: /root/projects/Minishell/src/init_shell/ms_init_env.c
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o: CMakeFiles/test_ms_init_shell.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o -MF CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o.d -o CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o -c /root/projects/Minishell/src/init_shell/ms_init_env.c
+
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/projects/Minishell/src/init_shell/ms_init_env.c > CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.i
+
+CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/projects/Minishell/src/init_shell/ms_init_env.c -o CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.s
+
 CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o: CMakeFiles/test_ms_init_shell.dir/flags.make
 CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o: /root/projects/Minishell/src/init_shell/ms_init_shell.c
 CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o: CMakeFiles/test_ms_init_shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o -MF CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o.d -o CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o -c /root/projects/Minishell/src/init_shell/ms_init_shell.c
 
 CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.i: cmake_force
@@ -114,19 +156,25 @@ CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init
 # Object files for target test_ms_init_shell
 test_ms_init_shell_OBJECTS = \
 "CMakeFiles/test_ms_init_shell.dir/init_shell/test_ms_init_shell.c.o" \
+"CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o" \
+"CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o" \
 "CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o" \
+"CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o" \
 "CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o"
 
 # External object files for target test_ms_init_shell
 test_ms_init_shell_EXTERNAL_OBJECTS =
 
 test_ms_init_shell: CMakeFiles/test_ms_init_shell.dir/init_shell/test_ms_init_shell.c.o
+test_ms_init_shell: CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o
+test_ms_init_shell: CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o
 test_ms_init_shell: CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o
+test_ms_init_shell: CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o
 test_ms_init_shell: CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o
 test_ms_init_shell: CMakeFiles/test_ms_init_shell.dir/build.make
 test_ms_init_shell: ../lib/libgc/libgc.a
 test_ms_init_shell: CMakeFiles/test_ms_init_shell.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable test_ms_init_shell"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable test_ms_init_shell"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_ms_init_shell.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

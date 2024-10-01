@@ -63,7 +63,10 @@ CMAKE_BINARY_DIR = /root/projects/Minishell/test_src
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/test_ms_env_add_back.dir/all
+all: CMakeFiles/test_ms_env_create_node.dir/all
 all: CMakeFiles/test_ms_get_user_input.dir/all
+all: CMakeFiles/test_ms_init_env.dir/all
 all: CMakeFiles/test_ms_init_shell.dir/all
 .PHONY : all
 
@@ -72,9 +75,64 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/test_ms_env_add_back.dir/clean
+clean: CMakeFiles/test_ms_env_create_node.dir/clean
 clean: CMakeFiles/test_ms_get_user_input.dir/clean
+clean: CMakeFiles/test_ms_init_env.dir/clean
 clean: CMakeFiles/test_ms_init_shell.dir/clean
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_ms_env_add_back.dir
+
+# All Build rule for target.
+CMakeFiles/test_ms_env_add_back.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target test_ms_env_add_back"
+.PHONY : CMakeFiles/test_ms_env_add_back.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_ms_env_add_back.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/projects/Minishell/test_src/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_ms_env_add_back.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/projects/Minishell/test_src/CMakeFiles 0
+.PHONY : CMakeFiles/test_ms_env_add_back.dir/rule
+
+# Convenience name for target.
+test_ms_env_add_back: CMakeFiles/test_ms_env_add_back.dir/rule
+.PHONY : test_ms_env_add_back
+
+# clean rule for target.
+CMakeFiles/test_ms_env_add_back.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/clean
+.PHONY : CMakeFiles/test_ms_env_add_back.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_ms_env_create_node.dir
+
+# All Build rule for target.
+CMakeFiles/test_ms_env_create_node.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=8,9,10,11,12,13,14 "Built target test_ms_env_create_node"
+.PHONY : CMakeFiles/test_ms_env_create_node.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_ms_env_create_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/projects/Minishell/test_src/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_ms_env_create_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/projects/Minishell/test_src/CMakeFiles 0
+.PHONY : CMakeFiles/test_ms_env_create_node.dir/rule
+
+# Convenience name for target.
+test_ms_env_create_node: CMakeFiles/test_ms_env_create_node.dir/rule
+.PHONY : test_ms_env_create_node
+
+# clean rule for target.
+CMakeFiles/test_ms_env_create_node.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/clean
+.PHONY : CMakeFiles/test_ms_env_create_node.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/test_ms_get_user_input.dir
@@ -83,12 +141,12 @@ clean: CMakeFiles/test_ms_init_shell.dir/clean
 CMakeFiles/test_ms_get_user_input.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=1,2,3,4 "Built target test_ms_get_user_input"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=15,16,17,18,19,20,21 "Built target test_ms_get_user_input"
 .PHONY : CMakeFiles/test_ms_get_user_input.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_ms_get_user_input.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/projects/Minishell/test_src/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/projects/Minishell/test_src/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_ms_get_user_input.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/projects/Minishell/test_src/CMakeFiles 0
 .PHONY : CMakeFiles/test_ms_get_user_input.dir/rule
@@ -103,18 +161,44 @@ CMakeFiles/test_ms_get_user_input.dir/clean:
 .PHONY : CMakeFiles/test_ms_get_user_input.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/test_ms_init_env.dir
+
+# All Build rule for target.
+CMakeFiles/test_ms_init_env.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=22,23,24,25,26,27,28 "Built target test_ms_init_env"
+.PHONY : CMakeFiles/test_ms_init_env.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_ms_init_env.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/projects/Minishell/test_src/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_ms_init_env.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/projects/Minishell/test_src/CMakeFiles 0
+.PHONY : CMakeFiles/test_ms_init_env.dir/rule
+
+# Convenience name for target.
+test_ms_init_env: CMakeFiles/test_ms_init_env.dir/rule
+.PHONY : test_ms_init_env
+
+# clean rule for target.
+CMakeFiles/test_ms_init_env.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/clean
+.PHONY : CMakeFiles/test_ms_init_env.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/test_ms_init_shell.dir
 
 # All Build rule for target.
 CMakeFiles/test_ms_init_shell.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=5,6,7,8 "Built target test_ms_init_shell"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/root/projects/Minishell/test_src/CMakeFiles --progress-num=29,30,31,32,33,34,35 "Built target test_ms_init_shell"
 .PHONY : CMakeFiles/test_ms_init_shell.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_ms_init_shell.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/projects/Minishell/test_src/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/projects/Minishell/test_src/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_ms_init_shell.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/projects/Minishell/test_src/CMakeFiles 0
 .PHONY : CMakeFiles/test_ms_init_shell.dir/rule

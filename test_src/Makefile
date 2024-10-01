@@ -127,6 +127,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named test_ms_env_add_back
+
+# Build rule for target.
+test_ms_env_add_back: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_ms_env_add_back
+.PHONY : test_ms_env_add_back
+
+# fast build rule for target.
+test_ms_env_add_back/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/build
+.PHONY : test_ms_env_add_back/fast
+
+#=============================================================================
+# Target rules for targets named test_ms_env_create_node
+
+# Build rule for target.
+test_ms_env_create_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_ms_env_create_node
+.PHONY : test_ms_env_create_node
+
+# fast build rule for target.
+test_ms_env_create_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/build
+.PHONY : test_ms_env_create_node/fast
+
+#=============================================================================
 # Target rules for targets named test_ms_get_user_input
 
 # Build rule for target.
@@ -140,6 +166,19 @@ test_ms_get_user_input/fast:
 .PHONY : test_ms_get_user_input/fast
 
 #=============================================================================
+# Target rules for targets named test_ms_init_env
+
+# Build rule for target.
+test_ms_init_env: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_ms_init_env
+.PHONY : test_ms_init_env
+
+# fast build rule for target.
+test_ms_init_env/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/build
+.PHONY : test_ms_init_env/fast
+
+#=============================================================================
 # Target rules for targets named test_ms_init_shell
 
 # Build rule for target.
@@ -151,6 +190,54 @@ test_ms_init_shell: cmake_check_build_system
 test_ms_init_shell/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/build
 .PHONY : test_ms_init_shell/fast
+
+env_lst_utils/test_ms_env_add_back.o: env_lst_utils/test_ms_env_add_back.c.o
+.PHONY : env_lst_utils/test_ms_env_add_back.o
+
+# target to build an object file
+env_lst_utils/test_ms_env_add_back.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/env_lst_utils/test_ms_env_add_back.c.o
+.PHONY : env_lst_utils/test_ms_env_add_back.c.o
+
+env_lst_utils/test_ms_env_add_back.i: env_lst_utils/test_ms_env_add_back.c.i
+.PHONY : env_lst_utils/test_ms_env_add_back.i
+
+# target to preprocess a source file
+env_lst_utils/test_ms_env_add_back.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/env_lst_utils/test_ms_env_add_back.c.i
+.PHONY : env_lst_utils/test_ms_env_add_back.c.i
+
+env_lst_utils/test_ms_env_add_back.s: env_lst_utils/test_ms_env_add_back.c.s
+.PHONY : env_lst_utils/test_ms_env_add_back.s
+
+# target to generate assembly for a file
+env_lst_utils/test_ms_env_add_back.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/env_lst_utils/test_ms_env_add_back.c.s
+.PHONY : env_lst_utils/test_ms_env_add_back.c.s
+
+env_lst_utils/test_ms_env_create_node.o: env_lst_utils/test_ms_env_create_node.c.o
+.PHONY : env_lst_utils/test_ms_env_create_node.o
+
+# target to build an object file
+env_lst_utils/test_ms_env_create_node.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/env_lst_utils/test_ms_env_create_node.c.o
+.PHONY : env_lst_utils/test_ms_env_create_node.c.o
+
+env_lst_utils/test_ms_env_create_node.i: env_lst_utils/test_ms_env_create_node.c.i
+.PHONY : env_lst_utils/test_ms_env_create_node.i
+
+# target to preprocess a source file
+env_lst_utils/test_ms_env_create_node.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/env_lst_utils/test_ms_env_create_node.c.i
+.PHONY : env_lst_utils/test_ms_env_create_node.c.i
+
+env_lst_utils/test_ms_env_create_node.s: env_lst_utils/test_ms_env_create_node.c.s
+.PHONY : env_lst_utils/test_ms_env_create_node.s
+
+# target to generate assembly for a file
+env_lst_utils/test_ms_env_create_node.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/env_lst_utils/test_ms_env_create_node.c.s
+.PHONY : env_lst_utils/test_ms_env_create_node.c.s
 
 init_shell/test_ms_get_user_input.o: init_shell/test_ms_get_user_input.c.o
 .PHONY : init_shell/test_ms_get_user_input.o
@@ -176,6 +263,30 @@ init_shell/test_ms_get_user_input.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/init_shell/test_ms_get_user_input.c.s
 .PHONY : init_shell/test_ms_get_user_input.c.s
 
+init_shell/test_ms_init_env.o: init_shell/test_ms_init_env.c.o
+.PHONY : init_shell/test_ms_init_env.o
+
+# target to build an object file
+init_shell/test_ms_init_env.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/init_shell/test_ms_init_env.c.o
+.PHONY : init_shell/test_ms_init_env.c.o
+
+init_shell/test_ms_init_env.i: init_shell/test_ms_init_env.c.i
+.PHONY : init_shell/test_ms_init_env.i
+
+# target to preprocess a source file
+init_shell/test_ms_init_env.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/init_shell/test_ms_init_env.c.i
+.PHONY : init_shell/test_ms_init_env.c.i
+
+init_shell/test_ms_init_env.s: init_shell/test_ms_init_env.c.s
+.PHONY : init_shell/test_ms_init_env.s
+
+# target to generate assembly for a file
+init_shell/test_ms_init_env.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/init_shell/test_ms_init_env.c.s
+.PHONY : init_shell/test_ms_init_env.c.s
+
 init_shell/test_ms_init_shell.o: init_shell/test_ms_init_shell.c.o
 .PHONY : init_shell/test_ms_init_shell.o
 
@@ -200,12 +311,87 @@ init_shell/test_ms_init_shell.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/init_shell/test_ms_init_shell.c.s
 .PHONY : init_shell/test_ms_init_shell.c.s
 
+root/projects/Minishell/src/env_lst_utils/ms_env_add_back.o: root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o
+.PHONY : root/projects/Minishell/src/env_lst_utils/ms_env_add_back.o
+
+# target to build an object file
+root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o
+.PHONY : root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.o
+
+root/projects/Minishell/src/env_lst_utils/ms_env_add_back.i: root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.i
+.PHONY : root/projects/Minishell/src/env_lst_utils/ms_env_add_back.i
+
+# target to preprocess a source file
+root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.i
+.PHONY : root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.i
+
+root/projects/Minishell/src/env_lst_utils/ms_env_add_back.s: root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.s
+.PHONY : root/projects/Minishell/src/env_lst_utils/ms_env_add_back.s
+
+# target to generate assembly for a file
+root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.s
+.PHONY : root/projects/Minishell/src/env_lst_utils/ms_env_add_back.c.s
+
+root/projects/Minishell/src/env_lst_utils/ms_env_create_node.o: root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o
+.PHONY : root/projects/Minishell/src/env_lst_utils/ms_env_create_node.o
+
+# target to build an object file
+root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o
+.PHONY : root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.o
+
+root/projects/Minishell/src/env_lst_utils/ms_env_create_node.i: root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.i
+.PHONY : root/projects/Minishell/src/env_lst_utils/ms_env_create_node.i
+
+# target to preprocess a source file
+root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.i
+.PHONY : root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.i
+
+root/projects/Minishell/src/env_lst_utils/ms_env_create_node.s: root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.s
+.PHONY : root/projects/Minishell/src/env_lst_utils/ms_env_create_node.s
+
+# target to generate assembly for a file
+root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.s
+.PHONY : root/projects/Minishell/src/env_lst_utils/ms_env_create_node.c.s
+
 root/projects/Minishell/src/init_shell/ms_get_user_input.o: root/projects/Minishell/src/init_shell/ms_get_user_input.c.o
 .PHONY : root/projects/Minishell/src/init_shell/ms_get_user_input.o
 
 # target to build an object file
 root/projects/Minishell/src/init_shell/ms_get_user_input.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.o
 .PHONY : root/projects/Minishell/src/init_shell/ms_get_user_input.c.o
 
@@ -214,7 +400,10 @@ root/projects/Minishell/src/init_shell/ms_get_user_input.i: root/projects/Minish
 
 # target to preprocess a source file
 root/projects/Minishell/src/init_shell/ms_get_user_input.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.i
 .PHONY : root/projects/Minishell/src/init_shell/ms_get_user_input.c.i
 
@@ -223,16 +412,58 @@ root/projects/Minishell/src/init_shell/ms_get_user_input.s: root/projects/Minish
 
 # target to generate assembly for a file
 root/projects/Minishell/src/init_shell/ms_get_user_input.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_get_user_input.c.s
 .PHONY : root/projects/Minishell/src/init_shell/ms_get_user_input.c.s
+
+root/projects/Minishell/src/init_shell/ms_init_env.o: root/projects/Minishell/src/init_shell/ms_init_env.c.o
+.PHONY : root/projects/Minishell/src/init_shell/ms_init_env.o
+
+# target to build an object file
+root/projects/Minishell/src/init_shell/ms_init_env.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.o
+.PHONY : root/projects/Minishell/src/init_shell/ms_init_env.c.o
+
+root/projects/Minishell/src/init_shell/ms_init_env.i: root/projects/Minishell/src/init_shell/ms_init_env.c.i
+.PHONY : root/projects/Minishell/src/init_shell/ms_init_env.i
+
+# target to preprocess a source file
+root/projects/Minishell/src/init_shell/ms_init_env.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.i
+.PHONY : root/projects/Minishell/src/init_shell/ms_init_env.c.i
+
+root/projects/Minishell/src/init_shell/ms_init_env.s: root/projects/Minishell/src/init_shell/ms_init_env.c.s
+.PHONY : root/projects/Minishell/src/init_shell/ms_init_env.s
+
+# target to generate assembly for a file
+root/projects/Minishell/src/init_shell/ms_init_env.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_env.c.s
+.PHONY : root/projects/Minishell/src/init_shell/ms_init_env.c.s
 
 root/projects/Minishell/src/init_shell/ms_init_shell.o: root/projects/Minishell/src/init_shell/ms_init_shell.c.o
 .PHONY : root/projects/Minishell/src/init_shell/ms_init_shell.o
 
 # target to build an object file
 root/projects/Minishell/src/init_shell/ms_init_shell.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.o
 .PHONY : root/projects/Minishell/src/init_shell/ms_init_shell.c.o
 
@@ -241,7 +472,10 @@ root/projects/Minishell/src/init_shell/ms_init_shell.i: root/projects/Minishell/
 
 # target to preprocess a source file
 root/projects/Minishell/src/init_shell/ms_init_shell.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.i
 .PHONY : root/projects/Minishell/src/init_shell/ms_init_shell.c.i
 
@@ -250,7 +484,10 @@ root/projects/Minishell/src/init_shell/ms_init_shell.s: root/projects/Minishell/
 
 # target to generate assembly for a file
 root/projects/Minishell/src/init_shell/ms_init_shell.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_add_back.dir/build.make CMakeFiles/test_ms_env_add_back.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_env_create_node.dir/build.make CMakeFiles/test_ms_env_create_node.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_get_user_input.dir/build.make CMakeFiles/test_ms_get_user_input.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_env.dir/build.make CMakeFiles/test_ms_init_env.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ms_init_shell.dir/build.make CMakeFiles/test_ms_init_shell.dir/root/projects/Minishell/src/init_shell/ms_init_shell.c.s
 .PHONY : root/projects/Minishell/src/init_shell/ms_init_shell.c.s
 
@@ -263,17 +500,38 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... test_ms_env_add_back"
+	@echo "... test_ms_env_create_node"
 	@echo "... test_ms_get_user_input"
+	@echo "... test_ms_init_env"
 	@echo "... test_ms_init_shell"
+	@echo "... env_lst_utils/test_ms_env_add_back.o"
+	@echo "... env_lst_utils/test_ms_env_add_back.i"
+	@echo "... env_lst_utils/test_ms_env_add_back.s"
+	@echo "... env_lst_utils/test_ms_env_create_node.o"
+	@echo "... env_lst_utils/test_ms_env_create_node.i"
+	@echo "... env_lst_utils/test_ms_env_create_node.s"
 	@echo "... init_shell/test_ms_get_user_input.o"
 	@echo "... init_shell/test_ms_get_user_input.i"
 	@echo "... init_shell/test_ms_get_user_input.s"
+	@echo "... init_shell/test_ms_init_env.o"
+	@echo "... init_shell/test_ms_init_env.i"
+	@echo "... init_shell/test_ms_init_env.s"
 	@echo "... init_shell/test_ms_init_shell.o"
 	@echo "... init_shell/test_ms_init_shell.i"
 	@echo "... init_shell/test_ms_init_shell.s"
+	@echo "... root/projects/Minishell/src/env_lst_utils/ms_env_add_back.o"
+	@echo "... root/projects/Minishell/src/env_lst_utils/ms_env_add_back.i"
+	@echo "... root/projects/Minishell/src/env_lst_utils/ms_env_add_back.s"
+	@echo "... root/projects/Minishell/src/env_lst_utils/ms_env_create_node.o"
+	@echo "... root/projects/Minishell/src/env_lst_utils/ms_env_create_node.i"
+	@echo "... root/projects/Minishell/src/env_lst_utils/ms_env_create_node.s"
 	@echo "... root/projects/Minishell/src/init_shell/ms_get_user_input.o"
 	@echo "... root/projects/Minishell/src/init_shell/ms_get_user_input.i"
 	@echo "... root/projects/Minishell/src/init_shell/ms_get_user_input.s"
+	@echo "... root/projects/Minishell/src/init_shell/ms_init_env.o"
+	@echo "... root/projects/Minishell/src/init_shell/ms_init_env.i"
+	@echo "... root/projects/Minishell/src/init_shell/ms_init_env.s"
 	@echo "... root/projects/Minishell/src/init_shell/ms_init_shell.o"
 	@echo "... root/projects/Minishell/src/init_shell/ms_init_shell.i"
 	@echo "... root/projects/Minishell/src/init_shell/ms_init_shell.s"

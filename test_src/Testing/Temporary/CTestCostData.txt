@@ -1,3 +1,7 @@
-ms_get_user_input 6 0.000760013
-ms_init_shell 3 0.00317479
+ms_get_user_input 26 5.23953e-05
+ms_init_shell 17 0.000370489
+ms_init_env 0 0
+ms_env_add_back 5 0.00042655
+ms_env_create_node 1 0.00103504
 ---
+ms_init_env
