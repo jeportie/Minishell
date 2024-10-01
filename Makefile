@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/30 15:01:48 by jeportie         ###   ########.fr        #
+#    Updated: 2024/10/01 11:57:57 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -162,17 +162,6 @@ norm:
 
 todo:
 	@vim .$(NAME).todo.md
-
-create-cal:
-	@if [ ! -d .calendar ]; then \
-		mkdir -p .calendar; \
-		touch ./.calendar/$(NAME).calendar; \
-	fi
-
-calendar: create-cal
-	vim -c "let g:calendar_cache_directory=expand('./.calendar/')" \
-		-c ":Calendar" .calendar/$(NAME).calendar \
-		-c ":bd .calendar/$(NAME).calendar" 
 
 uml:
 	@./make_interface/exec/interactive_select 

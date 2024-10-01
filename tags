@@ -445,7 +445,6 @@ args	make_interface/config/.vimspector.json	/^        "args": [],$/;"	a	object:c
 bak	make_interface/config/Makefile	/^bak:$/;"	t
 build	Makefile	/^build:$/;"	t
 build	make_interface/config/Makefile	/^build:$/;"	t
-calendar	Makefile	/^calendar: create-cal$/;"	t
 calendar	make_interface/config/Makefile	/^calendar: create-cal$/;"	t
 classic	Makefile	/^classic: $(NAME)$/;"	t
 classic	Makefile	/^classic: VERBOSE =$/;"	t
@@ -466,7 +465,6 @@ configuration	make_interface/config/.vimspector.json	/^      "configuration": {$
 configurations	.vimspector.json	/^  "configurations": {$/;"	o
 configurations	make_interface/config/.vimspector.json	/^  "configurations": {$/;"	o
 const	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
-create-cal	Makefile	/^create-cal:$/;"	t
 create-cal	make_interface/config/Makefile	/^create-cal:$/;"	t
 create_ycm_extra_conf	make_interface/config/build.sh	/^create_ycm_extra_conf() {$/;"	f
 cwd	.vimspector.json	/^        "cwd": "${workspaceRoot}",$/;"	s	object:configurations.C Debugging.configuration
