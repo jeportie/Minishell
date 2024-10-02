@@ -1982,3 +1982,187 @@ cmd1 & cmd2 && cmd3 &
 | **Exception N1**  | Recursive Shell Execution          | `#!/bin/minishell\n./script.sh`           | The shell should detect recursion or reach maximum process limits, and handle it gracefully without crashing the system. |
 | **Exception N2**  | Execute Non-existent Script        | `./nonexistent.sh`                        | The shell reports: `minishell: ./nonexistent.sh: No such file or directory` and does not crash.             |
 
+### **. Posix Errors
+
+---
+
+### **A. Simple Commands and Arguments - Error Cases**
+
+| Test Number  | Description                            | User Input                | Expected Error Message                                                                                                                                      | Expected Exit Status Code |
+|--------------|----------------------------------------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| **Error A1** | **Command Not Found**                  | `nonexistentcommand`      | `minishell: nonexistentcommand: command not found`                                                                                                          | **127**                   |
+| **Error A2** | **Invalid Command Syntax**             | `ls -invalidoption`       | `ls: invalid option -- 'i'`<br>`Try 'ls --help' for more information.`                                                                                      | **2**                     |
+| **Error A3** | **Unmatched Single Quote**             | `echo 'Unmatched quote`   | `minishell: unexpected EOF while looking for matching '''`<br>`minishell: syntax error: unexpected end of file`                                             | **2**                     |
+| **Error A4** | **Unmatched Double Quote**             | `echo "Unmatched quote`   | `minishell: unexpected EOF while looking for matching '"'`<br>`minishell: syntax error: unexpected end of file`                                             | **2**                     |
+| **Error A5** | **Invalid Option in Built-in Command** | `cd -Z`                   | `cd: invalid option -- 'Z'`<br>`cd: usage: cd [-L|-P] [dir]`                                                                                               | **2**                     |
+| **Error A6** | **Missing Command After Semicolon**    | `ls ; ; echo "Test"`      | `minishell: syntax error near unexpected token ';;'`                                                                                                        | **2**                     |
+| **Error A7** | **Invalid Variable Name in Assignment**| `export 1VAR=value`       | `minishell: export: '1VAR': not a valid identifier`                                                                                                        | **1**                     |
+| **Error A8** | **Exceeding Command Line Length Limit**| `<very long command>`     | `minishell: command too long`                                                                                                                              | **126**                   |
+| **Error A9** | **Permission Denied for Command**      | `/etc/passwd`             | `minishell: /etc/passwd: Permission denied`                                                                                                                | **126**                   |
+| **Error A10**| **Directory Instead of Command**       | `/usr/bin`                | `minishell: /usr/bin: Is a directory`                                                                                                                      | **126**                   |
+
+---
+
+### **B. Input and Output Redirections - Error Cases**
+
+| Test Number  | Description                                | User Input                          | Expected Error Message                                                                                                                                       | Expected Exit Status Code |
+|--------------|--------------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| **Error B1** | **Missing File for Input Redirection**     | `sort <`                            | `minishell: syntax error near unexpected token 'newline'`                                                                                                    | **2**                     |
+| **Error B2** | **Missing File for Output Redirection**    | `echo "Test" >`                     | `minishell: syntax error near unexpected token 'newline'`                                                                                                    | **2**                     |
+| **Error B3** | **Input Redirection File Not Found**       | `cat < nonexistent.txt`             | `minishell: nonexistent.txt: No such file or directory`                                                                                                      | **1**                     |
+| **Error B4** | **Output Redirection Permission Denied**   | `echo "Test" > /root/output.txt`    | `minishell: /root/output.txt: Permission denied`                                                                                                             | **1**                     |
+| **Error B5** | **Invalid File Descriptor in Redirection** | `echo "Test" 2>&3`                  | `minishell: 3: Bad file descriptor`                                                                                                                          | **1**                     |
+| **Error B6** | **Ambiguous Redirect (Multiple Inputs)**   | `cat < input1.txt < input2.txt`     | `minishell: syntax error near unexpected token '<'`                                                                                                          | **2**                     |
+| **Error B7** | **Here-Document Delimiter Missing**        | `cat << EOF` *(no EOF provided)*    | `minishell: warning: here-document at line 1 delimited by end-of-file (wanted 'EOF')`                                                                        | **2**                     |
+| **Error B8** | **Redirection to a Directory**             | `echo "Test" > /usr/bin`            | `minishell: /usr/bin: Is a directory`                                                                                                                        | **1**                     |
+| **Error B9** | **Read-only File System**                  | `echo "Test" > /mnt/readonly/file.txt` | `minishell: /mnt/readonly/file.txt: Read-only file system`                                                                                                 | **1**                     |
+| **Error B10**| **Invalid Redirection Operator**           | `ls >| output.txt`                 | `minishell: syntax error near unexpected token '>'`                                                                                                           | **2**                     |
+
+---
+
+### **C. Pipes - Error Cases**
+
+| Test Number  | Description                                | User Input                      | Expected Error Message                                                                                                                                 | Expected Exit Status Code |
+|--------------|--------------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| **Error C1** | **Pipe with Missing Command After Pipe**   | `ls |`                          | `minishell: syntax error near unexpected token 'newline'`                                                                                              | **2**                     |
+| **Error C2** | **Pipe with Missing Command Before Pipe**  | `| grep "pattern"`              | `minishell: syntax error near unexpected token '|'`                                                                                                    | **2**                     |
+| **Error C3** | **Consecutive Pipes without Commands**     | `ls ||| grep "pattern"`         | `minishell: syntax error near unexpected token '||'`                                                                                                   | **2**                     |
+| **Error C4** | **Command Not Found in Pipeline**          | `ls | nonexistentcommand`        | `minishell: nonexistentcommand: command not found`                                                                                                     | **127**                   |
+| **Error C5** | **Broken Pipe**                            | *(Occurs during execution)*     | `minishell: write error: Broken pipe`                                                                                                                  | **141**                   |
+| **Error C6** | **Pipe with Permission Denied Command**    | `ls | /etc/passwd`               | `minishell: /etc/passwd: Permission denied`                                                                                                            | **126**                   |
+| **Error C7** | **Pipe with Directory as Command**         | `ls | /usr/bin`                  | `minishell: /usr/bin: Is a directory`                                                                                                                  | **126**                   |
+| **Error C8** | **Exceeding Pipe Limit**                   | *(Very long pipeline)*          | `minishell: too many pipes`                                                                                                                            | **1**                     |
+| **Error C9** | **Invalid Pipe Syntax**                    | `ls | | grep "pattern"`           | `minishell: syntax error near unexpected token '|'`                                                                                                    | **2**                     |
+| **Error C10**| **Pipe with Missing Command in Between**   | `ls | | grep`                     | `minishell: syntax error near unexpected token '|'`                                                                                                    | **2**                     |
+
+---
+
+### **D. Logical Operators - Error Cases**
+
+| Test Number  | Description                                | User Input                          | Expected Error Message                                                                                                               | Expected Exit Status Code |
+|--------------|--------------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| **Error D1** | **Logical Operator with Missing Command After `&&`** | `ls &&`                  | `minishell: syntax error near unexpected token 'newline'`                                                                            | **2**                     |
+| **Error D2** | **Logical Operator with Missing Command Before `&&`** | `&& ls`                 | `minishell: syntax error near unexpected token '&&'`                                                                                 | **2**                     |
+| **Error D3** | **Consecutive Logical Operators**          | `ls || && echo "Test"`              | `minishell: syntax error near unexpected token '&&'`                                                                                 | **2**                     |
+| **Error D4** | **Logical Operator at Start of Command**   | `|| ls`                             | `minishell: syntax error near unexpected token '||'`                                                                                 | **2**                     |
+| **Error D5** | **Invalid Combination of Logical Operators** | `ls && || echo "Test"`           | `minishell: syntax error near unexpected token '||'`                                                                                 | **2**                     |
+| **Error D6** | **Logical Operator with Missing Command After `||`** | `ls ||`                  | `minishell: syntax error near unexpected token 'newline'`                                                                            | **2**                     |
+| **Error D7** | **Logical Operator with Missing Command Between Operators** | `ls && || echo`     | `minishell: syntax error near unexpected token '||'`                                                                                 | **2**                     |
+| **Error D8** | **Logical Operator with Unmatched Parentheses** | `(ls && echo "Test"`       | `minishell: syntax error: unexpected end of file`                                                                                    | **2**                     |
+| **Error D9** | **Logical Operator with Invalid Command**  | `ls && /etc/passwd`                | `minishell: /etc/passwd: Permission denied`                                                                                          | **126**                   |
+| **Error D10**| **Logical Operator with Command Not Found** | `ls && nonexistentcommand`       | `minishell: nonexistentcommand: command not found`                                                                                   | **127**                   |
+
+---
+
+### **E. Subshells - Error Cases**
+
+| Test Number  | Description                                | User Input                    | Expected Error Message                                                                                                                                      | Expected Exit Status Code |
+|--------------|--------------------------------------------|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| **Error E1** | **Unmatched Opening Parenthesis**          | `(echo "Test"`                | `minishell: syntax error: unexpected end of file`                                                                                                           | **2**                     |
+| **Error E2** | **Unmatched Closing Parenthesis**          | `echo "Test")`                | `minishell: syntax error near unexpected token ')'`                                                                                                         | **2**                     |
+| **Error E3** | **Empty Subshell**                         | `()`                          | `minishell: syntax error near unexpected token ')'`                                                                                                         | **2**                     |
+| **Error E4** | **Subshell with Invalid Command**          | `(nonexistentcommand)`        | `minishell: nonexistentcommand: command not found`                                                                                                          | **127**                   |
+| **Error E5** | **Subshell with Missing Command**          | `()`                          | `minishell: syntax error near unexpected token ')'`                                                                                                         | **2**                     |
+| **Error E6** | **Subshell with Missing Operator**         | `(ls echo "Test")`            | `minishell: syntax error near unexpected token '"Test"'`                                                                                                    | **2**                     |
+| **Error E7** | **Subshell with Invalid Syntax**           | `(ls | )`                     | `minishell: syntax error near unexpected token ')'`                                                                                                         | **2**                     |
+| **Error E8** | **Nested Subshells with Errors**           | `((ls)`                       | `minishell: syntax error near unexpected token '('`                                                                                                         | **2**                     |
+| **Error E9** | **Subshell with Redirection Error**        | `(ls > )`                     | `minishell: syntax error near unexpected token ')'`                                                                                                         | **2**                     |
+| **Error E10**| **Subshell with Logical Operator Error**   | `(ls && )`                    | `minishell: syntax error near unexpected token ')'`                                                                                                         | **2**                     |
+
+---
+
+### **F. Here-Documents - Error Cases**
+
+| Test Number  | Description                                | User Input                     | Expected Error Message                                                                                                                                       | Expected Exit Status Code |
+|--------------|--------------------------------------------|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| **Error F1** | **Missing Delimiter in Here-Document**     | `cat <<`                       | `minishell: syntax error near unexpected token 'newline'`                                                                                                    | **2**                     |
+| **Error F2** | **Missing End Delimiter in Here-Document** | `cat << EOF` *(no EOF provided)* | `minishell: warning: here-document at line 1 delimited by end-of-file (wanted 'EOF')`                                                                        | **2**                     |
+| **Error F3** | **Invalid Delimiter in Here-Document**     | `cat << 123`                   | `minishell: syntax error near unexpected token '123'`                                                                                                        | **2**                     |
+| **Error F4** | **Here-Document with Unmatched Quotes**    | `cat << 'EOF`                  | `minishell: unexpected EOF while looking for matching '''`<br>`minishell: syntax error: unexpected end of file`                                              | **2**                     |
+| **Error F5** | **Here-Document with Unmatched Parentheses**| `cat << EOF (`                 | `minishell: syntax error near unexpected token '('`                                                                                                          | **2**                     |
+| **Error F6** | **Here-Document with Invalid Command**     | `nonexistentcommand << EOF`    | `minishell: nonexistentcommand: command not found`                                                                                                           | **127**                   |
+| **Error F7** | **Here-Document with Permission Denied**   | `/etc/passwd << EOF`           | `minishell: /etc/passwd: Permission denied`                                                                                                                  | **126**                   |
+| **Error F8** | **Here-Document with Directory as Command**| `/usr/bin << EOF`              | `minishell: /usr/bin: Is a directory`                                                                                                                        | **126**                   |
+| **Error F9** | **Here-Document with Read-only File System**| `cat << EOF > /mnt/readonly/output.txt` | `minishell: /mnt/readonly/output.txt: Read-only file system`                                                                                         | **1**                     |
+| **Error F10**| **Here-Document Exceeds System Limits**    | *(Excessively large input)*    | `minishell: here-document: File too large`                                                                                                                   | **1**                     |
+
+---
+
+### **G. Background Execution - Error Cases**
+
+| Test Number  | Description                                | User Input                  | Expected Error Message                                                                                                              | Expected Exit Status Code |
+|--------------|--------------------------------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| **Error G1** | **Background Operator Without Command**    | `&`                         | `minishell: syntax error near unexpected token '&'`                                                                                 | **2**                     |
+| **Error G2** | **Background Operator at Start of Command**| `& ls`                      | `minishell: syntax error near unexpected token '&'`                                                                                 | **2**                     |
+| **Error G3** | **Multiple Consecutive Background Operators** | `ls & & echo "Test"`    | `minishell: syntax error near unexpected token '&'`                                                                                 | **2**                     |
+| **Error G4** | **Background Execution with Invalid Command** | `nonexistentcommand &`     | `minishell: nonexistentcommand: command not found`                                                                                  | **127**                   |
+| **Error G5** | **Background Execution with Permission Denied Command** | `/etc/passwd &` | `minishell: /etc/passwd: Permission denied`                                                                                         | **126**                   |
+| **Error G6** | **Background Execution with Directory as Command** | `/usr/bin &`          | `minishell: /usr/bin: Is a directory`                                                                                               | **126**                   |
+| **Error G7** | **Background Execution with Syntax Error** | `ls & && echo "Test"`       | `minishell: syntax error near unexpected token '&&'`                                                                                | **2**                     |
+| **Error G8** | **Background Execution with Redirection Error** | `ls & >`                 | `minishell: syntax error near unexpected token '>'`                                                                                 | **2**                     |
+| **Error G9** | **Background Execution Exceeding Job Limit** | *(Many background jobs)* | `minishell: cannot fork: Resource temporarily unavailable`                                                                          | **1**                     |
+| **Error G10**| **Background Operator with Missing Command After** | `ls &` *(Press Enter)* | *(No error; shell accepts the command and returns to prompt)*                                                                        | **0** (Assuming no error) |
+
+---
+
+### **H. Wildcards and Globbing - Error Cases**
+
+| Test Number  | Description                                | User Input                      | Expected Error Message                                                                                                             | Expected Exit Status Code |
+|--------------|--------------------------------------------|---------------------------------|------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| **Error H1** | **No Matches for Wildcard Pattern**        | `ls *.xyz`                      | `ls: cannot access '*.xyz': No such file or directory`                                                                             | **2** (From `ls`)         |
+| **Error H2** | **Invalid Wildcard Pattern**               | `ls [a-`                        | `minishell: syntax error near unexpected token 'newline'`                                                                          | **2**                     |
+| **Error H3** | **Wildcard Expansion Exceeds Argument List Limit** | `echo *` *(Too many files)* | `minishell: /bin/echo: Argument list too long`                                                                                     | **1**                     |
+| **Error H4** | **Wildcard Matching Hidden Files Only**    | `ls .*`                         | *(If no hidden files)* `ls: cannot access '.*': No such file or directory`                                                         | **2** (From `ls`)         |
+| **Error H5** | **Wildcard with Permission Denied Files**  | `cat /root/*`                   | `cat: /root/*: Permission denied`                                                                                                  | **1** (From `cat`)        |
+| **Error H6** | **Wildcard Matching Directories as Files** | `cat */`                        | `cat: dir1/: Is a directory`                                                                                                       | **1** (From `cat`)        |
+| **Error H7** | **Escaped Wildcard Characters**            | `ls \*.txt`                     | `ls: cannot access '*.txt': No such file or directory`                                                                             | **2** (From `ls`)         |
+| **Error H8** | **Wildcard with Invalid Character Class**  | `ls [[:invalid:]]`              | `ls: invalid character class`                                                                                                      | **2** (From `ls`)         |
+| **Error H9** | **Wildcard Pattern Causes Segmentation Fault** | *(Bug in shell)*           | `minishell: segmentation fault (core dumped)`                                                                                      | **139**                   |
+| **Error H10**| **Wildcard in Command Name**               | `*command`                      | `minishell: *command: command not found`                                                                                           | **127**                   |
+
+---
+
+### **I. Complex Commands - Error Cases**
+
+| Test Number  | Description                                | User Input                                            | Expected Error Message                                                                                         | Expected Exit Status Code |
+|--------------|--------------------------------------------|-------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|---------------------------|
+| **Error I1** | **Mixing Redirections and Pipes Incorrectly** | `ls > output.txt | grep "pattern"`                          | `minishell: syntax error near unexpected token '|'`                                                            | **2**                     |
+| **Error I2** | **Invalid Combination of Operators**       | `ls && || echo "Test"`                                | `minishell: syntax error near unexpected token '||'`                                                           | **2**                     |
+| **Error I3** | **Exceeding Maximum Number of File Descriptors** | *(Open many files)*                            | `minishell: too many open files`                                                                               | **1**                     |
+| **Error I4** | **Command with Syntax Error in Subshell**  | `(ls; echo "Test"`                                    | `minishell: syntax error: unexpected end of file`                                                              | **2**                     |
+| **Error I5** | **Command with Unmatched Quotes in Pipeline** | `echo "Test | grep "Test"`                         | `minishell: unexpected EOF while looking for matching '"'`<br>`minishell: syntax error: unexpected end of file` | **2**                     |
+| **Error I6** | **Command with Invalid Redirection in Subshell** | `(ls > )`                                         | `minishell: syntax error near unexpected token ')'`                                                            | **2**                     |
+| **Error I7** | **Command with Invalid Here-Document**     | `cat << EOF | grep "pattern"` *(No EOF provided)*    | `minishell: warning: here-document at line 1 delimited by end-of-file (wanted 'EOF')`                          | **2**                     |
+| **Error I8** | **Command with Exceeded Argument Limits**  | `echo $(printf 'a%.0s' {1..100000})`                  | `minishell: /bin/echo: Argument list too long`                                                                 | **1**                     |
+| **Error I9** | **Command with Division by Zero**          | `expr 1 / 0`                                          | `expr: division by zero`                                                                                       | **2** (From `expr`)       |
+| **Error I10**| **Command with Infinite Loop**             | `while true; do echo "Loop"; done` *(Not required)*   | `minishell: while: command not found`                                                                          | **127**                   |
+
+---
+
+### **Additional Error Cases for Exit Status Codes**
+
+| Test Number  | Description                         | User Input             | Expected Exit Status Code | Notes                                                                                     |
+|--------------|-------------------------------------|------------------------|---------------------------|-------------------------------------------------------------------------------------------|
+| **Exit E1**  | **Command Exits Successfully**      | `true`                 | **0**                     | `true` command always exits with status 0.                                                |
+| **Exit E2**  | **Command Exits with General Error**| `false`                | **1**                     | `false` command always exits with status 1.                                               |
+| **Exit E3**  | **Command Not Found**               | `nonexistentcommand`   | **127**                   | Command not found error.                                                                  |
+| **Exit E4**  | **Command Cannot Execute**          | `/etc/passwd`          | **126**                   | Permission denied or not executable.                                                      |
+| **Exit E5**  | **Command Exits with Specific Status** | `exit 42`            | **42**                    | Shell exits with status 42.                                                               |
+| **Exit E6**  | **Command Exits with Invalid Status**| `exit 256`             | **0**                     | Exit status wraps around modulo 256, so 256 % 256 = 0.                                    |
+| **Exit E7**  | **Command Receives SIGINT**         | `sleep 100` *(Ctrl+C)* | **130**                   | Command terminated by SIGINT (signal 2).                                                  |
+| **Exit E8**  | **Command Receives SIGTERM**        | *(Send SIGTERM to process)* | **143**               | Command terminated by SIGTERM (signal 15).                                                |
+| **Exit E9**  | **Command Receives SIGSEGV**        | `./segfault_program`   | **139**                   | Command terminated by SIGSEGV (signal 11).                                                |
+| **Exit E10** | **Exit Built-in with Invalid Argument** | `exit abc`           | **2**                     | `exit: abc: numeric argument required` (shell exits with status 2).                       |
+
+---
+
+### **Notes on Exit Status Codes**
+
+- **0**: Success.
+- **1-125**: Command-specific errors (general or specific error codes).
+- **126**: Command invoked cannot execute (permission problem or not an executable).
+- **127**: Command not found.
+- **128+n**: Fatal error signal "n" (e.g., 128 + 2 for SIGINT).
+- **255**: Exit status out of range (exit statuses should be in the range 0-255).
+
+---
