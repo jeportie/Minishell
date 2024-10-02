@@ -6,31 +6,46 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/01 16:20:52 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/02 13:00:23 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_env_data ms_init_env(char **envp, t_shell *shell)
+static void	st_create_envp(char **envp, t_shell *shell)
+{
+	char	*cwd;
+
+	cwd = getcwd(NULL, 0);
+	shell->env_data.path
+		= "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
+	envp[0] = "SHLVL=1";
+	envp[1] = "PWD=";
+	ft_strlcat(envp[1], cwd, ft_strlen(envp[1]));
+	free(cwd);
+	gc_register(envp[1], *shell->gcl);
+	envp[2] = NULL;
+}
+
+t_env_data	ms_init_env(char **envp, t_shell *shell)
 {
 	t_env_data	env_data;
 	t_env		*node;
+	int			i;
 
-	env_data.env_exist = true;
-	env_data.env = NULL;
-	env_data.path = NULL;
+	ft_memset(&env_data, 0, sizeof(t_env_data));
 	if (envp)
 		env_data.env_exist = true;
 	else
+		st_create_envp(envp, shell);
+	env_data.env = gc_malloc(sizeof(t_env), *shell->gcl);
+	gc_lock(env_data.env, *shell->gcl);
+	i = 0;
+	while (envp[i])
 	{
-		env_data.env = gc_malloc(sizeof(t_env), *shell->gcl);
-		if (!env_data.env)
-		{
-			gc_cleanup(*shell->gcl);
-		}
-		node = ms_env_create_node(shell);
+		node = ms_env_create_node(shell, envp[i]);
 		ms_env_add_back(&env_data.env, node);
+		i++;
 	}
 	return (env_data);
 }

@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:25:20 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/30 14:06:45 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/02 12:18:33 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	gc_register(void *ptr, t_gc gcl)
 		return ;
 	new_node = malloc(sizeof(t_gc_node));
 	if (!new_node)
-		return ;
+	{
+		gc_cleanup(gcl);
+		write(2, "Error: GC node malloc failed.\n", 31);
+		exit(EXIT_FAILURE);
+	}
 	new_node->ptr = ptr;
 	new_node->is_marked = false;
 	new_node->is_locked = false;
@@ -79,7 +83,11 @@ void	gc_temp_file_register(const char *filename, t_gc gcl)
 		return ;
 	new_node = malloc(sizeof(t_gc_node));
 	if (!new_node)
-		return ;
+	{
+		gc_cleanup(gcl);
+		write(2, "Error: GC node malloc failed.\n", 31);
+		exit(EXIT_FAILURE);
+	}
 	new_node->ptr = NULL;
 	new_node->is_marked = false;
 	new_node->is_locked = true;
@@ -89,7 +97,9 @@ void	gc_temp_file_register(const char *filename, t_gc gcl)
 	if (!new_node->temp_file)
 	{
 		free(new_node);
-		return ;
+		gc_cleanup(gcl);
+		write(2, "Error: GC node malloc failed.\n", 31);
+		exit(EXIT_FAILURE);
 	}
 	gc_register(new_node->temp_file, gcl);
 	gc_lock(new_node->temp_file, gcl);

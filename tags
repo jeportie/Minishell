@@ -1,0 +1,132 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BLUE	Makefile	/^BLUE    = \\033[34m$/;"	m
+BOLD	Makefile	/^BOLD    = \\033[1m$/;"	m
+CC	Makefile	/^CC = 		cc$/;"	m
+CC	Makefile	/^default: CC = cc$/;"	m
+CC	Makefile	/^san: CC = clang$/;"	m
+CC	Makefile	/^val: CC = cc$/;"	m
+CC	lib/libgc/Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = 	-Wall -Wextra -Werror$/;"	m
+CFLAGS	lib/libgc/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+DEPFLAGS	Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
+DEPS	Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
+DirectoryOfThisScript	ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+FlagsForFile	ycm_extra_conf.py	/^def FlagsForFile(filename):$/;"	f
+GREEN	Makefile	/^GREEN   = \\033[32m$/;"	m
+HELG	Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
+INCLUDES	Makefile	/^INCLUDES = -I.\/include -I.\/lib\/libgc\/include -I.\/lib\/libgc\/include$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS = -lreadline -L.\/lib\/libgc -lgc -L.\/lib\/libgc -lgc$/;"	m
+LIBGC_H	lib/libgc/include/libgc.h	14;"	d
+MINISHELL_H	include/minishell.h	14;"	d
+MakeRelativePathsAbsolute	ycm_extra_conf.py	/^def MakeRelativePathsAbsolute(flags, working_directory):$/;"	f
+NAME	Makefile	/^NAME = Minishell$/;"	m
+NAME	lib/libgc/Makefile	/^NAME = libgc.a$/;"	m
+OBJ	Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
+OBJ	lib/libgc/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OBJ_DIR	Makefile	/^OBJ_DIR = 	obj$/;"	m
+RED	Makefile	/^RED     = \\033[31m$/;"	m
+RESET	Makefile	/^RESET   = \\033[0m$/;"	m
+SANITIZE	Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
+SCRIPT_URL	Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeromeDev94\/make_interface.git$/;"	m
+SRC	Makefile	/^SRC = \\$/;"	m
+SRC	lib/libgc/Makefile	/^SRC = src\/gc_cleanup.c \\$/;"	m
+SRC_DIR	Makefile	/^SRC_DIR = 	src$/;"	m
+START_TEST	test_src/env_lst_utils/test_ms_env_add_back.c	/^START_TEST(test_add_null_node) {$/;"	f
+START_TEST	test_src/env_lst_utils/test_ms_env_add_back.c	/^START_TEST(test_add_to_empty_list) {$/;"	f
+START_TEST	test_src/env_lst_utils/test_ms_env_add_back.c	/^START_TEST(test_add_to_non_empty_list) {$/;"	f
+START_TEST	test_src/env_lst_utils/test_ms_env_add_back.c	/^START_TEST(test_add_with_null_env) {$/;"	f
+START_TEST	test_src/env_lst_utils/test_ms_env_create_node.c	/^START_TEST(test_ms_env_create_node_returns_null) {$/;"	f
+START_TEST	test_src/init_shell/test_ms_get_user_input.c	/^START_TEST(test_ms_get_user_input_empty)$/;"	f
+START_TEST	test_src/init_shell/test_ms_get_user_input.c	/^START_TEST(test_ms_get_user_input_normal)$/;"	f
+START_TEST	test_src/init_shell/test_ms_get_user_input.c	/^START_TEST(test_ms_get_user_input_special_chars)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_env.c	/^START_TEST(test_ms_init_env_with_envp) {$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_env.c	/^START_TEST(test_ms_init_env_without_envp) {$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_basic)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_argc)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_empty_envp)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_envp)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_large_argc)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_long_envp)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_multiple_envp)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_null_envp)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_special_chars_in_envp)$/;"	f
+TOTAL_STEPS	Makefile	/^TOTAL_STEPS := $(words $(OBJ))$/;"	m
+VALG	Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
+VERBOSE	Makefile	/^VERBOSE ?= @$/;"	m
+VERBOSE	Makefile	/^classic: VERBOSE =$/;"	m
+VFLAGS	Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
+YELLOW	Makefile	/^YELLOW  = \\033[33m$/;"	m
+compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+create_env_node	test_src/env_lst_utils/test_ms_env_add_back.c	/^t_env *create_env_node(const char *var, const char *value) {$/;"	f
+env	include/minishell.h	/^	t_env	*env;$/;"	m	struct:s_env_data
+env_data	include/minishell.h	/^	t_env_data	env_data;$/;"	m	struct:s_shell
+env_exist	include/minishell.h	/^	bool	env_exist;$/;"	m	struct:s_env_data
+error_code	include/minishell.h	/^	int			error_code;$/;"	m	struct:s_shell
+fd	lib/libgc/include/libgc.h	/^	int					fd;$/;"	m	struct:s_gc_node
+flags	ycm_extra_conf.py	/^flags = [$/;"	v
+free_env_list	test_src/env_lst_utils/test_ms_env_add_back.c	/^void free_env_list(t_env *env) {$/;"	f
+ft_memcpy	lib/libgc/src/gc_register.c	/^static void	*ft_memcpy(void *dest, const void *src, size_t n)$/;"	f	file:
+ft_strdup	lib/libgc/src/gc_register.c	/^static char	*ft_strdup(const char *s)$/;"	f	file:
+ft_strlen	lib/libgc/src/gc_register.c	/^static int	ft_strlen(const char *str)$/;"	f	file:
+gc_cleanup	lib/libgc/src/gc_cleanup.c	/^void	gc_cleanup(t_gc gcl)$/;"	f
+gc_collect	lib/libgc/src/gc_collect.c	/^void	gc_collect(t_gc gcl)$/;"	f
+gc_delete_node	lib/libgc/src/gc_collect.c	/^static void	gc_delete_node(t_gc_node **prev, t_gc_node **current, t_gc gcl)$/;"	f	file:
+gc_fd_register	lib/libgc/src/gc_fd_register.c	/^void	gc_fd_register(int fd, t_gc gcl)$/;"	f
+gc_lock	lib/libgc/src/gc_mark_lock.c	/^void	gc_lock(void *ptr, t_gc gcl)$/;"	f
+gc_malloc	lib/libgc/src/gc_malloc.c	/^void	*gc_malloc(size_t size, t_gc gcl)$/;"	f
+gc_malloc	test_src/env_lst_utils/test_ms_env_create_node.c	/^void *gc_malloc(size_t size, t_gc gc) {$/;"	f
+gc_mark	lib/libgc/src/gc_mark_lock.c	/^void	gc_mark(void *ptr, t_gc gcl)$/;"	f
+gc_nest_lock	lib/libgc/src/gc_mark_lock.c	/^void	gc_nest_lock(void *ptr, t_gc gcl)$/;"	f
+gc_nest_register	lib/libgc/src/gc_nest_register.c	/^void	gc_nest_register(void *ptr, t_gc gcl)$/;"	f
+gc_register	lib/libgc/src/gc_register.c	/^void	gc_register(void *ptr, t_gc gcl)$/;"	f
+gc_temp_file_register	lib/libgc/src/gc_register.c	/^void	gc_temp_file_register(const char *filename, t_gc gcl)$/;"	f
+gc_unlock	lib/libgc/src/gc_mark_lock.c	/^void	gc_unlock(void *ptr, t_gc gcl)$/;"	f
+gcl	include/minishell.h	/^	t_gc		*gcl;$/;"	m	struct:s_shell
+head	lib/libgc/include/libgc.h	/^	t_gc_node	*head;$/;"	m	struct:s_garbage_collector
+is_array	lib/libgc/include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
+is_locked	lib/libgc/include/libgc.h	/^	bool				is_locked;$/;"	m	struct:s_gc_node
+is_marked	lib/libgc/include/libgc.h	/^	bool				is_marked;$/;"	m	struct:s_gc_node
+main	main.c	/^int	main(int argc, char **argv, char **envp)$/;"	f
+main	test_src/env_lst_utils/test_ms_env_add_back.c	/^int main(void) {$/;"	f
+main	test_src/env_lst_utils/test_ms_env_create_node.c	/^int main(void) {$/;"	f
+main	test_src/init_shell/test_ms_get_user_input.c	/^int	main(void)$/;"	f
+main	test_src/init_shell/test_ms_init_env.c	/^int main(void) {$/;"	f
+main	test_src/init_shell/test_ms_init_shell.c	/^int main(void)$/;"	f
+minishell_suite	test_src/env_lst_utils/test_ms_env_add_back.c	/^Suite *minishell_suite(void) {$/;"	f
+minishell_suite	test_src/env_lst_utils/test_ms_env_create_node.c	/^Suite *minishell_suite(void) {$/;"	f
+minishell_suite	test_src/init_shell/test_ms_get_user_input.c	/^Suite	*minishell_suite(void)$/;"	f
+minishell_suite	test_src/init_shell/test_ms_init_env.c	/^Suite *minishell_suite(void) {$/;"	f
+mock_add_history	test_src/init_shell/test_ms_get_user_input.c	/^void	mock_add_history(const char *line)$/;"	f
+mock_readline	test_src/init_shell/test_ms_get_user_input.c	/^char	*mock_readline(const char *prompt)$/;"	f
+ms_env_add_back	src/env_lst_utils/ms_env_add_back.c	/^void	ms_env_add_back(t_env **env, t_env *new_node)$/;"	f
+ms_env_create_node	src/env_lst_utils/ms_env_create_node.c	/^t_env	*ms_env_create_node(t_shell *shell, const char *env_line)$/;"	f
+ms_get_user_input	src/init_shell/ms_get_user_input.c	/^void	ms_get_user_input(t_shell *shell)$/;"	f
+ms_init_env	src/init_shell/ms_init_env.c	/^t_env_data	ms_init_env(char **envp, t_shell *shell)$/;"	f
+ms_init_shell	src/init_shell/ms_init_shell.c	/^t_shell	ms_init_shell(int argc, char **argv, char **envp)$/;"	f
+ms_init_shell_suite	test_src/init_shell/test_ms_init_shell.c	/^Suite *ms_init_shell_suite(void)$/;"	f
+next	include/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
+next	lib/libgc/include/libgc.h	/^	struct s_gc_node	*next;$/;"	m	struct:s_gc_node	typeref:struct:s_gc_node::s_gc_node
+path	include/minishell.h	/^	char	*path;$/;"	m	struct:s_env_data
+ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
+s_env	include/minishell.h	/^typedef struct s_env$/;"	s
+s_env_data	include/minishell.h	/^typedef struct	s_env_data$/;"	s
+s_garbage_collector	lib/libgc/include/libgc.h	/^typedef struct s_garbage_collector$/;"	s
+s_gc_node	lib/libgc/include/libgc.h	/^typedef struct s_gc_node$/;"	s
+s_shell	include/minishell.h	/^typedef struct s_shell$/;"	s
+shell_lvl	include/minishell.h	/^	int		shell_lvl;$/;"	m	struct:s_env_data
+st_create_envp	src/init_shell/ms_init_env.c	/^static void	st_create_envp(char **envp, t_shell *shell)$/;"	f	file:
+t_env	include/minishell.h	/^}				t_env;$/;"	t	typeref:struct:s_env
+t_env_data	include/minishell.h	/^}				t_env_data;$/;"	t	typeref:struct:s_env_data
+t_gc	lib/libgc/include/libgc.h	/^}				t_gc;$/;"	t	typeref:struct:s_garbage_collector
+t_gc_node	lib/libgc/include/libgc.h	/^}				t_gc_node;$/;"	t	typeref:struct:s_gc_node
+t_shell	include/minishell.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
+temp_file	lib/libgc/include/libgc.h	/^	char				*temp_file;$/;"	m	struct:s_gc_node
+test_ms_init_shell_exit	test_src/init_shell/test_ms_init_shell.c	/^int test_ms_init_shell_exit(int argc, char **argv, char **envp)$/;"	f
+user_input	include/minishell.h	/^	char		*user_input;$/;"	m	struct:s_shell
+value	include/minishell.h	/^	char			*value;$/;"	m	struct:s_env
+var	include/minishell.h	/^	char 			*var;$/;"	m	struct:s_env

@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:18:49 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/30 13:53:17 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/02 12:13:27 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	gc_fd_register(int fd, t_gc gcl)
 	new_node = malloc(sizeof(t_gc_node));
 	if (!new_node)
 	{
-		return ;
+		gc_cleanup(gcl);
+		write(2, "Error: GC node malloc failed.\n", 31);
+		exit(EXIT_FAILURE);
 	}
 	new_node->ptr = NULL;
 	new_node->is_marked = false;
