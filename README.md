@@ -349,11 +349,6 @@ int shell_execute(char **args) {
 
 ---
 
-##NOTES
-
-Understood! Let’s begin by diving deep into the **abstract syntax tree (AST)**, its structure, parsing strategies, and potential issues or bugs. I'll provide historical context, real-world applications, and comparisons of using subshells versus a classic AST. This step will give us a robust foundation before moving forward with implementation.
-
----
 
 ### 1. **What is an AST?**
 
@@ -1720,4 +1715,270 @@ cmd1 & cmd2 && cmd3 &
     - If the pipeline succeeds, execute `cmd3` with output redirected to `out.txt`.
   - If the subshell fails, execute `cmd4`.
   - Execute `cmd5` in the background.
+
+---
+
+### **A. Simple Commands and Arguments**
+
+| Test Number       | Description                             | User Input                      | Expected Result                                                                                             |
+|-------------------|-----------------------------------------|---------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Test A1**       | Simple Command Execution                | `ls`                            | The shell lists the contents of the current directory.                                                      |
+| **Test A2**       | Command with Arguments                  | `echo "Hello, World!"`          | The shell prints `Hello, World!` to the standard output.                                                    |
+| **Test A3**       | Command with Multiple Arguments         | `cp file1.txt file2.txt`        | The shell copies `file1.txt` to `file2.txt`.                                                                |
+| **Test A4**       | Command with Environment Variable       | `echo $HOME`                    | The shell prints the value of the `HOME` environment variable.                                              |
+| **Test A5**       | Command with Quoted Arguments           | `mkdir "New Folder"`            | The shell creates a directory named `New Folder`.                                                           |
+| **Test A6**       | Command with Single Quotes              | `echo 'Single quoted text'`     | The shell prints `Single quoted text`.                                                                      |
+| **Test A7**       | Command with Escaped Characters         | `echo "This is a backslash: \\"`| The shell prints `This is a backslash: \`.                                                                  |
+| **Test A8**       | Command with Special Characters         | `echo "Line1\nLine2"`           | The shell prints `Line1\nLine2` (interprets `\n` as characters, not newlines).                              |
+| **Test A9**       | Command with Backticks (not supported)  | ``echo `date```                 | The shell treats backticks as normal characters, since command substitution is not required.                |
+| **Test A10**      | Command with Semicolon Separator        | `echo "First command"; echo "Second command"` | The shell executes both commands sequentially.                                                              |
+| **Exception A1**  | Unclosed Quotes                         | `echo "Unclosed string`         | The shell reports a syntax error: `Syntax Error: Unclosed quotation mark` and does not crash.               |
+| **Exception A2**  | Invalid Command Syntax                  | `ech "Missing o"`               | The shell reports: `minishell: command not found: ech` and does not crash.                                  |
+
+---
+
+### **B. Input and Output Redirections**
+
+| Test Number       | Description                            | User Input                                      | Expected Result                                                                                             |
+|-------------------|----------------------------------------|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Test B1**       | Input Redirection                      | `sort < unsorted.txt`                           | The shell sorts the contents of `unsorted.txt` and outputs the sorted data to the standard output.          |
+| **Test B2**       | Output Redirection                     | `ls > files.txt`                                | The shell writes the directory listing to `files.txt`.                                                      |
+| **Test B3**       | Append Output Redirection              | `echo "New Entry" >> log.txt`                   | The shell appends `New Entry` to `log.txt`.                                                                 |
+| **Test B4**       | Input and Output Redirection Combined  | `grep "search" < input.txt > output.txt`        | The shell reads from `input.txt`, searches for `"search"`, and writes the results to `output.txt`.          |
+| **Test B5**       | Input Redirection with Missing File    | `cat < nonexistent.txt`                         | The shell reports an error: `minishell: nonexistent.txt: No such file or directory` and does not crash.     |
+| **Test B6**       | Output Redirection with No Permission  | `echo "Test" > /root/output.txt`                | The shell reports an error: `minishell: /root/output.txt: Permission denied` and does not crash.            |
+| **Test B7**       | Overwriting File with Output Redirection | `echo "Overwrite" > existing.txt`             | The shell overwrites `existing.txt` with `Overwrite`.                                                       |
+| **Test B8**       | Multiple Output Redirections (Invalid) | `echo "Test" > out1.txt > out2.txt`             | The shell reports a syntax error: `Syntax Error: Multiple output redirections are not allowed` and does not crash. |
+| **Test B9**       | Redirection with File Descriptor       | `ls 2> errors.txt`                              | The shell redirects standard error to `errors.txt`.                                                         |
+| **Test B10**      | Here-String (Not Required)             | `cat <<< "Input String"`                        | The shell treats `<<<` as invalid syntax and reports an error: `Syntax Error: Invalid redirection operator` and does not crash. |
+| **Exception B1**  | Multiple Input Redirections            | `cmd < input1.txt < input2.txt`                 | The shell reports a syntax error: `Syntax Error: Multiple input redirections are not allowed` and does not crash. |
+| **Exception B2**  | Misplaced Redirection Operator         | `> output.txt ls`                               | The shell reports a syntax error: `Syntax Error: Redirection without command` and does not crash.           |
+
+---
+
+### **C. Pipes**
+
+| Test Number       | Description                      | User Input                                    | Expected Result                                                                                             |
+|-------------------|----------------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Test C1**       | Simple Pipe                      | `ls | grep "test"`                             | The shell lists files and pipes the output to `grep`, which filters and displays lines containing `"test"`. |
+| **Test C2**       | Multiple Pipes                   | `cat file.txt | grep "error" | sort`        | The shell reads `file.txt`, filters lines containing `"error"`, sorts the results, and outputs them.        |
+| **Test C3**       | Pipe with Redirection            | `ps aux | grep "python" > processes.txt`             | The shell writes the filtered process list to `processes.txt`.                                              |
+| **Test C4**       | Pipe with Input Redirection      | `grep "search" < input.txt | sort`                   | The shell reads from `input.txt`, filters lines containing `"search"`, pipes to `sort`, and outputs results.|
+| **Test C5**       | Pipe with Command Not Found      | `ls | nonexistentcommand`                        | The shell reports: `minishell: command not found: nonexistentcommand` and does not crash.                   |
+| **Test C6**       | Chain of Pipes                   | `cmd1 | cmd2 | cmd3 | cmd4`                           | The shell executes a pipeline through all four commands.                                                    |
+| **Test C7**       | Pipe with Built-in Command       | `echo "Test" | wc -c`                                    | The shell counts the number of characters in `"Test"` and outputs the result.                               |
+| **Test C8**       | Pipe with Environment Variable   | `echo $PATH | tr ':' '\n'`                              | The shell splits the `PATH` variable by `:` and outputs each path on a new line.                            |
+| **Test C9**       | Pipe with Background Execution   | `ls | grep "pattern" &`                          | The shell executes the pipeline in the background.                                                          |
+| **Test C10**      | Pipe with Logical Operator       | `cmd1 | cmd2 && cmd3`                             | The shell executes `cmd1 | cmd2`; if it succeeds, executes `cmd3`.                                        |
+| **Exception C1**  | Pipe with Missing Command        | `ls |`                                         | The shell reports a syntax error: `Syntax Error: Missing command after '|'` and does not crash.             |
+| **Exception C2**  | Pipe Starting with Operator      | `| grep "pattern"`                           | The shell reports a syntax error: `Syntax Error: Unexpected '|' at the beginning of the command` and does not crash. |
+
+---
+
+### **D. Logical Operators**
+
+| Test Number       | Description                      | User Input                            | Expected Result                                                                                                  |
+|-------------------|----------------------------------|---------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| **Test D1**       | Logical AND Operator             | `make && make test`                   | The shell executes `make`; if it succeeds, it executes `make test`.                                              |
+| **Test D2**       | Logical OR Operator              | `false || echo "Command failed"`      | Since `false` returns a non-zero status, the shell executes `echo "Command failed"`.                             |
+| **Test D3**       | Combined Logical Operators       | `cmd1 && cmd2 || cmd3`                | If `cmd1` succeeds, execute `cmd2`; if `cmd2` fails, execute `cmd3`; if `cmd1` fails, execute `cmd3`.           |
+| **Test D4**       | Multiple AND Operators           | `cmd1 && cmd2 && cmd3`                | The shell executes each command sequentially; if any command fails, subsequent commands are not executed.        |
+| **Test D5**       | Multiple OR Operators            | `cmd1 || cmd2 || cmd3`                | The shell executes commands until one succeeds; once a command succeeds, it stops executing further commands.    |
+| **Test D6**       | Logical Operators with Subshell  | `(cmd1 || cmd2) && cmd3`              | The shell executes the subshell; if it succeeds, executes `cmd3`.                                                |
+| **Test D7**       | Logical Operators with Pipes     | `cmd1 | cmd2 && cmd3`                   | Executes the pipeline; if it succeeds, executes `cmd3`.                                                          |
+| **Test D8**       | Logical Operators with Negation  | `! false && echo "Success"`           | Since `! false` is true, the shell executes `echo "Success"`.                                                    |
+| **Test D9**       | Logical Operators with Non-zero Exit Codes | `false && echo "This will not print"` | Since `false` returns non-zero, the shell does not execute `echo`.                                               |
+| **Test D10**      | Logical Operators with Built-ins | `export VAR="value" && echo $VAR`     | The shell sets `VAR` and then echoes its value.                                                                  |
+| **Exception D1**  | Invalid Logical Operator Sequence| `ls || && echo "Hello"`               | The shell reports a syntax error: `Syntax Error: Unexpected token '&&' after '||'` and does not crash.          |
+| **Exception D2**  | Logical Operator at Start        | `&& cmd`                              | The shell reports a syntax error: `Syntax Error: Unexpected '&&' at the beginning of the command` and does not crash. |
+
+---
+
+### **E. Subshells**
+
+| Test Number       | Description           | User Input                           | Expected Result                                                                                             |
+|-------------------|-----------------------|--------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Test E1**       | Simple Subshell       | `(echo "Start"; ls)`                 | The shell executes `echo "Start"` and `ls` in a subshell; any variable changes do not affect the parent shell. |
+| **Test E2**       | Nested Subshells      | `(cmd1 && (cmd2 || cmd3))`           | The shell executes `cmd1`; if it succeeds, executes `cmd2`; if `cmd2` fails, executes `cmd3`, all within subshells. |
+| **Test E3**       | Subshell with Redirection | `(ls > files.txt)`                | The shell executes `ls` and redirects output to `files.txt`, within a subshell.                             |
+| **Test E4**       | Subshell with Variables | `(export VAR="value"; echo $VAR)`   | The shell sets `VAR` and echoes it within the subshell; `VAR` is not set in the parent shell.               |
+| **Test E5**       | Subshell with Pipes   | `(cmd1 | cmd2) && cmd3`              | The shell executes the pipeline in a subshell; if it succeeds, executes `cmd3`.                             |
+| **Test E6**       | Subshell with Background Execution | `(sleep 5; echo "Done") &` | The shell executes the subshell in the background.                                                          |
+| **Test E7**       | Subshell with Logical Operators | `(false && echo "No") || echo "Yes"` | The subshell executes `false && echo "No"`; since it fails, the shell executes `echo "Yes"`.                |
+| **Test E8**       | Empty Subshell        | `()`                                 | The shell does nothing and returns to the prompt without error.                                             |
+| **Test E9**       | Subshell within Subshell| `((echo "Nested"))`                 | The shell executes the nested subshell and prints `Nested`.                                                 |
+| **Test E10**      | Subshell with Command Not Found | `(nonexistentcommand)`         | The shell reports: `minishell: command not found: nonexistentcommand` within the subshell and does not crash. |
+| **Exception E1**  | Unmatched Parentheses | `(echo "Start"`                      | The shell reports a syntax error: `Syntax Error: Unmatched '('` and does not crash.                         |
+| **Exception E2**  | Misplaced Parentheses | `echo "Test")`                       | The shell reports a syntax error: `Syntax Error: Unexpected ')'` and does not crash.                        |
+
+---
+
+### **F. Here-Documents**
+
+| Test Number       | Description                | User Input                                                                 | Expected Result                                                                                                 |
+|-------------------|----------------------------|----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| **Test F1**       | Simple Here-Document       | `cat << EOF\nLine 1\nLine 2\nEOF`                                          | The shell passes the provided lines to `cat`, which outputs them.                                               |
+| **Test F2**       | Here-Document with Variable| `cat << EOF\nValue is $VAR\nEOF`                                           | The shell does not expand `$VAR` in the here-document (unless specified), outputs `Value is $VAR`.              |
+| **Test F3**       | Here-Document with Quotes  | `cat << 'EOF'\nValue is $VAR\nEOF`                                         | The shell treats the delimiter in single quotes; variables are not expanded, outputs `Value is $VAR`.           |
+| **Test F4**       | Here-Document with Expansion| `cat << EOF\nValue is ${VAR}\nEOF`                                        | The shell outputs `Value is ${VAR}`; parameter expansion is not required unless specified.                      |
+| **Test F5**       | Here-Document in Pipeline  | `grep "pattern" << EOF | sort\nLine 1\nLine 2\nEOF`                      | The shell passes the lines to `grep`, then pipes output to `sort`.                                              |
+| **Test F6**       | Multiple Here-Documents    | `cmd1 << EOF1 | cmd2 << EOF2\nData1\nEOF1\nData2\nEOF2`             | The shell processes both here-documents and executes the pipeline.                                              |
+| **Test F7**       | Here-Document with Empty Input | `cat << EOF\nEOF`                                                       | The shell passes empty input to `cat`, which outputs nothing.                                                   |
+| **Test F8**       | Here-Document with Special Characters | `cat << EOF\nLine with * and ?\nEOF`                     | The shell treats `*` and `?` as normal characters in the here-document.                                         |
+| **Test F9**       | Here-Document with Interrupt | `cat << EOF\nLine 1` *(User presses Ctrl+C)*                              | The shell interrupts the here-document input, reports `^C`, and returns to the prompt without crashing.         |
+| **Test F10**      | Here-Document with Signal Handling | `cat << EOF\nLine 1` *(Send SIGTERM to shell)*                    | The shell handles the signal appropriately and exits gracefully.                                                |
+| **Exception F1**  | Missing Here-Document Delimiter | `cat << EOF\nLine 1\nLine 2`                                           | The shell reports: `Syntax Error: Unexpected end of file, expected 'EOF'` and does not crash.                   |
+| **Exception F2**  | Invalid Here-Document Delimiter | `cat << 123\nData\n123`                                              | The shell uses `123` as the delimiter; if numbers are invalid, reports syntax error: `Syntax Error: Invalid delimiter` (if applicable). |
+
+---
+
+### **G. Background Execution**
+
+| Test Number       | Description                    | User Input                    | Expected Result                                                                                             |
+|-------------------|--------------------------------|-------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Test G1**       | Single Background Command      | `sleep 60 &`                  | The shell starts `sleep 60` in the background and returns to the prompt immediately.                        |
+| **Test G2**       | Multiple Background Commands   | `cmd1 & cmd2 &`               | The shell starts both `cmd1` and `cmd2` in the background concurrently.                                     |
+| **Test G3**       | Background Command with Output | `ls &> output.txt &`          | The shell runs `ls`, redirects all output to `output.txt`, and executes it in the background.               |
+| **Test G4**       | Background Command with Pipes  | `cmd1 | cmd2 &`                | The shell executes the pipeline in the background.                                                          |
+| **Test G5**       | Background Command with Logical Operators | `cmd1 && cmd2 &`    | The shell executes `cmd1`; if it succeeds, starts `cmd2` in the background.                                 |
+| **Test G6**       | Background Command with Subshell | `(cmd1; cmd2) &`           | The shell executes the subshell in the background.                                                          |
+| **Test G7**       | Background Command with Variable Assignment | `VAR=value &`     | The shell sets `VAR` in the background; however, it does not affect the parent shell's environment.         |
+| **Test G8**       | Background Command with Job Control (Not Required) | `sleep 10 &`   | The shell starts `sleep 10` in the background; job control is not required, so minimal handling is acceptable. |
+| **Test G9**       | Background Command with Redirection | `sleep 10 > sleep.log &`    | The shell redirects output of `sleep 10` to `sleep.log` and runs it in the background.                      |
+| **Test G10**      | Background Command with Wait   | `sleep 5 & wait`              | The shell waits for background jobs to complete before returning to the prompt. (Note: `wait` is not required to be implemented.) |
+| **Exception G1**  | Background Operator Without Command | `&`                         | The shell reports a syntax error: `Syntax Error: '&' without a preceding command` and does not crash.       |
+| **Exception G2**  | Background Operator at Start   | `& cmd`                       | The shell reports a syntax error: `Syntax Error: Unexpected '&' at the beginning of the command` and does not crash. |
+
+---
+
+### **H. Wildcards and Globbing**
+
+| Test Number       | Description                       | User Input                 | Expected Result                                                                                     |
+|-------------------|-----------------------------------|----------------------------|-----------------------------------------------------------------------------------------------------|
+| **Test H1**       | Simple Wildcard Expansion         | `ls *.c`                   | The shell expands `*.c` to match all `.c` files and lists them.                                     |
+| **Test H2**       | Wildcards with Other Commands     | `grep "main" *.c`          | The shell searches for `"main"` in all `.c` files.                                                  |
+| **Test H3**       | Wildcards Matching Directories    | `ls */`                    | The shell lists all directories in the current directory.                                           |
+| **Test H4**       | Wildcards with Hidden Files       | `ls .*`                    | The shell lists all hidden files (those starting with `.`).                                         |
+| **Test H5**       | Wildcards with Character Ranges   | `ls file[1-3].txt`         | The shell lists `file1.txt`, `file2.txt`, and `file3.txt` if they exist.                            |
+| **Test H6**       | Wildcards with Question Mark      | `ls file?.txt`             | The shell lists files like `file1.txt`, `fileA.txt`, matching any single character in place of `?`. |
+| **Test H7**       | Wildcards with Braces             | `ls {file1,file2}.txt`     | The shell expands to `ls file1.txt file2.txt` and lists those files.                                |
+| **Test H8**       | Wildcards with Escape Characters  | `ls \*.c`                  | The shell treats `*.c` literally and tries to list a file named `*.c`.                              |
+| **Test H9**       | Wildcards in Subdirectories       | `ls */*.c`                 | The shell lists all `.c` files in all subdirectories.                                               |
+| **Test H10**      | Wildcards with No Matches         | `ls xyz*`                  | The shell reports: `ls: cannot access 'xyz*': No such file or directory` and does not crash.        |
+| **Exception H1**  | No Matches for Wildcard           | `ls *.xyz`                 | The shell reports: `ls: cannot access '*.xyz': No such file or directory` and does not crash.       |
+| **Exception H2**  | Invalid Wildcard Pattern          | `ls [a-`                   | The shell reports a syntax error: `Syntax Error: Invalid wildcard pattern` and does not crash.      |
+
+---
+
+### **I. Complex Commands**
+
+| Test Number       | Description                        | User Input                                        | Expected Result                                                                                                     |
+|-------------------|------------------------------------|---------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| **Test I1**       | Combined Pipes and Redirections    | `cat file.txt | grep "pattern" | sort > result.txt`        | The shell processes the pipeline and writes the sorted output to `result.txt`.                                       |
+| **Test I2**       | Mixed Logical Operators and Pipes  | `cmd1 | cmd2 && cmd3 || cmd4`                        | Execute `cmd1 | cmd2`; if it succeeds, execute `cmd3`; if it fails, execute `cmd4`.                                                 |
+| **Test I3**       | Command with Subshell and Redirection | `(cmd1 && cmd2) > output.txt`                 | The shell executes the subshell; if successful, redirects output to `output.txt`.                                    |
+| **Test I4**       | Command with Multiple Redirections | `cmd < input.txt > output.txt 2> error.log`      | The shell redirects input, output, and error streams appropriately.                                                 |
+| **Test I5**       | Command with Here-Document and Pipe | `cmd1 << EOF | cmd2\nInput\nEOF`                    | The shell provides `Input` to `cmd1` and pipes the output to `cmd2`.                                                |
+| **Test I6**       | Command with Background Execution and Logical Operators | `cmd1 & cmd2 && cmd3 &` | The shell runs `cmd1` in background; if `cmd2` succeeds, runs `cmd3` in background.                                 |
+| **Test I7**       | Command with Wildcards and Pipes   | `grep "main" *.c | less`                              | The shell searches for `"main"` in all `.c` files and pipes the output to `less`.                                    |
+| **Test I8**       | Command with Environment Variables and Subshell | `(export VAR="value"; cmd $VAR)`        | The shell sets `VAR` in subshell and executes `cmd $VAR`; `VAR` is not available outside the subshell.              |
+| **Test I9**       | Command with Alias (Not Required)  | `alias ll='ls -l'; ll`                           | Since aliasing is not required, the shell treats `alias` as a command, and `ll` remains unrecognized.               |
+| **Test I10**      | Command with Function Definition (Not Required) | `function greet() { echo "Hello"; }; greet` | Function definitions are not required; the shell treats `function` as a command and reports `command not found`.     |
+| **Exception I1**  | Excessive Command Length           | `<very long command exceeding buffer limits>`     | The shell reports an error: `Error: Command exceeds maximum allowed length` and does not crash.                      |
+| **Exception I2**  | Invalid Characters in Command      | `cmd\x01\x02`                                     | The shell reports a syntax error: `Syntax Error: Invalid character in command` and does not crash.                   |
+
+---
+
+### **J. Error Handling and Edge Cases**
+
+| Test Number       | Description                      | User Input                       | Expected Result                                                                                             |
+|-------------------|----------------------------------|----------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Test J1**       | Command Not Found                | `nonexistentcommand`             | The shell reports: `minishell: command not found: nonexistentcommand` and does not crash.                   |
+| **Test J2**       | Permission Denied                | `./script.sh`                    | If `script.sh` is not executable, the shell reports: `minishell: permission denied: ./script.sh` and does not crash. |
+| **Test J3**       | Segmentation Fault Handling      | `./segfault_program`             | The shell reports: `Segmentation fault (core dumped)` and does not crash; it handles the signal properly.   |
+| **Test J4**       | Keyboard Interrupt               | `sleep 100` *(Ctrl+C pressed)*   | The shell interrupts `sleep`, returns to the prompt, and does not crash.                                     |
+| **Test J5**       | End-of-File (Ctrl+D) Handling    | *(Ctrl+D pressed at prompt)*     | The shell exits gracefully.                                                                                 |
+| **Test J6**       | Unhandled Signal                 | *(Send `SIGTERM` to shell)*      | The shell exits gracefully, handling the signal appropriately.                                              |
+| **Test J7**       | Division by Zero in Command      | `expr 1 / 0`                     | The shell reports an error: `expr: division by zero` and does not crash.                                    |
+| **Test J8**       | File Not Found Error             | `cat nonexistentfile.txt`        | The shell reports: `minishell: nonexistentfile.txt: No such file or directory` and does not crash.          |
+| **Test J9**       | Invalid Option Error             | `ls --invalidoption`             | The shell reports: `ls: unrecognized option '--invalidoption'` and displays usage information.              |
+| **Test J10**      | Recursive Alias (Not Required)   | `alias ll='ll -l'; ll`           | Since aliasing is not required, the shell does not process aliases; reports `minishell: command not found: ll`. |
+| **Exception J1**  | Command Exits with Non-zero Status| `false`                         | The shell recognizes the non-zero exit status; can be checked using `$?` if implemented.                    |
+| **Exception J2**  | Infinite Loop Script             | `while true; do echo "Loop"; done` | Since scripting is not required, the shell treats `while` as a command and reports `command not found`.     |
+
+---
+
+### **K. Environment Variable Manipulation**
+
+| Test Number       | Description                     | User Input                   | Expected Result                                                                                             |
+|-------------------|---------------------------------|------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Test K1**       | Setting Environment Variables   | `export VAR="value"`         | The shell sets `VAR` in the environment.                                                                    |
+| **Test K2**       | Unsetting Environment Variables | `unset VAR`                  | The shell removes `VAR` from the environment.                                                               |
+| **Test K3**       | Using Variables in Commands     | `echo $VAR`                  | The shell prints the value of `VAR`.                                                                        |
+| **Test K4**       | Variable Persistence            | `export VAR="value"; exit; echo $VAR` | After restarting the shell, `VAR` is unset; the shell prints nothing.                                    |
+| **Test K5**       | Listing All Environment Variables| `env`                        | The shell displays all environment variables.                                                               |
+| **Test K6**       | Modifying PATH Variable         | `export PATH="/new/path:$PATH"; which cmd` | The shell updates `PATH` and uses it to locate commands.                               |
+| **Test K7**       | Using Unset Variable            | `echo $UNSETVAR`             | The shell prints an empty line.                                                                             |
+| **Test K8**       | Variable with No Value          | `export VAR; echo $VAR`      | The shell sets `VAR` with an empty value; `echo $VAR` outputs an empty line.                                |
+| **Test K9**       | Variable Name with Underscore   | `export VAR_NAME="value"; echo $VAR_NAME` | The shell sets and prints `VAR_NAME`.                                              |
+| **Test K10**      | Variable Overwriting            | `export VAR="first"; export VAR="second"; echo $VAR` | The shell updates `VAR` to `second` and prints `second`.                 |
+| **Exception K1**  | Invalid Variable Name           | `export 1VAR="value"`        | The shell reports an error: `export: not an identifier: 1VAR` and does not crash.                           |
+| **Exception K2**  | Unset Non-existent Variable     | `unset NONEXISTENT`          | The shell proceeds without error; nothing happens since the variable does not exist.                        |
+
+---
+
+### **L. Built-in Commands**
+
+| Test Number       | Description                   | User Input         | Expected Result                                                                                             |
+|-------------------|-------------------------------|--------------------|-------------------------------------------------------------------------------------------------------------|
+| **Test L1**       | Change Directory to Absolute Path | `cd /tmp`      | The shell changes the current working directory to `/tmp`.                                                  |
+| **Test L2**       | Change Directory to Relative Path | `cd ../`       | The shell changes the current working directory to the parent directory.                                    |
+| **Test L3**       | Change Directory Without Arguments | `cd`          | The shell changes to the home directory (`$HOME`).                                                          |
+| **Test L4**       | Print Working Directory       | `pwd`              | The shell prints the current working directory.                                                             |
+| **Test L5**       | List Environment Variables    | `env`              | The shell displays all environment variables.                                                               |
+| **Test L6**       | Echo with Options             | `echo -n "No Newline"` | The shell prints `No Newline` without a trailing newline.                                                   |
+| **Test L7**       | Unset Built-in Command        | `unset PATH; ls`   | The shell unsets `PATH`, making external commands like `ls` unavailable unless absolute paths are used.     |
+| **Test L8**       | Export Built-in Command       | `export VAR="value"; env | grep VAR` | The shell sets `VAR`, and `env` shows it in the environment variables.                  |
+| **Test L9**       | Exit with Status              | `exit 42`          | The shell exits with status `42`.                                                                           |
+| **Test L10**      | Exit with Multiple Arguments  | `exit 1 2 3`       | The shell reports an error: `exit: too many arguments` and does not exit.                                   |
+| **Exception L1**  | Exit with Invalid Status      | `exit abc`         | The shell reports an error: `exit: numeric argument required` and exits with status `255`.                  |
+| **Exception L2**  | Change to Non-existent Directory | `cd /nonexistent` | The shell reports an error: `cd: no such file or directory: /nonexistent` and does not crash.               |
+
+---
+
+### **M. Special Characters and Escaping**
+
+| Test Number       | Description                       | User Input                                 | Expected Result                                                                                   |
+|-------------------|-----------------------------------|--------------------------------------------|---------------------------------------------------------------------------------------------------|
+| **Test M1**       | Escaped Characters                | `echo "This is a quote: \" "`              | The shell prints: `This is a quote: " `                                                           |
+| **Test M2**       | Single vs. Double Quotes          | `echo '$HOME' "$HOME"`                     | The shell prints: `$HOME /home/user` (assuming `/home/user` is the value of `$HOME`).             |
+| **Test M3**       | Escaping Spaces                   | `touch file\ name.txt; ls`                 | The shell creates a file named `file name.txt` and lists it.                                      |
+| **Test M4**       | Escaping Special Characters       | `echo "\$PATH"`                            | The shell prints: `$PATH`                                                                         |
+| **Test M5**       | Backslash at End of Line          | `echo "Line1\` *(Enter pressed)* `Line2"`  | The shell treats the backslash as a line continuation and prints: `Line1Line2`.                   |
+| **Test M6**       | Quoting Wildcards                 | `ls "*.txt"`                               | The shell treats `*.txt` as a literal string and lists files named `*.txt` if any.                |
+| **Test M7**       | Escaping in Single Quotes         | `echo 'It\'s a test'`                      | The shell treats backslashes as literal characters within single quotes and prints: `It\'s a test`.|
+| **Test M8**       | Combining Quotes and Escapes      | `echo "Path: \$PATH"`                      | The shell prints: `Path: $PATH` (the `$PATH` variable is not expanded due to the backslash).      |
+| **Test M9**       | Escaping Backslash                | `echo "\\\\"`                              | The shell prints: `\\`                                                                            |
+| **Test M10**      | Command Substitution Characters   | `echo "Today is $(date)"`                  | Since command substitution is not required, the shell prints: `Today is $(date)`.                 |
+| **Exception M1**  | Invalid Escape Sequence           | `echo \z`                                  | The shell prints: `z` and does not crash.                                                         |
+| **Exception M2**  | Unmatched Quotes                  | `echo "Unmatched quote`                    | The shell reports a syntax error: `Syntax Error: Unclosed quotation mark` and does not crash.     |
+
+---
+
+### **N. Scripting and Execution**
+
+| Test Number       | Description                        | User Input                                | Expected Result                                                                                             |
+|-------------------|------------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Test N1**       | Execute Script File                | `./script.sh`                             | The shell executes `script.sh` if it has execute permissions and is properly formatted.                     |
+| **Test N2**       | Shebang Execution                  | `#!/bin/minishell\necho "Hello from script"` | The shell executes the script using the `minishell` interpreter.                                          |
+| **Test N3**       | Script with Arguments              | `./script.sh arg1 arg2`                   | The shell passes `arg1` and `arg2` to `script.sh` as arguments.                                             |
+| **Test N4**       | Script without Execute Permission  | `./script.sh`                             | The shell reports: `minishell: permission denied: ./script.sh` and does not crash.                          |
+| **Test N5**       | Source Command (Not Required)      | `source script.sh`                        | Since `source` is not required, the shell treats it as a command and reports `command not found`.           |
+| **Test N6**       | Execute Binary File                | `./binaryfile`                            | If `binaryfile` is an executable binary, the shell executes it.                                             |
+| **Test N7**       | Execute Script with Invalid Shebang| `#!/bin/invalidshell\necho "Test"`        | The shell reports: `minishell: bad interpreter: No such file or directory` and does not crash.              |
+| **Test N8**       | Script with Environment Variables  | `export VAR="value"; ./script.sh`         | The shell passes `VAR` to `script.sh` if environment variables are inherited.                               |
+| **Test N9**       | Execute Script from Relative Path  | `cd scripts; ./script.sh`                 | The shell changes directory and executes `script.sh` in the `scripts` directory.                            |
+| **Test N10**      | Execute Script with Input Redirection | `./script.sh < input.txt`              | The shell provides `input.txt` as standard input to `script.sh`.                                             |
+| **Exception N1**  | Recursive Shell Execution          | `#!/bin/minishell\n./script.sh`           | The shell should detect recursion or reach maximum process limits, and handle it gracefully without crashing the system. |
+| **Exception N2**  | Execute Non-existent Script        | `./nonexistent.sh`                        | The shell reports: `minishell: ./nonexistent.sh: No such file or directory` and does not crash.             |
 
