@@ -6,51 +6,83 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:28:21 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/01 16:28:51 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/02 14:43:08 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <check.h>
 #include "../../include/minishell.h"
 
-// Mock functions and structures
-void *gc_malloc(size_t size, t_gc gc) {
-    return malloc(size);
-}
-
-// Test cases
-START_TEST(test_ms_env_create_node_returns_null) {
+START_TEST(test_create_node_basic)
+{
     t_shell shell;
-    t_gc gc;
-    shell.gcl = &gc;
+    shell.gcl = gc_init(); // Initialize your garbage collector
 
-    t_env *node = ms_env_create_node(&shell);
+    const char *env_line = "PATH=/usr/bin";
+    t_env *node = ms_env_create_node(&shell, env_line);
 
-    ck_assert_ptr_eq(node, NULL);
+    ck_assert_msg(strcmp(node->var, "PATH") == 0, "Expected var: PATH, but got: %s", node->var);
+    ck_assert_msg(strcmp(node->value, "/usr/bin") == 0, "Expected value: /usr/bin, but got: %s", node->value);
+
+    gc_cleanup(*shell.gcl); // Clean up your garbage collector
 }
 END_TEST
 
-Suite *minishell_suite(void) {
+START_TEST(test_create_node_no_value)
+{
+    t_shell shell;
+    shell.gcl = gc_init(); // Initialize your garbage collector
+
+    const char *env_line = "EMPTY=";
+    t_env *node = ms_env_create_node(&shell, env_line);
+
+    ck_assert_msg(strcmp(node->var, "EMPTY") == 0, "Expected var: EMPTY, but got: %s", node->var);
+    ck_assert_msg(strcmp(node->value, "") == 0, "Expected value: (empty string), but got: %s", node->value);
+
+    gc_cleanup(*shell.gcl); // Clean up your garbage collector
+}
+END_TEST
+
+START_TEST(test_create_node_no_equals)
+{
+    t_shell shell;
+    shell.gcl = gc_init(); // Initialize your garbage collector
+
+    const char *env_line = "NOEQUALS";
+    t_env *node = ms_env_create_node(&shell, env_line);
+
+    ck_assert_msg(strcmp(node->var, "NOEQUALS") == 0, "Expected var: NOEQUALS, but got: %s", node->var);
+    ck_assert_msg(node->value == NULL, "Expected value: NULL, but got: %s", node->value ? node->value : "(null)");
+
+    gc_cleanup(*shell.gcl); // Clean up your garbage collector
+}
+END_TEST
+
+Suite *env_suite(void)
+{
     Suite *s;
     TCase *tc_core;
 
-    s = suite_create("Minishell");
+    s = suite_create("Env");
 
     /* Core test case */
     tc_core = tcase_create("Core");
 
-    tcase_add_test(tc_core, test_ms_env_create_node_returns_null);
+    tcase_add_test(tc_core, test_create_node_basic);
+    tcase_add_test(tc_core, test_create_node_no_value);
+    tcase_add_test(tc_core, test_create_node_no_equals);
     suite_add_tcase(s, tc_core);
 
     return s;
 }
 
-int main(void) {
+int main(void)
+{
     int number_failed;
     Suite *s;
     SRunner *sr;
 
-    s = minishell_suite();
+    s = env_suite();
     sr = srunner_create(s);
 
     srunner_run_all(sr, CK_NORMAL);

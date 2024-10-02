@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_init_shell.c                                    :+:      :+:    :+:   */
+/*   gc_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 14:40:35 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 14:24:37 by jeportie         ###   ########.fr       */
+/*   Created: 2024/10/02 14:15:11 by jeportie          #+#    #+#             */
+/*   Updated: 2024/10/02 15:30:09 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../include/libgc.h"
 
-t_shell	ms_init_shell(int argc, char **argv, char **envp)
+static void	*ft_memset(void *s, int c, size_t n)
 {
-	t_shell	shell;
+	unsigned char	*mem_src;
 
-	if (!argc || !argv)
-		exit(EXIT_FAILURE);
-	if (argc > 1 || argv[1])
+	mem_src = (unsigned char *)s;
+	while (n--)
+		*mem_src++ = (unsigned char)c;
+	return (s);
+}
+
+void	*gc_init(void)
+{
+	t_gc	*gcl;
+
+	gcl = malloc(sizeof(t_gc));
+	if (!gcl)
 	{
-		perror("Minishell: format: no arguments needed!\n");
+		write(2, "Error: GC allocation failed.\n", 29);
 		exit(EXIT_FAILURE);
 	}
-	ft_memset(&shell, 0, sizeof(t_shell));
-	shell.gcl = gc_init();
-	shell.env_data = ms_init_env(envp, &shell);
-	return (shell);
+	ft_memset(gcl, 0, sizeof(t_gc));
+	return (gcl);
 }

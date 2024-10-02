@@ -6,37 +6,37 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:23:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/30 15:48:58 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/02 15:22:41 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libgc.h"
 #include <stdarg.h>
 
-static void	gc_delete_node(t_gc_node **prev, t_gc_node **current, t_gc gcl)
+static void	gc_delete_node(t_gc_node **prev, t_gc_node **current, t_gc *gcl)
 {
 	t_gc_node	*next_node;
-	t_gc		tmp;
+	t_gc		*tmp;
 
 	tmp = gcl;
 	next_node = (*current)->next;
 	if (*prev)
 		(*prev)->next = next_node;
 	else
-		tmp.head = next_node;
+		tmp->head = next_node;
 	if ((*current)->ptr)
 		free((*current)->ptr);
 	free(*current);
 	*current = next_node;
-	gcl = tmp;
+	*gcl = *tmp;
 }
 
-void	gc_collect(t_gc gcl)
+void	gc_collect(t_gc *gcl)
 {
 	t_gc_node	*current;
 	t_gc_node	*prev;
 
-	current = gcl.head;
+	current = gcl->head;
 	prev = NULL;
 	while (current)
 	{

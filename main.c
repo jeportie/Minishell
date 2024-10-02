@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/30 16:09:50 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/02 15:31:02 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	main(int argc, char **argv, char **envp)
 		if (!shell.user_input)
 		{
 			rl_clear_history();
-			gc_cleanup(*shell.gcl);
+			gc_cleanup(shell.gcl);
+			free(shell.gcl);
 			exit (shell.error_code);
 		}
 		printf("user_input : %s\n", shell.user_input);

@@ -6,13 +6,13 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:25:20 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 12:18:33 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/02 15:26:44 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libgc.h"
 
-void	gc_register(void *ptr, t_gc gcl)
+void	gc_register(void *ptr, t_gc *gcl)
 {
 	t_gc_node	*new_node;
 
@@ -31,8 +31,8 @@ void	gc_register(void *ptr, t_gc gcl)
 	new_node->is_array = false;
 	new_node->fd = -1;
 	new_node->temp_file = NULL;
-	new_node->next = gcl.head;
-	gcl.head = new_node;
+	new_node->next = gcl->head;
+	gcl->head = new_node;
 }
 
 static int	ft_strlen(const char *str)
@@ -75,7 +75,7 @@ static char	*ft_strdup(const char *s)
 	return (new_str);
 }
 
-void	gc_temp_file_register(const char *filename, t_gc gcl)
+void	gc_temp_file_register(const char *filename, t_gc *gcl)
 {
 	t_gc_node	*new_node;
 
@@ -103,6 +103,6 @@ void	gc_temp_file_register(const char *filename, t_gc gcl)
 	}
 	gc_register(new_node->temp_file, gcl);
 	gc_lock(new_node->temp_file, gcl);
-	new_node->next = gcl.head;
-	gcl.head = new_node;
+	new_node->next = gcl->head;
+	gcl->head = new_node;
 }
