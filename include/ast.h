@@ -6,14 +6,14 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:45:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/08 10:41:44 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/08 18:58:32 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AST_H
 # define AST_H
 
-typedef enum
+typedef enum e_node_type
 {
 	NODE_COMMAND,
 	NODE_PIPE,
@@ -26,13 +26,14 @@ typedef enum
 	NODE_SEQUENCE,
 	NODE_BACKGROUND,
 	NODE_SUBSHELL
-} e_node_type;
+}			t_node_type;
 
 typedef struct s_cmd_node
 {
-    char **argv;              // Command and arguments
-    int argc;                 // Argument count
+	char	**argv;
+	int		argc;
 }				t_cmd_node;
+
 
 
 #endif /*AST_H*/
