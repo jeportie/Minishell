@@ -2166,3 +2166,638 @@ cmd1 & cmd2 && cmd3 &
 - **255**: Exit status out of range (exit statuses should be in the range 0-255).
 
 ---
+
+Let's proceed by:
+
+1. **Defining the AST Structures**: We'll define the structs that represent the AST nodes.
+2. **Implementing Parsing Functions**: We'll assume we have a parsing function that generates the AST from the input command.
+3. **Writing Test Functions**: We'll write test functions that parse input commands and assert that the resulting AST matches the expected structure.
+4. **Implementing Comparison Functions**: We'll create functions to compare the actual AST with the expected AST.
+5. **Adjusting Test Suites**: We'll update our test suites to use these new test functions.
+
+---
+
+## **1. Defining the AST Structures**
+
+First, we need to define the data structures that represent the AST nodes. The structure of the AST will depend on the syntax and features your shell supports.
+
+### **Example AST Node Structures**
+
+Let's define some basic structs for the AST nodes. We'll keep it simple for demonstration purposes.
+
+```c
+// Enum for different types of AST nodes
+typedef enum {
+    NODE_COMMAND,
+    NODE_PIPE,
+    NODE_REDIRECT_IN,
+    NODE_REDIRECT_OUT,
+    NODE_REDIRECT_APPEND,
+    NODE_AND,
+    NODE_OR,
+    NODE_SEQUENCE,
+    NODE_BACKGROUND,
+    NODE_SUBSHELL,
+    // Add more node types as needed
+} NodeType;
+
+// Struct for a command node
+typedef struct CommandNode {
+    char **argv;              // Command and arguments
+    int argc;                 // Argument count
+} CommandNode;
+
+// Struct for redirection nodes
+typedef struct RedirectNode {
+    NodeType type;            // NODE_REDIRECT_IN, NODE_REDIRECT_OUT, etc.
+    struct ASTNode *child;    // The command or node being redirected
+    char *filename;           // The file involved in the redirection
+} RedirectNode;
+
+// Struct for pipe nodes
+typedef struct PipeNode {
+    struct ASTNode *left;     // Left side of the pipe
+    struct ASTNode *right;    // Right side of the pipe
+} PipeNode;
+
+// Struct for logical operator nodes (AND, OR)
+typedef struct LogicalNode {
+    NodeType type;            // NODE_AND or NODE_OR
+    struct ASTNode *left;     // Left operand
+    struct ASTNode *right;    // Right operand
+} LogicalNode;
+
+// Struct for subshell nodes
+typedef struct SubshellNode {
+    struct ASTNode *child;    // The AST within the subshell
+} SubshellNode;
+
+// Union for different types of nodes
+typedef union {
+    CommandNode command;
+    RedirectNode redirect;
+    PipeNode pipe;
+    LogicalNode logical;
+    SubshellNode subshell;
+    // Add more node types as needed
+} ASTNodeData;
+
+// Main AST node struct
+typedef struct ASTNode {
+    NodeType type;
+    ASTNodeData data;
+} ASTNode;
+```
+
+This structure allows us to represent different types of commands and operators in our AST.
+
+---
+
+## **2. Implementing Parsing Functions**
+
+We need a parsing function that takes an input command line string and returns a pointer to an `ASTNode` representing the parsed command.
+
+Assuming we have:
+
+```c
+ASTNode *parse_command(const char *input);
+```
+
+This function parses the input string and returns the root of the AST.
+
+---
+
+## **3. Writing Test Functions**
+
+We'll write test functions that:
+
+- Call `parse_command()` with the input command line.
+- Construct an expected AST manually.
+- Compare the parsed AST with the expected AST using a comparison function.
+- Use assertions to verify that the ASTs match.
+
+### **Example: Testing Simple Command Execution**
+
+Let's write a test for parsing the command `ls`.
+
+#### **Test Function**
+
+```c
+START_TEST(test_parse_simple_command)
+{
+    // Input command
+    const char *input = "ls";
+
+    // Parse the command
+    ASTNode *parsed_ast = parse_command(input);
+
+    // Build the expected AST
+    ASTNode *expected_ast = malloc(sizeof(ASTNode));
+    expected_ast->type = NODE_COMMAND;
+    expected_ast->data.command.argc = 1;
+    expected_ast->data.command.argv = malloc(2 * sizeof(char *));
+    expected_ast->data.command.argv[0] = strdup("ls");
+    expected_ast->data.command.argv[1] = NULL;
+
+    // Compare the parsed AST with the expected AST
+    int result = compare_ast(parsed_ast, expected_ast);
+
+    // Assert that the ASTs match
+    ck_assert_int_eq(result, 1);
+
+    // Free allocated memory
+    free_ast(parsed_ast);
+    free_ast(expected_ast);
+}
+END_TEST
+```
+
+In this test:
+
+- We parse the input command using `parse_command()`.
+- We construct the expected AST manually.
+- We compare the two ASTs using `compare_ast()`.
+- We assert that `compare_ast()` returns `1`, indicating the ASTs match.
+- We free any allocated memory to prevent leaks.
+
+### **Implementing `compare_ast()` Function**
+
+We need a function to recursively compare two ASTs.
+
+```c
+int compare_ast(ASTNode *ast1, ASTNode *ast2)
+{
+    if (ast1 == NULL && ast2 == NULL)
+        return 1;
+    if (ast1 == NULL || ast2 == NULL)
+        return 0;
+    if (ast1->type != ast2->type)
+        return 0;
+
+    switch (ast1->type)
+    {
+        case NODE_COMMAND:
+            if (ast1->data.command.argc != ast2->data.command.argc)
+                return 0;
+            for (int i = 0; i < ast1->data.command.argc; i++)
+            {
+                if (strcmp(ast1->data.command.argv[i], ast2->data.command.argv[i]) != 0)
+                    return 0;
+            }
+            return 1;
+
+        case NODE_REDIRECT_IN:
+        case NODE_REDIRECT_OUT:
+        case NODE_REDIRECT_APPEND:
+            if (strcmp(ast1->data.redirect.filename, ast2->data.redirect.filename) != 0)
+                return 0;
+            return compare_ast(ast1->data.redirect.child, ast2->data.redirect.child);
+
+        case NODE_PIPE:
+            return compare_ast(ast1->data.pipe.left, ast2->data.pipe.left) &&
+                   compare_ast(ast1->data.pipe.right, ast2->data.pipe.right);
+
+        case NODE_AND:
+        case NODE_OR:
+            return compare_ast(ast1->data.logical.left, ast2->data.logical.left) &&
+                   compare_ast(ast1->data.logical.right, ast2->data.logical.right);
+
+        case NODE_SUBSHELL:
+            return compare_ast(ast1->data.subshell.child, ast2->data.subshell.child);
+
+        // Add cases for other node types as needed
+
+        default:
+            return 0;
+    }
+}
+```
+
+This function recursively compares the two ASTs and returns `1` if they are identical, `0` otherwise.
+
+### **Implementing `free_ast()` Function**
+
+We also need a function to free the allocated memory for an AST.
+
+```c
+void free_ast(ASTNode *ast)
+{
+    if (ast == NULL)
+        return;
+
+    switch (ast->type)
+    {
+        case NODE_COMMAND:
+            for (int i = 0; i < ast->data.command.argc; i++)
+            {
+                free(ast->data.command.argv[i]);
+            }
+            free(ast->data.command.argv);
+            break;
+
+        case NODE_REDIRECT_IN:
+        case NODE_REDIRECT_OUT:
+        case NODE_REDIRECT_APPEND:
+            free(ast->data.redirect.filename);
+            free_ast(ast->data.redirect.child);
+            break;
+
+        case NODE_PIPE:
+            free_ast(ast->data.pipe.left);
+            free_ast(ast->data.pipe.right);
+            break;
+
+        case NODE_AND:
+        case NODE_OR:
+            free_ast(ast->data.logical.left);
+            free_ast(ast->data.logical.right);
+            break;
+
+        case NODE_SUBSHELL:
+            free_ast(ast->data.subshell.child);
+            break;
+
+        // Add cases for other node types as needed
+
+        default:
+            break;
+    }
+
+    free(ast);
+}
+```
+
+---
+
+## **4. Implementing Additional Test Functions**
+
+### **Test B3: Append Output Redirection**
+
+#### **Test Function**
+
+```c
+START_TEST(test_parse_append_output_redirection)
+{
+    // Input command
+    const char *input = "echo \"New Entry\" >> log.txt";
+
+    // Parse the command
+    ASTNode *parsed_ast = parse_command(input);
+
+    // Build the expected AST
+    // Command node for 'echo "New Entry"'
+    ASTNode *command_node = malloc(sizeof(ASTNode));
+    command_node->type = NODE_COMMAND;
+    command_node->data.command.argc = 2;
+    command_node->data.command.argv = malloc(3 * sizeof(char *));
+    command_node->data.command.argv[0] = strdup("echo");
+    command_node->data.command.argv[1] = strdup("New Entry");
+    command_node->data.command.argv[2] = NULL;
+
+    // Redirect node for '>> log.txt'
+    ASTNode *redirect_node = malloc(sizeof(ASTNode));
+    redirect_node->type = NODE_REDIRECT_APPEND;
+    redirect_node->data.redirect.child = command_node;
+    redirect_node->data.redirect.filename = strdup("log.txt");
+
+    // The expected AST is the redirect node
+    ASTNode *expected_ast = redirect_node;
+
+    // Compare the parsed AST with the expected AST
+    int result = compare_ast(parsed_ast, expected_ast);
+
+    // Assert that the ASTs match
+    ck_assert_int_eq(result, 1);
+
+    // Free allocated memory
+    free_ast(parsed_ast);
+    free_ast(expected_ast);
+}
+END_TEST
+```
+
+### **Test C4: Pipe with Input Redirection**
+
+#### **Test Function**
+
+```c
+START_TEST(test_parse_pipe_with_input_redirection)
+{
+    // Input command
+    const char *input = "grep \"search\" < input.txt | sort";
+
+    // Parse the command
+    ASTNode *parsed_ast = parse_command(input);
+
+    // Build the expected AST
+    // Command node for 'grep "search"'
+    ASTNode *grep_command = malloc(sizeof(ASTNode));
+    grep_command->type = NODE_COMMAND;
+    grep_command->data.command.argc = 2;
+    grep_command->data.command.argv = malloc(3 * sizeof(char *));
+    grep_command->data.command.argv[0] = strdup("grep");
+    grep_command->data.command.argv[1] = strdup("search");
+    grep_command->data.command.argv[2] = NULL;
+
+    // Redirect node for '< input.txt'
+    ASTNode *redirect_node = malloc(sizeof(ASTNode));
+    redirect_node->type = NODE_REDIRECT_IN;
+    redirect_node->data.redirect.child = grep_command;
+    redirect_node->data.redirect.filename = strdup("input.txt");
+
+    // Command node for 'sort'
+    ASTNode *sort_command = malloc(sizeof(ASTNode));
+    sort_command->type = NODE_COMMAND;
+    sort_command->data.command.argc = 1;
+    sort_command->data.command.argv = malloc(2 * sizeof(char *));
+    sort_command->data.command.argv[0] = strdup("sort");
+    sort_command->data.command.argv[1] = NULL;
+
+    // Pipe node connecting the two commands
+    ASTNode *pipe_node = malloc(sizeof(ASTNode));
+    pipe_node->type = NODE_PIPE;
+    pipe_node->data.pipe.left = redirect_node;
+    pipe_node->data.pipe.right = sort_command;
+
+    // The expected AST is the pipe node
+    ASTNode *expected_ast = pipe_node;
+
+    // Compare the parsed AST with the expected AST
+    int result = compare_ast(parsed_ast, expected_ast);
+
+    // Assert that the ASTs match
+    ck_assert_int_eq(result, 1);
+
+    // Free allocated memory
+    free_ast(parsed_ast);
+    free_ast(expected_ast);
+}
+END_TEST
+```
+
+### **Error A1: Command Not Found**
+
+For error cases, we need to ensure that the parser correctly identifies the command and that the execution phase handles the error.
+
+However, since we're focusing on the AST, the parser should produce an AST even if the command doesn't exist. The error would occur during execution.
+
+Therefore, the AST for `nonexistentcommand` would be:
+
+- A command node with the command name `nonexistentcommand`.
+
+#### **Test Function**
+
+```c
+START_TEST(test_parse_command_not_found)
+{
+    // Input command
+    const char *input = "nonexistentcommand";
+
+    // Parse the command
+    ASTNode *parsed_ast = parse_command(input);
+
+    // Build the expected AST
+    ASTNode *expected_ast = malloc(sizeof(ASTNode));
+    expected_ast->type = NODE_COMMAND;
+    expected_ast->data.command.argc = 1;
+    expected_ast->data.command.argv = malloc(2 * sizeof(char *));
+    expected_ast->data.command.argv[0] = strdup("nonexistentcommand");
+    expected_ast->data.command.argv[1] = NULL;
+
+    // Compare the parsed AST with the expected AST
+    int result = compare_ast(parsed_ast, expected_ast);
+
+    // Assert that the ASTs match
+    ck_assert_int_eq(result, 1);
+
+    // Free allocated memory
+    free_ast(parsed_ast);
+    free_ast(expected_ast);
+}
+END_TEST
+```
+
+---
+
+## **5. Updating Test Suites**
+
+We need to update our test suites to include the new test functions.
+
+### **Simple Commands Suite**
+
+```c
+Suite *simple_commands_suite(void)
+{
+    Suite *s;
+    TCase *tc_core;
+
+    s = suite_create("SimpleCommands");
+    tc_core = tcase_create("Core");
+
+    tcase_add_test(tc_core, test_parse_simple_command);
+    tcase_add_test(tc_core, test_parse_command_not_found); // Add this test here
+
+    suite_add_tcase(s, tc_core);
+    return s;
+}
+```
+
+### **Redirections Suite**
+
+```c
+Suite *redirections_suite(void)
+{
+    Suite *s;
+    TCase *tc_core;
+
+    s = suite_create("Redirections");
+    tc_core = tcase_create("Core");
+
+    tcase_add_test(tc_core, test_parse_append_output_redirection);
+
+    suite_add_tcase(s, tc_core);
+    return s;
+}
+```
+
+### **Pipes Suite**
+
+```c
+Suite *pipes_suite(void)
+{
+    Suite *s;
+    TCase *tc_core;
+
+    s = suite_create("Pipes");
+    tc_core = tcase_create("Core");
+
+    tcase_add_test(tc_core, test_parse_pipe_with_input_redirection);
+
+    suite_add_tcase(s, tc_core);
+    return s;
+}
+```
+
+---
+
+## **6. Compiling and Running the Tests**
+
+Compile your test program, ensuring that you link any necessary libraries.
+
+```bash
+gcc -o test_parser test_parser.c -lcheck -lpthread -lrt -lm
+```
+
+Run the tests:
+
+```bash
+./test_parser
+```
+
+Check the output to see if all tests pass.
+
+---
+
+## **7. Notes on the Implementation**
+
+- **parse_command() Function**: This function needs to be implemented to parse the input string and build the AST accordingly.
+
+- **Memory Management**: Be careful with memory allocation and deallocation to avoid memory leaks. Always free any allocated memory after the test.
+
+- **Complex Commands**: For more complex commands, the AST will be deeper and involve more node types. The `compare_ast()` function needs to handle all the node types and compare them appropriately.
+
+- **Extensibility**: The AST structures and comparison functions should be designed to handle all the features your shell supports, including redirections, pipelines, logical operators, subshells, etc.
+
+---
+
+## **Helper Functions**
+
+Implement helper functions for creating AST nodes to make test code cleaner.
+
+### **Creating Command Nodes**
+
+```c
+ASTNode *create_command_node(int argc, char **argv)
+{
+    ASTNode *node = malloc(sizeof(ASTNode));
+    node->type = NODE_COMMAND;
+    node->data.command.argc = argc;
+    node->data.command.argv = malloc((argc + 1) * sizeof(char *));
+    for (int i = 0; i < argc; i++)
+    {
+        node->data.command.argv[i] = strdup(argv[i]);
+    }
+    node->data.command.argv[argc] = NULL;
+    return node;
+}
+```
+
+### **Creating Redirect Nodes**
+
+```c
+ASTNode *create_redirect_node(NodeType type, ASTNode *child, const char *filename)
+{
+    ASTNode *node = malloc(sizeof(ASTNode));
+    node->type = type;
+    node->data.redirect.child = child;
+    node->data.redirect.filename = strdup(filename);
+    return node;
+}
+```
+
+### **Creating Pipe Nodes**
+
+```c
+ASTNode *create_pipe_node(ASTNode *left, ASTNode *right)
+{
+    ASTNode *node = malloc(sizeof(ASTNode));
+    node->type = NODE_PIPE;
+    node->data.pipe.left = left;
+    node->data.pipe.right = right;
+    return node;
+}
+```
+
+Using these helper functions can simplify your test code.
+
+---
+
+## **Rewriting Test Function with Helper Functions**
+
+### **Test C4: Pipe with Input Redirection**
+
+```c
+START_TEST(test_parse_pipe_with_input_redirection)
+{
+    // Input command
+    const char *input = "grep \"search\" < input.txt | sort";
+
+    // Parse the command
+    ASTNode *parsed_ast = parse_command(input);
+
+    // Build the expected AST using helper functions
+    // Arguments for 'grep "search"'
+    char *grep_args[] = {"grep", "search"};
+    ASTNode *grep_command = create_command_node(2, grep_args);
+
+    // Redirect node for '< input.txt'
+    ASTNode *redirect_node = create_redirect_node(NODE_REDIRECT_IN, grep_command, "input.txt");
+
+    // Arguments for 'sort'
+    char *sort_args[] = {"sort"};
+    ASTNode *sort_command = create_command_node(1, sort_args);
+
+    // Pipe node connecting the two commands
+    ASTNode *expected_ast = create_pipe_node(redirect_node, sort_command);
+
+    // Compare the parsed AST with the expected AST
+    int result = compare_ast(parsed_ast, expected_ast);
+
+    // Assert that the ASTs match
+    ck_assert_int_eq(result, 1);
+
+    // Free allocated memory
+    free_ast(parsed_ast);
+    free_ast(expected_ast);
+}
+END_TEST
+```
+
+---
+
+## **Conclusion**
+
+By defining the AST structures and using them in our test cases, we can accurately test the parser's output. This approach ensures that:
+
+- **Parser Correctness**: We verify that the parser correctly interprets input commands and constructs the appropriate AST.
+
+- **Modular Testing**: We can test the parsing phase independently from the execution phase.
+
+- **Extensibility**: As your shell supports more features, you can extend the AST structures and the test functions accordingly.
+
+---
+
+## **Next Steps**
+
+- **Implement the Parser**: Ensure that your `parse_command()` function is implemented and can handle all the test cases.
+
+- **Extend AST Structures**: If your shell supports more features (e.g., background execution, logical operators), extend the AST structs accordingly.
+
+- **Write More Tests**: Continue writing test functions for other test cases, including complex commands and error cases.
+
+- **Optimize Helper Functions**: Enhance helper functions for creating AST nodes to handle all possible node types and reduce code duplication.
+
+- **Memory Management**: Ensure that all allocated memory is properly freed in your tests to prevent memory leaks.
+
+---
+
+## **Additional Tips**
+
+- **Logging and Debugging**: Consider adding functions to print the AST in a readable format. This can help with debugging tests when they fail.
+
+- **Test Failure Diagnosis**: When a test fails, examine the differences between the expected and actual ASTs to identify parsing errors.
+
+- **Error Handling in Parser**: Decide how your parser handles syntax errors. It should return an error code or a special AST node indicating the error.
+
+- **Integration with Execution**: Once the parser is thoroughly tested, you can integrate it with the execution phase and write tests that cover the full command execution pipeline.
+
