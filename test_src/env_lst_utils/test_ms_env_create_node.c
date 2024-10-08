@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:28:21 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 14:43:08 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/08 07:49:40 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ START_TEST(test_create_node_basic)
     ck_assert_msg(strcmp(node->var, "PATH") == 0, "Expected var: PATH, but got: %s", node->var);
     ck_assert_msg(strcmp(node->value, "/usr/bin") == 0, "Expected value: /usr/bin, but got: %s", node->value);
 
-    gc_cleanup(*shell.gcl); // Clean up your garbage collector
+    gc_cleanup(shell.gcl); // Clean up your garbage collector
 }
 END_TEST
 
@@ -39,7 +39,7 @@ START_TEST(test_create_node_no_value)
     ck_assert_msg(strcmp(node->var, "EMPTY") == 0, "Expected var: EMPTY, but got: %s", node->var);
     ck_assert_msg(strcmp(node->value, "") == 0, "Expected value: (empty string), but got: %s", node->value);
 
-    gc_cleanup(*shell.gcl); // Clean up your garbage collector
+    gc_cleanup(shell.gcl); // Clean up your garbage collector
 }
 END_TEST
 
@@ -54,7 +54,7 @@ START_TEST(test_create_node_no_equals)
     ck_assert_msg(strcmp(node->var, "NOEQUALS") == 0, "Expected var: NOEQUALS, but got: %s", node->var);
     ck_assert_msg(node->value == NULL, "Expected value: NULL, but got: %s", node->value ? node->value : "(null)");
 
-    gc_cleanup(*shell.gcl); // Clean up your garbage collector
+    gc_cleanup(shell.gcl); // Clean up your garbage collector
 }
 END_TEST
 
