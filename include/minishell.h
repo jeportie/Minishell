@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 14:06:43 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:13:33 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,26 @@ t_env_data	ms_init_env(char **envp, t_shell *shell);
 /* env_lst_utils */
 t_env  		*ms_env_create_node(t_shell *shell, const char *env_line);
 void		ms_env_add_back(t_env **env, t_env *new_node);
+
+typedef enum e_token_type
+{
+	TOKEN_WORD,
+	TOKEN_OPERATOR,
+	TOKEN_REDIRECTION,
+	TOKEN_PIPE,
+	TOKEN_AND,
+	TOKEN_OR,
+	TOKEN_SEQUENCE,
+	TOEKN_BACKGROUND,
+	TOKEN_SUBSHELL_START,
+	TOKEN_SUBSHELL_STOP,
+}			t_token_type;
+
+typedef struct s_token
+{
+	t_token_type	type;
+	char			*token;
+	struct s_token	*next;
+}			t_token;
 
 #endif /*MINISHELL_H*/
