@@ -6,14 +6,14 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:01:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/09 21:43:37 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/10 12:42:32 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKENIZE_H
 # define TOKENIZE_H
 
-# include "../include/minishell.h"
+# include "minishell.h"
 
 typedef enum e_token_type
 {
