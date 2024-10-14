@@ -1,8 +1,0 @@
-/root/projects/minishell/test_src/CMakeFiles/test_ms_env_add_back.dir
-/root/projects/minishell/test_src/CMakeFiles/test_ms_env_create_node.dir
-/root/projects/minishell/test_src/CMakeFiles/test_ms_get_user_input.dir
-/root/projects/minishell/test_src/CMakeFiles/test_ms_init_env.dir
-/root/projects/minishell/test_src/CMakeFiles/test_ms_init_shell.dir
-/root/projects/minishell/test_src/CMakeFiles/test.dir
-/root/projects/minishell/test_src/CMakeFiles/edit_cache.dir
-/root/projects/minishell/test_src/CMakeFiles/rebuild_cache.dir
