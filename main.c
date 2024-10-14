@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/02 15:31:02 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/14 15:52:00 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@
 
 #include "include/minishell.h"
 
+static void	ts_aff_env(t_env_data *env_data)
+{
+	t_env	*current;
+
+	current = env_data->env;
+	printf("fantom_path = %s\n\n", env_data->path);
+	while (current)
+	{
+		printf("minishell = %s = %s\n", current->var, current->value);
+		current = current->next;
+	}
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_shell	shell;
@@ -32,6 +45,8 @@ int	main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		ms_get_user_input(&shell);
+		if (!ft_strncmp(shell.user_input, "env", 4))
+			ts_aff_env(shell.env_data);
 		if (!shell.user_input)
 		{
 			rl_clear_history();
