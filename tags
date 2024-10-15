@@ -1,0 +1,608 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	583;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	586;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	589;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	592;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	595;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	599;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	601;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	603;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	607;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	610;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	613;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	618;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	621;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	624;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	629;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	632;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	635;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	638;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	641;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	644;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	647;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	650;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	653;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	656;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	659;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	664;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	667;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	670;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	673;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	676;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	679;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	684;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	687;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	690;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	693;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	696;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	700;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	703;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	708;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	711;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	714;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	717;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	720;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	723;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	726;"	d	file:
+ARCHITECTURE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	730;"	d	file:
+BLUE	Makefile	/^BLUE    = \\033[34m$/;"	m
+BOLD	Makefile	/^BOLD    = \\033[1m$/;"	m
+BUFFER_SIZE	lib/libft/include/libft.h	27;"	d
+CC	Makefile	/^CC = 		cc$/;"	m
+CC	Makefile	/^default: CC = cc$/;"	m
+CC	Makefile	/^san: CC = clang$/;"	m
+CC	Makefile	/^val: CC = cc$/;"	m
+CC	lib/libft/Makefile	/^CC = gcc$/;"	m
+CC	lib/libgc/Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = 	-Wall -Wextra -Werror$/;"	m
+CFLAGS	lib/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	lib/libgc/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CMAKE_BINARY_DIR	test_src/Makefile	/^CMAKE_BINARY_DIR = \/root\/projects\/Minishell\/test_src$/;"	m
+CMAKE_COMMAND	test_src/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_SOURCE_DIR	test_src/Makefile	/^CMAKE_SOURCE_DIR = \/root\/projects\/Minishell\/test_src$/;"	m
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	109;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	117;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	123;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	129;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	138;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	147;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	161;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	168;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	175;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	182;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	190;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	198;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	205;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	212;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	220;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	228;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	236;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	241;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	248;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	256;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	25;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	272;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	281;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	287;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	293;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	296;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	299;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	302;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	317;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	332;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	339;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	353;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	369;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	379;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	397;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	407;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	421;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	438;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	441;"	d	file:
+COMPILER_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	71;"	d	file:
+COMPILER_VERSION	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	258;"	d	file:
+COMPILER_VERSION_INTERNAL	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	265;"	d	file:
+COMPILER_VERSION_INTERNAL	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	267;"	d	file:
+COMPILER_VERSION_INTERNAL	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	284;"	d	file:
+COMPILER_VERSION_INTERNAL	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	336;"	d	file:
+COMPILER_VERSION_INTERNAL	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	412;"	d	file:
+COMPILER_VERSION_INTERNAL	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	417;"	d	file:
+COMPILER_VERSION_INTERNAL_STR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	232;"	d	file:
+COMPILER_VERSION_INTERNAL_STR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	252;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	110;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	118;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	125;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	131;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	140;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	150;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	155;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	163;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	170;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	177;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	183;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	191;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	200;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	207;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	213;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	221;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	229;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	237;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	243;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	249;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	260;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	275;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	282;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	288;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	305;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	310;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	321;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	333;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	343;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	354;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	35;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	370;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	381;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	400;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	409;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	414;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	423;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	428;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	43;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	83;"	d	file:
+COMPILER_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	87;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	111;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	119;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	126;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	132;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	141;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	151;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	156;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	164;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	171;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	178;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	184;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	192;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	201;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	208;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	214;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	222;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	230;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	238;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	244;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	250;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	261;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	276;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	283;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	289;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	306;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	311;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	322;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	334;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	344;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	355;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	36;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	372;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	382;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	401;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	410;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	415;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	424;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	429;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	44;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	84;"	d	file:
+COMPILER_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	88;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	113;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	120;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	134;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	143;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	152;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	157;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	165;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	172;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	179;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	185;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	193;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	202;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	209;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	216;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	224;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	231;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	245;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	251;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	262;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	277;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	290;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	307;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	312;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	323;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	335;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	345;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	357;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	375;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	386;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	389;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	38;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	402;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	40;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	411;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	416;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	425;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	430;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	47;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	85;"	d	file:
+COMPILER_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	89;"	d	file:
+COMPILER_VERSION_TWEAK	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	186;"	d	file:
+COMPILER_VERSION_TWEAK	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	194;"	d	file:
+COMPILER_VERSION_TWEAK	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	329;"	d	file:
+COMPILER_VERSION_TWEAK	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	393;"	d	file:
+COMPILER_VERSION_TWEAK	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	403;"	d	file:
+COMPILER_VERSION_TWEAK	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	51;"	d	file:
+C_VERSION	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	817;"	d	file:
+C_VERSION	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	819;"	d	file:
+C_VERSION	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	822;"	d	file:
+C_VERSION	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	824;"	d	file:
+C_VERSION	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	826;"	d	file:
+C_VERSION	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	828;"	d	file:
+C_VERSION	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	830;"	d	file:
+DEC	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	734;"	d	file:
+DEPFLAGS	Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
+DEPS	Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
+DirectoryOfThisScript	ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+EQUALS	test_src/Makefile	/^EQUALS = =$/;"	m
+ERNOFORMAT	lib/libft/include/libft.h	/^	ERNOFORMAT,$/;"	e	enum:e_error
+ERNOMEM	lib/libft/include/libft.h	/^	ERNOMEM,$/;"	e	enum:e_error
+ERNOWRITE	lib/libft/include/libft.h	/^	ERNOWRITE,$/;"	e	enum:e_error
+ERROR	lib/libft/include/libft.h	30;"	d
+FlagsForFile	ycm_extra_conf.py	/^def FlagsForFile(filename):$/;"	f
+GREEN	Makefile	/^GREEN   = \\033[32m$/;"	m
+HELG	Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
+HEX	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	745;"	d	file:
+ID_VOID_MAIN	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
+INCLUDES	Makefile	/^INCLUDES = -I.\/include -I.\/lib\/libgc\/include -I.\/lib\/libft\/include$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS = -lreadline -L.\/lib\/libgc -lgc -L.\/lib\/libft -lft$/;"	m
+LIBFT_H	lib/libft/include/libft.h	14;"	d
+LIBGC_H	lib/libgc/include/libgc.h	14;"	d
+MINISHELL_H	include/minishell.h	14;"	d
+MakeRelativePathsAbsolute	ycm_extra_conf.py	/^def MakeRelativePathsAbsolute(flags, working_directory):$/;"	f
+NAME	Makefile	/^NAME = Minishell$/;"	m
+NAME	lib/libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	lib/libgc/Makefile	/^NAME = libgc.a$/;"	m
+NOERR	lib/libft/include/libft.h	/^	NOERR,$/;"	e	enum:e_error
+OBJ	Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
+OBJ	lib/libft/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OBJ	lib/libgc/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OBJ_DIR	Makefile	/^OBJ_DIR = 	obj$/;"	m
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	466;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	469;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	472;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	475;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	478;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	481;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	484;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	487;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	490;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	493;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	496;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	499;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	502;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	505;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	508;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	511;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	514;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	517;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	520;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	523;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	526;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	529;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	532;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	535;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	538;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	542;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	545;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	548;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	551;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	554;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	557;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	562;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	565;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	569;"	d	file:
+PLATFORM_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	572;"	d	file:
+RED	Makefile	/^RED     = \\033[31m$/;"	m
+RESET	Makefile	/^RESET   = \\033[0m$/;"	m
+RM	test_src/Makefile	/^RM = \/usr\/bin\/cmake -E rm -f$/;"	m
+SANITIZE	Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
+SCRIPT_URL	Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeromeDev94\/make_interface.git$/;"	m
+SHELL	test_src/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SIMULATE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	27;"	d	file:
+SIMULATE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	30;"	d	file:
+SIMULATE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	319;"	d	file:
+SIMULATE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	341;"	d	file:
+SIMULATE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	360;"	d	file:
+SIMULATE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	73;"	d	file:
+SIMULATE_ID	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	76;"	d	file:
+SIMULATE_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	326;"	d	file:
+SIMULATE_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	348;"	d	file:
+SIMULATE_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	361;"	d	file:
+SIMULATE_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	55;"	d	file:
+SIMULATE_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	59;"	d	file:
+SIMULATE_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	61;"	d	file:
+SIMULATE_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	93;"	d	file:
+SIMULATE_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	97;"	d	file:
+SIMULATE_VERSION_MAJOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	99;"	d	file:
+SIMULATE_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	102;"	d	file:
+SIMULATE_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	327;"	d	file:
+SIMULATE_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	349;"	d	file:
+SIMULATE_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	362;"	d	file:
+SIMULATE_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	56;"	d	file:
+SIMULATE_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	64;"	d	file:
+SIMULATE_VERSION_MINOR	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	94;"	d	file:
+SIMULATE_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	105;"	d	file:
+SIMULATE_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	364;"	d	file:
+SIMULATE_VERSION_PATCH	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	67;"	d	file:
+SRC	Makefile	/^SRC = \\$/;"	m
+SRC	lib/libft/Makefile	/^SRC = \\$/;"	m
+SRC	lib/libgc/Makefile	/^SRC = src\/gc_cleanup.c \\$/;"	m
+SRC_DIR	Makefile	/^SRC_DIR = 	src$/;"	m
+START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_alpha_lowercase)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_alpha_uppercase)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_boundary_after_alpha_upper)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_boundary_after_digit)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_boundary_before_alpha_upper)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_boundary_before_digit)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_digit)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_non_alnum)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_null_char)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_space)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalpha.c	/^START_TEST(test_ft_isalpha_edge_cases)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalpha.c	/^START_TEST(test_ft_isalpha_lowercase)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalpha.c	/^START_TEST(test_ft_isalpha_non_alpha)$/;"	f
+START_TEST	lib/libft/test_src/bool/test_ft_isalpha.c	/^START_TEST(test_ft_isalpha_uppercase)$/;"	f
+START_TEST	lib/libft/test_src/memory/test_ft_memset.c	/^START_TEST(test_entire_buffer)$/;"	f
+START_TEST	lib/libft/test_src/memory/test_ft_memset.c	/^START_TEST(test_large_size)$/;"	f
+START_TEST	lib/libft/test_src/memory/test_ft_memset.c	/^START_TEST(test_normal_behavior)$/;"	f
+START_TEST	lib/libft/test_src/memory/test_ft_memset.c	/^START_TEST(test_single_byte)$/;"	f
+START_TEST	lib/libft/test_src/memory/test_ft_memset.c	/^START_TEST(test_zero_length)$/;"	f
+START_TEST	test_src/env_lst_utils/test_ms_env_add_back.c	/^START_TEST(test_add_null_node) {$/;"	f
+START_TEST	test_src/env_lst_utils/test_ms_env_add_back.c	/^START_TEST(test_add_to_empty_list) {$/;"	f
+START_TEST	test_src/env_lst_utils/test_ms_env_add_back.c	/^START_TEST(test_add_to_non_empty_list) {$/;"	f
+START_TEST	test_src/env_lst_utils/test_ms_env_add_back.c	/^START_TEST(test_add_with_null_env) {$/;"	f
+START_TEST	test_src/env_lst_utils/test_ms_env_create_node.c	/^START_TEST(test_create_node_basic)$/;"	f
+START_TEST	test_src/env_lst_utils/test_ms_env_create_node.c	/^START_TEST(test_create_node_no_equals)$/;"	f
+START_TEST	test_src/env_lst_utils/test_ms_env_create_node.c	/^START_TEST(test_create_node_no_value)$/;"	f
+START_TEST	test_src/init_shell/test_ms_get_user_input.c	/^START_TEST(test_ms_get_user_input_empty)$/;"	f
+START_TEST	test_src/init_shell/test_ms_get_user_input.c	/^START_TEST(test_ms_get_user_input_normal)$/;"	f
+START_TEST	test_src/init_shell/test_ms_get_user_input.c	/^START_TEST(test_ms_get_user_input_special_chars)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_env.c	/^START_TEST(test_ms_init_env_with_envp)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_env.c	/^START_TEST(test_ms_init_env_without_envp)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_basic)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_argc)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_empty_envp)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_envp)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_large_argc)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_long_envp)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_multiple_envp)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_null_envp)$/;"	f
+START_TEST	test_src/init_shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_special_chars_in_envp)$/;"	f
+STRINGIFY	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	462;"	d	file:
+STRINGIFY_HELPER	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	461;"	d	file:
+TOTAL_STEPS	Makefile	/^TOTAL_STEPS := $(words $(OBJ))$/;"	m
+VALG	Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
+VERBOSE	Makefile	/^VERBOSE ?= @$/;"	m
+VERBOSE	Makefile	/^classic: VERBOSE =$/;"	m
+VFLAGS	Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
+YELLOW	Makefile	/^YELLOW  = \\033[33m$/;"	m
+__has_include	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	17;"	d	file:
+buf_fd	lib/libft/include/libft.h	/^	int		buf_fd;$/;"	m	struct:s_buffer
+buf_last	lib/libft/include/libft.h	/^	char	buf_last;$/;"	m	struct:s_buffer
+buffer	lib/libft/include/libft.h	/^	char	*buffer;$/;"	m	struct:s_buffer
+compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+const	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
+create_env_node	test_src/env_lst_utils/test_ms_env_add_back.c	/^t_env *create_env_node(const char *var, const char *value) {$/;"	f
+e_error	lib/libft/include/libft.h	/^typedef enum e_error$/;"	g
+env	include/minishell.h	/^	t_env	*env;$/;"	m	struct:s_env_data
+env_data	include/minishell.h	/^	t_env_data	*env_data;$/;"	m	struct:s_shell
+env_exist	include/minishell.h	/^	bool	env_exist;$/;"	m	struct:s_env_data
+env_suite	test_src/env_lst_utils/test_ms_env_create_node.c	/^Suite *env_suite(void)$/;"	f
+error	lib/libft/include/libft.h	/^	int			error;$/;"	m	struct:s_format_spec
+error	lib/libft/include/libft.h	/^	int		error;$/;"	m	struct:s_buffer
+error_code	include/minishell.h	/^	int			error_code;$/;"	m	struct:s_shell
+fd	lib/libgc/include/libgc.h	/^	int					fd;$/;"	m	struct:s_gc_node
+flag_hash	lib/libft/include/libft.h	/^	int			flag_hash;$/;"	m	struct:s_format_spec
+flag_minus	lib/libft/include/libft.h	/^	int			flag_minus;$/;"	m	struct:s_format_spec
+flag_plus	lib/libft/include/libft.h	/^	int			flag_plus;$/;"	m	struct:s_format_spec
+flag_space	lib/libft/include/libft.h	/^	int			flag_space;$/;"	m	struct:s_format_spec
+flag_zero	lib/libft/include/libft.h	/^	int			flag_zero;$/;"	m	struct:s_format_spec
+flags	ycm_extra_conf.py	/^flags = [$/;"	v
+free_env_list	test_src/env_lst_utils/test_ms_env_add_back.c	/^void free_env_list(t_env *env) {$/;"	f
+ft_apply_precision	lib/libft/src/printf/ft_apply_precision.c	/^void	ft_apply_precision(t_format_spec spec, char **formatted_content)$/;"	f
+ft_apply_width	lib/libft/src/printf/ft_apply_width.c	/^void	ft_apply_width(t_format_spec spec, t_buffer *buf_info, int content_len)$/;"	f
+ft_atoi	lib/libft/src/conversion/ft_atoi.c	/^int	ft_atoi(const char *nptr)$/;"	f
+ft_atol	lib/libft/src/conversion/ft_atol.c	/^long	ft_atol(const char *nptr)$/;"	f
+ft_buffer_add	lib/libft/src/printf/ft_buffer_add.c	/^void	ft_buffer_add(t_buffer *buf_info, char c)$/;"	f
+ft_buffer_flush	lib/libft/src/printf/ft_buffer_flush.c	/^int	ft_buffer_flush(t_buffer *buf_info)$/;"	f
+ft_bzero	lib/libft/src/memory/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_calloc	lib/libft/src/memory/ft_calloc.c	/^void	*ft_calloc(size_t nmemb, size_t size)$/;"	f
+ft_check_fd	lib/libft/src/utils/ft_check_fd.c	/^void	ft_check_fd(int fd, const char *error_message)$/;"	f
+ft_check_flush	lib/libft/src/printf/ft_printf.c	/^void	ft_check_flush(t_buffer *buf_info)$/;"	f
+ft_check_format	lib/libft/src/printf/ft_check_format.c	/^int	ft_check_format(t_format_spec *spec)$/;"	f
+ft_check_malloc	lib/libft/src/utils/ft_check_malloc.c	/^void	ft_check_malloc(void *ptr, const char *error_message)$/;"	f
+ft_check_pid	lib/libft/src/utils/ft_check_pid.c	/^void	ft_check_pid(int pid)$/;"	f
+ft_concat_path	lib/libft/src/utils/ft_find_cmd_path.c	/^static char	*ft_concat_path(char **paths, const char *cmd)$/;"	f	file:
+ft_convert_spec	lib/libft/src/printf/ft_printf.c	/^static int	ft_convert_spec(t_format_spec spec, va_list args,$/;"	f	file:
+ft_count_words	lib/libft/src/string/ft_split.c	/^size_t	ft_count_words(char *str, char c)$/;"	f
+ft_extract	lib/libft/src/string/ft_split.c	/^static char	*ft_extract(const char **s, char c, char **tab, size_t i)$/;"	f	file:
+ft_fill_base	lib/libft/src/conversion/ft_ulltoa_base.c	/^static char	*ft_fill_base(unsigned long long nbr, int size, char *base,$/;"	f	file:
+ft_fill_base	lib/libft/src/conversion/ft_utoa_base.c	/^static char	*ft_fill_base(unsigned int nbr, int size, char *base, char *res)$/;"	f	file:
+ft_find_cmd_path	lib/libft/src/utils/ft_find_cmd_path.c	/^char	*ft_find_cmd_path(char **envp, const char *cmd)$/;"	f
+ft_find_end	lib/libft/src/printf/ft_parse_format.c	/^static char	*ft_find_end(const char *start, t_format_spec *spec)$/;"	f	file:
+ft_free_memory	lib/libft/src/string/ft_split.c	/^static void	ft_free_memory(char **tab, size_t i)$/;"	f	file:
+ft_getenv	lib/libft/src/utils/ft_getenv.c	/^char	*ft_getenv(char **envp, const char *name)$/;"	f
+ft_handle_char	lib/libft/src/printf/ft_handle_char.c	/^void	ft_handle_char(t_format_spec spec, va_list args, t_buffer *buf_info)$/;"	f
+ft_handle_hash_flag	lib/libft/src/printf/ft_handle_hash_flag.c	/^void	ft_handle_hash_flag(t_format_spec spec, int content, t_buffer *buf_info)$/;"	f
+ft_handle_hexadecimal	lib/libft/src/printf/ft_handle_hexadecimal.c	/^int	ft_handle_hexadecimal(t_format_spec spec, va_list args, t_buffer *buf_info)$/;"	f
+ft_handle_int	lib/libft/src/printf/ft_handle_int.c	/^int	ft_handle_int(t_format_spec spec, va_list args, t_buffer *buf_info)$/;"	f
+ft_handle_plus_flag	lib/libft/src/printf/ft_handle_plus_flag.c	/^void	ft_handle_plus_flag(t_format_spec spec, int content, t_buffer *buf_info)$/;"	f
+ft_handle_pointer	lib/libft/src/printf/ft_handle_pointer.c	/^int	ft_handle_pointer(t_format_spec spec, va_list args, t_buffer *buf_info)$/;"	f
+ft_handle_space_flag	lib/libft/src/printf/ft_handle_space_flag.c	/^void	ft_handle_space_flag(t_format_spec spec, int content,$/;"	f
+ft_handle_string	lib/libft/src/printf/ft_handle_string.c	/^void	ft_handle_string(t_format_spec spec, va_list args, t_buffer *buf_info)$/;"	f
+ft_intlen	lib/libft/src/conversion/ft_itoa.c	/^static size_t	ft_intlen(long n)$/;"	f	file:
+ft_isalnum	lib/libft/src/bool/ft_isalnum.c	/^bool	ft_isalnum(int c)$/;"	f
+ft_isalpha	lib/libft/src/bool/ft_isalpha.c	/^bool	ft_isalpha(int c)$/;"	f
+ft_isalpha_suite	lib/libft/test_src/bool/test_ft_isalpha.c	/^Suite *ft_isalpha_suite(void)$/;"	f
+ft_isascii	lib/libft/src/bool/ft_isascii.c	/^bool ft_isascii(int c)$/;"	f
+ft_isconvert_spec	lib/libft/src/printf/ft_isconvert_spec.c	/^int	ft_isconvert_spec(char c)$/;"	f
+ft_isdigit	lib/libft/src/bool/ft_isdigit.c	/^bool ft_isdigit(int c)$/;"	f
+ft_isflag	lib/libft/src/printf/ft_isflag.c	/^int	ft_isflag(char c)$/;"	f
+ft_isprint	lib/libft/src/bool/ft_isprint.c	/^bool	ft_isprint(int c)$/;"	f
+ft_issign	lib/libft/src/conversion/ft_atoi.c	/^static int	ft_issign(int c, int *sign)$/;"	f	file:
+ft_issign	lib/libft/src/conversion/ft_atol.c	/^static int	ft_issign(int c, int *sign)$/;"	f	file:
+ft_isspace	lib/libft/src/bool/ft_isspace.c	/^bool	ft_isspace(int c)$/;"	f
+ft_isxdigit	lib/libft/src/bool/ft_isxdigit.c	/^bool	ft_isxdigit(int c)$/;"	f
+ft_itoa	lib/libft/src/conversion/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_memchr	lib/libft/src/memory/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memcmp	lib/libft/src/memory/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcpy	lib/libft/src/memory/ft_memcpy.c	/^void	*ft_memcpy(void *dest, const void *src, size_t n)$/;"	f
+ft_memcpy	lib/libgc/src/gc_register.c	/^static void	*ft_memcpy(void *dest, const void *src, size_t n)$/;"	f	file:
+ft_memmove	lib/libft/src/memory/ft_memmove.c	/^void	*ft_memmove(void *dest, const void *src, size_t n)$/;"	f
+ft_memset	lib/libft/src/memory/ft_memset.c	/^void	*ft_memset(void *s, int c, size_t n)$/;"	f
+ft_memset	lib/libgc/src/gc_init.c	/^static void	*ft_memset(void *s, int c, size_t n)$/;"	f	file:
+ft_nbr_len	lib/libft/src/printf/ft_nbr_len.c	/^int	ft_nbr_len(unsigned long long nbr, int base_len)$/;"	f
+ft_new_str	lib/libft/src/printf/ft_apply_precision.c	/^static int	ft_new_str(char **new_str, t_format_spec *spec, int total_len,$/;"	f	file:
+ft_parse_flags	lib/libft/src/printf/ft_parse_flags.c	/^void	ft_parse_flags(const char *format, t_format_spec *spec)$/;"	f
+ft_parse_format	lib/libft/src/printf/ft_parse_format.c	/^t_format_spec	ft_parse_format(const char **format)$/;"	f
+ft_parse_precision	lib/libft/src/printf/ft_parse_flags.c	/^static void	ft_parse_precision(const char *format, t_format_spec *spec,$/;"	f	file:
+ft_parse_width	lib/libft/src/printf/ft_parse_flags.c	/^static void	ft_parse_width(const char *format, t_format_spec *spec, size_t *i)$/;"	f	file:
+ft_prepare_hex_content	lib/libft/src/printf/ft_handle_hexadecimal.c	/^static int	ft_prepare_hex_content(t_format_spec spec, unsigned int content,$/;"	f	file:
+ft_prepare_int	lib/libft/src/printf/ft_handle_int.c	/^static int	ft_prepare_int(t_format_spec spec, long long content,$/;"	f	file:
+ft_prepare_pointer	lib/libft/src/printf/ft_handle_pointer.c	/^static int	ft_prepare_pointer(char **adresse, t_buffer *buf_info, void *ptr)$/;"	f	file:
+ft_printf	lib/libft/src/printf/ft_printf.c	/^int	ft_printf(const char *format, ...)$/;"	f
+ft_printf_fd	lib/libft/src/printf/ft_printf.c	/^int	ft_printf_fd(int fd, const char *format, ...)$/;"	f
+ft_process_format_specifier	lib/libft/src/printf/ft_printf.c	/^static int	ft_process_format_specifier(const char **format, va_list args,$/;"	f	file:
+ft_process_formatted_hex	lib/libft/src/printf/ft_handle_hexadecimal.c	/^static void	ft_process_formatted_hex(t_format_spec spec, unsigned int content,$/;"	f	file:
+ft_process_int	lib/libft/src/printf/ft_handle_int.c	/^static void	ft_process_int(t_format_spec spec, long long content,$/;"	f	file:
+ft_process_pointer	lib/libft/src/printf/ft_handle_pointer.c	/^static void	ft_process_pointer(t_format_spec spec, char *adresse,$/;"	f	file:
+ft_psh_flags	lib/libft/src/printf/ft_parse_flags.c	/^static void	ft_psh_flags(const char *format, t_format_spec *spec, size_t *i)$/;"	f	file:
+ft_putchar_fd	lib/libft/src/io/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putendl_fd	lib/libft/src/io/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putnbr_fd	lib/libft/src/io/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putstr_fd	lib/libft/src/io/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_realloc	lib/libft/src/memory/ft_realloc.c	/^void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)$/;"	f
+ft_split	lib/libft/src/string/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_strchr	lib/libft/src/string/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strdup	lib/libft/src/string/ft_strdup.c	/^char	*ft_strdup(const char *s)$/;"	f
+ft_strdup	lib/libgc/src/gc_register.c	/^static char	*ft_strdup(const char *s)$/;"	f	file:
+ft_striteri	lib/libft/src/string/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char*))$/;"	f
+ft_strjoin	lib/libft/src/string/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin_free	lib/libft/src/string/ft_strjoin.c	/^char	*ft_strjoin_free(char *s1, const char *s2)$/;"	f
+ft_strlcat	lib/libft/src/string/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f
+ft_strlcpy	lib/libft/src/string/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f
+ft_strlen	lib/libft/src/string/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	lib/libgc/src/gc_register.c	/^static int	ft_strlen(const char *str)$/;"	f	file:
+ft_strmapi	lib/libft/src/string/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strncmp	lib/libft/src/string/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strnstr	lib/libft/src/string/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strrchr	lib/libft/src/string/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strtrim	lib/libft/src/string/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_substr	lib/libft/src/string/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr_len	lib/libft/src/string/ft_split.c	/^static size_t	ft_substr_len(char *str, char c)$/;"	f	file:
+ft_tolower	lib/libft/src/conversion/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_toupper	lib/libft/src/conversion/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_ulltoa_base	lib/libft/src/conversion/ft_ulltoa_base.c	/^char	*ft_ulltoa_base(unsigned long long nbr, char *base)$/;"	f
+ft_utoa_base	lib/libft/src/conversion/ft_utoa_base.c	/^char	*ft_utoa_base(unsigned int nbr, char *base)$/;"	f
+ft_zero_minus_flags	lib/libft/src/printf/ft_parse_flags.c	/^static void	ft_zero_minus_flags(const char *format, t_format_spec *spec,$/;"	f	file:
+g_perror	lib/libft/src/printf/ft_printf_globals.c	/^const char	*g_perror[] = {$/;"	v
+gc_cleanup	lib/libgc/src/gc_cleanup.c	/^void	gc_cleanup(t_gc *gcl)$/;"	f
+gc_collect	lib/libgc/src/gc_collect.c	/^void	gc_collect(t_gc *gcl)$/;"	f
+gc_delete_node	lib/libgc/src/gc_collect.c	/^static void	gc_delete_node(t_gc_node **prev, t_gc_node **current, t_gc *gcl)$/;"	f	file:
+gc_fd_register	lib/libgc/src/gc_fd_register.c	/^void	gc_fd_register(int fd, t_gc *gcl)$/;"	f
+gc_init	lib/libgc/src/gc_init.c	/^void	*gc_init(void)$/;"	f
+gc_lock	lib/libgc/src/gc_mark_lock.c	/^void	gc_lock(void *ptr, t_gc *gcl)$/;"	f
+gc_malloc	lib/libgc/src/gc_malloc.c	/^void	*gc_malloc(size_t size, t_gc *gcl)$/;"	f
+gc_mark	lib/libgc/src/gc_mark_lock.c	/^void	gc_mark(void *ptr, t_gc *gcl)$/;"	f
+gc_nest_lock	lib/libgc/src/gc_mark_lock.c	/^void	gc_nest_lock(void *ptr, t_gc *gcl)$/;"	f
+gc_nest_register	lib/libgc/src/gc_nest_register.c	/^void	gc_nest_register(void *ptr, t_gc *gcl)$/;"	f
+gc_register	lib/libgc/src/gc_register.c	/^void	gc_register(void *ptr, t_gc *gcl)$/;"	f
+gc_temp_file_register	lib/libgc/src/gc_register.c	/^void	gc_temp_file_register(const char *filename, t_gc *gcl)$/;"	f
+gc_unlock	lib/libgc/src/gc_mark_lock.c	/^void	gc_unlock(void *ptr, t_gc *gcl)$/;"	f
+gcl	include/minishell.h	/^	t_gc		*gcl;$/;"	m	struct:s_shell
+generate_src_list	lib/libft/update_makefile.sh	/^generate_src_list() {$/;"	f
+head	lib/libgc/include/libgc.h	/^	t_gc_node	*head;$/;"	m	struct:s_garbage_collector
+index	lib/libft/include/libft.h	/^	int		index;$/;"	m	struct:s_buffer
+info_arch	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_compiler	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_cray	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";$/;"	v
+info_language_extensions_default	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^const char* info_language_extensions_default = "INFO" ":" "extensions_default["$/;"	v
+info_language_standard_default	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^const char* info_language_standard_default =$/;"	v
+info_platform	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_simulate	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate_version	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_simulate_version[] = {$/;"	v
+info_version	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version[] = {$/;"	v
+info_version	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version = "INFO" ":" "compiler_version[" COMPILER_VERSION "]";$/;"	v
+info_version_internal	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v
+info_version_internal	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INTERNAL_STR "]";$/;"	v
+is_array	lib/libgc/include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
+is_locked	lib/libgc/include/libgc.h	/^	bool				is_locked;$/;"	m	struct:s_gc_node
+is_marked	lib/libgc/include/libgc.h	/^	bool				is_marked;$/;"	m	struct:s_gc_node
+isalnum_suite	lib/libft/test_src/bool/test_ft_isalnum.c	/^Suite *isalnum_suite(void)$/;"	f
+main	lib/libft/test_src/bool/test_ft_isalnum.c	/^int main(void)$/;"	f
+main	lib/libft/test_src/bool/test_ft_isalpha.c	/^int main(void)$/;"	f
+main	lib/libft/test_src/memory/test_ft_memset.c	/^int main(void)$/;"	f
+main	main.c	/^int	main(int argc, char **argv, char **envp)$/;"	f
+main	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
+main	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+main	test_src/env_lst_utils/test_ms_env_add_back.c	/^int main(void) {$/;"	f
+main	test_src/env_lst_utils/test_ms_env_create_node.c	/^int main(void)$/;"	f
+main	test_src/init_shell/test_ms_get_user_input.c	/^int	main(void)$/;"	f
+main	test_src/init_shell/test_ms_init_env.c	/^int main(void)$/;"	f
+main	test_src/init_shell/test_ms_init_shell.c	/^int main(void)$/;"	f
+memset_suite	lib/libft/test_src/memory/test_ft_memset.c	/^Suite *memset_suite(void)$/;"	f
+minishell_suite	test_src/env_lst_utils/test_ms_env_add_back.c	/^Suite *minishell_suite(void) {$/;"	f
+minishell_suite	test_src/init_shell/test_ms_get_user_input.c	/^Suite	*minishell_suite(void)$/;"	f
+mock_add_history	test_src/init_shell/test_ms_get_user_input.c	/^void	mock_add_history(const char *line)$/;"	f
+mock_readline	test_src/init_shell/test_ms_get_user_input.c	/^char	*mock_readline(const char *prompt)$/;"	f
+ms_env_add_back	src/env_lst_utils/ms_env_add_back.c	/^void	ms_env_add_back(t_env **env, t_env *new_node)$/;"	f
+ms_env_create_node	src/env_lst_utils/ms_env_create_node.c	/^t_env	*ms_env_create_node(t_shell *shell, const char *env_line)$/;"	f
+ms_get_user_input	src/init_shell/ms_get_user_input.c	/^void	ms_get_user_input(t_shell *shell)$/;"	f
+ms_init_env	src/init_shell/ms_init_env.c	/^t_env_data	*ms_init_env(char **envp, t_shell *shell)$/;"	f
+ms_init_env_suite	test_src/init_shell/test_ms_init_env.c	/^Suite *ms_init_env_suite(void)$/;"	f
+ms_init_shell	src/init_shell/ms_init_shell.c	/^t_shell	ms_init_shell(int argc, char **argv, char **envp)$/;"	f
+ms_init_shell_suite	test_src/init_shell/test_ms_init_shell.c	/^Suite *ms_init_shell_suite(void)$/;"	f
+nb_printed	lib/libft/include/libft.h	/^	int		nb_printed;$/;"	m	struct:s_buffer
+next	include/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
+next	lib/libgc/include/libgc.h	/^	struct s_gc_node	*next;$/;"	m	struct:s_gc_node	typeref:struct:s_gc_node::s_gc_node
+path	include/minishell.h	/^	char	*path;$/;"	m	struct:s_env_data
+precision	lib/libft/include/libft.h	/^	int			precision;$/;"	m	struct:s_format_spec
+ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
+qnxnto	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+s_buffer	lib/libft/include/libft.h	/^typedef struct s_buffer$/;"	s
+s_env	include/minishell.h	/^typedef struct s_env$/;"	s
+s_env_data	include/minishell.h	/^typedef struct	s_env_data$/;"	s
+s_format_spec	lib/libft/include/libft.h	/^typedef struct s_format_spec$/;"	s
+s_garbage_collector	lib/libgc/include/libgc.h	/^typedef struct s_garbage_collector$/;"	s
+s_gc_node	lib/libgc/include/libgc.h	/^typedef struct s_gc_node$/;"	s
+s_shell	include/minishell.h	/^typedef struct s_shell$/;"	s
+shell_lvl	include/minishell.h	/^	int		shell_lvl;$/;"	m	struct:s_env_data
+st_create_envp	src/init_shell/ms_init_env.c	/^static void	st_create_envp(char **envp, t_shell *shell, t_env_data *env_data)$/;"	f	file:
+st_get_path	src/init_shell/ms_init_env.c	/^static char	*st_get_path(t_env_data *env_data)$/;"	f	file:
+t_buffer	lib/libft/include/libft.h	/^}			t_buffer;$/;"	t	typeref:struct:s_buffer
+t_env	include/minishell.h	/^}				t_env;$/;"	t	typeref:struct:s_env
+t_env_data	include/minishell.h	/^}				t_env_data;$/;"	t	typeref:struct:s_env_data
+t_error	lib/libft/include/libft.h	/^}	t_error;$/;"	t	typeref:enum:e_error
+t_format_spec	lib/libft/include/libft.h	/^}				t_format_spec;$/;"	t	typeref:struct:s_format_spec
+t_gc	lib/libgc/include/libgc.h	/^}				t_gc;$/;"	t	typeref:struct:s_garbage_collector
+t_gc_node	lib/libgc/include/libgc.h	/^}				t_gc_node;$/;"	t	typeref:struct:s_gc_node
+t_shell	include/minishell.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
+temp_file	lib/libgc/include/libgc.h	/^	char				*temp_file;$/;"	m	struct:s_gc_node
+test_ms_init_shell_exit	test_src/init_shell/test_ms_init_shell.c	/^int test_ms_init_shell_exit(int argc, char **argv, char **envp)$/;"	f
+ts_aff_env	main.c	/^static void	ts_aff_env(t_env_data *env_data)$/;"	f	file:
+type	lib/libft/include/libft.h	/^	char		type;$/;"	m	struct:s_format_spec
+user_input	include/minishell.h	/^	char		*user_input;$/;"	m	struct:s_shell
+value	include/minishell.h	/^	char			*value;$/;"	m	struct:s_env
+var	include/minishell.h	/^	char 			*var;$/;"	m	struct:s_env
+volatile	test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	11;"	d	file:
+width	lib/libft/include/libft.h	/^	int			width;$/;"	m	struct:s_format_spec

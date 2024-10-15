@@ -1,0 +1,8 @@
+ms_env_add_back 2 0.00113513
+ms_env_create_node 0 0
+ms_get_user_input 2 0.000805256
+ms_init_env 0 0
+ms_init_shell 2 0.00296422
+---
+ms_env_create_node
+ms_init_env
