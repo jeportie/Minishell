@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:15:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/14 16:13:49 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/15 07:41:22 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_env	*ms_env_create_node(t_shell *shell, const char *env_line)
 		exit(EXIT_FAILURE);
 	new_node = gc_malloc(sizeof(t_env), shell->gcl);
 	gc_lock(new_node, shell->gcl);
-	//ft_memset(new_node, 0, sizeof(t_env));
+	ft_memset(new_node, 0, sizeof(t_env));
 	if (!ft_strchr(env_line, '='))
 		new_node->var = (char *)env_line;
 	else

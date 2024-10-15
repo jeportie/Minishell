@@ -1,10 +1,10 @@
-Start testing: Oct 15 07:25 UTC
+Start testing: Oct 15 08:57 UTC
 ----------------------------------------------------------
 1/5 Testing: ms_env_add_back
 1/5 Test: ms_env_add_back
 Command: "/root/projects/Minishell/test_src/test_ms_env_add_back"
 Directory: /root/projects/Minishell/test_src
-"ms_env_add_back" start time: Oct 15 07:25 UTC
+"ms_env_add_back" start time: Oct 15 08:57 UTC
 Output:
 ----------------------------------------------------------
 Running suite(s): Minishell
@@ -13,7 +13,7 @@ Running suite(s): Minishell
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"ms_env_add_back" end time: Oct 15 07:25 UTC
+"ms_env_add_back" end time: Oct 15 08:57 UTC
 "ms_env_add_back" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -21,17 +21,16 @@ Test Passed.
 2/5 Test: ms_env_create_node
 Command: "/root/projects/Minishell/test_src/test_ms_env_create_node"
 Directory: /root/projects/Minishell/test_src
-"ms_env_create_node" start time: Oct 15 07:25 UTC
+"ms_env_create_node" start time: Oct 15 08:57 UTC
 Output:
 ----------------------------------------------------------
 Running suite(s): Env
-66%: Checks: 3, Failures: 1, Errors: 0
-/root/projects/Minishell/test_src/env_lst_utils/test_ms_env_create_node.c:55:F:Core:test_create_node_no_equals:0: Expected value: NULL, but got: €Š.íšU
+100%: Checks: 3, Failures: 0, Errors: 0
 <end of output>
 Test time =   0.00 sec
 ----------------------------------------------------------
-Test Failed.
-"ms_env_create_node" end time: Oct 15 07:25 UTC
+Test Passed.
+"ms_env_create_node" end time: Oct 15 08:57 UTC
 "ms_env_create_node" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -39,7 +38,7 @@ Test Failed.
 3/5 Test: ms_get_user_input
 Command: "/root/projects/Minishell/test_src/test_ms_get_user_input"
 Directory: /root/projects/Minishell/test_src
-"ms_get_user_input" start time: Oct 15 07:25 UTC
+"ms_get_user_input" start time: Oct 15 08:57 UTC
 Output:
 ----------------------------------------------------------
 Running suite(s): Minishell
@@ -48,7 +47,7 @@ Running suite(s): Minishell
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"ms_get_user_input" end time: Oct 15 07:25 UTC
+"ms_get_user_input" end time: Oct 15 08:57 UTC
 "ms_get_user_input" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -56,17 +55,16 @@ Test Passed.
 4/5 Test: ms_init_env
 Command: "/root/projects/Minishell/test_src/test_ms_init_env"
 Directory: /root/projects/Minishell/test_src
-"ms_init_env" start time: Oct 15 07:25 UTC
+"ms_init_env" start time: Oct 15 08:57 UTC
 Output:
 ----------------------------------------------------------
 Running suite(s): ms_init_env
-50%: Checks: 2, Failures: 0, Errors: 1
-/root/projects/Minishell/test_src/init_shell/test_ms_init_env.c:43:E:Core:test_ms_init_env_without_envp:0: (after this point) Received signal 11 (Segmentation fault)
+100%: Checks: 2, Failures: 0, Errors: 0
 <end of output>
-Test time =   0.05 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
-Test Failed.
-"ms_init_env" end time: Oct 15 07:25 UTC
+Test Passed.
+"ms_init_env" end time: Oct 15 08:57 UTC
 "ms_init_env" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -74,33 +72,19 @@ Test Failed.
 5/5 Test: ms_init_shell
 Command: "/root/projects/Minishell/test_src/test_ms_init_shell"
 Directory: /root/projects/Minishell/test_src
-"ms_init_shell" start time: Oct 15 07:25 UTC
+"ms_init_shell" start time: Oct 15 08:57 UTC
 Output:
 ----------------------------------------------------------
 Running suite(s): ms_init_shell
 Minishell: format: no arguments needed!
 : No such process
-Minishell: format: no arguments needed!
-: No such process
-Minishell: format: no arguments needed!
-: No such process
-Minishell: format: no arguments needed!
-: No such process
-Minishell: format: no arguments needed!
-: No such process
-Minishell: format: no arguments needed!
-: No such process
-Minishell: format: no arguments needed!
-: No such process
-Minishell: format: no arguments needed!
-: No such process
-100%: Checks: 9, Failures: 0, Errors: 0
+100%: Checks: 4, Failures: 0, Errors: 0
 <end of output>
-Test time =   0.01 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"ms_init_shell" end time: Oct 15 07:25 UTC
+"ms_init_shell" end time: Oct 15 08:57 UTC
 "ms_init_shell" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Oct 15 07:25 UTC
+End testing: Oct 15 08:57 UTC
