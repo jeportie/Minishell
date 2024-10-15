@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:38:15 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/14 15:14:41 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/15 11:28:11 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ START_TEST(test_ms_init_env_with_envp)
     t_shell shell = {.gcl = gcl};
     t_env_data env_data;
     shell.env_data = &env_data;
-    char *envp[] = {"PATH=/usr/bin", "HOME=/home/user", NULL};
+    char *envp[] = {"PATH=/usr/bin", "HOME=/home/user", "TERM=xterm-256color", "SHELL=/bin/bash", NULL};
 
     shell.env_data = ms_init_env(envp, &shell);
 
     ck_assert(shell.env_data->env_exist);
     ck_assert_ptr_nonnull(shell.env_data->env);
     ck_assert_str_eq(shell.env_data->path, "/usr/bin");
+    ck_assert_str_eq(shell.env_data->term, "xterm-256color");
+    ck_assert_str_eq(shell.env_data->shell, "/bin/bash");
 
     // Check that environment variables are properly set
     t_env *current = shell.env_data->env;
@@ -34,9 +36,16 @@ START_TEST(test_ms_init_env_with_envp)
     current = current->next;
     ck_assert_str_eq(current->var, "HOME");
     ck_assert_str_eq(current->value, "/home/user");
+    current = current->next;
+    ck_assert_str_eq(current->var, "TERM");
+    ck_assert_str_eq(current->value, "xterm-256color");
+    current = current->next;
+    ck_assert_str_eq(current->var, "SHELL");
+    ck_assert_str_eq(current->value, "/bin/bash");
     ck_assert_ptr_null(current->next);
 
     gc_cleanup(gcl);
+    free(gcl);
 }
 END_TEST
 
@@ -52,6 +61,8 @@ START_TEST(test_ms_init_env_without_envp)
     ck_assert(!shell.env_data->env_exist);
     ck_assert_ptr_nonnull(shell.env_data->env);
     ck_assert_str_eq(shell.env_data->path, "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin");
+    ck_assert_str_eq(shell.env_data->term, "dumb");
+    ck_assert_str_eq(shell.env_data->shell, "/bin/zsh");
 
     // Check that default environment variables are properly set
     t_env *current = shell.env_data->env;
@@ -63,6 +74,7 @@ START_TEST(test_ms_init_env_without_envp)
     ck_assert_ptr_null(current->next);
 
     gc_cleanup(gcl);
+    free(gcl);
 }
 END_TEST
 

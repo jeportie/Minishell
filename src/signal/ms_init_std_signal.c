@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_init_shell.c                                    :+:      :+:    :+:   */
+/*   ms_init_std_signal.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 14:40:35 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/15 12:03:27 by jeportie         ###   ########.fr       */
+/*   Created: 2024/10/15 11:55:03 by jeportie          #+#    #+#             */
+/*   Updated: 2024/10/15 12:49:21 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_shell	ms_init_shell(int argc, char **argv, char **envp)
+static void	st_sigint_std_handler(int sig)
 {
-	t_shell	shell;
-
-	if (!argc || !argv)
-		exit(EXIT_FAILURE);
-	if (argc > 1 || argv[1])
+	if (sig == SIGINT)
 	{
-		perror("Minishell: format: no arguments needed!\n");
-		exit(EXIT_FAILURE);
+		printf("\n");
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
 	}
-	ft_memset(&shell, 0, sizeof(t_shell));
-	shell.gcl = gc_init();
-	shell.env_data = ms_init_env(envp, &shell);
-	return (shell);
+	g_signal = 130;
+}
+
+void	ms_init_std_signal(void)
+{
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, st_sigint_std_handler);
 }

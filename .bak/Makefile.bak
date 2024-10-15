@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/10/02 10:17:27 by jeportie         ###   ########.fr        #
+#    Updated: 2024/10/02 14:56:22 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME = Minishell
 ### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
-  src/init_shell/ms_get_user_input.c \
   src/init_shell/ms_init_shell.c \
+  src/init_shell/ms_get_user_input.c \
   src/init_shell/ms_init_env.c \
   src/env_lst_utils/ms_env_add_back.c \
   src/env_lst_utils/ms_env_create_node.c 
@@ -36,9 +36,9 @@ VALG =		valgrind --leak-check=full --show-leak-kinds=all \
 HELG =      valgrind --tool=helgrind --history-level=full \
 			--track-lockorders=yes --show-below-main=yes --free-is-write=yes
 
-LDFLAGS = -lreadline -L./lib/libgc -lgc -L./lib/libgc -lgc
+LDFLAGS = -lreadline -L./lib/libgc -lgc -L./lib/libft -lft
 DEPFLAGS =  -MMD -MP
-INCLUDES = -I./include -I./lib/libgc/include -I./lib/libgc/include
+INCLUDES = -I./include -I./lib/libgc/include -I./lib/libft/include
 
 SRC_DIR = 	src
 OBJ_DIR = 	obj
@@ -82,9 +82,8 @@ run-prompt: download-script
 all: $(NAME)
 
 $(NAME): $(OBJ) $(OBJ_DIR)/main.o
-	gcl https://github.com/jeportie/libft.git lib/
-	make -C lib/libgc
-	make -C lib/libft
+	make re -C lib/libgc
+	make re -C lib/libft
 	@echo "Compiling $(NAME)..."
 	$(CC) $(CFLAGS) $(OBJ) $(OBJ_DIR)/main.o -o $(NAME) $(LDFLAGS) > .compile.log 2>&1
 	@if [ "$(VERBOSE)" = "@" ]; then \

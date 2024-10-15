@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/15 08:48:47 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/15 11:26:27 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,51 @@ static char	*st_get_path(t_env_data *env_data)
 		current = current->next;
 	}
 	if (trigger == 0)
-		return (ft_strdup("/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"));
+		return ("/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin");
+	return (NULL);
+}
+
+static char	*st_get_term(t_env_data *env_data)
+{
+	t_env	*current;
+	int		trigger;
+
+	trigger = 0;
+	current = env_data->env;
+	while (current)
+	{
+		if (current->var && !ft_strncmp(current->var, "TERM", 5))
+		{
+			trigger = 1;
+			return (current->value);
+			break ;
+		}
+		current = current->next;
+	}
+	if (trigger == 0)
+		return ("dumb");
+	return (NULL);
+}
+
+static char	*st_get_shell(t_env_data *env_data)
+{
+	t_env	*current;
+	int		trigger;
+
+	trigger = 0;
+	current = env_data->env;
+	while (current)
+	{
+		if (current->var && !ft_strncmp(current->var, "SHELL", 5))
+		{
+			trigger = 1;
+			return (current->value);
+			break ;
+		}
+		current = current->next;
+	}
+	if (trigger == 0)
+		return ("/bin/zsh");
 	return (NULL);
 }
 
@@ -43,6 +87,8 @@ static char	**st_create_envp(t_shell *shell, t_env_data *env_data)
 	gc_lock(envp, shell->gcl);
 	cwd = getcwd(NULL, 0);
 	env_data->path = "";
+	env_data->term = "";
+	env_data->shell = "";
 	envp[0] = "SHLVL=1";
 	envp[1] = "PWD=";
 	ft_strlcat(envp[1], cwd, ft_strlen(envp[1]));
@@ -78,5 +124,7 @@ t_env_data	*ms_init_env(char **envp, t_shell *shell)
 		i++;
 	}
 	env_data->path = st_get_path(env_data);
+	env_data->term = st_get_term(env_data);
+	env_data->shell = st_get_shell(env_data);
 	return (env_data);
 }
