@@ -8,10 +8,10 @@ enable_testing()
 option(ENABLE_VALGRIND "Enable memory leak testing with Valgrind" ON)
 
 # Set project directories relative to the test_src directory
-set(ROOT_DIR "${CMAKE_SOURCE_DIR}/..")
+set(ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/..")
 set(SRC_DIR "${ROOT_DIR}/src")
 set(INCLUDE_DIR "${ROOT_DIR}/include")
-set(TEST_SRC_DIR "${CMAKE_SOURCE_DIR}")
+set(TEST_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 
 # Set libgc and libft directories
 set(LIBGC_INCLUDE_DIR "${ROOT_DIR}/lib/libgc/include")
@@ -33,9 +33,21 @@ include_directories(
     ${CHECK_INCLUDE_DIRS}
 )
 
-# Automatically include all .c files from src/ and test_src/
+# Automatically include all .c files from src/
 file(GLOB_RECURSE SRC_FILES "${SRC_DIR}/*.c")
-file(GLOB_RECURSE TEST_SRC_FILES "${TEST_SRC_DIR}/*.c")
+
+# Automatically include all .c files from test_src/, excluding the build directory and CMakeCCompilerId
+file(GLOB_RECURSE TEST_SRC_FILES RELATIVE "${TEST_SRC_DIR}" "${TEST_SRC_DIR}/*.c")
+
+# Exclude files from the build directory and CMakeCCompilerId
+foreach(TEST_FILE ${TEST_SRC_FILES})
+    string(FIND "${TEST_FILE}" "${CMAKE_CURRENT_BINARY_DIR}" IS_IN_BINARY_DIR)
+    get_filename_component(TEST_FILE_NAME "${TEST_FILE}" NAME)
+    if(IS_IN_BINARY_DIR EQUAL -1 AND NOT "${TEST_FILE_NAME}" STREQUAL "CMakeCCompilerId.c")
+        list(APPEND FILTERED_TEST_SRC_FILES "${TEST_FILE}")
+    endif()
+endforeach()
+set(TEST_SRC_FILES ${FILTERED_TEST_SRC_FILES})
 
 # Find Valgrind
 find_program(VALGRIND_EXECUTABLE valgrind)
@@ -45,14 +57,17 @@ set(VALGRIND_SUPPRESSIONS_FILE "${ROOT_DIR}/assets/supp.supp")
 
 # Add the test executable for each test source file
 foreach(TEST_FILE ${TEST_SRC_FILES})
+    # Get the absolute path to the test file
+    set(TEST_FILE_ABS "${TEST_SRC_DIR}/${TEST_FILE}")
+
     # Extract the executable name (e.g., "test_ms_get_user_input" from "test_ms_get_user_input.c")
-    get_filename_component(EXEC_NAME ${TEST_FILE} NAME_WE)
+    get_filename_component(EXEC_NAME "${TEST_FILE}" NAME_WE)
 
     # Remove the "test_" prefix from the test name for display purposes
-    string(REGEX REPLACE "^test_" "" TEST_NAME ${EXEC_NAME})
+    string(REGEX REPLACE "^test_" "" TEST_NAME "${EXEC_NAME}")
 
     # Create a test executable with the original name
-    add_executable(${EXEC_NAME} ${TEST_FILE} ${SRC_FILES})
+    add_executable(${EXEC_NAME} ${TEST_FILE_ABS} ${SRC_FILES})
 
     # Link the Check, Readline, libgc, and libft libraries
     target_link_libraries(
@@ -72,20 +87,17 @@ foreach(TEST_FILE ${TEST_SRC_FILES})
         ${INCLUDE_DIR}
     )
 
-    # Add the test to CTest with the test name without the prefix
     if(ENABLE_VALGRIND AND VALGRIND_EXECUTABLE)
-        # Run the test under Valgrind
+        # Path to the wrapper script
+        set(VALGRIND_WRAPPER_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/run_test_with_valgrind.sh")
         add_test(
             NAME ${TEST_NAME}
-            COMMAND ${VALGRIND_EXECUTABLE}
-            --leak-check=full
-            --error-exitcode=1
-            --quiet
-            --suppressions=${VALGRIND_SUPPRESSIONS_FILE}
-            $<TARGET_FILE:${EXEC_NAME}>
+            COMMAND bash ${VALGRIND_WRAPPER_SCRIPT}
+                ${VALGRIND_EXECUTABLE}
+                $<TARGET_FILE:${EXEC_NAME}>
+                valgrind_${TEST_NAME}.log
+                ${VALGRIND_SUPPRESSIONS_FILE}
         )
-        # Optionally, set properties to fail the test if memory leaks are found
-        # set_tests_properties(${TEST_NAME} PROPERTIES FAIL_REGULAR_EXPRESSION "definitely lost: [1-9][0-9]* bytes")
     else()
         # Run the test normally
         add_test(NAME ${TEST_NAME} COMMAND $<TARGET_FILE:${EXEC_NAME}>)
@@ -94,4 +106,3 @@ foreach(TEST_FILE ${TEST_SRC_FILES})
     # Add custom CTest options (e.g., timeout) for each test
     set_tests_properties(${TEST_NAME} PROPERTIES TIMEOUT 5)
 endforeach()
-

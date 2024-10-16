@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/15 11:26:27 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:57:50 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ static char	**st_create_envp(t_shell *shell, t_env_data *env_data)
 	char	*cwd;
 	char 	**envp;
 
-	envp = (char **)gc_malloc(sizeof(char *) * 3, shell->gcl);
-	gc_lock(envp, shell->gcl);
+	envp = (char **)malloc(sizeof(char *) * 3);
+	//gc_lock(envp, shell->gcl);
 	cwd = getcwd(NULL, 0);
 	env_data->path = "";
 	env_data->term = "";
