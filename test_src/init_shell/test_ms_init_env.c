@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:38:15 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/16 12:54:30 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:34:11 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ START_TEST(test_ms_init_env_without_envp)
     ck_assert_str_eq(current->var, "SHLVL");
     ck_assert_str_eq(current->value, "1");
     current = current->next;
-    ck_assert_str_eq(current->var, "PwD");
+    ck_assert_str_eq(current->var, "PWD");
     ck_assert_ptr_nonnull(current->value);
     ck_assert_ptr_null(current->next);
 
