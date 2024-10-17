@@ -14,22 +14,43 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          submodules: recursive  # Fetch submodules recursively
+          submodules: recursive
+          clean: true
+
+      # Build libft
+      - name: Build libft
+        run: |
+          cd lib/libft
+          make
+
+      # Build libgc
+      - name: Build libgc
+        run: |
+          cd lib/libgc
+          make
+
+      # Clean Build Directory
+     - name: Clean Build Directories
+       run: |
+        rm -rf build/
+        rm -rf test_src/build/
+        rm -rf test_src/CMakeCache.txt
+        rm -rf test_src/CMakeFiles/
 
       - name: Install Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y check
 
-      - name: Set up CMake
-        uses: jwlawson/actions-setup-cmake@v1
-
+      # Configure CMake
       - name: Configure CMake
-        run: cmake -S test_src -B test_src/build
+        run: cmake -S test_src -B test_src/build -U "*"
 
+      # Build
       - name: Build
         run: cmake --build test_src/build
 
+      # Run Tests
       - name: Run Tests
         run: |
           cd test_src/build

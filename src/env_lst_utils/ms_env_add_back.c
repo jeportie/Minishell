@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_init_shell.c                                    :+:      :+:    :+:   */
+/*   ms_env_add_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 14:40:35 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/16 10:12:41 by jeportie         ###   ########.fr       */
+/*   Created: 2024/10/01 14:56:47 by jeportie          #+#    #+#             */
+/*   Updated: 2024/10/14 16:00:42 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_shell	ms_init_shell(int argc, char **argv, char **envp)
+void	ms_env_add_back(t_env **env, t_env *new_node)
 {
-	t_shell	shell;
+	t_env	*current;
 
-	if (!argc || !argv)
-		exit(EXIT_FAILURE);
-	if (argc > 1 || argv[1])
+	if (!env || !new_node)
+		return ;
+	if (!*env)
 	{
-		perror("Minishell: format: no arguments needed!\n");
-		exit(EXIT_FAILURE);
+		*env = new_node;
+		return ;
 	}
-	ft_memset(&shell, 0, sizeof(t_shell));
-	shell.gcl = gc_init();
-	shell.env_data = ms_init_env(envp, &shell);
-	return (shell);
+	current = *env;
+	while (current->next)
+		current = current->next;
+	current->next = new_node;
 }
