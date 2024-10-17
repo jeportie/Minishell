@@ -44,7 +44,7 @@ jobs:
 
       # Configure CMake
       - name: Configure CMake
-        run: cmake -S test_src -B test_src/build
+        run: cmake -S test_src -B test_src/build -U "*"
 
       # Build
       - name: Build
