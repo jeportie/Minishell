@@ -14,23 +14,22 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y check
+
       - name: Set up CMake
         uses: jwlawson/actions-setup-cmake@v1
 
-      - name: Create Build Directory
-        run: mkdir build
-
       - name: Configure CMake
-        run: |
-          cd build
-          cmake ../test_src
+        run: cmake -S . -B build
 
       - name: Build
-        run: |
-          cd build
-          make
+        run: cmake --build build
 
       - name: Run Tests
         run: |
           cd build
           ctest --output-on-failure
+
