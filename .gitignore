@@ -11,9 +11,7 @@ CMakeFiles/
 *.so
 *.a
 
-test_src/build/
-test_src/build/
+# Ignore build artifacts in test_src
 test_src/CMakeCache.txt
 test_src/CMakeFiles/
-lib/libgc/libgc.a
-lib/libft/libft.a
+test_src/build/
