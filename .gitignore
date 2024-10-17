@@ -6,12 +6,19 @@ test_src/build/
 CMakeCache.txt
 CMakeFiles/
 
-# Ignore other generated files
+# Ignore object files and dependency files
 *.o
 *.so
 *.a
+*.o.*
+*.d
+*.o.d
 
-# Ignore build artifacts in test_src
+# Ignore logs and other artifacts
+*.log
+
+# Ignore build artifacts in subdirectories
 test_src/CMakeCache.txt
 test_src/CMakeFiles/
 test_src/build/
+
