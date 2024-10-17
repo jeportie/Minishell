@@ -12,3 +12,6 @@ CMakeFiles/
 *.a
 
 test_src/build/
+test_src/build/
+test_src/CMakeCache.txt
+test_src/CMakeFiles/
