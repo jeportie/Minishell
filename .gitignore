@@ -1,0 +1,13 @@
+# Ignore build directories
+build/
+test_src/build/
+
+# Ignore CMake generated files
+CMakeCache.txt
+CMakeFiles/
+
+# Ignore other generated files
+*.o
+*.so
+*.a
+
