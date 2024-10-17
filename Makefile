@@ -15,12 +15,14 @@ NAME = Minishell
 ### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
-  src/init_shell/ms_init_env.c \
-  src/init_shell/ms_get_user_input.c \
-  src/init_shell/ms_init_shell.c \
   src/env_lst_utils/ms_env_add_back.c \
   src/env_lst_utils/ms_env_create_node.c \
-  src/signal/ms_init_std_signal.c 
+  src/init_shell/ms_init_env.c \
+  src/init_shell/ms_init_shell.c \
+  src/init_shell/ms_get_user_input.c \
+  src/signal/ms_init_std_signal.c \
+  src/signal/ms_stop_std_signal.c \
+  src/global.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #

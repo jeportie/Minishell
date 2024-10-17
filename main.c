@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/15 12:59:14 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:20:46 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
  */
 
 #include "include/minishell.h"
-
-int	g_signal;
 
 int	main(int argc, char **argv, char **envp)
 {
