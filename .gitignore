@@ -11,3 +11,4 @@ CMakeFiles/
 *.so
 *.a
 
+test_src/build/
