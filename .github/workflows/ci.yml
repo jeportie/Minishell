@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ develop, main ]
+  pull_request:
+    branches: [ develop, main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up CMake
+        uses: jwlawson/actions-setup-cmake@v1
+
+      - name: Create Build Directory
+        run: mkdir build
+
+      - name: Configure CMake
+        run: |
+          cd build
+          cmake ../test_src
+
+      - name: Build
+        run: |
+          cd build
+          make
+
+      - name: Run Tests
+        run: |
+          cd build
+          ctest --output-on-failure
