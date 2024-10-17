@@ -6,14 +6,23 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:51:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/24 15:04:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/15 13:23:51 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+int	g_signal;
+
 void	ms_get_user_input(t_shell *shell)
 {
 	shell->user_input = readline("ptit'coque> ");
+	if (g_signal)
+	{
+		shell->error_code = g_signal;
+		g_signal = 0;
+	}
+	if (!shell->user_input)
+		return ;
 	add_history(shell->user_input);
 }

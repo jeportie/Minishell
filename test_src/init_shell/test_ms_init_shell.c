@@ -6,45 +6,99 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:18 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/24 19:34:48 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/16 10:13:54 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
 #include <check.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include "../../include/minishell.h"
 
-START_TEST(test_ms_init_shell_initialization)
+/* Helper function to test functions that call exit() */
+int test_ms_init_shell_exit(int argc, char **argv, char **envp)
 {
-    int argc = 0;
-    char **envp = NULL;
+    pid_t pid = fork();
+    if (pid == 0) // Child process
+    {
+        ms_init_shell(argc, argv, envp);
+        exit(EXIT_SUCCESS); // If exit isn't called, exit normally
+    }
+    else if (pid > 0) // Parent process
+    {
+        int status;
+        waitpid(pid, &status, 0);
+        if (WIFEXITED(status))
+        {
+            return WEXITSTATUS(status); // Return the exit code
+        }
+        else
+        {
+            return -1; // Error occurred
+        }
+    }
+    return -1; // Fork failed
+}
 
-	t_shell shell = ms_init_shell(argc, envp);
-	ck_assert_ptr_null(shell.user_input);
-	ck_assert_int_eq(shell.error_code, 0);
-	// Add other assertions as needed
+START_TEST(test_ms_init_shell_no_args)
+{
+    char *argv[] = {"minishell", NULL};
+    int exit_code = test_ms_init_shell_exit(1, argv, NULL);
+    ck_assert_int_eq(exit_code, EXIT_SUCCESS); // Expect success
 }
 END_TEST
 
-Suite *minishell_suite(void) {
+START_TEST(test_ms_init_shell_with_invalid_argc)
+{
+    char *argv[] = {"minishell", "arg1", NULL};
+    int exit_code = test_ms_init_shell_exit(2, argv, NULL);
+    ck_assert_int_eq(exit_code, EXIT_FAILURE); // Expect failure due to extra argument
+}
+END_TEST
+
+START_TEST(test_ms_init_shell_with_envp)
+{
+    char *envp[] = {"PATH=/usr/bin", "HOME=/home/user", NULL};
+    char *argv[] = {"minishell", NULL};
+    int exit_code = test_ms_init_shell_exit(1, argv, envp);
+    ck_assert_int_eq(exit_code, EXIT_SUCCESS); // Expect success
+}
+END_TEST
+
+START_TEST(test_ms_init_shell_with_empty_envp)
+{
+    char *envp[] = {NULL};
+    char *argv[] = {"minishell", NULL};
+    int exit_code = test_ms_init_shell_exit(1, argv, envp);
+    ck_assert_int_eq(exit_code, EXIT_SUCCESS); // Expect success with default environment
+}
+END_TEST
+
+Suite *ms_init_shell_suite(void)
+{
     Suite *s;
     TCase *tc_core;
 
-    s = suite_create("Minishell");
-
+    s = suite_create("ms_init_shell");
     tc_core = tcase_create("Core");
 
-    tcase_add_test(tc_core, test_ms_init_shell_initialization);
+    tcase_add_test(tc_core, test_ms_init_shell_no_args);
+    tcase_add_test(tc_core, test_ms_init_shell_with_invalid_argc);
+    tcase_add_test(tc_core, test_ms_init_shell_with_envp);
+    tcase_add_test(tc_core, test_ms_init_shell_with_empty_envp);
     suite_add_tcase(s, tc_core);
 
     return s;
 }
 
-int main(void) {
+int main(void)
+{
     int number_failed;
     Suite *s;
     SRunner *sr;
 
-    s = minishell_suite();
+    s = ms_init_shell_suite();
     sr = srunner_create(s);
 
     srunner_run_all(sr, CK_NORMAL);

@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/24 21:21:43 by jeportie         ###   ########.fr        #
+#    Updated: 2024/10/02 14:56:22 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,12 @@ NAME = Minishell
 ### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
-	src/init_shell/ms_init_shell.c \
-	src/init_shell/ms_get_user_input.c 
+  src/init_shell/ms_init_env.c \
+  src/init_shell/ms_get_user_input.c \
+  src/init_shell/ms_init_shell.c \
+  src/env_lst_utils/ms_env_add_back.c \
+  src/env_lst_utils/ms_env_create_node.c \
+  src/signal/ms_init_std_signal.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #
@@ -28,13 +32,14 @@ CFLAGS = 	-Wall -Wextra -Werror
 VFLAGS = 	-g3 -fPIC 
 SANITIZE = 	-g3 -fPIC -fsanitize=thread
 VALG =		valgrind --leak-check=full --show-leak-kinds=all \
-			--track-origins=yes --error-exitcode=1
+			--track-origins=yes --error-exitcode=1 \
+			--suppressions=assets/supp.supp
 HELG =      valgrind --tool=helgrind --history-level=full \
 			--track-lockorders=yes --show-below-main=yes --free-is-write=yes
 
-LDFLAGS = -lreadline #-L./lib/libft -lft -L./lib/libgc -lgc
+LDFLAGS = -lreadline -L./lib/libgc -lgc -L./lib/libft -lft
 DEPFLAGS =  -MMD -MP
-INCLUDES = -I./include #-I./lib/libft/include -I./lib/libgc/include
+INCLUDES = -I./include -I./lib/libgc/include -I./lib/libft/include
 
 SRC_DIR = 	src
 OBJ_DIR = 	obj
@@ -78,6 +83,8 @@ run-prompt: download-script
 all: $(NAME)
 
 $(NAME): $(OBJ) $(OBJ_DIR)/main.o
+	make re -C lib/libgc
+	make re -C lib/libft
 	@echo "Compiling $(NAME)..."
 	$(CC) $(CFLAGS) $(OBJ) $(OBJ_DIR)/main.o -o $(NAME) $(LDFLAGS) > .compile.log 2>&1
 	@if [ "$(VERBOSE)" = "@" ]; then \
@@ -113,9 +120,12 @@ fclean: clean
 	@echo "Cleaning $(NAME)"
 	@rm -f $(NAME)
 
+tclean:
+	@bash ./make_interface/exec/clean_test.sh
+
 fullclean: fclean
 	@echo "Cleaning Interface"
-	@rm -rf make_interface .download.log .compile.log
+	@rm -rf make_interface .download.log .compile.log tags
 
 # **************************************************************************** #
 #                                Other Rules                                   #
@@ -158,17 +168,6 @@ norm:
 todo:
 	@vim .$(NAME).todo.md
 
-create-cal:
-	@if [ ! -d .calendar ]; then \
-		mkdir -p .calendar; \
-		touch ./.calendar/$(NAME).calendar; \
-	fi
-
-calendar: create-cal
-	vim -c "let g:calendar_cache_directory=expand('./.calendar/')" \
-		-c ":Calendar" .calendar/$(NAME).calendar \
-		-c ":bd .calendar/$(NAME).calendar" 
-
 uml:
 	@./make_interface/exec/interactive_select 
 
@@ -176,11 +175,13 @@ build:
 	@bash ./make_interface/config/build.sh
 	make update
 
+
+
 update:
 	./make_interface/exec/update_makefile.sh
 
 git:
-	@vim -c ":GV"
+	@tig
 
 debug:
 	@echo "Searching for '# define DEBUG' in headers..."
@@ -223,6 +224,7 @@ help:
 	@echo "$(GREEN)  debug          $(RESET)- Set the DEBUG flag in the project .h file(s)."
 	@echo "$(GREEN)  clean          $(RESET)- Removes object files."
 	@echo "$(GREEN)  fclean         $(RESET)- Removes object files and the executable."
+	@echo "$(GREEN)  tclean         $(RESET)- Removes test files and the test executables."
 	@echo "$(GREEN)  fullclean      $(RESET)- Removes the interface, object files, and executable."
 	@echo "$(GREEN)  re             $(RESET)- Cleans and recompiles the project."
 	@echo "$(GREEN)  build          $(RESET)- Run the Makefile builder script."
