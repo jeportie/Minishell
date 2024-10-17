@@ -16,9 +16,12 @@ jobs:
         with:
           submodules: recursive
 
-      # Clean the build directory to avoid cache conflicts
+      # Clean all CMake-generated files, including the build directory and CMake cache
       - name: Clean Build Directory
-        run: rm -rf test_src/build
+        run: |
+          rm -rf test_src/build
+          rm -rf test_src/CMakeCache.txt
+          rm -rf test_src/CMakeFiles
 
       # Install dependencies
       - name: Install Dependencies
