@@ -14,22 +14,27 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          submodules: recursive  # Fetch submodules recursively
+          submodules: recursive
 
+      # Clean the build directory to avoid cache conflicts
+      - name: Clean Build Directory
+        run: rm -rf test_src/build
+
+      # Install dependencies
       - name: Install Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y check
 
-      - name: Set up CMake
-        uses: jwlawson/actions-setup-cmake@v1
-
+      # Set up CMake
       - name: Configure CMake
         run: cmake -S test_src -B test_src/build
 
+      # Build
       - name: Build
         run: cmake --build test_src/build
 
+      # Run Tests
       - name: Run Tests
         run: |
           cd test_src/build

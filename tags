@@ -104,8 +104,10 @@ CC	Makefile	/^default: CC = cc$/;"	m
 CC	Makefile	/^san: CC = clang$/;"	m
 CC	Makefile	/^val: CC = cc$/;"	m
 CC	lib/libft/Makefile	/^CC = gcc$/;"	m
+CC	lib/libgc/Makefile	/^CC = gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = 	-Wall -Wextra -Werror$/;"	m
 CFLAGS	lib/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	lib/libgc/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CMAKE_BINARY_DIR	lib/libft/test_src/Makefile	/^CMAKE_BINARY_DIR = \/root\/projects\/libft\/test_src$/;"	m
 CMAKE_BINARY_DIR	test_src/build/Makefile	/^CMAKE_BINARY_DIR = \/root\/projects\/Minishell\/test_src\/build$/;"	m
 CMAKE_COMMAND	lib/libft/test_src/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
@@ -501,13 +503,16 @@ ID_VOID_MAIN	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	6;"
 INCLUDES	Makefile	/^INCLUDES = -I.\/include -I.\/lib\/libgc\/include -I.\/lib\/libft\/include$/;"	m
 LDFLAGS	Makefile	/^LDFLAGS = -lreadline -L.\/lib\/libgc -lgc -L.\/lib\/libft -lft$/;"	m
 LIBFT_H	lib/libft/include/libft.h	14;"	d
+LIBGC_H	lib/libgc/include/libgc.h	14;"	d
 MINISHELL_H	include/minishell.h	14;"	d
 MakeRelativePathsAbsolute	ycm_extra_conf.py	/^def MakeRelativePathsAbsolute(flags, working_directory):$/;"	f
 NAME	Makefile	/^NAME = Minishell$/;"	m
 NAME	lib/libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	lib/libgc/Makefile	/^NAME = libgc.a$/;"	m
 NOERR	lib/libft/include/libft.h	/^	NOERR,$/;"	e	enum:e_error
 OBJ	Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
 OBJ	lib/libft/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OBJ	lib/libgc/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 OBJ_DIR	Makefile	/^OBJ_DIR = 	obj$/;"	m
 PLATFORM_ID	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	466;"	d	file:
 PLATFORM_ID	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	469;"	d	file:
@@ -641,6 +646,7 @@ SIMULATE_VERSION_PATCH	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompil
 SIMULATE_VERSION_PATCH	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	67;"	d	file:
 SRC	Makefile	/^SRC = \\$/;"	m
 SRC	lib/libft/Makefile	/^SRC = \\$/;"	m
+SRC	lib/libgc/Makefile	/^SRC = src\/gc_cleanup.c \\$/;"	m
 SRC_DIR	Makefile	/^SRC_DIR = 	src$/;"	m
 START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_alpha_lowercase)$/;"	f
 START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_alpha_uppercase)$/;"	f
@@ -732,6 +738,7 @@ env_suite	test_src/env_lst_utils/test_ms_env_create_node.c	/^Suite *env_suite(vo
 error	lib/libft/include/libft.h	/^	int			error;$/;"	m	struct:s_format_spec
 error	lib/libft/include/libft.h	/^	int		error;$/;"	m	struct:s_buffer
 error_code	include/minishell.h	/^	int			error_code;$/;"	m	struct:s_shell
+fd	lib/libgc/include/libgc.h	/^	int					fd;$/;"	m	struct:s_gc_node
 flag_hash	lib/libft/include/libft.h	/^	int			flag_hash;$/;"	m	struct:s_format_spec
 flag_minus	lib/libft/include/libft.h	/^	int			flag_minus;$/;"	m	struct:s_format_spec
 flag_plus	lib/libft/include/libft.h	/^	int			flag_plus;$/;"	m	struct:s_format_spec
@@ -792,8 +799,10 @@ ft_itoa	lib/libft/src/conversion/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
 ft_memchr	lib/libft/src/memory/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
 ft_memcmp	lib/libft/src/memory/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
 ft_memcpy	lib/libft/src/memory/ft_memcpy.c	/^void	*ft_memcpy(void *dest, const void *src, size_t n)$/;"	f
+ft_memcpy	lib/libgc/src/gc_register.c	/^static void	*ft_memcpy(void *dest, const void *src, size_t n)$/;"	f	file:
 ft_memmove	lib/libft/src/memory/ft_memmove.c	/^void	*ft_memmove(void *dest, const void *src, size_t n)$/;"	f
 ft_memset	lib/libft/src/memory/ft_memset.c	/^void	*ft_memset(void *s, int c, size_t n)$/;"	f
+ft_memset	lib/libgc/src/gc_init.c	/^static void	*ft_memset(void *s, int c, size_t n)$/;"	f	file:
 ft_nbr_len	lib/libft/src/printf/ft_nbr_len.c	/^int	ft_nbr_len(unsigned long long nbr, int base_len)$/;"	f
 ft_new_str	lib/libft/src/printf/ft_apply_precision.c	/^static int	ft_new_str(char **new_str, t_format_spec *spec, int total_len,$/;"	f	file:
 ft_parse_flags	lib/libft/src/printf/ft_parse_flags.c	/^void	ft_parse_flags(const char *format, t_format_spec *spec)$/;"	f
@@ -818,12 +827,14 @@ ft_realloc	lib/libft/src/memory/ft_realloc.c	/^void	*ft_realloc(void *ptr, size_
 ft_split	lib/libft/src/string/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
 ft_strchr	lib/libft/src/string/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
 ft_strdup	lib/libft/src/string/ft_strdup.c	/^char	*ft_strdup(const char *s)$/;"	f
+ft_strdup	lib/libgc/src/gc_register.c	/^static char	*ft_strdup(const char *s)$/;"	f	file:
 ft_striteri	lib/libft/src/string/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char*))$/;"	f
 ft_strjoin	lib/libft/src/string/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
 ft_strjoin_free	lib/libft/src/string/ft_strjoin.c	/^char	*ft_strjoin_free(char *s1, const char *s2)$/;"	f
 ft_strlcat	lib/libft/src/string/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f
 ft_strlcpy	lib/libft/src/string/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f
 ft_strlen	lib/libft/src/string/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	lib/libgc/src/gc_register.c	/^static int	ft_strlen(const char *str)$/;"	f	file:
 ft_strmapi	lib/libft/src/string/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
 ft_strncmp	lib/libft/src/string/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
 ft_strnstr	lib/libft/src/string/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
@@ -839,8 +850,22 @@ ft_zero_minus_flags	lib/libft/src/printf/ft_parse_flags.c	/^static void	ft_zero_
 g_perror	lib/libft/src/printf/ft_printf_globals.c	/^const char	*g_perror[] = {$/;"	v
 g_signal	main.c	/^int	g_signal;$/;"	v
 g_signal	src/init_shell/ms_get_user_input.c	/^int	g_signal;$/;"	v
+gc_cleanup	lib/libgc/src/gc_cleanup.c	/^void	gc_cleanup(t_gc *gcl)$/;"	f
+gc_collect	lib/libgc/src/gc_collect.c	/^void	gc_collect(t_gc *gcl)$/;"	f
+gc_delete_node	lib/libgc/src/gc_collect.c	/^static void	gc_delete_node(t_gc_node **prev, t_gc_node **current, t_gc *gcl)$/;"	f	file:
+gc_fd_register	lib/libgc/src/gc_fd_register.c	/^void	gc_fd_register(int fd, t_gc *gcl)$/;"	f
+gc_init	lib/libgc/src/gc_init.c	/^void	*gc_init(void)$/;"	f
+gc_lock	lib/libgc/src/gc_mark_lock.c	/^void	gc_lock(void *ptr, t_gc *gcl)$/;"	f
+gc_malloc	lib/libgc/src/gc_malloc.c	/^void	*gc_malloc(size_t size, t_gc *gcl)$/;"	f
+gc_mark	lib/libgc/src/gc_mark_lock.c	/^void	gc_mark(void *ptr, t_gc *gcl)$/;"	f
+gc_nest_lock	lib/libgc/src/gc_mark_lock.c	/^void	gc_nest_lock(void *ptr, t_gc *gcl)$/;"	f
+gc_nest_register	lib/libgc/src/gc_nest_register.c	/^void	gc_nest_register(void *ptr, t_gc *gcl)$/;"	f
+gc_register	lib/libgc/src/gc_register.c	/^void	gc_register(void *ptr, t_gc *gcl)$/;"	f
+gc_temp_file_register	lib/libgc/src/gc_register.c	/^void	gc_temp_file_register(const char *filename, t_gc *gcl)$/;"	f
+gc_unlock	lib/libgc/src/gc_mark_lock.c	/^void	gc_unlock(void *ptr, t_gc *gcl)$/;"	f
 gcl	include/minishell.h	/^	t_gc		*gcl;$/;"	m	struct:s_shell
 generate_src_list	lib/libft/update_makefile.sh	/^generate_src_list() {$/;"	f
+head	lib/libgc/include/libgc.h	/^	t_gc_node	*head;$/;"	m	struct:s_garbage_collector
 index	lib/libft/include/libft.h	/^	int		index;$/;"	m	struct:s_buffer
 info_arch	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
 info_arch	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
@@ -866,6 +891,9 @@ info_version_internal	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCom
 info_version_internal	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INTERNAL_STR "]";$/;"	v
 info_version_internal	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v
 info_version_internal	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INTERNAL_STR "]";$/;"	v
+is_array	lib/libgc/include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
+is_locked	lib/libgc/include/libgc.h	/^	bool				is_locked;$/;"	m	struct:s_gc_node
+is_marked	lib/libgc/include/libgc.h	/^	bool				is_marked;$/;"	m	struct:s_gc_node
 isalnum_suite	lib/libft/test_src/bool/test_ft_isalnum.c	/^Suite *isalnum_suite(void)$/;"	f
 main	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
@@ -905,14 +933,18 @@ ms_stop_std_signal	src/signal/ms_stop_std_signal.c	/^void	ms_stop_std_signal(voi
 ms_stop_std_signal_suite	test_src/signal/test_ms_stop_std_signal.c	/^Suite *ms_stop_std_signal_suite(void)$/;"	f
 nb_printed	lib/libft/include/libft.h	/^	int		nb_printed;$/;"	m	struct:s_buffer
 next	include/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
+next	lib/libgc/include/libgc.h	/^	struct s_gc_node	*next;$/;"	m	struct:s_gc_node	typeref:struct:s_gc_node::s_gc_node
 path	include/minishell.h	/^	char	*path;$/;"	m	struct:s_env_data
 precision	lib/libft/include/libft.h	/^	int			precision;$/;"	m	struct:s_format_spec
+ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
 qnxnto	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 s_buffer	lib/libft/include/libft.h	/^typedef struct s_buffer$/;"	s
 s_env	include/minishell.h	/^typedef struct s_env$/;"	s
 s_env_data	include/minishell.h	/^typedef struct s_env_data$/;"	s
 s_format_spec	lib/libft/include/libft.h	/^typedef struct s_format_spec$/;"	s
+s_garbage_collector	lib/libgc/include/libgc.h	/^typedef struct s_garbage_collector$/;"	s
+s_gc_node	lib/libgc/include/libgc.h	/^typedef struct s_gc_node$/;"	s
 s_shell	include/minishell.h	/^typedef struct s_shell$/;"	s
 shell	include/minishell.h	/^	char	*shell;$/;"	m	struct:s_env_data
 shell_lvl	include/minishell.h	/^	int		shell_lvl;$/;"	m	struct:s_env_data
@@ -926,7 +958,10 @@ t_env	include/minishell.h	/^}				t_env;$/;"	t	typeref:struct:s_env
 t_env_data	include/minishell.h	/^}				t_env_data;$/;"	t	typeref:struct:s_env_data
 t_error	lib/libft/include/libft.h	/^}	t_error;$/;"	t	typeref:enum:e_error
 t_format_spec	lib/libft/include/libft.h	/^}				t_format_spec;$/;"	t	typeref:struct:s_format_spec
+t_gc	lib/libgc/include/libgc.h	/^}				t_gc;$/;"	t	typeref:struct:s_garbage_collector
+t_gc_node	lib/libgc/include/libgc.h	/^}				t_gc_node;$/;"	t	typeref:struct:s_gc_node
 t_shell	include/minishell.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
+temp_file	lib/libgc/include/libgc.h	/^	char				*temp_file;$/;"	m	struct:s_gc_node
 term	include/minishell.h	/^	char	*term;$/;"	m	struct:s_env_data
 test_ms_init_shell_exit	test_src/init_shell/test_ms_init_shell.c	/^int test_ms_init_shell_exit(int argc, char **argv, char **envp)$/;"	f
 test_signal_handling	test_src/signal/test_ms_init_std_signal.c	/^int test_signal_handling(void (*init_signal_func)(void), int signal_to_send)$/;"	f
