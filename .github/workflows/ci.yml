@@ -16,21 +16,28 @@ jobs:
         with:
           submodules: recursive
 
-      # Aggressively clean all CMake-related files and build directories
-      - name: Clean Build Directory and CMake Cache
+      # Build libft
+      - name: Build libft
         run: |
-          rm -rf test_src/build
-          rm -f test_src/CMakeCache.txt
-          rm -rf test_src/CMakeFiles
-          rm -f test_src/Makefile
+          cd lib/libft
+          make
 
-      # Install dependencies
+      # Build libgc
+      - name: Build libgc
+        run: |
+          cd lib/libgc
+          make
+
+      # Clean Build Directory
+      - name: Clean Build Directory
+        run: rm -rf test_src/build
+
       - name: Install Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y check
 
-      # Set up CMake
+      # Configure CMake
       - name: Configure CMake
         run: cmake -S test_src -B test_src/build
 
