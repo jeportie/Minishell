@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/16 14:34:54 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/18 10:04:42 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ t_env_data	*ms_init_env(char **envp, t_shell *shell)
 		exit(EXIT_FAILURE);
 	}
 	env_data = (t_env_data *)gc_malloc(sizeof(t_env_data), shell->gcl);
+	gc_lock(env_data, shell->gcl);
 	ft_memset(env_data, 0, sizeof(t_env_data));
 	if (envp)
 		env_data->env_exist = true;

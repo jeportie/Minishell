@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:01:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/17 16:50:47 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:58:02 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef enum e_token_type
 	TOKEN_AND,
 	TOKEN_OR,
 	TOKEN_SEQUENCE,
+	TOKEN_EXEC,
 	TOKEN_BACKGROUND,
 	TOKEN_SUBSHELL_START,
 	TOKEN_SUBSHELL_STOP,
@@ -49,6 +50,7 @@ bool	is_operator(char c);
 bool	is_quote(char c);
 bool	is_special(char c);
 void	skip_whitespace(const char **input);
+void	print_token(t_token *head);
 
 /* Tokenize Functions */
 t_token	*tokenize_word(const char **input, t_gc *gcl);

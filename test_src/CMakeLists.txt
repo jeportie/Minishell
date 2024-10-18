@@ -33,8 +33,12 @@ include_directories(
     ${CHECK_INCLUDE_DIRS}
 )
 
-# Automatically include all .c files from src/
+# Automatically include all .c files from src/ including src/global.c
 file(GLOB_RECURSE SRC_FILES "${SRC_DIR}/*.c")
+
+# Ensure src/global.c is included specifically
+set(GLOBALS_FILE "${SRC_DIR}/global.c")
+list(APPEND SRC_FILES ${GLOBALS_FILE})
 
 # Automatically include all .c files from test_src/, excluding the build directory and CMakeCCompilerId
 file(GLOB_RECURSE TEST_SRC_FILES RELATIVE "${TEST_SRC_DIR}" "${TEST_SRC_DIR}/*.c")
@@ -106,3 +110,4 @@ foreach(TEST_FILE ${TEST_SRC_FILES})
     # Add custom CTest options (e.g., timeout) for each test
     set_tests_properties(${TEST_NAME} PROPERTIES TIMEOUT 5)
 endforeach()
+
