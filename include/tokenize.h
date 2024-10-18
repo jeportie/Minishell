@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:01:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/18 13:53:51 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:43:44 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@
 typedef enum e_token_type
 {
 	TOKEN_WORD,
-	TOKEN_OPERATOR,
 	TOKEN_REDIRECTION,
 	TOKEN_PIPE,
 	TOKEN_AND,
 	TOKEN_OR,
-	TOKEN_SEQUENCE,
 	TOKEN_EXEC,
-	TOKEN_BACKGROUND,
 	TOKEN_SUBSHELL_START,
 	TOKEN_SUBSHELL_STOP,
 }			t_token_type;

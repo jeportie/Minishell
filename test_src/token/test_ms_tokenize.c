@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:12:36 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/09 13:18:52 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:20:04 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -303,42 +303,6 @@ START_TEST(test_command_with_unmatched_quotes)
 }
 END_TEST
 
-/* Test Case 9: Command with Background Execution */
-START_TEST(test_command_with_background_execution)
-{
-    t_gc *gcl = gc_init();
-    const char *input = "sleep 10 &";
-    t_token *tokens = ms_tokenize(input, gcl);
-
-    // Expected tokens: sleep, 10, &
-
-    t_token *current = tokens;
-
-    // Token 1: sleep
-    ck_assert_ptr_nonnull(current);
-    ck_assert_int_eq(current->type, TOKEN_WORD);
-    ck_assert_str_eq(current->token, "sleep");
-    current = current->next;
-
-    // Token 2: 10
-    ck_assert_ptr_nonnull(current);
-    ck_assert_int_eq(current->type, TOKEN_WORD);
-    ck_assert_str_eq(current->token, "10");
-    current = current->next;
-
-    // Token 3: &
-    ck_assert_ptr_nonnull(current);
-    ck_assert_int_eq(current->type, TOKEN_BACKGROUND);
-    ck_assert_str_eq(current->token, "&");
-    current = current->next;
-
-    ck_assert_ptr_null(current);
-
-    // Cleanup
-    gc_cleanup(gcl);
-}
-END_TEST
-
 /* Test Case 10: Command with Subshell */
 START_TEST(test_command_with_subshell)
 {
@@ -461,7 +425,7 @@ END_TEST
 START_TEST(test_complex_command)
 {
     t_gc *gcl = gc_init();
-    const char *input = "echo \"Start\"; (cd /tmp && ls) | grep 'file' > result.txt";
+    const char *input = "echo \"Start\" && (cd /tmp && ls) | grep 'file' > result.txt";
     t_token *tokens = ms_tokenize(input, gcl);
 
     // Expected tokens: echo, "Start", ;, (, cd, /tmp, &&, ls, ), |, grep, 'file', >, result.txt
@@ -482,8 +446,8 @@ START_TEST(test_complex_command)
 
     // Token 3: ;
     ck_assert_ptr_nonnull(current);
-    ck_assert_int_eq(current->type, TOKEN_SEQUENCE);
-    ck_assert_str_eq(current->token, ";");
+    ck_assert_int_eq(current->type, TOKEN_AND);
+    ck_assert_str_eq(current->token, "&&");
     current = current->next;
 
     // Token 4: (
@@ -579,7 +543,6 @@ Suite *tokenize_suite(void)
     tcase_add_test(tc_core, test_command_with_wildcards);
     tcase_add_test(tc_core, test_command_with_logical_operators);
     tcase_add_test(tc_core, test_command_with_unmatched_quotes);
-    tcase_add_test(tc_core, test_command_with_background_execution);
     tcase_add_test(tc_core, test_command_with_subshell);
     tcase_add_test(tc_core, test_command_with_multiple_redirections);
     tcase_add_test(tc_core, test_empty_input);

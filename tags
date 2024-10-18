@@ -745,7 +745,6 @@ START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_add_token)$/;"	f
 START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_add_token_null_head)$/;"	f
 START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_add_token_null_token)$/;"	f
 START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_create_token)$/;"	f
-START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_background_execution)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_logical_operators)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_multiple_redirections)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_pipe)$/;"	f
@@ -769,13 +768,10 @@ STRINGIFY_HELPER	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompiler
 STRINGIFY_HELPER	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	461;"	d	file:
 TOKENIZE_H	include/tokenize.h	14;"	d
 TOKEN_AND	include/tokenize.h	/^	TOKEN_AND,$/;"	e	enum:e_token_type
-TOKEN_BACKGROUND	include/tokenize.h	/^	TOKEN_BACKGROUND,$/;"	e	enum:e_token_type
 TOKEN_EXEC	include/tokenize.h	/^	TOKEN_EXEC,$/;"	e	enum:e_token_type
-TOKEN_OPERATOR	include/tokenize.h	/^	TOKEN_OPERATOR,$/;"	e	enum:e_token_type
 TOKEN_OR	include/tokenize.h	/^	TOKEN_OR,$/;"	e	enum:e_token_type
 TOKEN_PIPE	include/tokenize.h	/^	TOKEN_PIPE,$/;"	e	enum:e_token_type
 TOKEN_REDIRECTION	include/tokenize.h	/^	TOKEN_REDIRECTION,$/;"	e	enum:e_token_type
-TOKEN_SEQUENCE	include/tokenize.h	/^	TOKEN_SEQUENCE,$/;"	e	enum:e_token_type
 TOKEN_SUBSHELL_START	include/tokenize.h	/^	TOKEN_SUBSHELL_START,$/;"	e	enum:e_token_type
 TOKEN_SUBSHELL_STOP	include/tokenize.h	/^	TOKEN_SUBSHELL_STOP,$/;"	e	enum:e_token_type
 TOKEN_WORD	include/tokenize.h	/^	TOKEN_WORD,$/;"	e	enum:e_token_type
@@ -973,6 +969,7 @@ info_version_internal	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCom
 info_version_internal	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v
 info_version_internal	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INTERNAL_STR "]";$/;"	v
 is_array	lib/libgc/include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
+is_frame	src/token/utils.c	/^bool	is_frame(char c)$/;"	f
 is_locked	lib/libgc/include/libgc.h	/^	bool				is_locked;$/;"	m	struct:s_gc_node
 is_marked	lib/libgc/include/libgc.h	/^	bool				is_marked;$/;"	m	struct:s_gc_node
 is_operator	src/token/utils.c	/^bool	is_operator(char c)$/;"	f
