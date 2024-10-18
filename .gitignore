@@ -5,6 +5,7 @@ test_src/build/
 # Ignore CMake generated files
 CMakeCache.txt
 CMakeFiles/
+vgcore.*
 
 # Ignore object files and dependency files
 *.o
