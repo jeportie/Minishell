@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:01:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/18 12:58:02 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/18 13:53:51 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_token	*ms_tokenize(const char *commant_line, t_gc *gcl);
 
 /* Token List Functions */
 t_token	*create_token(t_token_type type, const char *value, t_gc *gcl);
-void	add_token(t_token **head, t_token *new_token);
+void	add_token(t_token **head, t_token *new_token, t_gc *gcl);
 
 /* Utils functions*/
 bool	is_whitespace(char c);

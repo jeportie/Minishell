@@ -740,6 +740,11 @@ START_TEST	test_src/signal/test_ms_init_std_signal.c	/^START_TEST(test_ms_init_s
 START_TEST	test_src/signal/test_ms_init_std_signal.c	/^START_TEST(test_ms_init_std_signal_sigquit)$/;"	f
 START_TEST	test_src/signal/test_ms_stop_std_signal.c	/^START_TEST(test_ms_stop_std_signal_sigint)$/;"	f
 START_TEST	test_src/signal/test_ms_stop_std_signal.c	/^START_TEST(test_ms_stop_std_signal_sigquit)$/;"	f
+START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_add_multiple_tokens)$/;"	f
+START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_add_token)$/;"	f
+START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_add_token_null_head)$/;"	f
+START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_add_token_null_token)$/;"	f
+START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_create_token)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_background_execution)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_logical_operators)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_multiple_redirections)$/;"	f
@@ -754,6 +759,10 @@ START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_complex_command)$
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_empty_input)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_input_with_only_whitespace)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_simple_command)$/;"	f
+START_TEST	test_src/token/test_tokenize_word.c	/^START_TEST(test_tokenize_word_basic)$/;"	f
+START_TEST	test_src/token/test_tokenize_word.c	/^START_TEST(test_tokenize_word_empty_input)$/;"	f
+START_TEST	test_src/token/test_tokenize_word.c	/^START_TEST(test_tokenize_word_null_input)$/;"	f
+START_TEST	test_src/token/test_tokenize_word.c	/^START_TEST(test_tokenize_word_with_whitespace)$/;"	f
 STRINGIFY	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	462;"	d	file:
 STRINGIFY	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	462;"	d	file:
 STRINGIFY_HELPER	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	461;"	d	file:
@@ -783,7 +792,7 @@ YELLOW	Makefile	/^YELLOW  = \\033[33m$/;"	m
 YELLOW	make_interface/config/Makefile	/^YELLOW  = \\033[33m$/;"	m
 __has_include	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	17;"	d	file:
 __has_include	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	17;"	d	file:
-add_token	src/token/ms_tokenize.c	/^void	add_token(t_token **head, t_token *new_token)$/;"	f
+add_token	src/token/lst_tokens.c	/^void	add_token(t_token **head, t_token *new_token, t_gc *gcl)$/;"	f
 buf_fd	lib/libft/include/libft.h	/^	int		buf_fd;$/;"	m	struct:s_buffer
 buf_last	lib/libft/include/libft.h	/^	char	buf_last;$/;"	m	struct:s_buffer
 buffer	lib/libft/include/libft.h	/^	char	*buffer;$/;"	m	struct:s_buffer
@@ -791,7 +800,7 @@ compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''
 const	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
 const	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
 create_env_node	test_src/env_lst_utils/test_ms_env_add_back.c	/^t_env *create_env_node(const char *var, const char *value) {$/;"	f
-create_token	src/token/ms_tokenize.c	/^t_token	*create_token(t_token_type type, const char *value, t_gc *gcl)$/;"	f
+create_token	src/token/lst_tokens.c	/^t_token	*create_token(t_token_type type, const char *value, t_gc *gcl)$/;"	f
 create_ycm_extra_conf	make_interface/config/build.sh	/^create_ycm_extra_conf() {$/;"	f
 display_menu	make_interface/src/interactive_select.c	/^void	display_menu(WINDOW *menu_win, char *choices[], int n_choices, int hl)$/;"	f
 e_error	lib/libft/include/libft.h	/^typedef enum e_error$/;"	g
@@ -971,6 +980,7 @@ is_quote	src/token/utils.c	/^bool	is_quote(char c)$/;"	f
 is_special	src/token/utils.c	/^bool	is_special(char c)$/;"	f
 is_whitespace	src/token/utils.c	/^bool	is_whitespace(char c)$/;"	f
 isalnum_suite	lib/libft/test_src/bool/test_ft_isalnum.c	/^Suite *isalnum_suite(void)$/;"	f
+lst_tokens_suite	test_src/token/test_lst_tokens.c	/^Suite *lst_tokens_suite(void)$/;"	f
 main	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
 main	lib/libft/test_src/bool/test_ft_isalnum.c	/^int main(void)$/;"	f
@@ -994,7 +1004,9 @@ main	test_src/init_shell/test_ms_init_env.c	/^int main(void)$/;"	f
 main	test_src/init_shell/test_ms_init_shell.c	/^int main(void)$/;"	f
 main	test_src/signal/test_ms_init_std_signal.c	/^int main(void)$/;"	f
 main	test_src/signal/test_ms_stop_std_signal.c	/^int main(void)$/;"	f
+main	test_src/token/test_lst_tokens.c	/^int main(void)$/;"	f
 main	test_src/token/test_ms_tokenize.c	/^int main(void)$/;"	f
+main	test_src/token/test_tokenize_word.c	/^int main(void)$/;"	f
 map_token_type_to_operator	src/token/ms_tokenize.c	/^t_token	*map_token_type_to_operator(const char *operator_token)$/;"	f
 memset_suite	lib/libft/test_src/memory/test_ft_memset.c	/^Suite *memset_suite(void)$/;"	f
 minishell_suite	test_src/env_lst_utils/test_ms_env_add_back.c	/^Suite *minishell_suite(void) {$/;"	f
@@ -1020,7 +1032,7 @@ next	lib/libgc/include/libgc.h	/^	struct s_gc_node	*next;$/;"	m	struct:s_gc_node
 path	include/minishell.h	/^	char	*path;$/;"	m	struct:s_env_data
 precision	lib/libft/include/libft.h	/^	int			precision;$/;"	m	struct:s_format_spec
 print_progress	make_interface/src/progress.c	/^void	print_progress(int step, int total)$/;"	f
-print_token	src/token/ms_tokenize.c	/^void	print_token(t_token *head)$/;"	f
+print_token	src/token/utils.c	/^void	print_token(t_token *head)$/;"	f
 progressive_sleep	make_interface/src/progress.c	/^void	progressive_sleep(int step, int total)$/;"	f
 ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
 qnxnto	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
@@ -1062,7 +1074,8 @@ token	include/tokenize.h	/^	char			*token;$/;"	m	struct:s_token
 tokenize_operator	src/token/ms_tokenize.c	/^t_token	*tokenize_operator(const char **input, t_gc *gcl)$/;"	f
 tokenize_quote	src/token/ms_tokenize.c	/^t_token	*tokenize_quote(const char **input, t_gc *gcl)$/;"	f
 tokenize_suite	test_src/token/test_ms_tokenize.c	/^Suite *tokenize_suite(void)$/;"	f
-tokenize_word	src/token/ms_tokenize.c	/^t_token	*tokenize_word(const char **input, t_gc *gcl)$/;"	f
+tokenize_word	src/token/tokenize_word.c	/^t_token	*tokenize_word(const char **input, t_gc *gcl)$/;"	f
+tokenize_word_suite	test_src/token/test_tokenize_word.c	/^Suite *tokenize_word_suite(void)$/;"	f
 type	include/tokenize.h	/^	t_token_type	type;$/;"	m	struct:s_token
 type	lib/libft/include/libft.h	/^	char		type;$/;"	m	struct:s_format_spec
 update_makefile	make_interface/config/build.sh	/^update_makefile() {$/;"	f
