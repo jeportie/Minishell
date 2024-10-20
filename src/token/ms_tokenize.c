@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 20:49:16 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/18 15:43:38 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/20 17:59:42 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,34 +21,6 @@ t_token	*tokenize_quote(const char **input, t_gc *gcl)
 	return (NULL);
 }
 
-t_token	*tokenize_operator(const char **input, t_gc *gcl)
-{
-	char	*value;
-	int		len;
-	int		i;
-	char	*current;
-
-	if (!input || !*input)
-	{
-		gc_cleanup(gcl);
-		perror("Minishell: Error: null input\n");
-		exit(EXIT_FAILURE);
-	}
-	current = (char *)*input;
-	len = 1;
-	i = 0;
-	while (current[i] && current[i] == current[i + 1])
-	{
-		i++;
-		len++;
-	}
-	value = (char *)gc_malloc(sizeof(char) * len + 1, gcl);
-	gc_lock(value, gcl);
-	i = 0;
-	
-	return (NULL);
-}
-
 t_token	*map_token_type_to_operator(const char *operator_token)
 {
 	operator_token = NULL;
@@ -56,11 +28,6 @@ t_token	*map_token_type_to_operator(const char *operator_token)
 		return (NULL);
 	return (NULL);
 }
-
-/*
- * NOTE: GERER SYNTAX ERROR QUAND TOKEN FAIL
- * ON init un garbage pour tokenize qu'on cleanup a la fin de l'ast
- */
 
 t_token	*ms_tokenize(const char *command_line, t_gc *gcl)
 {
@@ -76,6 +43,8 @@ t_token	*ms_tokenize(const char *command_line, t_gc *gcl)
 		new_token = NULL;
 		if (is_quote(*input))
 			new_token = tokenize_quote(&input, gcl);
+		else if (is_frame(*input))
+			new_token = tokenize_frame(&input, gcl);
 		else if (is_operator(*input))
 			new_token = tokenize_operator(&input, gcl);
 		else

@@ -1016,7 +1016,7 @@ test_ms_init_shell_exit	test_src/init_shell/test_ms_init_shell.c	/^int test_ms_i
 test_signal_handling	test_src/signal/test_ms_init_std_signal.c	/^int test_signal_handling(void (*init_signal_func)(void), int signal_to_send)$/;"	f
 test_signal_handling	test_src/signal/test_ms_stop_std_signal.c	/^int test_signal_handling(void (*init_signal_func)(void), int signal_to_send)$/;"	f
 token	include/tokenize.h	/^	char			*token;$/;"	m	struct:s_token
-tokenize_operator	src/token/ms_tokenize.c	/^t_token	*tokenize_operator(const char **input, t_gc *gcl)$/;"	f
+tokenize_operator	src/token/tokenize_operator.c	/^t_token	*tokenize_operator(const char **input, t_gc *gcl)$/;"	f
 tokenize_quote	src/token/ms_tokenize.c	/^t_token	*tokenize_quote(const char **input, t_gc *gcl)$/;"	f
 tokenize_suite	test_src/token/test_ms_tokenize.c	/^Suite *tokenize_suite(void)$/;"	f
 tokenize_word	src/token/tokenize_word.c	/^t_token	*tokenize_word(const char **input, t_gc *gcl)$/;"	f
