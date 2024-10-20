@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:45:22 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/18 14:38:17 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/20 14:41:42 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ START_TEST(test_add_token)
     t_gc *gcl = gc_init();
     t_token *head = NULL;
     t_token *token1 = create_token(TOKEN_WORD, "echo", gcl);
-    t_token *token2 = create_token(TOKEN_OPERATOR, "&&",gcl);
+    t_token *token2 = create_token(TOKEN_AND, "&&",gcl);
 
     add_token(&head, token1, gcl);
     ck_assert_ptr_nonnull(head);
@@ -105,7 +105,7 @@ START_TEST(test_add_multiple_tokens)
     t_gc *gcl = gc_init();
     t_token *head = NULL;
     t_token *token1 = create_token(TOKEN_WORD, "echo", gcl);
-    t_token *token2 = create_token(TOKEN_OPERATOR, "&&", gcl);
+    t_token *token2 = create_token(TOKEN_AND, "&&", gcl);
     t_token *token3 = create_token(TOKEN_WORD, "ls", gcl);
 
     add_token(&head, token1, gcl);
