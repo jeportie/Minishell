@@ -9,6 +9,27 @@
 ## To-Do List
 
 <!-- TODO-START -->
+- [ ] Minishell todo List
+    - [ ] Part2 Recuperation input et erreur de syntax
+    - [ ] Part3 Parse
+        - [ ] Sub1 check strategie
+            - [ ] Feature1 : manage quotes
+            - [ ] Feature2 : expand variable
+            - [ ] Feature3 : heredoc
+            - [ ] Feature4 : link index to TOKEN
+        - [ ] Sub2 Abstract Syntax Tree
+    - [ ] Part4 Exec
+    - [X] Part1 Init and Workflow prep
+        - [X] !!!! modifier raccourice vim p pour P
+        - [X] Making the firstfiles with git
+        - [X] Installer norminette dans le docker
+        - [X] Verification de l'env et du parse et creation en fonction
+        - [X] Gerer les signaux
+
+- [ ] Bug VisuTest :
+  - [ ] 
+  - [X] raccourci p
+
 <!-- TODO-END -->
 
 ## Table of Contents
