@@ -96,8 +96,11 @@ ARCHITECTURE_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	
 ARCHITECTURE_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	723;"	d	file:
 ARCHITECTURE_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	726;"	d	file:
 ARCHITECTURE_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	730;"	d	file:
+BAR_WIDTH	make_interface/src/progress.c	17;"	d	file:
 BLUE	Makefile	/^BLUE    = \\033[34m$/;"	m
+BLUE	make_interface/config/Makefile	/^BLUE    = \\033[34m$/;"	m
 BOLD	Makefile	/^BOLD    = \\033[1m$/;"	m
+BOLD	make_interface/config/Makefile	/^BOLD    = \\033[1m$/;"	m
 BUFFER_SIZE	lib/libft/include/libft.h	27;"	d
 CC	Makefile	/^CC = 		cc$/;"	m
 CC	Makefile	/^default: CC = cc$/;"	m
@@ -105,9 +108,14 @@ CC	Makefile	/^san: CC = clang$/;"	m
 CC	Makefile	/^val: CC = cc$/;"	m
 CC	lib/libft/Makefile	/^CC = gcc$/;"	m
 CC	lib/libgc/Makefile	/^CC = gcc$/;"	m
+CC	make_interface/config/Makefile	/^CC = 		{{CC}}$/;"	m
+CC	make_interface/config/Makefile	/^default: CC = cc$/;"	m
+CC	make_interface/config/Makefile	/^san: CC = clang$/;"	m
+CC	make_interface/config/Makefile	/^val: CC = cc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = 	-Wall -Wextra -Werror$/;"	m
 CFLAGS	lib/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	lib/libgc/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	make_interface/config/Makefile	/^CFLAGS = 	{{CFLAGS}}$/;"	m
 CMAKE_BINARY_DIR	lib/libft/test_src/Makefile	/^CMAKE_BINARY_DIR = \/root\/projects\/libft\/test_src$/;"	m
 CMAKE_BINARY_DIR	test_src/build/Makefile	/^CMAKE_BINARY_DIR = \/root\/projects\/Minishell\/test_src\/build$/;"	m
 CMAKE_COMMAND	lib/libft/test_src/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
@@ -485,7 +493,9 @@ C_VERSION	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	830;"	
 DEC	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	734;"	d	file:
 DEC	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	734;"	d	file:
 DEPFLAGS	Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
+DEPFLAGS	make_interface/config/Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
 DEPS	Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
+DEPS	make_interface/config/Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
 DirectoryOfThisScript	ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
 EQUALS	lib/libft/test_src/Makefile	/^EQUALS = =$/;"	m
 EQUALS	test_src/build/Makefile	/^EQUALS = =$/;"	m
@@ -495,25 +505,37 @@ ERNOWRITE	lib/libft/include/libft.h	/^	ERNOWRITE,$/;"	e	enum:e_error
 ERROR	lib/libft/include/libft.h	30;"	d
 FlagsForFile	ycm_extra_conf.py	/^def FlagsForFile(filename):$/;"	f
 GREEN	Makefile	/^GREEN   = \\033[32m$/;"	m
+GREEN	make_interface/config/Makefile	/^GREEN   = \\033[32m$/;"	m
+GREEN	make_interface/src/make_prompt.c	21;"	d	file:
 HELG	Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
+HELG	make_interface/config/Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
 HEX	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	745;"	d	file:
 HEX	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	745;"	d	file:
 ID_VOID_MAIN	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
 ID_VOID_MAIN	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
 INCLUDES	Makefile	/^INCLUDES = -I.\/include -I.\/lib\/libgc\/include -I.\/lib\/libft\/include$/;"	m
+INCLUDES	make_interface/config/Makefile	/^INCLUDES =  {{INCLUDES}} $/;"	m
 LDFLAGS	Makefile	/^LDFLAGS = -lreadline -L.\/lib\/libgc -lgc -L.\/lib\/libft -lft$/;"	m
+LDFLAGS	make_interface/config/Makefile	/^LDFLAGS =	{{LIBDIRS}}$/;"	m
 LIBFT_H	lib/libft/include/libft.h	14;"	d
 LIBGC_H	lib/libgc/include/libgc.h	14;"	d
+MAX_FILES	make_interface/src/interactive_select.c	19;"	d	file:
+MAX_SLEEP_USEC	make_interface/src/progress.c	18;"	d	file:
 MINISHELL_H	include/minishell.h	14;"	d
+MIN_SLEEP_USEC	make_interface/src/progress.c	19;"	d	file:
 MakeRelativePathsAbsolute	ycm_extra_conf.py	/^def MakeRelativePathsAbsolute(flags, working_directory):$/;"	f
 NAME	Makefile	/^NAME = Minishell$/;"	m
 NAME	lib/libft/Makefile	/^NAME = libft.a$/;"	m
 NAME	lib/libgc/Makefile	/^NAME = libgc.a$/;"	m
+NAME	make_interface/config/Makefile	/^NAME = {{NAME}}$/;"	m
+NC	make_interface/src/make_prompt.c	23;"	d	file:
 NOERR	lib/libft/include/libft.h	/^	NOERR,$/;"	e	enum:e_error
 OBJ	Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
 OBJ	lib/libft/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 OBJ	lib/libgc/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OBJ	make_interface/config/Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
 OBJ_DIR	Makefile	/^OBJ_DIR = 	obj$/;"	m
+OBJ_DIR	make_interface/config/Makefile	/^OBJ_DIR = 	obj$/;"	m
 PLATFORM_ID	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	466;"	d	file:
 PLATFORM_ID	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	469;"	d	file:
 PLATFORM_ID	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	472;"	d	file:
@@ -585,11 +607,16 @@ PLATFORM_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	565;
 PLATFORM_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	569;"	d	file:
 PLATFORM_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	572;"	d	file:
 RED	Makefile	/^RED     = \\033[31m$/;"	m
+RED	make_interface/config/Makefile	/^RED     = \\033[31m$/;"	m
+RED	make_interface/src/make_prompt.c	22;"	d	file:
 RESET	Makefile	/^RESET   = \\033[0m$/;"	m
+RESET	make_interface/config/Makefile	/^RESET   = \\033[0m$/;"	m
 RM	lib/libft/test_src/Makefile	/^RM = \/usr\/bin\/cmake -E rm -f$/;"	m
 RM	test_src/build/Makefile	/^RM = \/usr\/bin\/cmake -E rm -f$/;"	m
 SANITIZE	Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
+SANITIZE	make_interface/config/Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
 SCRIPT_URL	Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeromeDev94\/make_interface.git$/;"	m
+SCRIPT_URL	make_interface/config/Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeportie\/make_interface.git$/;"	m
 SHELL	lib/libft/test_src/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHELL	test_src/build/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SIMULATE_ID	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	27;"	d	file:
@@ -647,7 +674,9 @@ SIMULATE_VERSION_PATCH	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompil
 SRC	Makefile	/^SRC = \\$/;"	m
 SRC	lib/libft/Makefile	/^SRC = \\$/;"	m
 SRC	lib/libgc/Makefile	/^SRC = src\/gc_cleanup.c \\$/;"	m
+SRC	make_interface/config/Makefile	/^SRC =$/;"	m
 SRC_DIR	Makefile	/^SRC_DIR = 	src$/;"	m
+SRC_DIR	make_interface/config/Makefile	/^SRC_DIR = 	src$/;"	m
 START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_alpha_lowercase)$/;"	f
 START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_alpha_uppercase)$/;"	f
 START_TEST	lib/libft/test_src/bool/test_ft_isalnum.c	/^START_TEST(test_isalnum_boundary_after_alpha_upper)$/;"	f
@@ -757,10 +786,15 @@ TOKEN_SUBSHELL_STOP	include/tokenize.h	/^	TOKEN_SUBSHELL_STOP,$/;"	e	enum:e_toke
 TOKEN_WORD	include/tokenize.h	/^	TOKEN_WORD,$/;"	e	enum:e_token_type
 TOTAL_STEPS	Makefile	/^TOTAL_STEPS := $(words $(OBJ))$/;"	m
 VALG	Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
+VALG	make_interface/config/Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
 VERBOSE	Makefile	/^VERBOSE ?= @$/;"	m
 VERBOSE	Makefile	/^classic: VERBOSE =$/;"	m
+VERBOSE	make_interface/config/Makefile	/^VERBOSE ?= @$/;"	m
+VERBOSE	make_interface/config/Makefile	/^classic: VERBOSE =$/;"	m
 VFLAGS	Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
+VFLAGS	make_interface/config/Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
 YELLOW	Makefile	/^YELLOW  = \\033[33m$/;"	m
+YELLOW	make_interface/config/Makefile	/^YELLOW  = \\033[33m$/;"	m
 __has_include	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	17;"	d	file:
 __has_include	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	17;"	d	file:
 add_token	src/token/ms_tokenize.c	/^void	add_token(t_token **head, t_token *new_token)$/;"	f
@@ -774,6 +808,8 @@ create_env_node	test_src/env_lst_utils/test_ms_env_add_back.c	/^t_env *create_en
 create_mock_shell	test_src/syntax_error/test_ms_operator_error.c	/^t_shell *create_mock_shell(void)$/;"	f
 create_mock_shell	test_src/syntax_error/test_ms_pipe_error.c	/^t_shell* create_mock_shell(void)$/;"	f
 create_mock_shell	test_src/syntax_error/test_ms_quote_error.c	/^t_shell* create_mock_shell(void)$/;"	f
+create_ycm_extra_conf	make_interface/config/build.sh	/^create_ycm_extra_conf() {$/;"	f
+display_menu	make_interface/src/interactive_select.c	/^void	display_menu(WINDOW *menu_win, char *choices[], int n_choices, int hl)$/;"	f
 e_error	lib/libft/include/libft.h	/^typedef enum e_error$/;"	g
 e_token_type	include/tokenize.h	/^typedef enum e_token_type$/;"	g
 env	include/minishell.h	/^	t_env	*env;$/;"	m	struct:s_env_data
@@ -810,12 +846,15 @@ ft_check_pid	lib/libft/src/utils/ft_check_pid.c	/^void	ft_check_pid(int pid)$/;"
 ft_concat_path	lib/libft/src/utils/ft_find_cmd_path.c	/^static char	*ft_concat_path(char **paths, const char *cmd)$/;"	f	file:
 ft_convert_spec	lib/libft/src/printf/ft_printf.c	/^static int	ft_convert_spec(t_format_spec spec, va_list args,$/;"	f	file:
 ft_count_words	lib/libft/src/string/ft_split.c	/^size_t	ft_count_words(char *str, char c)$/;"	f
+ft_count_words	make_interface/src/make_prompt.c	/^static size_t	ft_count_words(char *str, char c)$/;"	f	file:
 ft_extract	lib/libft/src/string/ft_split.c	/^static char	*ft_extract(const char **s, char c, char **tab, size_t i)$/;"	f	file:
+ft_extract	make_interface/src/make_prompt.c	/^static char	*ft_extract(const char **s, char c, char **tab, size_t i)$/;"	f	file:
 ft_fill_base	lib/libft/src/conversion/ft_ulltoa_base.c	/^static char	*ft_fill_base(unsigned long long nbr, int size, char *base,$/;"	f	file:
 ft_fill_base	lib/libft/src/conversion/ft_utoa_base.c	/^static char	*ft_fill_base(unsigned int nbr, int size, char *base, char *res)$/;"	f	file:
 ft_find_cmd_path	lib/libft/src/utils/ft_find_cmd_path.c	/^char	*ft_find_cmd_path(char **envp, const char *cmd)$/;"	f
 ft_find_end	lib/libft/src/printf/ft_parse_format.c	/^static char	*ft_find_end(const char *start, t_format_spec *spec)$/;"	f	file:
 ft_free_memory	lib/libft/src/string/ft_split.c	/^static void	ft_free_memory(char **tab, size_t i)$/;"	f	file:
+ft_free_memory	make_interface/src/make_prompt.c	/^static void	ft_free_memory(char **tab, size_t i)$/;"	f	file:
 ft_getenv	lib/libft/src/utils/ft_getenv.c	/^char	*ft_getenv(char **envp, const char *name)$/;"	f
 ft_handle_char	lib/libft/src/printf/ft_handle_char.c	/^void	ft_handle_char(t_format_spec spec, va_list args, t_buffer *buf_info)$/;"	f
 ft_handle_hash_flag	lib/libft/src/printf/ft_handle_hash_flag.c	/^void	ft_handle_hash_flag(t_format_spec spec, int content, t_buffer *buf_info)$/;"	f
@@ -873,6 +912,7 @@ ft_putnbr_fd	lib/libft/src/io/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$
 ft_putstr_fd	lib/libft/src/io/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
 ft_realloc	lib/libft/src/memory/ft_realloc.c	/^void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)$/;"	f
 ft_split	lib/libft/src/string/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split	make_interface/src/make_prompt.c	/^char	**ft_split(char const *s, char c)$/;"	f
 ft_strchr	lib/libft/src/string/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
 ft_strdup	lib/libft/src/string/ft_strdup.c	/^char	*ft_strdup(const char *s)$/;"	f
 ft_strdup	lib/libgc/src/gc_register.c	/^static char	*ft_strdup(const char *s)$/;"	f	file:
@@ -881,6 +921,7 @@ ft_strjoin	lib/libft/src/string/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, 
 ft_strjoin_free	lib/libft/src/string/ft_strjoin.c	/^char	*ft_strjoin_free(char *s1, const char *s2)$/;"	f
 ft_strlcat	lib/libft/src/string/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f
 ft_strlcpy	lib/libft/src/string/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f
+ft_strlcpy	make_interface/src/make_prompt.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f
 ft_strlen	lib/libft/src/string/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
 ft_strlen	lib/libgc/src/gc_register.c	/^static int	ft_strlen(const char *str)$/;"	f	file:
 ft_strmapi	lib/libft/src/string/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
@@ -890,13 +931,14 @@ ft_strrchr	lib/libft/src/string/ft_strrchr.c	/^char	*ft_strrchr(const char *s, i
 ft_strtrim	lib/libft/src/string/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
 ft_substr	lib/libft/src/string/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
 ft_substr_len	lib/libft/src/string/ft_split.c	/^static size_t	ft_substr_len(char *str, char c)$/;"	f	file:
+ft_substr_len	make_interface/src/make_prompt.c	/^static size_t	ft_substr_len(char *str, char c)$/;"	f	file:
 ft_tolower	lib/libft/src/conversion/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
 ft_toupper	lib/libft/src/conversion/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
 ft_ulltoa_base	lib/libft/src/conversion/ft_ulltoa_base.c	/^char	*ft_ulltoa_base(unsigned long long nbr, char *base)$/;"	f
 ft_utoa_base	lib/libft/src/conversion/ft_utoa_base.c	/^char	*ft_utoa_base(unsigned int nbr, char *base)$/;"	f
 ft_zero_minus_flags	lib/libft/src/printf/ft_parse_flags.c	/^static void	ft_zero_minus_flags(const char *format, t_format_spec *spec,$/;"	f	file:
 g_perror	lib/libft/src/printf/ft_printf_globals.c	/^const char	*g_perror[] = {$/;"	v
-g_signal	main.c	/^int	g_signal;$/;"	v
+g_signal	src/global.c	/^int	g_signal;$/;"	v
 g_signal	src/init_shell/ms_get_user_input.c	/^int	g_signal;$/;"	v
 gc_cleanup	lib/libgc/src/gc_cleanup.c	/^void	gc_cleanup(t_gc *gcl)$/;"	f
 gc_collect	lib/libgc/src/gc_collect.c	/^void	gc_collect(t_gc *gcl)$/;"	f
@@ -913,6 +955,8 @@ gc_temp_file_register	lib/libgc/src/gc_register.c	/^void	gc_temp_file_register(c
 gc_unlock	lib/libgc/src/gc_mark_lock.c	/^void	gc_unlock(void *ptr, t_gc *gcl)$/;"	f
 gcl	include/minishell.h	/^	t_gc		*gcl;$/;"	m	struct:s_shell
 generate_src_list	lib/libft/update_makefile.sh	/^generate_src_list() {$/;"	f
+generate_src_list	make_interface/exec/update_makefile.sh	/^generate_src_list() {$/;"	f
+get_uml_files	make_interface/src/interactive_select.c	/^void	get_uml_files(char *directory, char *file_list[], int *count)$/;"	f
 head	lib/libgc/include/libgc.h	/^	t_gc_node	*head;$/;"	m	struct:s_garbage_collector
 index	lib/libft/include/libft.h	/^	int		index;$/;"	m	struct:s_buffer
 info_arch	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
@@ -958,6 +1002,9 @@ main	lib/libft/test_src/bool/test_ft_isspace.c	/^int main(void) {$/;"	f
 main	lib/libft/test_src/bool/test_ft_isxdigit.c	/^int main(void) {$/;"	f
 main	lib/libft/test_src/memory/test_ft_memset.c	/^int main(void)$/;"	f
 main	main.c	/^int	main(int argc, char **argv, char **envp)$/;"	f
+main	make_interface/src/interactive_select.c	/^int	main(void)$/;"	f
+main	make_interface/src/make_prompt.c	/^int	main(void)$/;"	f
+main	make_interface/src/progress.c	/^int	main(int argc, char **argv)$/;"	f
 main	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
 main	test_src/env_lst_utils/test_ms_env_add_back.c	/^int main(void) {$/;"	f
@@ -1004,9 +1051,13 @@ next	include/tokenize.h	/^	struct s_token	*next;$/;"	m	struct:s_token	typeref:st
 next	lib/libgc/include/libgc.h	/^	struct s_gc_node	*next;$/;"	m	struct:s_gc_node	typeref:struct:s_gc_node::s_gc_node
 path	include/minishell.h	/^	char	*path;$/;"	m	struct:s_env_data
 precision	lib/libft/include/libft.h	/^	int			precision;$/;"	m	struct:s_format_spec
+print_progress	make_interface/src/progress.c	/^void	print_progress(int step, int total)$/;"	f
+progressive_sleep	make_interface/src/progress.c	/^void	progressive_sleep(int step, int total)$/;"	f
 ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
 qnxnto	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+remove_newline	make_interface/src/make_prompt.c	/^void	remove_newline(char *str)$/;"	f
+run_make_command	make_interface/src/make_prompt.c	/^void run_make_command(char *target, char *args)$/;"	f
 s_buffer	lib/libft/include/libft.h	/^typedef struct s_buffer$/;"	s
 s_env	include/minishell.h	/^typedef struct s_env$/;"	s
 s_env_data	include/minishell.h	/^typedef struct s_env_data$/;"	s
@@ -1020,11 +1071,13 @@ shell_lvl	include/minishell.h	/^	int		shell_lvl;$/;"	m	struct:s_env_data
 skip_whitespace	src/token/utils.c	/^void	skip_whitespace(const char **input)$/;"	f
 st_args_verif	src/syntax_error/ms_quote_error.c	/^static void	st_args_verif(const char *input, t_shell *shell)$/;"	f	file:
 st_args_verif	src/syntax_error/ms_syntax_error.c	/^static void	st_args_verif(const char *input, t_shell *shell)$/;"	f	file:
+st_assigned_quote	src/syntax_error/ms_quote_error.c	/^static void	st_assigned_quote(char current, char *target_quote, char *other_quote)$/;"	f	file:
+st_buff_between	src/syntax_error/ms_quote_error.c	/^static int	st_buff_between(char *current, char target, char other, t_shell *shell)$/;"	f	file:
+st_check_between_quote	src/syntax_error/ms_quote_error.c	/^static int	st_check_between_quote(char *current, t_shell *shell)$/;"	f	file:
 st_create_envp	src/init_shell/ms_init_env.c	/^static char	**st_create_envp(t_shell *shell, t_env_data *env_data)$/;"	f	file:
 st_get_path	src/init_shell/ms_init_env.c	/^static char	*st_get_path(t_env_data *env_data)$/;"	f	file:
 st_get_shell	src/init_shell/ms_init_env.c	/^static char	*st_get_shell(t_env_data *env_data)$/;"	f	file:
 st_get_term	src/init_shell/ms_init_env.c	/^static char	*st_get_term(t_env_data *env_data)$/;"	f	file:
-st_matching_quote	src/syntax_error/ms_quote_error.c	/^static int	st_matching_quote(char *current)$/;"	f	file:
 st_sigint_std_handler	src/signal/ms_init_std_signal.c	/^static void	st_sigint_std_handler(int sig)$/;"	f	file:
 t_buffer	lib/libft/include/libft.h	/^}			t_buffer;$/;"	t	typeref:struct:s_buffer
 t_env	include/minishell.h	/^}				t_env;$/;"	t	typeref:struct:s_env
@@ -1050,6 +1103,7 @@ tokenize_suite	test_src/token/test_ms_tokenize.c	/^Suite *tokenize_suite(void)$/
 tokenize_word	src/token/ms_tokenize.c	/^t_token	*tokenize_word(const char **input, t_gc *gcl)$/;"	f
 type	include/tokenize.h	/^	t_token_type	type;$/;"	m	struct:s_token
 type	lib/libft/include/libft.h	/^	char		type;$/;"	m	struct:s_format_spec
+update_makefile	make_interface/config/build.sh	/^update_makefile() {$/;"	f
 user_input	include/minishell.h	/^	char		*user_input;$/;"	m	struct:s_shell
 value	include/minishell.h	/^	char			*value;$/;"	m	struct:s_env
 var	include/minishell.h	/^	char			*var;$/;"	m	struct:s_env

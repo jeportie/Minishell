@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 20:49:16 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/17 16:50:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:58:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,36 @@
 
 void	add_token(t_token **head, t_token *new_token)
 {
+	if (head || new_token)
+		return ;
 	return ;
 }
 
 t_token	*tokenize_word(const char **input, t_gc *gcl)
 {
+	if (input || gcl)
+		return (NULL);
 	return (NULL);
 }
 
 t_token	*tokenize_quote(const char **input, t_gc *gcl)
 {
+	if (input || gcl)
+		return (NULL);
 	return (NULL);
 }
 
 t_token	*tokenize_operator(const char **input, t_gc *gcl)
 {
+	if (input || gcl)
+		return (NULL);
 	return (NULL);
 }
 
 t_token	*map_token_type_to_operator(const char *operator_token)
 {
+	if (operator_token)
+		return (NULL);
 	return (NULL);
 }
 
