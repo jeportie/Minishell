@@ -1,12 +1,12 @@
-<h1 align="center">Hi 👋, We're the Minishell Team</h1>
+<h1 align="center">Minishell Project</h1>
 <h3 align="center">A passionate team of developers from 42 School 🇫🇷</h3>
 
 <p align="center">
   <a href="https://profile.intra.42.fr/users/gmarquis">
-    <img src="https://badge.mediaplus.ma/greenbinary/gregusername?1337Badge=off&UM6P=off" alt="Greg's 42 Badge" />
+    <img src="https://badge.mediaplus.ma/greenbinary/gmarquis?1337Badge=off&UM6P=off" alt="Greg's 42 Badge" />
   </a>
   <a href="https://profile.intra.42.fr/users/jeportie">
-    <img src="https://badge.mediaplus.ma/greenbinary/jeromeusername?1337Badge=off&UM6P=off" alt="Jerome's 42 Badge" />
+    <img src="https://badge.mediaplus.ma/greenbinary/jeportie?1337Badge=off&UM6P=off" alt="Jerome's 42 Badge" />
   </a>
 </p>
 
