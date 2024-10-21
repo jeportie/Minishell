@@ -1,4 +1,8 @@
 <h1 align="center">Minishell Project</h1>
+
+![GitHub last commit](https://img.shields.io/github/last-commit/jeportie/Minishell)
+![GitHub issues](https://img.shields.io/github/issues/jeportie/Minishell)
+
 <h3 align="center">A passionate team of developers from 42 School 🇫🇷</h3>
 
 <p align="center">
