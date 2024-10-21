@@ -715,10 +715,15 @@ START_TEST	test_src/syntax_error/test_ms_operator_error.c	/^START_TEST(test_ms_o
 START_TEST	test_src/syntax_error/test_ms_operator_error.c	/^START_TEST(test_ms_operator_error_valid_input)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_pipe_error.c	/^START_TEST(test_ms_pipe_error_null_input)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_pipe_error.c	/^START_TEST(test_ms_pipe_error_valid_input)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_quote_error.c	/^START_TEST(test_ms_quote_error_invalid_0_input)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_quote_error.c	/^START_TEST(test_ms_quote_error_no_shell)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_quote_error.c	/^START_TEST(test_ms_quote_error_null_input)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_quote_error.c	/^START_TEST(test_ms_quote_error_valid_input)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_quote_error.c	/^START_TEST(test_ms_quote_error_null_input_no_shell)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_quote_error.c	/^START_TEST(test_ms_quote_error_valid_0_input)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_input)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_no_shell)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_null_input)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_null_input_no_shell)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_input)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_background_execution)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_logical_operators)$/;"	f
@@ -1013,10 +1018,13 @@ s_token	include/tokenize.h	/^typedef struct s_token$/;"	s
 shell	include/minishell.h	/^	char	*shell;$/;"	m	struct:s_env_data
 shell_lvl	include/minishell.h	/^	int		shell_lvl;$/;"	m	struct:s_env_data
 skip_whitespace	src/token/utils.c	/^void	skip_whitespace(const char **input)$/;"	f
+st_args_verif	src/syntax_error/ms_quote_error.c	/^static void	st_args_verif(const char *input, t_shell *shell)$/;"	f	file:
+st_args_verif	src/syntax_error/ms_syntax_error.c	/^static void	st_args_verif(const char *input, t_shell *shell)$/;"	f	file:
 st_create_envp	src/init_shell/ms_init_env.c	/^static char	**st_create_envp(t_shell *shell, t_env_data *env_data)$/;"	f	file:
 st_get_path	src/init_shell/ms_init_env.c	/^static char	*st_get_path(t_env_data *env_data)$/;"	f	file:
 st_get_shell	src/init_shell/ms_init_env.c	/^static char	*st_get_shell(t_env_data *env_data)$/;"	f	file:
 st_get_term	src/init_shell/ms_init_env.c	/^static char	*st_get_term(t_env_data *env_data)$/;"	f	file:
+st_matching_quote	src/syntax_error/ms_quote_error.c	/^static int	st_matching_quote(char *current)$/;"	f	file:
 st_sigint_std_handler	src/signal/ms_init_std_signal.c	/^static void	st_sigint_std_handler(int sig)$/;"	f	file:
 t_buffer	lib/libft/include/libft.h	/^}			t_buffer;$/;"	t	typeref:struct:s_buffer
 t_env	include/minishell.h	/^}				t_env;$/;"	t	typeref:struct:s_env
@@ -1031,6 +1039,7 @@ t_token_type	include/tokenize.h	/^}			t_token_type;$/;"	t	typeref:enum:e_token_t
 temp_file	lib/libgc/include/libgc.h	/^	char				*temp_file;$/;"	m	struct:s_gc_node
 term	include/minishell.h	/^	char	*term;$/;"	m	struct:s_env_data
 test_ms_init_shell_exit	test_src/init_shell/test_ms_init_shell.c	/^int test_ms_init_shell_exit(int argc, char **argv, char **envp)$/;"	f
+test_ms_quote_error_exit	test_src/syntax_error/test_ms_quote_error.c	/^int test_ms_quote_error_exit(const char *input, t_shell *shell)$/;"	f
 test_ms_syntax_error_exit	test_src/syntax_error/test_ms_syntax_error.c	/^int test_ms_syntax_error_exit(const char *input, t_shell *shell)$/;"	f
 test_signal_handling	test_src/signal/test_ms_init_std_signal.c	/^int test_signal_handling(void (*init_signal_func)(void), int signal_to_send)$/;"	f
 test_signal_handling	test_src/signal/test_ms_stop_std_signal.c	/^int test_signal_handling(void (*init_signal_func)(void), int signal_to_send)$/;"	f

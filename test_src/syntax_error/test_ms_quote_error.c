@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:21:30 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 13:23:51 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:29:22 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,30 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include "../../include/syntax.h"
+
+int test_ms_quote_error_exit(const char *input, t_shell *shell)
+{
+    pid_t pid = fork();
+    if (pid == 0) // Child process
+    {
+        ms_quote_error(input, shell);
+        exit(EXIT_SUCCESS); // If exit isn't called, exit normally
+    }
+    else if (pid > 0) // Parent process
+    {
+        int status;
+        waitpid(pid, &status, 0);
+        if (WIFEXITED(status))
+        {
+            return WEXITSTATUS(status); // Return the exit code
+        }
+        else
+        {
+            return -1; // Error occurred
+        }
+    }
+    return -1; // Fork failed
+}
 
 /* Mock shell structure for testing */
 t_shell* create_mock_shell(void)
@@ -33,18 +57,38 @@ void free_mock_shell(t_shell *shell)
 START_TEST(test_ms_quote_error_null_input)
 {
     t_shell *shell = create_mock_shell();
-    int result = ms_quote_error(NULL, shell);
-    ck_assert_int_ne(result, 0); // Expect failure (non-zero) for null input
-    free_mock_shell(shell);
+    int exit_code = test_ms_quote_error_exit(NULL, shell);
+    ck_assert_int_eq(exit_code, EXIT_FAILURE); // Expect failure due to null input
 }
 END_TEST
 
-START_TEST(test_ms_quote_error_valid_input)
+START_TEST(test_ms_quote_error_no_shell)
+{
+    int exit_code = test_ms_quote_error_exit("\"valide input\"", NULL);
+    ck_assert_int_eq(exit_code, EXIT_FAILURE); // Expect failure due to null input
+}
+
+START_TEST(test_ms_quote_error_null_input_no_shell)
+{
+    int exit_code = test_ms_quote_error_exit(NULL, NULL);
+    ck_assert_int_eq(exit_code, EXIT_FAILURE); // Expect failure due to null input
+}
+
+START_TEST(test_ms_quote_error_invalid_0_input)
 {
     t_shell *shell = create_mock_shell();
-    int result = ms_quote_error("valid input", shell);
-    ck_assert_int_eq(result, 0); // Expect success (0) for valid input
-    free_mock_shell(shell);
+    char    *input = "\"invalid input";
+    int exit_code = test_ms_quote_error_exit(input, shell);
+    ck_assert_int_eq(exit_code, EXIT_FAILURE); // Expect failure due to null input
+}
+END_TEST
+
+START_TEST(test_ms_quote_error_valid_0_input)
+{
+    t_shell *shell = create_mock_shell();
+    char    *input = "\"valid input\"";
+    int exit_code = test_ms_quote_error_exit(input, shell);
+    ck_assert_int_eq(exit_code, EXIT_SUCCESS); // Expect failure due to null input
 }
 END_TEST
 
@@ -57,7 +101,10 @@ Suite *ms_quote_error_suite(void)
     tc_core = tcase_create("Core");
 
     tcase_add_test(tc_core, test_ms_quote_error_null_input);
-    tcase_add_test(tc_core, test_ms_quote_error_valid_input);
+    tcase_add_test(tc_core, test_ms_quote_error_no_shell);
+    tcase_add_test(tc_core, test_ms_quote_error_null_input_no_shell);
+    tcase_add_test(tc_core, test_ms_quote_error_invalid_0_input);
+    tcase_add_test(tc_core, test_ms_quote_error_valid_0_input);
     suite_add_tcase(s, tc_core);
 
     return s;

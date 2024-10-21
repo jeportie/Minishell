@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:00:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 13:11:04 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:04:07 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,26 @@ START_TEST(test_ms_syntax_error_valid_input)
 }
 END_TEST
 
+START_TEST(test_ms_syntax_error_invalid_input)
+{
+    t_shell shell;
+    shell.gcl = gc_init(); // Simulate garbage collector setup
+    int exit_code = test_ms_syntax_error_exit("", &shell);
+    ck_assert_int_eq(exit_code, EXIT_FAILURE); // Expect success with valid input
+}
+
 START_TEST(test_ms_syntax_error_no_shell)
 {
     int exit_code = test_ms_syntax_error_exit("valid input", NULL);
     ck_assert_int_eq(exit_code, EXIT_FAILURE); // Expect failure due to null shell pointer
 }
 END_TEST
+
+START_TEST(test_ms_syntax_error_null_input_no_shell)
+{
+    int exit_code = test_ms_syntax_error_exit(NULL, NULL);
+    ck_assert_int_eq(exit_code, EXIT_FAILURE); // Expect failure due to null shell pointer
+}
 
 Suite *ms_syntax_error_suite(void)
 {
@@ -76,7 +90,9 @@ Suite *ms_syntax_error_suite(void)
 
     tcase_add_test(tc_core, test_ms_syntax_error_null_input);
     tcase_add_test(tc_core, test_ms_syntax_error_valid_input);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input);
     tcase_add_test(tc_core, test_ms_syntax_error_no_shell);
+    tcase_add_test(tc_core, test_ms_syntax_error_null_input_no_shell);
     suite_add_tcase(s, tc_core);
 
     return s;
