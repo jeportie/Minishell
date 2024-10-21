@@ -13,8 +13,6 @@
 - 🔭 We’re currently working on **Minishell Project**
 
 - 👨‍💻 All of our projects are available at:
-  - [Greg's GitHub Profile](https://github.com/Gregory-Marquiset)
-  - [Jerome's GitHub Profile](https://github.com/jeportie)
   - [Greg's 42 Profile](https://profile.intra.42.fr/users/gmarquis)
   - [Jerome's 42 Profile](https://profile.intra.42.fr/users/jeportie)
 
@@ -40,3 +38,5 @@
 </div>
 
 ### Connect with Us 🤝
+  - [Greg's GitHub Profile](https://github.com/Gregory-Marquiset)
+  - [Jerome's GitHub Profile](https://github.com/jeportie)
