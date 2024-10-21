@@ -1,5 +1,7 @@
 <h1 align="center">Minishell Project</h1>
 
+![GitHub last commit](https://img.shields.io/github/last-commit/jeportie/Minishell)
+![GitHub issues](https://img.shields.io/github/issues/jeportie/Minishell)
 ---
 
 ## 1. Introduction
@@ -9,9 +11,6 @@ Minishell is a 42 school project that involves building a simple Unix shell from
 This README will serve as a comprehensive guide to mastering the Minishell project, explaining our approach, environment, project structure, and development strategy.
 
 ---
-
-![GitHub last commit](https://img.shields.io/github/last-commit/jeportie/Minishell)
-![GitHub issues](https://img.shields.io/github/issues/jeportie/Minishell)
 
 <h3 align="center">A passionate team of developers from 42 School 🇫🇷</h3>
 
