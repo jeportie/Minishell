@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 20:28:50 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/20 14:58:43 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:37:04 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ bool	is_whitespace(char c)
 
 bool	is_operator(char c)
 {
-	return (c == '|' || c == '&' || c == '<' || c == '>'
-		|| c == '*' || c == '?' || c == '$');
+	return (c == '|' || c == '&' || c == '<' || c == '>');
 }
 
 bool	is_quote(char c)
@@ -30,7 +29,7 @@ bool	is_quote(char c)
 
 bool	is_frame(char c)
 {
-	return (c == '[' || c == ']' || c == '{' || c == '}' || c == '(' || c == ')');
+	return (c == '(' || c == ')');
 }
 
 void	skip_whitespace(const char **input)

@@ -6,28 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 20:49:16 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/20 17:59:42 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:11:57 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/tokenize.h"
-
-t_token	*tokenize_quote(const char **input, t_gc *gcl)
-{
-	input = NULL;
-	gcl = NULL;
-	if (input == NULL && gcl == NULL)
-		return (NULL);
-	return (NULL);
-}
-
-t_token	*map_token_type_to_operator(const char *operator_token)
-{
-	operator_token = NULL;
-	if (operator_token == NULL)
-		return (NULL);
-	return (NULL);
-}
 
 t_token	*ms_tokenize(const char *command_line, t_gc *gcl)
 {

@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenize_word.c                                    :+:      :+:    :+:   */
+/*   tokenize_frame.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 14:41:20 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 15:33:27 by jeportie         ###   ########.fr       */
+/*   Created: 2024/10/21 13:40:25 by jeportie          #+#    #+#             */
+/*   Updated: 2024/10/21 13:47:06 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/tokenize.h"
 
-t_token	*tokenize_word(const char **input, t_gc *gcl)
+t_token	*tokenize_frame(const char **input, t_gc *gcl)
 {
 	char	*value;
-	int		len;
-	int		i;
 	char	*current;
-	bool	is_expand;
 
 	if (!input || !*input)
 	{
@@ -27,25 +24,13 @@ t_token	*tokenize_word(const char **input, t_gc *gcl)
 		exit(EXIT_FAILURE);
 	}
 	current = (char *)*input;
-	len = 0;
-	while (current[len] && !is_whitespace(current[len])
-			&& !is_operator(current[len]) && !is_quote(current[len])
-			&& !is_frame(current[len]))
-		len++;
-	value = (char *)gc_malloc(sizeof(char) * len + 1, gcl);
+	value = (char *)gc_malloc(sizeof(char) * 2, gcl);
 	gc_lock(value, gcl);
-	i = 0;
-	while (i < len)
-	{
-		value[i] = current[i];
-		if (value[i] == '*' || value[i] == '$')
-			is_expand = true;
-		(*input)++;
-		i++;
-	}
-	value[i] = '\0';
-	if (is_expand == true)
-		return (create_token(TOKEN_EXPAND, value, gcl));
+	value[0] = current[0];
+	value[1] = '\0';
+	(*input)++;
+	if (value[0] == '(')
+		return (create_token(TOKEN_SUBSHELL_START, value, gcl));
 	else
-		return (create_token(TOKEN_WORD, value, gcl));
+		return (create_token(TOKEN_SUBSHELL_STOP, value, gcl));
 }

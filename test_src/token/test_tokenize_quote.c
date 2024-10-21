@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_tokenize_operator.c                           :+:      :+:    :+:   */
+/*   test_tokenize_quote.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 12:29:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 14:23:59 by jeportie         ###   ########.fr       */
+/*   Created: 2024/10/21 14:12:20 by jeportie          #+#    #+#             */
+/*   Updated: 2024/10/21 14:26:19 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,79 +16,15 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-START_TEST(test_tokenize_operator_basic)
+START_TEST(test_tokenize_quote_basic)
 {
     t_gc *gcl = gc_init();
-    const char *input = "&&";
-    t_token *token = tokenize_operator(&input, gcl);
-
-    ck_assert_ptr_nonnull(token);
-    ck_assert_int_eq(token->type, TOKEN_AND);
-    ck_assert_str_eq(token->token, "&&");
-    ck_assert_ptr_null(token->next);
-
-    const char *input2 = "|";
-    token = tokenize_operator(&input2, gcl);
-
-    ck_assert_ptr_nonnull(token);
-    ck_assert_int_eq(token->type, TOKEN_PIPE);
-    ck_assert_str_eq(token->token, "|");
-    ck_assert_ptr_null(token->next);
-
-    const char *input3 = "||";
-    token = tokenize_operator(&input3, gcl);
-
-    ck_assert_ptr_nonnull(token);
-    ck_assert_int_eq(token->type, TOKEN_OR);
-    ck_assert_str_eq(token->token, "||");
-    ck_assert_ptr_null(token->next);
-
-    const char *input4 = "<<";
-    token = tokenize_operator(&input4, gcl);
-
-    ck_assert_ptr_nonnull(token);
-    ck_assert_int_eq(token->type, TOKEN_REDIRECTION);
-    ck_assert_str_eq(token->token, "<<");
-    ck_assert_ptr_null(token->next);
-
-    const char *input5 = "<";
-    token = tokenize_operator(&input5, gcl);
-
-    ck_assert_ptr_nonnull(token);
-    ck_assert_int_eq(token->type, TOKEN_REDIRECTION);
-    ck_assert_str_eq(token->token, "<");
-    ck_assert_ptr_null(token->next);
-
-    const char *input6 = ">>";
-    token = tokenize_operator(&input6, gcl);
-
-    ck_assert_ptr_nonnull(token);
-    ck_assert_int_eq(token->type, TOKEN_REDIRECTION);
-    ck_assert_str_eq(token->token, ">>");
-    ck_assert_ptr_null(token->next);
-
-    const char *input7 = ">";
-    token = tokenize_operator(&input7, gcl);
-
-    ck_assert_ptr_nonnull(token);
-    ck_assert_int_eq(token->type, TOKEN_REDIRECTION);
-    ck_assert_str_eq(token->token, ">");
-    ck_assert_ptr_null(token->next);
-
-    gc_cleanup(gcl);
-    free(gcl);
-}
-END_TEST
-
-START_TEST(test_tokenize_invalid_operator)
-{
-    t_gc *gcl = gc_init();
-    const char *input = "&";
-    t_token *token = tokenize_operator(&input, gcl);
+    const char *input = "\'this is a test\'";
+    t_token *token = tokenize_quote(&input, gcl);
 
     ck_assert_ptr_nonnull(token);
     ck_assert_int_eq(token->type, TOKEN_WORD);
-    ck_assert_str_eq(token->token, "&");
+    ck_assert_str_eq(token->token, "this is a test");
     ck_assert_ptr_null(token->next);
 
     gc_cleanup(gcl);
@@ -96,7 +32,40 @@ START_TEST(test_tokenize_invalid_operator)
 }
 END_TEST
 
-START_TEST(test_tokenize_operator_null_input)
+START_TEST(test_tokenize_quote_with_expand)
+{
+    t_gc *gcl = gc_init();
+    const char *input = "\"cat *.c\"";
+    skip_whitespace(&input);
+    t_token *token = tokenize_quote(&input, gcl);
+
+    ck_assert_ptr_nonnull(token);
+    ck_assert_int_eq(token->type, TOKEN_EXPAND);
+    ck_assert_str_eq(token->token, "cat *.c");
+    ck_assert_ptr_null(token->next);
+
+    gc_cleanup(gcl);
+    free(gcl);
+}
+END_TEST
+
+START_TEST(test_tokenize_quote_empty_input)
+{
+    t_gc *gcl = gc_init();
+    const char *input = "\'\'";
+    t_token *token = tokenize_quote(&input, gcl);
+
+    ck_assert_ptr_nonnull(token);
+    ck_assert_int_eq(token->type, TOKEN_WORD);
+    ck_assert_str_eq(token->token, "");
+    ck_assert_ptr_null(token->next);
+
+    gc_cleanup(gcl);
+    free(gcl);
+}
+END_TEST
+
+START_TEST(test_tokenize_quote_null_input)
 {
     t_gc *gcl = gc_init();
     const char *input = NULL;
@@ -105,7 +74,7 @@ START_TEST(test_tokenize_operator_null_input)
     pid_t pid = fork();
     if (pid == 0) // Child process
     {
-        t_token *token = tokenize_operator(&input, gcl);
+        t_token *token = tokenize_quote(&input, gcl);
         if (token == NULL)
             exit(EXIT_SUCCESS); // No segfault, exit normally
         else
@@ -136,12 +105,13 @@ Suite *tokenize_word_suite(void)
     Suite *s;
     TCase *tc_core;
 
-    s = suite_create("tokenize_operator");
+    s = suite_create("tokenize_quote");
     tc_core = tcase_create("Core");
 
-    tcase_add_test(tc_core, test_tokenize_operator_basic);
-    tcase_add_test(tc_core, test_tokenize_invalid_operator);
-    tcase_add_test(tc_core, test_tokenize_operator_null_input);
+    tcase_add_test(tc_core, test_tokenize_quote_basic);
+    tcase_add_test(tc_core, test_tokenize_quote_with_expand);
+    tcase_add_test(tc_core, test_tokenize_quote_empty_input);
+    tcase_add_test(tc_core, test_tokenize_quote_null_input);
     suite_add_tcase(s, tc_core);
 
     return s;

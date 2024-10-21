@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:12:36 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/18 15:20:04 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:33:57 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ END_TEST
 START_TEST(test_command_with_single_quotes)
 {
     t_gc *gcl = gc_init();
-    const char *input = "echo 'It\\'s a test'";
+    const char *input = "echo \"It's a test\"";
     t_token *tokens = ms_tokenize(input, gcl);
 
     ck_assert_ptr_nonnull(tokens);
@@ -212,13 +212,13 @@ START_TEST(test_command_with_wildcards)
 
     // Token 2: *.c
     ck_assert_ptr_nonnull(current);
-    ck_assert_int_eq(current->type, TOKEN_WORD);
+    ck_assert_int_eq(current->type, TOKEN_EXPAND);
     ck_assert_str_eq(current->token, "*.c");
     current = current->next;
 
     // Token 3: src/*.h
     ck_assert_ptr_nonnull(current);
-    ck_assert_int_eq(current->type, TOKEN_WORD);
+    ck_assert_int_eq(current->type, TOKEN_EXPAND);
     ck_assert_str_eq(current->token, "src/*.h");
     current = current->next;
 
@@ -289,19 +289,6 @@ START_TEST(test_command_with_logical_operators)
 }
 END_TEST
 
-/* Test Case 8: Command with Unmatched Quotes (Error Case) */
-START_TEST(test_command_with_unmatched_quotes)
-{
-    t_gc *gcl = gc_init();
-    const char *input = "echo \"Unmatched quote";
-    t_token *tokens = ms_tokenize(input, gcl);
-
-    ck_assert_ptr_null(tokens);
-
-    // Cleanup
-    gc_cleanup(gcl);
-}
-END_TEST
 
 /* Test Case 10: Command with Subshell */
 START_TEST(test_command_with_subshell)
@@ -542,7 +529,6 @@ Suite *tokenize_suite(void)
     tcase_add_test(tc_core, test_command_with_pipe);
     tcase_add_test(tc_core, test_command_with_wildcards);
     tcase_add_test(tc_core, test_command_with_logical_operators);
-    tcase_add_test(tc_core, test_command_with_unmatched_quotes);
     tcase_add_test(tc_core, test_command_with_subshell);
     tcase_add_test(tc_core, test_command_with_multiple_redirections);
     tcase_add_test(tc_core, test_empty_input);

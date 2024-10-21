@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:01:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/20 15:00:49 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/21 13:56:06 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,19 @@
 
 # include "minishell.h"
 
+/*
+ * NOTE:
+ * TOKEN_EXPAND includes expand like wildcards or dollar, execs and commands
+ */
+
 typedef enum e_token_type
 {
 	TOKEN_WORD,
+	TOKEN_EXPAND,
 	TOKEN_REDIRECTION,
 	TOKEN_PIPE,
 	TOKEN_AND,
 	TOKEN_OR,
-	TOKEN_EXEC,
 	TOKEN_SUBSHELL_START,
 	TOKEN_SUBSHELL_STOP,
 }			t_token_type;
@@ -33,6 +38,12 @@ typedef struct s_token
 	char			*token;
 	struct s_token	*next;
 }			t_token;
+
+typedef struct s_operator_map
+{
+	const char		*op_str;
+	t_token_type	type;
+}					t_operator_map;
 
 /* Main Function */
 t_token	*ms_tokenize(const char *commant_line, t_gc *gcl);
@@ -51,9 +62,8 @@ void	print_token(t_token *head);
 
 /* Tokenize Functions */
 t_token	*tokenize_word(const char **input, t_gc *gcl);
+t_token	*tokenize_operator(const char **input, t_gc *gcl);
 t_token	*tokenize_quote(const char **input, t_gc *gcl);
 t_token	*tokenize_frame(const char **input, t_gc *gcl);
-t_token	*tokenize_operator(const char **input, t_gc *gcl);
-t_token	*map_token_type_to_operator(const char *operator_token);
 
 #endif /*TOKENIZE_H*/

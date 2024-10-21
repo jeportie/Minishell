@@ -18,13 +18,18 @@ SRC = \
   src/env_lst_utils/ms_env_add_back.c \
   src/env_lst_utils/ms_env_create_node.c \
   src/init_shell/ms_init_shell.c \
-  src/init_shell/ms_init_env.c \
   src/init_shell/ms_get_user_input.c \
+  src/init_shell/ms_init_env.c \
   src/signal/ms_init_std_signal.c \
   src/signal/ms_stop_std_signal.c \
+  src/global.c \
+  src/token/lst_tokens.c \
+  src/token/tokenize_word.c \
+  src/token/tokenize_operator.c \
   src/token/utils.c \
+  src/token/tokenize_frame.c \
   src/token/ms_tokenize.c \
-  src/global.c 
+  src/token/tokenize_quote.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #
