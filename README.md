@@ -34,5 +34,9 @@
   <img height="150" src="https://github-readme-stats.vercel.app/api?username=jeportie&show_icons=true&theme=default" />
   <img height="150" src="https://github-readme-stats.vercel.app/api/top-langs/?username=jeportie&layout=compact&langs_count=6" />
 </div>
+<div>
+  <img height="150" src="https://github-readme-stats.vercel.app/api?username=Gregory-Marquiset&show_icons=true&theme=default" />
+  <img height="150" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Gregory-Marquiset&layout=compact&langs_count=6" />
+</div>
 
 ### Connect with Us 🤝
