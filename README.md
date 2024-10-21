@@ -31,8 +31,8 @@
 </p>
 
 <div>
-  <img height="150" src="https://github-readme-stats.vercel.app/api?username=gregusername&show_icons=true&theme=default" />
-  <img height="150" src="https://github-readme-stats.vercel.app/api/top-langs/?username=gregusername&layout=compact&langs_count=6" />
+  <img height="150" src="https://github-readme-stats.vercel.app/api?username=jeportie&show_icons=true&theme=default" />
+  <img height="150" src="https://github-readme-stats.vercel.app/api/top-langs/?username=jeportie&layout=compact&langs_count=6" />
 </div>
 
 ### Connect with Us 🤝
