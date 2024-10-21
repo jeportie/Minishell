@@ -1,5 +1,15 @@
 <h1 align="center">Minishell Project</h1>
 
+---
+
+## 1. Introduction
+
+Minishell is a 42 school project that involves building a simple Unix shell from scratch. The goal is to replicate core functionalities of bash or sh, providing users with an interactive prompt where they can execute commands, handle redirection, and manage pipes, signals, and environment variables. Additionally, we extend the project with unit tests and a strong development methodology based on extreme programming principles.
+
+This README will serve as a comprehensive guide to mastering the Minishell project, explaining our approach, environment, project structure, and development strategy.
+
+---
+
 ![GitHub last commit](https://img.shields.io/github/last-commit/jeportie/Minishell)
 ![GitHub issues](https://img.shields.io/github/issues/jeportie/Minishell)
 
