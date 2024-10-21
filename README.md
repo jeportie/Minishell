@@ -3,8 +3,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/jeportie/Minishell)
 ![GitHub issues](https://img.shields.io/github/issues/jeportie/Minishell)
 ![CI - Main](https://github.com/jeportie/minishell/actions/workflows/ci.yml/badge.svg?branch=main)
-![CI - Develop](https://github.com/jeportie/minishell/actions/workflows/ci.yml/badge.svg?branch=develop)
-[![codecov](https://codecov.io/gh/jeportie/minishell/branch/main/graph/badge.svg)](https://codecov.io/gh/jeportie/minishell)
+
 
 ---
 
