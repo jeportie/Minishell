@@ -36,12 +36,3 @@
 </div>
 
 ### Connect with Us 🤝
-
-<p align="left">
-  <a href="https://linkedin.com/in/greglinkedin" target="blank">
-    <img align="center" src="https://github.com/devicons/devicon/blob/master/icons/linkedin/linkedin-original.svg" alt="Greg LinkedIn" height="30" />
-  </a>
-  <a href="https://linkedin.com/in/jeromelinkedin" target="blank">
-    <img align="center" src="https://github.com/devicons/devicon/blob/master/icons/linkedin/linkedin-original.svg" alt="Jerome LinkedIn" height="30" />
-  </a>
-</p>
