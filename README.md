@@ -6,19 +6,6 @@
   <img src="https://github.com/jeportie/minishell/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI - Main">
 </p>
 
-<h3 align="center">A passionate team of developers from 42 School 🇫🇷</h3>
-
-<p align="center">
-  <a href="https://profile.intra.42.fr/users/gmarquis">
-    <img src="https://badge.mediaplus.ma/greenbinary/gmarquis?1337Badge=off&UM6P=off" alt="Greg's 42 Badge" />
-  </a>
-  <a href="https://profile.intra.42.fr/users/jeportie">
-    <img src="https://badge.mediaplus.ma/greenbinary/jeportie?1337Badge=off&UM6P=off" alt="Jerome's 42 Badge" />
-  </a>
-</p>
-
----
-
 ## Table of Contents
 
 - [Introduction](#1-introduction)
@@ -201,6 +188,16 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 ## Connect with Us 🤝
+<h3 align="center">A passionate team of developers from 42 School 🇫🇷</h3>
+
+<p align="center">
+  <a href="https://profile.intra.42.fr/users/gmarquis">
+    <img src="https://badge.mediaplus.ma/greenbinary/gmarquis?1337Badge=off&UM6P=off" alt="Greg's 42 Badge" />
+  </a>
+  <a href="https://profile.intra.42.fr/users/jeportie">
+    <img src="https://badge.mediaplus.ma/greenbinary/jeportie?1337Badge=off&UM6P=off" alt="Jerome's 42 Badge" />
+  </a>
+</p>
 
 - [Greg's GitHub Profile](https://github.com/Gregory-Marquiset)
 - [Jerome's GitHub Profile](https://github.com/jeportie)
