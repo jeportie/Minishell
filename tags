@@ -744,7 +744,6 @@ flag_minus	lib/libft/include/libft.h	/^	int			flag_minus;$/;"	m	struct:s_format_
 flag_plus	lib/libft/include/libft.h	/^	int			flag_plus;$/;"	m	struct:s_format_spec
 flag_space	lib/libft/include/libft.h	/^	int			flag_space;$/;"	m	struct:s_format_spec
 flag_zero	lib/libft/include/libft.h	/^	int			flag_zero;$/;"	m	struct:s_format_spec
-flags	.git/hooks/update_readme.py	/^    flags=re.DOTALL$/;"	v
 flags	ycm_extra_conf.py	/^flags = [$/;"	v
 free_env_list	test_src/env_lst_utils/test_ms_env_add_back.c	/^void free_env_list(t_env *env) {$/;"	f
 ft_apply_precision	lib/libft/src/printf/ft_apply_precision.c	/^void	ft_apply_precision(t_format_spec spec, char **formatted_content)$/;"	f
@@ -939,7 +938,6 @@ precision	lib/libft/include/libft.h	/^	int			precision;$/;"	m	struct:s_format_sp
 ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
 qnxnto	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
-readme_content	.git/hooks/update_readme.py	/^    readme_content = readme_file.read()$/;"	v
 s_buffer	lib/libft/include/libft.h	/^typedef struct s_buffer$/;"	s
 s_env	include/minishell.h	/^typedef struct s_env$/;"	s
 s_env_data	include/minishell.h	/^typedef struct s_env_data$/;"	s
@@ -967,9 +965,7 @@ term	include/minishell.h	/^	char	*term;$/;"	m	struct:s_env_data
 test_ms_init_shell_exit	test_src/init_shell/test_ms_init_shell.c	/^int test_ms_init_shell_exit(int argc, char **argv, char **envp)$/;"	f
 test_signal_handling	test_src/signal/test_ms_init_std_signal.c	/^int test_signal_handling(void (*init_signal_func)(void), int signal_to_send)$/;"	f
 test_signal_handling	test_src/signal/test_ms_stop_std_signal.c	/^int test_signal_handling(void (*init_signal_func)(void), int signal_to_send)$/;"	f
-todo_content	.git/hooks/update_readme.py	/^    todo_content = todo_file.read()$/;"	v
 type	lib/libft/include/libft.h	/^	char		type;$/;"	m	struct:s_format_spec
-updated_content	.git/hooks/update_readme.py	/^updated_content = re.sub($/;"	v
 user_input	include/minishell.h	/^	char		*user_input;$/;"	m	struct:s_shell
 value	include/minishell.h	/^	char			*value;$/;"	m	struct:s_env
 var	include/minishell.h	/^	char			*var;$/;"	m	struct:s_env
