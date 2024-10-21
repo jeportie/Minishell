@@ -6,6 +6,11 @@
   <img src="https://github.com/jeportie/minishell/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI - Main">
 </p>
 
+## To-Do List
+
+<!-- TODO-START -->
+<!-- TODO-END -->
+
 ## Table of Contents
 
 - [Introduction](#1-introduction)
