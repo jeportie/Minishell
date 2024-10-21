@@ -29,6 +29,7 @@
 
 
 <!-- TODO-END -->
+Please check our [Changelogs](CHANGELOG.md) for more details.
 
 ## Table of Contents
 
