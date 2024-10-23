@@ -26,10 +26,9 @@ SRC = \
   src/token/lst_tokens.c \
   src/token/tokenize_word.c \
   src/token/tokenize_operator.c \
-  src/token/utils.c \
   src/token/tokenize_frame.c \
-  src/token/ms_tokenize.c \
-  src/token/tokenize_quote.c 
+  src/token/utils.c \
+  src/token/ms_tokenize.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #
