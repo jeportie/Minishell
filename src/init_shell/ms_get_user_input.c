@@ -6,13 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:51:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/15 13:23:51 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:10:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-int	g_signal;
 
 void	ms_get_user_input(t_shell *shell)
 {

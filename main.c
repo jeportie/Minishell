@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 17:06:00 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/23 13:21:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,12 @@ int	main(int argc, char **argv, char **envp)
 			free(shell.gcl);
 			exit (shell.error_code);
 		}
-		ms_syntax_error(shell.user_input, &shell);
-		printf("user_input : %s\n", shell.user_input);
-		shell.error_code = 0;
+		if (ms_syntax_error(shell.user_input))
+			shell.error_code = 2;
+		else
+			shell.error_code = 0;
+		if (shell.error_code == 0)
+			printf("%d user_input : %s\n", shell.error_code, shell.user_input);
 	}
 	shell.error_code = 666;
 	return (shell.error_code);

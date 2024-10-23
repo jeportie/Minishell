@@ -740,20 +740,13 @@ START_TEST	test_src/signal/test_ms_init_std_signal.c	/^START_TEST(test_ms_init_s
 START_TEST	test_src/signal/test_ms_init_std_signal.c	/^START_TEST(test_ms_init_std_signal_sigquit)$/;"	f
 START_TEST	test_src/signal/test_ms_stop_std_signal.c	/^START_TEST(test_ms_stop_std_signal_sigint)$/;"	f
 START_TEST	test_src/signal/test_ms_stop_std_signal.c	/^START_TEST(test_ms_stop_std_signal_sigquit)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_operator_error.c	/^START_TEST(test_ms_operator_error_null_input)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_operator_error.c	/^START_TEST(test_ms_operator_error_valid_input)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_pipe_error.c	/^START_TEST(test_ms_pipe_error_null_input)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_pipe_error.c	/^START_TEST(test_ms_pipe_error_valid_input)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_quote_error.c	/^START_TEST(test_ms_quote_error_invalid_0_input)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_quote_error.c	/^START_TEST(test_ms_quote_error_no_shell)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_quote_error.c	/^START_TEST(test_ms_quote_error_null_input)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_quote_error.c	/^START_TEST(test_ms_quote_error_null_input_no_shell)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_quote_error.c	/^START_TEST(test_ms_quote_error_valid_0_input)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_input)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_no_shell)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_null_input)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_null_input_no_shell)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_input)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_input_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_input_1)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_input_2)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_input_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_input_1)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_input_2)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_input_3)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_background_execution)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_logical_operators)$/;"	f
 START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_multiple_redirections)$/;"	f
@@ -805,9 +798,6 @@ compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''
 const	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
 const	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
 create_env_node	test_src/env_lst_utils/test_ms_env_add_back.c	/^t_env *create_env_node(const char *var, const char *value) {$/;"	f
-create_mock_shell	test_src/syntax_error/test_ms_operator_error.c	/^t_shell *create_mock_shell(void)$/;"	f
-create_mock_shell	test_src/syntax_error/test_ms_pipe_error.c	/^t_shell* create_mock_shell(void)$/;"	f
-create_mock_shell	test_src/syntax_error/test_ms_quote_error.c	/^t_shell* create_mock_shell(void)$/;"	f
 create_ycm_extra_conf	make_interface/config/build.sh	/^create_ycm_extra_conf() {$/;"	f
 display_menu	make_interface/src/interactive_select.c	/^void	display_menu(WINDOW *menu_win, char *choices[], int n_choices, int hl)$/;"	f
 e_error	lib/libft/include/libft.h	/^typedef enum e_error$/;"	g
@@ -827,9 +817,6 @@ flag_space	lib/libft/include/libft.h	/^	int			flag_space;$/;"	m	struct:s_format_
 flag_zero	lib/libft/include/libft.h	/^	int			flag_zero;$/;"	m	struct:s_format_spec
 flags	ycm_extra_conf.py	/^flags = [$/;"	v
 free_env_list	test_src/env_lst_utils/test_ms_env_add_back.c	/^void free_env_list(t_env *env) {$/;"	f
-free_mock_shell	test_src/syntax_error/test_ms_operator_error.c	/^void free_mock_shell(t_shell *shell)$/;"	f
-free_mock_shell	test_src/syntax_error/test_ms_pipe_error.c	/^void free_mock_shell(t_shell *shell)$/;"	f
-free_mock_shell	test_src/syntax_error/test_ms_quote_error.c	/^void free_mock_shell(t_shell *shell)$/;"	f
 ft_apply_precision	lib/libft/src/printf/ft_apply_precision.c	/^void	ft_apply_precision(t_format_spec spec, char **formatted_content)$/;"	f
 ft_apply_width	lib/libft/src/printf/ft_apply_width.c	/^void	ft_apply_width(t_format_spec spec, t_buffer *buf_info, int content_len)$/;"	f
 ft_atoi	lib/libft/src/conversion/ft_atoi.c	/^int	ft_atoi(const char *nptr)$/;"	f
@@ -939,7 +926,6 @@ ft_utoa_base	lib/libft/src/conversion/ft_utoa_base.c	/^char	*ft_utoa_base(unsign
 ft_zero_minus_flags	lib/libft/src/printf/ft_parse_flags.c	/^static void	ft_zero_minus_flags(const char *format, t_format_spec *spec,$/;"	f	file:
 g_perror	lib/libft/src/printf/ft_printf_globals.c	/^const char	*g_perror[] = {$/;"	v
 g_signal	src/global.c	/^int	g_signal;$/;"	v
-g_signal	src/init_shell/ms_get_user_input.c	/^int	g_signal;$/;"	v
 gc_cleanup	lib/libgc/src/gc_cleanup.c	/^void	gc_cleanup(t_gc *gcl)$/;"	f
 gc_collect	lib/libgc/src/gc_collect.c	/^void	gc_collect(t_gc *gcl)$/;"	f
 gc_delete_node	lib/libgc/src/gc_collect.c	/^static void	gc_delete_node(t_gc_node **prev, t_gc_node **current, t_gc *gcl)$/;"	f	file:
@@ -1014,9 +1000,6 @@ main	test_src/init_shell/test_ms_init_env.c	/^int main(void)$/;"	f
 main	test_src/init_shell/test_ms_init_shell.c	/^int main(void)$/;"	f
 main	test_src/signal/test_ms_init_std_signal.c	/^int main(void)$/;"	f
 main	test_src/signal/test_ms_stop_std_signal.c	/^int main(void)$/;"	f
-main	test_src/syntax_error/test_ms_operator_error.c	/^int main(void)$/;"	f
-main	test_src/syntax_error/test_ms_pipe_error.c	/^int main(void)$/;"	f
-main	test_src/syntax_error/test_ms_quote_error.c	/^int main(void)$/;"	f
 main	test_src/syntax_error/test_ms_syntax_error.c	/^int main(void)$/;"	f
 main	test_src/token/test_ms_tokenize.c	/^int main(void)$/;"	f
 map_token_type_to_operator	src/token/ms_tokenize.c	/^t_token	*map_token_type_to_operator(const char *operator_token)$/;"	f
@@ -1034,15 +1017,9 @@ ms_init_shell	src/init_shell/ms_init_shell.c	/^t_shell	ms_init_shell(int argc, c
 ms_init_shell_suite	test_src/init_shell/test_ms_init_shell.c	/^Suite *ms_init_shell_suite(void)$/;"	f
 ms_init_std_signal	src/signal/ms_init_std_signal.c	/^void	ms_init_std_signal(void)$/;"	f
 ms_init_std_signal_suite	test_src/signal/test_ms_init_std_signal.c	/^Suite *ms_init_std_signal_suite(void)$/;"	f
-ms_operator_error	src/syntax_error/ms_operator_error.c	/^int	ms_operator_error(const char *input, t_shell *shell)$/;"	f
-ms_operator_error_suite	test_src/syntax_error/test_ms_operator_error.c	/^Suite *ms_operator_error_suite(void)$/;"	f
-ms_pipe_error	src/syntax_error/ms_pipe_error.c	/^int	ms_pipe_error(const char *input, t_shell *shell)$/;"	f
-ms_pipe_error_suite	test_src/syntax_error/test_ms_pipe_error.c	/^Suite *ms_pipe_error_suite(void)$/;"	f
-ms_quote_error	src/syntax_error/ms_quote_error.c	/^int	ms_quote_error(const char *input, t_shell *shell)$/;"	f
-ms_quote_error_suite	test_src/syntax_error/test_ms_quote_error.c	/^Suite *ms_quote_error_suite(void)$/;"	f
 ms_stop_std_signal	src/signal/ms_stop_std_signal.c	/^void	ms_stop_std_signal(void)$/;"	f
 ms_stop_std_signal_suite	test_src/signal/test_ms_stop_std_signal.c	/^Suite *ms_stop_std_signal_suite(void)$/;"	f
-ms_syntax_error	src/syntax_error/ms_syntax_error.c	/^int	ms_syntax_error(const char *input, t_shell *shell)$/;"	f
+ms_syntax_error	src/syntax_error/ms_syntax_error.c	/^int	ms_syntax_error(const char *input)$/;"	f
 ms_syntax_error_suite	test_src/syntax_error/test_ms_syntax_error.c	/^Suite *ms_syntax_error_suite(void)$/;"	f
 ms_tokenize	src/token/ms_tokenize.c	/^t_token	*ms_tokenize(const char *command_line, t_gc *gcl)$/;"	f
 nb_printed	lib/libft/include/libft.h	/^	int		nb_printed;$/;"	m	struct:s_buffer
@@ -1069,15 +1046,11 @@ s_token	include/tokenize.h	/^typedef struct s_token$/;"	s
 shell	include/minishell.h	/^	char	*shell;$/;"	m	struct:s_env_data
 shell_lvl	include/minishell.h	/^	int		shell_lvl;$/;"	m	struct:s_env_data
 skip_whitespace	src/token/utils.c	/^void	skip_whitespace(const char **input)$/;"	f
-st_args_verif	src/syntax_error/ms_quote_error.c	/^static void	st_args_verif(const char *input, t_shell *shell)$/;"	f	file:
-st_args_verif	src/syntax_error/ms_syntax_error.c	/^static void	st_args_verif(const char *input, t_shell *shell)$/;"	f	file:
-st_assigned_quote	src/syntax_error/ms_quote_error.c	/^static void	st_assigned_quote(char current, char *target_quote, char *other_quote)$/;"	f	file:
-st_buff_between	src/syntax_error/ms_quote_error.c	/^static int	st_buff_between(char *current, char target, char other, t_shell *shell)$/;"	f	file:
-st_check_between_quote	src/syntax_error/ms_quote_error.c	/^static int	st_check_between_quote(char *current, t_shell *shell)$/;"	f	file:
 st_create_envp	src/init_shell/ms_init_env.c	/^static char	**st_create_envp(t_shell *shell, t_env_data *env_data)$/;"	f	file:
 st_get_path	src/init_shell/ms_init_env.c	/^static char	*st_get_path(t_env_data *env_data)$/;"	f	file:
 st_get_shell	src/init_shell/ms_init_env.c	/^static char	*st_get_shell(t_env_data *env_data)$/;"	f	file:
 st_get_term	src/init_shell/ms_init_env.c	/^static char	*st_get_term(t_env_data *env_data)$/;"	f	file:
+st_quote_error	src/syntax_error/ms_syntax_error.c	/^static int	st_quote_error(const char *input)$/;"	f	file:
 st_sigint_std_handler	src/signal/ms_init_std_signal.c	/^static void	st_sigint_std_handler(int sig)$/;"	f	file:
 t_buffer	lib/libft/include/libft.h	/^}			t_buffer;$/;"	t	typeref:struct:s_buffer
 t_env	include/minishell.h	/^}				t_env;$/;"	t	typeref:struct:s_env
@@ -1092,8 +1065,7 @@ t_token_type	include/tokenize.h	/^}			t_token_type;$/;"	t	typeref:enum:e_token_t
 temp_file	lib/libgc/include/libgc.h	/^	char				*temp_file;$/;"	m	struct:s_gc_node
 term	include/minishell.h	/^	char	*term;$/;"	m	struct:s_env_data
 test_ms_init_shell_exit	test_src/init_shell/test_ms_init_shell.c	/^int test_ms_init_shell_exit(int argc, char **argv, char **envp)$/;"	f
-test_ms_quote_error_exit	test_src/syntax_error/test_ms_quote_error.c	/^int test_ms_quote_error_exit(const char *input, t_shell *shell)$/;"	f
-test_ms_syntax_error_exit	test_src/syntax_error/test_ms_syntax_error.c	/^int test_ms_syntax_error_exit(const char *input, t_shell *shell)$/;"	f
+test_ms_syntax_error_exit	test_src/syntax_error/test_ms_syntax_error.c	/^int test_ms_syntax_error_exit(const char *input)$/;"	f
 test_signal_handling	test_src/signal/test_ms_init_std_signal.c	/^int test_signal_handling(void (*init_signal_func)(void), int signal_to_send)$/;"	f
 test_signal_handling	test_src/signal/test_ms_stop_std_signal.c	/^int test_signal_handling(void (*init_signal_func)(void), int signal_to_send)$/;"	f
 token	include/tokenize.h	/^	char			*token;$/;"	m	struct:s_token

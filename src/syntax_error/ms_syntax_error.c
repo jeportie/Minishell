@@ -6,48 +6,160 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:11:22 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 14:17:55 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:49:10 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/syntax.h"
 
-static void	st_args_verif(const char *input, t_shell *shell)
-{
-	int	error;
 
+static int	st_quote_error(const char *input)
+{
+	char	*current;
+	int		error;
+	int		i;
+	int		len_end;
+	int		sq_trigger;
+	int		dq_trigger;
+	int		p_trigger;
+	int		p_char;
+	int		o_and;
+	int		o_or;
+	int		o_pipe;
+
+	current = ft_strtrim((char *)input, " ");
+	len_end = ft_strlen(current) - 1;
 	error = 0;
-	if (!input || !*input)
+	i = 0;
+	sq_trigger = 0;
+	dq_trigger = 0;
+	p_trigger = 0;
+	p_char = 0;
+	o_and = 0;
+	o_or = 0;
+	o_pipe = 0;
+	while (current[i])
 	{
-		if (shell)
+		if (current[i] != ' ' && current[i] != '(' && current[i] != '&' && current[i] != '|' && ft_isascii(current[i]))
 		{
-			rl_clear_history();
-			gc_cleanup(shell->gcl);
-			free(shell->gcl);
+			o_and = 0;
+			o_or = 0;
+			o_pipe = 0;
 		}
-		error = 1;
+		if (current[i] == '\'' && sq_trigger)
+			sq_trigger = 0;
+		else if (current[i] == '\"' && dq_trigger)
+			dq_trigger = 0;
+		else if (current[i] == '\'' && !dq_trigger)
+			sq_trigger = 1;
+		else if (current[i] == '\"' && !sq_trigger)
+			dq_trigger = 1;
+		else if (current[i] == '(' && !dq_trigger && !sq_trigger)
+		{ 
+			if (p_trigger == 1)
+				break ;
+			else if (i == 0 || o_and || o_or || o_pipe)
+			{
+				p_char = 0;
+				p_trigger = 1;
+				o_and = 0;
+				o_or = 0;
+				o_pipe = 0;
+			}
+			else if (i > 0 && !o_and && !o_or && !o_pipe)
+			{
+				p_trigger = 1;
+				break ;
+			}
+		}
+		else if (current[i] == ')')
+		{
+			if (!dq_trigger && !sq_trigger && p_trigger && p_char > 0)
+				p_trigger = 0;
+			else if (!dq_trigger && !sq_trigger && p_trigger && p_char == 0)
+			{
+				p_trigger = 2;
+				break ;
+			}
+			else if (!dq_trigger && !sq_trigger && !p_trigger)
+			{
+				p_trigger = 2;
+				break ;
+			}
+		}
+		else if (!dq_trigger && !sq_trigger && (current[i] == '&' || current[i] == '|'))
+		{
+			if (current[i] == '&' && current[i + 1] && current[i + 1] == '&')
+			{
+				if (o_and || o_or || o_pipe)
+				{
+					error = 3;
+					break ;
+				}
+				if (i == 0)
+					error = 3;
+				i++;
+				printf("i = %d|end = %d\n", i, len_end);
+				if (i == len_end)
+					error = 3;
+				o_and = 1;
+			}
+			else if (current[i] == '|' && current[i + 1] && current[i + 1] == '|')
+			{
+				if (o_and || o_or || o_pipe)
+				{
+					error = 3;
+					break ;
+				}
+				if (i == 0)
+					error = 3;
+				i++;
+				if (i == len_end)
+					error = 3;
+				o_or = 1;
+			}
+			else if (current[i] == '|')
+			{
+				if (o_and || o_or || o_pipe)
+				{
+					error = 3;
+					break ;
+				}
+				if (i == 0)
+					error = 3;
+				if (i == len_end)
+					error = 3;
+				o_pipe = 1;
+			}
+		}
+		else if (current[i] != ' ' && ft_isascii(current[i]) && p_trigger == 1)
+			p_char++;
+		i++;
 	}
-	if (!shell)
-		error = 1;
-	if (error)
+	if (p_trigger > 0 || sq_trigger || dq_trigger || error > 0)
 	{
-		perror("Minishell: Error: Segfault.\n");
-		exit (EXIT_FAILURE);
+		if (error == 3)
+			printf("Minishell: syntax error operator\n");
+		error = 1;
+		if (sq_trigger == 1)
+			printf("Minishell: syntax error near unexpected token `\''\n");
+		if (dq_trigger == 1)
+			printf("Minishell: syntax error near unexpected token `\"'\n");
+		if (p_trigger == 1)
+			printf("Minishell: syntax error near unexpected token `('\n");
+		if (p_trigger == 2)
+			printf("Minishell: syntax error near unexpected token `)'\n");
 	}
+	return (error);
 }
 
-int	ms_syntax_error(const char *input, t_shell *shell)
+int	ms_syntax_error(const char *input)
 {
 	char	*current;
 	int		error;
 
-	st_args_verif(input, shell);
 	current = (char *)input;
 	error = 0;
-	error = ms_quote_error(current, shell);
-	if (error == 0)
-		error = ms_pipe_error(current, shell);
-	if (error == 0)
-		error = ms_operator_error(current, shell);
+	error = st_quote_error(current);
 	return (error);
 }

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:00:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 14:04:07 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:54:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
 #include "../../include/syntax.h"
 
 /* Helper function to test functions that call exit() */
-int test_ms_syntax_error_exit(const char *input, t_shell *shell)
+int test_ms_syntax_error_exit(const char *input)
 {
+    int error;
     pid_t pid = fork();
     if (pid == 0) // Child process
     {
-        ms_syntax_error(input, shell);
-        exit(EXIT_SUCCESS); // If exit isn't called, exit normally
+        error = ms_syntax_error(input);
+        exit(error); // If exit isn't called, exit normally
     }
     else if (pid > 0) // Parent process
     {
@@ -41,43 +42,50 @@ int test_ms_syntax_error_exit(const char *input, t_shell *shell)
     return -1; // Fork failed
 }
 
-START_TEST(test_ms_syntax_error_null_input)
+START_TEST(test_ms_syntax_error_valid_input_0)
 {
-    t_shell shell;
-    shell.gcl = gc_init(); // Simulate garbage collector setup
-    int exit_code = test_ms_syntax_error_exit(NULL, &shell);
-    ck_assert_int_eq(exit_code, EXIT_FAILURE); // Expect failure due to null input
+    int exit_code = test_ms_syntax_error_exit("valid input");
+    ck_assert_int_eq(exit_code, 0); // Expect success with valid input
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input)
+START_TEST(test_ms_syntax_error_valid_input_1)
 {
-    t_shell shell;
-    shell.gcl = gc_init(); // Simulate garbage collector setup
-    int exit_code = test_ms_syntax_error_exit("valid input", &shell);
-    ck_assert_int_eq(exit_code, EXIT_SUCCESS); // Expect success with valid input
+    int exit_code = test_ms_syntax_error_exit("\'valid input\'");
+    ck_assert_int_eq(exit_code, 0); // Expect success with valid input
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input)
+START_TEST(test_ms_syntax_error_valid_input_2)
 {
-    t_shell shell;
-    shell.gcl = gc_init(); // Simulate garbage collector setup
-    int exit_code = test_ms_syntax_error_exit("", &shell);
-    ck_assert_int_eq(exit_code, EXIT_FAILURE); // Expect success with valid input
-}
-
-START_TEST(test_ms_syntax_error_no_shell)
-{
-    int exit_code = test_ms_syntax_error_exit("valid input", NULL);
-    ck_assert_int_eq(exit_code, EXIT_FAILURE); // Expect failure due to null shell pointer
+    int exit_code = test_ms_syntax_error_exit("\"valid input\"");
+    ck_assert_int_eq(exit_code, 0); // Expect success with valid input
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_null_input_no_shell)
+START_TEST(test_ms_syntax_error_valid_input_3)
 {
-    int exit_code = test_ms_syntax_error_exit(NULL, NULL);
-    ck_assert_int_eq(exit_code, EXIT_FAILURE); // Expect failure due to null shell pointer
+    int exit_code = test_ms_syntax_error_exit("\"valid input\"\"\"");
+    ck_assert_int_eq(exit_code, 0); // Expect success with valid input
+}
+END_TEST
+
+START_TEST(test_ms_syntax_error_invalid_input_0)
+{
+    int exit_code = test_ms_syntax_error_exit("\"invalide input\"\'");
+    ck_assert_int_eq(exit_code, 1); // Expect success with valid input
+}
+
+START_TEST(test_ms_syntax_error_invalid_input_1)
+{
+    int exit_code = test_ms_syntax_error_exit("\"invalide input");
+    ck_assert_int_eq(exit_code, 1); // Expect success with valid input
+}
+
+START_TEST(test_ms_syntax_error_invalid_input_2)
+{
+    int exit_code = test_ms_syntax_error_exit("\"invalide input\'\"\'\"\'\'");
+    ck_assert_int_eq(exit_code, 1); // Expect success with valid input
 }
 
 Suite *ms_syntax_error_suite(void)
@@ -88,11 +96,13 @@ Suite *ms_syntax_error_suite(void)
     s = suite_create("ms_syntax_error");
     tc_core = tcase_create("Core");
 
-    tcase_add_test(tc_core, test_ms_syntax_error_null_input);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input);
-    tcase_add_test(tc_core, test_ms_syntax_error_no_shell);
-    tcase_add_test(tc_core, test_ms_syntax_error_null_input_no_shell);
+    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_0);
+    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_1);
+    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_2);
+    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_3);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_0);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_1);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_2);
     suite_add_tcase(s, tc_core);
 
     return s;

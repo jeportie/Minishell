@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 10:33:09 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 12:33:54 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/23 13:32:05 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@
 # include "minishell.h"
 
 /* Main fonction */
-int	ms_syntax_error(const char *input, t_shell *shell);
-int	ms_quote_error(const char *input, t_shell *shell);
-int	ms_pipe_error(const char *input, t_shell *shell);
-int	ms_operator_error(const char *input, t_shell *shell);
+int	ms_syntax_error(const char *input);
 
 #endif /*SYNTAX_H*/
 
@@ -32,11 +29,11 @@ ast building and execution.
 
 []	Command error's
 
-[]	Quote's error's
-#[]		''Single quote's, for literal strings
-##[]		Unmatched single quote:		cmd1 'word
-#[]		""Double quote's, prevent from splitting
-##[]		Unmatched double quote:		cmd1 "word
+[o]	Quote's error's
+#[o]		''Single quote's, for literal strings
+##[o]		Unmatched single quote:		cmd1 'word
+#[o]		""Double quote's, prevent from splitting
+##[o]		Unmatched double quote:		cmd1 "word
 
 []	Pipe's error's
 #[]		Empty pipe:		cmd1 | | cmd2
@@ -52,7 +49,7 @@ ast building and execution.
 ##[]		Empty operator:		cmd1 && && cmd2
 ##[]		Logical operator at start or end of line:		|| cmd1 or cmd1 ||
 #[]		()Parenthese's
-##[]		Unmatched parentheses:		(cmd1
+##[o]		Unmatched parentheses:		(cmd1
 ##[]		Empty parentheses:		()
 
 */
