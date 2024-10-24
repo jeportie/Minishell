@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:31:06 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/24 14:24:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:38:52 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,12 @@ t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl)
 	int			argc;
 	char		**argv;
 	size_t		argv_size;
-	t_token		*token;
 
 	argc = 0;
 	argv_size = 4;
 	argv = (char **)gc_malloc(sizeof(char *) * argv_size, gcl);
 	gc_lock(argv, gcl);
-	while (*current_token && (*current_token)->type == TOKEN_WORD)
+	while (*current_token && ((*current_token)->type == TOKEN_WORD || (*current_token)->type == TOKEN_EXPAND))
 	{
 		if (argc >= argv_size)
 		{
@@ -108,7 +107,7 @@ t_ast_node	*create_subshell_node(t_ast_node *child, t_gc *gcl)
 	node = (t_ast_node *)gc_malloc(sizeof(t_ast_node), gcl);
 	gc_lock(node, gcl);
 	node->type = NODE_SUBSHELL;
-	node->data.heredoc.child = child;
+	node->data.subshell.child = child;
 	return (node);
 }
 
@@ -133,8 +132,17 @@ t_ast_node	*parse_subshell(t_token **current_token, t_gc *gcl)
 	}
 	*current_token = (*current_token)->next;
 	node = create_subshell_node(subshell_content, gcl);
-	return (subshell_content);
+	return (node);
 }
+
+/*
+ * NOTE:
+ * Issue:
+ * In parse_redirection, you're recursively calling parse_redirection within a while loop,
+ * which may not be necessary and could lead to redundant processing.
+ * Suggestion:
+ * Consider simplifying the logic to handle multiple redirections in a more straightforward manner.
+ */
 
 t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child, t_gc *gcl)
 {
@@ -156,6 +164,12 @@ t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child, t_gc *
 	{
 		fprintf(stderr, "Syntax Error: Unknown redirection '%s'.\n", (*current_token)->token);
 		return (NULL);
+	}
+	*current_token = (*current_token)->next;
+	if (!*current_token || (*current_token)->type != TOKEN_WORD)
+	{
+		fprintf(stderr, "Syntax Error: Expected filename after redirection.\n");
+		return NULL;
 	}
 	filename = (*current_token)->token;
 	*current_token = (*current_token)->next;
