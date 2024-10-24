@@ -797,9 +797,11 @@ const	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	fil
 copy_token_value	src/token/tokenize_word.c	/^static int	copy_token_value(char *value, const char *current, char start_quote)$/;"	f	file:
 create_command_node	src/ast/ms_parse_tokens.c	/^t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl)$/;"	f
 create_env_node	test_src/env_lst_utils/test_ms_env_add_back.c	/^t_env *create_env_node(const char *var, const char *value) {$/;"	f
+create_heredoc_node	src/ast/ms_parse_tokens.c	/^t_ast_node	*create_heredoc_node(t_ast_node *child, char *delimiter, t_gc *gcl)$/;"	f
 create_logical_node	src/ast/ms_parse_tokens.c	/^t_ast_node	*create_logical_node(t_node_type type, t_ast_node *left,$/;"	f
 create_pipe_node	src/ast/ms_parse_tokens.c	/^t_ast_node	*create_pipe_node(t_ast_node *left, t_ast_node *right, t_gc *gcl)$/;"	f
 create_redirect_node	src/ast/ms_parse_tokens.c	/^t_ast_node	*create_redirect_node(t_node_type type, t_ast_node *child, char *filename, t_gc *gcl)$/;"	f
+create_subshell_node	src/ast/ms_parse_tokens.c	/^t_ast_node	*create_subshell_node(t_ast_node *child, t_gc *gcl)$/;"	f
 create_token	src/token/lst_tokens.c	/^t_token	*create_token(t_token_type type, const char *value, t_gc *gcl)$/;"	f
 data	include/ast.h	/^	t_node_data	data;$/;"	m	struct:s_ast_node
 delimiter	include/ast.h	/^	char				*delimiter;$/;"	m	struct:s_heredoc_node
