@@ -794,18 +794,23 @@ add_token	src/token/ms_tokenize.c	/^void	add_token(t_token **head, t_token *new_
 buf_fd	lib/libft/include/libft.h	/^	int		buf_fd;$/;"	m	struct:s_buffer
 buf_last	lib/libft/include/libft.h	/^	char	buf_last;$/;"	m	struct:s_buffer
 buffer	lib/libft/include/libft.h	/^	char	*buffer;$/;"	m	struct:s_buffer
+check_error	src/syntax_error/check_error.c	/^int	check_error(t_syntax **syntax)$/;"	f
+check_reinit	src/syntax_error/check_reinit.c	/^int	check_reinit(t_syntax **syntax)$/;"	f
 compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
 const	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
 const	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
 create_env_node	test_src/env_lst_utils/test_ms_env_add_back.c	/^t_env *create_env_node(const char *var, const char *value) {$/;"	f
 create_ycm_extra_conf	make_interface/config/build.sh	/^create_ycm_extra_conf() {$/;"	f
+current	include/syntax.h	/^	char	*current;$/;"	m	struct:s_syntax
 display_menu	make_interface/src/interactive_select.c	/^void	display_menu(WINDOW *menu_win, char *choices[], int n_choices, int hl)$/;"	f
+dq_trigger	include/syntax.h	/^	int		dq_trigger;$/;"	m	struct:s_syntax
 e_error	lib/libft/include/libft.h	/^typedef enum e_error$/;"	g
 e_token_type	include/tokenize.h	/^typedef enum e_token_type$/;"	g
 env	include/minishell.h	/^	t_env	*env;$/;"	m	struct:s_env_data
 env_data	include/minishell.h	/^	t_env_data	*env_data;$/;"	m	struct:s_shell
 env_exist	include/minishell.h	/^	bool	env_exist;$/;"	m	struct:s_env_data
 env_suite	test_src/env_lst_utils/test_ms_env_create_node.c	/^Suite *env_suite(void)$/;"	f
+error	include/syntax.h	/^	int		error;$/;"	m	struct:s_syntax
 error	lib/libft/include/libft.h	/^	int			error;$/;"	m	struct:s_format_spec
 error	lib/libft/include/libft.h	/^	int		error;$/;"	m	struct:s_buffer
 error_code	include/minishell.h	/^	int			error_code;$/;"	m	struct:s_shell
@@ -944,6 +949,7 @@ generate_src_list	lib/libft/update_makefile.sh	/^generate_src_list() {$/;"	f
 generate_src_list	make_interface/exec/update_makefile.sh	/^generate_src_list() {$/;"	f
 get_uml_files	make_interface/src/interactive_select.c	/^void	get_uml_files(char *directory, char *file_list[], int *count)$/;"	f
 head	lib/libgc/include/libgc.h	/^	t_gc_node	*head;$/;"	m	struct:s_garbage_collector
+i	include/syntax.h	/^	int		i;$/;"	m	struct:s_syntax
 index	lib/libft/include/libft.h	/^	int		index;$/;"	m	struct:s_buffer
 info_arch	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
 info_arch	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
@@ -977,6 +983,7 @@ is_quote	src/token/utils.c	/^bool	is_quote(char c)$/;"	f
 is_special	src/token/utils.c	/^bool	is_special(char c)$/;"	f
 is_whitespace	src/token/utils.c	/^bool	is_whitespace(char c)$/;"	f
 isalnum_suite	lib/libft/test_src/bool/test_ft_isalnum.c	/^Suite *isalnum_suite(void)$/;"	f
+len_end	include/syntax.h	/^	int		len_end;$/;"	m	struct:s_syntax
 main	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
 main	lib/libft/test_src/bool/test_ft_isalnum.c	/^int main(void)$/;"	f
@@ -1026,6 +1033,13 @@ nb_printed	lib/libft/include/libft.h	/^	int		nb_printed;$/;"	m	struct:s_buffer
 next	include/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
 next	include/tokenize.h	/^	struct s_token	*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
 next	lib/libgc/include/libgc.h	/^	struct s_gc_node	*next;$/;"	m	struct:s_gc_node	typeref:struct:s_gc_node::s_gc_node
+o_and	include/syntax.h	/^	int		o_and;$/;"	m	struct:s_syntax
+o_or	include/syntax.h	/^	int		o_or;$/;"	m	struct:s_syntax
+o_pipe	include/syntax.h	/^	int		o_pipe;$/;"	m	struct:s_syntax
+operator_gestion	src/syntax_error/operator_gestion.c	/^int	operator_gestion(t_syntax **syntax)$/;"	f
+p_char	include/syntax.h	/^	int		p_char;$/;"	m	struct:s_syntax
+p_trigger	include/syntax.h	/^	int		p_trigger;$/;"	m	struct:s_syntax
+parenthesis_gestion	src/syntax_error/parenthesis_gestion.c	/^int	parenthesis_gestion(t_syntax **syntax)$/;"	f
 path	include/minishell.h	/^	char	*path;$/;"	m	struct:s_env_data
 precision	lib/libft/include/libft.h	/^	int			precision;$/;"	m	struct:s_format_spec
 print_progress	make_interface/src/progress.c	/^void	print_progress(int step, int total)$/;"	f
@@ -1033,6 +1047,12 @@ progressive_sleep	make_interface/src/progress.c	/^void	progressive_sleep(int ste
 ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
 qnxnto	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+quote_gestion	src/syntax_error/quote_gestion.c	/^int	quote_gestion(t_syntax **syntax)$/;"	f
+r_app	include/syntax.h	/^	int		r_app;$/;"	m	struct:s_syntax
+r_here	include/syntax.h	/^	int		r_here;$/;"	m	struct:s_syntax
+r_in	include/syntax.h	/^	int		r_in;$/;"	m	struct:s_syntax
+r_out	include/syntax.h	/^	int		r_out;$/;"	m	struct:s_syntax
+redir_gestion	src/syntax_error/redir_gestion.c	/^int	redir_gestion(t_syntax **syntax)$/;"	f
 remove_newline	make_interface/src/make_prompt.c	/^void	remove_newline(char *str)$/;"	f
 run_make_command	make_interface/src/make_prompt.c	/^void run_make_command(char *target, char *args)$/;"	f
 s_buffer	lib/libft/include/libft.h	/^typedef struct s_buffer$/;"	s
@@ -1042,15 +1062,27 @@ s_format_spec	lib/libft/include/libft.h	/^typedef struct s_format_spec$/;"	s
 s_garbage_collector	lib/libgc/include/libgc.h	/^typedef struct s_garbage_collector$/;"	s
 s_gc_node	lib/libgc/include/libgc.h	/^typedef struct s_gc_node$/;"	s
 s_shell	include/minishell.h	/^typedef struct s_shell$/;"	s
+s_syntax	include/syntax.h	/^typedef struct s_syntax$/;"	s
 s_token	include/tokenize.h	/^typedef struct s_token$/;"	s
 shell	include/minishell.h	/^	char	*shell;$/;"	m	struct:s_env_data
 shell_lvl	include/minishell.h	/^	int		shell_lvl;$/;"	m	struct:s_env_data
 skip_whitespace	src/token/utils.c	/^void	skip_whitespace(const char **input)$/;"	f
+sq_trigger	include/syntax.h	/^	int		sq_trigger;$/;"	m	struct:s_syntax
+st_and_verif	src/syntax_error/operator_gestion.c	/^static int	st_and_verif(t_syntax **syntax)$/;"	f	file:
+st_close_parenthesis	src/syntax_error/parenthesis_gestion.c	/^static int	st_close_parenthesis(t_syntax **syntax)$/;"	f	file:
 st_create_envp	src/init_shell/ms_init_env.c	/^static char	**st_create_envp(t_shell *shell, t_env_data *env_data)$/;"	f	file:
 st_get_path	src/init_shell/ms_init_env.c	/^static char	*st_get_path(t_env_data *env_data)$/;"	f	file:
 st_get_shell	src/init_shell/ms_init_env.c	/^static char	*st_get_shell(t_env_data *env_data)$/;"	f	file:
 st_get_term	src/init_shell/ms_init_env.c	/^static char	*st_get_term(t_env_data *env_data)$/;"	f	file:
-st_quote_error	src/syntax_error/ms_syntax_error.c	/^static int	st_quote_error(const char *input)$/;"	f	file:
+st_line_check	src/syntax_error/ms_syntax_error.c	/^static int	st_line_check(t_syntax *synt)$/;"	f	file:
+st_open_parenthesis	src/syntax_error/parenthesis_gestion.c	/^static int	st_open_parenthesis(t_syntax **syntax)$/;"	f	file:
+st_or_verif	src/syntax_error/operator_gestion.c	/^static int	st_or_verif(t_syntax **syntax)$/;"	f	file:
+st_pipe_verif	src/syntax_error/operator_gestion.c	/^static int	st_pipe_verif(t_syntax **syntax)$/;"	f	file:
+st_print_error_operator_redir	src/syntax_error/check_error.c	/^static void	st_print_error_operator_redir(int error)$/;"	f	file:
+st_redir_in	src/syntax_error/redir_gestion.c	/^static int	st_redir_in(t_syntax **syntax)$/;"	f	file:
+st_redir_out	src/syntax_error/redir_gestion.c	/^static int	st_redir_out(t_syntax **syntax)$/;"	f	file:
+st_reinit_operator	src/syntax_error/check_reinit.c	/^static int	st_reinit_operator(char c)$/;"	f	file:
+st_reinit_redir	src/syntax_error/check_reinit.c	/^static int	st_reinit_redir(char c)$/;"	f	file:
 st_sigint_std_handler	src/signal/ms_init_std_signal.c	/^static void	st_sigint_std_handler(int sig)$/;"	f	file:
 t_buffer	lib/libft/include/libft.h	/^}			t_buffer;$/;"	t	typeref:struct:s_buffer
 t_env	include/minishell.h	/^}				t_env;$/;"	t	typeref:struct:s_env
@@ -1060,6 +1092,7 @@ t_format_spec	lib/libft/include/libft.h	/^}				t_format_spec;$/;"	t	typeref:stru
 t_gc	lib/libgc/include/libgc.h	/^}				t_gc;$/;"	t	typeref:struct:s_garbage_collector
 t_gc_node	lib/libgc/include/libgc.h	/^}				t_gc_node;$/;"	t	typeref:struct:s_gc_node
 t_shell	include/minishell.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
+t_syntax	include/syntax.h	/^}	t_syntax;$/;"	t	typeref:struct:s_syntax
 t_token	include/tokenize.h	/^}			t_token;$/;"	t	typeref:struct:s_token
 t_token_type	include/tokenize.h	/^}			t_token_type;$/;"	t	typeref:enum:e_token_type
 temp_file	lib/libgc/include/libgc.h	/^	char				*temp_file;$/;"	m	struct:s_gc_node

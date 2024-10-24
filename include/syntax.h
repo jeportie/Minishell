@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 10:33:09 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/23 13:32:05 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:30:52 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,34 @@
 
 # include "minishell.h"
 
+typedef struct s_syntax
+{
+	char	*current;
+	int		error;
+	int		i;
+	int		len_end;
+	int		sq_trigger;
+	int		dq_trigger;
+	int		p_trigger;
+	int		p_char;
+	int		o_and;
+	int		o_or;
+	int		o_pipe;
+	int		r_in;
+	int		r_out;
+	int		r_app;
+	int		r_here;
+}	t_syntax;
+
 /* Main fonction */
 int	ms_syntax_error(const char *input);
 
+int	check_error(t_syntax **syntax);
+int	check_reinit(t_syntax **syntax);
+int	operator_gestion(t_syntax **syntax);
+int	parenthesis_gestion(t_syntax **syntax);
+int	quote_gestion(t_syntax **syntax);
+int	redir_gestion(t_syntax **syntax);
 #endif /*SYNTAX_H*/
 
 /*
