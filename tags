@@ -942,6 +942,9 @@ gc_temp_file_register	lib/libgc/src/gc_register.c	/^void	gc_temp_file_register(c
 gc_unlock	lib/libgc/src/gc_mark_lock.c	/^void	gc_unlock(void *ptr, t_gc *gcl)$/;"	f
 gcl	include/minishell.h	/^	t_gc		*gcl;$/;"	m	struct:s_shell
 generate_src_list	lib/libft/update_makefile.sh	/^generate_src_list() {$/;"	f
+get_left_child	src/ast/print_ast.c	/^t_ast_node *get_left_child(t_ast_node *node)$/;"	f
+get_node_label	src/ast/print_ast.c	/^char *get_node_label(t_ast_node *node)$/;"	f
+get_right_child	src/ast/print_ast.c	/^t_ast_node *get_right_child(t_ast_node *node)$/;"	f
 head	lib/libgc/include/libgc.h	/^	t_gc_node	*head;$/;"	m	struct:s_garbage_collector
 heredoc	include/ast.h	/^	t_heredoc_node		heredoc;$/;"	m	union:u_node_data
 index	lib/libft/include/libft.h	/^	int		index;$/;"	m	struct:s_buffer
@@ -1040,11 +1043,13 @@ op_str	include/tokenize.h	/^	const char		*op_str;$/;"	m	struct:s_operator_map
 parse_command	src/ast/ms_parse_tokens.c	/^t_ast_node	*parse_command(t_token **current_token, t_gc *gcl)$/;"	f
 parse_logical	src/ast/ms_parse_tokens.c	/^t_ast_node	*parse_logical(t_token **current_token, t_gc *gcl)$/;"	f
 parse_pipeline	src/ast/ms_parse_tokens.c	/^t_ast_node	*parse_pipeline(t_token **current_token, t_gc *gcl)$/;"	f
-parse_redirection	src/ast/ms_parse_tokens.c	/^t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child, t_gc *gcl)$/;"	f
+parse_redirection	src/ast/ms_parse_tokens.c	/^t_ast_node *parse_redirection(t_token **current_token, t_ast_node *child, t_gc *gcl)$/;"	f
 parse_subshell	src/ast/ms_parse_tokens.c	/^t_ast_node	*parse_subshell(t_token **current_token, t_gc *gcl)$/;"	f
 path	include/minishell.h	/^	char	*path;$/;"	m	struct:s_env_data
 pipe	include/ast.h	/^	t_pipe_node			pipe;$/;"	m	union:u_node_data
 precision	lib/libft/include/libft.h	/^	int			precision;$/;"	m	struct:s_format_spec
+print_ast	src/ast/print_ast.c	/^void print_ast(t_ast_node *node, int depth, char *prefix, int is_left)$/;"	f
+print_node_content	src/ast/print_ast.c	/^void print_node_content(t_ast_node *node)$/;"	f
 print_token	src/token/utils.c	/^void	print_token(t_token *head)$/;"	f
 ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
 qnxnto	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v

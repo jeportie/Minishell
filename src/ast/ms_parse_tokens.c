@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:31:06 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/24 14:38:52 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:06:47 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,51 +135,38 @@ t_ast_node	*parse_subshell(t_token **current_token, t_gc *gcl)
 	return (node);
 }
 
-/*
- * NOTE:
- * Issue:
- * In parse_redirection, you're recursively calling parse_redirection within a while loop,
- * which may not be necessary and could lead to redundant processing.
- * Suggestion:
- * Consider simplifying the logic to handle multiple redirections in a more straightforward manner.
- */
-
-t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child, t_gc *gcl)
+t_ast_node *parse_redirection(t_token **current_token, t_ast_node *child, t_gc *gcl)
 {
 	t_node_type	redir_type;
 	char		*filename;
-	t_token		*token;
 
-	if ((*current_token)->type != TOKEN_REDIRECTION)
-		return (child);
-	if (ft_strncmp((*current_token)->token, "<", 1) == 0)
-		redir_type = NODE_REDIRECT_IN;
-	else if (ft_strncmp((*current_token)->token, ">", 1) == 0)
-		redir_type = NODE_REDIRECT_OUT;
-	else if (ft_strncmp((*current_token)->token, ">>", 1) == 0)
-		redir_type = NODE_REDIRECT_APPEND;
-	else if (ft_strncmp((*current_token)->token, "<<", 1) == 0)
-		redir_type = NODE_REDIRECT_HEREDOC;
-	else
+	while (*current_token && (*current_token)->type == TOKEN_REDIRECTION)
 	{
-		fprintf(stderr, "Syntax Error: Unknown redirection '%s'.\n", (*current_token)->token);
-		return (NULL);
-	}
-	*current_token = (*current_token)->next;
-	if (!*current_token || (*current_token)->type != TOKEN_WORD)
-	{
-		fprintf(stderr, "Syntax Error: Expected filename after redirection.\n");
-		return NULL;
-	}
-	filename = (*current_token)->token;
-	*current_token = (*current_token)->next;
-	if (redir_type == NODE_REDIRECT_HEREDOC)
-		child = create_heredoc_node(child, filename, gcl);
-	else
-		child = create_redirect_node(redir_type, child, filename, gcl);
-	while(*current_token && (*current_token)->type == TOKEN_REDIRECTION)
-	{
-		child = parse_redirection(current_token, child, gcl);
+		if (strcmp((*current_token)->token, "<") == 0)
+			redir_type = NODE_REDIRECT_IN;
+		else if (strcmp((*current_token)->token, ">") == 0)
+			redir_type = NODE_REDIRECT_OUT;
+		else if (strcmp((*current_token)->token, ">>") == 0)
+			redir_type = NODE_REDIRECT_APPEND;
+		else if (strcmp((*current_token)->token, "<<") == 0)
+			redir_type = NODE_REDIRECT_HEREDOC;
+		else
+		{
+			fprintf(stderr, "Syntax Error: Unknown redirection '%s'.\n", (*current_token)->token);
+			return (NULL);
+		}
+		*current_token = (*current_token)->next;
+		if (!*current_token || (*current_token)->type != TOKEN_WORD)
+		{
+			fprintf(stderr, "Syntax Error: Expected filename after redirection.\n");
+			return (NULL);
+		}
+		filename = (*current_token)->token;
+		*current_token = (*current_token)->next;
+		if (redir_type == NODE_REDIRECT_HEREDOC)
+			child = create_heredoc_node(child, filename, gcl);
+		else
+			child = create_redirect_node(redir_type, child, filename, gcl);
 		if (!child)
 			return (NULL);
 	}
@@ -205,7 +192,7 @@ t_ast_node	*parse_command(t_token **current_token, t_gc *gcl)
 	}
 	if (!*current_token || (*current_token)->type != TOKEN_WORD)
 	{
-		perror("Minishell: Syntax Error: Expected a command.\n");
+		fprintf(stderr, "Minishell: Syntax Error: Expected a command.\n");
 		return (NULL);
 	}
 	node = create_command_node(current_token, gcl);
@@ -239,7 +226,7 @@ t_ast_node	*parse_pipeline(t_token **current_token, t_gc *gcl)
 		right_node = parse_command(current_token, gcl);
 		if (!right_node)
 		{
-			perror("Minishell: Syntax Error: Expected Command after pipe '|'.\n");
+			fprintf(stderr, "Minishell: Syntax Error: Expected Command after pipe '|'.\n");
 			return (NULL);
 		}
 		left_node = create_pipe_node(left_node, right_node, gcl);
@@ -275,7 +262,7 @@ t_ast_node	*parse_logical(t_token **current_token, t_gc *gcl)
 		right_node = parse_pipeline(current_token, gcl);
 		if (!right_node)
 		{
-			perror("Minishell: Syntax Error: Expected Command after logical operator.\n");
+			fprintf(stderr, "Minishell: Syntax Error: Expected Command after logical operator.\n");
 			return (NULL);
 		}
 		left_node = create_logical_node(op_type, left_node, right_node, gcl);
@@ -290,7 +277,7 @@ t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)
 
 	if (tokens == NULL)
 	{
-		perror("Minishell: Error: No Input provided.\n");
+		fprintf(stderr, "Minishell: Error: No Input provided.\n");
 		gc_cleanup(gcl);
 		exit(EXIT_FAILURE);
 	}
@@ -304,7 +291,7 @@ t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)
 	}
 	if (!ast_root)
 	{
-		perror("Minishell: Error: Failed to parse tokens.\n");
+		fprintf(stderr, "Minishell: Error: Failed to parse tokens.\n");
 		gc_cleanup(gcl);
 		exit(EXIT_FAILURE);
 	}

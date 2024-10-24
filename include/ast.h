@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:45:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/24 09:31:03 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:21:01 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ t_ast_node	*create_logical_node(t_node_type type, t_ast_node *left,
 				t_ast_node *right, t_gc *gcl);
 t_ast_node	*create_subshell_node(t_ast_node *child, t_gc *gcl);
 
-void		print_ast(t_ast_node *ast, int depth);
+void		print_ast(t_ast_node *node, int depth, char *prefix, int is_left);
 void		expand_wildcards(t_ast_node *ast, t_gc *gcl);
 
 #endif /*AST_H*/
