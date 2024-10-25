@@ -10,23 +10,28 @@
 
 <!-- TODO-START -->
 - [ ] Minishell todo List
-    - [ ] Part2 Recuperation input et erreur de syntax
-    - [ ] Part3 Parse
-        - [ ] Sub1 Tokenizer
-            - [ ] Structures and logic
-            - [ ] Feature1 : manage words
-            - [ ] Feature2 : manage operators
-            - [ ] Feature3 : manage frames
-            - [ ] Feature4 : manage quotes
-        - [ ] Sub2 Abstract Syntax Tree
-    - [ ] Part4 Exec
+    - [ ] Part4 AST
+        - [ ] Faire parse
+        - [ ] Faire construct node
+        - [ ] Faire test
+        - [ ] Faire print Ast
+    - [ ] Part5 Exec
     - [X] Part1 Init and Workflow prep
         - [X] !!!! modifier raccourice vim p pour P
         - [X] Making the firstfiles with git
         - [X] Installer norminette dans le docker
         - [X] Verification de l'env et du parse et creation en fonction
         - [X] Gerer les signaux
-
+    - [X] Part2 Recuperation input et erreur de syntax
+        - [X] Gerstion quotes
+        - [X] gestion subshell
+        - [X] gestion op logic
+        - [X] gestion redir``
+    - [X] Part3 Token
+        - [X] Feature1 : manage quotes
+        - [X] Feature2 : expand variable
+        - [X] Feature3 : heredoc
+        - [X] Feature4 : link index to TOKEN
 
 <!-- TODO-END -->
 Please check our [Changelogs](CHANGELOG.md) for more details.
