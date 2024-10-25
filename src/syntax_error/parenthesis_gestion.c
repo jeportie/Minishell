@@ -2,11 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   parenthesis_gestion.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*           +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:44:36 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/24 16:28:05 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:29:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,29 @@ static int	st_close_parenthesis(t_syntax **syntax)
 	return (0);
 }
 
+static int	st_in_parenthesis(t_syntax **syntax)
+{
+	t_syntax	*synt;
+	int			i;
+
+	synt = *syntax;
+	i = synt->i;
+	if (synt->current[i + 1] && synt->current[i + 1] != ')')
+	{
+		i++;
+		printf("Minishell: syntax error near unexpected token `");
+		while (synt->current[i] != ')')
+		{
+			printf("%c", synt->current[i]);
+			i++;
+		}
+		printf("'\n");
+	}
+	else
+		synt->p_trigger = 1;
+	return (1);
+}
+
 static int	st_open_parenthesis(t_syntax **syntax)
 {
 	t_syntax	*synt;
@@ -54,10 +77,7 @@ static int	st_open_parenthesis(t_syntax **syntax)
 	}
 	else if (synt->i > 0 && !synt->o_and && !synt->o_or
 		&& !synt->o_pipe)
-	{
-		synt->p_trigger = 1;
-		return (1);
-	}
+		return (st_in_parenthesis(&synt));
 	return (0);
 }
 

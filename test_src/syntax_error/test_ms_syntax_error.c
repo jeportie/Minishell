@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:00:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/24 19:04:47 by gmarquis         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:04:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ END_TEST
 
 START_TEST(test_ms_syntax_error_valid_input_7)
 {
-    int exit_code = test_ms_syntax_error_exit("\"string with spaces\"");
+    int exit_code = test_ms_syntax_error_exit("\"string with 'spaces\"");
     ck_assert_int_eq(exit_code, 0); // Valid input
 }
 END_TEST
 
 START_TEST(test_ms_syntax_error_valid_input_8)
 {
-    int exit_code = test_ms_syntax_error_exit("'quoted text'");
+    int exit_code = test_ms_syntax_error_exit("'quoted\" text'");
     ck_assert_int_eq(exit_code, 0); // Valid input
 }
 END_TEST
@@ -142,7 +142,7 @@ END_TEST
 
 START_TEST(test_ms_syntax_error_valid_input_14)
 {
-    int exit_code = test_ms_syntax_error_exit("echo '\"'");
+    int exit_code = test_ms_syntax_error_exit("echo '('");
     ck_assert_int_eq(exit_code, 0); // Valid input
 }
 END_TEST
@@ -156,35 +156,35 @@ END_TEST
 
 START_TEST(test_ms_syntax_error_valid_input_16)
 {
-    int exit_code = test_ms_syntax_error_exit("(echo test) || (false)");
+    int exit_code = test_ms_syntax_error_exit("(echo test) || (false')')");
     ck_assert_int_eq(exit_code, 0); // Valid input
 }
 END_TEST
 
 START_TEST(test_ms_syntax_error_valid_input_17)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"nested quotes 'inside'\"");
+    int exit_code = test_ms_syntax_error_exit("echo \"nested quotes 'inside'\" && ('ls')");
     ck_assert_int_eq(exit_code, 0); // Valid input
 }
 END_TEST
 
 START_TEST(test_ms_syntax_error_valid_input_18)
 {
-    int exit_code = test_ms_syntax_error_exit("ls && echo \"done\"");
+    int exit_code = test_ms_syntax_error_exit("ls && echo \"done\" || ls");
     ck_assert_int_eq(exit_code, 0); // Valid input
 }
 END_TEST
 
 START_TEST(test_ms_syntax_error_valid_input_19)
 {
-    int exit_code = test_ms_syntax_error_exit("echo > file.txt");
+    int exit_code = test_ms_syntax_error_exit("echo > file.txt && cat (ls && ls > outfile) || ls");
     ck_assert_int_eq(exit_code, 0); // Valid input
 }
 END_TEST
 
 START_TEST(test_ms_syntax_error_valid_input_20)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"hello > world\"");
+    int exit_code = test_ms_syntax_error_exit("echo \"hello > world\" > outfile || ls");
     ck_assert_int_eq(exit_code, 0); // Valid input
 }
 END_TEST
@@ -286,7 +286,7 @@ END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_input_4)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"unterminated string");
+    int exit_code = test_ms_syntax_error_exit("echo unterminated string)");
     ck_assert_int_eq(exit_code, 1); // Invalid input
 }
 END_TEST
@@ -314,7 +314,7 @@ END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_input_8)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"unterminated (nested\"");
+    int exit_code = test_ms_syntax_error_exit("|| ls");
     ck_assert_int_eq(exit_code, 1); // Invalid input
 }
 END_TEST
@@ -335,14 +335,14 @@ END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_input_11)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"");
+    int exit_code = test_ms_syntax_error_exit("echo |");
     ck_assert_int_eq(exit_code, 1); // Invalid input
 }
 END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_input_12)
 {
-    int exit_code = test_ms_syntax_error_exit("echo 'unclosed quote");
+    int exit_code = test_ms_syntax_error_exit("| echo");
     ck_assert_int_eq(exit_code, 1); // Invalid input
 }
 END_TEST
@@ -363,7 +363,7 @@ END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_input_15)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"unterminated quote");
+    int exit_code = test_ms_syntax_error_exit("echo ||");
     ck_assert_int_eq(exit_code, 1); // Invalid input
 }
 END_TEST
@@ -377,21 +377,21 @@ END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_input_17)
 {
-    int exit_code = test_ms_syntax_error_exit("echo ()");
+    int exit_code = test_ms_syntax_error_exit(") ls ");
     ck_assert_int_eq(exit_code, 1); // Invalid input
 }
 END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_input_18)
 {
-    int exit_code = test_ms_syntax_error_exit("echo || echo");
+    int exit_code = test_ms_syntax_error_exit("&& echo");
     ck_assert_int_eq(exit_code, 1); // Invalid input
 }
 END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_input_19)
 {
-    int exit_code = test_ms_syntax_error_exit("ls |");
+    int exit_code = test_ms_syntax_error_exit("ls ||| ls");
     ck_assert_int_eq(exit_code, 1); // Invalid input
 }
 END_TEST
@@ -412,14 +412,14 @@ END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_input_22)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"unfinished string");
+    int exit_code = test_ms_syntax_error_exit("echo \"unfinished string\" && ()");
     ck_assert_int_eq(exit_code, 1); // Invalid input
 }
 END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_input_23)
 {
-    int exit_code = test_ms_syntax_error_exit("echo 'mismatched \"quotes'");
+    int exit_code = test_ms_syntax_error_exit("echo '' || (ls >)i");
     ck_assert_int_eq(exit_code, 1); // Invalid input
 }
 END_TEST
@@ -440,14 +440,14 @@ END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_input_26)
 {
-    int exit_code = test_ms_syntax_error_exit("echo test > <");
+    int exit_code = test_ms_syntax_error_exit("echo test > outfile < infile || (ls |)");
     ck_assert_int_eq(exit_code, 1); // Invalid input
 }
 END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_input_27)
 {
-    int exit_code = test_ms_syntax_error_exit("cat < < file.txt");
+    int exit_code = test_ms_syntax_error_exit("(cat < outfile) < file.txt >> ");
     ck_assert_int_eq(exit_code, 1); // Invalid input
 }
 END_TEST

@@ -22,15 +22,13 @@ SRC = \
   src/init_shell/ms_get_user_input.c \
   src/signal/ms_init_std_signal.c \
   src/signal/ms_stop_std_signal.c \
-  src/token/utils.c \
-  src/token/ms_tokenize.c \
-  src/syntax_error/check_error.c \
   src/syntax_error/check_reinit.c \
   src/syntax_error/operator_gestion.c \
-  src/syntax_error/parenthesis_gestion.c \
   src/syntax_error/redir_gestion.c \
   src/syntax_error/quote_gestion.c \
   src/syntax_error/ms_syntax_error.c \
+  src/syntax_error/check_error.c \
+  src/syntax_error/parenthesis_gestion.c \
   src/global.c 
 ### END AUTO GENERATED FILES ###
 
