@@ -29,11 +29,11 @@ SRC = \
   src/token/tokenize_frame.c \
   src/token/utils.c \
   src/token/ms_tokenize.c \
-  src/ast/print_ast.c \
   src/ast/utils.c \
-  src/ast/parse.c \
   src/ast/ms_parse_tokens.c \
-  src/ast/create_node.c 
+  src/ast/parse.c \
+  src/ast/create_node.c \
+  src/ast/print_ast.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #

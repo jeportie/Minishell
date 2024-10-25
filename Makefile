@@ -22,18 +22,18 @@ SRC = \
   src/init_shell/ms_init_env.c \
   src/signal/ms_init_std_signal.c \
   src/signal/ms_stop_std_signal.c \
-  src/global.c \
-  src/token/lst_tokens.c \
-  src/token/tokenize_word.c \
-  src/token/tokenize_operator.c \
-  src/token/tokenize_frame.c \
-  src/token/utils.c \
-  src/token/ms_tokenize.c \
-  src/ast/utils.c \
+  src/ast/create_node.c \
   src/ast/ms_parse_tokens.c \
   src/ast/parse.c \
-  src/ast/create_node.c \
-  src/ast/print_ast.c 
+  src/ast/print_ast.c \
+  src/ast/utils.c \
+  src/global.c \
+  src/token/lst_tokens.c \
+  src/token/ms_tokenize.c \
+  src/token/tokenize_frame.c \
+  src/token/tokenize_operator.c \
+  src/token/tokenize_word.c \
+  src/token/utils.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #
