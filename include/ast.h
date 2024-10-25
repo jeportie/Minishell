@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:45:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/24 15:21:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:03:39 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ t_ast_node	*parse_sequence(t_token **current_token, t_gc *gcl);
 t_ast_node	*parse_logical(t_token **current_token, t_gc *gcl);
 t_ast_node	*parse_pipeline(t_token **current_token, t_gc *gcl);
 t_ast_node	*parse_command(t_token **current_token, t_gc *gcl);
-t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child, t_gc *gcl);
+t_ast_node	*parse_redirection(t_token **current_token,
+				t_ast_node *child, t_gc *gcl);
 t_ast_node	*parse_subshell(t_token **current_token, t_gc *gcl);
 
 /* Node Functions*/
@@ -102,6 +103,9 @@ t_ast_node	*create_logical_node(t_node_type type, t_ast_node *left,
 				t_ast_node *right, t_gc *gcl);
 t_ast_node	*create_subshell_node(t_ast_node *child, t_gc *gcl);
 
+/* Utils Functions */
+bool		is_pipe_op(t_token *current_token);
+bool		is_logical_op(t_token *current_token);
 void		print_ast(t_ast_node *node, int depth, char *prefix, int is_left);
 void		expand_wildcards(t_ast_node *ast, t_gc *gcl);
 

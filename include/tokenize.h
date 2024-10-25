@@ -6,12 +6,14 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:01:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 13:56:06 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:29:20 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKENIZE_H
 # define TOKENIZE_H
+
+# define STDERR 2
 
 # include "minishell.h"
 

@@ -6,15 +6,16 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:17:41 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/24 15:21:35 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:49:52 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/ast.h"
 #include <stdio.h>
 #include <string.h>
-#include "../../include/ast.h"
+#include <stdlib.h>
+#include <stdarg.h>
 
-// Helper function to get the left child of a node
 t_ast_node *get_left_child(t_ast_node *node)
 {
     if (node == NULL)
@@ -27,8 +28,8 @@ t_ast_node *get_left_child(t_ast_node *node)
             return node->data.logic.left;
         case NODE_PIPE:
             return node->data.pipe.left;
-        case NODE_REDIRECT_IN:
         case NODE_REDIRECT_OUT:
+        case NODE_REDIRECT_IN:
         case NODE_REDIRECT_APPEND:
         case NODE_REDIRECT_HEREDOC:
             return node->data.redirect.child;
@@ -39,7 +40,6 @@ t_ast_node *get_left_child(t_ast_node *node)
     }
 }
 
-// Helper function to get the right child of a node
 t_ast_node *get_right_child(t_ast_node *node)
 {
     if (node == NULL)
@@ -52,12 +52,17 @@ t_ast_node *get_right_child(t_ast_node *node)
             return node->data.logic.right;
         case NODE_PIPE:
             return node->data.pipe.right;
+        case NODE_REDIRECT_OUT:
+        case NODE_REDIRECT_IN:
+        case NODE_REDIRECT_APPEND:
+            return NULL; // Filename will be displayed with the node
+        case NODE_REDIRECT_HEREDOC:
+            return NULL;
         default:
             return NULL;
     }
 }
 
-// Helper function to get a label for a node
 char *get_node_label(t_ast_node *node)
 {
     if (node == NULL)
@@ -66,29 +71,28 @@ char *get_node_label(t_ast_node *node)
     switch (node->type)
     {
         case NODE_COMMAND:
-            return "[CMD]";
+            return "\033[1;32m[CMD]\033[0m"; // Bright green
         case NODE_AND:
-            return "&&";
+            return "\033[1;34m{&&}\033[0m"; // Bright blue
         case NODE_OR:
-            return "||";
+            return "\033[1;34m{||}\033[0m";
         case NODE_PIPE:
-            return "|";
+            return "\033[1;34m{|}\033[0m";
         case NODE_REDIRECT_OUT:
-            return ">";
+            return "\033[1;34m{>}\033[0m";
         case NODE_REDIRECT_IN:
-            return "<";
+            return "\033[1;34m{<}\033[0m";
         case NODE_REDIRECT_APPEND:
-            return ">>";
+            return "\033[1;34m{>>}\033[0m";
         case NODE_REDIRECT_HEREDOC:
-            return "<<";
+            return "\033[1;34m{<<}\033[0m";
         case NODE_SUBSHELL:
-            return "( )";
+            return "\033[1;34m{( )}\033[0m";
         default:
             return "[UNKNOWN]";
     }
 }
 
-// Helper function to print the content of a node
 void print_node_content(t_ast_node *node)
 {
     if (node == NULL)
@@ -118,17 +122,10 @@ void print_node_content(t_ast_node *node)
     // Add other node types as needed
 }
 
-// Main function to print the AST
 void print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
 {
     if (node == NULL)
         return;
-
-    char new_prefix[256];
-    snprintf(new_prefix, sizeof(new_prefix), "%s%s", prefix, is_left ? "│   " : "    ");
-
-    // Print right child first (so it appears on top)
-    print_ast(get_right_child(node), depth + 1, new_prefix, 0);
 
     // Print current node
     printf("%s", prefix);
@@ -140,6 +137,11 @@ void print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
         else
             printf("└── ");
     }
+    else
+    {
+        // Root node
+        printf("└── ");
+    }
 
     // Node label
     printf("%s", get_node_label(node));
@@ -149,6 +151,38 @@ void print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
 
     printf("\n");
 
+    // Prepare prefix for children
+    char new_prefix[256];
+    snprintf(new_prefix, sizeof(new_prefix), "%s%s", prefix, is_left ? "│   " : "    ");
+
     // Print left child
     print_ast(get_left_child(node), depth + 1, new_prefix, 1);
+
+    // Print right child
+    print_ast(get_right_child(node), depth + 1, new_prefix, 0);
+}
+
+// Mock functions to create command nodes for testing
+t_ast_node *create_command_node_with_args(int argc, ...)
+{
+    t_ast_node *node = malloc(sizeof(t_ast_node));
+    if (!node)
+        return NULL;
+
+    node->type = NODE_COMMAND;
+    node->data.command.argc = argc;
+    node->data.command.argv = malloc(sizeof(char *) * (argc + 1));
+
+    va_list args;
+    va_start(args, argc);
+    for (int i = 0; i < argc; i++)
+    {
+        char *arg = va_arg(args, char *);
+        node->data.command.argv[i] = arg;
+    }
+    va_end(args);
+
+    node->data.command.argv[argc] = NULL;
+
+    return node;
 }

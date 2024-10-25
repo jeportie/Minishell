@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/18 12:58:52 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:50:30 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@
 
 #include "include/minishell.h"
 #include "include/tokenize.h"
+#include "include/ast.h"
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_shell	shell;
-	t_token	*tokens;
+	t_shell		shell;
+	t_token		*tokens;
+	t_ast_node	*root;
 
 	shell = ms_init_shell(argc, argv, envp);
 	gc_collect(shell.gcl);
@@ -44,8 +46,14 @@ int	main(int argc, char **argv, char **envp)
 			exit (shell.error_code);
 		}
 		tokens = ms_tokenize(shell.user_input, shell.gcl);
-		print_token(tokens);
 		printf("user_input : %s\n", shell.user_input);
+		print_token(tokens);
+		printf("\n");
+		printf("\n");
+		root = ms_parse_tokens(tokens, shell.gcl);
+		print_ast(root, 0, "", 0);
+		printf("\n");
+		printf("\n");
 		shell.error_code = 0;
 	}
 	shell.error_code = 666;
