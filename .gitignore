@@ -16,9 +16,9 @@ CMakeFiles/
 
 # Ignore logs and other artifacts
 *.log
+*.tmp
+*.bak
 
-# Ignore build artifacts in subdirectories
-test_src/CMakeCache.txt
-test_src/CMakeFiles/
-test_src/build/
-
+*~
+*.swp
+.DS_Store
