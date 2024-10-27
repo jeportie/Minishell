@@ -21,6 +21,7 @@ jobs:
 
       - name: Run Norminette Linting
         run: |
+          venv
           norminette src/
           norminette include/
           norminette libs/
