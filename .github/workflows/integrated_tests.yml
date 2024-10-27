@@ -19,40 +19,33 @@ jobs:
           submodules: recursive
           clean: true
 
-      # Map workspace to expected path
-      - name: Adjust Workspace Path
-        run: |
-          mkdir -p /root/projects
-          ln -s /github/workspace /root/projects/minishell
-
       # Build libft
       - name: Build libft
         run: |
-          cd /root/projects/minishell/lib/libft
+          cd lib/libft
           make
+        working-directory: /github/workspace
 
       # Build libgc
       - name: Build libgc
         run: |
-          cd /root/projects/minishell/lib/libgc
+          cd lib/libgc
           make
+        working-directory: /github/workspace
 
       # Clean Build Directory
       - name: Clean Build Directory
-        run: rm -rf /root/projects/minishell/test_src/build/
+        run: rm -rf test_src/build/
+        working-directory: /github/workspace
 
       # Build and Run Tests
-      - name: Build Tests
+      - name: Build and Run Tests
         run: |
-          cd /root/projects/minishell/test_src
+          cd test_src
           mkdir build
           cd build
           cmake ..
           make
-
-      # Run Tests
-      - name: Run Tests
-        run: |
-          cd test_src/build
           ctest --output-on-failure
+        working-directory: /github/workspace
 
