@@ -1,4 +1,4 @@
-name: Norminette Linting
+name: Norm42 Check
 
 on:
   push:
