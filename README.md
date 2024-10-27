@@ -6,9 +6,9 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/jeportie/minishell/actions/workflows/main_test.yml/badge.svg?branch=main" alt="CI - Main">
-  <img src="https://github.com/jeportie/minishell/actions/workflows/integrated_tests.yml/badge.svg?branch=main" alt="CI - Main">
-  <img src="https://github.com/jeportie/minishell/actions/workflows/norminette.yml/badge.svg?branch=main" alt="CI - Main">
+  <img src="https://github.com/jeportie/minishell/actions/workflows/main_test.yml/badge.svg?branch=main">
+  <img src="https://github.com/jeportie/minishell/actions/workflows/integrated_tests.yml/badge.svg?branch=main">
+  <img src="https://github.com/jeportie/minishell/actions/workflows/norminette.yml/badge.svg?branch=main">
 </p>
 
 ## To-Do List
