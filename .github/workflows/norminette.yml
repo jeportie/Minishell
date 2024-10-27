@@ -13,7 +13,7 @@ jobs:
       image: jeportie/vjej:latest
       options: >
         --workdir /root/projects/minishell
-        --volume ${GITHUB_WORKSPACE}:/root/projects/minishell
+        --volume ${{ github.workspace }}:/root/projects/minishell
 
     steps:
       # 1. Checkout Repository
@@ -23,7 +23,7 @@ jobs:
           submodules: recursive
           clean: true
 
-      # 2. Add Norminette to PATH
+      # 2. Append Norminette to PATH
       - name: Add Norminette to PATH
         run: echo "/root/venv/bin" >> $GITHUB_PATH
 
