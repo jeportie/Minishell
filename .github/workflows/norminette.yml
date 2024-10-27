@@ -11,22 +11,31 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: jeportie/vjej:latest
+      options: >
+        --workdir /root/projects/minishell
+        --volume ${GITHUB_WORKSPACE}:/root/projects/minishell
 
     steps:
+      # 1. Checkout Repository
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
           submodules: recursive
           clean: true
 
+      # 2. Add Norminette to PATH
+      - name: Add Norminette to PATH
+        run: echo "/root/venv/bin" >> $GITHUB_PATH
+
+      # 3. Verify Norminette Installation
       - name: Verify Norminette Installation
         run: |
           which norminette
           norminette --version
 
+      # 4. Run Norminette Linting
       - name: Run Norminette Linting
         run: |
-          venv
           norminette src/
           norminette include/
           norminette libs/
