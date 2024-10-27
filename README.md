@@ -4,6 +4,7 @@
   <img src="https://img.shields.io/github/last-commit/jeportie/Minishell" alt="GitHub last commit">
   <img src="https://img.shields.io/github/issues/jeportie/Minishell" alt="GitHub issues">
   <img src="https://github.com/jeportie/minishell/actions/workflows/main_test.yml/badge.svg?branch=main" alt="CI - Main">
+  <img src="https://github.com/jeportie/minishell/actions/workflows/integrated_tests.yml/badge.svg?branch=main" alt="CI - Main">
 </p>
 
 ## To-Do List
