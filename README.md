@@ -11,36 +11,6 @@
   <img src="https://github.com/jeportie/minishell/actions/workflows/norminette.yml/badge.svg?branch=main">
 </p>
 
-## To-Do List
-
-<!-- TODO-START -->
-- [ ] Minishell todo List
-    - [ ] Part4 AST
-        - [ ] Faire parse
-        - [ ] Faire construct node
-        - [ ] Faire test
-        - [ ] Faire print Ast
-    - [ ] Part5 Exec
-    - [X] Part1 Init and Workflow prep
-        - [X] !!!! modifier raccourice vim p pour P
-        - [X] Making the firstfiles with git
-        - [X] Installer norminette dans le docker
-        - [X] Verification de l'env et du parse et creation en fonction
-        - [X] Gerer les signaux
-    - [X] Part2 Recuperation input et erreur de syntax
-        - [X] Gerstion quotes
-        - [X] gestion subshell
-        - [X] gestion op logic
-        - [X] gestion redir``
-    - [X] Part3 Token
-        - [X] Feature1 : manage quotes
-        - [X] Feature2 : expand variable
-        - [X] Feature3 : heredoc
-        - [X] Feature4 : link index to TOKEN
-
-<!-- TODO-END -->
-Please check our [Changelogs](CHANGELOG.md) for more details.
-
 ## Table of Contents
 
 - [Introduction](#1-introduction)
