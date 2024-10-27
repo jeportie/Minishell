@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 22:49:51 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 22:56:52 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/27 11:13:25 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 START_TEST(test_echo_simple)
 {
-	const char	*exec_path = "./minishell";
+	const char	*exec_path = "/bin/bash";
     char *input = "echo Hello, World!";
     char *expected_output = "Hello, World!\n";
     char *actual_output = NULL;

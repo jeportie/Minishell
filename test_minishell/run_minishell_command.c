@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 22:23:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 22:45:30 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/27 10:57:54 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	run_minishell_command(const char *exec_path, const char *command, char **out
 		close(out_pipe[1]);
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
-		execl(exec_path, exec_path, NULL);
+		execl(exec_path, exec_path, "--posix", NULL);
 		perror("execl");
 		_exit(EXIT_FAILURE);
 	}
