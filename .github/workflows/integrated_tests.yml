@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: jeportie/vjej:latest
-      options: >
-        --workdir /root/projects/minishell
-        --volume ${GITHUB_WORKSPACE}:/root/projects/minishell
 
     steps:
       - name: Checkout Repository
@@ -34,22 +31,18 @@ jobs:
           cd lib/libgc
           make
 
-      # Clean Build Directory
-      - name: Clean Build Directory
-        run: rm -rf test_src/build/
-
       # Build and Run Tests
-      - name: Build Tests
+      - name: Build Test Suites
         run: |
           cd test_src
-          mkdir build
+          mkdir -p build
           cd build
           cmake ..
           make
 
-      # Build and Run Tests
+      # Run Tests
       - name: Run Tests
         run: |
-          cd test_src
+          cd test_src/build
           ctest --output-on-failure
 
