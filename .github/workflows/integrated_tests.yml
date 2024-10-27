@@ -1,4 +1,4 @@
-name: CI
+name: Integrated Tests
 
 on:
   push:
@@ -9,6 +9,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    container:
+      image: jeportie/vjej:latest
 
     steps:
       - name: Checkout Repository
@@ -29,18 +31,9 @@ jobs:
           cd lib/libgc
           make
 
-      # Clean Build Directory
-     - name: Clean Build Directories
-       run: |
-        rm -rf build/
-        rm -rf test_src/build/
-        rm -rf test_src/CMakeCache.txt
-        rm -rf test_src/CMakeFiles/
-
-      - name: Install Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y check
+      # Clean Build Directories
+      - name: Clean Build Directories
+        run: rm -rf build/
 
       # Configure CMake
       - name: Configure CMake
@@ -48,7 +41,12 @@ jobs:
 
       # Build
       - name: Build
-        run: cmake --build test_src/build
+        run: |
+          cd test_src
+          mkdir build
+          cd build
+          cmake ..
+          make
 
       # Run Tests
       - name: Run Tests
