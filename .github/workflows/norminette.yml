@@ -19,6 +19,11 @@ jobs:
           submodules: recursive
           clean: true
 
+      - name: Verify Norminette Installation
+        run: |
+          which norminette
+          norminette --version
+
       - name: Run Norminette Linting
         run: |
           venv
