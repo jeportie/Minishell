@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:44:36 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 14:29:38 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/28 14:15:54 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,14 @@ static int	st_in_parenthesis(t_syntax **syntax)
 	if (synt->current[i + 1] && synt->current[i + 1] != ')')
 	{
 		i++;
-		printf("Minishell: syntax error near unexpected token `");
-		while (synt->current[i] != ')')
+		ft_dprintf(2, "Minishell: syntax error near unexpected token `");
+		while (synt->current[i] && synt->current[i] != ')')
 		{
-			printf("%c", synt->current[i]);
+			ft_dprintf(2, "%c", synt->current[i]);
 			i++;
 		}
-		printf("'\n");
+		ft_dprintf(2, "'\n");
+		synt->error = 10;
 	}
 	else
 		synt->p_trigger = 1;

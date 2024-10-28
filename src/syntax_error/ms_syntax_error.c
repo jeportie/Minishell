@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student->42->fr>          +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:11:22 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/24 16:31:16 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:33:16 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int	ms_syntax_error(const char *input)
 	synt.current = ft_strtrim((char *)input, " ");
 	synt.len_end = ft_strlen(synt.current) - 1;
 	error = st_line_check(&synt);
+	free(synt.current);
 	return (error);
 }

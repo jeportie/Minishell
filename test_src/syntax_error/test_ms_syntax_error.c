@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:00:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 12:04:38 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/28 16:08:47 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,595 +14,454 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <string.h>
 #include "../../include/syntax.h"
 
-/* Helper function to test functions that call exit() */
-int test_ms_syntax_error_exit(const char *input)
+#define STDERR_BUFFER_SIZE 1024
+
+typedef struct s_testresult
 {
-    int error;
-    pid_t pid = fork();
-    if (pid == 0) // Child process
+    int     exit_code;
+    char    stderr_output[STDERR_BUFFER_SIZE];
+}               t_testresult;
+
+t_testresult    execute_and_capture(const char *input)
+{
+    t_testresult    result;
+    int             pipefd[2];
+    pid_t           pid;
+    int             status;
+    ssize_t         bytes_read;
+
+    // Initialiser le buffer de sortie d'erreur
+    memset(result.stderr_output, 0, STDERR_BUFFER_SIZE);
+
+    // Créer un pipe pour capturer stderr
+    if (pipe(pipefd) == -1)
     {
-        error = ms_syntax_error(input);
-        exit(error); // If exit isn't called, exit normally
+        perror("Erreur lors de la création du pipe");
+        result.exit_code = -1;
+        strncpy(result.stderr_output, "Erreur lors de la création du pipe\n", STDERR_BUFFER_SIZE - 1);
+        return result;
     }
-    else if (pid > 0) // Parent process
+
+    pid = fork();
+    if (pid == -1)
     {
-        int status;
+        perror("Erreur lors du fork");
+        result.exit_code = -1;
+        strncpy(result.stderr_output, "Erreur lors du fork\n", STDERR_BUFFER_SIZE - 1);
+        close(pipefd[0]);
+        close(pipefd[1]);
+        return result;
+    }
+    else if (pid == 0)
+    {
+        // Processus enfant
+        close(pipefd[0]); // Fermer l'extrémité de lecture non utilisée
+
+        // Rediriger stderr vers le pipe
+        if (dup2(pipefd[1], STDERR_FILENO) == -1)
+        {
+            perror("Erreur lors de dup2");
+            exit(EXIT_FAILURE);
+        }
+        close(pipefd[1]); // Fermer l'extrémité d'écriture originale
+
+        // Exécuter la fonction
+        int exit_code = ms_syntax_error(input);
+
+        // Sortir avec le code de sortie de ms_syntax_error
+        exit(exit_code);
+    }
+    else
+    {
+        // Processus parent
+        close(pipefd[1]); // Fermer l'extrémité d'écriture non utilisée
+
+        // Attendre la fin du processus enfant et obtenir le code de sortie
         waitpid(pid, &status, 0);
         if (WIFEXITED(status))
-        {
-            return WEXITSTATUS(status); // Return the exit code
-        }
+            result.exit_code = WEXITSTATUS(status);
         else
-        {
-            return -1; // Error occurred
-        }
+            result.exit_code = -1; // Indique que le processus enfant s'est terminé anormalement
+
+        // Lire la sortie sur stderr depuis le pipe
+        bytes_read = read(pipefd[0], result.stderr_output, STDERR_BUFFER_SIZE - 1);
+        if (bytes_read >= 0)
+            result.stderr_output[bytes_read] = '\0'; // Terminer la chaîne avec un caractère nul
+        else
+            result.stderr_output[0] = '\0';
+        close(pipefd[0]);
+        return result;
     }
-    return -1; // Fork failed
 }
 
-START_TEST(test_ms_syntax_error_valid_input_0)
-{
-    int exit_code = test_ms_syntax_error_exit("valid input");
-    ck_assert_int_eq(exit_code, 0); // Expect success with valid input
-}
-END_TEST
-
-START_TEST(test_ms_syntax_error_valid_input_1)
-{
-    int exit_code = test_ms_syntax_error_exit("\'valid input\'");
-    ck_assert_int_eq(exit_code, 0); // Expect success with valid input
-}
-END_TEST
-
-START_TEST(test_ms_syntax_error_valid_input_2)
-{
-    int exit_code = test_ms_syntax_error_exit("\"valid input\"");
-    ck_assert_int_eq(exit_code, 0); // Expect success with valid input
-}
-END_TEST
-
-START_TEST(test_ms_syntax_error_valid_input_3)
-{
-    int exit_code = test_ms_syntax_error_exit("\"valid input\"\"\"");
-    ck_assert_int_eq(exit_code, 0); // Expect success with valid input
-}
-END_TEST
+//______________________________________________________________________________
 
-START_TEST(test_ms_syntax_error_valid_input_4)
+START_TEST(test_ms_syntax_error_valid_p_0)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"Hello World\"");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("(ls)");
 
-START_TEST(test_ms_syntax_error_valid_input_5)
-{
-    int exit_code = test_ms_syntax_error_exit("ls -la | grep txt");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 0); // Code de sortie attendu pour une entrée valide
+    ck_assert_str_eq(result.stderr_output, ""); // Pas de message d'erreur attendu pour une entrée valide
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input_6)
+START_TEST(test_ms_syntax_error_valid_p_1)
 {
-    int exit_code = test_ms_syntax_error_exit("(echo test) && (ls)");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls|(cat)");
 
-START_TEST(test_ms_syntax_error_valid_input_7)
-{
-    int exit_code = test_ms_syntax_error_exit("\"string with 'spaces\"");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 0); // Code de sortie attendu pour une entrée valide
+    ck_assert_str_eq(result.stderr_output, ""); // Pas de message d'erreur attendu pour une entrée valide
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input_8)
-{
-    int exit_code = test_ms_syntax_error_exit("'quoted\" text'");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+//_______________________________________________________________________________
 
-START_TEST(test_ms_syntax_error_valid_input_9)
+START_TEST(test_ms_syntax_error_invalid_p_0)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"multi 'quote' test\"");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("(ls");
 
-START_TEST(test_ms_syntax_error_valid_input_10)
-{
-    int exit_code = test_ms_syntax_error_exit("cat < file.txt > output.txt");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `('\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input_11)
+START_TEST(test_ms_syntax_error_invalid_p_1)
 {
-    int exit_code = test_ms_syntax_error_exit("(echo \"nested\" | grep \"nest\")");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("(ls\")\"");
 
-START_TEST(test_ms_syntax_error_valid_input_12)
-{
-    int exit_code = test_ms_syntax_error_exit("echo \"\" | cat");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `('\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input_13)
+START_TEST(test_ms_syntax_error_invalid_p_2)
 {
-    int exit_code = test_ms_syntax_error_exit("echo ''");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls)");
 
-START_TEST(test_ms_syntax_error_valid_input_14)
-{
-    int exit_code = test_ms_syntax_error_exit("echo '('");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `)'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input_15)
+START_TEST(test_ms_syntax_error_invalid_p_3)
 {
-    int exit_code = test_ms_syntax_error_exit("ls -la | (grep txt && echo \"done\")");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls (cat)");
 
-START_TEST(test_ms_syntax_error_valid_input_16)
-{
-    int exit_code = test_ms_syntax_error_exit("(echo test) || (false')')");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `cat'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input_17)
+START_TEST(test_ms_syntax_error_invalid_p_4)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"nested quotes 'inside'\" && ('ls')");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("()");
 
-START_TEST(test_ms_syntax_error_valid_input_18)
-{
-    int exit_code = test_ms_syntax_error_exit("ls && echo \"done\" || ls");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `)'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input_19)
+START_TEST(test_ms_syntax_error_invalid_p_5)
 {
-    int exit_code = test_ms_syntax_error_exit("echo > file.txt && cat (ls && ls > outfile) || ls");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("(cat|)");
 
-START_TEST(test_ms_syntax_error_valid_input_20)
-{
-    int exit_code = test_ms_syntax_error_exit("echo \"hello > world\" > outfile || ls");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `)'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input_21)
+START_TEST(test_ms_syntax_error_invalid_p_6)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"start && end\"");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("(|cat)");
 
-START_TEST(test_ms_syntax_error_valid_input_22)
-{
-    int exit_code = test_ms_syntax_error_exit("cat file.txt | grep 'pattern'");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `|'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input_23)
+START_TEST(test_ms_syntax_error_invalid_p_7)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"escaped \\\"quotes\\\"\"");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("(cat||)");
 
-START_TEST(test_ms_syntax_error_valid_input_24)
-{
-    int exit_code = test_ms_syntax_error_exit("\"nested (commands)\"");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `)'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input_25)
+START_TEST(test_ms_syntax_error_invalid_p_8)
 {
-    int exit_code = test_ms_syntax_error_exit("echo (test | grep 't')");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("(||cat)");
 
-START_TEST(test_ms_syntax_error_valid_input_26)
-{
-    int exit_code = test_ms_syntax_error_exit("echo 'multi &&| ||test'");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `||'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input_27)
+START_TEST(test_ms_syntax_error_invalid_p_9)
 {
-    int exit_code = test_ms_syntax_error_exit("true && false || echo \"valid\"");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("(cat&&)");
 
-START_TEST(test_ms_syntax_error_valid_input_28)
-{
-    int exit_code = test_ms_syntax_error_exit("ls | grep \".c\" && echo \"C files\"");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `)'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_valid_input_29)
+START_TEST(test_ms_syntax_error_invalid_p_10)
 {
-    int exit_code = test_ms_syntax_error_exit("echo (test) | cat > output.txt");
-    ck_assert_int_eq(exit_code, 0); // Valid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("(&&cat)");
 
-START_TEST(test_ms_syntax_error_valid_input_30)
-{
-    int exit_code = test_ms_syntax_error_exit("ls -la | (echo hello)");
-    ck_assert_int_eq(exit_code, 0); // Valid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `&&'\n"); // Message d'erreur attendu
 }
 END_TEST
-
-START_TEST(test_ms_syntax_error_invalid_input_0)
-{
-    int exit_code = test_ms_syntax_error_exit("\"invalide input\"\'");
-    ck_assert_int_eq(exit_code, 1); // Expect success with valid input
-}
-
-START_TEST(test_ms_syntax_error_invalid_input_1)
-{
-    int exit_code = test_ms_syntax_error_exit("\"invalide input");
-    ck_assert_int_eq(exit_code, 1); // Expect success with valid input
-}
 
-START_TEST(test_ms_syntax_error_invalid_input_2)
+START_TEST(test_ms_syntax_error_invalid_p_11)
 {
-    int exit_code = test_ms_syntax_error_exit("\"invalide input\'\"\'\"\'\'");
-    ck_assert_int_eq(exit_code, 1); // Expect success with valid input
-}
+    t_testresult result = execute_and_capture("(cat >)");
 
-START_TEST(test_ms_syntax_error_invalid_input_3)
-{
-    int exit_code = test_ms_syntax_error_exit("(invalid input");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `)'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_4)
+START_TEST(test_ms_syntax_error_invalid_p_12)
 {
-    int exit_code = test_ms_syntax_error_exit("echo unterminated string)");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("(cat >>)");
 
-START_TEST(test_ms_syntax_error_invalid_input_5)
-{
-    int exit_code = test_ms_syntax_error_exit("echo \"mismatch' quotes");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `)'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_6)
+START_TEST(test_ms_syntax_error_invalid_p_13)
 {
-    int exit_code = test_ms_syntax_error_exit("cat < > file");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("(cat <)");
 
-START_TEST(test_ms_syntax_error_invalid_input_7)
-{
-    int exit_code = test_ms_syntax_error_exit("echo > > file");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `)'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_8)
+START_TEST(test_ms_syntax_error_invalid_p_14)
 {
-    int exit_code = test_ms_syntax_error_exit("|| ls");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("(cat <<)");
 
-START_TEST(test_ms_syntax_error_invalid_input_9)
-{
-    int exit_code = test_ms_syntax_error_exit("ls &&");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `)'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_10)
-{
-    int exit_code = test_ms_syntax_error_exit("echo | | grep txt");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+//____________________________________________________________________________________
 
-START_TEST(test_ms_syntax_error_invalid_input_11)
+START_TEST(test_ms_syntax_error_valid_op_0)
 {
-    int exit_code = test_ms_syntax_error_exit("echo |");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls | pwd");
 
-START_TEST(test_ms_syntax_error_invalid_input_12)
-{
-    int exit_code = test_ms_syntax_error_exit("| echo");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 0); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, ""); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_13)
-{
-    int exit_code = test_ms_syntax_error_exit("cat << >>");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+//____________________________________________________________________________________
 
-START_TEST(test_ms_syntax_error_invalid_input_14)
+START_TEST(test_ms_syntax_error_invalid_op_0)
 {
-    int exit_code = test_ms_syntax_error_exit("cat > < file.txt");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("|");
 
-START_TEST(test_ms_syntax_error_invalid_input_15)
-{
-    int exit_code = test_ms_syntax_error_exit("echo ||");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `|'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_16)
+START_TEST(test_ms_syntax_error_invalid_op_1)
 {
-    int exit_code = test_ms_syntax_error_exit("echo (");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("||");
 
-START_TEST(test_ms_syntax_error_invalid_input_17)
-{
-    int exit_code = test_ms_syntax_error_exit(") ls ");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `||'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_18)
+START_TEST(test_ms_syntax_error_invalid_op_2)
 {
-    int exit_code = test_ms_syntax_error_exit("&& echo");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("&&");
 
-START_TEST(test_ms_syntax_error_invalid_input_19)
-{
-    int exit_code = test_ms_syntax_error_exit("ls ||| ls");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `&&'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_20)
+START_TEST(test_ms_syntax_error_invalid_op_3)
 {
-    int exit_code = test_ms_syntax_error_exit("ls || || echo");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls |");
 
-START_TEST(test_ms_syntax_error_invalid_input_21)
-{
-    int exit_code = test_ms_syntax_error_exit("cat <<< file");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `|'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_22)
+START_TEST(test_ms_syntax_error_invalid_op_4)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"unfinished string\" && ()");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("| ls");
 
-START_TEST(test_ms_syntax_error_invalid_input_23)
-{
-    int exit_code = test_ms_syntax_error_exit("echo '' || (ls >)i");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `|'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_24)
+START_TEST(test_ms_syntax_error_invalid_op_5)
 {
-    int exit_code = test_ms_syntax_error_exit("(ls | echo \"broken");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls ||");
 
-START_TEST(test_ms_syntax_error_invalid_input_25)
-{
-    int exit_code = test_ms_syntax_error_exit("grep \"unterminated");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `||'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_26)
+START_TEST(test_ms_syntax_error_invalid_op_6)
 {
-    int exit_code = test_ms_syntax_error_exit("echo test > outfile < infile || (ls |)");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("|| ls");
 
-START_TEST(test_ms_syntax_error_invalid_input_27)
-{
-    int exit_code = test_ms_syntax_error_exit("(cat < outfile) < file.txt >> ");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `||'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_28)
+START_TEST(test_ms_syntax_error_invalid_op_7)
 {
-    int exit_code = test_ms_syntax_error_exit("echo ||| echo");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls &&");
 
-START_TEST(test_ms_syntax_error_invalid_input_29)
-{
-    int exit_code = test_ms_syntax_error_exit("cat >> >> file.txt");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `&&'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_30)
+START_TEST(test_ms_syntax_error_invalid_op_8)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"open quote");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("&& ls");
 
-START_TEST(test_ms_syntax_error_invalid_input_31)
-{
-    int exit_code = test_ms_syntax_error_exit("echo 'unclosed parenthesis\"");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `&&'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_32)
+START_TEST(test_ms_syntax_error_invalid_op_9)
 {
-    int exit_code = test_ms_syntax_error_exit("echo 'unterminated string");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls | | cat");
 
-START_TEST(test_ms_syntax_error_invalid_input_33)
-{
-    int exit_code = test_ms_syntax_error_exit("cat >");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `|'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_34)
+START_TEST(test_ms_syntax_error_invalid_op_10)
 {
-    int exit_code = test_ms_syntax_error_exit("echo (unfinished");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls | || cat");
 
-START_TEST(test_ms_syntax_error_invalid_input_35)
-{
-    int exit_code = test_ms_syntax_error_exit("echo \"unterminated \"quote\"");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `||'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_36)
+START_TEST(test_ms_syntax_error_invalid_op_11)
 {
-    int exit_code = test_ms_syntax_error_exit("cat <");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls | && cat");
 
-START_TEST(test_ms_syntax_error_invalid_input_37)
-{
-    int exit_code = test_ms_syntax_error_exit("echo (mismatched parenthesis");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `&&'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_38)
+START_TEST(test_ms_syntax_error_invalid_op_12)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"nested 'quotes\" inside'");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls || | cat");
 
-START_TEST(test_ms_syntax_error_invalid_input_39)
-{
-    int exit_code = test_ms_syntax_error_exit("cat << << file.txt");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `|'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_40)
+START_TEST(test_ms_syntax_error_invalid_op_13)
 {
-    int exit_code = test_ms_syntax_error_exit("echo &&& echo");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls || || cat");
 
-START_TEST(test_ms_syntax_error_invalid_input_41)
-{
-    int exit_code = test_ms_syntax_error_exit("echo ()");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `||'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_42)
+START_TEST(test_ms_syntax_error_invalid_op_14)
 {
-    int exit_code = test_ms_syntax_error_exit("echo (nested | wrong");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls || && cat");
 
-START_TEST(test_ms_syntax_error_invalid_input_43)
-{
-    int exit_code = test_ms_syntax_error_exit("(echo \"missing end");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `&&'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_44)
+START_TEST(test_ms_syntax_error_invalid_op_15)
 {
-    int exit_code = test_ms_syntax_error_exit("echo \"unclosed quote");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls && | cat");
 
-START_TEST(test_ms_syntax_error_invalid_input_45)
-{
-    int exit_code = test_ms_syntax_error_exit("echo \"open bracket (");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `|'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_46)
+START_TEST(test_ms_syntax_error_invalid_op_16)
 {
-    int exit_code = test_ms_syntax_error_exit("echo 'unterminated command");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls && || cat");
 
-START_TEST(test_ms_syntax_error_invalid_input_47)
-{
-    int exit_code = test_ms_syntax_error_exit("cat <");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `||'\n"); // Message d'erreur attendu
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_input_48)
+START_TEST(test_ms_syntax_error_invalid_op_17)
 {
-    int exit_code = test_ms_syntax_error_exit("echo > > file.txt");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
-}
-END_TEST
+    t_testresult result = execute_and_capture("ls && && cat");
 
-START_TEST(test_ms_syntax_error_invalid_input_49)
-{
-    int exit_code = test_ms_syntax_error_exit("echo \"unterminated 'quote");
-    ck_assert_int_eq(exit_code, 1); // Invalid input
+    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
+    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
+    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `&&'\n"); // Message d'erreur attendu
 }
 END_TEST
 
@@ -613,88 +472,51 @@ Suite *ms_syntax_error_suite(void)
 
     s = suite_create("ms_syntax_error");
     tc_core = tcase_create("Core");
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_0);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_1);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_2);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_3);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_4);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_5);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_6);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_7);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_8);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_9);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_10);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_11);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_12);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_13);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_14);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_15);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_16);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_17);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_18);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_19);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_20);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_21);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_22);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_23);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_24);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_25);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_26);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_27);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_28);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_29);
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_input_30);
-    
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_0);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_1);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_2);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_3);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_4);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_5);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_6);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_7);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_8);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_9);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_10);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_11);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_12);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_13);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_14);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_15);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_16);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_17);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_18);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_19);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_20);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_21);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_22);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_23);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_24);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_25);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_26);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_27);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_28);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_29);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_30);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_31);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_32);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_33);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_34);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_35);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_36);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_37);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_38);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_39);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_40);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_41);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_42);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_43);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_44);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_45);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_46);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_47);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_48);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_input_49);
+
+    // Désactiver le fork automatique de Check pour ce cas de test
+    tcase_set_timeout(tc_core, 0);
+
+    tcase_add_test(tc_core, test_ms_syntax_error_valid_p_0);
+    tcase_add_test(tc_core, test_ms_syntax_error_valid_p_1);
+
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_0);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_1);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_2);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_3);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_4);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_5);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_6);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_7);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_8);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_9);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_10);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_11);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_12);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_13);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_14);
+
+
+    tcase_add_test(tc_core, test_ms_syntax_error_valid_op_0);
+
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_0);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_1);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_2);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_3);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_4);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_5);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_6);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_7);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_8);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_9);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_10);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_11);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_12);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_13);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_14);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_15);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_16);
+    tcase_add_test(tc_core, test_ms_syntax_error_invalid_op_17);
+
     suite_add_tcase(s, tc_core);
 
     return s;
@@ -709,6 +531,7 @@ int main(void)
     s = ms_syntax_error_suite();
     sr = srunner_create(s);
 
+    // Exécuter tous les tests
     srunner_run_all(sr, CK_NORMAL);
     number_failed = srunner_ntests_failed(sr);
     srunner_free(sr);

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:12:29 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/24 16:34:10 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:30:17 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 static void	st_print_error_operator_redir(int error)
 {
 	if (error == 1)
-		printf("Minishell: syntax error near unexpected token `newline'\n");
+		ft_dprintf(2, "`newline'\n");
 	else if (error == 2)
-		printf("Minishell: syntax error near unexpected token `<'\n");
+		ft_dprintf(2, "`<'\n");
 	else if (error == 3)
-		printf("Minishell: syntax error near unexpected token `<<'\n");
+		ft_dprintf(2, "`<<'\n");
 	else if (error == 4)
-		printf("Minishell: syntax error near unexpected token `>'\n");
+		ft_dprintf(2, "`>'\n");
 	else if (error == 5)
-		printf("Minishell: syntax error near unexpected token `>>'\n");
+		ft_dprintf(2, "`>>'\n");
 	else if (error == 6)
-		printf("Minishell: syntax error near unexpected token `&'\n");
+		ft_dprintf(2, "`&'\n");
 	else if (error == 7)
-		printf("Minishell: syntax error near unexpected token `&&'\n");
+		ft_dprintf(2, "`&&'\n");
 	else if (error == 8)
-		printf("Minishell: syntax error near unexpected token `||'\n");
+		ft_dprintf(2, "`||'\n");
 	else if (error == 9)
-		printf("Minishell: syntax error near unexpected token `|'\n");
+		ft_dprintf(2, "`|'\n");
 }
 
 int	check_error(t_syntax **syntax)
@@ -39,19 +39,22 @@ int	check_error(t_syntax **syntax)
 	t_syntax	*synt;
 
 	synt = *syntax;
-	if (synt->p_trigger > 0 || synt->sq_trigger || synt->dq_trigger
+	if (synt->error == 10)
+		synt->error = 1;
+	else if (synt->p_trigger > 0 || synt->sq_trigger || synt->dq_trigger
 		|| synt->error > 0)
 	{
+		ft_dprintf(2, "Minishell: syntax error near unexpected token ");
 		if (synt->error > 0)
 			st_print_error_operator_redir(synt->error);
 		else if (synt->sq_trigger == 1)
-			printf("Minishell: syntax error near unexpected token `\''\n");
+			ft_dprintf(2, "`\''\n");
 		else if (synt->dq_trigger == 1)
-			printf("Minishell: syntax error near unexpected token `\"'\n");
+			ft_dprintf(2, "`\"'\n");
 		else if (synt->p_trigger == 1)
-			printf("Minishell: syntax error near unexpected token `('\n");
+			ft_dprintf(2, "`('\n");
 		else if (synt->p_trigger == 2)
-			printf("Minishell: syntax error near unexpected token `)'\n");
+			ft_dprintf(2, "`)'\n");
 		synt->error = 1;
 	}
 	return (synt->error);
