@@ -1,4 +1,6 @@
-<h1 align="center">Minishell Project</h1>
+![Screenshot from 2024-10-28 09-53-14](https://github.com/user-attachments/assets/0935871e-907c-4ae2-b6fd-1799d15a2556)
+
+                                                                                                                                          
 
 <p align="left">
   <img src="https://img.shields.io/github/last-commit/jeportie/Minishell" alt="GitHub last commit">
@@ -38,7 +40,7 @@
 
 ## 1. Introduction
 
-Minishell is a 42 school project that involves building a simple Unix shell from scratch. The goal is to replicate core functionalities of `bash` or `sh`, providing users with an interactive prompt where they can execute commands, handle redirection, and manage pipes, signals, and environment variables. Additionally, we extend the project with unit tests and a strong development methodology based on extreme programming principles.
+Minishell is a 42 school project that involves building a simple Unix shell from scratch. The goal is to replicate core functionalities of `bash --posix', providing users with an interactive prompt where they can execute commands, handle redirection, manage pipes, signals, and environment variables. Additionally, we extend the project with unit tests and a strong development methodology based on extreme programming principles.
 
 ---
 
@@ -76,7 +78,7 @@ Minishell is a 42 school project that involves building a simple Unix shell from
 2. **Build the Project**
 
    ```bash
-   make
+   make all
    ```
 
 3. **Run Minishell**
@@ -166,7 +168,7 @@ We follow an extreme programming methodology with pair programming, test-driven 
 
 - **main**: Latest stable version with CI pipeline running global tests.
 - **develop**: Main development branch with CI pipeline running unit tests.
-- **pair_* branches**: Feature branches for pair programming (e.g., `pair_init`).
+- **pair_\* branches**: Feature branches for pair programming (e.g., `pair_init`).
 - **individual branches**: Personal branches for individual tasks (e.g., `greg_init`).
 
 ### Daily Routine
