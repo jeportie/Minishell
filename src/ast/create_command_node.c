@@ -6,31 +6,39 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:10:28 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/29 13:25:58 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:38:10 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ast.h"
 #include "../../include/tokenize.h"
 
-static int	helper(t_token **current, size_t argv_size, char **argv, t_gc *gcl)
+static void	assign_token_to_argv(t_token **current, char **argv)
 {
-	int	argc;
+	int	i;
 
-	argc = 0;
+	i = 0;
 	while (*current && is_command_op(*current))
 	{
-		if (argc >= (int)argv_size)
-		{
-			argv_size *= 2;
-			argv = gc_realloc(argv, sizeof(char *) * argv_size, gcl);
-			gc_lock(argv, gcl);
-		}
-		argv[argc] = (*current)->token;
-		argc++;
+		argv[i] = (*current)->token;
+		i++;
 		*current = (*current)->next;
 	}
-	return (argc);
+}
+
+static int	argc_count(t_token **current)
+{
+	int		i;
+	t_token	*head;
+
+	i = 0;
+	head = *current;
+	while (head && is_command_op(head))
+	{
+		i++;
+		head = head->next;
+	}
+	return (i);
 }
 
 t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl)
@@ -39,13 +47,11 @@ t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl)
 	t_ast_node	*command_node;
 	int			argc;
 	char		**argv;
-	size_t		argv_size;
 
-	argc = 0;
-	argv_size = 4;
-	argv = (char **)gc_malloc(sizeof(char *) * argv_size, gcl);
+	argc = argc_count(current_token);
+	argv = (char **)gc_malloc(sizeof(char *) * (argc + 1), gcl);
 	gc_lock(argv, gcl);
-	argc = helper(current_token, argv_size, argv, gcl);
+	assign_token_to_argv(current_token, argv);
 	argv[argc] = NULL;
 	command_data.argv = argv;
 	command_data.argc = argc;

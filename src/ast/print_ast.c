@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:17:41 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/29 13:51:02 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:44:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>
+
+/*
+ * NOTE:
+ * Faire fonction ft_sn_printf
+ */
 
 t_ast_node	*get_left_child(t_ast_node *node)
 {
@@ -120,22 +125,19 @@ void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
 	printf("%s", get_node_label(node));
 	print_node_content(node);
 	printf("\n");
-
-	// Check if this node is a single-branch type
-	single_branch = (node->type == NODE_REDIRECT_OUT || node->type == NODE_REDIRECT_IN
-					|| node->type == NODE_REDIRECT_APPEND || node->type == NODE_SUBSHELL);
-
-	// Adjust prefix for child nodes
+	single_branch = (node->type == NODE_REDIRECT_OUT
+			|| node->type == NODE_REDIRECT_IN
+			|| node->type == NODE_REDIRECT_APPEND
+			|| node->type == NODE_SUBSHELL);
 	if (!single_branch && is_left)
 		snprintf(new_prefix, sizeof(new_prefix), "%s│   ", prefix);
 	else
 		snprintf(new_prefix, sizeof(new_prefix), "%s    ", prefix);
-
-	// Print only left child for single-branch nodes
-	if (!single_branch) {
+	if (!single_branch)
+	{
 		print_ast(get_left_child(node), depth + 1, new_prefix, 1);
 		print_ast(get_right_child(node), depth + 1, new_prefix, 0);
-	} else {
-		print_ast(get_left_child(node), depth + 1, new_prefix, 0);
 	}
+	else
+		print_ast(get_left_child(node), depth + 1, new_prefix, 0);
 }

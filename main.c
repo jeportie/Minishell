@@ -6,21 +6,9 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/29 13:52:43 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 14:55:46 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
- *NOTE: Step 1: 
- *->Files creation
- *->structure 
- *->open minishell and display a prompt
- *->first test unit for main and diplsay function
- *->Coding + Test green
- *->Refactoring
- *->Next Test coding
- *->End step one
- */
 
 #include "include/minishell.h"
 #include "include/tokenize.h"
@@ -46,7 +34,7 @@ int	main(int argc, char **argv, char **envp)
 			exit (shell.error_code);
 		}
 		tokens = ms_tokenize(shell.user_input, shell.gcl);
-	//	print_token(tokens);
+		print_token(tokens);
 		printf("\n");
 		root = ms_parse_tokens(tokens, shell.gcl);
 		if (!root)

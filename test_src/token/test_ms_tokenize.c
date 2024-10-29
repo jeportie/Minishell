@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:12:36 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 15:33:57 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:23:36 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,29 @@
 #include "../../include/tokenize.h"
 #include "../../lib/libgc/include/libgc.h"
 
+/* Static garbage collector for use within tests */
+static t_gc *gcl;
+
+/* Setup function to initialize the garbage collector before each test */
+void    setup(void)
+{
+    gcl = gc_init();
+    if (!gcl)
+    {
+        perror("gc_init");
+        exit(EXIT_FAILURE); // Indicate failure to the Check framework
+    }
+}
+
+/* Teardown function to clean up the garbage collector after each test */
+void    teardown(void)
+{
+    gc_cleanup(gcl);
+}
+
 /* Test Case 1: Simple Command */
 START_TEST(test_simple_command)
 {
-    t_gc *gcl = gc_init();
     const char *input = "ls -l /home";
     t_token *tokens = ms_tokenize(input, gcl);
 
@@ -39,16 +58,12 @@ START_TEST(test_simple_command)
     ck_assert_str_eq(third->token, "/home");
 
     ck_assert_ptr_null(third->next);
-
-    // Cleanup
-    gc_cleanup(gcl);
 }
 END_TEST
 
 /* Test Case 2: Command with Quotes */
 START_TEST(test_command_with_quotes)
 {
-    t_gc *gcl = gc_init();
     const char *input = "echo \"Hello World\"";
     t_token *tokens = ms_tokenize(input, gcl);
 
@@ -62,16 +77,12 @@ START_TEST(test_command_with_quotes)
     ck_assert_str_eq(second->token, "Hello World");
 
     ck_assert_ptr_null(second->next);
-
-    // Cleanup
-    gc_cleanup(gcl);
 }
 END_TEST
 
 /* Test Case 3: Command with Single Quotes */
 START_TEST(test_command_with_single_quotes)
 {
-    t_gc *gcl = gc_init();
     const char *input = "echo \"It's a test\"";
     t_token *tokens = ms_tokenize(input, gcl);
 
@@ -85,16 +96,12 @@ START_TEST(test_command_with_single_quotes)
     ck_assert_str_eq(second->token, "It's a test");
 
     ck_assert_ptr_null(second->next);
-
-    // Cleanup
-    gc_cleanup(gcl);
 }
 END_TEST
 
 /* Test Case 4: Command with Redirection */
 START_TEST(test_command_with_redirection)
 {
-    t_gc *gcl = gc_init();
     const char *input = "grep 'pattern' < input.txt > output.txt";
     t_token *tokens = ms_tokenize(input, gcl);
 
@@ -139,16 +146,12 @@ START_TEST(test_command_with_redirection)
     current = current->next;
 
     ck_assert_ptr_null(current);
-
-    // Cleanup
-    gc_cleanup(gcl);
 }
 END_TEST
 
 /* Test Case 5: Command with Pipe */
 START_TEST(test_command_with_pipe)
 {
-    t_gc *gcl = gc_init();
     const char *input = "cat file.txt | grep 'search'";
     t_token *tokens = ms_tokenize(input, gcl);
 
@@ -187,16 +190,12 @@ START_TEST(test_command_with_pipe)
     current = current->next;
 
     ck_assert_ptr_null(current);
-
-    // Cleanup
-    gc_cleanup(gcl);
 }
 END_TEST
 
 /* Test Case 6: Command with Wildcards */
 START_TEST(test_command_with_wildcards)
 {
-    t_gc *gcl = gc_init();
     const char *input = "ls *.c src/*.h";
     t_token *tokens = ms_tokenize(input, gcl);
 
@@ -223,16 +222,12 @@ START_TEST(test_command_with_wildcards)
     current = current->next;
 
     ck_assert_ptr_null(current);
-
-    // Cleanup
-    gc_cleanup(gcl);
 }
 END_TEST
 
 /* Test Case 7: Command with Logical Operators */
 START_TEST(test_command_with_logical_operators)
 {
-    t_gc *gcl = gc_init();
     const char *input = "make && make install || echo 'Build failed'";
     t_token *tokens = ms_tokenize(input, gcl);
 
@@ -283,17 +278,12 @@ START_TEST(test_command_with_logical_operators)
     current = current->next;
 
     ck_assert_ptr_null(current);
-
-    // Cleanup
-    gc_cleanup(gcl);
 }
 END_TEST
 
-
-/* Test Case 10: Command with Subshell */
+/* Test Case 8: Command with Subshell */
 START_TEST(test_command_with_subshell)
 {
-    t_gc *gcl = gc_init();
     const char *input = "(echo 'Hello World')";
     t_token *tokens = ms_tokenize(input, gcl);
 
@@ -326,16 +316,12 @@ START_TEST(test_command_with_subshell)
     current = current->next;
 
     ck_assert_ptr_null(current);
-
-    // Cleanup
-    gc_cleanup(gcl);
 }
 END_TEST
 
-/* Test Case 11: Command with Multiple Redirections */
+/* Test Case 9: Command with Multiple Redirections */
 START_TEST(test_command_with_multiple_redirections)
 {
-    t_gc *gcl = gc_init();
     const char *input = "command < input.txt >> output.txt";
     t_token *tokens = ms_tokenize(input, gcl);
 
@@ -374,48 +360,36 @@ START_TEST(test_command_with_multiple_redirections)
     current = current->next;
 
     ck_assert_ptr_null(current);
-
-    // Cleanup
-    gc_cleanup(gcl);
 }
 END_TEST
 
-/* Test Case 12: Empty Input */
+/* Test Case 10: Empty Input */
 START_TEST(test_empty_input)
 {
-    t_gc *gcl = gc_init();
     const char *input = "";
     t_token *tokens = ms_tokenize(input, gcl);
 
     ck_assert_ptr_null(tokens);
-
-    // Cleanup
-    gc_cleanup(gcl);
 }
 END_TEST
 
-/* Test Case 13: Input with Only Whitespace */
+/* Test Case 11: Input with Only Whitespace */
 START_TEST(test_input_with_only_whitespace)
 {
-    t_gc *gcl = gc_init();
     const char *input = "    \t\n  ";
     t_token *tokens = ms_tokenize(input, gcl);
 
     ck_assert_ptr_null(tokens);
-
-    // Cleanup
-    gc_cleanup(gcl);
 }
 END_TEST
 
-/* Test Case 14: Complex Command */
+/* Test Case 12: Complex Command */
 START_TEST(test_complex_command)
 {
-    t_gc *gcl = gc_init();
     const char *input = "echo \"Start\" && (cd /tmp && ls) | grep 'file' > result.txt";
     t_token *tokens = ms_tokenize(input, gcl);
 
-    // Expected tokens: echo, "Start", ;, (, cd, /tmp, &&, ls, ), |, grep, 'file', >, result.txt
+    // Expected tokens: echo, "Start", &&, (, cd, /tmp, &&, ls, ), |, grep, 'file', >, result.txt
 
     t_token *current = tokens;
 
@@ -431,7 +405,7 @@ START_TEST(test_complex_command)
     ck_assert_str_eq(current->token, "Start");
     current = current->next;
 
-    // Token 3: ;
+    // Token 3: &&
     ck_assert_ptr_nonnull(current);
     ck_assert_int_eq(current->type, TOKEN_AND);
     ck_assert_str_eq(current->token, "&&");
@@ -504,9 +478,6 @@ START_TEST(test_complex_command)
     current = current->next;
 
     ck_assert_ptr_null(current);
-
-    // Cleanup
-    gc_cleanup(gcl);
 }
 END_TEST
 
@@ -521,7 +492,10 @@ Suite *tokenize_suite(void)
     /* Core test case */
     tc_core = tcase_create("Core");
 
-    // Add test cases to the test case
+    /* Add setup and teardown fixtures */
+    tcase_add_checked_fixture(tc_core, setup, teardown);
+
+    /* Add tests to the test case */
     tcase_add_test(tc_core, test_simple_command);
     tcase_add_test(tc_core, test_command_with_quotes);
     tcase_add_test(tc_core, test_command_with_single_quotes);
@@ -550,8 +524,7 @@ int main(void)
     s = tokenize_suite();
     sr = srunner_create(s);
 
-    // srunner_run_to(sr, s, "Core", "test_simple_command"); // For debugging specific tests
-
+    /* Run tests with normal verbosity */
     srunner_run_all(sr, CK_NORMAL);
     number_failed = srunner_ntests_failed(sr);
     srunner_free(sr);

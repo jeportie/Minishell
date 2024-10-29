@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:31:13 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/28 14:03:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:26:51 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,30 @@
 #include "../../lib/libft/include/libft.h"
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
+#include <unistd.h>
+#include <signal.h>
 
-/* Global garbage collector */
-t_gc *gcl = NULL;
+static t_gc *gcl;
 
-/* Helper function to create a linked list of tokens using gc_malloc */
-t_token *create_tokens(int count, ...)
+void setup(void)
+{
+    gcl = gc_init();
+    if (!gcl)
+    {
+        perror("gc_init");
+        exit(EXIT_FAILURE);
+    }
+}
+
+void teardown(void)
+{
+    gc_cleanup(gcl);
+}
+
+t_token *create_tokens(t_gc *gcl, int count, ...)
 {
     va_list args;
     t_token *head = NULL;
@@ -35,8 +53,19 @@ t_token *create_tokens(int count, ...)
         char *token_str = va_arg(args, char *);
 
         t_token *new_token = gc_malloc(sizeof(t_token), gcl);
+        if (!new_token)
+        {
+            perror("gc_malloc");
+            exit(EXIT_FAILURE);
+        }
         new_token->type = type;
-        new_token->token = token_str;
+        new_token->token = ft_strdup(token_str);
+        gc_register(new_token->token, gcl);
+        if (!new_token->token)
+        {
+            perror("gc_strdup");
+            exit(EXIT_FAILURE);
+        }
         new_token->next = NULL;
 
         if (!head)
@@ -56,8 +85,7 @@ t_token *create_tokens(int count, ...)
 
 START_TEST(test_create_command_node)
 {
-    /* Mock tokens representing the command "echo hello" */
-    t_token *tokens = create_tokens(2,
+    t_token *tokens = create_tokens(gcl, 2,
                                     TOKEN_WORD, "echo",
                                     TOKEN_WORD, "hello");
     t_token *current_token = tokens;
@@ -75,23 +103,22 @@ END_TEST
 
 START_TEST(test_parse_simple_command)
 {
-    /* Mock tokens representing the command "ls" */
-    t_token *tokens = create_tokens(1, TOKEN_WORD, "ls");
+    t_token *tokens = create_tokens(gcl, 1, TOKEN_WORD, "ls");
     t_token *current_token = tokens;
 
     t_ast_node *ast = parse_command(&current_token, gcl);
-
+    
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_COMMAND);
     ck_assert_int_eq(ast->data.command.argc, 1);
     ck_assert_str_eq(ast->data.command.argv[0], "ls");
+    ck_assert_ptr_null(ast->data.command.argv[1]);
 }
 END_TEST
 
 START_TEST(test_parse_pipeline)
 {
-    /* Mock tokens representing the command "ls | grep src" */
-    t_token *tokens = create_tokens(4,
+    t_token *tokens = create_tokens(gcl, 4,
                                     TOKEN_WORD, "ls",
                                     TOKEN_PIPE, "|",
                                     TOKEN_WORD, "grep",
@@ -99,25 +126,24 @@ START_TEST(test_parse_pipeline)
     t_token *current_token = tokens;
 
     t_ast_node *ast = parse_pipeline(&current_token, gcl);
-
+    
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_PIPE);
 
-    /* Check left command "ls" */
     ck_assert_int_eq(ast->data.pipe.left->type, NODE_COMMAND);
     ck_assert_str_eq(ast->data.pipe.left->data.command.argv[0], "ls");
+    ck_assert_ptr_null(ast->data.pipe.left->data.command.argv[1]);
 
-    /* Check right command "grep src" */
     ck_assert_int_eq(ast->data.pipe.right->type, NODE_COMMAND);
     ck_assert_str_eq(ast->data.pipe.right->data.command.argv[0], "grep");
     ck_assert_str_eq(ast->data.pipe.right->data.command.argv[1], "src");
+    ck_assert_ptr_null(ast->data.pipe.right->data.command.argv[2]);
 }
 END_TEST
 
 START_TEST(test_parse_redirection)
 {
-    /* Mock tokens representing the command "echo hello > output.txt" */
-    t_token *tokens = create_tokens(4,
+    t_token *tokens = create_tokens(gcl, 4,
                                     TOKEN_WORD, "echo",
                                     TOKEN_WORD, "hello",
                                     TOKEN_REDIRECTION, ">",
@@ -128,20 +154,18 @@ START_TEST(test_parse_redirection)
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_REDIRECT_OUT);
 
-    /* Check child command "echo hello" */
     ck_assert_int_eq(ast->data.redirect.child->type, NODE_COMMAND);
     ck_assert_str_eq(ast->data.redirect.child->data.command.argv[0], "echo");
     ck_assert_str_eq(ast->data.redirect.child->data.command.argv[1], "hello");
+    ck_assert_ptr_null(ast->data.redirect.child->data.command.argv[2]);
 
-    /* Check redirection filename */
     ck_assert_str_eq(ast->data.redirect.filename, "output.txt");
 }
 END_TEST
 
 START_TEST(test_parse_logical)
 {
-    /* Mock tokens representing the command "echo hello && echo world" */
-    t_token *tokens = create_tokens(5,
+    t_token *tokens = create_tokens(gcl, 5,
                                     TOKEN_WORD, "echo",
                                     TOKEN_WORD, "hello",
                                     TOKEN_AND, "&&",
@@ -153,22 +177,21 @@ START_TEST(test_parse_logical)
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_AND);
 
-    /* Check left command "echo hello" */
     ck_assert_int_eq(ast->data.logic.left->type, NODE_COMMAND);
     ck_assert_str_eq(ast->data.logic.left->data.command.argv[0], "echo");
     ck_assert_str_eq(ast->data.logic.left->data.command.argv[1], "hello");
+    ck_assert_ptr_null(ast->data.logic.left->data.command.argv[2]);
 
-    /* Check right command "echo world" */
     ck_assert_int_eq(ast->data.logic.right->type, NODE_COMMAND);
     ck_assert_str_eq(ast->data.logic.right->data.command.argv[0], "echo");
     ck_assert_str_eq(ast->data.logic.right->data.command.argv[1], "world");
+    ck_assert_ptr_null(ast->data.logic.right->data.command.argv[2]);
 }
 END_TEST
 
 START_TEST(test_parse_subshell)
 {
-    /* Mock tokens representing the command "(echo hello)" */
-    t_token *tokens = create_tokens(4,
+    t_token *tokens = create_tokens(gcl, 4,
                                     TOKEN_SUBSHELL_START, "(",
                                     TOKEN_WORD, "echo",
                                     TOKEN_WORD, "hello",
@@ -176,19 +199,19 @@ START_TEST(test_parse_subshell)
     t_token *current_token = tokens;
 
     t_ast_node *ast = parse_subshell(&current_token, gcl);
-
+    
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_SUBSHELL);
     ck_assert_int_eq(ast->data.subshell.child->type, NODE_COMMAND);
     ck_assert_str_eq(ast->data.subshell.child->data.command.argv[0], "echo");
     ck_assert_str_eq(ast->data.subshell.child->data.command.argv[1], "hello");
+    ck_assert_ptr_null(ast->data.subshell.child->data.command.argv[2]);
 }
 END_TEST
 
 START_TEST(test_parse_heredoc)
 {
-    /* Mock tokens representing the command "cat << EOF" */
-    t_token *tokens = create_tokens(3,
+    t_token *tokens = create_tokens(gcl, 3,
                                     TOKEN_WORD, "cat",
                                     TOKEN_REDIRECTION, "<<",
                                     TOKEN_WORD, "EOF");
@@ -198,19 +221,17 @@ START_TEST(test_parse_heredoc)
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_REDIRECT_HEREDOC);
 
-    /* Check child command "cat" */
     ck_assert_int_eq(ast->data.heredoc.child->type, NODE_COMMAND);
     ck_assert_str_eq(ast->data.heredoc.child->data.command.argv[0], "cat");
+    ck_assert_ptr_null(ast->data.heredoc.child->data.command.argv[1]);
 
-    /* Check heredoc delimiter */
     ck_assert_str_eq(ast->data.heredoc.delimiter, "EOF");
 }
 END_TEST
 
 START_TEST(test_parse_complex_command)
 {
-    /* Mock tokens representing the command "echo hello | grep h && (ls -l > out.txt)" */
-    t_token *tokens = create_tokens(15,
+    t_token *tokens = create_tokens(gcl, 12,
                                     TOKEN_WORD, "echo",
                                     TOKEN_WORD, "hello",
                                     TOKEN_PIPE, "|",
@@ -229,29 +250,31 @@ START_TEST(test_parse_complex_command)
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_AND);
 
-    /* Check left side "echo hello | grep h" */
     t_ast_node *left = ast->data.logic.left;
     ck_assert_int_eq(left->type, NODE_PIPE);
     ck_assert_str_eq(left->data.pipe.left->data.command.argv[0], "echo");
     ck_assert_str_eq(left->data.pipe.left->data.command.argv[1], "hello");
+    ck_assert_ptr_null(left->data.pipe.left->data.command.argv[2]);
+
     ck_assert_str_eq(left->data.pipe.right->data.command.argv[0], "grep");
     ck_assert_str_eq(left->data.pipe.right->data.command.argv[1], "h");
+    ck_assert_ptr_null(left->data.pipe.right->data.command.argv[2]);
 
-    /* Check right side "(ls -l > out.txt)" */
     t_ast_node *right = ast->data.logic.right;
     ck_assert_int_eq(right->type, NODE_SUBSHELL);
     t_ast_node *subshell_child = right->data.subshell.child;
     ck_assert_int_eq(subshell_child->type, NODE_REDIRECT_OUT);
     ck_assert_str_eq(subshell_child->data.redirect.filename, "out.txt");
+
     ck_assert_str_eq(subshell_child->data.redirect.child->data.command.argv[0], "ls");
     ck_assert_str_eq(subshell_child->data.redirect.child->data.command.argv[1], "-l");
+    ck_assert_ptr_null(subshell_child->data.redirect.child->data.command.argv[2]);
 }
 END_TEST
 
 START_TEST(test_parse_syntax_error)
 {
-    /* Mock tokens representing an incomplete command "echo hello |" */
-    t_token *tokens = create_tokens(3,
+    t_token *tokens = create_tokens(gcl, 3,
                                     TOKEN_WORD, "echo",
                                     TOKEN_WORD, "hello",
                                     TOKEN_PIPE, "|");
@@ -264,8 +287,7 @@ END_TEST
 
 START_TEST(test_parse_unexpected_token)
 {
-    /* Mock tokens representing an unexpected token sequence "&& echo hello" */
-    t_token *tokens = create_tokens(3,
+    t_token *tokens = create_tokens(gcl, 3,
                                     TOKEN_AND, "&&",
                                     TOKEN_WORD, "echo",
                                     TOKEN_WORD, "hello");
@@ -279,41 +301,45 @@ END_TEST
 START_TEST(test_parse_empty_input)
 {
     pid_t pid = fork();
-    ck_assert_int_ne(pid, -1); // Ensure fork was successful
+    ck_assert_int_ne(pid, -1);
 
     if (pid == 0)
     {
-        // Child process
+        t_gc *child_gcl = gc_init();
+        if (!child_gcl)
+        {
+            perror("gc_init in child");
+            exit(EXIT_FAILURE);
+        }
+
         t_token *current_token = NULL;
-        ms_parse_tokens(current_token, gcl);
-        // If ms_parse_tokens doesn't exit, exit with success
+        t_ast_node *ast = ms_parse_tokens(current_token, child_gcl);
+        if (ast != NULL)
+        {
+            gc_cleanup(child_gcl);
+            exit(EXIT_FAILURE);
+        }
+        gc_cleanup(child_gcl);
         exit(EXIT_SUCCESS);
     }
     else
     {
-        // Parent process
         int status;
         waitpid(pid, &status, 0);
 
         if (WIFEXITED(status))
         {
             int exit_status = WEXITSTATUS(status);
-            // Expecting the child to exit with EXIT_FAILURE
-            ck_assert_int_eq(exit_status, EXIT_FAILURE);
+            ck_assert_int_eq(exit_status, EXIT_SUCCESS);
         }
         else if (WIFSIGNALED(status))
         {
             int term_sig = WTERMSIG(status);
-            // If the child was terminated by SIGSEGV, the test fails
             ck_assert_msg(term_sig != SIGSEGV, "Segmentation fault occurred when parsing empty input.");
-            // If terminated by another signal, report it
             ck_assert_msg(0, "Child process terminated by signal %d", term_sig);
         }
         else
-        {
-            // Child process did not exit normally
             ck_assert_msg(0, "Child process did not exit normally.");
-        }
     }
 }
 END_TEST
@@ -325,10 +351,10 @@ Suite *ast_suite(void)
 
     s = suite_create("AST");
 
-    /* Core test case */
     tc_core = tcase_create("Core");
 
-    /* Add tests to the test case */
+    tcase_add_checked_fixture(tc_core, setup, teardown);
+
     tcase_add_test(tc_core, test_create_command_node);
     tcase_add_test(tc_core, test_parse_simple_command);
     tcase_add_test(tc_core, test_parse_pipeline);
@@ -352,20 +378,13 @@ int main(void)
     Suite *s;
     SRunner *sr;
 
-    /* Initialize the garbage collector */
-    gcl = gc_init();
-
     s = ast_suite();
     sr = srunner_create(s);
 
-    /* Run tests with normal verbosity */
     srunner_run_all(sr, CK_NORMAL);
 
     number_failed = srunner_ntests_failed(sr);
     srunner_free(sr);
-
-    /* Clean up the garbage collector */
-    gc_cleanup(gcl);
 
     return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }

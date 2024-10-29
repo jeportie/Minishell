@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:58:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/29 13:11:49 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:41:01 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ t_ast_node	*create_pipe_node(t_ast_node *left, t_ast_node *right, t_gc *gcl)
 	return (node);
 }
 
-t_ast_node	*create_redirect_node(t_node_type type, t_ast_node *child, char *filename, t_gc *gcl)
+t_ast_node	*create_redirect_node(t_node_type type, t_ast_node *child,
+	char *filename, t_gc *gcl)
 {
 	t_ast_node	*node;
 
