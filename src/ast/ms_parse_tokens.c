@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:31:06 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 14:29:37 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:19:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)
 	if (tokens == NULL)
 	{
 		ft_dprintf(STDERR, "Minishell: Error: No Input provided.\n");
-		gc_cleanup(gcl);
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	current_token = tokens;
 	ast_root = parse_logical(&current_token, gcl);
@@ -30,14 +29,25 @@ t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)
 	{
 		ft_dprintf(STDERR, "Minishell: Syntax Error: Unexpected token '%s'\n",
 			current_token->token);
-		gc_cleanup(gcl);
-		exit (EXIT_FAILURE);
+		return (NULL);
 	}
 	if (!ast_root)
 	{
 		ft_dprintf(STDERR, "Minishell: Error: Failed to parse tokens.\n");
-		gc_cleanup(gcl);
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	return (ast_root);
 }
+
+/*
+ * NOTE: Token Priority for binary tree:
+ * 
+ * Double node tokens: Will create a "branch node"
+ *     1- Logic (AND OR)
+ *     2- Pipes
+ * Simple node tokens: Will create a "leaf node"
+ *     1- Subshell ()\
+ *     2- Redirections
+ *     3- Commands
+ *     4- Redirections
+ */

@@ -22,11 +22,16 @@ SRC = \
   src/init_shell/ms_init_env.c \
   src/signal/ms_init_std_signal.c \
   src/signal/ms_stop_std_signal.c \
-  src/ast/create_node.c \
+  src/ast/parse_logical.c \
+  src/ast/parse_pipeline.c \
   src/ast/ms_parse_tokens.c \
-  src/ast/parse.c \
-  src/ast/print_ast.c \
   src/ast/utils.c \
+  src/ast/parse_redirection.c \
+  src/ast/parse_subshell.c \
+  src/ast/create_node.c \
+  src/ast/print_ast.c \
+  src/ast/parse_command.c \
+  src/ast/create_command_node.c \
   src/global.c \
   src/token/lst_tokens.c \
   src/token/ms_tokenize.c \

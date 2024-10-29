@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:17:41 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 15:35:51 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 13:51:02 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ char	*get_node_label(t_ast_node *node)
 	else if (node->type == NODE_PIPE)
 		return ("\033[1;34m{|}\033[0m");
 	else if (node->type == NODE_REDIRECT_OUT)
-		return ("\033[1;34m{>}\033[0m");
+		return ("\033[1;33m>\033[0m");
 	else if (node->type == NODE_REDIRECT_IN)
-		return ("\033[1;34m{<}\033[0m");
+		return ("\033[1;33m<\033[0m");
 	else if (node->type == NODE_REDIRECT_APPEND)
-		return ("\033[1;34m{>>}\033[0m");
+		return ("\033[1;33m>>\033[0m");
 	else if (node->type == NODE_REDIRECT_HEREDOC)
-		return ("\033[1;34m{<<}\033[0m");
+		return ("\033[1;33m<<\033[0m");
 	else if (node->type == NODE_SUBSHELL)
-		return ("\033[1;34m{( )}\033[0m");
+		return ("\033[1;33m()\033[0m");
 	else
 		return ("[UNKNOWN]");
 }
@@ -103,6 +103,7 @@ void	print_node_content(t_ast_node *node)
 void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
 {
 	char	new_prefix[256];
+	int		single_branch;
 
 	if (node == NULL)
 		return ;
@@ -119,37 +120,22 @@ void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
 	printf("%s", get_node_label(node));
 	print_node_content(node);
 	printf("\n");
-	if (is_left)
+
+	// Check if this node is a single-branch type
+	single_branch = (node->type == NODE_REDIRECT_OUT || node->type == NODE_REDIRECT_IN
+					|| node->type == NODE_REDIRECT_APPEND || node->type == NODE_SUBSHELL);
+
+	// Adjust prefix for child nodes
+	if (!single_branch && is_left)
 		snprintf(new_prefix, sizeof(new_prefix), "%s│   ", prefix);
 	else
 		snprintf(new_prefix, sizeof(new_prefix), "%s    ", prefix);
-	print_ast(get_left_child(node), depth + 1, new_prefix, 1);
-	print_ast(get_right_child(node), depth + 1, new_prefix, 0);
-}
 
-t_ast_node	*create_command_node_with_args(int argc, ...)
-{
-	t_ast_node	*node;
-	va_list		args;
-	int			i;
-	char		*arg;
-
-	node = malloc(sizeof(t_ast_node));
-	if (!node)
-		return (NULL);
-	node->type = NODE_COMMAND;
-	node->data.command.argc = argc;
-	node->data.command.argv = malloc(sizeof(char *) * (argc + 1));
-	va_start(args, argc);
-	i = 0;
-	while (i < argc)
-	{
-		arg = va_arg(args, char *);
-		node->data.command.argv[i] = arg;
-		i++;
+	// Print only left child for single-branch nodes
+	if (!single_branch) {
+		print_ast(get_left_child(node), depth + 1, new_prefix, 1);
+		print_ast(get_right_child(node), depth + 1, new_prefix, 0);
+	} else {
+		print_ast(get_left_child(node), depth + 1, new_prefix, 0);
 	}
-	va_end(args);
-	node->data.command.argv[argc] = NULL;
-	return (node);
 }
-

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 14:50:30 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 13:52:43 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,14 @@ int	main(int argc, char **argv, char **envp)
 			exit (shell.error_code);
 		}
 		tokens = ms_tokenize(shell.user_input, shell.gcl);
-		printf("user_input : %s\n", shell.user_input);
-		print_token(tokens);
-		printf("\n");
+	//	print_token(tokens);
 		printf("\n");
 		root = ms_parse_tokens(tokens, shell.gcl);
+		if (!root)
+		{
+			gc_cleanup(shell.gcl);
+			exit(EXIT_FAILURE);
+		}
 		print_ast(root, 0, "", 0);
 		printf("\n");
 		printf("\n");

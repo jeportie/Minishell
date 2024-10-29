@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:45:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 16:24:47 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 13:02:00 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef enum e_node_type
 	NODE_REDIRECT_HEREDOC,
 	NODE_AND,
 	NODE_OR,
-	NODE_SUBSHELL
+	NODE_SUBSHELL,
+	ERR
 }			t_node_type;
 
 typedef struct s_cmd_node
@@ -106,7 +107,10 @@ t_ast_node	*create_subshell_node(t_ast_node *child, t_gc *gcl);
 /* Utils Functions */
 bool		is_pipe_op(t_token *current_token);
 bool		is_logical_op(t_token *current_token);
+bool		is_command_op(t_token *current_token);
+bool		is_redir_op(t_token *current_token);
+bool		is_sbs_start(t_token *current_token);
+bool		is_sbs_stop(t_token *current_token);
 void		print_ast(t_ast_node *node, int depth, char *prefix, int is_left);
-void		expand_wildcards(t_ast_node *ast, t_gc *gcl);
 
 #endif /*AST_H*/
