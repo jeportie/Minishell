@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:18:39 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/28 16:42:49 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 13:30:19 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	st_is_and(t_syntax **syntax)
 
 	synt = *syntax;
 	if (synt->current[synt->i + 1] && synt->current[synt->i + 1] == '&'
-		&& synt->o_and)
+		&& (synt->o_and || synt->o_or || synt->o_pipe))
 	{
 		synt->error = 7;
 		return (1);

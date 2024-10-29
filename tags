@@ -740,31 +740,14 @@ START_TEST	test_src/signal/test_ms_init_std_signal.c	/^START_TEST(test_ms_init_s
 START_TEST	test_src/signal/test_ms_init_std_signal.c	/^START_TEST(test_ms_init_std_signal_sigquit)$/;"	f
 START_TEST	test_src/signal/test_ms_stop_std_signal.c	/^START_TEST(test_ms_stop_std_signal_sigint)$/;"	f
 START_TEST	test_src/signal/test_ms_stop_std_signal.c	/^START_TEST(test_ms_stop_std_signal_sigquit)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_dq_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_dq_1)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_0)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_1)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_10)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_11)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_12)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_13)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_14)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_15)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_16)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_17)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_2)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_3)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_4)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_5)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_6)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_7)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_8)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_9)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_0)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_1)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_10)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_11)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_12)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_13)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_14)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_2)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_3)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_4)$/;"	f
@@ -772,11 +755,21 @@ START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syn
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_6)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_7)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_8)$/;"	f
-START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_9)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_r_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_r_1)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_r_2)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_sq_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_sq_1)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_dq_0)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_op_0)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_p_0)$/;"	f
 START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_p_1)$/;"	f
-STDERR_BUFFER_SIZE	test_src/syntax_error/test_ms_syntax_error.c	20;"	d	file:
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_p_2)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_p_3)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_p_4)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_r_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_sq_0)$/;"	f
+STDERR_BUFFER_SIZE	test_src/syntax_error/test_ms_syntax_error.c	19;"	d	file:
 STRINGIFY	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	462;"	d	file:
 STRINGIFY	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	462;"	d	file:
 STRINGIFY_HELPER	lib/libft/test_src/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	461;"	d	file:
@@ -829,8 +822,8 @@ error	include/syntax.h	/^	int		error;$/;"	m	struct:s_syntax
 error	lib/libft/include/libft.h	/^	int			error;$/;"	m	struct:s_format_spec
 error	lib/libft/include/libft.h	/^	int		error;$/;"	m	struct:s_buffer
 error_code	include/minishell.h	/^	int			error_code;$/;"	m	struct:s_shell
-execute_and_capture	test_src/syntax_error/test_ms_syntax_error.c	/^t_testresult    execute_and_capture(const char *input)$/;"	f
-exit_code	test_src/syntax_error/test_ms_syntax_error.c	/^    int     exit_code;$/;"	m	struct:s_testresult	file:
+execute_and_capture	test_src/syntax_error/test_ms_syntax_error.c	/^static t_testresult execute_and_capture(const char *input)$/;"	f	file:
+exit_code	test_src/syntax_error/test_ms_syntax_error.c	/^    int exit_code;$/;"	m	struct:s_testresult	file:
 fd	lib/libgc/include/libgc.h	/^	int					fd;$/;"	m	struct:s_gc_node
 flag_hash	lib/libft/include/libft.h	/^	int			flag_hash;$/;"	m	struct:s_format_spec
 flag_minus	lib/libft/include/libft.h	/^	int			flag_minus;$/;"	m	struct:s_format_spec
@@ -945,6 +938,7 @@ ft_toupper	lib/libft/src/conversion/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
 ft_ulltoa_base	lib/libft/src/conversion/ft_ulltoa_base.c	/^char	*ft_ulltoa_base(unsigned long long nbr, char *base)$/;"	f
 ft_utoa_base	lib/libft/src/conversion/ft_utoa_base.c	/^char	*ft_utoa_base(unsigned int nbr, char *base)$/;"	f
 ft_zero_minus_flags	lib/libft/src/printf/ft_parse_flags.c	/^static void	ft_zero_minus_flags(const char *format, t_format_spec *spec,$/;"	f	file:
+g_garbage_collector	test_src/syntax_error/test_ms_syntax_error.c	/^static t_gc *g_garbage_collector;  \/\/ Déclaration globale du garbage collector$/;"	v	file:
 g_perror	lib/libft/src/printf/ft_printf_globals.c	/^const char	*g_perror[] = {$/;"	v
 g_signal	src/global.c	/^int	g_signal;$/;"	v
 gc_cleanup	lib/libgc/src/gc_cleanup.c	/^void	gc_cleanup(t_gc *gcl)$/;"	f
@@ -1040,7 +1034,7 @@ ms_init_std_signal_suite	test_src/signal/test_ms_init_std_signal.c	/^Suite *ms_i
 ms_stop_std_signal	src/signal/ms_stop_std_signal.c	/^void	ms_stop_std_signal(void)$/;"	f
 ms_stop_std_signal_suite	test_src/signal/test_ms_stop_std_signal.c	/^Suite *ms_stop_std_signal_suite(void)$/;"	f
 ms_syntax_error	src/syntax_error/ms_syntax_error.c	/^int	ms_syntax_error(const char *input)$/;"	f
-ms_syntax_error_suite	test_src/syntax_error/test_ms_syntax_error.c	/^Suite *ms_syntax_error_suite(void)$/;"	f
+ms_syntax_error_suite	test_src/syntax_error/test_ms_syntax_error.c	/^static Suite    *ms_syntax_error_suite(void)$/;"	f	file:
 nb_printed	lib/libft/include/libft.h	/^	int		nb_printed;$/;"	m	struct:s_buffer
 next	include/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
 next	include/tokenize.h	/^	struct s_token	*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
@@ -1077,6 +1071,7 @@ s_shell	include/minishell.h	/^typedef struct s_shell$/;"	s
 s_syntax	include/syntax.h	/^typedef struct s_syntax$/;"	s
 s_testresult	test_src/syntax_error/test_ms_syntax_error.c	/^typedef struct s_testresult$/;"	s	file:
 s_token	include/tokenize.h	/^typedef struct s_token$/;"	s
+setup	test_src/syntax_error/test_ms_syntax_error.c	/^static void setup(void)$/;"	f	file:
 shell	include/minishell.h	/^	char	*shell;$/;"	m	struct:s_env_data
 shell_lvl	include/minishell.h	/^	int		shell_lvl;$/;"	m	struct:s_env_data
 size	lib/libgc/include/libgc.h	/^	size_t				size;$/;"	m	struct:s_gc_node
@@ -1087,6 +1082,7 @@ st_create_envp	src/init_shell/ms_init_env.c	/^static char	**st_create_envp(t_she
 st_get_path	src/init_shell/ms_init_env.c	/^static char	*st_get_path(t_env_data *env_data)$/;"	f	file:
 st_get_shell	src/init_shell/ms_init_env.c	/^static char	*st_get_shell(t_env_data *env_data)$/;"	f	file:
 st_get_term	src/init_shell/ms_init_env.c	/^static char	*st_get_term(t_env_data *env_data)$/;"	f	file:
+st_in_par	src/syntax_error/parenthesis_gestion.c	/^static int	st_in_par(t_syntax **syntax)$/;"	f	file:
 st_in_parenthesis	src/syntax_error/parenthesis_gestion.c	/^static int	st_in_parenthesis(t_syntax **syntax)$/;"	f	file:
 st_is_and	src/syntax_error/check_reinit.c	/^static int	st_is_and(t_syntax **syntax)$/;"	f	file:
 st_line_check	src/syntax_error/ms_syntax_error.c	/^static int	st_line_check(t_syntax *synt)$/;"	f	file:
@@ -1099,7 +1095,7 @@ st_redir_out	src/syntax_error/redir_gestion.c	/^static int	st_redir_out(t_syntax
 st_reinit_operator	src/syntax_error/check_reinit.c	/^static int	st_reinit_operator(char c)$/;"	f	file:
 st_reinit_redir	src/syntax_error/check_reinit.c	/^static int	st_reinit_redir(char c)$/;"	f	file:
 st_sigint_std_handler	src/signal/ms_init_std_signal.c	/^static void	st_sigint_std_handler(int sig)$/;"	f	file:
-stderr_output	test_src/syntax_error/test_ms_syntax_error.c	/^    char    stderr_output[STDERR_BUFFER_SIZE];$/;"	m	struct:s_testresult	file:
+stderr_output	test_src/syntax_error/test_ms_syntax_error.c	/^    char stderr_output[STDERR_BUFFER_SIZE];$/;"	m	struct:s_testresult	file:
 t_buffer	lib/libft/include/libft.h	/^}			t_buffer;$/;"	t	typeref:struct:s_buffer
 t_env	include/minishell.h	/^}				t_env;$/;"	t	typeref:struct:s_env
 t_env_data	include/minishell.h	/^}				t_env_data;$/;"	t	typeref:struct:s_env_data
@@ -1109,9 +1105,10 @@ t_gc	lib/libgc/include/libgc.h	/^}				t_gc;$/;"	t	typeref:struct:s_garbage_colle
 t_gc_node	lib/libgc/include/libgc.h	/^}				t_gc_node;$/;"	t	typeref:struct:s_gc_node
 t_shell	include/minishell.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
 t_syntax	include/syntax.h	/^}	t_syntax;$/;"	t	typeref:struct:s_syntax
-t_testresult	test_src/syntax_error/test_ms_syntax_error.c	/^}               t_testresult;$/;"	t	typeref:struct:s_testresult	file:
+t_testresult	test_src/syntax_error/test_ms_syntax_error.c	/^} t_testresult;$/;"	t	typeref:struct:s_testresult	file:
 t_token	include/tokenize.h	/^}			t_token;$/;"	t	typeref:struct:s_token
 t_token_type	include/tokenize.h	/^}			t_token_type;$/;"	t	typeref:enum:e_token_type
+teardown	test_src/syntax_error/test_ms_syntax_error.c	/^static void teardown(void)$/;"	f	file:
 temp_file	lib/libgc/include/libgc.h	/^	char				*temp_file;$/;"	m	struct:s_gc_node
 term	include/minishell.h	/^	char	*term;$/;"	m	struct:s_env_data
 test_ms_init_shell_exit	test_src/init_shell/test_ms_init_shell.c	/^int test_ms_init_shell_exit(int argc, char **argv, char **envp)$/;"	f

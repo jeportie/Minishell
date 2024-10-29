@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:44:36 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/28 14:15:54 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:07:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,44 @@ static int	st_in_parenthesis(t_syntax **syntax)
 	return (1);
 }
 
+static int	st_in_par(t_syntax **syntax)
+{
+	t_syntax	*synt;
+	int			i;
+
+	synt = *syntax;
+	i = synt->i;
+	if (synt->current[i + 1])
+		i++;
+	if (synt->current[i + 1] && (synt->current[i + 1] != ')'
+			&& synt->current[i] != '('))
+	{
+		ft_dprintf(2, "Minishell: syntax error near unexpected token `");
+		while (synt->current[i] && (synt->current[i] != ')'
+				&& synt->current[i] != '('))
+		{
+			ft_dprintf(2, "%c", synt->current[i]);
+			i++;
+		}
+		ft_dprintf(2, "'\n");
+		synt->error = 10;
+	}
+	return (1);
+}
+
 static int	st_open_parenthesis(t_syntax **syntax)
 {
 	t_syntax	*synt;
 
 	synt = *syntax;
 	if (synt->p_trigger == 1)
-		return (1);
-	else if (synt->r_in || synt->r_here || synt->r_out || synt->r_app)
 	{
-		synt->p_trigger = 1;
-		return (1);
+		if (st_in_par(&synt))
+			return (1);
+		return (0);
 	}
+	else if (synt->r_in || synt->r_here || synt->r_out || synt->r_app)
+		return (synt->p_trigger = 1, 1);
 	else if (synt->i == 0 || synt->o_and || synt->o_or || synt->o_pipe)
 	{
 		synt->p_char = 0;
