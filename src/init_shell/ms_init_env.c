@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/18 10:04:42 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:31:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,9 @@ static char	*st_get_shell(t_env_data *env_data)
 static char	**st_create_envp(t_shell *shell, t_env_data *env_data)
 {
 	char	*cwd;
-	char 	**envp;
+	char	**envp;
 
 	envp = (char **)gc_malloc(sizeof(char *) * 3, shell->gcl);
-	//gc_lock(envp, shell->gcl);
 	cwd = getcwd(NULL, 0);
 	env_data->path = "";
 	env_data->term = "";
@@ -104,10 +103,7 @@ t_env_data	*ms_init_env(char **envp, t_shell *shell)
 	int			i;
 
 	if (!shell)
-	{
-		perror("Minishell: Error: Segfault\n");
 		exit(EXIT_FAILURE);
-	}
 	env_data = (t_env_data *)gc_malloc(sizeof(t_env_data), shell->gcl);
 	gc_lock(env_data, shell->gcl);
 	ft_memset(env_data, 0, sizeof(t_env_data));
@@ -116,13 +112,12 @@ t_env_data	*ms_init_env(char **envp, t_shell *shell)
 	else
 		envp = st_create_envp(shell, env_data);
 	env_data->env = NULL;
-	i = 0;
-	while (envp[i])
+	i = -1;
+	while (envp[++i])
 	{
 		node = ms_env_create_node(shell, envp[i]);
 		if (node->var)
 			ms_env_add_back(&env_data->env, node);
-		i++;
 	}
 	env_data->path = st_get_path(env_data);
 	env_data->term = st_get_term(env_data);

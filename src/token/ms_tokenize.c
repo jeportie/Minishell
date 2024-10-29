@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 20:49:16 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/23 14:31:30 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:35:28 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 t_token	*ms_tokenize(const char *command_line, t_gc *gcl)
 {
-	t_token		*tokens;
 	t_token		*new_token;
-	const char	*input;
 
-	input = command_line;
-	tokens = NULL;
+	t_token *(tokens) = NULL;
+	const char *(input) = command_line;
 	skip_whitespace(&input);
 	while (*input)
 	{
 		new_token = NULL;
-	//	if (is_quote(*input))
-	//		new_token = tokenize_quote(&input, gcl);
 		if (is_frame(*input))
 			new_token = tokenize_frame(&input, gcl);
 		else if (is_operator(*input))
