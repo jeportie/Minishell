@@ -1,7 +1,6 @@
 [submodule "lib/libft"]
-  path = lib/libft
-  url = https://github.com/jeportie/libft.git
-
+	path = lib/libft
+	url = https://github.com/jeportie/libft.git
 [submodule "lib/libgc"]
 	path = lib/libgc
 	url = https://github.com/jeportie/libgc.git
