@@ -1,0 +1,48 @@
+name: Integrated Tests
+
+on:
+  push:
+    branches: [ develop, main ]
+  pull_request:
+    branches: [ develop, main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    container:
+      image: jeportie/vjej:latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          clean: true
+
+      # Build libft
+      - name: Build libft
+        run: |
+          cd lib/libft
+          make
+
+      # Build libgc
+      - name: Build libgc
+        run: |
+          cd lib/libgc
+          make
+
+      # Build and Run Tests
+      - name: Build Test Suites
+        run: |
+          cd test_src
+          mkdir -p build
+          cd build
+          cmake ..
+          make
+
+      # Run Tests
+      - name: Run Tests
+        run: |
+          cd test_src/build
+          ctest --output-on-failure
+

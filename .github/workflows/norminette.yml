@@ -1,0 +1,42 @@
+name: Norm42 Check
+
+on:
+  push:
+    branches: [ develop, main ]
+  pull_request:
+    branches: [ develop, main ]
+
+jobs:
+  norminette-lint:
+    runs-on: ubuntu-latest
+    container:
+      image: jeportie/vjej:latest
+      options: >
+        --workdir /root/projects/minishell
+        --volume ${{ github.workspace }}:/root/projects/minishell
+
+    steps:
+      # 1. Checkout Repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          clean: true
+
+      # 2. Append Norminette to PATH
+      - name: Add Norminette to PATH
+        run: echo "/root/venv/bin" >> $GITHUB_PATH
+
+      # 3. Verify Norminette Installation
+      - name: Verify Norminette Installation
+        run: |
+          which norminette
+          norminette --version
+
+      # 4. Run Norminette Linting
+      - name: Run Norminette Linting
+        run: |
+          norminette src/
+          norminette include/
+          norminette libs/
+
