@@ -38,5 +38,5 @@ jobs:
         run: |
           norminette src/
           norminette include/
-          norminette libs/
+          norminette lib/
 
