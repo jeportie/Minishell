@@ -7,7 +7,7 @@ on:
     branches: [ develop, main ]
 
 jobs:
-  build-and-test:
+  build-and-test-integrated:
     runs-on: ubuntu-latest
     container:
       image: jeportie/vjej:latest
