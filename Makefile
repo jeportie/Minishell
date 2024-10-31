@@ -15,13 +15,6 @@ NAME = Minishell
 ### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
-  src/syntax_error/check_error.c \
-  src/syntax_error/check_reinit.c \
-  src/syntax_error/ms_syntax_error.c \
-  src/syntax_error/operator_gestion.c \
-  src/syntax_error/parenthesis_gestion.c \
-  src/syntax_error/quote_gestion.c \
-  src/syntax_error/redir_gestion.c \
   src/env_lst_utils/ms_env_add_back.c \
   src/env_lst_utils/ms_env_create_node.c \
   src/global.c \
@@ -29,7 +22,32 @@ SRC = \
   src/init_shell/ms_init_env.c \
   src/init_shell/ms_init_shell.c \
   src/signal/ms_init_std_signal.c \
-  src/signal/ms_stop_std_signal.c 
+  src/signal/ms_stop_std_signal.c \
+  src/syntax_error/check_error.c \
+  src/syntax_error/check_reinit.c \
+  src/syntax_error/ms_syntax_error.c \
+  src/syntax_error/operator_gestion.c \
+  src/syntax_error/parenthesis_gestion.c \
+  src/syntax_error/quote_gestion.c \
+  src/syntax_error/redir_gestion.c \
+  src/ast/create_command_node.c \
+  src/ast/create_node.c \
+  src/ast/ms_parse_tokens.c \
+  src/ast/parse_command.c \
+  src/ast/parse_logical.c \
+  src/ast/parse_pipeline.c \
+  src/ast/parse_redirection.c \
+  src/ast/parse_subshell.c \
+  src/ast/print_ast.c \
+  src/ast/utils.c \
+  src/ast/utils2.c \
+  src/token/lst_tokens.c \
+  src/token/ms_tokenize.c \
+  src/token/tokenize_frame.c \
+  src/token/tokenize_operator.c \
+  src/token/tokenize_word.c \
+  src/token/tokenize_word_helper.c \
+  src/token/utils.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #
