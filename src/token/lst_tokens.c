@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:39:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/18 14:37:12 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:21:01 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,20 @@ t_token	*create_token(t_token_type type, const char *value, t_gc *gcl)
 	new_token->type = type;
 	new_token->token = (char *)value;
 	return (new_token);
+}
+
+void	print_token(t_token *head)
+{
+	t_token	*current;
+	int		i;
+
+	current = head;
+	i = 0;
+	while (current)
+	{
+		printf("token %2d | type = %d\nvalue = %s\n", i,
+			current->type, current->token);
+		current = current->next;
+		i++;
+	}
 }

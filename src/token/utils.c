@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 20:28:50 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 15:37:04 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:21:05 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,4 @@ void	skip_whitespace(const char **input)
 {
 	while (**input && is_whitespace(**input))
 		(*input)++;
-}
-
-void	print_token(t_token *head)
-{
-	t_token	*current;
-	int		i;
-
-	current = head;
-	i = 0;
-	while (current)
-	{
-		printf("token %2d | type = %d\nvalue = %s\n", i,
-			current->type, current->token);
-		current = current->next;
-		i++;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:17:41 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/29 15:44:38 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:52:46 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>
-
-/*
- * NOTE:
- * Faire fonction ft_sn_printf
- */
 
 t_ast_node	*get_left_child(t_ast_node *node)
 {
@@ -113,15 +108,7 @@ void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
 	if (node == NULL)
 		return ;
 	printf("%s", prefix);
-	if (depth > 0)
-	{
-		if (is_left)
-			printf("├── ");
-		else
-			printf("└── ");
-	}
-	else
-		printf("└── ");
+	print_branch(depth, is_left);
 	printf("%s", get_node_label(node));
 	print_node_content(node);
 	printf("\n");

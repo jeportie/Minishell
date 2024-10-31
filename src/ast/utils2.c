@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:52:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/29 15:52:50 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:32:04 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,17 @@ bool	is_sbs_start(t_token *current_token)
 bool	is_sbs_stop(t_token *current_token)
 {
 	return (current_token->type == TOKEN_SUBSHELL_STOP);
+}
+
+void	print_branch(int depth, int is_left)
+{
+	if (depth > 0)
+	{
+		if (is_left)
+			printf("├── ");
+		else
+			printf("└── ");
+	}
+	else
+		printf("└── ");
 }

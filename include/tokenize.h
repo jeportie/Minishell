@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:01:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 14:29:20 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:06:40 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,43 @@ typedef struct s_operator_map
 	t_token_type	type;
 }					t_operator_map;
 
+typedef struct s_op_state
+{
+	const t_operator_map	*op_map;
+	int						i;
+	char					*current;
+	t_token_type			type;
+	char					*value;
+	char					*op_str;
+	int						op_len;
+}				t_op_state;
+
+typedef struct s_token_state
+{
+	const char	*current;
+	int			i;
+	int			len;
+	char		quote;
+	bool		in_quote;
+	bool		is_expand;
+	char		start_quote;
+	bool		stop;
+}				t_token_state;
+
+typedef struct s_copy_state
+{
+	const char	*current;
+	char		*value;
+	int			i;
+	int			j;
+	char		quote;
+	bool		in_quote;
+	bool		stop;
+}				t_copy_state;
+
 /* Main Function */
 t_token	*ms_tokenize(const char *commant_line, t_gc *gcl);
+int		token_len(const char *current, char start_quote, bool *is_expand);
 
 /* Token List Functions */
 t_token	*create_token(t_token_type type, const char *value, t_gc *gcl);
