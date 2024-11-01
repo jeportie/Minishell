@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/31 16:13:00 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/01 15:15:17 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
 # include "minishell.h"
 # include <stdbool.h>
 # include <sys/types.h>
+# include <sys/wait.h>
+# include <fcntl.h>
 
 typedef struct s_exec_context
 {
 	int			stdin_fd;
 	int			stdout_fd;
 	int			stderr_fd;
-	char		**envp;
 	t_shell		*shell;
 	bool		is_subprocess;
 	int			exit_status;
@@ -43,9 +44,8 @@ typedef struct s_pipeline
 
 int		ms_execute_ast(t_ast_node *node, t_shell *shell);
 
-int		ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context);
-int		ms_execute_builtin(t_cmd_node *cmd_node, t_exec_context *context);
-int		ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context);
+int		ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl);
+int		ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl);
 
 int		ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context);
 int		ms_execute_logical(t_logic_node *logic_node, t_exec_context *context);
@@ -53,6 +53,10 @@ int		ms_execute_subshell(t_subshell_node *subshell_node, t_exec_context *context
 int		ms_handle_redirections(t_ast_node *node, t_exec_context *context);
 
 char	**ms_get_envp(t_env_data *env_data);
+char	*ms_parse_cmd_path(const char *command, t_shell *shell);
+char	*ms_concat_path(const char *path, const char *command, t_gc *gcl);
+char	*ms_getenv(const char *name, t_env_data *env_data);
+
 void	ms_handle_error(const char *msg);
 bool	ms_is_builtin(const char *cmd);
 
