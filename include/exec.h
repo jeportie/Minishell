@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/01 15:15:17 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/02 23:35:01 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ typedef struct s_exec_context
 	int			exit_status;
 }				t_exec_context;
 
+typedef struct s_pipe_context
+{
+	t_exec_context	*context;
+	int				pipefd[2];
+	pid_t			last_pid;
+	int				last_status;
+}				t_pipe_context;
+
 typedef struct s_process
 {
 	pid_t		pid;
@@ -42,13 +50,13 @@ typedef struct s_pipeline
 	int			num_processes;
 }				t_pipeline;
 
-int		ms_execute_ast(t_ast_node *node, t_shell *shell);
+int		ms_execute_ast(t_ast_node *node, t_exec_context *context);
 
 int		ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl);
 int		ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl);
 
 int		ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context);
-int		ms_execute_logical(t_logic_node *logic_node, t_exec_context *context);
+int		ms_execute_logical(t_logic_node *logic_node, t_exec_context *context, t_node_type type);
 int		ms_execute_subshell(t_subshell_node *subshell_node, t_exec_context *context);
 int		ms_handle_redirections(t_ast_node *node, t_exec_context *context);
 
@@ -57,8 +65,8 @@ char	*ms_parse_cmd_path(const char *command, t_shell *shell);
 char	*ms_concat_path(const char *path, const char *command, t_gc *gcl);
 char	*ms_getenv(const char *name, t_env_data *env_data);
 
-void	ms_handle_error(const char *msg);
+int		ms_handle_error(const char *msg); //returns 1
 bool	ms_is_builtin(const char *cmd);
+int		ms_heredoc_mode(char *filename);
 
 #endif /* EXEC_H */
-

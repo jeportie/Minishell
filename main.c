@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/31 14:17:34 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/02 21:19:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,22 @@
 #include "include/syntax.h"
 #include "include/tokenize.h"
 #include "include/ast.h"
+#include "include/exec.h"
 
-void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
+static void	init_context(t_exec_context *data, t_shell *shell)
 {
+	data->stdin_fd = STDIN_FILENO;
+	data->stdout_fd = STDOUT_FILENO;
+	data->stderr_fd = STDERR_FILENO;
+	data->shell = shell;
+	data->is_subprocess = false;
+	data->exit_status = 0;
+}
+
+static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
+{
+	t_exec_context	context;
+
 	tokens = ms_tokenize(shell->user_input, shell->gcl);
 	print_token(tokens);
 	printf("\n");
@@ -28,13 +41,14 @@ void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 	}
 	print_ast(root, 0, "", 0);
 	printf("\n");
+	init_context(&context, shell);
 	shell->error_code = 0;
 }
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_shell		shell;
-	t_token		*tokens;
+	t_shell	shell;
+	t_token	*tokens;
 
 	t_ast_node *(root) = NULL;
 	shell = ms_init_shell(argc, argv, envp);

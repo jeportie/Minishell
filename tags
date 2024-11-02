@@ -64,9 +64,9 @@ CC	lib/libgc/Makefile	/^CC = gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = 	-Wall -Wextra -Werror$/;"	m
 CFLAGS	lib/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	lib/libgc/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
-CMAKE_BINARY_DIR	test_src/build/Makefile	/^CMAKE_BINARY_DIR = \/root\/projects\/Minishell\/test_src\/build$/;"	m
+CMAKE_BINARY_DIR	test_src/build/Makefile	/^CMAKE_BINARY_DIR = \/root\/projects\/minishell\/test_src\/build$/;"	m
 CMAKE_COMMAND	test_src/build/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
-CMAKE_SOURCE_DIR	test_src/build/Makefile	/^CMAKE_SOURCE_DIR = \/root\/projects\/Minishell\/test_src$/;"	m
+CMAKE_SOURCE_DIR	test_src/build/Makefile	/^CMAKE_SOURCE_DIR = \/root\/projects\/minishell\/test_src$/;"	m
 COMPILER_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	109;"	d	file:
 COMPILER_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	117;"	d	file:
 COMPILER_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	123;"	d	file:
@@ -485,9 +485,11 @@ check_reinit	src/syntax_error/check_reinit.c	/^int	check_reinit(t_syntax **synta
 child	include/ast.h	/^	struct s_ast_node	*child;$/;"	m	struct:s_heredoc_node	typeref:struct:s_heredoc_node::s_ast_node
 child	include/ast.h	/^	struct s_ast_node	*child;$/;"	m	struct:s_redirect_node	typeref:struct:s_redirect_node::s_ast_node
 child	include/ast.h	/^	struct s_ast_node	*child;$/;"	m	struct:s_subshell_node	typeref:struct:s_subshell_node::s_ast_node
+child_process	src/exec/ms_execute_pipeline.c	/^static void	child_process(t_pipe_context *pipe_context, t_pipe_node *pipe_node,$/;"	f	file:
 command	include/ast.h	/^	t_cmd_node			command;$/;"	m	union:u_node_data
 compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
 const	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
+context	include/exec.h	/^	t_exec_context	*context;$/;"	m	struct:s_pipe_context
 copy_token_value	src/token/tokenize_word.c	/^static int	copy_token_value(char *value, const char *current, char start_quote)$/;"	f	file:
 create_command_node	src/ast/create_command_node.c	/^t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl)$/;"	f
 create_env_node	test_src/env_lst_utils/test_ms_env_add_back.c	/^t_env *create_env_node(const char *var, const char *value) {$/;"	f
@@ -684,7 +686,8 @@ info_version_internal	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompile
 info_version_internal	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INTERNAL_STR "]";$/;"	v
 init	lib/libgc/src/gc_nest_register.c	/^static t_gc_node	*init(t_gc_node *new_node, void *ptr, t_gc *gcl)$/;"	f	file:
 init	lib/libgc/src/gc_register.c	/^static t_gc_node	*init(t_gc_node *new_node, const char *filename)$/;"	f	file:
-init_context	src/exec/ms_execute_ast.c	/^static void	init_context(t_exec_context *data, t_shell *shell)$/;"	f	file:
+init_context	main.c	/^static void	init_context(t_exec_context *data, t_shell *shell)$/;"	f	file:
+init_context	src/exec/ms_execute_pipeline.c	/^static void	init_context(t_pipe_context *pipe_context, t_exec_context *context)$/;"	f	file:
 init_op_state	src/token/tokenize_operator.c	/^static void	init_op_state(const char **input, t_op_state *op_state)$/;"	f	file:
 initialize_token_state	src/token/tokenize_word_helper.c	/^static void	initialize_token_state(t_token_state *state, const char *current,$/;"	f	file:
 is_array	lib/libgc/include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
@@ -704,6 +707,8 @@ is_sbs_stop	src/ast/utils2.c	/^bool	is_sbs_stop(t_token *current_token)$/;"	f
 is_subprocess	include/exec.h	/^	bool		is_subprocess;$/;"	m	struct:s_exec_context
 is_whitespace	src/token/utils.c	/^bool	is_whitespace(char c)$/;"	f
 j	include/tokenize.h	/^	int			j;$/;"	m	struct:s_copy_state
+last_pid	include/exec.h	/^	pid_t			last_pid;$/;"	m	struct:s_pipe_context
+last_status	include/exec.h	/^	int				last_status;$/;"	m	struct:s_pipe_context
 left	include/ast.h	/^	struct s_ast_node	*left;$/;"	m	struct:s_logic_node	typeref:struct:s_logic_node::s_ast_node
 left	include/ast.h	/^	struct s_ast_node	*left;$/;"	m	struct:s_pipe_node	typeref:struct:s_pipe_node::s_ast_node
 len	include/tokenize.h	/^	int			len;$/;"	m	struct:s_token_state
@@ -737,17 +742,23 @@ ms_child_process	src/exec/ms_execute_external.c	/^static void	ms_child_process(t
 ms_concat_path	src/exec/ms_concat_path.c	/^char	*ms_concat_path(const char *path, const char *command, t_gc *gcl)$/;"	f
 ms_env_add_back	src/env_lst_utils/ms_env_add_back.c	/^void	ms_env_add_back(t_env **env, t_env *new_node)$/;"	f
 ms_env_create_node	src/env_lst_utils/ms_env_create_node.c	/^t_env	*ms_env_create_node(t_shell *shell, const char *env_line)$/;"	f
-ms_execute_ast	src/exec/ms_execute_ast.c	/^int	ms_execute_ast(t_ast_node *node, t_shell *shell)$/;"	f
+ms_execute_ast	src/exec/ms_execute_ast.c	/^int	ms_execute_ast(t_ast_node *node, t_exec_context *context)$/;"	f
 ms_execute_command	src/exec/ms_execute_command.c	/^int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl)$/;"	f
 ms_execute_external	src/exec/ms_execute_external.c	/^int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl)$/;"	f
+ms_execute_logical	src/exec/ms_execute_logical.c	/^int	ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,$/;"	f
+ms_execute_pipeline	src/exec/ms_execute_pipeline.c	/^int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context)$/;"	f
+ms_execute_subshell	src/exec/ms_execute_subshell.c	/^int	ms_execute_subshell(t_subshell_node *subshell_node, t_exec_context *context)$/;"	f
 ms_get_user_input	src/init_shell/ms_get_user_input.c	/^void	ms_get_user_input(t_shell *shell)$/;"	f
 ms_getenv	src/exec/ms_getenv.c	/^char	*ms_getenv(const char *name, t_env_data *env_data)$/;"	f
+ms_handle_redirections	src/exec/ms_execute_redirections.c	/^int		ms_handle_redirections(t_ast_node *node, t_exec_context *context)$/;"	f
+ms_heredoc_mode	src/exec/ms_heredoc_mode.c	/^int	ms_heredoc_mode(char *filename)$/;"	f
 ms_init_env	src/init_shell/ms_init_env.c	/^t_env_data	*ms_init_env(char **envp, t_shell *shell)$/;"	f
 ms_init_env_suite	test_src/init_shell/test_ms_init_env.c	/^Suite *ms_init_env_suite(void)$/;"	f
 ms_init_shell	src/init_shell/ms_init_shell.c	/^t_shell	ms_init_shell(int argc, char **argv, char **envp)$/;"	f
 ms_init_shell_suite	test_src/init_shell/test_ms_init_shell.c	/^Suite *ms_init_shell_suite(void)$/;"	f
 ms_init_std_signal	src/signal/ms_init_std_signal.c	/^void	ms_init_std_signal(void)$/;"	f
 ms_init_std_signal_suite	test_src/signal/test_ms_init_std_signal.c	/^Suite *ms_init_std_signal_suite(void)$/;"	f
+ms_open_file	src/exec/ms_execute_redirections.c	/^static int	ms_open_file(const char *filename, int flags, mode_t mode)$/;"	f	file:
 ms_parent_process	src/exec/ms_execute_external.c	/^static void	ms_parent_process(pid_t pid, t_exec_context *context)$/;"	f	file:
 ms_parse_cmd_path	src/exec/ms_parse_cmd_path.c	/^char	*ms_parse_cmd_path(const char *command, t_shell *shell)$/;"	f
 ms_parse_tokens	src/ast/ms_parse_tokens.c	/^t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)$/;"	f
@@ -773,6 +784,7 @@ op_str	include/tokenize.h	/^	const char		*op_str;$/;"	m	struct:s_operator_map
 operator_gestion	src/syntax_error/operator_gestion.c	/^int	operator_gestion(t_syntax **syntax)$/;"	f
 p_char	include/syntax.h	/^	int		p_char;$/;"	m	struct:s_syntax
 p_trigger	include/syntax.h	/^	int		p_trigger;$/;"	m	struct:s_syntax
+parent_process	src/exec/ms_execute_pipeline.c	/^static void	parent_process(t_pipe_context *pipe_context,$/;"	f	file:
 parenthesis_gestion	src/syntax_error/parenthesis_gestion.c	/^int	parenthesis_gestion(t_syntax **syntax)$/;"	f
 parse_command	src/ast/parse_command.c	/^t_ast_node	*parse_command(t_token **current_token, t_gc *gcl)$/;"	f
 parse_logical	src/ast/parse_logical.c	/^t_ast_node	*parse_logical(t_token **current_token, t_gc *gcl)$/;"	f
@@ -782,6 +794,7 @@ parse_subshell	src/ast/parse_subshell.c	/^t_ast_node	*parse_subshell(t_token **c
 path	include/minishell.h	/^	char	*path;$/;"	m	struct:s_env_data
 pid	include/exec.h	/^	pid_t		pid;$/;"	m	struct:s_process
 pipe	include/ast.h	/^	t_pipe_node			pipe;$/;"	m	union:u_node_data
+pipefd	include/exec.h	/^	int				pipefd[2];$/;"	m	struct:s_pipe_context
 precision	lib/libft/include/printf.h	/^	int			precision;$/;"	m	struct:s_format_spec
 print_ast	src/ast/print_ast.c	/^void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)$/;"	f
 print_branch	src/ast/utils2.c	/^void	print_branch(int depth, int is_left)$/;"	f
@@ -801,7 +814,7 @@ redir_gestion	src/syntax_error/redir_gestion.c	/^int	redir_gestion(t_syntax **sy
 redirect	include/ast.h	/^	t_redirect_node		redirect;$/;"	m	union:u_node_data
 right	include/ast.h	/^	struct s_ast_node	*right;$/;"	m	struct:s_logic_node	typeref:struct:s_logic_node::s_ast_node
 right	include/ast.h	/^	struct s_ast_node	*right;$/;"	m	struct:s_pipe_node	typeref:struct:s_pipe_node::s_ast_node
-run	main.c	/^void	run(t_shell *shell, t_token *tokens, t_ast_node *root)$/;"	f
+run	main.c	/^static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)$/;"	f	file:
 s_ast_node	include/ast.h	/^typedef struct s_ast_node$/;"	s
 s_buffer	lib/libft/include/printf.h	/^typedef struct s_buffer$/;"	s
 s_cmd_node	include/ast.h	/^typedef struct s_cmd_node$/;"	s
@@ -816,6 +829,7 @@ s_heredoc_node	include/ast.h	/^typedef struct s_heredoc_node$/;"	s
 s_logic_node	include/ast.h	/^typedef struct s_logic_node$/;"	s
 s_op_state	include/tokenize.h	/^typedef struct s_op_state$/;"	s
 s_operator_map	include/tokenize.h	/^typedef struct s_operator_map$/;"	s
+s_pipe_context	include/exec.h	/^typedef struct s_pipe_context$/;"	s
 s_pipe_node	include/ast.h	/^typedef struct s_pipe_node$/;"	s
 s_pipeline	include/exec.h	/^typedef struct s_pipeline$/;"	s
 s_process	include/exec.h	/^typedef struct s_process$/;"	s
@@ -879,6 +893,7 @@ t_node_data	include/ast.h	/^}						t_node_data;$/;"	t	typeref:union:u_node_data
 t_node_type	include/ast.h	/^}			t_node_type;$/;"	t	typeref:enum:e_node_type
 t_op_state	include/tokenize.h	/^}				t_op_state;$/;"	t	typeref:struct:s_op_state
 t_operator_map	include/tokenize.h	/^}					t_operator_map;$/;"	t	typeref:struct:s_operator_map
+t_pipe_context	include/exec.h	/^}				t_pipe_context;$/;"	t	typeref:struct:s_pipe_context
 t_pipe_node	include/ast.h	/^}				t_pipe_node;$/;"	t	typeref:struct:s_pipe_node
 t_pipeline	include/exec.h	/^}				t_pipeline;$/;"	t	typeref:struct:s_pipeline
 t_process	include/exec.h	/^}				t_process;$/;"	t	typeref:struct:s_process
