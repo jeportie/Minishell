@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/02 23:49:12 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:41:43 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ms_handle_redirections(t_ast_node *node, t_exec_context *context)
 	}
 	else if (node->type == NODE_REDIRECT_OUT)
 	{
-		fd = ms_open_file(redir_node->filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		fd = ms_open_file(redir_node->filename, O_WRONLY | O_CREAT | O_TRUNC, COPY_MODE);
 		if (fd == -1)
 			return (-1);
 		if (context->stdout_fd != STDOUT_FILENO)
@@ -48,7 +48,7 @@ int		ms_handle_redirections(t_ast_node *node, t_exec_context *context)
 	}
 	else if (node->type == NODE_REDIRECT_APPEND)
 	{
-		fd = ms_open_file(redir_node->filename, O_WRONLY | O_CREAT | O_APPEND, 0644);
+		fd = ms_open_file(redir_node->filename, O_WRONLY | O_CREAT | O_APPEND, COPY_MODE);
 		if (fd == -1)
 			return (-1);
 		if (context->stdout_fd != STDOUT_FILENO)
@@ -57,15 +57,12 @@ int		ms_handle_redirections(t_ast_node *node, t_exec_context *context)
 	}
 	else if (node->type == NODE_REDIRECT_HEREDOC)
 	{
-		fd = ms_heredoc_mode(redir_node->filename);
-		if (fd == -1)
+		if (ms_heredoc_mode(redir_node->filename, context, context->shell->gcl))
 		{
 			ft_dprintf(STDERR_FILENO, "Minishell: Error: heredoc failed.\n");
+			context->stdin_fd = g_signal;
 			return (-1);
 		}
-		if (context->stdin_fd != STDIN_FILENO)
-			close(context->stdin_fd);
-		context->stdin_fd = fd;
 	}
 	else
 	{

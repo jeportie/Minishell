@@ -6,12 +6,15 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/02 23:35:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/03 17:55:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXEC_H
 # define EXEC_H
+
+# define HEREDOC_TMP_FILE ".heredoc_tmp"
+# define COPY_MODE 0644
 
 # include "ast.h"
 # include "minishell.h"
@@ -65,8 +68,9 @@ char	*ms_parse_cmd_path(const char *command, t_shell *shell);
 char	*ms_concat_path(const char *path, const char *command, t_gc *gcl);
 char	*ms_getenv(const char *name, t_env_data *env_data);
 
-int		ms_handle_error(const char *msg); //returns 1
-bool	ms_is_builtin(const char *cmd);
-int		ms_heredoc_mode(char *filename);
+int		ms_handle_error(const char *msg, t_gc *gcl); //returns 1
+int		ms_heredoc_mode(const char *delimiter, t_exec_context *context, t_gc *gcl);
+char	**ms_expand_wild(const char *pattern, t_gc *gcl);
+char	**ms_expand_var(const char *pattern, t_gc *gcl);
 
 #endif /* EXEC_H */

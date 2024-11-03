@@ -244,6 +244,7 @@ COMPILER_VERSION_TWEAK	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompil
 COMPILER_VERSION_TWEAK	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	393;"	d	file:
 COMPILER_VERSION_TWEAK	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	403;"	d	file:
 COMPILER_VERSION_TWEAK	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	51;"	d	file:
+COPY_MODE	include/exec.h	17;"	d
 C_VERSION	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	817;"	d	file:
 C_VERSION	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	819;"	d	file:
 C_VERSION	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	822;"	d	file:
@@ -266,6 +267,7 @@ EXEC_H	include/exec.h	14;"	d
 FlagsForFile	ycm_extra_conf.py	/^def FlagsForFile(filename):$/;"	f
 GREEN	Makefile	/^GREEN   = \\033[32m$/;"	m
 HELG	Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
+HEREDOC_TMP_FILE	include/exec.h	16;"	d
 HEX	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	745;"	d	file:
 ID_VOID_MAIN	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
 INCLUDES	Makefile	/^INCLUDES = -I.\/include -I.\/lib\/libgc\/include -I.\/lib\/libft\/include$/;"	m
@@ -656,10 +658,15 @@ get_left_child	src/ast/print_ast.c	/^t_ast_node	*get_left_child(t_ast_node *node
 get_node_label	src/ast/print_ast.c	/^char	*get_node_label(t_ast_node *node)$/;"	f
 get_operator_map	src/token/tokenize_operator.c	/^static const t_operator_map	*get_operator_map(void)$/;"	f	file:
 get_right_child	src/ast/print_ast.c	/^t_ast_node	*get_right_child(t_ast_node *node)$/;"	f
+handle_braced_variable	src/exec/ms_expand_var.c	/^static char	*handle_braced_variable(const char *token, size_t *i, t_env_data *env_data, char *result)$/;"	f	file:
+handle_dollar_at_end	src/exec/ms_expand_var.c	/^static char	*handle_dollar_at_end(char *result)$/;"	f	file:
+handle_exit_status	src/exec/ms_expand_var.c	/^static char	*handle_exit_status(char *result, t_env_data *env_data)$/;"	f	file:
 handle_in_quote	src/token/tokenize_word.c	/^static void	handle_in_quote(t_copy_state *state)$/;"	f	file:
 handle_in_quote	src/token/tokenize_word_helper.c	/^static void	handle_in_quote(t_token_state *state)$/;"	f	file:
 handle_not_in_quote	src/token/tokenize_word.c	/^static void	handle_not_in_quote(t_copy_state *state)$/;"	f	file:
 handle_not_in_quote	src/token/tokenize_word_helper.c	/^static void	handle_not_in_quote(t_token_state *state)$/;"	f	file:
+handle_regular_characters	src/exec/ms_expand_var.c	/^static char	*handle_regular_characters(const char *token, size_t *i, char *result)$/;"	f	file:
+handle_variable	src/exec/ms_expand_var.c	/^static char	*handle_variable(const char *token, size_t *i, t_env_data *env_data, char *result)$/;"	f	file:
 head	lib/libgc/include/libgc.h	/^	t_gc_node	*head;$/;"	m	struct:s_garbage_collector
 help_word	src/token/tokenize_word.c	/^t_token	*help_word(char *value, t_gc *gcl, bool is_expand)$/;"	f
 helper	lib/libgc/src/gc_realloc.c	/^static void	*helper(t_gc_node *current, void *ptr, size_t size, t_gc *gcl)$/;"	f	file:
@@ -748,10 +755,15 @@ ms_execute_external	src/exec/ms_execute_external.c	/^int	ms_execute_external(t_c
 ms_execute_logical	src/exec/ms_execute_logical.c	/^int	ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,$/;"	f
 ms_execute_pipeline	src/exec/ms_execute_pipeline.c	/^int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context)$/;"	f
 ms_execute_subshell	src/exec/ms_execute_subshell.c	/^int	ms_execute_subshell(t_subshell_node *subshell_node, t_exec_context *context)$/;"	f
+ms_expand_variables	src/exec/ms_expand_var.c	/^char	*ms_expand_variables(const char *token, t_env_data *env_data)$/;"	f
+ms_expand_wild	src/exec/ms_expand_wild.c	/^char	**ms_expand_wild(const char *pattern, t_gc *gcl)$/;"	f
 ms_get_user_input	src/init_shell/ms_get_user_input.c	/^void	ms_get_user_input(t_shell *shell)$/;"	f
 ms_getenv	src/exec/ms_getenv.c	/^char	*ms_getenv(const char *name, t_env_data *env_data)$/;"	f
+ms_handle_error	src/exec/ms_handle_error.c	/^int	ms_handle_error(const char *msg, t_gc *gcl)$/;"	f
 ms_handle_redirections	src/exec/ms_execute_redirections.c	/^int		ms_handle_redirections(t_ast_node *node, t_exec_context *context)$/;"	f
-ms_heredoc_mode	src/exec/ms_heredoc_mode.c	/^int	ms_heredoc_mode(char *filename)$/;"	f
+ms_heredoc_child	src/exec/ms_heredoc_mode.c	/^static void	ms_heredoc_child(const char *delimiter, int write_fd)$/;"	f	file:
+ms_heredoc_mode	src/exec/ms_heredoc_mode.c	/^int	ms_heredoc_mode(const char *delimiter, t_exec_context *context, t_gc *gcl)$/;"	f
+ms_heredoc_parent	src/exec/ms_heredoc_mode.c	/^static int	ms_heredoc_parent(pid_t pid, int read_fd, t_exec_context *context,$/;"	f	file:
 ms_init_env	src/init_shell/ms_init_env.c	/^t_env_data	*ms_init_env(char **envp, t_shell *shell)$/;"	f
 ms_init_env_suite	test_src/init_shell/test_ms_init_env.c	/^Suite *ms_init_env_suite(void)$/;"	f
 ms_init_shell	src/init_shell/ms_init_shell.c	/^t_shell	ms_init_shell(int argc, char **argv, char **envp)$/;"	f
@@ -762,6 +774,7 @@ ms_open_file	src/exec/ms_execute_redirections.c	/^static int	ms_open_file(const 
 ms_parent_process	src/exec/ms_execute_external.c	/^static void	ms_parent_process(pid_t pid, t_exec_context *context)$/;"	f	file:
 ms_parse_cmd_path	src/exec/ms_parse_cmd_path.c	/^char	*ms_parse_cmd_path(const char *command, t_shell *shell)$/;"	f
 ms_parse_tokens	src/ast/ms_parse_tokens.c	/^t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)$/;"	f
+ms_pattern_match	src/exec/ms_expand_wild.c	/^bool	ms_pattern_match(const char *pattern, const char *filename)$/;"	f
 ms_redirect_input	src/exec/ms_execute_external.c	/^void	ms_redirect_input(int in_fd)$/;"	f
 ms_redirect_output	src/exec/ms_execute_external.c	/^void	ms_redirect_output(int out_fd)$/;"	f
 ms_stop_std_signal	src/signal/ms_stop_std_signal.c	/^void	ms_stop_std_signal(void)$/;"	f
