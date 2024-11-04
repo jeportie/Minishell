@@ -6,9 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:49:03 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 17:17:41 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 23:35:37 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../../include/exec.h"
+#include "../../include/minishell.h"
 
 #include "../../include/exec.h"
 #include "../../include/minishell.h"
@@ -17,12 +20,36 @@ static void	ms_heredoc_child(const char *delimiter, int write_fd)
 {
 	char	*line;
 	size_t	len;
-	t_gc	*child_gcl;
+	int		tty_fd;
 
-	child_gcl = gc_init();
+	// Reset signal handlers
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_IGN);
+
+	// Open /dev/tty to ensure reading from the terminal
+	tty_fd = open("/dev/tty", O_RDONLY);
+	if (tty_fd == -1)
+	{
+		perror("minishell: Unable to open /dev/tty");
+		close(write_fd);
+		exit(EXIT_FAILURE);
+	}
+
+	// Duplicate tty_fd to STDIN_FILENO
+	if (dup2(tty_fd, STDIN_FILENO) == -1)
+	{
+		perror("minishell: dup2 failed");
+		close(tty_fd);
+		close(write_fd);
+		exit(EXIT_FAILURE);
+	}
+	close(tty_fd); // Close the now-duplicated tty_fd
+
 	len = ft_strlen(delimiter);
+
+	// Remove or modify this debug print to avoid confusion
+	// printf("Heredoc child exiting with status 0\n");
+
 	while (1)
 	{
 		write(STDOUT_FILENO, "> ", 2);
@@ -38,18 +65,17 @@ static void	ms_heredoc_child(const char *delimiter, int write_fd)
 		free(line);
 	}
 	close(write_fd);
-	gc_cleanup(child_gcl);
 	exit(0);
 }
 
-static int	ms_heredoc_parent(pid_t pid, int read_fd, t_exec_context *context,
+static int	ms_heredoc_parent(pid_t pid, int fd[2], t_exec_context *context,
 	t_gc *gcl)
 {
 	int	status;
 	int	exit_status;
 	int	sig;
 
-	close(read_fd + 1);
+	close(fd[1]);
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
 		exit_status = WEXITSTATUS(status);
@@ -60,15 +86,16 @@ static int	ms_heredoc_parent(pid_t pid, int read_fd, t_exec_context *context,
 		if (sig == SIGINT)
 			g_signal = 130;
 	}
+	context->exit_status = exit_status;
 	if (exit_status != 0)
 	{
-		close(read_fd);
+		close(fd[0]);
 		context->exit_status = exit_status;
 		return (-1);
 	}
 	if (context->stdin_fd != STDIN_FILENO)
 		close(context->stdin_fd);
-	context->stdin_fd = read_fd;
+	context->stdin_fd = fd[0];
 	gc_fd_register(context->stdin_fd, gcl);
 	return (0);
 }
@@ -92,6 +119,6 @@ int	ms_heredoc_mode(const char *delimiter, t_exec_context *context, t_gc *gcl)
 	else if (pid == 0)
 		ms_heredoc_child(delimiter, pipefd[1]);
 	else
-		return (ms_heredoc_parent(pid, pipefd[0], context, gcl));
+		ms_heredoc_parent(pid, pipefd, context, gcl);
 	return (0);
 }
