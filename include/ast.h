@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:45:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 08:49:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:01:27 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl);
 t_ast_node	*create_pipe_node(t_ast_node *left, t_ast_node *right, t_gc *gcl);
 t_ast_node	*create_redirect_node(t_node_type type, t_ast_node *child,
 				char *filename, t_gc *gcl);
-t_ast_node	*create_heredoc_node(t_ast_node *child, char *delimiter, t_gc *gcl);
+t_ast_node	*create_heredoc_node(t_node_type type, t_ast_node *child,
+				char *delimiter, t_gc *gcl);
 t_ast_node	*create_logical_node(t_node_type type, t_ast_node *left,
 				t_ast_node *right, t_gc *gcl);
 t_ast_node	*create_subshell_node(t_ast_node *child, t_gc *gcl);

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:59:50 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/29 13:04:37 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:00:24 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child,
 		filename = (*current_token)->token;
 		*current_token = (*current_token)->next;
 		if (redir_type == NODE_REDIRECT_HEREDOC)
-			child = create_heredoc_node(child, filename, gcl);
+			child = create_heredoc_node(redir_type, child, filename, gcl);
 		else
 			child = create_redirect_node(redir_type, child, filename, gcl);
 		if (!child)

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:58:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/29 15:41:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:03:47 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,14 @@ t_ast_node	*create_redirect_node(t_node_type type, t_ast_node *child,
 	return (node);
 }
 
-t_ast_node	*create_heredoc_node(t_ast_node *child, char *delimiter, t_gc *gcl)
+t_ast_node	*create_heredoc_node(t_node_type type, t_ast_node *child,
+	char *delimiter, t_gc *gcl)
 {
 	t_ast_node	*node;
 
 	node = (t_ast_node *)gc_malloc(sizeof(t_ast_node), gcl);
 	gc_lock(node, gcl);
-	node->type = NODE_REDIRECT_HEREDOC;
+	node->type = type;
 	node->data.heredoc.child = child;
 	node->data.heredoc.delimiter = delimiter;
 	return (node);

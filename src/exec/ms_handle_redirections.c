@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 17:17:17 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:09:34 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int	ms_open_file(const char *filename, int flags, mode_t mode)
 {
 	int	fd;
 
-	printf("Filename: %s.\n", filename);
 	fd = open(filename, flags, mode);
 	if (fd == -1)
 		ft_dprintf(STDERR_FILENO, "Minishell: Error: open failed.\n");
@@ -28,7 +27,6 @@ int		ms_handle_redirections(t_ast_node *node, t_exec_context *context)
 	int				fd;
 	t_redirect_node	*redir_node;
 
-	printf("node type: %d\n", node->type);
 	redir_node = &node->data.redirect;
 	if (node->type == 2)
 	{
