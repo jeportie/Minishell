@@ -6,13 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:21:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 13:22:37 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:59:21 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtin.h"
 
-/*static int	ft_is_n(char *str)
+static int	ft_is_n(char *str)
 {
 	int	i;
 
@@ -44,7 +44,7 @@ static int	ft_echo_utils(int i, int j, char **cmd, int *error)
 		if (error_w < 0)
 		{
 			ft_dprintf(2, "minishell: echo: write error:"
-				" no space left on device\n", NULL, NULL);
+				" no space left on device\n");
 			*error = 1;
 			return (1);
 		}
@@ -55,7 +55,36 @@ static int	ft_echo_utils(int i, int j, char **cmd, int *error)
 	return (i);
 }
 
-int	ft_echo(t_tok *tmp)
+int	ms_echo(t_cmd_node *cmd_node)
+{
+	int (i) = 0;
+	int (trigger) = 0;
+	int (flag) = 0;
+	int (j) = 0;
+	int (error)[] = {0};
+	if (cmd_node->argc > 1)
+	{
+		while (cmd_node->argv[++j])
+		{
+			i = 0;
+			if (trigger < 2 && ft_is_n(cmd_node->argv[j]))
+			{
+				flag++;
+				trigger = 1;
+			}
+			else
+			{
+				trigger = 2;
+				i = ft_echo_utils(i, j, cmd_node->argv, error);
+			}
+		}
+	}
+	if (flag == 0 && *error == 0)
+		ft_dprintf(1, "\n");
+	return (0);
+}
+
+/*int	ft_echo(t_tok *tmp)
 {
 	int (i) = 0;
 	int (trigger) = 0;

@@ -195,8 +195,23 @@ execute_and_capture	test_src/syntax_error/test_ms_syntax_error.c	/^static t_test
 exit_code	test_src/syntax_error/test_ms_syntax_error.c	/^    int exit_code;$/;"	m	struct:s_testresult	file:
 exit_status	include/exec.h	/^	int			exit_status;$/;"	m	struct:s_exec_context
 filename	include/ast.h	/^	char				*filename;$/;"	m	struct:s_redirect_node
+flag	src/builtin/ms_export.c	/^	int		flag;$/;"	m	struct:s_export_utils	file:
 flags	ycm_extra_conf.py	/^flags = [$/;"	v
 free_env_list	test_src/env_lst_utils/test_ms_env_add_back.c	/^void free_env_list(t_env *env) {$/;"	f
+ft_atoll_safe	src/builtin/ms_exit.c	/^static long long	ft_atoll_safe(const char *str, int *error)$/;"	f	file:
+ft_echo_utils	src/builtin/ms_echo.c	/^static int	ft_echo_utils(int i, int j, char **cmd, int *error)$/;"	f	file:
+ft_env	src/builtin/ms_env.c	/^int	ft_env(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
+ft_extract_folder	src/builtin/ms_export.c	/^static char	*ft_extract_folder(t_shell *shell, char *cmd)$/;"	f	file:
+ft_extract_value	src/builtin/ms_export.c	/^static char	*ft_extract_value(t_shell *shell, char *cmd, int size, char *folder)$/;"	f	file:
+ft_first_arg	src/builtin/ms_env.c	/^static char	*ft_first_arg(char **strs)$/;"	f	file:
+ft_is_n	src/builtin/ms_echo.c	/^static int	ft_is_n(char *str)$/;"	f	file:
+ft_numeric_code	src/builtin/ms_exit.c	/^int	ft_numeric_code(char *str)$/;"	f
+ft_order_env	src/builtin/ms_export.c	/^void	ft_order_env(t_exec_context *context)$/;"	f
+ft_print_env	src/builtin/ms_env.c	/^static int	ft_print_env(t_env *env)$/;"	f	file:
+ft_print_order	src/builtin/ms_export.c	/^void	ft_print_order(t_exec_context *context)$/;"	f
+ft_valid_numeric_code	src/builtin/ms_exit.c	/^int	ft_valid_numeric_code(char *str)$/;"	f
+ft_valide_var	src/builtin/ms_export.c	/^static int	ft_valide_var(char *input)$/;"	f	file:
+ft_whithout_minus	src/builtin/ms_env.c	/^static char	*ft_whithout_minus(char *str)$/;"	f	file:
 g_garbage_collector	test_src/syntax_error/test_ms_syntax_error.c	/^static t_gc *g_garbage_collector;  \/\/ Déclaration globale du garbage collector$/;"	v	file:
 g_signal	src/global.c	/^int	g_signal;$/;"	v
 gcl	include/minishell.h	/^	t_gc		*gcl;$/;"	m	struct:s_shell
@@ -272,6 +287,7 @@ mock_readline	test_src/init_shell/test_ms_get_user_input.c	/^char	*mock_readline
 ms_check_alloc	src/exec/ms_concat_path.c	/^static void	ms_check_alloc(void *ptr, t_gc *gcl)$/;"	f	file:
 ms_child_process	src/exec/ms_execute_external.c	/^static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,$/;"	f	file:
 ms_concat_path	src/exec/ms_concat_path.c	/^char	*ms_concat_path(const char *path, const char *command, t_gc *gcl)$/;"	f
+ms_echo	src/builtin/ms_echo.c	/^int	ms_echo(t_cmd_node *cmd_node)$/;"	f
 ms_env_add_back	src/env_lst_utils/ms_env_add_back.c	/^void	ms_env_add_back(t_env **env, t_env *new_node)$/;"	f
 ms_env_create_node	src/env_lst_utils/ms_env_create_node.c	/^t_env	*ms_env_create_node(t_shell *shell, const char *env_line)$/;"	f
 ms_execute_ast	src/exec/ms_execute_ast.c	/^int	ms_execute_ast(t_ast_node *node, t_exec_context *context)$/;"	f
@@ -280,8 +296,11 @@ ms_execute_external	src/exec/ms_execute_external.c	/^int	ms_execute_external(t_c
 ms_execute_logical	src/exec/ms_execute_logical.c	/^int	ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,$/;"	f
 ms_execute_pipeline	src/exec/ms_execute_pipeline.c	/^int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context)$/;"	f
 ms_execute_subshell	src/exec/ms_execute_subshell.c	/^int	ms_execute_subshell(t_subshell_node *subshell_node, t_exec_context *context)$/;"	f
+ms_exit	src/builtin/ms_exit.c	/^int	ms_exit(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
+ms_exit_code	src/builtin/ms_exit.c	/^void	ms_exit_code(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
 ms_expand_variables	src/exec/ms_expand_var.c	/^char	*ms_expand_variables(const char *token, t_env_data *env_data)$/;"	f
 ms_expand_wild	src/exec/ms_expand_wild.c	/^char	**ms_expand_wild(const char *pattern, t_gc *gcl)$/;"	f
+ms_export	src/builtin/ms_export.c	/^int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
 ms_get_user_input	src/init_shell/ms_get_user_input.c	/^void	ms_get_user_input(t_shell *shell)$/;"	f
 ms_getenv	src/exec/ms_getenv.c	/^char	*ms_getenv(const char *name, t_env_data *env_data)$/;"	f
 ms_handle_error	src/exec/ms_handle_error.c	/^int	ms_handle_error(const char *msg, t_gc *gcl)$/;"	f
@@ -300,6 +319,7 @@ ms_parent_process	src/exec/ms_execute_external.c	/^static void	ms_parent_process
 ms_parse_cmd_path	src/exec/ms_parse_cmd_path.c	/^char	*ms_parse_cmd_path(const char *command, t_shell *shell)$/;"	f
 ms_parse_tokens	src/ast/ms_parse_tokens.c	/^t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)$/;"	f
 ms_pattern_match	src/exec/ms_expand_wild.c	/^bool	ms_pattern_match(const char *pattern, const char *filename)$/;"	f
+ms_pwd	src/builtin/ms_pwd.c	/^int	ms_pwd(void)$/;"	f
 ms_redirect_input	src/exec/ms_execute_external.c	/^void	ms_redirect_input(int in_fd)$/;"	f
 ms_redirect_output	src/exec/ms_execute_external.c	/^void	ms_redirect_output(int out_fd)$/;"	f
 ms_stop_std_signal	src/signal/ms_stop_std_signal.c	/^void	ms_stop_std_signal(void)$/;"	f
@@ -354,6 +374,7 @@ s_copy_state	include/tokenize.h	/^typedef struct s_copy_state$/;"	s
 s_env	include/minishell.h	/^typedef struct s_env$/;"	s
 s_env_data	include/minishell.h	/^typedef struct s_env_data$/;"	s
 s_exec_context	include/exec.h	/^typedef struct s_exec_context$/;"	s
+s_export_utils	src/builtin/ms_export.c	/^typedef struct s_export_utils$/;"	s	file:
 s_heredoc_node	include/ast.h	/^typedef struct s_heredoc_node$/;"	s
 s_logic_node	include/ast.h	/^typedef struct s_logic_node$/;"	s
 s_op_state	include/tokenize.h	/^typedef struct s_op_state$/;"	s
@@ -374,6 +395,7 @@ setup	test_src/syntax_error/test_ms_syntax_error.c	/^static void setup(void)$/;"
 setup	test_src/token/test_ms_tokenize.c	/^void    setup(void)$/;"	f
 shell	include/exec.h	/^	t_shell		*shell;$/;"	m	struct:s_exec_context
 shell	include/minishell.h	/^	char	*shell;$/;"	m	struct:s_env_data
+shell	src/builtin/ms_export.c	/^	t_shell	*shell;$/;"	m	struct:s_export_utils	file:
 shell_lvl	include/minishell.h	/^	int		shell_lvl;$/;"	m	struct:s_env_data
 skip_whitespace	src/token/utils.c	/^void	skip_whitespace(const char **input)$/;"	f
 sq_trigger	include/syntax.h	/^	int		sq_trigger;$/;"	m	struct:s_syntax
@@ -385,6 +407,7 @@ st_get_shell	src/init_shell/ms_init_env.c	/^static char	*st_get_shell(t_env_data
 st_get_term	src/init_shell/ms_init_env.c	/^static char	*st_get_term(t_env_data *env_data)$/;"	f	file:
 st_in_par	src/syntax_error/parenthesis_gestion.c	/^static int	st_in_par(t_syntax **syntax)$/;"	f	file:
 st_in_parenthesis	src/syntax_error/parenthesis_gestion.c	/^static int	st_in_parenthesis(t_syntax **syntax)$/;"	f	file:
+st_init_utils	src/builtin/ms_export.c	/^static void	st_init_utils(t_export_utils *utils, t_shell *shell)$/;"	f	file:
 st_is_and	src/syntax_error/check_reinit.c	/^static int	st_is_and(t_syntax **syntax)$/;"	f	file:
 st_line_check	src/syntax_error/ms_syntax_error.c	/^static int	st_line_check(t_syntax *synt)$/;"	f	file:
 st_open_parenthesis	src/syntax_error/parenthesis_gestion.c	/^static int	st_open_parenthesis(t_syntax **syntax)$/;"	f	file:
@@ -410,6 +433,7 @@ t_copy_state	include/tokenize.h	/^}				t_copy_state;$/;"	t	typeref:struct:s_copy
 t_env	include/minishell.h	/^}				t_env;$/;"	t	typeref:struct:s_env
 t_env_data	include/minishell.h	/^}				t_env_data;$/;"	t	typeref:struct:s_env_data
 t_exec_context	include/exec.h	/^}				t_exec_context;$/;"	t	typeref:struct:s_exec_context
+t_export_utils	src/builtin/ms_export.c	/^}				t_export_utils;$/;"	t	typeref:struct:s_export_utils	file:
 t_heredoc_node	include/ast.h	/^}				t_heredoc_node;$/;"	t	typeref:struct:s_heredoc_node
 t_logic_node	include/ast.h	/^}				t_logic_node;$/;"	t	typeref:struct:s_logic_node
 t_node_data	include/ast.h	/^}						t_node_data;$/;"	t	typeref:union:u_node_data
@@ -454,4 +478,6 @@ user_input	include/minishell.h	/^	char		*user_input;$/;"	m	struct:s_shell
 value	include/minishell.h	/^	char			*value;$/;"	m	struct:s_env
 value	include/tokenize.h	/^	char					*value;$/;"	m	struct:s_op_state
 value	include/tokenize.h	/^	char		*value;$/;"	m	struct:s_copy_state
+value	src/builtin/ms_export.c	/^	char	*value;$/;"	m	struct:s_export_utils	file:
 var	include/minishell.h	/^	char			*var;$/;"	m	struct:s_env
+var	src/builtin/ms_export.c	/^	char	*var;$/;"	m	struct:s_export_utils	file:

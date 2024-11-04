@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:25:19 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 13:25:33 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:33:00 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 	current = NULL;
 }
 
-int	ft_unset(t_infos *infos, char **cmd)
+int	ms_unset(t_infos *infos, char **cmd)
 {
 	t_env *(current) = NULL;
 	t_env *(prev) = NULL;

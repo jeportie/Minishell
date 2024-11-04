@@ -6,19 +6,19 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:22:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 13:23:07 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:10:01 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtin.h"
 
-/*static int	ft_print_env(t_env *env)
+static int	ft_print_env(t_env *env)
 {
 	t_env *(tmp) = env;
 	while (tmp)
 	{
-		ft_dprintf(1, tmp->name_folder, "=", tmp->value_folder);
-		ft_dprintf(1, "\n", NULL, NULL);
+		ft_dprintf(1, tmp->var, "=", tmp->value);
+		ft_dprintf(1, "\n");
 		tmp = tmp->next;
 	}
 	return (0);
@@ -54,7 +54,36 @@ static char	*ft_whithout_minus(char *str)
 	return (str);
 }
 
-int	ft_env(t_infos *infos, t_tok *tmp)
+int	ft_env(t_cmd_node *cmd_node, t_exec_context *context)
+{
+	t_env *(env) = context->shell->env_data->env;
+	if (cmd_node->argc == 1)
+		return (ft_print_env(env));
+	if (cmd_node->argv[1][0] == '-')
+	{
+		if (!cmd_node->argv[1][1])
+			return (0);
+		else if (cmd_node->argv[1][1] == '-')
+		{
+			if (!cmd_node->argv[1][2])
+				return (ft_print_env(env));
+			else
+				return (ft_dprintf(2, "env: unrecognized option %s\n'",
+						cmd_node->argv[1]), 125);
+		}
+		else
+		{
+			ft_dprintf(2, "minishel: env: invalid option -- '",
+				ft_whithout_minus(cmd_node->argv[1]), "'\n");
+			return (125);
+		}
+	}
+	ft_dprintf(2, "minishell: env: ‘%s"
+		"’: No such file or directory\n", ft_first_arg(cmd_node->argv));
+	return (127);
+}
+
+/*int	ft_env(t_infos *infos, t_tok *tmp)
 {
 	t_env *(env) = infos->tmp_env;
 	if (!tmp->cmd[1])
