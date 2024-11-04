@@ -6,13 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:11 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 16:54:51 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 22:13:34 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtin.h"
 
-int	ft_numeric_code(char *str)
+static int	st_numeric_code(char *str)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ int	ft_numeric_code(char *str)
 	return (1);
 }
 
-static long long	ft_atoll_safe(const char *str, int *error)
+static long long	st_atoll_safe(const char *str, int *error)
 {
 	long long (result) = 0;
 	long long (n_result) = 0;
@@ -57,22 +57,22 @@ static long long	ft_atoll_safe(const char *str, int *error)
 	return (result * sign);
 }
 
-int	ft_valid_numeric_code(char *str)
+static int	st_valid_numeric_code(char *str)
 {
 	int			error;
 	long long	code;
 
 	error = 0;
-	code = ft_atoll_safe(str, &error);
+	code = st_atoll_safe(str, &error);
 	if (error || code > LONG_MAX || code < LONG_MIN)
 		return (0);
 	return (1);
 }
 
-void	ms_exit_code(t_cmd_node *cmd_node, t_exec_context *context)
+static void	st_exit_code(t_cmd_node *cmd_node, t_exec_context *context)
 {
-	if (ft_numeric_code(cmd_node->argv[1])
-		&& ft_valid_numeric_code(cmd_node->argv[1]))
+	if (st_numeric_code(cmd_node->argv[1])
+		&& st_valid_numeric_code(cmd_node->argv[1]))
 	{
 		ft_dprintf(2, "exit\n");
 		gc_cleanup(context->shell->gcl);
@@ -97,7 +97,7 @@ int	ms_exit(t_cmd_node *cmd_node, t_exec_context *context)
 		exit (context->shell->error_code);
 	}
 	else if (cmd_node->argc == 2)
-		ms_exit_code(cmd_node, context);
+		st_exit_code(cmd_node, context);
 	ft_dprintf(2, "exit\nminishell: exit: too many arguments\n");
 	return (1);
 }

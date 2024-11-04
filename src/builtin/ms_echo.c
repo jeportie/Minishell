@@ -6,13 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:21:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 16:59:21 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 22:16:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtin.h"
 
-static int	ft_is_n(char *str)
+static int	st_is_n(char *str)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ static int	ft_is_n(char *str)
 	return (0);
 }
 
-static int	ft_echo_utils(int i, int j, char **cmd, int *error)
+static int	st_echo_utils(int i, int j, char **cmd, int *error)
 {
 	int	error_w;
 
@@ -67,7 +67,7 @@ int	ms_echo(t_cmd_node *cmd_node)
 		while (cmd_node->argv[++j])
 		{
 			i = 0;
-			if (trigger < 2 && ft_is_n(cmd_node->argv[j]))
+			if (trigger < 2 && st_is_n(cmd_node->argv[j]))
 			{
 				flag++;
 				trigger = 1;
@@ -75,7 +75,7 @@ int	ms_echo(t_cmd_node *cmd_node)
 			else
 			{
 				trigger = 2;
-				i = ft_echo_utils(i, j, cmd_node->argv, error);
+				i = st_echo_utils(i, j, cmd_node->argv, error);
 			}
 		}
 	}

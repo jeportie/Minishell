@@ -6,25 +6,24 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:22:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 17:10:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 22:15:59 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtin.h"
 
-static int	ft_print_env(t_env *env)
+static int	st_print_env(t_env *env)
 {
 	t_env *(tmp) = env;
 	while (tmp)
 	{
-		ft_dprintf(1, tmp->var, "=", tmp->value);
-		ft_dprintf(1, "\n");
+		ft_dprintf(1, "%s=%s\n", tmp->var, tmp->value);
 		tmp = tmp->next;
 	}
 	return (0);
 }
 
-static char	*ft_first_arg(char **strs)
+static char	*st_first_arg(char **strs)
 {
 	int (i) = 1;
 	int (j) = 0;
@@ -42,7 +41,7 @@ static char	*ft_first_arg(char **strs)
 	return (strs[i - 1]);
 }
 
-static char	*ft_whithout_minus(char *str)
+static char	*st_whithout_minus(char *str)
 {
 	int (i) = 0;
 	while (str[i + 1])
@@ -54,11 +53,11 @@ static char	*ft_whithout_minus(char *str)
 	return (str);
 }
 
-int	ft_env(t_cmd_node *cmd_node, t_exec_context *context)
+int	ms_env(t_cmd_node *cmd_node, t_exec_context *context)
 {
 	t_env *(env) = context->shell->env_data->env;
 	if (cmd_node->argc == 1)
-		return (ft_print_env(env));
+		return (st_print_env(env));
 	if (cmd_node->argv[1][0] == '-')
 	{
 		if (!cmd_node->argv[1][1])
@@ -66,20 +65,20 @@ int	ft_env(t_cmd_node *cmd_node, t_exec_context *context)
 		else if (cmd_node->argv[1][1] == '-')
 		{
 			if (!cmd_node->argv[1][2])
-				return (ft_print_env(env));
+				return (st_print_env(env));
 			else
 				return (ft_dprintf(2, "env: unrecognized option %s\n'",
 						cmd_node->argv[1]), 125);
 		}
 		else
 		{
-			ft_dprintf(2, "minishel: env: invalid option -- '",
-				ft_whithout_minus(cmd_node->argv[1]), "'\n");
+			ft_dprintf(2, "minishel: env: invalid option -- \'%s\'\n",
+				st_whithout_minus(cmd_node->argv[1]));
 			return (125);
 		}
 	}
 	ft_dprintf(2, "minishell: env: ‘%s"
-		"’: No such file or directory\n", ft_first_arg(cmd_node->argv));
+		"’: No such file or directory\n", st_first_arg(cmd_node->argv));
 	return (127);
 }
 
