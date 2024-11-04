@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/02 22:24:50 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:37:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ms_execute_ast(t_ast_node *node, t_exec_context *context)
 	}
 	else
 	{
-		ms_handle_error("Unsupported node type");
+		ms_handle_error("Unsupported node type", context->shell->gcl);
 		return (-1);
 	}
 }

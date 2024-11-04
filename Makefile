@@ -18,11 +18,29 @@ SRC = \
   src/env_lst_utils/ms_env_add_back.c \
   src/env_lst_utils/ms_env_create_node.c \
   src/global.c \
-  src/init_shell/ms_get_user_input.c \
   src/init_shell/ms_init_env.c \
   src/init_shell/ms_init_shell.c \
+  src/init_shell/ms_get_user_input.c \
   src/signal/ms_init_std_signal.c \
   src/signal/ms_stop_std_signal.c \
+  src/ast/create_node.c \
+  src/ast/parse_redirection.c \
+  src/ast/parse_subshell.c \
+  src/ast/print_ast.c \
+  src/ast/utils.c \
+  src/ast/utils2.c \
+  src/ast/ms_parse_tokens.c \
+  src/ast/parse_pipeline.c \
+  src/ast/parse_logical.c \
+  src/ast/create_command_node.c \
+  src/ast/parse_command.c \
+  src/token/lst_tokens.c \
+  src/token/ms_tokenize.c \
+  src/token/tokenize_frame.c \
+  src/token/tokenize_operator.c \
+  src/token/tokenize_word.c \
+  src/token/tokenize_word_helper.c \
+  src/token/utils.c \
   src/syntax_error/check_error.c \
   src/syntax_error/check_reinit.c \
   src/syntax_error/ms_syntax_error.c \
@@ -30,24 +48,21 @@ SRC = \
   src/syntax_error/parenthesis_gestion.c \
   src/syntax_error/quote_gestion.c \
   src/syntax_error/redir_gestion.c \
-  src/ast/create_command_node.c \
-  src/ast/create_node.c \
-  src/ast/ms_parse_tokens.c \
-  src/ast/parse_command.c \
-  src/ast/parse_logical.c \
-  src/ast/parse_pipeline.c \
-  src/ast/parse_redirection.c \
-  src/ast/parse_subshell.c \
-  src/ast/print_ast.c \
-  src/ast/utils.c \
-  src/ast/utils2.c \
-  src/token/lst_tokens.c \
-  src/token/ms_tokenize.c \
-  src/token/tokenize_frame.c \
-  src/token/tokenize_operator.c \
-  src/token/tokenize_word.c \
-  src/token/tokenize_word_helper.c \
-  src/token/utils.c 
+  src/exec/ms_execute_pipeline.c \
+  src/exec/ms_expand_wild.c \
+  src/exec/ms_handle_error.c \
+  src/exec/ms_execute_ast.c \
+  src/exec/ms_execute_subshell.c \
+  src/exec/ms_expand_var.c \
+  src/exec/ms_execute_command.c \
+  src/exec/ms_heredoc_mode.c \
+  src/exec/ms_handle_redirections.c \
+  src/exec/ms_execute_external.c \
+  src/exec/ms_getenv.c \
+  src/exec/ms_parse_cmd_path.c \
+  src/exec/ms_get_envp.c \
+  src/exec/ms_concat_path.c \
+  src/exec/ms_execute_logical.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #

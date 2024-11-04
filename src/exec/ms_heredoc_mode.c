@@ -6,11 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:49:03 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/03 16:32:03 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:17:41 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
+#include "../../include/minishell.h"
 
 static void	ms_heredoc_child(const char *delimiter, int write_fd)
 {
@@ -24,7 +25,7 @@ static void	ms_heredoc_child(const char *delimiter, int write_fd)
 	len = ft_strlen(delimiter);
 	while (1)
 	{
-		write(STDOUT_FILENO, "heredoc> ", 9);
+		write(STDOUT_FILENO, "> ", 2);
 		line = get_next_line(STDIN_FILENO);
 		if (!line)
 			break ;

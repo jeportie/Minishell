@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 17:30:06 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/03 17:33:58 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 12:13:23 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,40 +19,40 @@ static char	*handle_dollar_at_end(char *result)
 	return (ft_strjoin_free(result, ft_strdup("$")));
 }
 
-static char	*handle_exit_status(char *result, t_env_data *env_data)
-{
-	char	*exit_status;
+//static char	*handle_exit_status(char *result, t_env_data *env_data)
+//{
+//	char	*exit_status;
 
-	exit_status = ft_itoa(env_data->last_exit_status);
-	return (ft_strjoin_free(result, exit_status));
-}
+//	exit_status = ft_itoa(env_data->las);
+//	return (ft_strjoin_free(result, exit_status));
+//}
 
-static char	*handle_braced_variable(const char *token, size_t *i, t_env_data *env_data, char *result)
-{
-	size_t	start;
-	char	*var_name;
-	char	*var_value;
-
-	start = ++(*i);
-	while (token[*i] && token[*i] != '}')
-		(*i)++;
-	if (token[*i] == '}')
-	{
-		var_name = ft_substr(token, start, *i - start);
-		var_value = ms_getenv(var_name, env_data);
-		result = ft_strjoin_free(result, ft_strdup(var_value ? var_value : ""));
-		free(var_name);
-		(*i)++;
-	}
-	else
-	{
-		ms_handle_error("Minishell: unmatched '{'\n", NULL);
-		free(result);
-		return (NULL);
-	}
-	return (result);
-}
-
+//static char	*handle_braced_variable(const char *token, size_t *i, t_env_data *env_data, char *result)
+//{
+//	size_t	start;
+//	char	*var_name;
+//	char	*var_value;
+//
+//	start = ++(*i);
+//	while (token[*i] && token[*i] != '}')
+//		(*i)++;
+//	if (token[*i] == '}')
+//	{
+//		var_name = ft_substr(token, start, *i - start);
+//		var_value = ms_getenv(var_name, env_data);
+//		result = ft_strjoin_free(result, ft_strdup(var_value ? var_value : ""));
+//		free(var_name);
+//		(*i)++;
+//	}
+//	else
+//	{
+//		ms_handle_error("Minishell: unmatched '{'\n", NULL);
+//		free(result);
+//		return (NULL);
+//	}
+//	return (result);
+//}
+//
 static char	*handle_variable(const char *token, size_t *i, t_env_data *env_data, char *result)
 {
 	size_t	start;
@@ -99,10 +99,10 @@ char	*ms_expand_variables(const char *token, t_env_data *env_data)
 				result = handle_dollar_at_end(result);
 				break ;
 			}
-			else if (token[i] == '?')
-				result = handle_exit_status(result, env_data);
-			else if (token[i] == '{')
-				result = handle_braced_variable(token, &i, env_data, result);
+//			else if (token[i] == '?')
+//				result = handle_exit_status(result, env_data);
+//			else if (token[i] == '{')
+//				result = handle_braced_variable(token, &i, env_data, result);
 			else
 				result = handle_variable(token, &i, env_data, result);
 			if (!result)

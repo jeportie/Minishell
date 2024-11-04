@@ -6,14 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/03 17:55:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 12:45:39 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXEC_H
 # define EXEC_H
 
-# define HEREDOC_TMP_FILE ".heredoc_tmp"
 # define COPY_MODE 0644
 
 # include "ast.h"
@@ -63,7 +62,7 @@ int		ms_execute_logical(t_logic_node *logic_node, t_exec_context *context, t_nod
 int		ms_execute_subshell(t_subshell_node *subshell_node, t_exec_context *context);
 int		ms_handle_redirections(t_ast_node *node, t_exec_context *context);
 
-char	**ms_get_envp(t_env_data *env_data);
+char	**ms_get_envp(t_env *env, t_gc *gcl);
 char	*ms_parse_cmd_path(const char *command, t_shell *shell);
 char	*ms_concat_path(const char *path, const char *command, t_gc *gcl);
 char	*ms_getenv(const char *name, t_env_data *env_data);

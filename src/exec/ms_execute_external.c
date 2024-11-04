@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/01 14:41:22 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:07:58 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 		ms_redirect_input(context->stdin_fd);
 	if (context->stdout_fd != STDOUT_FILENO)
 		ms_redirect_output(context->stdout_fd);
-	envp = ms_get_envp(context->shell->env_data);
+	envp = ms_get_envp(context->shell->env_data->env, context->shell->gcl);
 	if (!envp)
 	{
 		perror("minishell: memory allocation error");

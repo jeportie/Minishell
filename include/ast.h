@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:45:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/31 13:52:12 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 08:49:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_cmd_node
 {
 	char	**argv;
 	int		argc;
+	bool	is_expand;
 }				t_cmd_node;
 
 typedef struct s_pipe_node

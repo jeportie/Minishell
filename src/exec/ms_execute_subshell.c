@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:47:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/02 23:07:54 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/04 12:06:59 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ms_execute_subshell(t_subshell_node *subshell_node, t_exec_context *context)
 	child_context = *context;
 	pid = fork();
 	if (pid < 0)
-		return (ms_handle_error("Minishell: Error: fork failed\n"));
+		return (ms_handle_error("Minishell: Error: fork failed\n", NULL));
 	if (pid == 0)
 	{
 		child_context.is_subprocess = true;
