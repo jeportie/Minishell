@@ -6,12 +6,9 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:49:03 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 23:35:37 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:06:12 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../../include/exec.h"
-#include "../../include/minishell.h"
 
 #include "../../include/exec.h"
 #include "../../include/minishell.h"
@@ -20,30 +17,41 @@ static void	ms_heredoc_child(const char *delimiter, int write_fd)
 {
 	char	*line;
 	size_t	len;
-	int		tty_fd;
+	int		tty_read_fd;
+	int		tty_write_fd;
 
 	// Reset signal handlers
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_IGN);
 
-	// Open /dev/tty to ensure reading from the terminal
-	tty_fd = open("/dev/tty", O_RDONLY);
-	if (tty_fd == -1)
+	// Open /dev/tty for reading
+	tty_read_fd = open("/dev/tty", O_RDONLY);
+	if (tty_read_fd == -1)
 	{
 		perror("minishell: Unable to open /dev/tty");
 		close(write_fd);
 		exit(EXIT_FAILURE);
 	}
-
-	// Duplicate tty_fd to STDIN_FILENO
-	if (dup2(tty_fd, STDIN_FILENO) == -1)
+	// Open /dev/tty for writing
+	tty_write_fd = open("/dev/tty", O_WRONLY);
+	if (tty_write_fd == -1)
 	{
-		perror("minishell: dup2 failed");
-		close(tty_fd);
+		perror("minishell: Unable to open /dev/tty");
+		close(tty_read_fd);
 		close(write_fd);
 		exit(EXIT_FAILURE);
 	}
-	close(tty_fd); // Close the now-duplicated tty_fd
+
+	// Duplicate tty_fd to STDIN_FILENO
+	if (dup2(tty_read_fd, STDIN_FILENO) == -1)
+	{
+		ft_dprintf(STDERR_FILENO, "minishell: dup2 failed");
+		close(tty_read_fd);
+		close(tty_write_fd);
+		close(write_fd);
+		exit(EXIT_FAILURE);
+	}
+	close(tty_read_fd); // Close the now-duplicated tty_fd
 
 	len = ft_strlen(delimiter);
 
@@ -52,7 +60,13 @@ static void	ms_heredoc_child(const char *delimiter, int write_fd)
 
 	while (1)
 	{
-		write(STDOUT_FILENO, "> ", 2);
+		if (write(tty_write_fd, "> ", 2) == -1)
+		{
+			ft_dprintf(STDERR_FILENO, "minishell: write to tty failed\n");
+			close(tty_write_fd);
+			close(write_fd);
+			exit(EXIT_FAILURE);
+		}
 		line = get_next_line(STDIN_FILENO);
 		if (!line)
 			break ;
@@ -61,9 +75,16 @@ static void	ms_heredoc_child(const char *delimiter, int write_fd)
 			free(line);
 			break ;
 		}
-		write(write_fd, line, ft_strlen(line));
+		if (write(write_fd, line, ft_strlen(line)) == -1)
+		{
+			ft_dprintf(STDERR_FILENO, "minishell: error: write to pipe failed\n");
+			close(tty_write_fd);
+			close(write_fd);
+			exit(EXIT_FAILURE);
+		}
 		free(line);
 	}
+	close(tty_write_fd);
 	close(write_fd);
 	exit(0);
 }
