@@ -6,11 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:35:57 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 21:47:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:16:36 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtin.h"
+#include "../../include/builtins.h"
 
 void	add_cat(t_env *current, t_env *tmp, int flag)
 {

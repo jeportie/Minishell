@@ -6,11 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:24:12 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 13:36:19 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:17:32 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtin.h"
+#include "../../include/builtins.h"
 
 int	ms_pwd(void)
 {

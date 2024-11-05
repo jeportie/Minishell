@@ -6,11 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:22:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 22:15:59 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:17:12 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtin.h"
+#include "../../include/builtins.h"
 
 static int	st_print_env(t_env *env)
 {

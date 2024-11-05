@@ -6,11 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:20:22 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 22:50:30 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/05 21:50:29 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtin.h"
+#include "../../include/builtins.h"
 
 static char	*st_get_env_value(t_env *env, char *name)
 {

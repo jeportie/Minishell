@@ -6,11 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:11 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 22:13:34 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:17:20 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtin.h"
+#include "../../include/builtins.h"
 
 static int	st_numeric_code(char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 21:48:48 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:17:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtin.h"
+#include "../../include/builtins.h"
 
 static char	*st_extract_value(t_export_utils *utils, char *cmd, int size,
 		char *folder)
