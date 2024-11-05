@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 12:45:39 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:10:06 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ char	*ms_getenv(const char *name, t_env_data *env_data);
 
 int		ms_handle_error(const char *msg, t_gc *gcl); //returns 1
 int		ms_heredoc_mode(const char *delimiter, t_exec_context *context, t_gc *gcl);
+int		parent(int pipefd[2], pid_t pid, t_exec_context *context);
+int		child(int pipefd[2], const char *delimiter);
+
 char	**ms_expand_wild(const char *pattern, t_gc *gcl);
 char	**ms_expand_var(const char *pattern, t_gc *gcl);
 

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 15:07:58 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:12:06 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,30 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 
 	gcl = gc_init();
 	if (context->stdin_fd != STDIN_FILENO)
+    {
+        if (dup2(context->stdin_fd, STDIN_FILENO) == -1)
+        {
+            perror("minishell: dup2 failed (stdin)");
+            exit(EXIT_FAILURE);
+        }
+    }
+    if (context->stdout_fd != STDOUT_FILENO)
+    {
+        if (dup2(context->stdout_fd, STDOUT_FILENO) == -1)
+        {
+            perror("minishell: dup2 failed (stdout)");
+            exit(EXIT_FAILURE);
+        }
+    }
+    if (context->stderr_fd != STDERR_FILENO)
+    {
+        if (dup2(context->stderr_fd, STDERR_FILENO) == -1)
+        {
+            perror("minishell: dup2 failed (stderr)");
+            exit(EXIT_FAILURE);
+        }
+    }
+	if (context->stdin_fd != STDIN_FILENO)
 		ms_redirect_input(context->stdin_fd);
 	if (context->stdout_fd != STDOUT_FILENO)
 		ms_redirect_output(context->stdout_fd);
@@ -66,6 +90,8 @@ static void	ms_parent_process(pid_t pid, t_exec_context *context)
 		close(context->stdin_fd);
 	if (context->stdout_fd != STDOUT_FILENO)
 		close(context->stdout_fd);
+	if (context->stderr_fd != STDERR_FILENO)
+        close(context->stderr_fd);
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
 		context->exit_status = WEXITSTATUS(status);
@@ -98,6 +124,5 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl
 		ms_child_process(cmd_node, context, cmd_path);
 	else
 		ms_parent_process(pid, context);
-	//gc_collect(gcl);
 	return (context->exit_status);
 }
