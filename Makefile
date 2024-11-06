@@ -34,21 +34,23 @@ SRC = \
   src/ast/utils.c \
   src/ast/utils2.c \
   src/exec/ms_concat_path.c \
-  src/exec/ms_execute_ast.c \
-  src/exec/ms_execute_command.c \
-  src/exec/ms_execute_logical.c \
-  src/exec/ms_execute_pipeline.c \
-  src/exec/ms_execute_subshell.c \
-  src/exec/ms_expand_var.c \
-  src/exec/ms_expand_wild.c \
-  src/exec/ms_get_envp.c \
-  src/exec/ms_getenv.c \
-  src/exec/ms_handle_error.c \
-  src/exec/ms_parse_cmd_path.c \
   src/exec/ms_execute_external.c \
+  src/exec/ms_execute_logical.c \
+  src/exec/ms_get_envp.c \
+  src/exec/ms_execute_ast.c \
+  src/exec/ms_expand_wild.c \
+  src/exec/ms_expand_var.c \
+  src/exec/ms_handle_error.c \
+  src/exec/ms_execute_subshell.c \
+  src/exec/ms_redirect_fd.c \
+  src/exec/ms_execute_pipeline.c \
   src/exec/ms_handle_redirections.c \
-  src/exec/ms_heredoc_helper.c \
   src/exec/ms_heredoc_mode.c \
+  src/exec/ms_expand_wild_helper.c \
+  src/exec/ms_execute_command.c \
+  src/exec/ms_parse_cmd_path.c \
+  src/exec/ms_getenv.c \
+  src/exec/ms_heredoc_helper.c \
   src/global.c \
   src/syntax_error/check_error.c \
   src/syntax_error/check_reinit.c \

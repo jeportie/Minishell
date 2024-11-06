@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:10:28 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 18:20:24 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:40:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,7 @@ t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl)
 	argv = (char **)gc_malloc(sizeof(char *) * (argc + 1), gcl);
 	gc_lock(argv, gcl);
 	assign_token_to_argv(current_token, argv);
-
 	argv[argc] = NULL;
-//	if ((*current_token)->type == TOKEN_EXPAND)
-//		command.is_expand = true;
-//	else
-//		command.is_expand = false;
 	command.argv = argv;
 	command.argc = argc;
 	command.is_expand = false;

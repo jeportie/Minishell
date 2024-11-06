@@ -6,11 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/05 18:31:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 14:00:40 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
+#include <fcntl.h>
 
 static int	ms_open_file(const char *filename, int flags, mode_t mode)
 {
@@ -22,56 +23,47 @@ static int	ms_open_file(const char *filename, int flags, mode_t mode)
 	return (fd);
 }
 
-int		ms_handle_redirections(t_ast_node *node, t_exec_context *context)
+static int	redirect_mode(t_ast_node *node, int flags, int *context_fd,
+		int std_fd)
 {
 	int				fd;
 	t_redirect_node	*redir_node;
-	t_heredoc_node	*heredoc_node;
 
+	mode_t (mode) = 0;
 	redir_node = &node->data.redirect;
-	heredoc_node = &node->data.heredoc;
+	if (flags != O_RDONLY)
+		mode = COPY_MODE;
+	fd = ms_open_file(redir_node->filename, flags, mode);
+	if (fd == -1)
+		return (-1);
+	if (*context_fd != std_fd)
+		close(*context_fd);
+	*context_fd = fd;
+	return (0);
+}
+
+int	ms_handle_redirections(t_ast_node *node, t_exec_context *context, t_gc *gcl)
+{
+	t_redirect_node *(redir_node) = &node->data.redirect;
+	t_heredoc_node *(heredoc_node) = &node->data.heredoc;
 	if (node->type == 2)
-	{
-		fd = ms_open_file(redir_node->filename, O_RDONLY, 0);
-		if (fd == -1)
-			return (-1);
-		if (context->stdin_fd != STDIN_FILENO)
-			close(context->stdin_fd);
-		context->stdin_fd = fd;
-	}
+		redirect_mode(node, O_RDONLY, &context->stdin_fd, STDIN_FILENO);
 	else if (node->type == 3)
-	{
-		fd = ms_open_file(redir_node->filename, O_WRONLY | O_CREAT | O_TRUNC, COPY_MODE);
-		if (fd == -1)
-			return (-1);
-		if (context->stdout_fd != STDOUT_FILENO)
-			close(context->stdout_fd);
-		context->stdout_fd = fd;
-	}
+		redirect_mode(node, O_WRONLY | O_CREAT | O_TRUNC,
+			&context->stdout_fd, STDOUT_FILENO);
 	else if (node->type == 4)
-	{
-		fd = ms_open_file(redir_node->filename, O_WRONLY | O_CREAT | O_APPEND, COPY_MODE);
-		if (fd == -1)
-			return (-1);
-		if (context->stdout_fd != STDOUT_FILENO)
-			close(context->stdout_fd);
-		context->stdout_fd = fd;
-	}
+		redirect_mode(node, O_WRONLY | O_CREAT | O_APPEND,
+			&context->stdout_fd, STDOUT_FILENO);
 	else if (node->type == 5)
 	{
-		if (ms_heredoc_mode(heredoc_node->delimiter, context, context->shell->gcl) != 0)
-		{
-			ft_dprintf(STDERR_FILENO, "Minishell: Error: heredoc failed.\n");
-		//	context->stdin_fd = g_signal;
-			return (-1);
-		}
+		if (ms_heredoc_mode(heredoc_node->delimiter, context, gcl) != 0)
+			return (ms_handle_error("Minishell: Error: heredoc failed.\n",
+					-1, gcl));
 	}
 	else
-	{
-		ft_dprintf(STDERR_FILENO, "Minishell: Error: unsupported redirection type.\n");
-		return (-1);
-	}
+		return (ms_handle_error(
+				"Minishell: Error: unsupported redirection type.\n", -1, gcl));
 	if ((redir_node->child->type >= 2 && redir_node->child->type <= 5))
-		return (ms_handle_redirections(redir_node->child, context));
+		return (ms_handle_redirections(redir_node->child, context, gcl));
 	return (0);
 }

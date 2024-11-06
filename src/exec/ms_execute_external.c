@@ -6,30 +6,37 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/05 18:12:06 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:28:24 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
+#include <unistd.h>
 
-void	ms_redirect_input(int in_fd)
+static void	safe_dup2(const char *error_message, int context_fd, int std_fd)
 {
-	if (dup2(in_fd, STDIN_FILENO) == -1)
+	if (dup2(context_fd, std_fd) == -1)
 	{
-		perror("minishell: dup2 error (input)");
+		ft_dprintf(std_fd, error_message);
 		exit(EXIT_FAILURE);
 	}
-	close(in_fd);
 }
 
-void	ms_redirect_output(int out_fd)
+static void	init_io(t_exec_context *context)
 {
-	if (dup2(out_fd, STDOUT_FILENO) == -1)
-	{
-		perror("minishell: dup2 error (output)");
-		exit(EXIT_FAILURE);
-	}
-	close(out_fd);
+	if (context->stdin_fd != STDIN_FILENO)
+		safe_dup2("minishell: error: dup2 failed (stdin)\n",
+			context->stdin_fd, STDIN_FILENO);
+	if (context->stdout_fd != STDOUT_FILENO)
+		safe_dup2("minishell: error: dup2 failed (stdout)\n",
+			context->stdout_fd, STDOUT_FILENO);
+	if (context->stderr_fd != STDERR_FILENO)
+		safe_dup2("minishell: error: dup2 failed (stderr)\n",
+			context->stderr_fd, STDERR_FILENO);
+	if (context->stdin_fd != STDIN_FILENO)
+		ms_redirect_input(context->stdin_fd);
+	if (context->stdout_fd != STDOUT_FILENO)
+		ms_redirect_output(context->stdout_fd);
 }
 
 static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
@@ -39,34 +46,7 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 	t_gc	*gcl;
 
 	gcl = gc_init();
-	if (context->stdin_fd != STDIN_FILENO)
-    {
-        if (dup2(context->stdin_fd, STDIN_FILENO) == -1)
-        {
-            perror("minishell: dup2 failed (stdin)");
-            exit(EXIT_FAILURE);
-        }
-    }
-    if (context->stdout_fd != STDOUT_FILENO)
-    {
-        if (dup2(context->stdout_fd, STDOUT_FILENO) == -1)
-        {
-            perror("minishell: dup2 failed (stdout)");
-            exit(EXIT_FAILURE);
-        }
-    }
-    if (context->stderr_fd != STDERR_FILENO)
-    {
-        if (dup2(context->stderr_fd, STDERR_FILENO) == -1)
-        {
-            perror("minishell: dup2 failed (stderr)");
-            exit(EXIT_FAILURE);
-        }
-    }
-	if (context->stdin_fd != STDIN_FILENO)
-		ms_redirect_input(context->stdin_fd);
-	if (context->stdout_fd != STDOUT_FILENO)
-		ms_redirect_output(context->stdout_fd);
+	init_io(context);
 	envp = ms_get_envp(context->shell->env_data->env, context->shell->gcl);
 	if (!envp)
 	{
@@ -91,7 +71,7 @@ static void	ms_parent_process(pid_t pid, t_exec_context *context)
 	if (context->stdout_fd != STDOUT_FILENO)
 		close(context->stdout_fd);
 	if (context->stderr_fd != STDERR_FILENO)
-        close(context->stderr_fd);
+		close(context->stderr_fd);
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
 		context->exit_status = WEXITSTATUS(status);
@@ -101,7 +81,8 @@ static void	ms_parent_process(pid_t pid, t_exec_context *context)
 		context->exit_status = -1;
 }
 
-int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl)
+int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
+	t_gc *gcl)
 {
 	pid_t	pid;
 	char	*cmd_path;

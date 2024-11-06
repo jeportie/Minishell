@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:08:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/05 18:08:53 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 14:05:03 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static int	process_line(int write_fd, const char *delimiter, char **line_ptr)
 	return (2);
 }
 
-/* Refactored heredoc function */
 static int	read_and_write_heredoc(int write_fd, const char *delimiter)
 {
 	char	*line;
@@ -59,7 +58,6 @@ static int	read_and_write_heredoc(int write_fd, const char *delimiter)
 	return (0);
 }
 
-/* Helper Function for parent() */
 static int	handle_child_status(int status, t_exec_context *context)
 {
 	int	exit_status;
@@ -69,7 +67,8 @@ static int	handle_child_status(int status, t_exec_context *context)
 		exit_status = WEXITSTATUS(status);
 		if (exit_status != 0)
 		{
-			printf("minishell: warning: here-document at line %d delimited by end-of-file (wanted `EOF')\n", 0);
+			printf("minishell: warning: here-document at line %d\
+				delimited by end-of-file (wanted `EOF')\n", 0);
 			context->exit_status = exit_status;
 			return (-1);
 		}
@@ -85,7 +84,6 @@ static int	handle_child_status(int status, t_exec_context *context)
 	return (-1);
 }
 
-/* Refactored child() Function */
 int	child(int pipefd[2], const char *delimiter)
 {
 	int	result;
@@ -102,7 +100,6 @@ int	child(int pipefd[2], const char *delimiter)
 	exit(0);
 }
 
-/* Refactored parent() Function */
 int	parent(int pipefd[2], pid_t pid, t_exec_context *context)
 {
 	int	status;
@@ -119,4 +116,3 @@ int	parent(int pipefd[2], pid_t pid, t_exec_context *context)
 	context->stdin_fd = pipefd[0];
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/05 18:10:06 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:51:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+# include <dirent.h>
 
 typedef struct s_exec_context
 {
@@ -52,27 +53,49 @@ typedef struct s_pipeline
 	int			num_processes;
 }				t_pipeline;
 
+typedef struct s_wildcard_context
+{
+	const char	*pattern;
+	char		**matches;
+	size_t		capacity;
+	size_t		match_count;
+	t_gc		*gcl;
+}				t_wildcard_context;
+
 int		ms_execute_ast(t_ast_node *node, t_exec_context *context);
 
-int		ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl);
-int		ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl);
+int		ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,
+			t_gc *gcl);
+int		ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
+			t_gc *gcl);
 
 int		ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context);
-int		ms_execute_logical(t_logic_node *logic_node, t_exec_context *context, t_node_type type);
-int		ms_execute_subshell(t_subshell_node *subshell_node, t_exec_context *context);
-int		ms_handle_redirections(t_ast_node *node, t_exec_context *context);
+int		ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,
+			t_node_type type);
+int		ms_execute_subshell(t_subshell_node *subshell_node,
+			t_exec_context *context);
+int		ms_handle_redirections(t_ast_node *node, t_exec_context *context,
+			t_gc *gcl);
 
 char	**ms_get_envp(t_env *env, t_gc *gcl);
 char	*ms_parse_cmd_path(const char *command, t_shell *shell);
 char	*ms_concat_path(const char *path, const char *command, t_gc *gcl);
 char	*ms_getenv(const char *name, t_env_data *env_data);
 
-int		ms_handle_error(const char *msg, t_gc *gcl); //returns 1
-int		ms_heredoc_mode(const char *delimiter, t_exec_context *context, t_gc *gcl);
+int		ms_handle_error(const char *msg, int exit_status, t_gc *gcl);
+int		ms_heredoc_mode(const char *delimiter, t_exec_context *context,
+			t_gc *gcl);
 int		parent(int pipefd[2], pid_t pid, t_exec_context *context);
 int		child(int pipefd[2], const char *delimiter);
 
 char	**ms_expand_wild(const char *pattern, t_gc *gcl);
+int		initialize_context(t_wildcard_context *ctx, const char *pattern,
+			t_gc *gcl);
+int		add_match(t_wildcard_context *ctx, const char *filename);
+int		check_match(t_wildcard_context *ctx, struct dirent *entry);
+char	**finalize_matches(t_wildcard_context *ctx);
 char	**ms_expand_var(const char *pattern, t_gc *gcl);
+void	ms_redirect_input(int in_fd);
+void	ms_redirect_output(int out_fd);
 
 #endif /* EXEC_H */
