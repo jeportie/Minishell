@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:20:22 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/05 21:50:29 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:04:50 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*st_get_env_value(t_env *env, char *name)
 	tmp = env;
 	while (tmp)
 	{
-		if (ft_strncmp(tmp->var, name, ft_strlen(name)) == 0)
+		if (ft_strncmp(tmp->var, name, ft_strlen(name) + 1) == 0)
 			return (tmp->value);
 		tmp = tmp->next;
 	}
@@ -33,7 +33,7 @@ static void	st_set_env_value(t_exec_context *context, t_env *env, char *name,
 	{
 		if (ft_strncmp(env->var, name, ft_strlen(name)) == 0)
 		{
-			free(env->value);
+			gc_unlock(env->value, context->shell->gcl);
 			env->value = ft_strdup(value);
 			return ;
 		}
@@ -63,9 +63,10 @@ static void	st_set_env_value(t_exec_context *context, t_env *env, char *name,
 		current->next = new_env;
 }
 
-static int	st_none_chdir(char *cwd, t_exec_context *context)
+static int	st_none_chdir(t_exec_context *context)
 {
 	char	*pwd;
+	char	*cwd;
 	t_env	*tmp_env;
 
 	tmp_env = context->shell->env_data->env;
@@ -87,36 +88,61 @@ static int	st_none_chdir(char *cwd, t_exec_context *context)
 	}
 }
 
+static char	*st_cd_with_option(t_shell *shell, char *argv)
+{
+	char *(cd) = NULL;
+	if (ft_strlen(argv) == 1)
+	{
+		if (!ft_strncmp(argv, "~", 2))
+		{
+			cd = st_get_env_value(shell->env_data->env, "HOME");
+			if (!cd)
+				return (ft_dprintf(2, "minishell: cd: HOME not set\n"), NULL);
+		}
+		else if (!ft_strncmp(argv, "-", 2))
+		{
+			cd = st_get_env_value(shell->env_data->env, "OLDPWD");
+			if (!cd)
+				return (ft_dprintf(2, "minishell: cd: OLDPWD not set\n"), NULL);
+			ft_printf("%s\n", cd);
+		}
+	}
+	if (!cd)
+		cd = ft_strdup(argv);
+	if (!cd)
+	{
+		gc_cleanup(shell->gcl);
+		ft_dprintf(2, "Error: echec malloc cd\n");
+		exit (ENOMEM);
+	}
+	return (cd);
+}
+
 int	ms_cd(t_cmd_node *cmd_node, t_exec_context *context)
 {
 	char *(cd) = NULL;
-	char *(cwd) = NULL;
-	if (cmd_node->argc == 1 || !ft_strncmp(cmd_node->argv[1], "~", 2))
+	if (cmd_node->argc == 1)
 	{
 		cd = st_get_env_value(context->shell->env_data->env, "HOME");
 		if (!cd)
 			return (ft_dprintf(2, "minishell: cd: HOME not set\n"), 1);
 	}
-	else if (cmd_node->argc == 2)
+	else if (cmd_node->argc == 3)
 		return (ft_dprintf(2, "minishell: cd: too many arguments\n"), 1);
 	else
 	{
-		cd = ft_strdup(cmd_node->argv[1]);
+		cd = st_cd_with_option(context->shell, cmd_node->argv[1]);
 		if (!cd)
-		{
-			gc_cleanup(context->shell->gcl);
-			ft_dprintf(2, "Error: echec malloc cd\n");
-			exit (ENOMEM);
-		}
+			return (1);
 	}
 	if (chdir(cd))
 		ft_dprintf(2, "minishell: cd: %s: No such file or directory\n",
 			cmd_node->argv[1]);
 	else
 	{
-		if (cmd_node->argc == 1)
+		if (cmd_node->argc == 2)
 			free(cd);
-		return (st_none_chdir(cwd, context));
+		return (st_none_chdir(context));
 	}
 	return (0);
 }
