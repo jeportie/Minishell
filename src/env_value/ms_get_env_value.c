@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_minishell_command.h                            :+:      :+:    :+:   */
+/*   ms_get_env_value.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 22:52:52 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/25 22:54:51 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/06 17:48:43 by jeportie          #+#    #+#             */
+/*   Updated: 2024/11/06 20:24:29 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RUN_MINISHELL_COMMAND_H
-# define RUN_MINISHELL_COMMAND_H
+#include "../../include/env_value.h"
 
-int	run_minishell_command(const char *exec_path, const char *command, char **output);
+char	*ms_get_env_value(t_env *env, char *name)
+{
+	t_env	*tmp;
 
-#endif
+	tmp = env;
+	while (tmp)
+	{
+		if (ft_strncmp(tmp->var, name, ft_strlen(name) + 1) == 0)
+			return (tmp->value);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}

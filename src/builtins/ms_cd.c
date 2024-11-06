@@ -6,62 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:20:22 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 17:04:50 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 20:56:53 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
-
-static char	*st_get_env_value(t_env *env, char *name)
-{
-	t_env	*tmp;
-
-	tmp = env;
-	while (tmp)
-	{
-		if (ft_strncmp(tmp->var, name, ft_strlen(name) + 1) == 0)
-			return (tmp->value);
-		tmp = tmp->next;
-	}
-	return (NULL);
-}
-
-static void	st_set_env_value(t_exec_context *context, t_env *env, char *name,
-		char *value)
-{
-	while (env)
-	{
-		if (ft_strncmp(env->var, name, ft_strlen(name)) == 0)
-		{
-			gc_unlock(env->value, context->shell->gcl);
-			env->value = ft_strdup(value);
-			return ;
-		}
-		env = env->next;
-	}
-	t_env (*new_env) = malloc(sizeof(t_env));
-	if (!new_env)
-	{
-		gc_cleanup(context->shell->gcl);
-		ft_dprintf(2, "Error: echec malloc new_env.\n");
-		exit (ENOMEM);
-	}
-	new_env->var = ft_strdup(name);
-	new_env->value = ft_strdup(value);
-	free(value);
-	if (!new_env->value || !new_env->var)
-	{
-		gc_cleanup(context->shell->gcl);
-		ft_dprintf(2, "Error: echec malloc new_env->value.\n");
-		exit (ENOMEM);
-	}
-	new_env->next = NULL;
-	t_env (*current) = env;
-	while (current && current->next != NULL)
-		current = current->next;
-	if (current)
-		current->next = new_env;
-}
 
 static int	st_none_chdir(t_exec_context *context)
 {
@@ -71,12 +20,13 @@ static int	st_none_chdir(t_exec_context *context)
 
 	tmp_env = context->shell->env_data->env;
 	cwd = getcwd(NULL, 0);
+	gc_register(cwd, context->shell->gcl);
 	if (cwd)
 	{
-		pwd = st_get_env_value(tmp_env, "PWD");
-		st_set_env_value(context, tmp_env, "OLDPWD", pwd);
-		st_set_env_value(context, tmp_env, "PWD", cwd);
-		free(cwd);
+		pwd = ms_get_env_value(tmp_env, "PWD");
+		gc_unlock(pwd, context->shell->gcl);
+		ms_set_env_value(context->shell, "OLDPWD", pwd);
+		ms_set_env_value(context->shell, "PWD", cwd);
 		return (0);
 	}
 	else
@@ -88,20 +38,19 @@ static int	st_none_chdir(t_exec_context *context)
 	}
 }
 
-static char	*st_cd_with_option(t_shell *shell, char *argv)
+static char	*st_cd_with_option(char *cd, t_shell *shell, char *argv)
 {
-	char *(cd) = NULL;
 	if (ft_strlen(argv) == 1)
 	{
 		if (!ft_strncmp(argv, "~", 2))
 		{
-			cd = st_get_env_value(shell->env_data->env, "HOME");
+			cd = ms_get_env_value(shell->env_data->env, "HOME");
 			if (!cd)
 				return (ft_dprintf(2, "minishell: cd: HOME not set\n"), NULL);
 		}
 		else if (!ft_strncmp(argv, "-", 2))
 		{
-			cd = st_get_env_value(shell->env_data->env, "OLDPWD");
+			cd = ms_get_env_value(shell->env_data->env, "OLDPWD");
 			if (!cd)
 				return (ft_dprintf(2, "minishell: cd: OLDPWD not set\n"), NULL);
 			ft_printf("%s\n", cd);
@@ -110,11 +59,7 @@ static char	*st_cd_with_option(t_shell *shell, char *argv)
 	if (!cd)
 		cd = ft_strdup(argv);
 	if (!cd)
-	{
-		gc_cleanup(shell->gcl);
-		ft_dprintf(2, "Error: echec malloc cd\n");
-		exit (ENOMEM);
-	}
+		echec_malloc(shell->gcl, "cd");
 	return (cd);
 }
 
@@ -123,15 +68,15 @@ int	ms_cd(t_cmd_node *cmd_node, t_exec_context *context)
 	char *(cd) = NULL;
 	if (cmd_node->argc == 1)
 	{
-		cd = st_get_env_value(context->shell->env_data->env, "HOME");
+		cd = ms_get_env_value(context->shell->env_data->env, "HOME");
 		if (!cd)
 			return (ft_dprintf(2, "minishell: cd: HOME not set\n"), 1);
 	}
-	else if (cmd_node->argc == 3)
+	else if (cmd_node->argc >= 3)
 		return (ft_dprintf(2, "minishell: cd: too many arguments\n"), 1);
 	else
 	{
-		cd = st_cd_with_option(context->shell, cmd_node->argv[1]);
+		cd = st_cd_with_option(NULL, context->shell, cmd_node->argv[1]);
 		if (!cd)
 			return (1);
 	}

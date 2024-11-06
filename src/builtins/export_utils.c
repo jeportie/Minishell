@@ -6,13 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:35:57 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/05 10:16:36 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 21:46:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
 
-void	add_cat(t_env *current, t_env *tmp, int flag)
+void	add_cat(t_shell *shell, t_env *current, t_env *tmp, int flag)
 {
 	char	*tmp_str;
 
@@ -22,17 +22,17 @@ void	add_cat(t_env *current, t_env *tmp, int flag)
 		current->next->value
 			= ft_strjoin(current->next->value,
 				tmp->value);
-		free(tmp_str);
-		free(tmp->value);
-		free(tmp->var);
-		free(tmp);
+		gc_unlock(tmp_str, shell->gcl);
+		gc_unlock(tmp->value, shell->gcl);
+		gc_unlock(tmp->var, shell->gcl);
+		gc_unlock(tmp, shell->gcl);
 	}
 	else
 	{
-		free(current->next->value);
+		gc_unlock(current->next->value, shell->gcl);
 		current->next->value = tmp->value;
-		free(tmp->var);
-		free(tmp);
+		gc_unlock(tmp->var, shell->gcl);
+		gc_unlock(tmp, shell->gcl);
 	}
 }
 
@@ -48,15 +48,15 @@ void	add_export_utils(t_export_utils *utils, t_env *current, t_env *tmp)
 			if (tmp->value)
 			{
 				if (utils->flag == 2)
-					add_cat(current, tmp, 0);
+					add_cat(utils->shell, current, tmp, 0);
 				else
-					add_cat(current, tmp, 1);
+					add_cat(utils->shell, current, tmp, 1);
 				break ;
 			}
 			else
 			{
-				free(tmp->var);
-				free(tmp);
+				gc_unlock(tmp->var, utils->shell->gcl);
+				gc_unlock(tmp, utils->shell->gcl);
 			}
 		}
 		current = current->next;
@@ -69,29 +69,22 @@ void	add_export(t_export_utils *utils, t_env *ev, char *name_folder,
 		char *value_folder)
 {
 	t_env *(current) = ev;
-	t_env *(tmp) = malloc(sizeof(t_env));
+	t_env *(tmp) = gc_malloc(sizeof(t_env), utils->shell->gcl);
 	if (!tmp)
-	{
-		gc_cleanup(utils->shell->gcl);
-		ft_dprintf(2, "Error: echec malloc tmp.\n");
-		exit (1);
-	}
+		echec_malloc(utils->shell->gcl, "tmp");
+	gc_lock(tmp, utils->shell->gcl);
 	tmp->var = ft_strdup(name_folder);
 	if (!tmp->var)
-	{
-		gc_cleanup(utils->shell->gcl);
-		ft_dprintf(2, "Error: echec malloc tmp->name_folder.\n");
-		exit (1);
-	}
+		echec_malloc(utils->shell->gcl, "tmp->var");
+	gc_register(tmp->var, utils->shell->gcl);
+	gc_lock(tmp->var, utils->shell->gcl);
 	if (value_folder)
 	{
 		tmp->value = ft_strdup(value_folder);
 		if (!tmp->value)
-		{
-			gc_cleanup(utils->shell->gcl);
-			ft_dprintf(2, "Error: echec malloc tmp->value_folder.\n");
-			exit (1);
-		}
+			echec_malloc(utils->shell->gcl, "tmp->value");
+		gc_register(tmp->value, utils->shell->gcl);
+		gc_lock(tmp->value, utils->shell->gcl);
 	}
 	else
 		tmp->value = NULL;
@@ -142,13 +135,10 @@ char	*extract_folder(t_export_utils *utils, char *cmd)
 		utils->flag = 1;
 	else
 		utils->flag = 0;
-	folder = malloc(size + 1);
+	folder = gc_malloc(sizeof(size + 1), utils->shell->gcl);
+	gc_lock(folder, utils->shell->gcl);
 	if (!folder)
-	{
-		gc_cleanup(utils->shell->gcl);
-		ft_dprintf(2, "Error: echec malloc folder\n");
-		exit(1);
-	}
+		echec_malloc(utils->shell->gcl, "folder");
 	folder[size] = '\0';
 	while (i < size)
 	{

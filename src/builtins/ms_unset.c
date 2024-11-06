@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:25:19 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/05 10:17:39 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 21:58:13 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	st_unset_utils(t_exec_context *context, t_env *prev, t_env *current)
 		prev->next = current->next;
 	else
 		context->shell->env_data->env = current->next;
-	free(current->var);
-	free(current->value);
-	free(current);
+	gc_unlock(current->var, context->shell->gcl);
+	gc_unlock(current->value, context->shell->gcl);
+	gc_unlock(current, context->shell->gcl);
 	current = NULL;
 }
 
@@ -47,6 +47,7 @@ int	ms_unset(t_cmd_node *cmd_node, t_exec_context *context)
 		}
 		i++;
 	}
+	gc_collect(context->shell->gcl);
 	return (0);
 }
 

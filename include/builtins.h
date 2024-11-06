@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin.h                                          :+:      :+:    :+:   */
+/*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:01:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 22:51:38 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 21:45:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTIN_H
-# define BUILTIN_H
+#ifndef BUILTINS_H
+# define BUILTINS_H
 
-# include "exec.h"
+# include "env_value.h"
 
 typedef struct s_export_utils
 {
@@ -23,7 +23,8 @@ typedef struct s_export_utils
 	char	*value;
 }				t_export_utils;
 
-void	add_cat(t_env *current, t_env *tmp, int flag);
+void	echec_malloc(t_gc *gcl, char *message);
+void	add_cat(t_shell *shell, t_env *current, t_env *tmp, int flag);
 void	add_export_utils(t_export_utils *utils, t_env *current, t_env *tmp);
 void	add_export(t_export_utils *utils, t_env *ev, char *name_folder,
 			char *value_folder);
@@ -37,4 +38,4 @@ int		ms_pwd(void);
 int		ms_exit(t_cmd_node *cmd_node, t_exec_context *context);
 int		ms_env(t_cmd_node *cmd_node, t_exec_context *context);
 
-#endif /* BUILTIN_H */
+#endif /* BUILTINS_H */

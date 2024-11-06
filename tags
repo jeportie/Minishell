@@ -104,7 +104,7 @@ BOLD	Makefile	/^BOLD    = \\033[1m$/;"	m
 BOLD	make_interface/config/Makefile	/^BOLD    = \\033[1m$/;"	m
 BUFFER_SIZE	lib/libft/include/libft.h	28;"	d
 BUFFER_SIZE	lib/libft/include/printf.h	27;"	d
-BUILTIN_H	include/builtins.h	14;"	d
+BUILTINS_H	include/builtins.h	14;"	d
 CC	Makefile	/^CC = 		cc$/;"	m
 CC	Makefile	/^default: CC = cc$/;"	m
 CC	Makefile	/^san: CC = clang$/;"	m
@@ -501,6 +501,7 @@ DEPFLAGS	make_interface/config/Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
 DEPS	Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
 DEPS	make_interface/config/Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
 DirectoryOfThisScript	ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+ENV_VALUE_H	include/env_value.h	14;"	d
 EQUALS	test_minishell/build/Makefile	/^EQUALS = =$/;"	m
 EQUALS	test_src/build/Makefile	/^EQUALS = =$/;"	m
 ERNOFORMAT	lib/libft/include/printf.h	/^	ERNOFORMAT,$/;"	e	enum:e_error
@@ -743,7 +744,7 @@ YELLOW	Makefile	/^YELLOW  = \\033[33m$/;"	m
 YELLOW	make_interface/config/Makefile	/^YELLOW  = \\033[33m$/;"	m
 __has_include	test_minishell/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	17;"	d	file:
 __has_include	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	17;"	d	file:
-add_cat	src/builtins/export_utils.c	/^void	add_cat(t_env *current, t_env *tmp, int flag)$/;"	f
+add_cat	src/builtins/export_utils.c	/^void	add_cat(t_shell *shell, t_env *current, t_env *tmp, int flag)$/;"	f
 add_export	src/builtins/export_utils.c	/^void	add_export(t_export_utils *utils, t_env *ev, char *name_folder,$/;"	f
 add_export_utils	src/builtins/export_utils.c	/^void	add_export_utils(t_export_utils *utils, t_env *current, t_env *tmp)$/;"	f
 add_token	src/token/lst_tokens.c	/^void	add_token(t_token **head, t_token *new_token, t_gc *gcl)$/;"	f
@@ -786,6 +787,7 @@ dq_trigger	include/syntax.h	/^	int		dq_trigger;$/;"	m	struct:s_syntax
 e_error	lib/libft/include/printf.h	/^typedef enum e_error$/;"	g
 e_node_type	include/ast.h	/^typedef enum e_node_type$/;"	g
 e_token_type	include/tokenize.h	/^typedef enum e_token_type$/;"	g
+echec_malloc	src/builtins/echec_malloc.c	/^void	echec_malloc(t_gc *gcl, char *message)$/;"	f
 env	include/minishell.h	/^	t_env	*env;$/;"	m	struct:s_env_data
 env_data	include/minishell.h	/^	t_env_data	*env_data;$/;"	m	struct:s_shell
 env_exist	include/minishell.h	/^	bool	env_exist;$/;"	m	struct:s_env_data
@@ -1035,6 +1037,7 @@ ms_env_create_node	src/env_lst_utils/ms_env_create_node.c	/^t_env	*ms_env_create
 ms_exit	src/builtins/ms_exit.c	/^int	ms_exit(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
 ms_exit_suite	test_src/builtins/test_ms_exit.c	/^static Suite *ms_exit_suite(void)$/;"	f	file:
 ms_export	src/builtins/ms_export.c	/^int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
+ms_get_env_value	src/env_value/ms_get_env_value.c	/^char	*ms_get_env_value(t_env *env, char *name)$/;"	f
 ms_get_user_input	src/init_shell/ms_get_user_input.c	/^void	ms_get_user_input(t_shell *shell)$/;"	f
 ms_init_env	src/init_shell/ms_init_env.c	/^t_env_data	*ms_init_env(char **envp, t_shell *shell)$/;"	f
 ms_init_shell	src/init_shell/ms_init_shell.c	/^t_shell	ms_init_shell(int argc, char **argv, char **envp)$/;"	f
@@ -1042,6 +1045,7 @@ ms_init_std_signal	src/signal/ms_init_std_signal.c	/^void	ms_init_std_signal(voi
 ms_parse_tokens	src/ast/ms_parse_tokens.c	/^t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)$/;"	f
 ms_pwd	src/builtins/ms_pwd.c	/^int	ms_pwd(void)$/;"	f
 ms_pwd_suite	test_src/builtins/test_ms_pwd.c	/^static Suite    *ms_pwd_suite(void)$/;"	f	file:
+ms_set_env_value	src/env_value/ms_set_env_value.c	/^void	ms_set_env_value(t_shell *shell, char *name, char *value)$/;"	f
 ms_stop_std_signal	src/signal/ms_stop_std_signal.c	/^void	ms_stop_std_signal(void)$/;"	f
 ms_syntax_error	src/syntax_error/ms_syntax_error.c	/^int	ms_syntax_error(const char *input)$/;"	f
 ms_tokenize	src/token/ms_tokenize.c	/^t_token	*ms_tokenize(const char *command_line, t_gc *gcl)$/;"	f
@@ -1136,16 +1140,16 @@ shell_lvl	include/minishell.h	/^	int		shell_lvl;$/;"	m	struct:s_env_data
 size	lib/libgc/include/libgc.h	/^	size_t				size;$/;"	m	struct:s_gc_node
 skip_whitespace	src/token/utils.c	/^void	skip_whitespace(const char **input)$/;"	f
 sq_trigger	include/syntax.h	/^	int		sq_trigger;$/;"	m	struct:s_syntax
+st_add_new_env_value	src/env_value/ms_set_env_value.c	/^static void	st_add_new_env_value(t_shell *shell, char *name, char *value)$/;"	f	file:
 st_and_verif	src/syntax_error/operator_gestion.c	/^static int	st_and_verif(t_syntax **syntax)$/;"	f	file:
 st_atoll_safe	src/builtins/ms_exit.c	/^static long long	st_atoll_safe(const char *str, int *error)$/;"	f	file:
-st_cd_with_option	src/builtins/ms_cd.c	/^static char	*st_cd_with_option(t_shell *shell, char *argv)$/;"	f	file:
+st_cd_with_option	src/builtins/ms_cd.c	/^static char	*st_cd_with_option(char *cd, t_shell *shell, char *argv)$/;"	f	file:
 st_close_parenthesis	src/syntax_error/parenthesis_gestion.c	/^static int	st_close_parenthesis(t_syntax **syntax)$/;"	f	file:
 st_create_envp	src/init_shell/ms_init_env.c	/^static char	**st_create_envp(t_shell *shell, t_env_data *env_data)$/;"	f	file:
 st_echo_utils	src/builtins/ms_echo.c	/^static int	st_echo_utils(int i, int j, char **cmd, int *error)$/;"	f	file:
 st_exit_code	src/builtins/ms_exit.c	/^static void	st_exit_code(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f	file:
 st_extract_value	src/builtins/ms_export.c	/^static char	*st_extract_value(t_export_utils *utils, char *cmd, int size,$/;"	f	file:
 st_first_arg	src/builtins/ms_env.c	/^static char	*st_first_arg(char **strs)$/;"	f	file:
-st_get_env_value	src/builtins/ms_cd.c	/^static char	*st_get_env_value(t_env *env, char *name)$/;"	f	file:
 st_get_path	src/init_shell/ms_init_env.c	/^static char	*st_get_path(t_env_data *env_data)$/;"	f	file:
 st_get_shell	src/init_shell/ms_init_env.c	/^static char	*st_get_shell(t_env_data *env_data)$/;"	f	file:
 st_get_term	src/init_shell/ms_init_env.c	/^static char	*st_get_term(t_env_data *env_data)$/;"	f	file:
@@ -1168,7 +1172,6 @@ st_redir_in	src/syntax_error/redir_gestion.c	/^static int	st_redir_in(t_syntax *
 st_redir_out	src/syntax_error/redir_gestion.c	/^static int	st_redir_out(t_syntax **syntax)$/;"	f	file:
 st_reinit_operator	src/syntax_error/check_reinit.c	/^static int	st_reinit_operator(char c)$/;"	f	file:
 st_reinit_redir	src/syntax_error/check_reinit.c	/^static int	st_reinit_redir(char c)$/;"	f	file:
-st_set_env_value	src/builtins/ms_cd.c	/^static void	st_set_env_value(t_exec_context *context, t_env *env, char *name,$/;"	f	file:
 st_sigint_std_handler	src/signal/ms_init_std_signal.c	/^static void	st_sigint_std_handler(int sig)$/;"	f	file:
 st_unset_utils	src/builtins/ms_unset.c	/^static void	st_unset_utils(t_exec_context *context, t_env *prev, t_env *current)$/;"	f	file:
 st_valid_numeric_code	src/builtins/ms_exit.c	/^static int	st_valid_numeric_code(char *str)$/;"	f	file:

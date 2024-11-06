@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/05 10:17:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 22:02:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,10 @@ static char	*st_extract_value(t_export_utils *utils, char *cmd, int size,
 	}
 	else
 		return (NULL);
-	value = malloc(i + 1);
+	value = gc_malloc(sizeof(i + 1), utils->shell->gcl);
 	if (!value)
-	{
-		free(folder);
-		gc_cleanup(utils->shell->gcl);
-		ft_dprintf(2, "Error: echec malloc value\n");
-		exit(1);
-	}
+		echec_malloc(utils->shell->gcl, value);
+	gc_lock(value, utils->shell->gcl);
 	value[i] = '\0';
 	i = 0;
 	while (cmd[start])
@@ -99,9 +95,8 @@ static void	st_init_utils(t_export_utils *utils, t_shell *shell)
 
 int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)
 {
-	t_export_utils	utils;
-
 	int (i) = 1;
+	t_export_utils (utils);
 	st_init_utils(&utils, context->shell);
 	if (cmd_node->argc == 1)
 	{
@@ -118,11 +113,12 @@ int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)
 				ft_strlen(utils.var) - 1, utils.var);
 		add_export(&utils, context->shell->env_data->env, utils.var,
 			utils.value);
-		free(utils.var);
+		gc_unlock(utils.var, context->shell->gcl);
 		if (utils.value)
-			free(utils.value);
+			gc_unlock(utils.value, context->shell->gcl);
 		i++;
 	}
+	gc_collect(context->shell->gcl);
 	return (0);
 }
 
