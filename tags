@@ -761,6 +761,7 @@ check_reinit	src/syntax_error/check_reinit.c	/^int	check_reinit(t_syntax **synta
 child	include/ast.h	/^	struct s_ast_node	*child;$/;"	m	struct:s_heredoc_node	typeref:struct:s_heredoc_node::s_ast_node
 child	include/ast.h	/^	struct s_ast_node	*child;$/;"	m	struct:s_redirect_node	typeref:struct:s_redirect_node::s_ast_node
 child	include/ast.h	/^	struct s_ast_node	*child;$/;"	m	struct:s_subshell_node	typeref:struct:s_subshell_node::s_ast_node
+cleanup_test_shell	test_src/env_value/test_ms_set_env_value.c	/^void cleanup_test_shell(t_shell *shell) {$/;"	f
 command	include/ast.h	/^	t_cmd_node			command;$/;"	m	union:u_node_data
 compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
 const	test_minishell/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
@@ -1026,6 +1027,7 @@ main	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^void main
 main	test_src/builtins/test_ms_echo.c	/^int main(void)$/;"	f
 main	test_src/builtins/test_ms_exit.c	/^int main(void)$/;"	f
 main	test_src/builtins/test_ms_pwd.c	/^int main(void)$/;"	f
+main	test_src/env_value/test_ms_set_env_value.c	/^int main(int argc, char **argv, char **envp) {$/;"	f
 max_size	lib/libft/include/printf.h	/^	size_t	max_size;$/;"	m	struct:s_buffer
 minishell_suite	test_minishell/test_main.c	/^Suite *minishell_suite(void)$/;"	f
 ms_cd	src/builtins/ms_cd.c	/^int	ms_cd(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
@@ -1226,6 +1228,8 @@ teardown	test_src/builtins/test_ms_exit.c	/^static void teardown(void)$/;"	f	fil
 teardown	test_src/builtins/test_ms_pwd.c	/^static void teardown(void)$/;"	f	file:
 temp_file	lib/libgc/include/libgc.h	/^	char				*temp_file;$/;"	m	struct:s_gc_node
 term	include/minishell.h	/^	char	*term;$/;"	m	struct:s_env_data
+test_add_new_env_value	test_src/env_value/test_ms_set_env_value.c	/^void test_add_new_env_value(int argc, char **argv, char **envp) {$/;"	f
+test_update_existing_env_value	test_src/env_value/test_ms_set_env_value.c	/^void test_update_existing_env_value(int argc, char **argv, char **envp) {$/;"	f
 token	include/tokenize.h	/^	char			*token;$/;"	m	struct:s_token
 token_len	src/token/tokenize_word_helper.c	/^int	token_len(const char *current, char start_quote, bool *is_expand)$/;"	f
 tokenize_frame	src/token/tokenize_frame.c	/^t_token	*tokenize_frame(const char **input, t_gc *gcl)$/;"	f
