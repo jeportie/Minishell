@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:27:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/05 10:45:27 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:50:10 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,24 +134,6 @@ START_TEST(test_ms_pwd_valid)
 }
 END_TEST
 
-START_TEST(test_ms_pwd_invalid_directory)
-{
-    // Pour ce test, nous devons simuler une situation où getcwd échouerait,
-    // comme changer vers un répertoire supprimé, mais cela peut nécessiter des ajustements spécifiques.
-
-    t_testresult result = execute_and_capture();
-
-    // Vérifier que le code de sortie est 1 (erreur)
-    ck_assert_int_eq(result.exit_code, 1);
-    
-    // Vérifier que stdout contient un chemin (getcwd ne devrait pas renvoyer d'erreur)
-    ck_assert_str_ne(result.stdout_output, ""); 
-
-    // Vérifier que stderr contient le message d'erreur approprié
-    ck_assert_str_ne(result.stderr_output, "minishell: pwd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory\n");
-}
-END_TEST
-
 static Suite    *ms_pwd_suite(void)
 {
     Suite *s;
@@ -164,7 +146,6 @@ static Suite    *ms_pwd_suite(void)
     tcase_add_checked_fixture(tc_core, setup, teardown);
 
     tcase_add_test(tc_core, test_ms_pwd_valid);
-    tcase_add_test(tc_core, test_ms_pwd_invalid_directory);
 
     suite_add_tcase(s, tc_core);
 

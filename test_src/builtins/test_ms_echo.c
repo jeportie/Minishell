@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 20:01:25 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/05 20:56:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:24:43 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,11 +163,11 @@ END_TEST
 
 START_TEST(test_ms_echo_no_newline_3)
 {
-    char *argv[] = {"echo", "-nnnnn-n", "no newline", NULL};
+    char *argv[] = {"echo", "-nnnnn-n", "newline", NULL};
     t_testresult result = execute_and_capture_echo(argv, 3);
 
     ck_assert_int_eq(result.exit_code, 0);
-    ck_assert_str_eq(result.stdout_output, "no newline");
+    ck_assert_str_eq(result.stdout_output, "-nnnnn-n newline\n");
     ck_assert_str_eq(result.stderr_output, "");
 }
 END_TEST
