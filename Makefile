@@ -22,7 +22,6 @@ SRC = \
   src/init_shell/ms_get_user_input.c \
   src/signal/ms_stop_std_signal.c \
   src/signal/ms_init_std_signal.c \
-  src/ast/create_command_node.c \
   src/ast/create_node.c \
   src/ast/ms_parse_tokens.c \
   src/ast/parse_command.c \
@@ -30,28 +29,27 @@ SRC = \
   src/ast/parse_pipeline.c \
   src/ast/parse_redirection.c \
   src/ast/parse_subshell.c \
-  src/ast/print_ast.c \
   src/ast/utils.c \
   src/ast/utils2.c \
+  src/ast/create_command_node.c \
+  src/ast/print_ast.c \
   src/exec/ms_concat_path.c \
-  src/exec/ms_execute_external.c \
-  src/exec/ms_execute_logical.c \
-  src/exec/ms_get_envp.c \
-  src/exec/ms_execute_ast.c \
-  src/exec/ms_expand_wild.c \
-  src/exec/ms_expand_var.c \
-  src/exec/ms_handle_error.c \
-  src/exec/ms_execute_subshell.c \
-  src/exec/ms_redirect_fd.c \
-  src/exec/ms_execute_pipeline.c \
-  src/exec/ms_handle_redirections.c \
-  src/exec/ms_heredoc_mode.c \
-  src/exec/ms_expand_wild_helper.c \
   src/exec/ms_execute_command.c \
+  src/exec/ms_get_envp.c \
+  src/exec/ms_expand_wild.c \
+  src/exec/ms_execute_logical.c \
+  src/exec/ms_execute_external.c \
+  src/exec/ms_handle_redirections.c \
+  src/exec/ms_handle_error.c \
+  src/exec/ms_expand_wild_helper.c \
+  src/exec/ms_expand_var.c \
+  src/exec/ms_execute_pipeline.c \
+  src/exec/ms_execute_ast.c \
+  src/exec/ms_heredoc_mode.c \
   src/exec/ms_parse_cmd_path.c \
   src/exec/ms_getenv.c \
+  src/exec/ms_execute_subshell.c \
   src/exec/ms_heredoc_helper.c \
-  src/global.c \
   src/syntax_error/check_error.c \
   src/syntax_error/check_reinit.c \
   src/syntax_error/ms_syntax_error.c \
@@ -65,7 +63,19 @@ SRC = \
   src/token/tokenize_operator.c \
   src/token/tokenize_word.c \
   src/token/tokenize_word_helper.c \
-  src/token/utils.c 
+  src/token/utils.c \
+  src/global.c \
+  src/process/redirect_fd.c \
+  src/process/back_to_parent_stdout.c \
+  src/process/safe_pipe.c \
+  src/process/clean_manager.c \
+  src/process/print_proc_info.c \
+  src/process/clean_process.c \
+  src/process/add_process.c \
+  src/process/init_proc_manager.c \
+  src/process/safe_open.c \
+  src/process/safe_close.c \
+  src/process/safe_fork.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #

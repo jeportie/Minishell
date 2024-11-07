@@ -6,46 +6,46 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 11:28:24 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/07 19:43:59 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
-#include <unistd.h>
-
-static void	safe_dup2(const char *error_message, int context_fd, int std_fd)
-{
-	if (dup2(context_fd, std_fd) == -1)
-	{
-		ft_dprintf(std_fd, error_message);
-		exit(EXIT_FAILURE);
-	}
-}
+#include "../../include/process.h"
 
 static void	init_io(t_exec_context *context)
 {
 	if (context->stdin_fd != STDIN_FILENO)
-		safe_dup2("minishell: error: dup2 failed (stdin)\n",
-			context->stdin_fd, STDIN_FILENO);
+	{
+		if (redirect_fd(STDIN_FILENO, context->stdin_fd) == -1)
+		{
+			ft_dprintf(STDERR_FILENO, "redirect_fd failed (stdin)\n");
+			exit(EXIT_FAILURE);
+		}
+	}
 	if (context->stdout_fd != STDOUT_FILENO)
-		safe_dup2("minishell: error: dup2 failed (stdout)\n",
-			context->stdout_fd, STDOUT_FILENO);
+	{
+		if (redirect_fd(STDOUT_FILENO, context->stdout_fd) == -1)
+		{
+			ft_dprintf(STDERR_FILENO, "redirect_fd failed (stdout)\n");
+			exit(EXIT_FAILURE);
+		}
+	}
 	if (context->stderr_fd != STDERR_FILENO)
-		safe_dup2("minishell: error: dup2 failed (stderr)\n",
-			context->stderr_fd, STDERR_FILENO);
-	if (context->stdin_fd != STDIN_FILENO)
-		ms_redirect_input(context->stdin_fd);
-	if (context->stdout_fd != STDOUT_FILENO)
-		ms_redirect_output(context->stdout_fd);
+	{
+		if (redirect_fd(STDERR_FILENO, context->stderr_fd) == -1)
+		{
+			ft_dprintf(STDERR_FILENO, "redirect_fd failed (stderr)\n");
+			exit(EXIT_FAILURE);
+		}
+	}
 }
 
 static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
-			char *cmd_path)
+			char *cmd_path, t_gc *gcl)
 {
 	char	**envp;
-	t_gc	*gcl;
 
-	gcl = gc_init();
 	init_io(context);
 	envp = ms_get_envp(context->shell->env_data->env, context->shell->gcl);
 	if (!envp)
@@ -67,11 +67,11 @@ static void	ms_parent_process(pid_t pid, t_exec_context *context)
 	int	status;
 
 	if (context->stdin_fd != STDIN_FILENO)
-		close(context->stdin_fd);
+		safe_close(context->stdin_fd);
 	if (context->stdout_fd != STDOUT_FILENO)
-		close(context->stdout_fd);
+		safe_close(context->stdout_fd);
 	if (context->stderr_fd != STDERR_FILENO)
-		close(context->stderr_fd);
+		safe_close(context->stderr_fd);
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
 		context->exit_status = WEXITSTATUS(status);
@@ -81,11 +81,23 @@ static void	ms_parent_process(pid_t pid, t_exec_context *context)
 		context->exit_status = -1;
 }
 
-int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
-	t_gc *gcl)
+static void	init_forks(t_fork_params *fork_params, t_exec_context *context,
+	t_cmd_node *cmd_node)
 {
-	pid_t	pid;
-	char	*cmd_path;
+	fork_params->child_lvl = context->child_lvl + 1;
+	fork_params->fd_in = context->stdin_fd;
+	fork_params->fd_out = context->stdout_fd;
+	fork_params->fd_error = context->stderr_fd;
+	fork_params->is_heredoc = false;
+	fork_params->title = cmd_node->argv[0];
+}
+
+int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
+		t_proc_manager *manager, t_gc *gcl)
+{
+	pid_t			pid;
+	char			*cmd_path;
+	t_fork_params	fork_params;
 
 	cmd_path = ms_parse_cmd_path(cmd_node->argv[0], context->shell);
 	if (cmd_path == NULL)
@@ -94,16 +106,17 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 		ft_putendl_fd(cmd_node->argv[0], STDERR_FILENO);
 		return (127);
 	}
-	pid = fork();
-	if (pid == -1)
+	init_forks(&fork_params, context, cmd_node);
+	pid = safe_fork(manager, &fork_params);
+	if (pid == 0)
 	{
-		perror("minishell: fork error");
-		gc_cleanup(gcl);
-		exit(EXIT_FAILURE);
+		context->child_lvl = fork_params.child_lvl;
+		ms_child_process(cmd_node, context, cmd_path, gcl);
 	}
-	else if (pid == 0)
-		ms_child_process(cmd_node, context, cmd_path);
 	else
+	{
+		print_proc_info(manager);
 		ms_parent_process(pid, context);
+	}
 	return (context->exit_status);
 }

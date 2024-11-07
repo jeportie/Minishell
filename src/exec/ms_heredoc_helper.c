@@ -6,13 +6,30 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:08:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 14:05:03 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/07 19:47:20 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 
-static int	process_line(int write_fd, const char *delimiter, char **line_ptr)
+int	heredoc_parent_process(t_heredoc_params *params, pid_t pid)
+{
+	int	status;
+	int	ret;
+
+	safe_close(params->pipefd[1]);
+	waitpid(pid, &status, 0);
+	ret = handle_child_status(status, params->context);
+	if (ret == -1)
+	{
+		safe_close(params->pipefd[0]);
+		return (-1);
+	}
+	params->context->stdin_fd = params->pipefd[0];
+	return (0);
+}
+
+int	process_line(int write_fd, const char *delimiter, char **line_ptr)
 {
 	size_t	len;
 
@@ -20,19 +37,19 @@ static int	process_line(int write_fd, const char *delimiter, char **line_ptr)
 	*line_ptr = get_next_line(STDIN_FILENO);
 	if (!*line_ptr)
 		return (1);
-	len = strlen(*line_ptr);
+	len = ft_strlen(*line_ptr);
 	if (len > 0 && (*line_ptr)[len - 1] == '\n')
 		(*line_ptr)[len - 1] = '\0';
-	if (strcmp(*line_ptr, delimiter) == 0)
+	if (ft_strncmp(*line_ptr, delimiter, ft_strlen(*line_ptr)) == 0)
 		return (0);
-	if (write(write_fd, *line_ptr, strlen(*line_ptr)) == -1)
+	if (write(write_fd, *line_ptr, ft_strlen(*line_ptr)) == -1)
 		return (-1);
 	if (write(write_fd, "\n", 1) == -1)
 		return (-1);
 	return (2);
 }
 
-static int	read_and_write_heredoc(int write_fd, const char *delimiter)
+int	read_and_write_heredoc(int write_fd, const char *delimiter)
 {
 	char	*line;
 	int		status;
@@ -58,7 +75,7 @@ static int	read_and_write_heredoc(int write_fd, const char *delimiter)
 	return (0);
 }
 
-static int	handle_child_status(int status, t_exec_context *context)
+int	handle_child_status(int status, t_exec_context *context)
 {
 	int	exit_status;
 
@@ -67,8 +84,9 @@ static int	handle_child_status(int status, t_exec_context *context)
 		exit_status = WEXITSTATUS(status);
 		if (exit_status != 0)
 		{
-			printf("minishell: warning: here-document at line %d\
-				delimited by end-of-file (wanted `EOF')\n", 0);
+			ft_dprintf(STDERR_FILENO,
+				"minishell: warning: heredoc process exited with status %d\n",
+				exit_status);
 			context->exit_status = exit_status;
 			return (-1);
 		}
@@ -76,43 +94,12 @@ static int	handle_child_status(int status, t_exec_context *context)
 	}
 	else if (WIFSIGNALED(status))
 	{
-		printf("exit signaled quit\n");
+		ft_dprintf(STDERR_FILENO,
+			"minishell: heredoc process terminated by signal %d\n",
+			WTERMSIG(status));
 		context->exit_status = 128 + WTERMSIG(status);
 		return (-1);
 	}
 	context->exit_status = -1;
 	return (-1);
-}
-
-int	child(int pipefd[2], const char *delimiter)
-{
-	int	result;
-
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
-	close(pipefd[0]);
-	result = read_and_write_heredoc(pipefd[1], delimiter);
-	close(pipefd[1]);
-	if (result == -1)
-		exit(1);
-	else if (result == 1)
-		exit(1);
-	exit(0);
-}
-
-int	parent(int pipefd[2], pid_t pid, t_exec_context *context)
-{
-	int	status;
-	int	ret;
-
-	close(pipefd[1]);
-	waitpid(pid, &status, 0);
-	ret = handle_child_status(status, context);
-	if (ret == -1)
-	{
-		close(pipefd[0]);
-		return (-1);
-	}
-	context->stdin_fd = pipefd[0];
-	return (0);
 }

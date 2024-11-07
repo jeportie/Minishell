@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_redirect_fd.c                                   :+:      :+:    :+:   */
+/*   safe_open.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 10:57:40 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 10:57:53 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/07 11:53:49 by jeportie          #+#    #+#             */
+/*   Updated: 2024/11/07 11:56:07 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/exec.h"
+#include "../../include/process.h"
 
-void	ms_redirect_input(int in_fd)
+int	safe_open(const char *filepath, int flags, int mode)
 {
-	if (dup2(in_fd, STDIN_FILENO) == -1)
-	{
-		perror("minishell: dup2 error (input)");
-		exit(EXIT_FAILURE);
-	}
-	close(in_fd);
-}
+	int	fd;
 
-void	ms_redirect_output(int out_fd)
-{
-	if (dup2(out_fd, STDOUT_FILENO) == -1)
+	fd = open(filepath, flags, mode);
+	if (fd == -1)
 	{
-		perror("minishell: dup2 error (output)");
-		exit(EXIT_FAILURE);
+		ft_dprintf(STDERR_FILENO, "Open failed\n");
+		return (-1);
 	}
-	close(out_fd);
+	return (fd);
 }

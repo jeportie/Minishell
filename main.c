@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/05 18:13:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/07 19:36:37 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "include/tokenize.h"
 #include "include/ast.h"
 #include "include/exec.h"
+#include "include/process.h"
 
 static void	init_context(t_exec_context *data, t_shell *shell)
 {
@@ -24,25 +25,32 @@ static void	init_context(t_exec_context *data, t_shell *shell)
 	data->shell = shell;
 	data->is_subprocess = false;
 	data->exit_status = 0;
+	data->child_lvl = 0;
 }
 
 static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 {
 	t_exec_context	context;
+	t_proc_manager	*proc_manager;
 
 	tokens = ms_tokenize(shell->user_input, shell->gcl);
-	//print_token(tokens);
-	printf("\n");
+	printf("-----------------------------------------------------");
+	printf("---------------------------\nTOKENS:\n");
+	print_token(tokens);
 	root = ms_parse_tokens(tokens, shell->gcl);
 	if (!root)
 	{
 		gc_cleanup(shell->gcl);
 		exit(EXIT_FAILURE);
 	}
+	printf("------------------------------------------------");
+	printf("--------------------------------\nAST:\n");
 	print_ast(root, 0, "", 0);
-	printf("\n");
+	printf("----------------------------------------------------------------");
+	printf("----------------\n");
 	init_context(&context, shell);
-	ms_execute_ast(root, &context);	
+	proc_manager = init_manager(shell->gcl);
+	ms_execute_ast(root, &context, proc_manager);
 	shell->error_code = 0;
 }
 

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 14:00:40 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/07 19:46:35 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ static int	redirect_mode(t_ast_node *node, int flags, int *context_fd,
 	return (0);
 }
 
-int	ms_handle_redirections(t_ast_node *node, t_exec_context *context, t_gc *gcl)
+int	ms_handle_redirections(t_ast_node *node, t_exec_context *context,
+		t_proc_manager *manager, t_gc *gcl)
 {
 	t_redirect_node *(redir_node) = &node->data.redirect;
 	t_heredoc_node *(heredoc_node) = &node->data.heredoc;
@@ -56,7 +57,8 @@ int	ms_handle_redirections(t_ast_node *node, t_exec_context *context, t_gc *gcl)
 			&context->stdout_fd, STDOUT_FILENO);
 	else if (node->type == 5)
 	{
-		if (ms_heredoc_mode(heredoc_node->delimiter, context, gcl) != 0)
+		if (ms_heredoc_mode(heredoc_node->delimiter, context, manager, gcl)
+			!= 0)
 			return (ms_handle_error("Minishell: Error: heredoc failed.\n",
 					-1, gcl));
 	}
@@ -64,6 +66,7 @@ int	ms_handle_redirections(t_ast_node *node, t_exec_context *context, t_gc *gcl)
 		return (ms_handle_error(
 				"Minishell: Error: unsupported redirection type.\n", -1, gcl));
 	if ((redir_node->child->type >= 2 && redir_node->child->type <= 5))
-		return (ms_handle_redirections(redir_node->child, context, gcl));
+		return (ms_handle_redirections(redir_node->child, context, manager,
+				gcl));
 	return (0);
 }
