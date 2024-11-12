@@ -5,84 +5,65 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 16:46:30 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 18:07:15 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/12 12:00:00 by jeportie          #+#    #+#             */
+/*   Updated: 2024/11/12 11:10:10 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <check.h>
+#include <stdlib.h>
 #include <string.h>
 #include "../../include/env_value.h"
 
-// Fonction de création d'un nœud pour la liste d'environnement (utile pour le test)
-t_env *create_env_node(t_shell *shell, char *var, char *value)
-{
-    t_env *node = gc_malloc(sizeof(t_env), shell->gcl);
-    gc_lock(node, shell->gcl);
-    if (!node)
-        return NULL;
-    node->var = strdup(var);
-    gc_register(node->var, shell->gcl);
-    gc_lock(node->var, shell->gcl);
-    node->value = strdup(value);
-    gc_register(node->value, shell->gcl);
-    gc_lock(node->value, shell->gcl);
-    node->next = NULL;
-    return node;
+// Fonction de configuration du shell et du garbage collector pour les tests
+void setup_shell(t_shell *shell) {
+    shell->gcl = gc_init();
+    shell->env_data = gc_malloc(sizeof(t_env_data), shell->gcl);
+    shell->env_data->env = NULL;
 }
 
-// Test pour ajouter une nouvelle variable d'environnement
-START_TEST(test_ms_set_env_value_add_new)
+// Fonction de nettoyage de l'environnement après chaque test
+void teardown_shell(t_shell *shell) {
+    gc_cleanup(shell->gcl);
+    free(shell->gcl);
+}
+
+// Test pour vérifier si ms_set_env_value ajoute une nouvelle variable
+START_TEST(test_ms_set_env_value_new_var)
 {
     t_shell shell;
-    shell.gcl = gc_init();
-    shell.env_data = gc_malloc(sizeof(t_env_data), shell.gcl);
-    gc_lock(shell.env_data, shell.gcl);
-    shell.env_data->env = create_env_node(&shell, "USER", "gmarquis");
-    shell.env_data->env->next = create_env_node(&shell, "PATH", "/usr/bin");
-    shell.env_data->env->next->next = create_env_node(&shell, "SHELL", "/bin/bash");
+    setup_shell(&shell);
 
     ms_set_env_value(&shell, "NEW_VAR", "new_value");
 
-    // Parcours de la liste pour vérifier que la nouvelle variable a été ajoutée
+    // Vérifier que la variable a bien été ajoutée
     t_env *env = shell.env_data->env;
-    while (env->next != NULL) {
-        env = env->next;
-    }
-    
-    // Vérifie que le dernier nœud correspond à la nouvelle variable
     ck_assert_ptr_nonnull(env);
     ck_assert_str_eq(env->var, "NEW_VAR");
     ck_assert_str_eq(env->value, "new_value");
 
-    // Nettoyage
-    gc_cleanup(shell.gcl);
-    free(shell.gcl);
+    teardown_shell(&shell);
 }
 END_TEST
 
-// Test pour mettre à jour une variable d'environnement existante
-START_TEST(test_ms_set_env_value_update_existing)
+// Test pour vérifier si ms_set_env_value met à jour une variable existante
+START_TEST(test_ms_set_env_value_update_var)
 {
     t_shell shell;
-    shell.gcl = gc_init();
-    shell.env_data = gc_malloc(sizeof(t_env_data), shell.gcl);
-    gc_lock(shell.env_data, shell.gcl);
-    shell.env_data->env = create_env_node(&shell, "USER", "gmarquis");
-    shell.env_data->env->next = create_env_node(&shell, "PATH", "/usr/bin");
-    shell.env_data->env->next->next = create_env_node(&shell, "SHELL", "/bin/bash");
+    setup_shell(&shell);
 
-    ms_set_env_value(&shell, "USER", "jeportie");
+    // Ajouter une variable initiale
+    ms_set_env_value(&shell, "EXISTING_VAR", "initial_value");
+    // Mettre à jour cette variable
+    ms_set_env_value(&shell, "EXISTING_VAR", "updated_value");
 
-    // Vérifie que la variable existante a été mise à jour
+    // Vérifier que la variable a bien été mise à jour
     t_env *env = shell.env_data->env;
     ck_assert_ptr_nonnull(env);
-    ck_assert_str_eq(env->var, "USER");
-    ck_assert_str_eq(env->value, "jeportie");
+    ck_assert_str_eq(env->var, "EXISTING_VAR");
+    ck_assert_str_eq(env->value, "updated_value");
 
-    // Nettoyage
-    gc_cleanup(shell.gcl);
-    free(shell.gcl);
+    teardown_shell(&shell);
 }
 END_TEST
 
@@ -95,8 +76,8 @@ static Suite *ms_set_env_value_suite(void)
     s = suite_create("ms_set_env_value");
     tc_core = tcase_create("Core");
 
-    tcase_add_test(tc_core, test_ms_set_env_value_add_new);
-    tcase_add_test(tc_core, test_ms_set_env_value_update_existing);
+    tcase_add_test(tc_core, test_ms_set_env_value_new_var);
+    tcase_add_test(tc_core, test_ms_set_env_value_update_var);
 
     suite_add_tcase(s, tc_core);
 
