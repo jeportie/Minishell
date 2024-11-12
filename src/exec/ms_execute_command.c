@@ -6,11 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 15:17:07 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 17:16:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:48:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
+#include "../../include/builtins.h"
 
 /*
  * NOTE:
@@ -27,12 +28,6 @@
 
 int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,
 	t_proc_manager *manager, t_gc *gcl)
-{
-	return (ms_execute_external(cmd_node, context, manager, gcl));
-}
-
-/*
-int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl)
 {
 	const char	*cmd;
 
@@ -52,6 +47,5 @@ int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl)
 	else if (ft_strncmp(cmd, "exit", 5) == 0)
 		return (ms_exit(cmd_node, context));
 	else
-		return (ms_execute_external(cmd_node, context, gcl));
+		return (ms_execute_external(cmd_node, context, manager, gcl));
 }
-*/

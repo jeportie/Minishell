@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_expand_var.c                                    :+:      :+:    :+:   */
+/*   env_value.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/03 17:30:06 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 15:37:38 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/06 17:42:02 by jeportie          #+#    #+#             */
+/*   Updated: 2024/11/06 20:24:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-#include "../../include/minishell.h"
+#ifndef ENV_VALUE_H
+# define ENV_VALUE_H
 
-char	*ms_expand_variables(const char *token, t_env_data *env_data)
-{
-	char	*result;
+# include "exec.h"
 
-	return (result);
-}
-*/
+char	*ms_get_env_value(t_env *env, char *name);
+void	ms_set_env_value(t_shell *shell, char *name, char *value);
+
+#endif /* ENV_VALUE_H */

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 17:58:48 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:45:10 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,5 @@ int		initialize_context(t_wildcard_context *ctx, const char *pattern,
 int		add_match(t_wildcard_context *ctx, const char *filename);
 int		check_match(t_wildcard_context *ctx, struct dirent *entry);
 char	**finalize_matches(t_wildcard_context *ctx);
-char	**ms_expand_var(const char *pattern, t_gc *gcl);
 
 #endif /* EXEC_H */
