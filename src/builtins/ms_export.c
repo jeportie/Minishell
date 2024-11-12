@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 22:02:15 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 14:43:30 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static char	*st_extract_value(t_export_utils *utils, char *cmd, int size,
 	}
 	else
 		return (NULL);
-	value = gc_malloc(sizeof(i + 1), utils->shell->gcl);
+	value = gc_malloc((i + 1) * sizeof(char), utils->shell->gcl);
 	if (!value)
-		echec_malloc(utils->shell->gcl, value);
+		echec_malloc(utils->shell->gcl, "value");
 	gc_lock(value, utils->shell->gcl);
 	value[i] = '\0';
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:35:57 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 21:46:45 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 14:48:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,11 @@ void	add_export_utils(t_export_utils *utils, t_env *current, t_env *tmp)
 		if (!ft_strncmp(current->next->var, tmp->var,
 				ft_strlen(tmp->var) + 1))
 		{
-			i = 1;
-			if (tmp->value)
-			{
-				if (utils->flag == 2)
-					add_cat(utils->shell, current, tmp, 0);
-				else
-					add_cat(utils->shell, current, tmp, 1);
-				break ;
-			}
+			if (tmp->value && utils->flag == 2)
+				add_cat(utils->shell, current, tmp, 0);
 			else
-			{
-				gc_unlock(tmp->var, utils->shell->gcl);
-				gc_unlock(tmp, utils->shell->gcl);
-			}
+				add_cat(utils->shell, current, tmp, 1);
+			break ;
 		}
 		current = current->next;
 	}
@@ -73,14 +64,14 @@ void	add_export(t_export_utils *utils, t_env *ev, char *name_folder,
 	if (!tmp)
 		echec_malloc(utils->shell->gcl, "tmp");
 	gc_lock(tmp, utils->shell->gcl);
-	tmp->var = ft_strdup(name_folder);
+	tmp->var = gc_strdup(name_folder);
 	if (!tmp->var)
 		echec_malloc(utils->shell->gcl, "tmp->var");
 	gc_register(tmp->var, utils->shell->gcl);
 	gc_lock(tmp->var, utils->shell->gcl);
 	if (value_folder)
 	{
-		tmp->value = ft_strdup(value_folder);
+		tmp->value = gc_strdup(value_folder);
 		if (!tmp->value)
 			echec_malloc(utils->shell->gcl, "tmp->value");
 		gc_register(tmp->value, utils->shell->gcl);
@@ -135,7 +126,7 @@ char	*extract_folder(t_export_utils *utils, char *cmd)
 		utils->flag = 1;
 	else
 		utils->flag = 0;
-	folder = gc_malloc(sizeof(size + 1), utils->shell->gcl);
+	folder = gc_malloc((size + 1) * sizeof(char), utils->shell->gcl);
 	gc_lock(folder, utils->shell->gcl);
 	if (!folder)
 		echec_malloc(utils->shell->gcl, "folder");

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:49:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 11:20:56 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 12:52:32 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,22 @@ static void	st_add_new_env_value(t_shell *shell, char *name, char *value)
 	ms_env_add_back(&shell->env_data->env, node);
 }
 
-void	ms_set_env_value(t_shell *shell, char *name, char *value)
+void ms_set_env_value(t_shell *shell, char *name, char *value) {
+    t_env *tmp_env = shell->env_data->env;
+    while (tmp_env) {
+        if (ft_strncmp(tmp_env->var, name, ft_strlen(name) + 1) == 0) {
+            gc_free(tmp_env->value, shell->gcl); // Libère l’ancienne valeur
+            tmp_env->value = gc_strdup(value); // Utilise gc_strdup pour enregistrer dans le GC
+            gc_register(tmp_env->value, shell->gcl);
+            gc_lock(tmp_env->value, shell->gcl);
+            return;
+        }
+        tmp_env = tmp_env->next;
+    }
+    st_add_new_env_value(shell, name, value); // Assurez-vous aussi que cette fonction enregistre les allocations dans le GC
+}
+
+/*void	ms_set_env_value(t_shell *shell, char *name, char *value)
 {
 	t_env *(tmp_env) = shell->env_data->env;
 	while (tmp_env)
@@ -73,5 +88,25 @@ void	ms_set_env_value(t_shell *shell, char *name, char *value)
 		tmp_env = tmp_env->next;
 	}
 	st_add_new_env_value(shell, name, value);
-}
+	gc_collect(shell->gcl);
+}*/
 
+/*void	ms_set_env_value(t_shell *shell, char *name, char *value)
+{
+	t_env *(tmp_env) = shell->env_data->env;
+	while (tmp_env)
+	{
+		if (ft_strncmp(tmp_env->var, name, ft_strlen(name) + 1) == 0)
+		{
+			gc_free(tmp_env->value, shell->gcl);
+			tmp_env->value = gc_strdup(value);
+			if (!tmp_env->value)
+				echec_malloc(shell->gcl, "new_value");
+			gc_register(tmp_env->value, shell->gcl);
+			gc_lock(tmp_env->value, shell->gcl);
+			return ;
+		}
+		tmp_env = tmp_env->next;
+	}
+	st_add_new_env_value(shell, name, value);
+}*/
