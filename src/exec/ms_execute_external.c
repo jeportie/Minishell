@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 19:43:59 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:08:08 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,21 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 			char *cmd_path, t_gc *gcl)
 {
 	char	**envp;
+	t_gc	*child_gcl;
 
+	child_gcl = gc_init();
 	init_io(context);
-	envp = ms_get_envp(context->shell->env_data->env, context->shell->gcl);
+	envp = ms_get_envp(context->shell->env_data->env, child_gcl);
 	if (!envp)
 	{
 		perror("minishell: memory allocation error");
 		gc_cleanup(gcl);
 		exit(EXIT_FAILURE);
 	}
-	gc_nest_register(envp, gcl);
-	gc_nest_lock(envp, gcl);
+	gc_nest_register(envp, child_gcl);
 	execve(cmd_path, cmd_node->argv, envp);
-	perror("minishell: execve error");
-	gc_cleanup(gcl);
+	ft_dprintf(STDERR_FILENO, "minishell: execve error");
+	gc_cleanup(child_gcl);
 	exit(EXIT_FAILURE);
 }
 
@@ -104,6 +105,7 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	{
 		ft_putstr_fd("minishell: command not found: ", STDERR_FILENO);
 		ft_putendl_fd(cmd_node->argv[0], STDERR_FILENO);
+		context->exit_status = 127;
 		return (127);
 	}
 	init_forks(&fork_params, context, cmd_node);
@@ -115,8 +117,10 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	}
 	else
 	{
-		print_proc_info(manager);
+//		print_proc_info(manager);
 		ms_parent_process(pid, context);
 	}
+	if (cmd_path != cmd_node->argv[0])
+		gc_free(cmd_path, gcl);
 	return (context->exit_status);
 }

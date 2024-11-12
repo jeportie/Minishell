@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_ms_execute_pipeline.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assistant <assistant@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 10:00:00 by assistant         #+#    #+#             */
-/*   Updated: 2024/11/12 13:25:58 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/12 13:36:48 by jeportie          #+#    #+#             */
+/*   Updated: 2024/11/12 16:22:23 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,7 +294,7 @@ START_TEST(test_ms_execute_pipeline_right_command_fails)
 
     /* Verify the result */
     /* The exit status should reflect the right command's failure */
-    ck_assert_int_eq(ret, 1);
+    ck_assert_int_eq(ret, 127);
 
     /* Clean up */
     clean_manager(manager);
@@ -358,7 +358,7 @@ START_TEST(test_ms_execute_pipeline_both_commands_fail)
 
     /* Verify the result */
     /* The exit status should reflect the right command's failure */
-    ck_assert_int_eq(ret, 1);
+    ck_assert_int_eq(ret, 127);
 
     /* Clean up */
     clean_manager(manager);

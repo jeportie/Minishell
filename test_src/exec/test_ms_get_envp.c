@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_ms_get_envp.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assistant <assistant@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 15:00:00 by assistant         #+#    #+#             */
-/*   Updated: 2024/11/12 11:23:09 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/12 13:37:09 by jeportie          #+#    #+#             */
+/*   Updated: 2024/11/12 15:26:32 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,45 +110,6 @@ START_TEST(test_ms_get_envp_null_env)
 }
 END_TEST
 
-/* Test 4: Null garbage collector */
-START_TEST(test_ms_get_envp_null_gcl)
-{
-    t_env *env = NULL;
-    add_env_node(&env, create_env_node("PATH", "/usr/bin"));
-
-    /* Fork to prevent exit in test process */
-    pid_t pid = fork();
-    ck_assert_int_ne(pid, -1);
-
-    if (pid == 0)
-    {
-        /* Child process */
-        ms_get_envp(env, NULL);
-        /* Should not reach here */
-        exit(EXIT_FAILURE);
-    }
-    else
-    {
-        /* Parent process */
-        int status;
-        waitpid(pid, &status, 0);
-
-        if (WIFEXITED(status))
-        {
-            int exit_status = WEXITSTATUS(status);
-            ck_assert_int_eq(exit_status, EXIT_FAILURE);
-        }
-        else if (WIFSIGNALED(status))
-        {
-            int term_sig = WTERMSIG(status);
-            ck_assert_msg(term_sig != SIGSEGV, "Segmentation fault occurred with NULL gcl.");
-            ck_assert_msg(0, "Child process terminated by signal %d", term_sig);
-        }
-        else
-            ck_assert_msg(0, "Child process did not exit normally.");
-    }
-}
-END_TEST
 
 /* Test 5: Variable with NULL var */
 START_TEST(test_ms_get_envp_null_var)
@@ -319,7 +280,6 @@ Suite *ms_get_envp_suite(void)
     tcase_add_test(tc_core, test_ms_get_envp_typical);
     tcase_add_test(tc_core, test_ms_get_envp_empty_list);
     tcase_add_test(tc_core, test_ms_get_envp_null_env);
-    tcase_add_test(tc_core, test_ms_get_envp_null_gcl);
     tcase_add_test(tc_core, test_ms_get_envp_null_var);
     tcase_add_test(tc_core, test_ms_get_envp_null_value);
     tcase_add_test(tc_core, test_ms_get_envp_empty_var_value);

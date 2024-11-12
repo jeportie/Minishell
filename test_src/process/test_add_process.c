@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_add_process.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assistant <assistant@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 12:00:00 by assistant         #+#    #+#             */
-/*   Updated: 2024/11/12 13:16:59 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/12 13:39:02 by jeportie          #+#    #+#             */
+/*   Updated: 2024/11/12 13:39:06 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

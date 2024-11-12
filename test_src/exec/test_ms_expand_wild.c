@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 12:45:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 12:46:00 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:40:17 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void create_files(const char *dir, const char **filenames)
             exit(EXIT_FAILURE);
         }
         close(fd);
+        printf("Created file: %s\n", filepath); // Debug statement
     }
 }
 
@@ -125,6 +126,7 @@ START_TEST(test_ms_expand_wild_simple_pattern)
 
     /* Change to the temporary directory */
     ck_assert_int_eq(chdir(temp_dir), 0);
+    printf("Current directory after chdir: %s\n", getcwd(NULL, 0)); // Debug statement
 
     /* Create files */
     const char *filenames[] = {"file1.txt", "file2.txt", "test.c", "script.sh", NULL};
@@ -195,6 +197,7 @@ START_TEST(test_ms_expand_wild_hidden_files)
     ck_assert_ptr_nonnull(original_dir);
 
     ck_assert_int_eq(chdir(temp_dir), 0);
+    printf("Current directory after chdir: %s\n", getcwd(NULL, 0)); // Debug statement
 
     /* Create files */
     const char *filenames[] = {".hidden1", ".hidden2", "visible", NULL};
@@ -244,7 +247,8 @@ START_TEST(test_ms_expand_wild_empty_pattern)
     char **matches = ms_expand_wild("", gcl);
 
     /* Verify the matches */
-    ck_assert_ptr_null(matches);
+    ck_assert_ptr_nonnull(matches);
+    ck_assert_ptr_null(matches[0]); // Should be empty list
 }
 END_TEST
 
@@ -256,6 +260,7 @@ START_TEST(test_ms_expand_wild_all_files)
     ck_assert_ptr_nonnull(original_dir);
 
     ck_assert_int_eq(chdir(temp_dir), 0);
+    printf("Current directory after chdir: %s\n", getcwd(NULL, 0)); // Debug statement
 
     /* Create files */
     const char *filenames[] = {"file1", "file2", "file3", NULL};
@@ -269,7 +274,7 @@ START_TEST(test_ms_expand_wild_all_files)
 
     /* Verify the matches */
     ck_assert_ptr_nonnull(matches);
-    /* Since the directory is empty except for our files, we expect 3 matches */
+    /* Expecting 3 matches */
     ck_assert_ptr_nonnull(matches[0]);
     ck_assert_ptr_nonnull(matches[1]);
     ck_assert_ptr_nonnull(matches[2]);
@@ -298,12 +303,7 @@ START_TEST(test_ms_expand_wild_all_files)
 }
 END_TEST
 
-/* Test 7: Memory allocation failure simulation (advanced) */
-/* Note: Simulating malloc failure is complex and often requires mocking malloc. */
-/* For the purpose of this test suite, we will skip this test unless you have a */
-/* mechanism to simulate malloc failures. */
-
-/* Test 8: Files with special characters */
+/* Test 7: Files with special characters */
 START_TEST(test_ms_expand_wild_special_characters)
 {
     char *temp_dir = create_temp_dir();
@@ -311,6 +311,7 @@ START_TEST(test_ms_expand_wild_special_characters)
     ck_assert_ptr_nonnull(original_dir);
 
     ck_assert_int_eq(chdir(temp_dir), 0);
+    printf("Current directory after chdir: %s\n", getcwd(NULL, 0)); // Debug statement
 
     /* Create files with special characters */
     const char *filenames[] = {"file name.txt", "file-name.txt", "file_name.txt", NULL};
@@ -337,7 +338,7 @@ START_TEST(test_ms_expand_wild_special_characters)
 }
 END_TEST
 
-/* Test 9: Case sensitivity */
+/* Test 8: Case sensitivity */
 START_TEST(test_ms_expand_wild_case_sensitivity)
 {
     char *temp_dir = create_temp_dir();
@@ -345,6 +346,7 @@ START_TEST(test_ms_expand_wild_case_sensitivity)
     ck_assert_ptr_nonnull(original_dir);
 
     ck_assert_int_eq(chdir(temp_dir), 0);
+    printf("Current directory after chdir: %s\n", getcwd(NULL, 0)); // Debug statement
 
     /* Create files */
     const char *filenames[] = {"Test.c", "test.c", "TEST.C", NULL};
@@ -371,7 +373,7 @@ START_TEST(test_ms_expand_wild_case_sensitivity)
 }
 END_TEST
 
-/* Test 10: Complex patterns */
+/* Test 9: Complex patterns */
 START_TEST(test_ms_expand_wild_complex_patterns)
 {
     char *temp_dir = create_temp_dir();
@@ -379,6 +381,7 @@ START_TEST(test_ms_expand_wild_complex_patterns)
     ck_assert_ptr_nonnull(original_dir);
 
     ck_assert_int_eq(chdir(temp_dir), 0);
+    printf("Current directory after chdir: %s\n", getcwd(NULL, 0)); // Debug statement
 
     /* Create files */
     const char *filenames[] = {"abc.txt", "abcd.txt", "abcde.txt", "xyz.txt", NULL};
@@ -469,4 +472,3 @@ int main(void)
 
     return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
-

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 17:50:08 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 15:29:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:38:05 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	**ms_expand_wild(const char *pattern, t_gc *gcl)
 	t_wildcard_context	ctx;
 	char				**final_matches;
 
+	if (pattern == NULL)
+		return (NULL);
 	if (initialize_context(&ctx, pattern, gcl) == -1)
 		return (NULL);
 	dir = opendir(".");

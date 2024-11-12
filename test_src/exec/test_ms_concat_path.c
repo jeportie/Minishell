@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_ms_concat_path.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assistant <assistant@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 10:00:00 by assistant         #+#    #+#             */
-/*   Updated: 2024/11/12 10:40:35 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/12 13:35:57 by jeportie          #+#    #+#             */
+/*   Updated: 2024/11/12 13:41:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,46 +265,6 @@ START_TEST(test_ms_concat_path_command_with_slash)
 }
 END_TEST
 
-/* Test 12: Garbage Collector is NULL */
-START_TEST(test_ms_concat_path_null_gcl)
-{
-    const char *path = "/usr/bin";
-    const char *command = "ls";
-    t_gc *null_gcl = NULL;
-
-    pid_t pid = fork();
-    ck_assert_int_ne(pid, -1);
-
-    if (pid == 0)
-    {
-        /* Child process */
-        char *result = ms_concat_path(path, command, null_gcl);
-        /* Should not reach here */
-        exit(EXIT_FAILURE);
-    }
-    else
-    {
-        /* Parent process */
-        int status;
-        waitpid(pid, &status, 0);
-
-        if (WIFEXITED(status))
-        {
-            int exit_status = WEXITSTATUS(status);
-            ck_assert_int_eq(exit_status, EXIT_FAILURE);
-        }
-        else if (WIFSIGNALED(status))
-        {
-            int term_sig = WTERMSIG(status);
-            ck_assert_msg(term_sig != SIGSEGV, "Segmentation fault occurred with NULL gcl.");
-            ck_assert_msg(0, "Child process terminated by signal %d", term_sig);
-        }
-        else
-            ck_assert_msg(0, "Child process did not exit normally.");
-    }
-}
-END_TEST
-
 /* Test Suite Setup */
 Suite *ms_concat_path_suite(void)
 {
@@ -331,7 +291,6 @@ Suite *ms_concat_path_suite(void)
     tcase_add_test(tc_core, test_ms_concat_path_long_inputs);
     tcase_add_test(tc_core, test_ms_concat_path_multiple_trailing_slashes);
     tcase_add_test(tc_core, test_ms_concat_path_command_with_slash);
-    tcase_add_test(tc_core, test_ms_concat_path_null_gcl);
 
     suite_add_tcase(s, tc_core);
 

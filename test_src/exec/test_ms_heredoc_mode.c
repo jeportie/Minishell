@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_ms_heredoc_mode.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assistant <assistant@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 16:00:00 by assistant         #+#    #+#             */
-/*   Updated: 2024/11/12 12:36:52 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/12 13:38:20 by jeportie          #+#    #+#             */
+/*   Updated: 2024/11/12 13:38:23 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

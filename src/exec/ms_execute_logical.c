@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:27:18 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 16:48:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:17:20 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ int	ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,
 	int	left_exit_status;
 	int	right_exit_status;
 
+	if (!logic_node || !context || !manager)
+	{
+		if (context)
+			context->exit_status = ms_handle_error("Invalid arguments to ms_execute_logical", 1, context->shell->gcl);
+		return (-1);
+	}
 	right_exit_status = 0;
 	left_exit_status = ms_execute_ast(logic_node->left, context, manager);
 	if ((type == NODE_AND && left_exit_status == 0)

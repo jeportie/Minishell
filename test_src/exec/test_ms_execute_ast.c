@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_ms_execute_ast.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assistant <assistant@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 10:00:00 by assistant         #+#    #+#             */
-/*   Updated: 2024/11/12 13:19:56 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/12 13:36:07 by jeportie          #+#    #+#             */
+/*   Updated: 2024/11/12 14:07:47 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,26 @@ t_exec_context initialize_exec_context_for_test()
         perror("gc_malloc");
         exit(EXIT_FAILURE);
     }
-    context.shell->env_data->env = NULL; // Initialize environment variables as needed
+    context.shell->env_data->env = NULL;
+    context.shell->env_data->path = NULL;
     context.is_subprocess = false;
     context.exit_status = 0;
     context.child_lvl = 0;
+
+    /* Set environment variables for testing */
+    extern char **environ;
+    context.shell->env_data = ms_init_env(environ, context.shell);
+
+    /* Get PATH from environ */
+    char *path_env = getenv("PATH");
+    if (path_env)
+    {
+        context.shell->env_data->path = path_env;
+    }
+    else
+    {
+        context.shell->env_data->path = "/bin:/usr/bin";
+    }
 
     return context;
 }
@@ -153,7 +169,6 @@ START_TEST(test_ms_execute_ast_simple_command)
         close(pipefd[1]);
 
         int ret = ms_execute_ast(node, &context, manager);
-        gc_cleanup(gcl);
         exit(ret);
     }
     else
@@ -228,7 +243,6 @@ START_TEST(test_ms_execute_ast_pipeline)
         close(pipefd[1]);
 
         int ret = ms_execute_ast(pipeline_node, &context, manager);
-        gc_cleanup(gcl);
         exit(ret);
     }
     else
@@ -303,7 +317,6 @@ START_TEST(test_ms_execute_ast_logical_and)
         close(pipefd[1]);
 
         int ret = ms_execute_ast(and_node, &context, manager);
-        gc_cleanup(gcl);
         exit(ret);
     }
     else
@@ -367,7 +380,6 @@ START_TEST(test_ms_execute_ast_redirection_output)
     {
         /* Child process */
         int ret = ms_execute_ast(redirect_node, &context, manager);
-        gc_cleanup(gcl);
         exit(ret);
     }
     else
