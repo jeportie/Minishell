@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 12:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 11:10:10 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:43:05 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,13 @@ START_TEST(test_ms_set_env_value_new_var)
 {
     t_shell shell;
     setup_shell(&shell);
-
-    ms_set_env_value(&shell, "NEW_VAR", "new_value");
+    char *var = gc_strdup("NEW_VAR");
+    gc_register(var, shell.gcl);
+    gc_lock(var, shell.gcl);
+    char *value = gc_strdup("new_value");
+    gc_register(value, shell.gcl);
+    gc_lock(value, shell.gcl);
+    ms_set_env_value(&shell, var, value);
 
     // Vérifier que la variable a bien été ajoutée
     t_env *env = shell.env_data->env;
@@ -51,11 +56,25 @@ START_TEST(test_ms_set_env_value_update_var)
 {
     t_shell shell;
     setup_shell(&shell);
+    char *var_ini = gc_strdup("EXISTING_VAR");
+    gc_register(var_ini, shell.gcl);
+    gc_lock(var_ini, shell.gcl);
+    char *value_ini = gc_strdup("initial_value");
+    gc_register(value_ini, shell.gcl);
+    gc_lock(value_ini, shell.gcl);
 
     // Ajouter une variable initiale
-    ms_set_env_value(&shell, "EXISTING_VAR", "initial_value");
+    ms_set_env_value(&shell, var_ini, value_ini);
+
+    char *var_upd = gc_strdup("EXISTING_VAR");
+    gc_register(var_upd, shell.gcl);
+    gc_lock(var_upd, shell.gcl);
+    char *value_upd = gc_strdup("updated_value");
+    gc_register(value_upd, shell.gcl);
+    gc_lock(value_upd, shell.gcl);
+
     // Mettre à jour cette variable
-    ms_set_env_value(&shell, "EXISTING_VAR", "updated_value");
+    ms_set_env_value(&shell, var_upd, value_upd);
 
     // Vérifier que la variable a bien été mise à jour
     t_env *env = shell.env_data->env;

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:56:24 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 15:19:28 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:15:22 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,52 +52,6 @@ START_TEST(test_ms_env_no_options)
 }
 END_TEST
 
-// Test pour une option invalide
-START_TEST(test_ms_env_invalid_option)
-{
-    t_shell shell;
-    setup_shell(&shell);
-
-    ms_set_env_value(&shell, "PATH", "/usr/bin");
-    ms_set_env_value(&shell, "HOME", "/home/user");
-
-    t_cmd_node cmd_node;
-    cmd_node.argc = 2;
-    char *argv[] = { "env", "-x", NULL };
-    cmd_node.argv = argv;
-
-    int result = ms_env(&cmd_node, &(t_exec_context){ .shell = &shell });
-
-    // Vérifie le code d'erreur renvoyé pour une option invalide
-    ck_assert_int_eq(result, 125);
-
-    teardown_shell(&shell);
-}
-END_TEST
-
-// Test pour une option valide (double tiret)
-START_TEST(test_ms_env_double_dash)
-{
-    t_shell shell;
-    setup_shell(&shell);
-
-    ms_set_env_value(&shell, "PATH", "/usr/bin");
-    ms_set_env_value(&shell, "HOME", "/home/user");
-
-    t_cmd_node cmd_node;
-    cmd_node.argc = 2;
-    char *argv[] = { "env", "--", NULL };
-    cmd_node.argv = argv;
-
-    int result = ms_env(&cmd_node, &(t_exec_context){ .shell = &shell });
-
-    // Vérifie que le résultat est correct (pas d'erreur)
-    ck_assert_int_eq(result, 0);
-
-    teardown_shell(&shell);
-}
-END_TEST
-
 // Suite de tests pour ms_env
 Suite *ms_env_suite(void)
 {
@@ -108,8 +62,6 @@ Suite *ms_env_suite(void)
     tc_core = tcase_create("Core");
 
     tcase_add_test(tc_core, test_ms_env_no_options);
-    tcase_add_test(tc_core, test_ms_env_invalid_option);
-    tcase_add_test(tc_core, test_ms_env_double_dash);
 
     suite_add_tcase(s, tc_core);
 

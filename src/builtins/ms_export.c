@@ -6,14 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 14:43:30 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:53:49 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
 
-static char	*st_extract_value(t_export_utils *utils, char *cmd, int size,
-		char *folder)
+static char	*st_extract_value(t_export_utils *utils, char *cmd, int size)
 {
 	int (start) = 0;
 	char *(value) = NULL;
@@ -99,26 +98,22 @@ int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)
 	t_export_utils (utils);
 	st_init_utils(&utils, context->shell);
 	if (cmd_node->argc == 1)
-	{
-		st_order_env(context);
-		st_print_order(context);
-		return (0);
-	}
+		return (st_order_env(context), st_print_order(context),
+			0);
 	while (cmd_node->argv[i])
 	{
 		utils.var = extract_folder(&utils, cmd_node->argv[i]);
 		if (!utils.var)
 			return (1);
 		utils.value = st_extract_value(&utils, cmd_node->argv[i],
-				ft_strlen(utils.var) - 1, utils.var);
+				ft_strlen(utils.var) - 1);
 		add_export(&utils, context->shell->env_data->env, utils.var,
 			utils.value);
-		gc_unlock(utils.var, context->shell->gcl);
+		gc_free(utils.var, context->shell->gcl);
 		if (utils.value)
-			gc_unlock(utils.value, context->shell->gcl);
+			gc_free(utils.value, utils.shell->gcl);
 		i++;
 	}
-	gc_collect(context->shell->gcl);
 	return (0);
 }
 

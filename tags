@@ -401,8 +401,6 @@ START_TEST	test_src/builtins/test_ms_echo.c	/^START_TEST(test_ms_echo_no_newline
 START_TEST	test_src/builtins/test_ms_echo.c	/^START_TEST(test_ms_echo_no_newline_1)$/;"	f
 START_TEST	test_src/builtins/test_ms_echo.c	/^START_TEST(test_ms_echo_no_newline_2)$/;"	f
 START_TEST	test_src/builtins/test_ms_echo.c	/^START_TEST(test_ms_echo_no_newline_3)$/;"	f
-START_TEST	test_src/builtins/test_ms_env.c	/^START_TEST(test_ms_env_double_dash)$/;"	f
-START_TEST	test_src/builtins/test_ms_env.c	/^START_TEST(test_ms_env_invalid_option)$/;"	f
 START_TEST	test_src/builtins/test_ms_env.c	/^START_TEST(test_ms_env_no_options)$/;"	f
 START_TEST	test_src/builtins/test_ms_exit.c	/^START_TEST(test_ms_exit_with_invalid_code)$/;"	f
 START_TEST	test_src/builtins/test_ms_exit.c	/^START_TEST(test_ms_exit_with_too_many_arguments)$/;"	f
@@ -742,7 +740,7 @@ ms_init_std_signal	src/signal/ms_init_std_signal.c	/^void	ms_init_std_signal(voi
 ms_parse_tokens	src/ast/ms_parse_tokens.c	/^t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)$/;"	f
 ms_pwd	src/builtins/ms_pwd.c	/^int	ms_pwd(void)$/;"	f
 ms_pwd_suite	test_src/builtins/test_ms_pwd.c	/^static Suite    *ms_pwd_suite(void)$/;"	f	file:
-ms_set_env_value	src/env_value/ms_set_env_value.c	/^void ms_set_env_value(t_shell *shell, char *name, char *value) {$/;"	f
+ms_set_env_value	src/env_value/ms_set_env_value.c	/^void	ms_set_env_value(t_shell *shell, char *name, char *value)$/;"	f
 ms_set_env_value_suite	test_src/env_value/test_ms_set_env_value.c	/^static Suite *ms_set_env_value_suite(void)$/;"	f	file:
 ms_stop_std_signal	src/signal/ms_stop_std_signal.c	/^void	ms_stop_std_signal(void)$/;"	f
 ms_syntax_error	src/syntax_error/ms_syntax_error.c	/^int	ms_syntax_error(const char *input)$/;"	f
@@ -848,7 +846,7 @@ st_close_parenthesis	src/syntax_error/parenthesis_gestion.c	/^static int	st_clos
 st_create_envp	src/init_shell/ms_init_env.c	/^static char	**st_create_envp(t_shell *shell, t_env_data *env_data)$/;"	f	file:
 st_echo_utils	src/builtins/ms_echo.c	/^static int	st_echo_utils(int i, int j, char **cmd, int *error)$/;"	f	file:
 st_exit_code	src/builtins/ms_exit.c	/^static void	st_exit_code(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f	file:
-st_extract_value	src/builtins/ms_export.c	/^static char	*st_extract_value(t_export_utils *utils, char *cmd, int size,$/;"	f	file:
+st_extract_value	src/builtins/ms_export.c	/^static char	*st_extract_value(t_export_utils *utils, char *cmd, int size)$/;"	f	file:
 st_first_arg	src/builtins/ms_env.c	/^static char	*st_first_arg(char **strs)$/;"	f	file:
 st_get_path	src/init_shell/ms_init_env.c	/^static char	*st_get_path(t_env_data *env_data)$/;"	f	file:
 st_get_shell	src/init_shell/ms_init_env.c	/^static char	*st_get_shell(t_env_data *env_data)$/;"	f	file:

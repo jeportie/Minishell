@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:22:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 21:31:29 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:12:30 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ms_env(t_cmd_node *cmd_node, t_exec_context *context)
 	t_env *(env) = context->shell->env_data->env;
 	if (cmd_node->argc == 1)
 		return (st_print_env(env));
-	if (cmd_node->argv[1][0] == '-')
+	if (cmd_node->argc == 2 && cmd_node->argv[1][0] == '-')
 	{
 		if (!cmd_node->argv[1][1])
 			return (0);
@@ -72,7 +72,7 @@ int	ms_env(t_cmd_node *cmd_node, t_exec_context *context)
 		}
 		else
 		{
-			ft_dprintf(2, "minishel: env: invalid option -- \'%s\'\n",
+			ft_dprintf(2, "minishell: env: invalid option -- \'%s\'\n",
 				st_whithout_minus(cmd_node->argv[1]));
 			return (125);
 		}

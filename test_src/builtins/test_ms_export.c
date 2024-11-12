@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:00:32 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 15:27:54 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:54:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ START_TEST(test_ms_export_new_var)
     setup_shell(&shell);
 
     // Ajouter une variable
-    ms_set_env_value(&shell, "PATH", "/usr/bin");
     ms_set_env_value(&shell, "USER", "gmarquis");
 
     t_cmd_node cmd_node;
@@ -48,6 +47,9 @@ START_TEST(test_ms_export_new_var)
 
     // Vérifier que la variable a bien été ajoutée
     t_env *env = shell.env_data->env;
+    ck_assert_str_eq(env->var, "USER");
+    ck_assert_str_eq(env->value, "gmarquis");
+    env = env->next;
     ck_assert_ptr_nonnull(env);
     ck_assert_str_eq(env->var, "NEW_VAR");
     ck_assert_str_eq(env->value, "new_value");
@@ -63,7 +65,6 @@ START_TEST(test_ms_export_update_var)
     setup_shell(&shell);
 
     // Ajouter une variable
-    ms_set_env_value(&shell, "PATH", "/usr/bin");
     ms_set_env_value(&shell, "USER", "gmarquis");
     ms_set_env_value(&shell, "EXISTING_VAR", "initial_value");
 
@@ -76,7 +77,7 @@ START_TEST(test_ms_export_update_var)
     ms_export(&cmd_node, &(t_exec_context){ .shell = &shell });
 
     // Vérifier que la variable a bien été mise à jour
-    t_env *env = shell.env_data->env;
+    t_env *env = shell.env_data->env->next;
     ck_assert_ptr_nonnull(env);
     ck_assert_str_eq(env->var, "EXISTING_VAR");
     ck_assert_str_eq(env->value, "updated_value");

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 15:24:45 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:20:21 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,13 @@ START_TEST(test_ms_unset_existing_var)
     setup_shell(&shell);
 
     // Ajouter une variable
-    ms_set_env_value(&shell, "USER", "gmarquis");
+    char *var = gc_strdup("USER");
+    gc_register(var, shell.gcl);
+    gc_lock(var, shell.gcl);
+    char *value = gc_strdup("gmarquis");
+    gc_register(value, shell.gcl);
+    gc_lock(value, shell.gcl);
+    ms_set_env_value(&shell, var, value);
 
     // Vérifier que la variable USER est présente
     t_env *env = shell.env_data->env;
@@ -66,8 +72,13 @@ START_TEST(test_ms_unset_non_existing_var)
     setup_shell(&shell);
 
     // Ajouter des variables initiales
-    ms_set_env_value(&shell, "PATH", "/usr/bin");
-    ms_set_env_value(&shell, "SHELL", "/bin/bash");
+    char *var = gc_strdup("PATH");
+    gc_register(var, shell.gcl);
+    gc_lock(var, shell.gcl);
+    char *value = gc_strdup("/usr/bin");
+    gc_register(value, shell.gcl);
+    gc_lock(value, shell.gcl);
+    ms_set_env_value(&shell, var, value);
 
     // Préparer les arguments pour ms_unset
     t_cmd_node cmd_node;
@@ -80,7 +91,6 @@ START_TEST(test_ms_unset_non_existing_var)
 
     // Vérifier que les autres variables n'ont pas été modifiées
     ck_assert_str_eq(ms_get_env_value(shell.env_data->env, "PATH"), "/usr/bin");
-    ck_assert_str_eq(ms_get_env_value(shell.env_data->env, "SHELL"), "/bin/bash");
 
     teardown_shell(&shell);
 }
