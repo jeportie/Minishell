@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 19:53:20 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:58:48 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,12 @@ int		ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 
 int		ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context,
 			t_proc_manager *manager);
+
+void	left_child_process(t_pipe_exec_params *params);
+void	right_child_process(t_pipe_exec_params *params);
+int		parent_process(pid_t left_pid, pid_t right_pid,
+			t_exec_context *context);
+
 int		ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,
 			t_node_type type, t_proc_manager *manager);
 int		ms_execute_subshell(t_subshell_node *subshell_node,

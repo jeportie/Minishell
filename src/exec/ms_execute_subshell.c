@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:47:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 14:37:44 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:04:16 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ int	ms_execute_subshell(t_subshell_node *subshell_node,
 		context->child_lvl = fork_params.child_lvl;
 		subshell_child_process(&params);
 	}
-//	print_proc_info(manager);
+	print_proc_info(manager);
 	return (subshell_parent_process(pid, context));
 }

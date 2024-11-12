@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 16:08:08 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:43:32 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,13 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	}
 	else
 	{
-//		print_proc_info(manager);
+		print_proc_info(manager);
 		ms_parent_process(pid, context);
 	}
-	if (cmd_path != cmd_node->argv[0])
-		gc_free(cmd_path, gcl);
 	return (context->exit_status);
 }
+
+/*
+	if (cmd_path != cmd_node->argv[0])
+		gc_free(cmd_path, gcl);
+*/
