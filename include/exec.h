@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 18:45:10 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:05:51 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,12 @@ int		initialize_context(t_wildcard_context *ctx, const char *pattern,
 int		add_match(t_wildcard_context *ctx, const char *filename);
 int		check_match(t_wildcard_context *ctx, struct dirent *entry);
 char	**finalize_matches(t_wildcard_context *ctx);
+
+bool	is_var(char *cmd);
+bool	is_wild(char *cmd);
+bool	is_equal(char *cmd);
+int		valide_dollar(char *input);
+int		ms_value_assign(t_shell *shell, t_cmd_node *cmd_node, t_gc *gcl);
+char	*ms_expand_arg(char *arg, t_env *env, t_gc *gcl);
 
 #endif /* EXEC_H */
