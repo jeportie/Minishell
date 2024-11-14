@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:04:44 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/14 16:09:53 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:45:09 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,22 @@ static char	*find_dollar(char *arg)
 		i++;
 	if (arg[i] != '$')
 		return (NULL);
-	printf("$ is %i away from first char.\n", i);
 	i++;
 	return (&arg[i]);
 }
 
-static void	copy_expanded_cmd(char *new_arg, char *arg, char *expand_var,
-			t_gc *gcl)
+static void	copy_expanded_cmd(char *new_arg, char *arg, char *expand_var, bool is_nested)
 {
 	int (i) = 0;
 	int (j) = 0;
-	while (arg[i] && arg[i] != '$')
+
+	if (!is_nested)
 	{
-		new_arg[i] = arg[i];
-		i++;
+		while (arg[i] && arg[i] != '$')
+		{
+			new_arg[i] = arg[i];
+			i++;
+		}
 	}
 	j = 0;
 	int (h) = i + 1;
@@ -113,16 +115,16 @@ static void	copy_expanded_cmd(char *new_arg, char *arg, char *expand_var,
 		{
 			while (arg[h] != '}')
 				h++;
+			h++;
 		}
-		new_arg[i] = arg[++h];
+		new_arg[i] = arg[h];
 		i++;
 		h++;
 	}
 	new_arg[i] = '\0';
-	gc_free(arg, gcl);
 }
 
-char	*ms_expand_arg(char *arg, t_env *env, t_gc *gcl)
+char	*ms_expand_arg(char *arg, t_env *env, bool is_nested, t_gc *gcl)
 {
 	char	*new_arg;
 	char	*var;
@@ -131,14 +133,19 @@ char	*ms_expand_arg(char *arg, t_env *env, t_gc *gcl)
 	int		total_len;
 
 	total_len = 0;
-	start_var = find_dollar(arg);
+	if (!is_nested)
+		start_var = find_dollar(arg);
+	else
+		start_var = arg;
 	var = ms_extract_var(start_var, gcl);
 	expand_var = ms_get_env_value(env, var);
+	if (!expand_var)
+		return (NULL);
 	total_len += ft_strlen(ms_get_env_value(env, var));
 	total_len = ft_strlen(arg) + ft_strlen(expand_var) - ft_strlen(var);
 	new_arg = (char *)gc_malloc(sizeof(char) * (total_len), gcl);
-	copy_expanded_cmd(new_arg, arg, expand_var, gcl);
+	copy_expanded_cmd(new_arg, arg, expand_var, is_nested);
 	if (is_var(new_arg))
-		new_arg = ms_expand_arg(new_arg, env, gcl);
+		new_arg = ms_expand_arg(new_arg, env, is_nested, gcl);
 	return (new_arg);
 }

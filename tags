@@ -636,8 +636,9 @@ context	include/exec.h	/^	t_exec_context	*context;$/;"	m	struct:s_external_exec_
 context	include/exec.h	/^	t_exec_context	*context;$/;"	m	struct:s_heredoc_params
 context	include/exec.h	/^	t_exec_context	*context;$/;"	m	struct:s_pipe_exec_params
 context	include/exec.h	/^	t_exec_context	*context;$/;"	m	struct:s_subshell_exec_params
-copy_expanded_cmd	src/exec/ms_expand_args.c	/^static void	copy_expanded_cmd(char *new_arg, char *arg, char *expand_var,$/;"	f	file:
+copy_expanded_cmd	src/exec/ms_expand_args.c	/^static void	copy_expanded_cmd(char *new_arg, char *arg, char *expand_var, bool is_nested)$/;"	f	file:
 copy_token_value	src/token/tokenize_word.c	/^static int	copy_token_value(char *value, const char *current, char start_quote)$/;"	f	file:
+count_dollars	src/exec/ms_execute_command.c	/^int	count_dollars(char *arg)$/;"	f
 count_envlines	src/exec/ms_get_envp.c	/^static int	count_envlines(t_env *envi)$/;"	f	file:
 create_cmd_node	test_src/exec/test_ms_execute_pipeline.c	/^t_ast_node *create_cmd_node(char *command[], t_gc *gcl)$/;"	f
 create_command_node	src/ast/create_command_node.c	/^t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl)$/;"	f
@@ -810,6 +811,7 @@ ft_strmapi	lib/libft/src/string/ft_strmapi.c	/^char	*ft_strmapi(char const *s, c
 ft_strncmp	lib/libft/src/string/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
 ft_strnstr	lib/libft/src/string/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
 ft_strrchr	lib/libft/src/string/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strsjoin	src/exec/ms_execute_command.c	/^char	*ft_strsjoin(int argc, char **argv, t_gc *gcl)$/;"	f
 ft_strtrim	lib/libft/src/string/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
 ft_substr	lib/libft/src/string/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
 ft_substr_len	lib/libft/src/string/ft_split.c	/^static size_t	ft_substr_len(char *str, char c)$/;"	f	file:
@@ -1014,7 +1016,7 @@ ms_execute_pipeline_suite	test_src/exec/test_ms_execute_pipeline.c	/^Suite *ms_e
 ms_execute_subshell	src/exec/ms_execute_subshell.c	/^int	ms_execute_subshell(t_subshell_node *subshell_node,$/;"	f
 ms_exit	src/builtins/ms_exit.c	/^int	ms_exit(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
 ms_exit_suite	test_src/builtins/test_ms_exit.c	/^static Suite *ms_exit_suite(void)$/;"	f	file:
-ms_expand_arg	src/exec/ms_expand_args.c	/^char	*ms_expand_arg(char *arg, t_env *env, t_gc *gcl)$/;"	f
+ms_expand_arg	src/exec/ms_expand_args.c	/^char	*ms_expand_arg(char *arg, t_env *env, bool is_nested, t_gc *gcl)$/;"	f
 ms_expand_wild	src/exec/ms_expand_wild.c	/^char	**ms_expand_wild(const char *pattern, t_gc *gcl)$/;"	f
 ms_expand_wild_suite	test_src/exec/test_ms_expand_wild.c	/^Suite *ms_expand_wild_suite(void)$/;"	f
 ms_export	src/builtins/ms_export.c	/^int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
@@ -1055,6 +1057,7 @@ ms_unset	src/builtins/ms_unset.c	/^int	ms_unset(t_cmd_node *cmd_node, t_exec_con
 ms_unset_suite	test_src/builtins/test_ms_unset.c	/^static Suite *ms_unset_suite(void)$/;"	f	file:
 ms_value_assign	src/exec/ms_value_assign.c	/^int	ms_value_assign(t_shell *shell, t_cmd_node *cmd_node, t_gc *gcl)$/;"	f
 nb_printed	lib/libft/include/printf.h	/^	int		nb_printed;$/;"	m	struct:s_buffer
+nested_vars	src/exec/ms_execute_command.c	/^char	*nested_vars(char *arg, t_env *env, t_gc *gcl)$/;"	f
 next	include/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
 next	include/process.h	/^	struct s_proc_info	*next;$/;"	m	struct:s_proc_info	typeref:struct:s_proc_info::s_proc_info
 next	include/tokenize.h	/^	struct s_token	*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token

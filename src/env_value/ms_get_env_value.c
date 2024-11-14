@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:48:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 19:18:19 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:12:34 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ms_get_env_value(t_env *env, char *name)
 	t_env	*tmp;
 	int		var_verif;
 
+	if (!name)
+		return (NULL);
 	var_verif = valide_var(name);
 	if (var_verif == 0)
 		return (NULL);
