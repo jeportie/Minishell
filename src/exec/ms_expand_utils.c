@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:52:30 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/14 08:54:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:21:47 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ bool	is_wild(char *cmd)
 
 	if (!cmd)
 		return (false);
+	i = 0;
 	while (cmd[i])
 	{
 		if (cmd[i] == '*')
@@ -49,6 +50,7 @@ bool	is_equal(char *cmd)
 
 	if (!cmd)
 		return (false);
+	i = 0;
 	while (cmd[i])
 	{
 		if (cmd[i] == '=')
@@ -62,6 +64,11 @@ int	valide_dollar(char *input)
 {
 	int	i;
 
+	if (!input)
+	{
+		ft_dprintf(2, "minishell: %s\': no input\n", input);
+		return (0);
+	}
 	i = 0;
 	if (ft_isdigit(input[i]))
 	{

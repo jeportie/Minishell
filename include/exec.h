@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/14 17:26:51 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/15 09:19:19 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,6 @@ bool	is_equal(char *cmd);
 int		valide_dollar(char *input);
 int		ms_value_assign(t_shell *shell, t_cmd_node *cmd_node, t_gc *gcl);
 char	*ms_expand_arg(char *arg, t_env *env, bool is_nested, t_gc *gcl);
+char	*nested_vars(char *arg, t_env *env, t_gc *gcl);
 
 #endif /* EXEC_H */

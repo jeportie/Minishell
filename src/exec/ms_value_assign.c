@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:02:18 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/14 16:04:15 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:25:22 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	ms_value_assign(t_shell *shell, t_cmd_node *cmd_node, t_gc *gcl)
 	int		len;
 
 	int (i) = -1;
+	i = -1;
 	if (!cmd_node)
 		return (-1);
 	else
@@ -58,6 +59,16 @@ int	ms_value_assign(t_shell *shell, t_cmd_node *cmd_node, t_gc *gcl)
 				ms_copy_assign(var, value, cmd_node->argv[i]);
 				ms_set_env_value(shell, var, value);
 			}
+		}
+		i = 0;
+		while (i < cmd_node->argc)
+		{
+			if (is_var(cmd_node->argv[i]))
+			{
+				cmd_node->argv[i] = nested_vars(cmd_node->argv[i],
+						shell->env_data->env, gcl);
+			}
+			i++;
 		}
 		return (0);
 	}

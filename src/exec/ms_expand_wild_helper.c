@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 15:21:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 17:49:33 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:52:14 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 bool	ms_pattern_match(const char *pattern, const char *filename)
 {
-	printf("Matching pattern: '%s' with filename: '%s'\n", pattern, filename);
 	if (*pattern == '\0' && *filename == '\0')
 		return (true);
 	if (*pattern == '*')
@@ -66,8 +65,8 @@ int	add_match(t_wildcard_context *ctx, const char *filename)
 	}
 	ctx->matches[ctx->match_count] = dup_name;
 	gc_register(dup_name, ctx->gcl);
+	printf("Added match: '%s'\n index: %d\n", ctx->matches[ctx->match_count], (int)ctx->match_count);
 	ctx->match_count++;
-	printf("Added match: '%s'\n", dup_name);
 	return (0);
 }
 
@@ -89,8 +88,7 @@ char	**finalize_matches(t_wildcard_context *ctx)
 {
 	char	**final_matches;
 
-	final_matches = gc_realloc(ctx->matches, sizeof(char *)
-			* (ctx->match_count + 1), ctx->gcl);
+	final_matches = gc_malloc(sizeof(char *) * (ctx->match_count + 1), ctx->gcl);
 	if (!final_matches)
 		return (NULL);
 	final_matches[ctx->match_count] = NULL;

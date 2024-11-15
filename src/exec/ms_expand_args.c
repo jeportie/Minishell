@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:04:44 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/14 18:45:09 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:36:11 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ static void	copy_expanded_cmd(char *new_arg, char *arg, char *expand_var, bool i
 				h++;
 			h++;
 		}
+		if (arg[h] == '}')
+			h++;
 		new_arg[i] = arg[h];
 		i++;
 		h++;
@@ -146,6 +148,6 @@ char	*ms_expand_arg(char *arg, t_env *env, bool is_nested, t_gc *gcl)
 	new_arg = (char *)gc_malloc(sizeof(char) * (total_len), gcl);
 	copy_expanded_cmd(new_arg, arg, expand_var, is_nested);
 	if (is_var(new_arg))
-		new_arg = ms_expand_arg(new_arg, env, is_nested, gcl);
+		new_arg = nested_vars(new_arg, env, gcl);
 	return (new_arg);
 }

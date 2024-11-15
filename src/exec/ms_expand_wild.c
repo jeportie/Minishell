@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 17:50:08 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 16:38:05 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:52:30 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	**ms_expand_wild(const char *pattern, t_gc *gcl)
 		entry = readdir(dir);
 	}
 	closedir(dir);
-	final_matches = finalize_matches(&ctx);
+	final_matches = ctx.matches;
+	ft_printf("match: %s\n", final_matches[0]);
 	return (final_matches);
 }
