@@ -94,14 +94,18 @@ static void	st_init_utils(t_export_utils *utils, t_shell *shell)
 	utils->value = NULL;
 }
 
-int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)
+int	  ms_export(t_cmd_node *cmd_node, t_exec_context *context)
 {
+	t_export_utils	utils;
+
 	int (i) = 1;
-	t_export_utils (utils);
 	st_init_utils(&utils, context->shell);
 	if (cmd_node->argc == 1)
-		return (st_order_env(context), st_print_order(context),
-			0);
+	{
+		st_order_env(context);
+		st_print_order(context);
+		return 0;
+	}
 	while (cmd_node->argv[i])
 	{
 		utils.var = extract_folder(&utils, cmd_node->argv[i]);
@@ -109,7 +113,7 @@ int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)
 			return (1);
 		utils.value = st_extract_value(&utils, cmd_node->argv[i],
 				ft_strlen(utils.var) - 1);
-		add_export(&utils, context->shell->env_data->env, utils.var,
+		add_export(&utils, &context->shell->env_data->env, utils.var,
 			utils.value);
 		gc_free(utils.var, context->shell->gcl);
 		if (utils.value)

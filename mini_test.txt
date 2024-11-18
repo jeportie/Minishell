@@ -249,7 +249,7 @@ Nickel
 TEST export:
 Le += ne concatenne pas!
 il change la variable choisie et supprime toutes les autres variable export avant lui.
-A corriger.
+(corriger le 18 mauvaise gestion du garbage colector dans add_cat)
 
 
 
@@ -273,3 +273,4 @@ Comportement valide sauf pour exit et une option valide ou il y a segfault.
     [1]    22300 segmentation fault (core dumped)  ./Minishell
     gmarquis@u-home-fix~/Code/Minishell> echo $?    
     139
+(corriger le 18 la variable envoyer a ft_atol etait free par gc_cleanup)

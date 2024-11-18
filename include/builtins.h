@@ -25,9 +25,12 @@ typedef struct s_export_utils
 
 void	echec_malloc(t_gc *gcl, char *message);
 void	add_cat(t_shell *shell, t_env *current, t_env *tmp, int flag);
-void	add_export_utils(t_export_utils *utils, t_env *current, t_env *tmp);
-void	add_export(t_export_utils *utils, t_env *ev, char *name_folder,
+void	add_export_utils(t_export_utils *utils, t_env **env, t_env *tmp);
+//void	add_export_utils(t_export_utils *utils, t_env *current, t_env *tmp);
+void	add_export(t_export_utils *utils, t_env **ev, char *name_folder,
 			char *value_folder);
+//void	add_export(t_export_utils *utils, t_env *ev, char *name_folder,
+//			char *value_folder);
 int		valide_var(char *input);
 char	*extract_folder(t_export_utils *utils, char *cmd);
 int		ms_export(t_cmd_node *cmd_node, t_exec_context *context);
