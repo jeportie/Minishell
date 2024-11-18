@@ -117,7 +117,7 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	}
 	else
 	{
-		print_proc_info(manager);
+		//print_proc_info(manager);
 		ms_parent_process(pid, context);
 	}
 	return (context->exit_status);

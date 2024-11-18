@@ -34,20 +34,20 @@ static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 	t_proc_manager	*proc_manager;
 
 	tokens = ms_tokenize(shell->user_input, shell->gcl);
-	printf("-----------------------------------------------------");
-	printf("---------------------------\nTOKENS:\n");
-	print_token(tokens);
+	//printf("-----------------------------------------------------");
+	//printf("---------------------------\nTOKENS:\n");
+	//print_token(tokens);
 	root = ms_parse_tokens(tokens, shell->gcl);
 	if (!root)
 	{
 		gc_cleanup(shell->gcl);
 		exit(EXIT_FAILURE);
 	}
-	printf("------------------------------------------------");
-	printf("--------------------------------\nAST:\n");
-	print_ast(root, 0, "", 0);
-	printf("----------------------------------------------------------------");
-	printf("----------------\n");
+	//printf("------------------------------------------------");
+	//printf("--------------------------------\nAST:\n");
+	//print_ast(root, 0, "", 0);
+	//printf("----------------------------------------------------------------");
+	//printf("----------------\n");
 	init_context(&context, shell);
 	proc_manager = init_manager(shell->gcl);
 	ms_execute_ast(root, &context, proc_manager);

@@ -71,12 +71,15 @@ static int	st_valid_numeric_code(char *str)
 
 static void	st_exit_code(t_cmd_node *cmd_node, t_exec_context *context)
 {
+	long long  code;
+
 	if (st_numeric_code(cmd_node->argv[1])
 		&& st_valid_numeric_code(cmd_node->argv[1]))
 	{
 		ft_dprintf(2, "exit\n");
+		code = ft_atol(cmd_node->argv[1]);
 		gc_cleanup(context->shell->gcl);
-		exit (ft_atol(cmd_node->argv[1]) % 256);
+		exit (code % 256);
 	}
 	else
 	{
@@ -92,6 +95,7 @@ int	ms_exit(t_cmd_node *cmd_node, t_exec_context *context)
 	if (cmd_node->argc == 1)
 	{
 		ft_dprintf(2, "exit\n");
+		gc_cleanup(context->shell->gcl);
 		exit (context->shell->error_code);
 	}
 	else if (cmd_node->argc == 2)

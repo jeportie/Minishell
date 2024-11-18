@@ -60,6 +60,6 @@ int	ms_execute_subshell(t_subshell_node *subshell_node,
 		context->child_lvl = fork_params.child_lvl;
 		subshell_child_process(&params);
 	}
-	print_proc_info(manager);
+	//print_proc_info(manager);
 	return (subshell_parent_process(pid, context));
 }
