@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:07:30 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/15 18:54:28 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/18 23:50:35 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,138 +14,52 @@
 #include "../../include/builtins.h"
 #include <unistd.h>
 
-int	count_dollars(char *arg)
+char	**cmd_arg_expansion(char **argv, t_wildcard_context *match_ctx, t_gc *gcl)
 {
-	int	i;
-	int	dollars;
-
-	if (!arg)
-		return (0);
-	i = 0;
-	dollars = 0;
-	while (arg[i])
-	{
-		if (arg[i] == '$')
-			dollars++;
-		i++;
-	}
-	return (dollars);
-}
-
-char	*copy_argv_to_str(char *dest, int argc, char **argv)
-{
-	int		result_index;
+	char	**new_argv;
 	int		i;
 	int		j;
+	int		h;
+	int		total_args;
 
+	i = 0;
+	total_args = (int)match_ctx->match_count;
+	while (argv[i])
+	{
+		i++;
+		total_args++;
+	}
+	new_argv = (char **)gc_malloc(sizeof(char *) * total_args, gcl);
 	i = 0;
 	j = 0;
-	result_index = 0;
-	while (i < argc && argv[i])
+	h = 0;
+	while (argv[i])
 	{
-		while (argv[i][j])
+		if (argv[i][0] == '*')
 		{
-			dest[result_index] = argv[i][j];
-			result_index++;
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	dest[result_index] = '\0';
-	return (dest);
-}
-
-char	*ft_strsjoin(int argc, char **argv, t_gc *gcl)
-{
-	char	*result;
-	int		i;
-	int		len;
-
-	if (!argv || !*argv)
-		return (NULL);
-	i = 0;
-	len = 0;
-	while (i < argc)
-	{
-		if (argv[i])
-			len += ft_strlen(argv[i]);
-		i++;
-	}
-	result = gc_malloc(sizeof(char) * (len + 1), gcl);
-	gc_lock(result, gcl);
-	copy_argv_to_str(result, argc, argv);
-	return (result);
-}
-
-char	**expand_nested_vars(char *arg, int dollars, t_env *env, t_gc *gcl)
-{
-	char	**expanded_vars;
-	int		i;
-
-	char **(vars) = ft_split(arg, '$');
-	gc_nest_register(vars, gcl);
-	gc_lock(vars, gcl);
-	if (arg[0] != '$')
-		dollars++;
-	expanded_vars = gc_malloc(sizeof(char *) * (dollars + 1), gcl);
-	i = 0;
-	while (i < dollars)
-	{
-		if (i == 0 && arg[i] != '$')
-		{
-			expanded_vars[i] = vars[i];
-			i++;
+			while (h < (int)match_ctx->match_count)
+			{
+				new_argv[j] = match_ctx->matches[h];
+				j++;
+				h++;
+			}
 		}
 		else
-		{
-			expanded_vars[i] = ms_expand_arg(vars[i], env, true, gcl);
-			i++;
-		}
-	}
-	expanded_vars[i] = NULL;
-	return (expanded_vars);
-}
-
-char	*nested_vars(char *arg, t_env *env, t_gc *gcl)
-{
-	char	*result;
-	char	**expanded_vars;
-
-	int (dollars) = count_dollars(arg);
-	if (dollars < 2)
-		return (ms_expand_arg(arg, env, false, gcl));
-	else
-		expanded_vars = expand_nested_vars(arg, dollars, env, gcl);
-	if (is_equal(expanded_vars[0]))
-		result = ft_strsjoin(dollars, &expanded_vars[1], gcl);
-	else
-		result = ft_strsjoin(dollars, expanded_vars, gcl);
-	return (result);
-}
-
-/************************************************************************/
-
-char	*wild_expansion(char *arg, char **matches)
-{
-	int	i;
-
-	i = 0;
-	while (matches[i])
-	{
+			new_argv[j] = argv[i];
 		i++;
+		j++;
 	}
-	return (arg);
+	new_argv[j] = NULL;
+	return (new_argv);
 }
 
 int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,
 	t_proc_manager *manager, t_gc *gcl)
 {
-	char	**matches;
-	char	*cmd;
-	int		i;
+	t_wildcard_context	*matches;
+	char				*cmd;
+	int					i;
 
-	cmd = cmd_node->argv[0];
 	i = 0;
 	if (!is_equal(cmd_node->argv[0]))
 	{
@@ -159,12 +73,13 @@ int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,
 			if (is_wild(cmd_node->argv[i]))
 			{
 				matches = ms_expand_wild(cmd_node->argv[i], gcl);
-				//Faire une fonction qui rassemble tout les match et les sep avec un espace
-				cmd_node->argv[i] = wild_expansion(cmd_node->argv[i], matches);
+				cmd_node->argc += matches->match_count - 1;
+				cmd_node->argv = cmd_arg_expansion(cmd_node->argv, matches, gcl);
 			}
 			i++;
 		}
 	}
+	cmd = cmd_node->argv[0];
 	if (ft_strncmp(cmd, "echo", 5) == 0)
 		return (ms_echo(cmd_node));
 	else if (ft_strncmp(cmd, "cd", 3) == 0)

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 15:21:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/15 18:52:14 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:25:05 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	add_match(t_wildcard_context *ctx, const char *filename)
 	}
 	ctx->matches[ctx->match_count] = dup_name;
 	gc_register(dup_name, ctx->gcl);
-	printf("Added match: '%s'\n index: %d\n", ctx->matches[ctx->match_count], (int)ctx->match_count);
 	ctx->match_count++;
 	return (0);
 }
