@@ -6,11 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:52:30 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/15 11:21:47 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:49:29 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/exec.h"
+#include "../../include/expand.h"
 
 bool	is_var(char *cmd)
 {
@@ -62,18 +62,15 @@ bool	is_equal(char *cmd)
 
 int	valide_dollar(char *input)
 {
-	int	i;
-
 	if (!input)
 	{
 		ft_dprintf(2, "minishell: %s\': no input\n", input);
 		return (0);
 	}
-	i = 0;
+	int (i) = 0;
 	if (ft_isdigit(input[i]))
 	{
-		ft_dprintf(2, "minishell: %s\':"
-			" command not found\n", input);
+		ft_dprintf(2, "minishell: %s\': command not found\n", input);
 		return (0);
 	}
 	while (input[i])
@@ -84,10 +81,24 @@ int	valide_dollar(char *input)
 			return (i);
 		else
 		{
-			ft_dprintf(2, "minishell: %s\':"
-				" command not found\n", input);
+			ft_dprintf(2, "minishell: %s\':command not found\n", input);
 			return (0);
 		}
 	}
 	return (i);
+}
+
+char	*find_dollar(char *arg)
+{
+	int		i;
+
+	if (!arg)
+		return (NULL);
+	i = 0;
+	while (arg[i] && arg[i] != '$')
+		i++;
+	if (arg[i] != '$')
+		return (NULL);
+	i++;
+	return (&arg[i]);
 }

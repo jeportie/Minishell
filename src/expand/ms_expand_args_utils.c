@@ -6,11 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:46:34 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/18 17:48:59 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:27:20 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/exec.h"
+#include "../../include/expand.h"
 
 int	count_dollars(char *arg)
 {

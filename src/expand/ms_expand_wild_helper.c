@@ -6,11 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 15:21:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/18 15:25:05 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:27:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/exec.h"
+#include "../../include/expand.h"
 
 bool	ms_pattern_match(const char *pattern, const char *filename)
 {
@@ -87,7 +87,8 @@ char	**finalize_matches(t_wildcard_context *ctx)
 {
 	char	**final_matches;
 
-	final_matches = gc_malloc(sizeof(char *) * (ctx->match_count + 1), ctx->gcl);
+	final_matches = gc_malloc(sizeof(char *)
+			* (ctx->match_count + 1), ctx->gcl);
 	if (!final_matches)
 		return (NULL);
 	final_matches[ctx->match_count] = NULL;

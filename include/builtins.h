@@ -6,14 +6,15 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:01:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 21:45:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:32:14 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTINS_H
 # define BUILTINS_H
 
-# include "env_value.h"
+# include "minishell.h"
+# include "exec.h"
 
 typedef struct s_export_utils
 {

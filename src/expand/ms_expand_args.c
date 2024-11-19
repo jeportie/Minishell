@@ -6,12 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:04:44 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/15 13:36:11 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:10:54 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/exec.h"
-#include "../../include/env_value.h"
+#include "../../include/expand.h"
+#include "../../include/minishell.h"
 
 static int	var_len(char *arg, t_gc *gcl)
 {
@@ -71,59 +71,55 @@ static char	*ms_extract_var(char *arg, t_gc *gcl)
 	return (var);
 }
 
-static char	*find_dollar(char *arg)
+static void	helper_copy(char *new_arg, char *arg, int *old_arg_index,
+		int new_arg_index)
 {
-	int		i;
-
-	if (!arg)
-		return (NULL);
-	i = 0;
-	while (arg[i] && arg[i] != '$')
-		i++;
-	if (arg[i] != '$')
-		return (NULL);
-	i++;
-	return (&arg[i]);
+	while (arg[new_arg_index] && (ft_isalnum(arg[new_arg_index])
+			|| arg[new_arg_index] == '-'))
+		new_arg_index++;
+	while (arg[new_arg_index])
+	{
+		if (arg[new_arg_index] == '{')
+		{
+			while (arg[new_arg_index] != '}')
+				new_arg_index++;
+			new_arg_index++;
+		}
+		if (arg[new_arg_index] == '}')
+			new_arg_index++;
+		new_arg[*old_arg_index] = arg[new_arg_index];
+		(*old_arg_index)++;
+		new_arg_index++;
+	}
+	new_arg[*old_arg_index] = '\0';
 }
 
-static void	copy_expanded_cmd(char *new_arg, char *arg, char *expand_var, bool is_nested)
+static void	copy_expanded_cmd(char *new_arg, char *arg,
+		char *expand_var, bool is_nested)
 {
-	int (i) = 0;
-	int (j) = 0;
+	int	arg_index;
+	int	expand_index;
+	int	i;
 
+	arg_index = 0;
+	expand_index = 0;
 	if (!is_nested)
 	{
-		while (arg[i] && arg[i] != '$')
+		while (arg[arg_index] && arg[arg_index] != '$')
 		{
-			new_arg[i] = arg[i];
-			i++;
+			new_arg[arg_index] = arg[arg_index];
+			arg_index++;
 		}
 	}
-	j = 0;
-	int (h) = i + 1;
-	while (expand_var[j])
+	expand_index = 0;
+	i = arg_index + 1;
+	while (expand_var[expand_index])
 	{
-		new_arg[i] = expand_var[j];
-		i++;
-		j++;
+		new_arg[arg_index] = expand_var[expand_index];
+		arg_index++;
+		expand_index++;
 	}
-	while (arg[h] && (ft_isalnum(arg[h]) || arg[h] == '-'))
-		h++;
-	while (arg[h])
-	{
-		if (arg[h] == '{')
-		{
-			while (arg[h] != '}')
-				h++;
-			h++;
-		}
-		if (arg[h] == '}')
-			h++;
-		new_arg[i] = arg[h];
-		i++;
-		h++;
-	}
-	new_arg[i] = '\0';
+	helper_copy(new_arg, arg, &arg_index, i);
 }
 
 char	*ms_expand_arg(char *arg, t_env *env, bool is_nested, t_gc *gcl)

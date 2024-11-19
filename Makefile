@@ -15,11 +15,6 @@ NAME = Minishell
 ### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
-  src/env_lst_utils/ms_env_add_back.c \
-  src/env_lst_utils/ms_env_create_node.c \
-  src/init_shell/ms_init_shell.c \
-  src/init_shell/ms_get_user_input.c \
-  src/init_shell/ms_init_env.c \
   src/signal/ms_stop_std_signal.c \
   src/signal/ms_init_std_signal.c \
   src/ast/create_node.c \
@@ -35,24 +30,17 @@ SRC = \
   src/ast/ms_parse_tokens.c \
   src/exec/ms_concat_path.c \
   src/exec/ms_execute_ast.c \
-  src/exec/ms_execute_external.c \
   src/exec/ms_execute_logical.c \
-  src/exec/ms_execute_pipeline.c \
-  src/exec/ms_execute_subshell.c \
-  src/exec/ms_expand_wild.c \
-  src/exec/ms_expand_wild_helper.c \
-  src/exec/ms_get_envp.c \
-  src/exec/ms_getenv.c \
   src/exec/ms_handle_error.c \
-  src/exec/ms_handle_redirections.c \
-  src/exec/ms_heredoc_helper.c \
   src/exec/ms_heredoc_mode.c \
   src/exec/ms_parse_cmd_path.c \
   src/exec/ms_pipeline_helper.c \
-  src/exec/ms_value_assign.c \
-  src/exec/ms_expand_utils.c \
+  src/exec/ms_execute_external.c \
+  src/exec/ms_execute_pipeline.c \
+  src/exec/ms_execute_subshell.c \
   src/exec/ms_execute_command.c \
-  src/exec/ms_expand_args.c \
+  src/exec/ms_handle_redirections.c \
+  src/exec/ms_heredoc_helper.c \
   src/global.c \
   src/process/back_to_parent_stdout.c \
   src/process/clean_manager.c \
@@ -79,17 +67,31 @@ SRC = \
   src/token/tokenize_word_helper.c \
   src/token/utils.c \
   src/token/tokenize_word.c \
-  src/env_value/ms_set_env_value.c \
-  src/env_value/ms_get_env_value.c \
   src/builtins/echec_malloc.c \
   src/builtins/export_utils.c \
   src/builtins/ms_cd.c \
-  src/builtins/ms_echo.c \
   src/builtins/ms_env.c \
   src/builtins/ms_pwd.c \
   src/builtins/ms_unset.c \
   src/builtins/ms_exit.c \
-  src/builtins/ms_export.c 
+  src/builtins/ms_export.c \
+  src/builtins/ms_echo.c \
+  src/expand/ms_expand_args_utils.c \
+  src/expand/ms_expand_wild.c \
+  src/expand/ms_expand_wild_helper.c \
+  src/expand/ms_value_assign.c \
+  src/expand/ms_expand_utils.c \
+  src/expand/ms_manage_arg_expand.c \
+  src/expand/ms_expand_args.c \
+  src/shell/ms_get_user_input.c \
+  src/shell/ms_init_env.c \
+  src/shell/ms_init_shell.c \
+  src/shell/ms_env_add_back.c \
+  src/shell/ms_env_create_node.c \
+  src/shell/ms_get_env_value.c \
+  src/shell/ms_get_envp.c \
+  src/shell/ms_getenv.c \
+  src/shell/ms_set_env_value.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #

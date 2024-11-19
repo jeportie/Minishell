@@ -6,11 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 17:50:08 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/18 15:23:54 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:27:34 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/exec.h"
+#include "../../include/expand.h"
 #include <unistd.h>
 
 t_wildcard_context	*ms_expand_wild(const char *pattern, t_gc *gcl)

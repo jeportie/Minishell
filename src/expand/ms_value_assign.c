@@ -6,12 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:02:18 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/15 15:25:22 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:33:16 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/exec.h"
-#include "../../include/env_value.h"
+#include "../../include/expand.h"
+#include "../../include/minishell.h"
 
 static	void	ms_copy_assign(char *var, char *value, char *cmd)
 {
@@ -34,6 +34,22 @@ static	void	ms_copy_assign(char *var, char *value, char *cmd)
 		j++;
 	}
 	value[j] = '\0';
+}
+
+static void	helper(t_cmd_node *cmd_node, t_shell *shell, t_gc *gcl)
+{
+	int	i;
+
+	i = 0;
+	while (i < cmd_node->argc)
+	{
+		if (is_var(cmd_node->argv[i]))
+		{
+			cmd_node->argv[i] = nested_vars(cmd_node->argv[i],
+					shell->env_data->env, gcl);
+		}
+		i++;
+	}
 }
 
 int	ms_value_assign(t_shell *shell, t_cmd_node *cmd_node, t_gc *gcl)
@@ -60,17 +76,7 @@ int	ms_value_assign(t_shell *shell, t_cmd_node *cmd_node, t_gc *gcl)
 				ms_set_env_value(shell, var, value);
 			}
 		}
-		i = 0;
-		while (i < cmd_node->argc)
-		{
-			if (is_var(cmd_node->argv[i]))
-			{
-				cmd_node->argv[i] = nested_vars(cmd_node->argv[i],
-						shell->env_data->env, gcl);
-			}
-			i++;
-		}
-		return (0);
+		helper(cmd_node, shell, gcl);
 	}
-	return (127);
+	return (0);
 }
