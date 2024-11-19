@@ -251,6 +251,12 @@ Le += ne concatenne pas!
 il change la variable choisie et supprime toutes les autres variable export avant lui.
 (corriger le 18 mauvaise gestion du garbage colector dans add_cat)
 
+Apres un export sans option l'env reste classer, verifier avec env
+(corriger le 19 modification de l'env original et non d'une copie lors du trie ar ordre ascii)
+
+export affiche var="" meme si l'export a ete faite avec sellement var
+(corriger le 19 le utils->flag n'etais pas reinitialiser dans la boucle)
+
 
 
 TEST unset:
@@ -263,6 +269,7 @@ EX:
     c=(null)
     ptit'coque> unset a b c
     Error: Pointer not managed by GC.
+(corriger le 18 mauvaise gestion du garbage colector dans export)
 
 
 

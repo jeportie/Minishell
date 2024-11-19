@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:35:57 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 17:50:54 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:08:02 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,9 @@ void	add_cat(t_shell *shell, t_env *current, t_env *tmp, int flag)
 
 void	add_export_utils(t_export_utils *utils, t_env **env, t_env *tmp)
 {
-	t_env	*current = *env;
-	t_env	*prev = NULL;
-	int		found = 0;
-
+	t_env *(current) = *env;
+	t_env *(prev) = NULL;
+	int (found) = 0;
 	while (current)
 	{
 		if (!ft_strncmp(current->var, tmp->var, ft_strlen(tmp->var) + 1))
@@ -49,7 +48,7 @@ void	add_export_utils(t_export_utils *utils, t_env **env, t_env *tmp)
 			else
 				add_cat(utils->shell, current, tmp, 1);
 			found = 1;
-			break;
+			break ;
 		}
 		prev = current;
 		current = current->next;
@@ -66,8 +65,8 @@ void	add_export_utils(t_export_utils *utils, t_env **env, t_env *tmp)
 void	add_export(t_export_utils *utils, t_env **ev, char *name_folder,
 		char *value_folder)
 {
-	t_env	*current = *ev;
-	t_env	*tmp = gc_malloc(sizeof(t_env), utils->shell->gcl);
+	t_env *(current) = *ev;
+	t_env *(tmp) = gc_malloc(sizeof(t_env), utils->shell->gcl);
 	if (!tmp)
 		echec_malloc(utils->shell->gcl, "tmp");
 	gc_lock(tmp, utils->shell->gcl);
@@ -93,31 +92,29 @@ void	add_export(t_export_utils *utils, t_env **ev, char *name_folder,
 		*ev = tmp;
 }
 
-int	valide_var(char *input)
+char	*extract_value(t_export_utils *utils, char *cmd, int size)
 {
-	int	i;
-
-	i = 0;
-	if (ft_isdigit(input[i]))
+	int (start) = 0;
+	char *(value) = NULL;
+	int (i) = 0;
+	if (utils->flag >= 1)
 	{
-		ft_dprintf(2, "minishell: export: `%s\':"
-			" not a valid identifier\n", input);
-		return (0);
-	}
-	while (input[i])
-	{
-		if (ft_isalnum(input[i]) || input[i] == '_')
+		size += 1 + utils->flag;
+		start = size;
+		while (cmd[size++])
 			i++;
-		else if ((input[i] == '=') || (input[i] == '+' && input[i + 1] == '='))
-			return (i);
-		else
-		{
-			ft_dprintf(2, "minishell: export: `%s\':"
-				" not a valid identifier\n", input);
-			return (0);
-		}
 	}
-	return (i);
+	else
+		return (NULL);
+	value = gc_malloc((i + 1) * sizeof(char), utils->shell->gcl);
+	if (!value)
+		echec_malloc(utils->shell->gcl, "value");
+	gc_lock(value, utils->shell->gcl);
+	value[i] = '\0';
+	i = 0;
+	while (cmd[start])
+		value[i++] = cmd[start++];
+	return (value);
 }
 
 char	*extract_folder(t_export_utils *utils, char *cmd)
