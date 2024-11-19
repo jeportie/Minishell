@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:12:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 14:13:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:38:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	**cmd_arg_expansion(char **argv, t_wildcard_context *match_ctx,
 		total_args++;
 	}
 	new_argv = (char **)gc_malloc(sizeof(char *) * total_args, gcl);
+	ft_memset(new_argv, 0, sizeof(char *) * total_args);
 	expand_argv(new_argv, argv, match_ctx);
 	return (new_argv);
 }

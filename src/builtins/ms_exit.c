@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:11 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 18:56:34 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:21:58 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,15 @@ static int	st_valid_numeric_code(char *str)
 
 static void	st_exit_code(t_cmd_node *cmd_node, t_exec_context *context)
 {
+	long long	code;
+
 	if (st_numeric_code(cmd_node->argv[1])
 		&& st_valid_numeric_code(cmd_node->argv[1]))
 	{
 		ft_dprintf(2, "exit\n");
+		code = ft_atol(cmd_node->argv[1]);
 		gc_cleanup(context->shell->gcl);
-		exit (ft_atol(cmd_node->argv[1]) % 256);
+		exit (code % 256);
 	}
 	else
 	{
@@ -92,6 +95,7 @@ int	ms_exit(t_cmd_node *cmd_node, t_exec_context *context)
 	if (cmd_node->argc == 1)
 	{
 		ft_dprintf(2, "exit\n");
+		gc_cleanup(context->shell->gcl);
 		exit (context->shell->error_code);
 	}
 	else if (cmd_node->argc == 2)
@@ -99,23 +103,3 @@ int	ms_exit(t_cmd_node *cmd_node, t_exec_context *context)
 	ft_dprintf(2, "exit\nminishell: exit: too many arguments\n");
 	return (1);
 }
-
-/*int	ft_exit_bt(t_infos *infos, t_tok *tmp)
-{
-	int (code) = 0;
-	if (!tmp->cmd[1])
-		ft_quit(infos, 1, "exit\n", infos->code_error);
-	if (tmp->cmd[1])
-	{
-		if (ft_numeric_code(tmp->cmd[1])
-			&& ft_valid_numeric_code(tmp->cmd[1]))
-			ft_quit(infos, 1, "exit\n", atol(tmp->cmd[1]) % 256);
-		else
-		{
-			ft_dprintf(1, "exit\nminishell: exit: ", tmp->cmd[1],
-				": numeric argument required\n");
-			ft_quit(infos, 2, "", 2);
-		}
-	}
-	return (code);
-}*/

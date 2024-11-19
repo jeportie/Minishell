@@ -67,15 +67,17 @@ SRC = \
   src/token/tokenize_word_helper.c \
   src/token/utils.c \
   src/token/tokenize_word.c \
-  src/builtins/echec_malloc.c \
-  src/builtins/export_utils.c \
-  src/builtins/ms_cd.c \
-  src/builtins/ms_env.c \
-  src/builtins/ms_pwd.c \
+  src/builtins/valide_var.c \
   src/builtins/ms_unset.c \
-  src/builtins/ms_exit.c \
+  src/builtins/ms_pwd.c \
   src/builtins/ms_export.c \
+  src/builtins/ms_exit.c \
+  src/builtins/ms_env.c \
   src/builtins/ms_echo.c \
+  src/builtins/ms_cd.c \
+  src/builtins/export_utils.c \
+  src/builtins/echec_malloc.c \
+  src/builtins/copy_env_list.c \
   src/expand/ms_expand_args_utils.c \
   src/expand/ms_expand_wild.c \
   src/expand/ms_expand_wild_helper.c \

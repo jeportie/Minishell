@@ -6,11 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:20:22 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 20:56:53 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:32:54 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
+#include "../../include/minishell.h"
 
 static int	st_none_chdir(t_exec_context *context)
 {
