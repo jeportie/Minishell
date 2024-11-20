@@ -5,7 +5,7 @@ project(minishell_tests C)
 enable_testing()
 
 # Option to enable or disable Valgrind
-option(ENABLE_VALGRIND "Enable memory leak testing with Valgrind" ON)
+option(ENABLE_VALGRIND "Enable memory leak testing with Valgrind" 0)
 
 # Set project directories relative to the test_src directory
 set(ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/..")

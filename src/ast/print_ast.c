@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:17:41 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/31 13:52:46 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:42:51 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ t_ast_node	*get_left_child(t_ast_node *node)
 	else if (node->type == NODE_PIPE)
 		return (node->data.pipe.left);
 	else if (node->type == NODE_REDIRECT_OUT || node->type == NODE_REDIRECT_IN
-		|| node->type == NODE_REDIRECT_APPEND
-		|| node->type == NODE_REDIRECT_HEREDOC)
+		|| node->type == NODE_REDIRECT_APPEND)
 		return (node->data.redirect.child);
+	else if (node->type == NODE_REDIRECT_HEREDOC)
+		return (node->data.heredoc.child);
 	else if (node->type == NODE_SUBSHELL)
 		return (node->data.subshell.child);
 	else
@@ -103,7 +104,6 @@ void	print_node_content(t_ast_node *node)
 void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
 {
 	char	new_prefix[256];
-	int		single_branch;
 
 	if (node == NULL)
 		return ;
@@ -112,9 +112,10 @@ void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
 	printf("%s", get_node_label(node));
 	print_node_content(node);
 	printf("\n");
-	single_branch = (node->type == NODE_REDIRECT_OUT
+	int (single_branch) = (node->type == NODE_REDIRECT_OUT
 			|| node->type == NODE_REDIRECT_IN
 			|| node->type == NODE_REDIRECT_APPEND
+			|| node->type == NODE_REDIRECT_HEREDOC
 			|| node->type == NODE_SUBSHELL);
 	if (!single_branch && is_left)
 		snprintf(new_prefix, sizeof(new_prefix), "%s│   ", prefix);

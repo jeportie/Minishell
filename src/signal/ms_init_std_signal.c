@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:55:03 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/15 12:49:21 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:39:34 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ static void	st_sigint_std_handler(int sig)
 
 void	ms_init_std_signal(void)
 {
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, st_sigint_std_handler);
+	struct sigaction	sa;
+
+	sa.sa_handler = st_sigint_std_handler;
+	sa.sa_flags = SA_RESTART;
+	sigemptyset(&sa.sa_mask);
+	sigaction(SIGINT, &sa, NULL);
+	sigaction(SIGQUIT, &(struct sigaction){.sa_handler = SIG_IGN}, NULL);
 }
