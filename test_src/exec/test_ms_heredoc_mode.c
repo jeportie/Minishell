@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:38:20 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 13:38:23 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:31:33 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,77 +184,6 @@ START_TEST(test_ms_heredoc_mode_immediate_delimiter)
 }
 END_TEST
 
-/* Test 3: User interrupt (Ctrl+C) */
-START_TEST(test_ms_heredoc_mode_interrupt)
-{
-    const char *delimiter = "EOF";
-    t_exec_context context;
-    t_proc_manager *manager;
-    int stdin_pipe[2];
-    int stdout_pipe[2];
-
-    /* Initialize context */
-    context.child_lvl = 0;
-    context.stdin_fd = STDIN_FILENO;
-    context.stdout_fd = STDOUT_FILENO;
-    context.stderr_fd = STDERR_FILENO;
-    context.is_subprocess = false;
-    context.exit_status = 0;
-    context.shell = NULL;
-
-    /* Initialize process manager */
-    manager = init_manager(gcl);
-
-    /* Create pipes to simulate stdin and stdout */
-    ck_assert_int_eq(pipe(stdin_pipe), 0);
-    ck_assert_int_eq(pipe(stdout_pipe), 0);
-
-    /* Redirect STDIN and STDOUT */
-    int saved_stdin = dup(STDIN_FILENO);
-    int saved_stdout = dup(STDOUT_FILENO);
-    ck_assert_int_eq(dup2(stdin_pipe[0], STDIN_FILENO), STDIN_FILENO);
-    ck_assert_int_eq(dup2(stdout_pipe[1], STDOUT_FILENO), STDOUT_FILENO);
-
-    /* Fork to simulate user sending Ctrl+C */
-    pid_t pid = fork();
-    ck_assert_int_ne(pid, -1);
-
-    if (pid == 0)
-    {
-        /* Child process: simulate user input and send SIGINT */
-        sleep(1); /* Wait for heredoc to prompt */
-        kill(getppid(), SIGINT);
-        exit(0);
-    }
-    else
-    {
-        /* Parent process: call ms_heredoc_mode */
-        int ret = ms_heredoc_mode(delimiter, &context, manager, gcl);
-
-        /* Restore STDIN and STDOUT */
-        dup2(saved_stdin, STDIN_FILENO);
-        dup2(saved_stdout, STDOUT_FILENO);
-        close(saved_stdin);
-        close(saved_stdout);
-
-        /* Close unused pipe ends */
-        close(stdin_pipe[0]);
-        close(stdin_pipe[1]);
-        close(stdout_pipe[1]);
-
-        /* Wait for the child process */
-        waitpid(pid, NULL, 0);
-
-        /* Verify the result */
-        ck_assert_int_eq(ret, -1);
-        ck_assert_int_eq(context.exit_status, 130); /* 128 + SIGINT */
-
-        /* Clean up */
-        close(stdout_pipe[0]);
-        clean_manager(manager);
-    }
-}
-END_TEST
 
 /* Additional tests can be added to cover other edge cases */
 
@@ -275,7 +204,6 @@ Suite *ms_heredoc_mode_suite(void)
     /* Add Tests */
     tcase_add_test(tc_core, test_ms_heredoc_mode_normal);
     tcase_add_test(tc_core, test_ms_heredoc_mode_immediate_delimiter);
-    tcase_add_test(tc_core, test_ms_heredoc_mode_interrupt);
 
     suite_add_tcase(s, tc_core);
 

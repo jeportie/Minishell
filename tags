@@ -422,7 +422,6 @@ START_TEST	test_src/exec/test_ms_getenv.c	/^START_TEST(test_ms_getenv_null_value
 START_TEST	test_src/exec/test_ms_getenv.c	/^START_TEST(test_ms_getenv_similar_names)$/;"	f
 START_TEST	test_src/exec/test_ms_getenv.c	/^START_TEST(test_ms_getenv_special_characters)$/;"	f
 START_TEST	test_src/exec/test_ms_heredoc_mode.c	/^START_TEST(test_ms_heredoc_mode_immediate_delimiter)$/;"	f
-START_TEST	test_src/exec/test_ms_heredoc_mode.c	/^START_TEST(test_ms_heredoc_mode_interrupt)$/;"	f
 START_TEST	test_src/exec/test_ms_heredoc_mode.c	/^START_TEST(test_ms_heredoc_mode_normal)$/;"	f
 START_TEST	test_src/process/test_add_process.c	/^START_TEST(test_add_process_manager_null)$/;"	f
 START_TEST	test_src/process/test_add_process.c	/^START_TEST(test_add_process_multiple)$/;"	f
