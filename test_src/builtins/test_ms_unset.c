@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 16:20:21 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:01:43 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ START_TEST(test_ms_unset_existing_var)
     setup_shell(&shell);
 
     // Ajouter une variable
-    char *var = gc_strdup("USER");
+    char *var = gc_strdup("USER", shell.gcl);
     gc_register(var, shell.gcl);
     gc_lock(var, shell.gcl);
-    char *value = gc_strdup("gmarquis");
+    char *value = gc_strdup("gmarquis", shell.gcl);
     gc_register(value, shell.gcl);
     gc_lock(value, shell.gcl);
     ms_set_env_value(&shell, var, value);
@@ -72,10 +72,10 @@ START_TEST(test_ms_unset_non_existing_var)
     setup_shell(&shell);
 
     // Ajouter des variables initiales
-    char *var = gc_strdup("PATH");
+    char *var = gc_strdup("PATH", shell.gcl);
     gc_register(var, shell.gcl);
     gc_lock(var, shell.gcl);
-    char *value = gc_strdup("/usr/bin");
+    char *value = gc_strdup("/usr/bin", shell.gcl);
     gc_register(value, shell.gcl);
     gc_lock(value, shell.gcl);
     ms_set_env_value(&shell, var, value);

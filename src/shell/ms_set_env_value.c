@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:49:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 17:22:57 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:18:39 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ms_set_env_value(t_shell *shell, char *name, char *value)
 		if (ft_strncmp(tmp_env->var, name, ft_strlen(name) + 1) == 0)
 		{
 			gc_free(tmp_env->value, shell->gcl);
-			tmp_env->value = gc_strdup(value);
+			tmp_env->value = gc_strdup(value, shell->gcl);
 			if (!tmp_env->value)
 				echec_malloc(shell->gcl, "tmp_env->value");
 			gc_register(tmp_env->value, shell->gcl);

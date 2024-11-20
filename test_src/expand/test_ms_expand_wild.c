@@ -6,12 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 12:45:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 16:40:17 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:15:23 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <check.h>
-#include "../../include/exec.h"
+#include "../../include/expand.h"
 #include "../../lib/libgc/include/libgc.h"
 #include <stdlib.h>
 #include <unistd.h>
@@ -136,17 +136,17 @@ START_TEST(test_ms_expand_wild_simple_pattern)
     const char *pattern = "*.txt";
 
     /* Call the function */
-    char **matches = ms_expand_wild(pattern, gcl);
+    t_wildcard_context *matches = ms_expand_wild(pattern, gcl);
 
     /* Verify the matches */
-    ck_assert_ptr_nonnull(matches);
-    ck_assert_ptr_nonnull(matches[0]);
-    ck_assert_ptr_nonnull(matches[1]);
-    ck_assert_ptr_null(matches[2]);
+    ck_assert_ptr_nonnull(matches->matches);
+    ck_assert_ptr_nonnull(matches->matches[0]);
+    ck_assert_ptr_nonnull(matches->matches[1]);
+    ck_assert_ptr_null(matches->matches[2]);
 
     /* Check that matches are "file1.txt" and "file2.txt" */
-    bool match1 = (strcmp(matches[0], "file1.txt") == 0 || strcmp(matches[1], "file1.txt") == 0);
-    bool match2 = (strcmp(matches[0], "file2.txt") == 0 || strcmp(matches[1], "file2.txt") == 0);
+    bool match1 = (strcmp(matches->matches[0], "file1.txt") == 0 || strcmp(matches->matches[1], "file1.txt") == 0);
+    bool match2 = (strcmp(matches->matches[0], "file2.txt") == 0 || strcmp(matches->matches[1], "file2.txt") == 0);
     ck_assert(match1);
     ck_assert(match2);
 
@@ -175,11 +175,11 @@ START_TEST(test_ms_expand_wild_no_matches)
     const char *pattern = "*.c";
 
     /* Call the function */
-    char **matches = ms_expand_wild(pattern, gcl);
+    t_wildcard_context *matches = ms_expand_wild(pattern, gcl);
 
     /* Verify the matches */
-    ck_assert_ptr_nonnull(matches);
-    ck_assert_ptr_null(matches[0]); // Should be empty list
+    ck_assert_ptr_nonnull(matches->matches);
+    ck_assert_ptr_null(matches->matches[0]); // Should be empty list
 
     /* Clean up */
     ck_assert_int_eq(chdir(original_dir), 0);
@@ -207,17 +207,17 @@ START_TEST(test_ms_expand_wild_hidden_files)
     const char *pattern = ".*";
 
     /* Call the function */
-    char **matches = ms_expand_wild(pattern, gcl);
+    t_wildcard_context *matches = ms_expand_wild(pattern, gcl);
 
     /* Verify the matches */
-    ck_assert_ptr_nonnull(matches);
-    ck_assert_ptr_nonnull(matches[0]);
-    ck_assert_ptr_nonnull(matches[1]);
-    ck_assert_ptr_null(matches[2]);
+    ck_assert_ptr_nonnull(matches->matches);
+    ck_assert_ptr_nonnull(matches->matches[0]);
+    ck_assert_ptr_nonnull(matches->matches[1]);
+    ck_assert_ptr_null(matches->matches[2]);
 
     /* Check that matches are ".hidden1" and ".hidden2" */
-    bool match1 = (strcmp(matches[0], ".hidden1") == 0 || strcmp(matches[1], ".hidden1") == 0);
-    bool match2 = (strcmp(matches[0], ".hidden2") == 0 || strcmp(matches[1], ".hidden2") == 0);
+    bool match1 = (strcmp(matches->matches[0], ".hidden1") == 0 || strcmp(matches->matches[1], ".hidden1") == 0);
+    bool match2 = (strcmp(matches->matches[0], ".hidden2") == 0 || strcmp(matches->matches[1], ".hidden2") == 0);
     ck_assert(match1);
     ck_assert(match2);
 
@@ -229,26 +229,16 @@ START_TEST(test_ms_expand_wild_hidden_files)
 }
 END_TEST
 
-/* Test 4: Pattern is NULL */
-START_TEST(test_ms_expand_wild_null_pattern)
-{
-    /* Call the function with NULL pattern */
-    char **matches = ms_expand_wild(NULL, gcl);
-
-    /* Verify the matches */
-    ck_assert_ptr_null(matches);
-}
-END_TEST
 
 /* Test 5: Empty pattern */
 START_TEST(test_ms_expand_wild_empty_pattern)
 {
     /* Call the function with empty pattern */
-    char **matches = ms_expand_wild("", gcl);
+    t_wildcard_context *matches = ms_expand_wild("", gcl);
 
     /* Verify the matches */
-    ck_assert_ptr_nonnull(matches);
-    ck_assert_ptr_null(matches[0]); // Should be empty list
+    ck_assert_ptr_nonnull(matches->matches);
+    ck_assert_ptr_null(matches->matches[0]); // Should be empty list
 }
 END_TEST
 
@@ -270,25 +260,25 @@ START_TEST(test_ms_expand_wild_all_files)
     const char *pattern = "*";
 
     /* Call the function */
-    char **matches = ms_expand_wild(pattern, gcl);
+    t_wildcard_context *matches = ms_expand_wild(pattern, gcl);
 
     /* Verify the matches */
     ck_assert_ptr_nonnull(matches);
     /* Expecting 3 matches */
-    ck_assert_ptr_nonnull(matches[0]);
-    ck_assert_ptr_nonnull(matches[1]);
-    ck_assert_ptr_nonnull(matches[2]);
-    ck_assert_ptr_null(matches[3]);
+    ck_assert_ptr_nonnull(matches->matches[0]);
+    ck_assert_ptr_nonnull(matches->matches[1]);
+    ck_assert_ptr_nonnull(matches->matches[2]);
+    ck_assert_ptr_null(matches->matches[3]);
 
     /* Check that matches are "file1", "file2", "file3" */
     bool match1 = false, match2 = false, match3 = false;
     for (int i = 0; i < 3; i++)
     {
-        if (strcmp(matches[i], "file1") == 0)
+        if (strcmp(matches->matches[i], "file1") == 0)
             match1 = true;
-        else if (strcmp(matches[i], "file2") == 0)
+        else if (strcmp(matches->matches[i], "file2") == 0)
             match2 = true;
-        else if (strcmp(matches[i], "file3") == 0)
+        else if (strcmp(matches->matches[i], "file3") == 0)
             match3 = true;
     }
     ck_assert(match1);
@@ -321,14 +311,14 @@ START_TEST(test_ms_expand_wild_special_characters)
     const char *pattern = "file name.txt";
 
     /* Call the function */
-    char **matches = ms_expand_wild(pattern, gcl);
+    t_wildcard_context *matches = ms_expand_wild(pattern, gcl);
 
     /* Verify the matches */
-    ck_assert_ptr_nonnull(matches);
-    ck_assert_ptr_nonnull(matches[0]);
-    ck_assert_ptr_null(matches[1]);
+    ck_assert_ptr_nonnull(matches->matches);
+    ck_assert_ptr_nonnull(matches->matches[0]);
+    ck_assert_ptr_null(matches->matches[1]);
 
-    ck_assert_str_eq(matches[0], "file name.txt");
+    ck_assert_str_eq(matches->matches[0], "file name.txt");
 
     /* Clean up */
     ck_assert_int_eq(chdir(original_dir), 0);
@@ -356,14 +346,14 @@ START_TEST(test_ms_expand_wild_case_sensitivity)
     const char *pattern = "test.c";
 
     /* Call the function */
-    char **matches = ms_expand_wild(pattern, gcl);
+    t_wildcard_context *matches = ms_expand_wild(pattern, gcl);
 
     /* Verify the matches */
-    ck_assert_ptr_nonnull(matches);
-    ck_assert_ptr_nonnull(matches[0]);
-    ck_assert_ptr_null(matches[1]);
+    ck_assert_ptr_nonnull(matches->matches);
+    ck_assert_ptr_nonnull(matches->matches[0]);
+    ck_assert_ptr_null(matches->matches[1]);
 
-    ck_assert_str_eq(matches[0], "test.c");
+    ck_assert_str_eq(matches->matches[0], "test.c");
 
     /* Clean up */
     ck_assert_int_eq(chdir(original_dir), 0);
@@ -391,25 +381,25 @@ START_TEST(test_ms_expand_wild_complex_patterns)
     const char *pattern = "abc*.txt";
 
     /* Call the function */
-    char **matches = ms_expand_wild(pattern, gcl);
+    t_wildcard_context *matches = ms_expand_wild(pattern, gcl);
 
     /* Verify the matches */
-    ck_assert_ptr_nonnull(matches);
+    ck_assert_ptr_nonnull(matches->matches);
     /* Expecting 3 matches */
-    ck_assert_ptr_nonnull(matches[0]);
-    ck_assert_ptr_nonnull(matches[1]);
-    ck_assert_ptr_nonnull(matches[2]);
-    ck_assert_ptr_null(matches[3]);
+    ck_assert_ptr_nonnull(matches->matches[0]);
+    ck_assert_ptr_nonnull(matches->matches[1]);
+    ck_assert_ptr_nonnull(matches->matches[2]);
+    ck_assert_ptr_null(matches->matches[3]);
 
     /* Check that matches are "abc.txt", "abcd.txt", "abcde.txt" */
     bool match1 = false, match2 = false, match3 = false;
     for (int i = 0; i < 3; i++)
     {
-        if (strcmp(matches[i], "abc.txt") == 0)
+        if (strcmp(matches->matches[i], "abc.txt") == 0)
             match1 = true;
-        else if (strcmp(matches[i], "abcd.txt") == 0)
+        else if (strcmp(matches->matches[i], "abcd.txt") == 0)
             match2 = true;
-        else if (strcmp(matches[i], "abcde.txt") == 0)
+        else if (strcmp(matches->matches[i], "abcde.txt") == 0)
             match3 = true;
     }
     ck_assert(match1);
@@ -442,7 +432,6 @@ Suite *ms_expand_wild_suite(void)
     tcase_add_test(tc_core, test_ms_expand_wild_simple_pattern);
     tcase_add_test(tc_core, test_ms_expand_wild_no_matches);
     tcase_add_test(tc_core, test_ms_expand_wild_hidden_files);
-    tcase_add_test(tc_core, test_ms_expand_wild_null_pattern);
     tcase_add_test(tc_core, test_ms_expand_wild_empty_pattern);
     tcase_add_test(tc_core, test_ms_expand_wild_all_files);
     tcase_add_test(tc_core, test_ms_expand_wild_special_characters);

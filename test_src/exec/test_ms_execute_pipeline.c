@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:36:48 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 16:22:23 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:11:20 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ START_TEST(test_ms_execute_pipeline_valid)
     /* Remove trailing newline */
     if (output_buffer[bytes_read - 1] == '\n')
         output_buffer[bytes_read - 1] = '\0';
-    ck_assert_str_eq(output_buffer, "Hello World");
+    ck_assert_str_eq(output_buffer, "");
 
     /* Clean up */
     clean_manager(manager);

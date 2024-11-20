@@ -6,14 +6,14 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 12:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 16:43:05 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:48:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <check.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../../include/env_value.h"
+#include "../../include/minishell.h"
 
 // Fonction de configuration du shell et du garbage collector pour les tests
 void setup_shell(t_shell *shell) {
@@ -33,10 +33,10 @@ START_TEST(test_ms_set_env_value_new_var)
 {
     t_shell shell;
     setup_shell(&shell);
-    char *var = gc_strdup("NEW_VAR");
+    char *var = gc_strdup("NEW_VAR", shell.gcl);
     gc_register(var, shell.gcl);
     gc_lock(var, shell.gcl);
-    char *value = gc_strdup("new_value");
+    char *value = gc_strdup("new_value", shell.gcl);
     gc_register(value, shell.gcl);
     gc_lock(value, shell.gcl);
     ms_set_env_value(&shell, var, value);
@@ -56,20 +56,20 @@ START_TEST(test_ms_set_env_value_update_var)
 {
     t_shell shell;
     setup_shell(&shell);
-    char *var_ini = gc_strdup("EXISTING_VAR");
+    char *var_ini = gc_strdup("EXISTING_VAR", shell.gcl);
     gc_register(var_ini, shell.gcl);
     gc_lock(var_ini, shell.gcl);
-    char *value_ini = gc_strdup("initial_value");
+    char *value_ini = gc_strdup("initial_value", shell.gcl);
     gc_register(value_ini, shell.gcl);
     gc_lock(value_ini, shell.gcl);
 
     // Ajouter une variable initiale
     ms_set_env_value(&shell, var_ini, value_ini);
 
-    char *var_upd = gc_strdup("EXISTING_VAR");
+    char *var_upd = gc_strdup("EXISTING_VAR", shell.gcl);
     gc_register(var_upd, shell.gcl);
     gc_lock(var_upd, shell.gcl);
-    char *value_upd = gc_strdup("updated_value");
+    char *value_upd = gc_strdup("updated_value", shell.gcl);
     gc_register(value_upd, shell.gcl);
     gc_lock(value_upd, shell.gcl);
 

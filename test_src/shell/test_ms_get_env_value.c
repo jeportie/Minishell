@@ -6,14 +6,14 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:29:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 11:09:53 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 08:44:05 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <check.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../../include/env_value.h"
+#include "../../include/minishell.h"
 
 // Fonction de création d'un nœud pour la liste d'environnement (utile pour le test)
 t_env *create_env_node(char *var, char *value)

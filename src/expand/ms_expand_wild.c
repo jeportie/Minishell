@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 17:50:08 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 11:27:34 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:14:52 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_wildcard_context	*ms_expand_wild(const char *pattern, t_gc *gcl)
 	struct dirent		*entry;
 	t_wildcard_context	*ctx;
 
-	if (pattern == NULL)
+	if (!pattern)
 		return (NULL);
 	ctx = gc_malloc(sizeof(t_wildcard_context), gcl);
 	if (initialize_context(ctx, pattern, gcl) == -1)
