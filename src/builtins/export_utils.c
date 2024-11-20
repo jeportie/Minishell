@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:35:57 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/20 12:16:55 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:07:54 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ void	add_cat(t_shell *shell, t_env *current, t_env *tmp, int flag)
 		tmp_str = current->value;
 		current->value = ft_strjoin(current->value, tmp->value);
 		gc_register(current->value, shell->gcl);
-		gc_lock(current->value, shell->gcl);
-		gc_free(tmp_str, shell->gcl);
+	//	gc_lock(current->value, shell->gcl);
+	//	gc_free(tmp_str, shell->gcl);
 	}
 	else
 	{
-		gc_free(current->value, shell->gcl);
+	//	gc_free(current->value, shell->gcl);
 		current->value = tmp->value;
 		tmp->value = NULL;
 	}
-	gc_free(tmp->var, shell->gcl);
-	gc_free(tmp, shell->gcl);
+//	gc_free(tmp->var, shell->gcl);
+//	gc_free(tmp, shell->gcl);
 }
 
 void	add_export_utils(t_export_utils *utils, t_env **env, t_env *tmp)
@@ -73,15 +73,11 @@ void	add_export(t_export_utils *utils, t_env **ev, char *name_folder,
 	tmp->var = gc_strdup(name_folder, utils->shell->gcl);
 	if (!tmp->var)
 		echec_malloc(utils->shell->gcl, "tmp->var");
-	gc_register(tmp->var, utils->shell->gcl);
-	gc_lock(tmp->var, utils->shell->gcl);
 	if (value_folder)
 	{
 		tmp->value = gc_strdup(value_folder, utils->shell->gcl);
 		if (!tmp->value)
 			echec_malloc(utils->shell->gcl, "tmp->value");
-		gc_register(tmp->value, utils->shell->gcl);
-		gc_lock(tmp->value, utils->shell->gcl);
 	}
 	else
 		tmp->value = NULL;
