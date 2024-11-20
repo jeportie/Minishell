@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:35:57 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/20 15:07:54 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:23:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ void	add_cat(t_shell *shell, t_env *current, t_env *tmp, int flag)
 		tmp_str = current->value;
 		current->value = ft_strjoin(current->value, tmp->value);
 		gc_register(current->value, shell->gcl);
-	//	gc_lock(current->value, shell->gcl);
-	//	gc_free(tmp_str, shell->gcl);
+		gc_lock(current->value, shell->gcl);
+		gc_free(tmp_str, shell->gcl);
 	}
 	else
 	{
-	//	gc_free(current->value, shell->gcl);
+		gc_free(current->value, shell->gcl);
 		current->value = tmp->value;
 		tmp->value = NULL;
 	}
-//	gc_free(tmp->var, shell->gcl);
-//	gc_free(tmp, shell->gcl);
+	gc_free(tmp->var, shell->gcl);
+	gc_free(tmp, shell->gcl);
 }
 
 void	add_export_utils(t_export_utils *utils, t_env **env, t_env *tmp)
