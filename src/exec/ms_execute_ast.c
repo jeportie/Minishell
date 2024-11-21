@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 19:39:15 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/21 11:36:19 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
 	t_proc_manager *manager)
 {
 	if (!node)
-		return (ms_handle_error("Error: Null AST node.\n", -1,
-				context->shell->gcl));
+		return (-1);
 	if (node->type == NODE_COMMAND)
 		return (ms_execute_command(&node->data.command, context, manager,
 				context->shell->gcl));

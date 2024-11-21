@@ -7,6 +7,9 @@ enable_testing()
 # Option to enable or disable Valgrind
 option(ENABLE_VALGRIND "Enable memory leak testing with Valgrind" 0)
 
+# Add debug messages
+message(STATUS "ENABLE_VALGRIND: ${ENABLE_VALGRIND}")
+
 # Set project directories relative to the test_src directory
 set(ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/..")
 set(SRC_DIR "${ROOT_DIR}/src")
@@ -55,6 +58,7 @@ set(TEST_SRC_FILES ${FILTERED_TEST_SRC_FILES})
 
 # Find Valgrind
 find_program(VALGRIND_EXECUTABLE valgrind)
+message(STATUS "VALGRIND_EXECUTABLE: ${VALGRIND_EXECUTABLE}")
 
 # Suppressions file (if you have one)
 set(VALGRIND_SUPPRESSIONS_FILE "${ROOT_DIR}/assets/supp.supp")
@@ -91,7 +95,7 @@ foreach(TEST_FILE ${TEST_SRC_FILES})
         ${INCLUDE_DIR}
     )
 
-    if(ENABLE_VALGRIND AND VALGRIND_EXECUTABLE)
+    if("${ENABLE_VALGRIND}" STREQUAL "1" AND VALGRIND_EXECUTABLE)
         # Path to the wrapper script
         set(VALGRIND_WRAPPER_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/run_test_with_valgrind.sh")
         add_test(
