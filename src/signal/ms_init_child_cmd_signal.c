@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_init_std_signal.c                               :+:      :+:    :+:   */
+/*   ms_init_child_cmd_signal.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,20 +12,27 @@
 
 #include "../../include/minishell.h"
 
-static void	st_sigint_std_handler(int sig)
+static void	st_sigint_cmd_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
+		g_signal = 130;
+		exit(130);
 	}
-	g_signal = 130;
 }
 
-void	ms_init_std_signal(void)
+static void	st_sigquit_cmd_handler(int sig)
 {
-	signal(SIGINT, st_sigint_std_handler);
-	signal(SIGQUIT, SIG_IGN);
+
+	if (sig == SIGQUIT)
+	{
+		g_signal = 131;
+		exit(131);
+	}
+}
+
+void	ms_init_child_cmd_signal(void)
+{
+	signal(SIGINT, st_sigint_cmd_handler);
+	signal(SIGQUIT, st_sigquit_cmd_handler);
 }

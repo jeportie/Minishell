@@ -24,7 +24,7 @@ static int	st_none_chdir(t_exec_context *context)
 	gc_register(cwd, context->shell->gcl);
 	if (cwd)
 	{
-		pwd = ms_get_env_value(tmp_env, "PWD");
+		pwd = ms_get_env_value(tmp_env, "PWD", context->shell->error_code);
 		gc_unlock(pwd, context->shell->gcl);
 		ms_set_env_value(context->shell, "OLDPWD", pwd);
 		ms_set_env_value(context->shell, "PWD", cwd);
@@ -45,13 +45,13 @@ static char	*st_cd_with_option(char *cd, t_shell *shell, char *argv)
 	{
 		if (!ft_strncmp(argv, "~", 2))
 		{
-			cd = ms_get_env_value(shell->env_data->env, "HOME");
+			cd = ms_get_env_value(shell->env_data->env, "HOME", shell->error_code);
 			if (!cd)
 				return (ft_dprintf(2, "minishell: cd: HOME not set\n"), NULL);
 		}
 		else if (!ft_strncmp(argv, "-", 2))
 		{
-			cd = ms_get_env_value(shell->env_data->env, "OLDPWD");
+			cd = ms_get_env_value(shell->env_data->env, "OLDPWD", shell->error_code);
 			if (!cd)
 				return (ft_dprintf(2, "minishell: cd: OLDPWD not set\n"), NULL);
 			ft_printf("%s\n", cd);
@@ -69,7 +69,7 @@ int	ms_cd(t_cmd_node *cmd_node, t_exec_context *context)
 	char *(cd) = NULL;
 	if (cmd_node->argc == 1)
 	{
-		cd = ms_get_env_value(context->shell->env_data->env, "HOME");
+		cd = ms_get_env_value(context->shell->env_data->env, "HOME", context->shell->error_code);
 		if (!cd)
 			return (ft_dprintf(2, "minishell: cd: HOME not set\n"), 1);
 	}

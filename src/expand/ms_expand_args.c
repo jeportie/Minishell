@@ -15,10 +15,10 @@
 
 static int	var_len(char *arg, t_gc *gcl)
 {
-	int		i;
-
-	i = 0;
+	int (i) = 0;
 	int (len) = 0;
+	if (!ft_strncmp(arg, "?", 2))
+		return (1);
 	if (arg[i] == '{')
 	{
 		i++;
@@ -57,6 +57,11 @@ static char	*ms_extract_var(char *arg, t_gc *gcl)
 			i++;
 			j++;
 		}
+	}
+	else if (len == 1 && !ft_strncmp(arg, "?", 2))
+	{
+		var[j] = '?';
+		j++;
 	}
 	else
 	{
@@ -122,7 +127,7 @@ static void	copy_expanded_cmd(char *new_arg, char *arg,
 	helper_copy(new_arg, arg, &arg_index, i);
 }
 
-char	*ms_expand_arg(char *arg, t_env *env, bool is_nested, t_gc *gcl)
+char	*ms_expand_arg(char *arg, t_shell *shell, bool is_nested)
 {
 	char	*new_arg;
 	char	*var;
@@ -135,15 +140,15 @@ char	*ms_expand_arg(char *arg, t_env *env, bool is_nested, t_gc *gcl)
 		start_var = find_dollar(arg);
 	else
 		start_var = arg;
-	var = ms_extract_var(start_var, gcl);
-	expand_var = ms_get_env_value(env, var);
+	var = ms_extract_var(start_var, shell->gcl);
+	expand_var = ms_get_env_value(shell->env_data->env, var, shell->error_code);
 	if (!expand_var)
 		return (NULL);
-	total_len += ft_strlen(ms_get_env_value(env, var));
+	total_len += ft_strlen(ms_get_env_value(shell->env_data->env, var, shell->error_code));
 	total_len = ft_strlen(arg) + ft_strlen(expand_var) - ft_strlen(var);
-	new_arg = (char *)gc_malloc(sizeof(char) * (total_len), gcl);
+	new_arg = (char *)gc_malloc(sizeof(char) * (total_len), shell->gcl);
 	copy_expanded_cmd(new_arg, arg, expand_var, is_nested);
 	if (is_var(new_arg))
-		new_arg = nested_vars(new_arg, env, gcl);
+		new_arg = nested_vars(new_arg, shell);
 	return (new_arg);
 }

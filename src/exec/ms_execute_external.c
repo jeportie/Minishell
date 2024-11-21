@@ -47,6 +47,7 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 	char	**envp;
 	t_gc	*child_gcl;
 
+	ms_init_child_cmd_signal();
 	child_gcl = gc_init();
 	init_io(context);
 	envp = ms_get_envp(context->shell->env_data->env, child_gcl);
@@ -110,6 +111,7 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	}
 	init_forks(&fork_params, context, cmd_node);
 	pid = safe_fork(manager, &fork_params);
+	ms_init_parent_cmd_signal();
 	if (pid == 0)
 	{
 		context->child_lvl = fork_params.child_lvl;
@@ -117,9 +119,10 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	}
 	else
 	{
-		print_proc_info(manager);
+//		print_proc_info(manager);
 		ms_parent_process(pid, context);
 	}
+	ms_init_std_signal();
 	return (context->exit_status);
 }
 

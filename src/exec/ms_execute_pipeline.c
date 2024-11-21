@@ -60,7 +60,7 @@ int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context,
 		context->child_lvl = fork_params.child_lvl;
 		left_child_process(&params);
 	}
-	print_proc_info(manager);
+//	print_proc_info(manager);
 	init_right_fork_params(&fork_params, context, params);
 	right_pid = safe_fork(manager, &fork_params);
 	if (right_pid == 0)
@@ -68,7 +68,7 @@ int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context,
 		context->child_lvl = fork_params.child_lvl;
 		right_child_process(&params);
 	}
-	print_proc_info(manager);
+//	print_proc_info(manager);
 	safe_close(params.pipefd[0]);
 	safe_close(params.pipefd[1]);
 	return (parent_process(left_pid, right_pid, context));

@@ -47,9 +47,8 @@ int					valide_dollar(char *input);
 char				*find_dollar(char *arg);
 int					ms_value_assign(t_shell *shell, t_cmd_node *cmd_node,
 						t_gc *gcl);
-char				*ms_expand_arg(char *arg, t_env *env, bool is_nested,
-						t_gc *gcl);
-char				*nested_vars(char *arg, t_env *env, t_gc *gcl);
+char				*ms_expand_arg(char *arg, t_shell *shell, bool is_nested);
+char				*nested_vars(char *arg, t_shell *shell);
 
 void				ms_manage_arg_expand(t_cmd_node *cmd_node,
 						t_exec_context *context, t_gc *gcl);

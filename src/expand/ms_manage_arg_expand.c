@@ -76,7 +76,7 @@ void	ms_manage_arg_expand(t_cmd_node *cmd_node,
 			if (is_var(cmd_node->argv[i]))
 			{
 				cmd_node->argv[i] = nested_vars(cmd_node->argv[i],
-						context->shell->env_data->env, gcl);
+						context->shell);
 			}
 			if (is_wild(cmd_node->argv[i]))
 			{
