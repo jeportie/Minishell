@@ -76,17 +76,17 @@ char	*ft_strsjoin(int argc, char **argv, t_gc *gcl)
 	return (result);
 }
 
-char	**expand_nested_vars(char *arg, int dollars, t_env *env, t_gc *gcl)
+char	**expand_nested_vars(char *arg, int dollars, t_shell *shell)
 {
 	char	**expanded_vars;
 	int		i;
 
 	char **(vars) = ft_split(arg, '$');
-	gc_nest_register(vars, gcl);
-	gc_lock(vars, gcl);
+	gc_nest_register(vars, shell->gcl);
+	gc_lock(vars, shell->gcl);
 	if (arg[0] != '$')
 		dollars++;
-	expanded_vars = gc_malloc(sizeof(char *) * (dollars + 1), gcl);
+	expanded_vars = gc_malloc(sizeof(char *) * (dollars + 1), shell->gcl);
 	i = 0;
 	while (i < dollars)
 	{
@@ -97,7 +97,7 @@ char	**expand_nested_vars(char *arg, int dollars, t_env *env, t_gc *gcl)
 		}
 		else
 		{
-			expanded_vars[i] = ms_expand_arg(vars[i], env, true, gcl);
+			expanded_vars[i] = ms_expand_arg(vars[i], shell, true);
 			i++;
 		}
 	}
@@ -105,19 +105,19 @@ char	**expand_nested_vars(char *arg, int dollars, t_env *env, t_gc *gcl)
 	return (expanded_vars);
 }
 
-char	*nested_vars(char *arg, t_env *env, t_gc *gcl)
+char	*nested_vars(char *arg, t_shell *shell)
 {
 	char	*result;
 	char	**expanded_vars;
 
 	int (dollars) = count_dollars(arg);
 	if (dollars < 2)
-		return (ms_expand_arg(arg, env, false, gcl));
+		return (ms_expand_arg(arg, shell, false));
 	else
-		expanded_vars = expand_nested_vars(arg, dollars, env, gcl);
+		expanded_vars = expand_nested_vars(arg, dollars, shell);
 	if (is_equal(expanded_vars[0]))
-		result = ft_strsjoin(dollars, &expanded_vars[1], gcl);
+		result = ft_strsjoin(dollars, &expanded_vars[1], shell->gcl);
 	else
-		result = ft_strsjoin(dollars, expanded_vars, gcl);
+		result = ft_strsjoin(dollars, expanded_vars, shell->gcl);
 	return (result);
 }

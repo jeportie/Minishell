@@ -12,20 +12,22 @@
 
 #include "../../include/builtins.h"
 
-char	*ms_get_env_value(t_env *env, char *name)
+char	*ms_get_env_value(t_env *env, char *name, int error_code)
 {
 	t_env	*tmp;
 	int		var_verif;
 
 	if (!name)
 		return (NULL);
+	if (!ft_strncmp(name, "?", 2))
+		return (ft_itoa(error_code));
 	var_verif = valide_var(name);
 	if (var_verif == 0)
 		return (NULL);
 	tmp = env;
 	while (tmp)
 	{
-		if (ft_strncmp(tmp->var, name, var_verif + 1) == 0)
+		if (!ft_strncmp(tmp->var, name, var_verif + 1))
 			return (tmp->value);
 		tmp = tmp->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:27:18 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 17:44:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:34:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,
 		|| (type == NODE_OR && left_exit_status))
 	{
 		right_exit_status = ms_execute_ast(logic_node->right, context, manager);
-		context->exit_status = right_exit_status;
+		context->shell->error_code = right_exit_status;
 	}
 	else
-		context->exit_status = left_exit_status;
-	return (context->exit_status);
+		context->shell->error_code = left_exit_status;
+	return (context->shell->error_code);
 }

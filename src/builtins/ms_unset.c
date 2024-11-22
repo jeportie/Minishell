@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:25:19 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 12:43:40 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:31:21 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ static void	st_unset_utils(t_exec_context *context, t_env *prev, t_env *current)
 		prev->next = current->next;
 	else
 		context->shell->env_data->env = current->next;
-	gc_free(current->var, context->shell->gcl);
-	gc_free(current->value, context->shell->gcl);
-	gc_free(current, context->shell->gcl);
 	current = NULL;
 }
 
@@ -42,6 +39,8 @@ int	ms_unset(t_cmd_node *cmd_node, t_exec_context *context)
 				st_unset_utils(context, prev, current);
 				break ;
 			}
+			else if (!ft_strncmp("OLDPWD", cmd_node->argv[i], 7))
+				context->shell->env_data->oldpwd = 0;
 			prev = current;
 			current = current->next;
 		}
@@ -49,29 +48,3 @@ int	ms_unset(t_cmd_node *cmd_node, t_exec_context *context)
 	}
 	return (0);
 }
-
-/*int	ms_unset(t_infos *infos, char **cmd)
-{
-	t_env *(current) = NULL;
-	t_env *(prev) = NULL;
-	int (i) = 1;
-	if (!cmd[i])
-		return (0);
-	while (cmd[i])
-	{
-		current = infos->tmp_env;
-		while (current)
-		{
-			if (!ft_strncmp(current->name_folder, cmd[i],
-					ft_strlen(cmd[i]) + 1))
-			{
-				ft_unset_utils(infos, prev, current);
-				break ;
-			}
-			prev = current;
-			current = current->next;
-		}
-		i++;
-	}
-	return (0);
-}*/

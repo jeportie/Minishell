@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:07:30 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 14:13:48 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:49:50 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,17 @@
 int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,
 	t_proc_manager *manager, t_gc *gcl)
 {
-	char				*cmd;
-
+	char *(cmd) = NULL;
+	int (i) = 0;
 	ms_manage_arg_expand(cmd_node, context, gcl);
+	while (cmd_node->argv[i] != NULL)
+		i++;
+	ms_set_env_value(context->shell, "_", cmd_node->argv[i - 1]);
 	cmd = cmd_node->argv[0];
 	if (ft_strncmp(cmd, "echo", 5) == 0)
 		return (ms_echo(cmd_node));
 	else if (ft_strncmp(cmd, "cd", 3) == 0)
-		return (ms_cd(cmd_node, context));
+		return (ms_cd(cmd_node, context->shell));
 	else if (ft_strncmp(cmd, "pwd", 4) == 0)
 		return (ms_pwd());
 	else if (ft_strncmp(cmd, "export", 7) == 0)

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:23:54 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 14:15:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:03:01 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <dirent.h>
+
+typedef struct s_expand_utils
+{
+	char	*new_arg;
+	char	*var;
+	char	*expand_var;
+	char	*start_var;
+	int		total_len;
+}				t_expand_utils;
 
 typedef struct s_wildcard_context
 {
@@ -47,9 +56,8 @@ int					valide_dollar(char *input);
 char				*find_dollar(char *arg);
 int					ms_value_assign(t_shell *shell, t_cmd_node *cmd_node,
 						t_gc *gcl);
-char				*ms_expand_arg(char *arg, t_env *env, bool is_nested,
-						t_gc *gcl);
-char				*nested_vars(char *arg, t_env *env, t_gc *gcl);
+char				*ms_expand_arg(char *arg, t_shell *shell, bool is_nested);
+char				*nested_vars(char *arg, t_shell *shell);
 
 void				ms_manage_arg_expand(t_cmd_node *cmd_node,
 						t_exec_context *context, t_gc *gcl);

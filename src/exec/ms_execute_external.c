@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_execute_external.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/20 15:24:34 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:49:05 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 	char	**envp;
 	t_gc	*child_gcl;
 
+	ms_init_child_cmd_signal();
 	child_gcl = gc_init();
 	init_io(context);
 	envp = ms_get_envp(context->shell->env_data->env, child_gcl);
@@ -75,11 +76,11 @@ static void	ms_parent_process(pid_t pid, t_exec_context *context)
 		safe_close(context->stderr_fd);
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
-		context->exit_status = WEXITSTATUS(status);
+		context->shell->error_code = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
-		context->exit_status = 128 + WTERMSIG(status);
+		context->shell->error_code = 128 + WTERMSIG(status);
 	else
-		context->exit_status = -1;
+		context->shell->error_code = -1;
 }
 
 static void	init_forks(t_fork_params *fork_params, t_exec_context *context,
@@ -105,25 +106,19 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	{
 		ft_putstr_fd("minishell: command not found: ", STDERR_FILENO);
 		ft_putendl_fd(cmd_node->argv[0], STDERR_FILENO);
-		context->exit_status = 127;
+		context->shell->error_code = 127;
 		return (127);
 	}
 	init_forks(&fork_params, context, cmd_node);
 	pid = safe_fork(manager, &fork_params);
+	ms_init_parent_cmd_signal();
 	if (pid == 0)
 	{
 		context->child_lvl = fork_params.child_lvl;
 		ms_child_process(cmd_node, context, cmd_path, gcl);
 	}
 	else
-	{
-		print_proc_info(manager);
 		ms_parent_process(pid, context);
-	}
-	return (context->exit_status);
+	ms_init_std_signal();
+	return (context->shell->error_code);
 }
-
-/*
-	if (cmd_path != cmd_node->argv[0])
-		gc_free(cmd_path, gcl);
-*/

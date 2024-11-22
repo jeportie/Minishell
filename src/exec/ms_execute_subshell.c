@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:47:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 18:04:16 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:33:17 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ static int	subshell_parent_process(pid_t pid, t_exec_context *context)
 
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
-		context->exit_status = WEXITSTATUS(status);
+		context->shell->error_code = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
-		context->exit_status = 128 + WTERMSIG(status);
+		context->shell->error_code = 128 + WTERMSIG(status);
 	else
-		context->exit_status = -1;
-	return (context->exit_status);
+		context->shell->error_code = -1;
+	return (context->shell->error_code);
 }
 
 int	ms_execute_subshell(t_subshell_node *subshell_node,

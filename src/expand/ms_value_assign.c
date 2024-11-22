@@ -36,7 +36,7 @@ static	void	ms_copy_assign(char *var, char *value, char *cmd)
 	value[j] = '\0';
 }
 
-static void	helper(t_cmd_node *cmd_node, t_shell *shell, t_gc *gcl)
+static void	helper(t_cmd_node *cmd_node, t_shell *shell)
 {
 	int	i;
 
@@ -46,7 +46,7 @@ static void	helper(t_cmd_node *cmd_node, t_shell *shell, t_gc *gcl)
 		if (is_var(cmd_node->argv[i]))
 		{
 			cmd_node->argv[i] = nested_vars(cmd_node->argv[i],
-					shell->env_data->env, gcl);
+					shell);
 		}
 		i++;
 	}
@@ -76,7 +76,7 @@ int	ms_value_assign(t_shell *shell, t_cmd_node *cmd_node, t_gc *gcl)
 				ms_set_env_value(shell, var, value);
 			}
 		}
-		helper(cmd_node, shell, gcl);
+		helper(cmd_node, shell);
 	}
 	return (0);
 }
