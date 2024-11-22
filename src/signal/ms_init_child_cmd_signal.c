@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:55:03 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 15:39:34 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:50:16 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	st_sigint_cmd_handler(int sig)
 
 static void	st_sigquit_cmd_handler(int sig)
 {
-
 	if (sig == SIGQUIT)
 	{
 		g_signal = 131;
