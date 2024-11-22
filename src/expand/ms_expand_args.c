@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:04:44 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 14:10:54 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:43:07 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ char	*ms_expand_arg(char *arg, t_env *env, bool is_nested, t_gc *gcl)
 	char	*start_var;
 	int		total_len;
 
+	if (!arg)
+		return (NULL);
 	total_len = 0;
 	if (!is_nested)
 		start_var = find_dollar(arg);

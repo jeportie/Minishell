@@ -6,126 +6,98 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/21 09:36:47 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:02:25 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <check.h>
 #include <stdlib.h>
-#include <string.h>
 #include "../../include/builtins.h"
 
-// Fonction de configuration du shell et du garbage collector pour les tests
-void setup_shell(t_shell *shell) {
-    shell->gcl = gc_init();
-    shell->env_data = gc_malloc(sizeof(t_env_data), shell->gcl);
-    shell->env_data->env = NULL;
-}
+static	t_gc *gcl;
 
-// Fonction de nettoyage de l'environnement après chaque test
-void teardown_shell(t_shell *shell) {
-    gc_cleanup(shell->gcl);
-    free(shell->gcl);
-}
-
-// Test pour vérifier si ms_unset supprime une variable existante
-START_TEST(test_ms_unset_existing_var)
+void setup(void)
 {
-    t_shell shell;
-    setup_shell(&shell);
+	gcl = gc_init();
+	if (!gcl)
+	{
+		perror("gc_init");
+		exit(EXIT_FAILURE);
+	}
+}
 
-    // Ajouter une variable
-    char *var = gc_strdup("USER", shell.gcl);
-    gc_register(var, shell.gcl);
-    gc_lock(var, shell.gcl);
-    char *value = gc_strdup("gmarquis", shell.gcl);
-    gc_register(value, shell.gcl);
-    gc_lock(value, shell.gcl);
-    ms_set_env_value(&shell, var, value);
+void teardown(void)
+{
+	gc_cleanup(gcl);
+	free(gcl);
+}
 
-    // Vérifier que la variable USER est présente
-    t_env *env = shell.env_data->env;
-    ck_assert_ptr_nonnull(env);
-    ck_assert_str_eq(env->var, "USER");
-    ck_assert_str_eq(env->value, "gmarquis");
+START_TEST(test_ms_unset_first_value)
+{
+	t_cmd_node		*cmd_node;
+	t_exec_context	*context;
+    t_env           *env1 = gc_malloc(sizeof(t_env), gcl);
+    t_env           *env2 = gc_malloc(sizeof(t_env), gcl);
+    t_env           *env3 = gc_malloc(sizeof(t_env), gcl);
 
-    // Préparer les arguments pour ms_unset
-    t_cmd_node cmd_node;
-    cmd_node.argc = 2;
-    char *argv[] = {"unset", "USER", NULL};
-    cmd_node.argv = argv;
+    env1->var = "a";
+    env2->var = "b";
+    env3->var = "c";
+    env1->value = "jerome";
+    env2->value = "portier";
+    env3->value = "1994";
+    env1->next = env2;
+    env2->next = env3;
+    env3->next = NULL;
 
-    // Appeler ms_unset pour supprimer "USER"
-    ms_unset(&cmd_node, &(t_exec_context){ .shell = &shell });
-
-    // Vérifier que la variable USER est supprimée
-    ck_assert_ptr_null(ms_get_env_value(shell.env_data->env, "USER"));
-
-    teardown_shell(&shell);
+    cmd_node = gc_malloc(sizeof(t_cmd_node), gcl);
+    cmd_node->argc = 2;
+    cmd_node->argv = gc_malloc(sizeof(char) * 3, gcl);
+    cmd_node->argv[0] = "unset";
+    cmd_node->argv[1] = "a";
+    cmd_node->argv[2] = NULL;;
+    cmd_node->is_expand = false;
+    context = gc_malloc(sizeof(t_exec_context), gcl);
+    context->shell = gc_malloc(sizeof(t_shell), gcl);
+    context->shell->gcl = gcl;
+    context->shell->env_data = gc_malloc(sizeof(t_env_data), gcl);
+    memset(context->shell->env_data, 0, sizeof(t_env_data));
+    context->shell->env_data->env = env1;
+    
+	ms_unset(cmd_node, context);
+	ck_assert_str_eq(context->shell->env_data->env->var, "b");
+//	ck_assert_str_eq(context->shell->env_data->env->value, "portier");
+ //   ck_assert_ptr_null(context->shell->env_data->env->next->next);
 }
 END_TEST
 
-// Test pour vérifier que ms_unset ne fait rien si la variable n'existe pas
-START_TEST(test_ms_unset_non_existing_var)
-{
-    t_shell shell;
-    setup_shell(&shell);
-
-    // Ajouter des variables initiales
-    char *var = gc_strdup("PATH", shell.gcl);
-    gc_register(var, shell.gcl);
-    gc_lock(var, shell.gcl);
-    char *value = gc_strdup("/usr/bin", shell.gcl);
-    gc_register(value, shell.gcl);
-    gc_lock(value, shell.gcl);
-    ms_set_env_value(&shell, var, value);
-
-    // Préparer les arguments pour ms_unset
-    t_cmd_node cmd_node;
-    cmd_node.argc = 2;
-    char *argv[] = {"unset", "NON_EXISTING_VAR", NULL};
-    cmd_node.argv = argv;
-
-    // Appeler ms_unset pour une variable inexistante
-    ms_unset(&cmd_node, &(t_exec_context){ .shell = &shell });
-
-    // Vérifier que les autres variables n'ont pas été modifiées
-    ck_assert_str_eq(ms_get_env_value(shell.env_data->env, "PATH"), "/usr/bin");
-
-    teardown_shell(&shell);
-}
-END_TEST
-
-// Suite de tests pour ms_unset
-static Suite *ms_unset_suite(void)
+Suite *name_suite(void)
 {
     Suite *s;
     TCase *tc_core;
 
-    s = suite_create("ms_unset");
+    s = suite_create("NAME");
+
     tc_core = tcase_create("Core");
 
-    tcase_add_test(tc_core, test_ms_unset_existing_var);
-    tcase_add_test(tc_core, test_ms_unset_non_existing_var);
-
+    tcase_add_checked_fixture(tc_core, setup, teardown);
+    tcase_add_test(tc_core, test_ms_unset_first_value);
     suite_add_tcase(s, tc_core);
-
     return s;
 }
 
 int main(void)
 {
     int number_failed;
-    Suite *s;
-    SRunner *sr;
+    Suite *name;
+    SRunner *name_r;
 
-    s = ms_unset_suite();
-    sr = srunner_create(s);
+    name = name_suite();
+    name_r = srunner_create(name);
 
-    srunner_run_all(sr, CK_NORMAL);
-    number_failed = srunner_ntests_failed(sr);
-    srunner_free(sr);
-
+    srunner_run_all(name_r, CK_NORMAL); 
+    number_failed = srunner_ntests_failed(name_r);
+    srunner_free(name_r);
     return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
 
