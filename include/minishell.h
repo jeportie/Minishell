@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 13:06:32 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:09:21 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_env_data
 	char	*path;
 	char	*term;
 	char	*shell;
+	bool	oldpwd;
 }				t_env_data;
 
 typedef struct s_shell

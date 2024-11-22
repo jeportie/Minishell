@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 15:12:09 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:27:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,21 @@ static void	st_order_env(t_env **tmp_env)
 	*tmp_env = sorted;
 }
 
-static void	st_print_order(t_env *tmp_env, t_gc *gcl)
+static void	st_print_order(t_env *tmp_env, t_env_data *env_data)
 {
 	t_env	*tmp;
 
 	tmp = tmp_env;
 	while (tmp)
 	{
-		if (ft_strncmp(tmp->var, "_", 2))
+		if (!ft_strncmp(tmp->var, "_", 2) && env_data->oldpwd == 1)
 		{
-			ft_dprintf(1, "export ", tmp->var);
+			ft_dprintf(1, "export OLDPWD\n");
+			return ;
+		}
+		else if (ft_strncmp(tmp->var, "_", 2))
+		{
+			ft_dprintf(1, "export ");
 			if (tmp->var)
 				ft_dprintf(1, "%s", tmp->var);
 			if (tmp->value)
@@ -59,7 +64,6 @@ static void	st_print_order(t_env *tmp_env, t_gc *gcl)
 		}
 		tmp = tmp->next;
 	}
-	gc_collect(gcl);
 }
 
 static void	st_init_utils(t_export_utils *utils, t_shell *shell)
@@ -80,7 +84,7 @@ int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)
 	st_init_utils(&utils, context->shell);
 	if (cmd_node->argc == 1)
 		return (st_order_env(&tmp_env), st_print_order(tmp_env,
-				context->shell->gcl), 0);
+				context->shell->env_data), 0);
 	while (cmd_node->argv[i])
 	{
 		utils.flag = 0;
@@ -91,9 +95,6 @@ int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)
 				ft_strlen(utils.var) - 1);
 		add_export(&utils, &context->shell->env_data->env, utils.var,
 			utils.value);
-		gc_free(utils.var, context->shell->gcl);
-		if (utils.value)
-			gc_free(utils.value, utils.shell->gcl);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/29 16:31:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:35:12 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ static char	**st_create_envp(t_shell *shell, t_env_data *env_data)
 	char	**envp;
 
 	envp = (char **)gc_malloc(sizeof(char *) * 3, shell->gcl);
+	gc_lock(env_data, shell->gcl);
 	cwd = getcwd(NULL, 0);
 	env_data->path = "";
 	env_data->term = "";
@@ -100,8 +101,8 @@ t_env_data	*ms_init_env(char **envp, t_shell *shell)
 {
 	t_env_data	*env_data;
 	t_env		*node;
-	int			i;
 
+	int (i) = -1;
 	if (!shell)
 		exit(EXIT_FAILURE);
 	env_data = (t_env_data *)gc_malloc(sizeof(t_env_data), shell->gcl);
@@ -112,7 +113,6 @@ t_env_data	*ms_init_env(char **envp, t_shell *shell)
 	else
 		envp = st_create_envp(shell, env_data);
 	env_data->env = NULL;
-	i = -1;
 	while (envp[++i])
 	{
 		node = ms_env_create_node(shell, envp[i]);
@@ -122,5 +122,6 @@ t_env_data	*ms_init_env(char **envp, t_shell *shell)
 	env_data->path = st_get_path(env_data);
 	env_data->term = st_get_term(env_data);
 	env_data->shell = st_get_shell(env_data);
+	env_data->oldpwd = 1;
 	return (env_data);
 }

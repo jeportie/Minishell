@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 10:02:58 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:38:19 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 	init_context(&context, shell);
 	proc_manager = init_manager(shell->gcl);
 	ms_execute_ast(root, &context, proc_manager);
-	shell->error_code = 0;
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -62,7 +61,6 @@ int	main(int argc, char **argv, char **envp)
 	t_ast_node *(root) = NULL;
 	shell = ms_init_shell(argc, argv, envp);
 	tokens = NULL;
-	gc_collect(shell.gcl);
 	while (1)
 	{
 		ms_init_std_signal();

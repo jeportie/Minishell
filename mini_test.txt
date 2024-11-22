@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    mini_test.txt                                      :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/11/22 16:36:42 by jeportie          #+#    #+#              #
+#    Updated: 2024/11/22 16:36:50 by jeportie         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 TEST signaux de base:
 Ctrl+C et Ctrl+\ sont bon mais j'ai trouver un segfault si Ctrl+D apres avoir fait des test sur env et pwd
 (je n'arrive pas a le reproduire)
@@ -118,6 +130,11 @@ J'ai aussi trouver un segfault a la suite des test:
 
 
 
+TEST env -i
+L'env ne se contruit pas.
+
+
+
 TEST pipe
 gross leaks
 
@@ -143,6 +160,7 @@ apres la commande env
 apres la commande ls -la
     bash-5.1$ env | grep $_
     _=-la
+(corriger le 22 la variable n'etait pas mise a jour)
 
 
 
@@ -191,6 +209,7 @@ Erreur le code est 0 mais devrait etre 127
     ptit'coque> 
     gmarquis@u-home-fix~/Code/Minishell> echo $?    
     0
+(corriger le 22 la variable utiliser pour stocker l'erreur n'etait pas la bonne et dans run le code etait toujours remit a 0)
 
 
 

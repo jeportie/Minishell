@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:22:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 11:18:51 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:15:52 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,32 +85,3 @@ int	ms_env(t_cmd_node *cmd_node, t_exec_context *context)
 		"’: No such file or directory\n", st_first_arg(cmd_node->argv));
 	return (127);
 }
-
-/*int	ft_env(t_infos *infos, t_tok *tmp)
-{
-	t_env *(env) = infos->tmp_env;
-	if (!tmp->cmd[1])
-		return (ft_print_env(env));
-	if (tmp->cmd[1][0] == '-')
-	{
-		if (!tmp->cmd[1][1])
-			return (0);
-		else if (tmp->cmd[1][1] == '-')
-		{
-			if (!tmp->cmd[1][2])
-				return (ft_print_env(env));
-			else
-				return (ft_dprintf(2, "env: unrecognized option '",
-						tmp->cmd[1], "'\n"), 125);
-		}
-		else
-		{
-			ft_dprintf(2, "minishel: env: invalid option -- '",
-				ft_whithout_minus(tmp->cmd[1]), "'\n");
-			return (125);
-		}
-	}
-	ft_dprintf(2, "minishell: env: ‘", ft_first_arg(tmp->cmd),
-		"’: No such file or directory\n");
-	return (127);
-}*/

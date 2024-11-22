@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:04:44 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 11:12:44 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 13:57:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,16 @@ static void	helper_copy(char *new_arg, char *arg, int *old_arg_index,
 	{
 		if (arg[new_arg_index] == '{')
 		{
-			while (arg[new_arg_index] != '}')
+			while (arg[new_arg_index] != '}' && arg[new_arg_index])
 				new_arg_index++;
-			new_arg_index++;
+			if (arg[new_arg_index] == '}')
+				new_arg_index++;
 		}
-		if (arg[new_arg_index] == '}')
-			new_arg_index++;
-		new_arg[*old_arg_index] = arg[new_arg_index];
-		(*old_arg_index)++;
+		if (*old_arg_index < (int)ft_strlen(new_arg) - 1)
+		{
+			new_arg[*old_arg_index] = arg[new_arg_index];
+			(*old_arg_index)++;
+		}
 		new_arg_index++;
 	}
 	new_arg[*old_arg_index] = '\0';
@@ -120,16 +122,16 @@ char	*ms_expand_arg(char *arg, t_shell *shell, bool is_nested)
 	else
 		ex_utils.start_var = arg;
 	ex_utils.var = ms_extract_var(ex_utils.start_var, shell->gcl);
-	ex_utils.expand_var = ms_get_env_value(shell->env_data->env, ex_utils.var,
-			shell->error_code);
+	ex_utils.expand_var = ms_get_env_value(shell->env_data->env,
+			ex_utils.var, shell->error_code);
 	if (!ex_utils.expand_var)
 		return (NULL);
-	ex_utils.total_len += ft_strlen(ms_get_env_value(shell->env_data->env,
-				ex_utils.var, shell->error_code));
 	ex_utils.total_len = ft_strlen(arg) + ft_strlen(ex_utils.expand_var)
 		- ft_strlen(ex_utils.var);
-	ex_utils.new_arg = (char *)gc_malloc(sizeof(char) * (ex_utils.total_len),
-			shell->gcl);
+	ex_utils.new_arg = (char *)gc_malloc(sizeof(char) * (ex_utils.total_len
+				+ 1), shell->gcl);
+	if (!ex_utils.new_arg)
+		ms_handle_error("minishell: memory allocation error", 127, shell->gcl);
 	copy_expanded_cmd(arg, is_nested, &ex_utils);
 	if (is_var(ex_utils.new_arg))
 		ex_utils.new_arg = nested_vars(ex_utils.new_arg, shell);
