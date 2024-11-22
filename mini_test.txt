@@ -22,6 +22,7 @@ Comportement normal sauf probleme avec les signaux.
     ^C                                      //  jusqu'ici tout est bon, CTRL+C
     ptit'coque> ptit'coque>                 //  double prompt a regler dans les signaux (surment dans l'enfant)
     Minishell: Error: No Input provided.    //  taper entrer a creer une erreur surment a cause du double prompt
+(corriger le 21 ajoute de plusieurs gestion de signaux dans le parent et l'enfant a l'exec d'une commande)
 
 
 
@@ -128,7 +129,7 @@ Ne fonctionne pas affiche une ligne vide.
     assets	 lib	 Makefile	 Minishell  src     test_src
     include  main.c  make_interface  obj	    test.c  ycm_extra_conf.py
     ptit'coque> echo $?
-                                        //  code erreur non gerer a voir dans les expand
+(corriger le 21 le ? n'etait pas du tout gerer dans l'expand)
 
 
 

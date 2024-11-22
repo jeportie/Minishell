@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:22:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 14:12:25 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:18:51 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ static int	st_print_env(t_env *env)
 	t_env *(tmp) = env;
 	while (tmp)
 	{
-		ft_dprintf(1, "export ", tmp->var);
 		if (tmp->var)
 			ft_dprintf(1, "%s", tmp->var);
 		if (tmp->value)
-			ft_dprintf(1, "=\"%s\"", tmp->value);
+			ft_dprintf(1, "=%s", tmp->value);
 		ft_dprintf(1, "\n");
 		tmp = tmp->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:23:54 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 14:15:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:03:01 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <dirent.h>
+
+typedef struct s_expand_utils
+{
+	char	*new_arg;
+	char	*var;
+	char	*expand_var;
+	char	*start_var;
+	int		total_len;
+}				t_expand_utils;
 
 typedef struct s_wildcard_context
 {
