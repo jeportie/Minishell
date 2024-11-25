@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:29:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 09:49:20 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/25 10:35:07 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ START_TEST(test_ms_get_env_value_non_existing)
     env_list->next = create_env_node("PATH", "/usr/bin");
 
     // Vérification pour une variable qui n'existe pas
-    ck_assert_ptr_null(ms_get_env_value(env_list, "HOME", 0));
+    ck_assert_ptr_null(ms_get_env_value(env_list, "HOME", 127));
 
     // Libération de la liste d'environnement
     free_env_list(env_list);
