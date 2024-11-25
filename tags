@@ -388,7 +388,6 @@ START_TEST	test_src/builtins/test_ms_exit.c	/^START_TEST(test_ms_exit_with_inval
 START_TEST	test_src/builtins/test_ms_exit.c	/^START_TEST(test_ms_exit_with_too_many_arguments)$/;"	f
 START_TEST	test_src/builtins/test_ms_exit.c	/^START_TEST(test_ms_exit_with_valid_code)$/;"	f
 START_TEST	test_src/builtins/test_ms_export.c	/^START_TEST(test_ms_export_new_var)$/;"	f
-START_TEST	test_src/builtins/test_ms_export.c	/^START_TEST(test_ms_export_update_var)$/;"	f
 START_TEST	test_src/builtins/test_ms_pwd.c	/^START_TEST(test_ms_pwd_valid)$/;"	f
 START_TEST	test_src/builtins/test_ms_unset.c	/^START_TEST(test_ms_unset_first_value)$/;"	f
 START_TEST	test_src/check_testunit_template.c	/^START_TEST(name_of_the_test_function)$/;"	f
@@ -660,7 +659,8 @@ flag_plus	lib/libft/include/printf.h	/^	int			flag_plus;$/;"	m	struct:s_format_s
 flag_space	lib/libft/include/printf.h	/^	int			flag_space;$/;"	m	struct:s_format_spec
 flag_zero	lib/libft/include/printf.h	/^	int			flag_zero;$/;"	m	struct:s_format_spec
 flags	ycm_extra_conf.py	/^flags = [$/;"	v
-fork_init	src/exec/ms_heredoc_mode.c	/^static void	fork_init(t_fork_params *fork_params, t_exec_context *context)$/;"	f	file:
+fork_init	src/exec/ms_heredoc_mode.c	/^static void	fork_init(t_fork_params *fork_params, t_exec_context *context,$/;"	f	file:
+fork_init	src/process/redirect_fd.c	/^void	fork_init(t_fork_params *fork_params, t_exec_context *context,$/;"	f
 free_env_list	test_src/shell/test_ms_env_add_back.c	/^void free_env_list(t_env *env) {$/;"	f
 free_env_list	test_src/shell/test_ms_get_env_value.c	/^void free_env_list(t_env *env)$/;"	f
 ft_apply_precision	lib/libft/src/printf/ft_apply_precision.c	/^void	ft_apply_precision(t_format_spec spec, char **formatted_content)$/;"	f
@@ -793,6 +793,7 @@ gcl	include/expand.h	/^	t_gc		*gcl;$/;"	m	struct:s_wildcard_context
 gcl	include/minishell.h	/^	t_gc		*gcl;$/;"	m	struct:s_shell
 gcl	include/process.h	/^	t_gc		*gcl;$/;"	m	struct:s_proc_manager
 gcl	test_src/ast/test_ms_parse_tokens.c	/^static t_gc *gcl;$/;"	v	file:
+gcl	test_src/builtins/test_ms_export.c	/^static t_gc *gcl;$/;"	v	file:
 gcl	test_src/builtins/test_ms_unset.c	/^static	t_gc *gcl;$/;"	v	file:
 gcl	test_src/check_testunit_template.c	/^static t_gc *gcl;$/;"	v	file:
 gcl	test_src/exec/test_ms_concat_path.c	/^static t_gc *gcl;$/;"	v	file:
@@ -846,9 +847,8 @@ info_version_internal	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompile
 init	lib/libgc/src/gc_nest_register.c	/^static t_gc_node	*init(t_gc_node *new_node, void *ptr, t_gc *gcl)$/;"	f	file:
 init	lib/libgc/src/gc_register.c	/^static t_gc_node	*init(t_gc_node *new_node, const char *filename, t_gc *gcl)$/;"	f	file:
 init_context	main.c	/^static void	init_context(t_exec_context *data, t_shell *shell)$/;"	f	file:
-init_forks	src/exec/ms_execute_external.c	/^static void	init_forks(t_fork_params *fork_params, t_exec_context *context,$/;"	f	file:
 init_helper	src/exec/ms_execute_pipeline.c	/^void	init_helper(t_pipe_exec_params *params, t_pipe_node *pipe_node,$/;"	f
-init_io	src/exec/ms_execute_external.c	/^static void	init_io(t_exec_context *context)$/;"	f	file:
+init_io	src/process/redirect_fd.c	/^int	init_io(int new_in, int new_out, int new_err)$/;"	f
 init_left_fork_params	src/exec/ms_execute_pipeline.c	/^static	void	init_left_fork_params(t_fork_params *fork_params,$/;"	f	file:
 init_manager	src/process/init_proc_manager.c	/^t_proc_manager	*init_manager(t_gc *gcl)$/;"	f
 init_op_state	src/token/tokenize_operator.c	/^static void	init_op_state(const char **input, t_op_state *op_state)$/;"	f	file:
@@ -1033,10 +1033,12 @@ pipefd	include/exec.h	/^	int				pipefd[2];$/;"	m	struct:s_heredoc_params
 pipefd	include/exec.h	/^	int				pipefd[2];$/;"	m	struct:s_pipe_exec_params
 precision	lib/libft/include/printf.h	/^	int			precision;$/;"	m	struct:s_format_spec
 print_ast	src/ast/print_ast.c	/^void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)$/;"	f
+print_ast_delimit	main.c	/^static void print_ast_delimit(t_ast_node *root)$/;"	f	file:
 print_branch	src/ast/utils2.c	/^void	print_branch(int depth, int is_left)$/;"	f
 print_node_content	src/ast/print_ast.c	/^void	print_node_content(t_ast_node *node)$/;"	f
 print_proc_info	src/process/print_proc_info.c	/^void	print_proc_info(const t_proc_manager *manager)$/;"	f
 print_token	src/token/lst_tokens.c	/^void	print_token(t_token *head)$/;"	f
+print_token_delimit	main.c	/^static void print_token_delimit(t_token *tokens)$/;"	f	file:
 process_count	include/process.h	/^	int			process_count;$/;"	m	struct:s_proc_manager
 process_line	src/exec/ms_heredoc_helper.c	/^int	process_line(int write_fd, const char *delimiter, char **line_ptr)$/;"	f
 ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
@@ -1103,6 +1105,7 @@ safe_pipe	src/process/safe_pipe.c	/^int	safe_pipe(int pipefd[2])$/;"	f
 setup	test_src/ast/test_ms_parse_tokens.c	/^void setup(void)$/;"	f
 setup	test_src/builtins/test_ms_echo.c	/^static void setup(void)$/;"	f	file:
 setup	test_src/builtins/test_ms_exit.c	/^static void setup(void)$/;"	f	file:
+setup	test_src/builtins/test_ms_export.c	/^void setup(void)$/;"	f
 setup	test_src/builtins/test_ms_pwd.c	/^static void setup(void)$/;"	f	file:
 setup	test_src/builtins/test_ms_unset.c	/^void setup(void)$/;"	f
 setup	test_src/check_testunit_template.c	/^void setup(void)$/;"	f
@@ -1116,7 +1119,6 @@ setup	test_src/shell/test_ms_getenv.c	/^void setup(void)$/;"	f
 setup	test_src/syntax_error/test_ms_syntax_error.c	/^static void setup(void)$/;"	f	file:
 setup	test_src/token/test_ms_tokenize.c	/^void    setup(void)$/;"	f
 setup_shell	test_src/builtins/test_ms_env.c	/^void setup_shell(t_shell *shell) {$/;"	f
-setup_shell	test_src/builtins/test_ms_export.c	/^void setup_shell(t_shell *shell) {$/;"	f
 shell	include/builtins.h	/^	t_shell	*shell;$/;"	m	struct:s_export_utils
 shell	include/exec.h	/^	t_shell		*shell;$/;"	m	struct:s_exec_context
 shell	include/minishell.h	/^	char	*shell;$/;"	m	struct:s_env_data
@@ -1226,6 +1228,7 @@ t_wildcard_context	include/expand.h	/^}				t_wildcard_context;$/;"	t	typeref:str
 teardown	test_src/ast/test_ms_parse_tokens.c	/^void teardown(void)$/;"	f
 teardown	test_src/builtins/test_ms_echo.c	/^static void teardown(void)$/;"	f	file:
 teardown	test_src/builtins/test_ms_exit.c	/^static void teardown(void)$/;"	f	file:
+teardown	test_src/builtins/test_ms_export.c	/^void teardown(void)$/;"	f
 teardown	test_src/builtins/test_ms_pwd.c	/^static void teardown(void)$/;"	f	file:
 teardown	test_src/builtins/test_ms_unset.c	/^void teardown(void)$/;"	f
 teardown	test_src/check_testunit_template.c	/^void teardown(void)$/;"	f
@@ -1239,7 +1242,6 @@ teardown	test_src/shell/test_ms_getenv.c	/^void teardown(void)$/;"	f
 teardown	test_src/syntax_error/test_ms_syntax_error.c	/^static void teardown(void)$/;"	f	file:
 teardown	test_src/token/test_ms_tokenize.c	/^void    teardown(void)$/;"	f
 teardown_shell	test_src/builtins/test_ms_env.c	/^void teardown_shell(t_shell *shell) {$/;"	f
-teardown_shell	test_src/builtins/test_ms_export.c	/^void teardown_shell(t_shell *shell) {$/;"	f
 temp_file	lib/libgc/include/libgc.h	/^	char				*temp_file;$/;"	m	struct:s_gc_node
 term	include/minishell.h	/^	char	*term;$/;"	m	struct:s_env_data
 test_ms_init_shell_exit	test_src/shell/test_ms_init_shell.c	/^int test_ms_init_shell_exit(int argc, char **argv, char **envp)$/;"	f

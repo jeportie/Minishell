@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 09:35:56 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 18:50:14 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:42:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int				safe_open(const char *filepath, int flags, int mode);
 int				safe_close(int fd);
 
 /* File descriptor management */
+int				init_io(int new_in, int new_out, int new_err);
 int				redirect_fd(int old_fd, int new_fd);
 int				restore_fd(int fd, int saved_fd);
 

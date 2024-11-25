@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:57:55 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/21 11:20:02 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:26:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ Suite *name_suite(void)
 
     // Adding setup and teardown for this test case
     tcase_add_checked_fixture(tc_core, setup, teardown);
-
     // Adding individual test functions
     tcase_add_test(tc_core, name_of_the_test_function);
 

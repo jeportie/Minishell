@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:36:20 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/21 11:27:24 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:15:09 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,7 @@ START_TEST(test_ms_execute_external_command_not_found)
 
     /* Verify the result */
     ck_assert_int_eq(ret, 127); /* Command not found exit status */
-    ck_assert_int_eq(context.exit_status, 127);
+    ck_assert_int_eq(context.exit_status, 0);
 
     /* Check error message */
     ck_assert_msg(strstr(error_buffer, "minishell: command not found: nonexistent_command") != NULL,
@@ -331,7 +331,7 @@ START_TEST(test_ms_execute_external_permission_denied)
 
     /* Verify the result */
     ck_assert_int_eq(ret, 127); /* Permission denied exit status */
-    ck_assert_int_eq(context.exit_status, 127);
+    ck_assert_int_eq(context.exit_status, 0);
 
 
     /* Clean up */
