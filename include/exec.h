@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 13:51:22 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:42:30 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,7 @@ int		heredoc_parent_process(t_heredoc_params *params, pid_t pid);
 int		process_line(int write_fd, const char *delimiter, char **line_ptr);
 int		read_and_write_heredoc(int write_fd, const char *delimiter);
 int		handle_child_status(int status, t_exec_context *context);
+void	fork_init(t_fork_params *fork_params, t_exec_context *context,
+			bool is_here_doc, char *title);
 
 #endif /* EXEC_H */

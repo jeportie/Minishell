@@ -6,40 +6,13 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 16:49:05 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:03:24 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 #include "../../include/process.h"
-
-static void	init_io(t_exec_context *context)
-{
-	if (context->stdin_fd != STDIN_FILENO)
-	{
-		if (redirect_fd(STDIN_FILENO, context->stdin_fd) == -1)
-		{
-			ft_dprintf(STDERR_FILENO, "redirect_fd failed (stdin)\n");
-			exit(EXIT_FAILURE);
-		}
-	}
-	if (context->stdout_fd != STDOUT_FILENO)
-	{
-		if (redirect_fd(STDOUT_FILENO, context->stdout_fd) == -1)
-		{
-			ft_dprintf(STDERR_FILENO, "redirect_fd failed (stdout)\n");
-			exit(EXIT_FAILURE);
-		}
-	}
-	if (context->stderr_fd != STDERR_FILENO)
-	{
-		if (redirect_fd(STDERR_FILENO, context->stderr_fd) == -1)
-		{
-			ft_dprintf(STDERR_FILENO, "redirect_fd failed (stderr)\n");
-			exit(EXIT_FAILURE);
-		}
-	}
-}
+#include <unistd.h>
 
 static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 			char *cmd_path, t_gc *gcl)
@@ -49,14 +22,12 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 
 	ms_init_child_cmd_signal();
 	child_gcl = gc_init();
-	init_io(context);
+	if (!init_io(context->stdin_fd, context->stdout_fd, context->stderr_fd))
+		exit(ms_handle_error("minishell: redirection error: dup2\n",
+				EXIT_FAILURE, gcl));
 	envp = ms_get_envp(context->shell->env_data->env, child_gcl);
 	if (!envp)
-	{
-		perror("minishell: memory allocation error");
-		gc_cleanup(gcl);
-		exit(EXIT_FAILURE);
-	}
+		exit(ms_handle_error("memory allocation error\n", EXIT_FAILURE, gcl));
 	gc_nest_register(envp, child_gcl);
 	execve(cmd_path, cmd_node->argv, envp);
 	ft_dprintf(STDERR_FILENO, "minishell: execve error");
@@ -83,17 +54,6 @@ static void	ms_parent_process(pid_t pid, t_exec_context *context)
 		context->shell->error_code = -1;
 }
 
-static void	init_forks(t_fork_params *fork_params, t_exec_context *context,
-	t_cmd_node *cmd_node)
-{
-	fork_params->child_lvl = context->child_lvl + 1;
-	fork_params->fd_in = context->stdin_fd;
-	fork_params->fd_out = context->stdout_fd;
-	fork_params->fd_error = context->stderr_fd;
-	fork_params->is_heredoc = false;
-	fork_params->title = cmd_node->argv[0];
-}
-
 int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 		t_proc_manager *manager, t_gc *gcl)
 {
@@ -104,12 +64,12 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	cmd_path = ms_parse_cmd_path(cmd_node->argv[0], context->shell);
 	if (cmd_path == NULL)
 	{
-		ft_putstr_fd("minishell: command not found: ", STDERR_FILENO);
-		ft_putendl_fd(cmd_node->argv[0], STDERR_FILENO);
+		ft_dprintf(STDERR_FILENO, "minishell: command not found: %s\n",
+			cmd_node->argv[0]);
 		context->shell->error_code = 127;
-		return (127);
+		return (context->shell->error_code);
 	}
-	init_forks(&fork_params, context, cmd_node);
+	fork_init(&fork_params, context, false, cmd_node->argv[0]);
 	pid = safe_fork(manager, &fork_params);
 	ms_init_parent_cmd_signal();
 	if (pid == 0)

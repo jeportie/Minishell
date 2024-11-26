@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 19:50:50 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:01:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,6 @@ void	heredoc_child_process(t_heredoc_params *params)
 	exit(0);
 }
 
-static void	fork_init(t_fork_params *fork_params, t_exec_context *context)
-{
-	fork_params->child_lvl = context->child_lvl + 1;
-	fork_params->fd_in = context->stdin_fd;
-	fork_params->fd_out = context->stdout_fd;
-	fork_params->fd_error = context->stderr_fd;
-	fork_params->is_heredoc = true;
-	fork_params->title = "heredoc";
-}
-
 int	ms_heredoc_mode(const char *delimiter, t_exec_context *context,
 	t_proc_manager *manager, t_gc *gcl)
 {
@@ -49,7 +39,7 @@ int	ms_heredoc_mode(const char *delimiter, t_exec_context *context,
 	params.context = context;
 	params.manager = manager;
 	safe_pipe(params.pipefd);
-	fork_init(&fork_params, context);
+	fork_init(&fork_params, context, true, "heredoc");
 	pid = safe_fork(manager, &fork_params);
 	if (pid == -1)
 	{
