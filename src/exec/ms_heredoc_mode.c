@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/25 14:37:42 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:01:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,6 @@ void	heredoc_child_process(t_heredoc_params *params)
 	else if (result == 1)
 		exit(1);
 	exit(0);
-}
-
-static void	fork_init(t_fork_params *fork_params, t_exec_context *context,
-			bool is_here_doc, char *title)
-{
-	fork_params->child_lvl = context->child_lvl + 1;
-	fork_params->fd_in = context->stdin_fd;
-	fork_params->fd_out = context->stdout_fd;
-	fork_params->fd_error = context->stderr_fd;
-	fork_params->is_heredoc = is_here_doc;
-	fork_params->title = title;
 }
 
 int	ms_heredoc_mode(const char *delimiter, t_exec_context *context,

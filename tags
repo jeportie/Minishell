@@ -659,7 +659,6 @@ flag_plus	lib/libft/include/printf.h	/^	int			flag_plus;$/;"	m	struct:s_format_s
 flag_space	lib/libft/include/printf.h	/^	int			flag_space;$/;"	m	struct:s_format_spec
 flag_zero	lib/libft/include/printf.h	/^	int			flag_zero;$/;"	m	struct:s_format_spec
 flags	ycm_extra_conf.py	/^flags = [$/;"	v
-fork_init	src/exec/ms_heredoc_mode.c	/^static void	fork_init(t_fork_params *fork_params, t_exec_context *context,$/;"	f	file:
 fork_init	src/process/redirect_fd.c	/^void	fork_init(t_fork_params *fork_params, t_exec_context *context,$/;"	f
 free_env_list	test_src/shell/test_ms_env_add_back.c	/^void free_env_list(t_env *env) {$/;"	f
 free_env_list	test_src/shell/test_ms_get_env_value.c	/^void free_env_list(t_env *env)$/;"	f
