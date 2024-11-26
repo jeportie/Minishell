@@ -6,11 +6,11 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/10/02 14:56:22 by jeportie         ###   ########.fr        #
+#    Updated: 2024/11/26 14:31:13 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Minishell
+NAME = minishell
 
 ### BEGIN AUTO GENERATED FILES ###
 # List of source files:

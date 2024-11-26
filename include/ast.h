@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:45:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/14 15:29:58 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:01:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,6 @@ bool		is_redir_op(t_token *current_token);
 bool		is_sbs_start(t_token *current_token);
 bool		is_sbs_stop(t_token *current_token);
 void		print_ast(t_ast_node *node, int depth, char *prefix, int is_left);
-void		print_branch(int depth, int is_left);
+void		print_branch(int depth, int is_left, int fd);
 
 #endif /*AST_H*/

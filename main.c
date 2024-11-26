@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/25 15:06:59 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:23:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,38 @@
 #include "include/ast.h"
 #include "include/exec.h"
 #include "include/process.h"
+#include <fcntl.h>
 
-static void print_token_delimit(t_token *tokens)
+static void	print_token_delimit(t_token *tokens)
 {
-	printf("-----------------------------------------------------");
-	printf("---------------------------\nTOKENS:\n");
+	int	fd;
+	
+	if (DEBUG == 0)
+		return ;
+	fd = open(PRINT_INFOS, O_WRONLY | O_TRUNC | O_CREAT, COPY_MODE);
+	ft_dprintf(fd, "-----------------------------------------------------");
+	ft_dprintf(fd, "---------------------------\nTOKENS:\n");
 	print_token(tokens);
+	close(fd);
 }
 
-static void print_ast_delimit(t_ast_node *root)
+static void	print_ast_delimit(t_ast_node *root)
 {
-	printf("------------------------------------------------");
-	printf("--------------------------------\nAST:\n");
+	int	fd;
+
+	if (DEBUG == 0)
+		return ;
+	fd = open(PRINT_INFOS, O_WRONLY | O_APPEND , COPY_MODE);
+	ft_dprintf(fd, "------------------------------------------------");
+	ft_dprintf(fd, "--------------------------------\nAST:\n");
 	print_ast(root, 0, "", 0);
-	printf("----------------------------------------------------------------");
-	printf("----------------\n");
+	ft_dprintf(fd, "----------------------------------------------------------------");
+	ft_dprintf(fd, "----------------\n");
+	ft_dprintf(fd, "Process Manager - Active Processes:\n");
+	ft_dprintf(fd, "Title\t\tPID\tParent PID\tLevel\tFD_in\tFD_out\tFD_err\tHeredoc\n");
+	ft_dprintf(fd, "----------------------------------------------------------------");
+	ft_dprintf(fd, "----------------\n");
+	close(fd);
 }
 
 static void	init_context(t_exec_context *data, t_shell *shell)
@@ -58,9 +75,11 @@ static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 		exit(EXIT_FAILURE);
 	}
 	print_ast_delimit(root);
+	gc_collect(shell->gcl);
 	init_context(&context, shell);
 	proc_manager = init_manager(shell->gcl);
 	ms_execute_ast(root, &context, proc_manager);
+	gc_collect(shell->gcl);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -87,6 +106,7 @@ int	main(int argc, char **argv, char **envp)
 		else
 			run(&shell, tokens, root);
 	}
-	shell.error_code = 666;
-	return (shell.error_code);
+	gc_cleanup(shell.gcl);
+	free(shell.gcl);
+	return (shell.error_code = 333);
 }

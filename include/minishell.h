@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 16:09:21 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:09:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <signal.h>
+
+# define DEBUG 1
+# define PRINT_INFOS "assets/infos.txt"
+# define COPY_MODE 0644
 
 extern int	g_signal;
 

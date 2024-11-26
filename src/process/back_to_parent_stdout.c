@@ -6,12 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:07:40 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 12:13:34 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:25:28 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/process.h"
-#include <unistd.h>
 
 int	back_to_parent_stdout(t_proc_manager *manager, pid_t pid)
 {

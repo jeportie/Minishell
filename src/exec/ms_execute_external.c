@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 10:03:24 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:29:33 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	}
 	else
 		ms_parent_process(pid, context);
+	print_proc_info(manager);
 	ms_init_std_signal();
 	return (context->shell->error_code);
 }

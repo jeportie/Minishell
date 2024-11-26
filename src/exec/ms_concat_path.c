@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:57:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/03 18:34:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:39:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,9 @@ char	*ms_concat_path(const char *path, const char *command, t_gc *gcl)
 	char	*cmd_path;
 	char	*tmp;
 
-	tmp = ft_strjoin(path, "/");
+	tmp = gc_strjoin((char *)path, "/", gcl);
 	ms_check_alloc(tmp, gcl);
-	gc_register(tmp, gcl);
-	cmd_path = ft_strjoin(tmp, command);
+	cmd_path = gc_strjoin(tmp, (char *)command, gcl);
 	ms_check_alloc(cmd_path, gcl);
-	gc_register(cmd_path, gcl);
 	return (cmd_path);
 }

@@ -6,14 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/25 14:42:30 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:54:46 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXEC_H
 # define EXEC_H
-
-# define COPY_MODE 0644
 
 # include "ast.h"
 # include "minishell.h"
@@ -23,6 +21,8 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <dirent.h>
+
+# define COPY_MODE 0644
 
 typedef struct s_exec_context
 {
