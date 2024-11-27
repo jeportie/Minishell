@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 11:09:45 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:47:52 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ t_env		*ms_env_create_node(t_shell *shell, const char *env_line);
 void		ms_env_add_back(t_env **env, t_env *new_node);
 
 /* signal */
+int			rl_event_dummy(void);
 void		ms_init_parent_cmd_signal(void);
 void		ms_init_child_cmd_signal(void);
 void		ms_init_std_signal(void);

@@ -6,7 +6,7 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 16:36:42 by jeportie          #+#    #+#              #
-#    Updated: 2024/11/26 16:46:50 by jeportie         ###   ########.fr        #
+#    Updated: 2024/11/27 10:38:22 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,13 @@ Comportement normal sauf probleme avec les signaux.
     ptit'coque> ptit'coque>                 //  double prompt a regler dans les signaux (surment dans l'enfant)
     Minishell: Error: No Input provided.    //  taper entrer a creer une erreur surment a cause du double prompt
 (corriger le 21 ajoute de plusieurs gestion de signaux dans le parent et l'enfant a l'exec d'une commande)
+
+Commande suivante igniorer si CTRL+C
+    (130) <gmarquis>@minishell | /root/projects/Minishell $> cat
+    ^C
+    (130) <gmarquis>@minishell | /root/projects/Minishell $> ls
+    (130) <gmarquis>@minishell | /root/projects/Minishell $>
+
 
 
 

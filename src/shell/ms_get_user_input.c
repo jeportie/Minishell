@@ -6,14 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:51:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 15:48:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:48:46 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 #include <unistd.h>
-
-int rl_event_dummy();
 
 void	ms_get_user_input(t_shell *shell)
 {
@@ -36,14 +34,12 @@ void	ms_get_user_input(t_shell *shell)
 	shell_prompt = gc_strjoin(shell_prompt, " $> ", shell->gcl);
 	rl_event_hook = rl_event_dummy;
 	shell->user_input = readline(shell_prompt);
-	if (g_signal)
+	if (g_signal == 132)
 	{
-		if (g_signal == 130)
-		{
-			shell->error_code = g_signal;
-			g_signal = 0;
-			return (ms_get_user_input(shell));
-		}
+		shell->error_code = 130;
+		g_signal = 0;
+		printf("ici\n");
+		return (ms_get_user_input(shell));
 	}
 	gc_collect(shell->gcl);
 	if (!shell->user_input)

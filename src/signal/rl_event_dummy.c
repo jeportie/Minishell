@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_init_std_signal.c                               :+:      :+:    :+:   */
+/*   rl_event_dummy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:55:03 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/27 10:51:15 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/27 10:51:01 by jeportie          #+#    #+#             */
+/*   Updated: 2024/11/27 10:51:06 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static void	st_sigint_std_handler(int sig)
+int	rl_event_dummy(void)
 {
-	rl_done = 1;
-	if (sig == SIGINT)
-		g_signal = 132;
-}
-
-void	ms_init_std_signal(void)
-{
-	signal(SIGINT, st_sigint_std_handler);
-	signal(SIGQUIT, SIG_IGN);
+	return (0);
 }
