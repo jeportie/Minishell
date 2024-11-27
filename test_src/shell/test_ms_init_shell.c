@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:18 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/16 10:13:54 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:26:43 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <sys/wait.h>
 #include "../../include/minishell.h"
 
-/* Helper function to test functions that call exit() */
 int test_ms_init_shell_exit(int argc, char **argv, char **envp)
 {
     pid_t pid = fork();
@@ -45,7 +44,8 @@ START_TEST(test_ms_init_shell_no_args)
 {
     char *argv[] = {"minishell", NULL};
     int exit_code = test_ms_init_shell_exit(1, argv, NULL);
-    ck_assert_int_eq(exit_code, EXIT_SUCCESS); // Expect success
+
+    ck_assert_int_eq(exit_code, 1);
 }
 END_TEST
 

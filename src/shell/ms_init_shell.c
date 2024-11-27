@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:40:35 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/16 10:12:41 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:25:14 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ t_shell	ms_init_shell(int argc, char **argv, char **envp)
 {
 	t_shell	shell;
 
-	if (!argc || !argv)
+	if (!argc || !argv || !envp)
 		exit(EXIT_FAILURE);
 	if (argc > 1 || argv[1])
 	{
-		perror("Minishell: format: no arguments needed!\n");
+		perror("minishell: format: no arguments needed!\n");
 		exit(EXIT_FAILURE);
 	}
 	ft_memset(&shell, 0, sizeof(t_shell));

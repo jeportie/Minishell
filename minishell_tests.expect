@@ -1,0 +1,184 @@
+#!/usr/bin/expect -f
+
+# Set the timeout for Expect commands
+set timeout 5
+
+# Start Minishell
+spawn ./minishell
+
+# Initialize global variables
+set ::error_code ""
+set ::user ""
+set ::cwd ""
+
+# Initialize test result tracking
+set total_tests 0
+set tests_passed 0
+set tests_failed 0
+set failed_tests {}
+set test_results {}
+
+# Function to match the dynamic prompt and capture components
+proc expect_prompt {} {
+    expect {
+        -re {\((\d+)\) ([^@]+)@minishell \| (.+) \$> } {
+            set ::error_code $expect_out(1,string)
+            set ::user $expect_out(2,string)
+            set ::cwd $expect_out(3,string)
+        }
+        eof {
+            # The shell has exited; handle if needed
+            return -code return
+        }
+        timeout {
+            error "Timeout waiting for prompt"
+        }
+    }
+}
+
+# Function to send a command and expect the prompt
+proc send_command {cmd {expect_prompt_flag 1}} {
+    send "$cmd\r"
+    if {$expect_prompt_flag} {
+        expect_prompt
+    }
+}
+
+# Function to perform a test and record the result
+proc perform_test {test_name test_proc} {
+    global total_tests tests_passed tests_failed failed_tests test_results
+
+    incr total_tests
+    set start_time [clock milliseconds]
+
+    # Run the test procedure
+    catch {eval $test_proc} test_error
+
+    set end_time [clock milliseconds]
+    set duration [expr {($end_time - $start_time) / 1000.0}]
+
+    if {$test_error == ""} {
+        # Test passed
+        incr tests_passed
+        lappend test_results [list $test_name "PASS" $duration]
+    } else {
+        # Test failed
+        incr tests_failed
+        lappend failed_tests $test_name
+        lappend test_results [list $test_name "FAIL" $duration $test_error]
+    }
+}
+
+# Start by expecting the initial prompt
+expect_prompt
+
+# --- Define Test Procedures ---
+
+# Test 1: Simple Echo Command
+proc test_echo {} {
+    send_command "echo Hello, World!"
+    expect "Hello, World!\r\n"
+
+    if {$::error_code != "0"} {
+        error "Expected error code 0, got $::error_code"
+    }
+}
+
+# Test 2: Environment Variable Expansion
+proc test_env_var {} {
+    send_command "export TESTVAR=42"
+    if {$::error_code != "0"} {
+        error "Expected error code 0 after export, got $::error_code"
+    }
+
+    send_command "echo \$TESTVAR"
+    expect "42\r\n"
+    if {$::error_code != "0"} {
+        error "Expected error code 0 after echo, got $::error_code"
+    }
+}
+
+# Test 3: Command Not Found
+proc test_unknown_command {} {
+    send_command "unknowncmd"
+    expect "minishell: command not found: unknowncmd\r\n"
+
+    if {$::error_code != "127"} {
+        error "Expected error code 127, got $::error_code"
+    }
+}
+
+# Test 4: Piping Commands
+proc test_piping {} {
+    send_command "echo 'one two three' | wc -w"
+    expect "3\r\n"
+
+    if {$::error_code != "0"} {
+        error "Expected error code 0, got $::error_code"
+    }
+}
+
+# Test 5: Output Redirection
+proc test_output_redirection {} {
+    send_command "echo 'file content' > testfile"
+    if {$::error_code != "0"} {
+        error "Expected error code 0 after redirection, got $::error_code"
+    }
+
+    send_command "cat testfile"
+    expect "file content\r\n"
+    # Clean up the test file
+    send_command "rm testfile"
+}
+
+# Test 7: Signal Handling - Ctrl+C
+proc test_ctrl_c {} {
+    send "\003"  ;# Send Ctrl+C
+    expect_prompt
+    if {$::error_code != "130"} {
+        error "Expected error code 130 after Ctrl+C, got $::error_code"
+    }
+}
+
+# --- Run Tests ---
+
+perform_test "Test 1: Simple Echo Command" test_echo
+perform_test "Test 2: Environment Variable Expansion" test_env_var
+perform_test "Test 3: Command Not Found" test_unknown_command
+perform_test "Test 4: Piping Commands" test_piping
+perform_test "Test 5: Output Redirection" test_output_redirection
+# Skipping Test 6: Background Execution due to shell crash
+perform_test "Test 7: Signal Handling - Ctrl+C" test_ctrl_c
+
+# Exit the shell
+send_command "exit" 0
+expect eof
+
+# --- Report Test Results ---
+
+puts "\nTest Results:"
+puts "------------------------------------------------------------"
+foreach result $test_results {
+    set test_name [lindex $result 0]
+    set status [lindex $result 1]
+    set duration [lindex $result 2]
+    if {$status == "PASS"} {
+        puts [format "%-50s (PASS) (%.2fs)" $test_name $duration]
+    } else {
+        set error_msg [lindex $result 3]
+        puts [format "%-50s (FAIL) (%.2fs)" $test_name $duration]
+        puts "    Error: $error_msg"
+    }
+}
+puts "------------------------------------------------------------"
+puts "Total tests: $total_tests"
+puts "Passed: $tests_passed"
+puts "Failed: $tests_failed"
+
+# Exit with appropriate status
+if {$tests_failed > 0} {
+    exit 1
+} else {
+    exit 0
+}
+

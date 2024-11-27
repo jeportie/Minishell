@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 13:30:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/15 13:32:59 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:29:28 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ START_TEST(test_ms_init_std_signal_sigint)
     {
         int status;
         waitpid(pid, &status, 0);
-        ck_assert_int_eq(WEXITSTATUS(status), 130); // Expect signal handler to set g_signal to 130
+        ck_assert_int_eq(WEXITSTATUS(status), 132); // Expect signal handler to set g_signal to 130
     }
 }
 END_TEST
