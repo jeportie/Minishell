@@ -1,7 +1,21 @@
 #!/usr/bin/expect -f
 
 # Set the timeout for Expect commands
-set timeout 5
+set timeout 1
+
+# --- Build the Latest Version of Minishell ---
+
+# Run 'make re' before starting the tests
+puts "Building the latest version of minishell..."
+if {[catch {exec make re} build_output]} {
+    puts "Error running 'make re':"
+    puts $build_output
+    exit 1
+} else {
+    puts "Build successful."
+    # Optionally, print the build output
+    # puts $build_output
+}
 
 # Start Minishell
 spawn ./minishell
