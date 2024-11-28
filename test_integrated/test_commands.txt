@@ -1,0 +1,6 @@
+echo Hello, World!
+unknowncmd
+echo 'one two three' | wc -w
+echo 'file content' > testfile
+cat testfile
+rm testfile

@@ -1,0 +1,18 @@
+[?2004hjeportie@minishell $> echo Hello, World!
+[?2004lHello, World!
+[?2004l0
+[?2004hjeportie@minishell $> unknowncmd
+[?2004lminishell: command not found: unknowncmd
+[?2004l127
+[?2004hjeportie@minishell $> echo 'one two three' | wc -w
+[?2004l3
+[?2004l127
+[?2004hjeportie@minishell $> echo 'file content' > testfile
+[?2004lfile content
+[?2004l127
+[?2004hjeportie@minishell $> cat testfile
+[?2004l0
+[?2004hjeportie@minishell $> rm testfile
+[?2004l0
+[?2004hjeportie@minishell $> exit
+[?2004lexit
