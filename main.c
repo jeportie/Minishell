@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 16:23:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:20:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static void	print_token_delimit(t_token *tokens)
 	
 	if (DEBUG == 0)
 		return ;
-	fd = open(PRINT_INFOS, O_WRONLY | O_TRUNC | O_CREAT, COPY_MODE);
+	fd = safe_open(PRINT_INFOS, O_WRONLY | O_TRUNC | O_CREAT, COPY_MODE);
 	ft_dprintf(fd, "-----------------------------------------------------");
 	ft_dprintf(fd, "---------------------------\nTOKENS:\n");
 	print_token(tokens);
-	close(fd);
+	safe_close(fd);
 }
 
 static void	print_ast_delimit(t_ast_node *root)

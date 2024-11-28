@@ -589,6 +589,7 @@ child_lvl	include/exec.h	/^	int			child_lvl;$/;"	m	struct:s_exec_context
 child_lvl	include/process.h	/^	int					child_lvl;$/;"	m	struct:s_proc_info
 child_lvl	include/process.h	/^	int			child_lvl;$/;"	m	struct:s_fork_params
 child_lvl	include/process.h	/^	int			child_lvl;$/;"	m	struct:s_proc_params
+clean_files	test_integrated/process_outputs.sh	/^clean_files() {$/;"	f
 clean_manager	src/process/clean_manager.c	/^void	clean_manager(t_proc_manager *manager)$/;"	f
 cleanup_proc	src/process/clean_process.c	/^void	cleanup_proc(t_proc_manager *manager, pid_t pid)$/;"	f
 cmd_arg_expansion	src/expand/ms_manage_arg_expand.c	/^char	**cmd_arg_expansion(char **argv, t_wildcard_context *match_ctx,$/;"	f
@@ -1072,6 +1073,7 @@ r_here	include/syntax.h	/^	int		r_here;$/;"	m	struct:s_syntax
 r_in	include/syntax.h	/^	int		r_in;$/;"	m	struct:s_syntax
 r_out	include/syntax.h	/^	int		r_out;$/;"	m	struct:s_syntax
 read_and_write_heredoc	src/exec/ms_heredoc_helper.c	/^int	read_and_write_heredoc(int write_fd, const char *delimiter)$/;"	f
+read_outputs	test_integrated/run_tests.sh	/^read_outputs() {$/;"	f
 redir_gestion	src/syntax_error/redir_gestion.c	/^int	redir_gestion(t_syntax **syntax)$/;"	f
 redirect	include/ast.h	/^	t_redirect_node		redirect;$/;"	m	union:u_node_data
 redirect_fd	src/process/redirect_fd.c	/^int	redirect_fd(int old_fd, int new_fd)$/;"	f
