@@ -578,6 +578,7 @@ back_to_parent_stdout	src/process/back_to_parent_stdout.c	/^int	back_to_parent_s
 buf_fd	lib/libft/include/printf.h	/^	int		buf_fd;$/;"	m	struct:s_buffer
 buf_last	lib/libft/include/printf.h	/^	char	buf_last;$/;"	m	struct:s_buffer
 buffer	lib/libft/include/printf.h	/^	char	*buffer;$/;"	m	struct:s_buffer
+build_project	test_integrated/run_test.sh	/^build_project() {$/;"	f
 capacity	include/expand.h	/^	size_t		capacity;$/;"	m	struct:s_wildcard_context
 check_error	src/syntax_error/check_error.c	/^int	check_error(t_syntax **syntax)$/;"	f
 check_match	src/expand/ms_expand_wild_helper.c	/^int	check_match(t_wildcard_context *ctx, struct dirent *entry)$/;"	f
@@ -591,11 +592,13 @@ child_lvl	include/process.h	/^	int			child_lvl;$/;"	m	struct:s_fork_params
 child_lvl	include/process.h	/^	int			child_lvl;$/;"	m	struct:s_proc_params
 clean_files	test_integrated/process_outputs.sh	/^clean_files() {$/;"	f
 clean_manager	src/process/clean_manager.c	/^void	clean_manager(t_proc_manager *manager)$/;"	f
+clean_outputs	test_integrated/run_test.sh	/^clean_outputs() {$/;"	f
 cleanup_proc	src/process/clean_process.c	/^void	cleanup_proc(t_proc_manager *manager, pid_t pid)$/;"	f
 cmd_arg_expansion	src/expand/ms_manage_arg_expand.c	/^char	**cmd_arg_expansion(char **argv, t_wildcard_context *match_ctx,$/;"	f
 cmd_node	include/exec.h	/^	t_cmd_node		*cmd_node;$/;"	m	struct:s_external_exec_params
 cmd_path	include/exec.h	/^	char			*cmd_path;$/;"	m	struct:s_external_exec_params
 command	include/ast.h	/^	t_cmd_node			command;$/;"	m	union:u_node_data
+compare_outputs	test_integrated/run_test.sh	/^compare_outputs() {$/;"	f
 compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
 const	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
 context	include/exec.h	/^	t_exec_context	*context;$/;"	m	struct:s_external_exec_params
@@ -912,6 +915,7 @@ main	main.c	/^int	main(int argc, char **argv, char **envp)$/;"	f
 main	make_interface/src/interactive_select.c	/^int	main(void)$/;"	f
 main	make_interface/src/make_prompt.c	/^int	main(void)$/;"	f
 main	make_interface/src/progress.c	/^int	main(int argc, char **argv)$/;"	f
+main	test_integrated/run_test.sh	/^main() {$/;"	f
 main	test_src/ast/test_ms_parse_tokens.c	/^int main(void)$/;"	f
 main	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
@@ -1054,6 +1058,7 @@ pipefd	include/exec.h	/^	int				pipefd[2];$/;"	m	struct:s_pipe_exec_params
 precision	lib/libft/include/printf.h	/^	int			precision;$/;"	m	struct:s_format_spec
 print_ast	src/ast/print_ast.c	/^void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)$/;"	f
 print_ast_delimit	main.c	/^static void	print_ast_delimit(t_ast_node *root)$/;"	f	file:
+print_banner	test_integrated/run_test.sh	/^print_banner() {$/;"	f
 print_branch	src/ast/utils2.c	/^void	print_branch(int depth, int is_left, int fd)$/;"	f
 print_node_content	src/ast/print_ast.c	/^void	print_node_content(t_ast_node *node, int fd)$/;"	f
 print_proc_info	src/process/print_proc_info.c	/^void	print_proc_info(const t_proc_manager *manager)$/;"	f
@@ -1062,6 +1067,7 @@ print_token	src/token/lst_tokens.c	/^void	print_token(t_token *head)$/;"	f
 print_token_delimit	main.c	/^static void	print_token_delimit(t_token *tokens)$/;"	f	file:
 process_count	include/process.h	/^	int			process_count;$/;"	m	struct:s_proc_manager
 process_line	src/exec/ms_heredoc_helper.c	/^int	process_line(int write_fd, const char *delimiter, char **line_ptr)$/;"	f
+process_outputs	test_integrated/run_test.sh	/^process_outputs() {$/;"	f
 progressive_sleep	make_interface/src/progress.c	/^void	progressive_sleep(int step, int total)$/;"	f
 ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
 qnxnto	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
@@ -1073,19 +1079,21 @@ r_here	include/syntax.h	/^	int		r_here;$/;"	m	struct:s_syntax
 r_in	include/syntax.h	/^	int		r_in;$/;"	m	struct:s_syntax
 r_out	include/syntax.h	/^	int		r_out;$/;"	m	struct:s_syntax
 read_and_write_heredoc	src/exec/ms_heredoc_helper.c	/^int	read_and_write_heredoc(int write_fd, const char *delimiter)$/;"	f
-read_outputs	test_integrated/run_tests.sh	/^read_outputs() {$/;"	f
+read_outputs	run_tests.sh	/^read_outputs() {$/;"	f
 redir_gestion	src/syntax_error/redir_gestion.c	/^int	redir_gestion(t_syntax **syntax)$/;"	f
 redirect	include/ast.h	/^	t_redirect_node		redirect;$/;"	m	union:u_node_data
 redirect_fd	src/process/redirect_fd.c	/^int	redirect_fd(int old_fd, int new_fd)$/;"	f
 redirect_mode	src/exec/ms_handle_redirections.c	/^static int	redirect_mode(t_ast_node *node, int flags, int *context_fd,$/;"	f	file:
 redirect_switch	src/exec/ms_execute_ast.c	/^static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,$/;"	f	file:
 remove_newline	make_interface/src/make_prompt.c	/^void	remove_newline(char *str)$/;"	f
+report_results	test_integrated/run_test.sh	/^report_results() {$/;"	f
 restore_fd	src/process/redirect_fd.c	/^int	restore_fd(int fd, int saved_fd)$/;"	f
 right	include/ast.h	/^	struct s_ast_node	*right;$/;"	m	struct:s_logic_node	typeref:struct:s_logic_node::s_ast_node
 right	include/ast.h	/^	struct s_ast_node	*right;$/;"	m	struct:s_pipe_node	typeref:struct:s_pipe_node::s_ast_node
 right_child_process	src/exec/ms_pipeline_helper.c	/^void	right_child_process(t_pipe_exec_params *params)$/;"	f
 rl_event_dummy	src/signal/rl_event_dummy.c	/^int	rl_event_dummy(void)$/;"	f
 run	main.c	/^static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)$/;"	f	file:
+run_expect_scripts	test_integrated/run_test.sh	/^run_expect_scripts() {$/;"	f
 run_make_command	make_interface/src/make_prompt.c	/^void run_make_command(char *target, char *args)$/;"	f
 s_ast_node	include/ast.h	/^typedef struct s_ast_node$/;"	s
 s_buffer	lib/libft/include/printf.h	/^typedef struct s_buffer$/;"	s
