@@ -1,0 +1,18 @@
+1c1
+< [?2004l[?2004hjeportie@minishell $> echo Hello, World!
+---
+> [?2004hjeportie@minishell $> echo Hello, World!
+5c5
+< [?2004lbash: unknowncmd: command not found
+---
+> [?2004lminishell: command not found: unknowncmd
+9c9
+< [?2004l0
+---
+> [?2004l127
+11,12d10
+< [?2004l0
+< [?2004hjeportie@minishell $> cat testfile
+13a12,13
+> [?2004l127
+> [?2004hjeportie@minishell $> cat testfile
