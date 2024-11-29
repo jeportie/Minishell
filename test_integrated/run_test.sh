@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# run_tests.sh
+# run_test.sh
 # Script to automate testing of the 42 School Minishell project
 
 # --- Step 0: Enable Debugging ---
 #set -e  # Exit immediately if a command exits with a non-zero status
-#set -x  # Uncomment for script debugging
+# set -x  # Uncomment for script debugging
 
 # Define variables for files
 BASH_OUTPUT="bash_output.txt"
 MINISHELL_OUTPUT="minishell_output.txt"
 COMMANDS_FILE="test_commands.txt"
-DIFF_FILE="diff.txt"
+DIFF_FILE="diff.txt"  # Optional: Can be used to log detailed diffs
 
 # ----------------------------
 # Color Codes for Formatting
@@ -98,24 +98,15 @@ process_outputs() {
         echo -e "${RED}Processing output files failed. Please check process_outputs.sh.${RESET}"
         exit 1
     fi
+    ./remove_escape_codes.sh bash_output.txt minishell_output.txt
 }
 
 # ----------------------------
-# Step 5: Compare Outputs
-# ----------------------------
-compare_outputs() {
-    echo -e "${CYAN}Comparing outputs...${RESET}"
-    if diff "$BASH_OUTPUT" "$MINISHELL_OUTPUT" > "$DIFF_FILE"; then
-        echo -e "${GREEN}No differences found.${RESET}"
-    else
-        echo -e "${YELLOW}Differences detected. Check diff.txt for details.${RESET}"
-    fi
-}
-
-# ----------------------------
-# Step 6: Parse and Report Test Results
+# Step 5: Parse and Report Test Results
 # ----------------------------
 report_results() {
+    local elapsed_time="$1"  # Receive elapsed time as an argument
+
     echo -e "\n${BLUE}========================================${RESET}"
     echo -e "${BLUE}           TEST RESULTS SUMMARY         ${RESET}"
     echo -e "${BLUE}========================================${RESET}\n"
@@ -125,97 +116,193 @@ report_results() {
     tests_passed=0
     tests_failed=0
 
-    # Initialize array to hold test results
-    declare -a test_results=()
+    # Read commands into array
+    mapfile -t commands < "$COMMANDS_FILE"
 
-    # Open file descriptors for reading bash and minishell outputs
-    exec 3< "$BASH_OUTPUT"
-    exec 4< "$MINISHELL_OUTPUT"
+    # Function to parse outputs into an array of outputs per command
+    parse_outputs() {
+        local output_file="$1"
+        local -n outputs_ref=$2  # Use nameref for output array
 
-    while true; do
-        # Read 3 lines from bash_output.txt
-        read -r bash_prompt_cmd <&3 || break
-        read -r bash_output <&3 || break
-        read -r bash_error <&3 || break
+        outputs_ref=()  # Initialize the output array
+        local current_output=""
+        local is_first_prompt_found=false
 
-        # Read 3 lines from minishell_output.txt
-        read -r mini_prompt_cmd <&4 || break
-        read -r mini_output <&4 || break
-        read -r mini_error <&4 || break
+        while IFS= read -r line || [[ -n "$line" ]]; do
+            if [[ "$line" == *"\$>"* ]]; then
+                # Found a prompt line
+                if $is_first_prompt_found; then
+                    outputs_ref+=("$current_output")
+                else
+                    is_first_prompt_found=true
+                fi
+                current_output="$line"$'\n'
+            else
+                current_output+="$line"$'\n'
+            fi
+        done < "$output_file"
+
+        # Exclude the last output if it's from the 'exit' command
+        if [[ -n "$current_output" ]]; then
+            # Check if the current_output corresponds to 'exit'
+            if [[ "$current_output" != *"exit"* ]]; then
+                outputs_ref+=("$current_output")
+            fi
+        fi
+    }
+
+    # Parse bash outputs
+    declare -a bash_outputs
+    parse_outputs "$BASH_OUTPUT" bash_outputs
+
+    # Parse minishell outputs
+    declare -a minishell_outputs
+    parse_outputs "$MINISHELL_OUTPUT" minishell_outputs
+
+    # Check if the number of commands matches the number of outputs
+    if [ "${#commands[@]}" -ne "${#bash_outputs[@]}" ] || [ "${#commands[@]}" -ne "${#minishell_outputs[@]}" ]; then
+        echo -e "${RED}Error: Number of commands and outputs do not match.${RESET}"
+        echo -e "Commands: ${#commands[@]}, Bash Outputs: ${#bash_outputs[@]}, Minishell Outputs: ${#minishell_outputs[@]}"
+        exit 1
+    fi
+
+    # Iterate over each command
+    for ((i=0; i<${#commands[@]}; i++)); do
+        test_name="${commands[i]}"
+        bash_output="${bash_outputs[i]}"
+        mini_output="${minishell_outputs[i]}"
 
         # Increment total tests
         ((total_tests++))
 
-        # Extract command from prompt lines
-        bash_cmd=$(echo "$bash_prompt_cmd" | sed 's/.*\$> //')
-        mini_cmd=$(echo "$mini_prompt_cmd" | sed 's/.*\$> //')
+        # Remove trailing newlines
+        bash_output="$(echo -e "$bash_output" | sed '/^[[:space:]]*$/d')"
+        mini_output="$(echo -e "$mini_output" | sed '/^[[:space:]]*$/d')"
 
-        # Use the command as the test name
-        test_name="$bash_cmd"
+        # Split outputs into lines
+        IFS=$'\n' read -d '' -r -a bash_lines <<< "$bash_output"
+        IFS=$'\n' read -d '' -r -a mini_lines <<< "$mini_output"
 
-        # Compare outputs and error codes
-        if [[ "$bash_output" == "$mini_output" && "$bash_error" == "$mini_error" ]]; then
+        # Remove the prompt line
+        bash_prompt="${bash_lines[0]}"
+        mini_prompt="${mini_lines[0]}"
+        bash_lines=("${bash_lines[@]:1}")
+        mini_lines=("${mini_lines[@]:1}")
+
+        # Compare number of lines
+        bash_line_count=${#bash_lines[@]}
+        mini_line_count=${#mini_lines[@]}
+
+        output_mismatch=false
+        exit_code_mismatch=false
+        output_number_mismatch=false
+
+        # Check for output number mismatch
+        if [ "$bash_line_count" -ne "$mini_line_count" ]; then
+            output_number_mismatch=true
+        else
+            if [ "$bash_line_count" -eq 1 ]; then
+                # Only exit code is present
+                if [ "${bash_lines[0]}" != "${mini_lines[0]}" ]; then
+                    exit_code_mismatch=true
+                fi
+            elif [ "$bash_line_count" -eq 2 ]; then
+                # Output and exit code
+                if [ "${bash_lines[0]}" != "${mini_lines[0]}" ]; then
+                    output_mismatch=true
+                fi
+                if [ "${bash_lines[1]}" != "${mini_lines[1]}" ]; then
+                    exit_code_mismatch=true
+                fi
+            else
+                # More than 2 lines
+                # Compare outputs except last line (assumed to be exit code)
+                bash_output_content="${bash_lines[@]:0:${#bash_lines[@]}-1}"
+                mini_output_content="${mini_lines[@]:0:${#mini_lines[@]}-1}"
+                if [ "${bash_output_content[*]}" != "${mini_output_content[*]}" ]; then
+                    output_mismatch=true
+                fi
+                # Compare exit codes
+                if [ "${bash_lines[-1]}" != "${mini_lines[-1]}" ]; then
+                    exit_code_mismatch=true
+                fi
+            fi
+        fi
+
+        # Determine test result
+        if ! $output_mismatch && ! $exit_code_mismatch && ! $output_number_mismatch; then
             # Test Passed
-            test_results+=("$test_name|PASS|||")
+            printf "\033[1;32m✓ %-50s\t(PASS)\033[0m\n" "$test_name"
             ((tests_passed++))
         else
             # Test Failed
+            printf "\033[1;31m✘ %-45s\t\t(FAIL)\033[0m\n" "$test_name"
+
+            # Display errors
             error_msg=""
-            diff_output=""
-            diff_error_code=""
-
-            if [[ "$bash_output" != "$mini_output" ]]; then
-                diff_output=$(diff <(echo "$bash_output") <(echo "$mini_output"))
-            fi
-
-            if [[ "$bash_error" != "$mini_error" ]]; then
-                diff_error_code=$(diff <(echo "$bash_error") <(echo "$mini_error"))
-            fi
-
-            # Combine error messages and diffs
-            if [[ -n "$diff_output" ]]; then
+            if $output_mismatch; then
                 error_msg+="Output mismatch. "
             fi
-            if [[ -n "$diff_error_code" ]]; then
+            if $exit_code_mismatch; then
                 error_msg+="Error code mismatch. "
             fi
+            if $output_number_mismatch; then
+                error_msg+="Output number mismatch. "
+            fi
 
-            test_results+=("$test_name|FAIL|$error_msg|$diff_output|$diff_error_code")
+            echo -e "    \033[1;33mError(s):\033[0m $error_msg"
+
+            # Display differences
+            # Prepare outputs for diff
+            bash_diff_content="${bash_lines[*]}"
+            mini_diff_content="${mini_lines[*]}"
+
+            if $output_number_mismatch; then
+                echo -e "    \033[1;33mBash Output Lines:\033[0m $bash_line_count"
+                echo -e "    \033[1;33mMinishell Output Lines:\033[0m $mini_line_count"
+            fi
+
+            if $output_mismatch || $exit_code_mismatch || $output_number_mismatch; then
+                echo -e "    \033[1;33mDiff:\033[0m"
+                diff_output=$(diff -u <(echo "${mini_lines[*]}") <(echo "${bash_lines[*]}"))
+                # Indent and color the diff
+                while IFS= read -r line; do
+                    if [[ $line == ---* ]] || [[ $line == +++* ]]; then
+                        continue  # Skip file headers in diff output
+                    elif [[ $line == @@* ]]; then
+                        echo -e "        \033[1;34m$line\033[0m"
+                    elif [[ $line == -* ]]; then
+                        echo -e "        \033[1;31m$line\033[0m"
+                    elif [[ $line == +* ]]; then
+                        echo -e "        \033[1;32m$line\033[0m"
+                    else
+                        echo -e "        $line"
+                    fi
+                done <<< "$diff_output"
+            fi
+
+            # Display exit code differences if they mismatch
+            if $exit_code_mismatch; then
+                bash_exit_code="${bash_lines[-1]}"
+                mini_exit_code="${mini_lines[-1]}"
+                echo -e "    \033[1;33mError Code Differences:\033[0m"
+                echo -e "      \033[1;36mBash Error Code:\033[0m $bash_exit_code"
+                echo -e "      \033[1;36mMinishell Error Code:\033[0m $mini_exit_code"
+            fi
+
             ((tests_failed++))
         fi
     done
 
-    # Close file descriptors
-    exec 3<&-
-    exec 4<&-
-
-    # Iterate over all tests and display results
-    for result in "${test_results[@]}"; do
-        IFS='|' read -r test_name status error_msg diff_output diff_error_code <<< "$result"
-        if [ "$status" == "PASS" ]; then
-            printf "\033[1;32m%-50s (PASS)\033[0m\n" "$test_name"
-        else
-            printf "\033[1;31m%-50s (FAIL)\033[0m\n" "$test_name"
-            echo -e "    \033[1;33mError(s):\033[0m $error_msg"
-            if [ -n "$diff_output" ]; then
-                echo -e "    \033[1;33mOutput Differences:\033[0m"
-                echo -e "      $diff_output"
-            fi
-            if [ -n "$diff_error_code" ]; then
-                echo -e "    \033[1;33mError Code Differences:\033[0m"
-                echo -e "      $diff_error_code"
-            fi
-        fi
-    done
-
+    # Print summary
     echo -e "\n${BLUE}========================================${RESET}"
     echo -e "Total tests: $total_tests"
     echo -e "Passed: \033[1;32m$tests_passed\033[0m"
     echo -e "Failed: \033[1;31m$tests_failed\033[0m"
     echo -e "${BLUE}========================================${RESET}\n"
 
-    # Print Total Test Time (Placeholder)
-    echo -e "${CYAN}Total Test time (real) = 0.00 sec${RESET}"
+    # Print Total Test Time with the captured elapsed_time
+    echo -e "${CYAN}Total Test time (real) = ${elapsed_time} ms${RESET}"
 
     # Exit with appropriate status
     if [ "$tests_failed" -gt 0 ]; then
@@ -226,18 +313,32 @@ report_results() {
 }
 
 # ----------------------------
-# Step 7: Main Execution Flow
+# Step 6: Main Execution Flow
 # ----------------------------
 main() {
     print_banner
     clean_outputs
     build_project
+
+    # ----------------------------
+    # Start Time Capture
+    # ----------------------------
+    start_time=$(date +%s%N)
+
     run_expect_scripts
     process_outputs
-    compare_outputs
-    report_results
+
+    # ----------------------------
+    # End Time Capture
+    # ----------------------------
+    end_time=$(date +%s%N)
+
+    # Calculate elapsed time in milliseconds
+    elapsed=$(( (end_time - start_time)/1000000 ))
+
+    # Pass elapsed time to report_results
+    report_results "$elapsed"
 }
 
 # Execute the main function
 main
-

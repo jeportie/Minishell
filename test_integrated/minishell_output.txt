@@ -1,18 +1,18 @@
-[?2004hjeportie@minishell $> echo Hello, World!
-[?2004lHello, World!
-[?2004l0
-[?2004hjeportie@minishell $> unknowncmd
-[?2004lminishell: command not found: unknowncmd
-[?2004l127
-[?2004hjeportie@minishell $> echo 'one two three' | wc -w
-[?2004l3
-[?2004l127
-[?2004hjeportie@minishell $> echo 'file content' > testfile
-[?2004lfile content
-[?2004l127
-[?2004hjeportie@minishell $> cat testfile
-[?2004l0
-[?2004hjeportie@minishell $> rm testfile
-[?2004l0
-[?2004hjeportie@minishell $> exit
-[?2004lexit
+jeportie@minishell $> echo Hello, World!
+Hello, World!
+0
+jeportie@minishell $> unknowncmd
+minishell: command not found: unknowncmd
+127
+jeportie@minishell $> echo 'one two three' | wc -w
+3
+127
+jeportie@minishell $> echo 'file content' > testfile
+file content
+127
+jeportie@minishell $> cat testfile
+0
+jeportie@minishell $> rm testfile
+0
+jeportie@minishell $> exit
+exit
