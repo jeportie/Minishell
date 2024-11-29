@@ -598,7 +598,6 @@ cmd_arg_expansion	src/expand/ms_manage_arg_expand.c	/^char	**cmd_arg_expansion(c
 cmd_node	include/exec.h	/^	t_cmd_node		*cmd_node;$/;"	m	struct:s_external_exec_params
 cmd_path	include/exec.h	/^	char			*cmd_path;$/;"	m	struct:s_external_exec_params
 command	include/ast.h	/^	t_cmd_node			command;$/;"	m	union:u_node_data
-compare_outputs	test_integrated/run_test.sh	/^compare_outputs() {$/;"	f
 compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
 const	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
 context	include/exec.h	/^	t_exec_context	*context;$/;"	m	struct:s_external_exec_params
@@ -1044,6 +1043,7 @@ parenthesis_gestion	src/syntax_error/parenthesis_gestion.c	/^int	parenthesis_ges
 parse_command	src/ast/parse_command.c	/^t_ast_node	*parse_command(t_token **current_token, t_gc *gcl)$/;"	f
 parse_env	src/shell/ms_get_envp.c	/^void	parse_env(char **result, int *i, t_env *env, t_gc *gcl)$/;"	f
 parse_logical	src/ast/parse_logical.c	/^t_ast_node	*parse_logical(t_token **current_token, t_gc *gcl)$/;"	f
+parse_outputs	test_integrated/run_test.sh	/^    parse_outputs() {$/;"	f
 parse_pipeline	src/ast/parse_pipeline.c	/^t_ast_node	*parse_pipeline(t_token **current_token, t_gc *gcl)$/;"	f
 parse_redirection	src/ast/parse_redirection.c	/^t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child,$/;"	f
 parse_subshell	src/ast/parse_subshell.c	/^t_ast_node	*parse_subshell(t_token **current_token, t_gc *gcl)$/;"	f
@@ -1079,12 +1079,12 @@ r_here	include/syntax.h	/^	int		r_here;$/;"	m	struct:s_syntax
 r_in	include/syntax.h	/^	int		r_in;$/;"	m	struct:s_syntax
 r_out	include/syntax.h	/^	int		r_out;$/;"	m	struct:s_syntax
 read_and_write_heredoc	src/exec/ms_heredoc_helper.c	/^int	read_and_write_heredoc(int write_fd, const char *delimiter)$/;"	f
-read_outputs	run_tests.sh	/^read_outputs() {$/;"	f
 redir_gestion	src/syntax_error/redir_gestion.c	/^int	redir_gestion(t_syntax **syntax)$/;"	f
 redirect	include/ast.h	/^	t_redirect_node		redirect;$/;"	m	union:u_node_data
 redirect_fd	src/process/redirect_fd.c	/^int	redirect_fd(int old_fd, int new_fd)$/;"	f
 redirect_mode	src/exec/ms_handle_redirections.c	/^static int	redirect_mode(t_ast_node *node, int flags, int *context_fd,$/;"	f	file:
 redirect_switch	src/exec/ms_execute_ast.c	/^static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,$/;"	f	file:
+remove_escape_codes	test_integrated/remove_escape_codes.sh	/^remove_escape_codes() {$/;"	f
 remove_newline	make_interface/src/make_prompt.c	/^void	remove_newline(char *str)$/;"	f
 report_results	test_integrated/run_test.sh	/^report_results() {$/;"	f
 restore_fd	src/process/redirect_fd.c	/^int	restore_fd(int fd, int saved_fd)$/;"	f
@@ -1214,6 +1214,7 @@ subshell	include/ast.h	/^	t_subshell_node		subshell;$/;"	m	union:u_node_data
 subshell_child_process	src/exec/ms_execute_subshell.c	/^static void	subshell_child_process(t_subshell_exec_params *params)$/;"	f	file:
 subshell_node	include/exec.h	/^	t_subshell_node	*subshell_node;$/;"	m	struct:s_subshell_exec_params
 subshell_parent_process	src/exec/ms_execute_subshell.c	/^static int	subshell_parent_process(pid_t pid, t_exec_context *context)$/;"	f	file:
+suppress_leading_patterns	test_integrated/remove_escape_codes.sh	/^suppress_leading_patterns() {$/;"	f
 swipe_paths	src/exec/ms_parse_cmd_path.c	/^static	char	*swipe_paths(const char *command, char **paths, t_shell *shell)$/;"	f	file:
 t_ast_node	include/ast.h	/^}				t_ast_node;$/;"	t	typeref:struct:s_ast_node
 t_buffer	lib/libft/include/printf.h	/^}			t_buffer;$/;"	t	typeref:struct:s_buffer
