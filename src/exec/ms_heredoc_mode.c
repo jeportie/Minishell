@@ -17,7 +17,7 @@ void	heredoc_child_process(t_heredoc_params *params)
 	int	result;
 
 	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
+	signal(SIGQUIT, SIG_IGN);
 	safe_close(params->pipefd[0]);
 	result = read_and_write_heredoc(params->pipefd[1], params->delimiter);
 	safe_close(params->pipefd[1]);
@@ -43,7 +43,7 @@ int	ms_heredoc_mode(const char *delimiter, t_exec_context *context,
 	pid = safe_fork(manager, &fork_params);
 	if (pid == -1)
 	{
-		ms_handle_error("Minishell: Error: fork failed for heredoc.\n", 0, gcl);
+		ms_handle_error("minishell: Error: fork failed for heredoc.\n", 0, gcl);
 		safe_close(params.pipefd[0]);
 		safe_close(params.pipefd[1]);
 		return (-1);

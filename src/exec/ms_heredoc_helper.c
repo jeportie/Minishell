@@ -16,10 +16,10 @@ int	heredoc_parent_process(t_heredoc_params *params, pid_t pid)
 {
 	int	status;
 	int	ret;
-
+	ms_stop_std_signal();
 	safe_close(params->pipefd[1]);
 	waitpid(pid, &status, 0);
-	ret = handle_child_status(status, params->context);
+	ret = handle_child_status(status, params);
 	if (ret == -1)
 	{
 		safe_close(params->pipefd[0]);
@@ -75,7 +75,7 @@ int	read_and_write_heredoc(int write_fd, const char *delimiter)
 	return (0);
 }
 
-int	handle_child_status(int status, t_exec_context *context)
+int	handle_child_status(int status, t_heredoc_params *params)
 {
 	int	exit_status;
 
@@ -84,22 +84,19 @@ int	handle_child_status(int status, t_exec_context *context)
 		exit_status = WEXITSTATUS(status);
 		if (exit_status != 0)
 		{
-			ft_dprintf(STDERR_FILENO,
-				"minishell: warning: heredoc process exited with status %d\n",
-				exit_status);
-			context->exit_status = exit_status;
-			return (-1);
+			ft_dprintf(1, "\n");
+			ft_dprintf(2, "Minishell: Error: «heredoc» délimité par la fin du fichier (au lieu de «%s»)\n", params->delimiter);
+			params->context->exit_status = exit_status;
+			return (params->context->exit_status);
 		}
 		return (0);
 	}
 	else if (WIFSIGNALED(status))
 	{
-		ft_dprintf(STDERR_FILENO,
-			"minishell: heredoc process terminated by signal %d\n",
-			WTERMSIG(status));
-		context->exit_status = 128 + WTERMSIG(status);
-		return (-1);
+		ft_dprintf(1, "\n");
+		params->context->exit_status = 128 + WTERMSIG(status);
+		return (params->context->exit_status);
 	}
-	context->exit_status = -1;
+	params->context->exit_status = -1;
 	return (-1);
 }

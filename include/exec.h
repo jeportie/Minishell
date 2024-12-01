@@ -98,7 +98,7 @@ int		ms_heredoc_mode(const char *delimiter, t_exec_context *context,
 int		heredoc_parent_process(t_heredoc_params *params, pid_t pid);
 int		process_line(int write_fd, const char *delimiter, char **line_ptr);
 int		read_and_write_heredoc(int write_fd, const char *delimiter);
-int		handle_child_status(int status, t_exec_context *context);
+int		handle_child_status(int status, t_heredoc_params *params);
 void	fork_init(t_fork_params *fork_params, t_exec_context *context,
 			bool is_here_doc, char *title);
 
