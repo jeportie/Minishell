@@ -1,18 +1,506 @@
-jeportie@minishell $> echo Hello, World!
-Hello, World!
+jeportie@minishell $> expr $? + $?
+echo ../lib
 0
-jeportie@minishell $> unknowncmd
-minishell: command not found: unknowncmd
-127
-jeportie@minishell $> echo 'one two three' | wc -w
-3
-127
-jeportie@minishell $> echo 'file content' > testfile
-file content
-127
-jeportie@minishell $> cat testfile
+1
+jeportie@minishell $> /bin/ls
+env -- test
+bash_output.txt  minishell_output.txt  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands.txt
 0
-jeportie@minishell $> rm testfile
+jeportie@minishell $> /bin/ls -l
+total 80
+-rw-r--r-- 1 root root 44131 Dec  2 16:39 bash_output.txt
+-rw-r--r-- 1 root root  1609 Dec  2 16:39 minishell_output.txt
+-rwxr-xr-x 1 root root  1659 Dec  2 10:46 process_outputs.sh
+-rwxr-xr-x 1 root root  1008 Dec  2 10:46 remove_escape_codes.sh
+-rwxr-xr-x 1 root root   826 Dec  2 16:36 run_bash.expect
+-rwxr-xr-x 1 root root   721 Dec  2 10:46 run_minishell.expect
+-rwxr-xr-x 1 root root 11973 Dec  2 16:20 run_test.sh
+-rw-r--r-- 1 root root   759 Dec  2 16:33 test_commands.txt
 0
-jeportie@minishell $> exit
-exit
+jeportie@minishell $> /usr/bin/cat lib
+/usr/bin/cat: lib: No such file or directory
+1
+jeportie@minishell $> /usr/bin/cat -e lib
+/usr/bin/cat: lib: No such file or directory
+1
+jeportie@minishell $> /bin/ls-l
+minishell: command not found: /bin/ls-l
+127
+jeportie@minishell $> /usr/bin/cat-e
+minishell: command not found: /usr/bin/cat-e
+127
+jeportie@minishell $> ~/bin/ls
+minishell: command not found: ~/bin/ls
+127
+jeportie@minishell $> ~/bin/ls -l
+minishell: command not found: ~/bin/ls
+127
+jeportie@minishell $> ~/usr/bin/cat <file>
+Minishell: syntax error near unexpected token `newline'
+2
+jeportie@minishell $> ~/usr/bin/cat -e <file>
+Minishell: syntax error near unexpected token `newline'
+2
+jeportie@minishell $> echo
+
+2
+jeportie@minishell $> echo test
+test
+2
+jeportie@minishell $> echo ../lib
+../lib
+2
+jeportie@minishell $> echo -n
+2
+jeportie@minishell $> echo -n test
+2
+jeportie@minishell $> echo -nnnnnnnn test
+2
+jeportie@minishell $> echo -n -nnnn -n test
+2
+jeportie@minishell $> echo -n n-nnnn -n test
+2
+jeportie@minishell $> env
+LSCOLORS=Gxfxcxdxbxegedabagacad
+LESS=-R
+HOSTNAME=01a40b8e35fb
+PWD=/root/projects/minishell/test_integrated
+LOGNAME=root
+PROMPT_HOSTNAME=home
+HOME=/root
+LS_COLORS=rs
+VIRTUAL_ENV=/root/venv
+TERM=xterm
+ZSH=/root/.oh-my-zsh
+USER=jeportie
+SHLVL=3
+PAGER=less
+VIRTUAL_ENV_PROMPT=(venv) 
+DIRHISTORY_SIZE=30
+PATH=/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAIL=jeportie@student.42.fr
+DEFAULT_USER=vjej
+OLDPWD=/root/projects/minishell
+_=env
+2
+jeportie@minishell $> env -
+2
+jeportie@minishell $> env -1
+minishell: env: invalid option -- '1'
+2
+jeportie@minishell $> env -a
+minishell: env: invalid option -- 'a'
+2
+jeportie@minishell $> env - test
+minishell: env: ‚Äòtest‚Äô: No such file or directory
+2
+jeportie@minishell $> env --
+LSCOLORS=Gxfxcxdxbxegedabagacad
+LESS=-R
+HOSTNAME=01a40b8e35fb
+PWD=/root/projects/minishell/test_integrated
+LOGNAME=root
+PROMPT_HOSTNAME=home
+HOME=/root
+LS_COLORS=rs
+VIRTUAL_ENV=/root/venv
+TERM=xterm
+ZSH=/root/.oh-my-zsh
+USER=jeportie
+SHLVL=3
+PAGER=less
+VIRTUAL_ENV_PROMPT=(venv) 
+DIRHISTORY_SIZE=30
+PATH=/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAIL=jeportie@student.42.fr
+DEFAULT_USER=vjej
+OLDPWD=/root/projects/minishell
+_=--
+2
+jeportie@minishell $> env --a
+env: unrecognized option --a
+2
+jeportie@minishell $> env -- test
+minishell: env: ‚Äòtest‚Äô: No such file or directory
+2
+jeportie@minishell $> env ---
+env: unrecognized option ---
+2
+jeportie@minishell $> env test
+minishell: env: ‚Äòtest‚Äô: No such file or directory
+2
+jeportie@minishell $> env 123
+minishell: env: ‚Äò123‚Äô: No such file or directory
+2
+jeportie@minishell $> export
+export DEFAULT_USER="vjej"
+export DIRHISTORY_SIZE="30"
+export HOME="/root"
+export HOSTNAME="01a40b8e35fb"
+export LESS="-R"
+export LOGNAME="root"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="rs"
+export MAIL="jeportie@student.42.fr"
+export OLDPWD="/root/projects/minishell"
+export PAGER="less"
+export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PROMPT_HOSTNAME="home"
+export PWD="/root/projects/minishell/test_integrated"
+export SHLVL="3"
+export TERM="xterm"
+export USER="jeportie"
+export VIRTUAL_ENV="/root/venv"
+export VIRTUAL_ENV_PROMPT="(venv) "
+export ZSH="/root/.oh-my-zsh"
+export OLDPWD
+2
+jeportie@minishell $> export Z
+2
+jeportie@minishell $> export
+export $?
+export DEFAULT_USER="vjej"
+export DIRHISTORY_SIZE="30"
+export HOME="/root"
+export HOSTNAME="01a40b8e35fb"
+export LESS="-R"
+export LOGNAME="root"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="rs"
+export MAIL="jeportie@student.42.fr"
+export OLDPWD="/root/projects/minishell"
+export PAGER="less"
+export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PROMPT_HOSTNAME="home"
+export PWD="/root/projects/minishell/test_integrated"
+export SHLVL="3"
+export TERM="xterm"
+export USER="jeportie"
+export VIRTUAL_ENV="/root/venv"
+export VIRTUAL_ENV_PROMPT="(venv) "
+export ZSH="/root/.oh-my-zsh"
+export OLDPWD
+2
+jeportie@minishell $> export ZZ=
+2
+jeportie@minishell $> export
+export ="$?"
+export $?
+export DEFAULT_USER="vjej"
+export DIRHISTORY_SIZE="30"
+export HOME="/root"
+export HOSTNAME="01a40b8e35fb"
+export LESS="-R"
+export LOGNAME="root"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="rs"
+export MAIL="jeportie@student.42.fr"
+export OLDPWD="/root/projects/minishell"
+export PAGER="less"
+export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PROMPT_HOSTNAME="home"
+export PWD="/root/projects/minishell/test_integrated"
+export SHLVL="3"
+export TERM="xterm"
+export USER="jeportie"
+export VIRTUAL_ENV="/root/venv"
+export VIRTUAL_ENV_PROMPT="(venv) "
+export ZSH="/root/.oh-my-zsh"
+export OLDPWD
+2
+jeportie@minishell $> export ZZZ=ok
+2
+jeportie@minishell $> export
+export ="$?"
+export ="$?"
+export $?
+export DEFAULT_USER="vjej"
+export DIRHISTORY_SIZE="30"
+export HOME="/root"
+export HOSTNAME="01a40b8e35fb"
+export LESS="-R"
+export LOGNAME="root"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="rs"
+export MAIL="jeportie@student.42.fr"
+export OLDPWD="/root/projects/minishell"
+export PAGER="less"
+export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PROMPT_HOSTNAME="home"
+export PWD="/root/projects/minishell/test_integrated"
+export SHLVL="3"
+export TERM="xterm"
+export USER="jeportie"
+export VIRTUAL_ENV="/root/venv"
+export VIRTUAL_ENV_PROMPT="(venv) "
+export ZSH="/root/.oh-my-zsh"
+export OLDPWD
+2
+jeportie@minishell $> export ZZZZ="ok ok"
+2
+jeportie@minishell $> export
+export ="$?"
+export ="$?"
+export ="$?"
+export $?
+export DEFAULT_USER="vjej"
+export DIRHISTORY_SIZE="30"
+export HOME="/root"
+export HOSTNAME="01a40b8e35fb"
+export LESS="-R"
+export LOGNAME="root"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="rs"
+export MAIL="jeportie@student.42.fr"
+export OLDPWD="/root/projects/minishell"
+export PAGER="less"
+export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PROMPT_HOSTNAME="home"
+export PWD="/root/projects/minishell/test_integrated"
+export SHLVL="3"
+export TERM="xterm"
+export USER="jeportie"
+export VIRTUAL_ENV="/root/venv"
+export VIRTUAL_ENV_PROMPT="(venv) "
+export ZSH="/root/.oh-my-zsh"
+export OLDPWD
+2
+jeportie@minishell $> export Z+=" ko"
+2
+jeportie@minishell $> export
+export ="$?"
+export ="$?"
+export ="$?"
+export ="$?"
+export $?
+export DEFAULT_USER="vjej"
+export DIRHISTORY_SIZE="30"
+export HOME="/root"
+export HOSTNAME="01a40b8e35fb"
+export LESS="-R"
+export LOGNAME="root"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="rs"
+export MAIL="jeportie@student.42.fr"
+export OLDPWD="/root/projects/minishell"
+export PAGER="less"
+export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PROMPT_HOSTNAME="home"
+export PWD="/root/projects/minishell/test_integrated"
+export SHLVL="3"
+export TERM="xterm"
+export USER="jeportie"
+export VIRTUAL_ENV="/root/venv"
+export VIRTUAL_ENV_PROMPT="(venv) "
+export ZSH="/root/.oh-my-zsh"
+export OLDPWD
+2
+jeportie@minishell $> export Y YY= YYY=ok YYYY="ok ok"
+2
+jeportie@minishell $> export
+export ="$?"
+export ="$?"
+export 
+export ="$?"
+export ="$?"
+export ="$?"
+export $?="êo<`›b"
+export DEFAULT_USER="vjej"
+export DIRHISTORY_SIZE="30"
+export HOME="/root"
+export HOSTNAME="01a40b8e35fb"
+export LESS="-R"
+export LOGNAME="root"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="rs"
+export MAIL="jeportie@student.42.fr"
+export OLDPWD="/root/projects/minishell"
+export PAGER="less"
+export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PROMPT_HOSTNAME="home"
+export PWD="/root/projects/minishell/test_integrated"
+export SHLVL="3"
+export TERM="xterm"
+export USER="jeportie"
+export VIRTUAL_ENV="/root/venv"
+export VIRTUAL_ENV_PROMPT="(venv) "
+export ZSH="/root/.oh-my-zsh"
+export OLDPWD
+2
+jeportie@minishell $> unset Y YY YYY YYYY
+2
+jeportie@minishell $> export
+export ="$?"
+export ="$?"
+export 
+export ="$?"
+export ="$?"
+export ="$?"
+export $?
+export DEFAULT_USER="vjej"
+export DIRHISTORY_SIZE="30"
+export HOME="/root"
+export HOSTNAME="01a40b8e35fb"
+export LESS="-R"
+export LOGNAME="root"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="rs"
+export MAIL="jeportie@student.42.fr"
+export OLDPWD="/root/projects/minishell"
+export PAGER="less"
+export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PROMPT_HOSTNAME="home"
+export PWD="/root/projects/minishell/test_integrated"
+export SHLVL="3"
+export TERM="xterm"
+export USER="jeportie"
+export VIRTUAL_ENV="/root/venv"
+export VIRTUAL_ENV_PROMPT="(venv) "
+export ZSH="/root/.oh-my-zsh"
+export OLDPWD
+2
+jeportie@minishell $> export 123
+minishell: export: `123': not a valid identifier
+2
+jeportie@minishell $> export
+export ="$?"
+export ="$?"
+export 
+export ="$?"
+export ="$?"
+export ="$?"
+export $?=""
+export DEFAULT_USER="vjej"
+export DIRHISTORY_SIZE="30"
+export HOME="/root"
+export HOSTNAME="01a40b8e35fb"
+export LESS="-R"
+export LOGNAME="root"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="rs"
+export MAIL="jeportie@student.42.fr"
+export OLDPWD="/root/projects/minishell"
+export PAGER="less"
+export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PROMPT_HOSTNAME="home"
+export PWD="/root/projects/minishell/test_integrated"
+export SHLVL="3"
+export TERM="xterm"
+export USER="jeportie"
+export VIRTUAL_ENV="/root/venv"
+export VIRTUAL_ENV_PROMPT="(venv) "
+export ZSH="/root/.oh-my-zsh"
+export OLDPWD
+2
+jeportie@minishell $> export A 123
+minishell: export: `123': not a valid identifier
+2
+jeportie@minishell $> export
+export ="$?"
+export ="$?"
+export 
+export ="$?"
+export ="$?"
+export ="$?"
+export $?
+export $?="∞è<`›b"
+export DEFAULT_USER="vjej"
+export DIRHISTORY_SIZE="30"
+export HOME="/root"
+export HOSTNAME="01a40b8e35fb"
+export LESS="-R"
+export LOGNAME="root"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="rs"
+export MAIL="jeportie@student.42.fr"
+export OLDPWD="/root/projects/minishell"
+export PAGER="less"
+export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PROMPT_HOSTNAME="home"
+export PWD="/root/projects/minishell/test_integrated"
+export SHLVL="3"
+export TERM="xterm"
+export USER="jeportie"
+export VIRTUAL_ENV="/root/venv"
+export VIRTUAL_ENV_PROMPT="(venv) "
+export ZSH="/root/.oh-my-zsh"
+export OLDPWD
+2
+jeportie@minishell $> export A123
+2
+jeportie@minishell $> export
+export ="$?"
+export ="$?"
+export =" d∂|"
+export ="$?"
+export ="$?"
+export ="$?"
+export $?
+export $?
+export $?="–ö<`›b"
+export DEFAULT_USER="vjej"
+export DIRHISTORY_SIZE="30"
+export HOME="/root"
+export HOSTNAME="01a40b8e35fb"
+export LESS="-R"
+export LOGNAME="root"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="rs"
+export MAIL="jeportie@student.42.fr"
+export OLDPWD="/root/projects/minishell"
+export PAGER="less"
+export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PROMPT_HOSTNAME="home"
+export PWD="/root/projects/minishell/test_integrated"
+export SHLVL="3"
+export TERM="xterm"
+export USER="jeportie"
+export VIRTUAL_ENV="/root/venv"
+export VIRTUAL_ENV_PROMPT="(venv) "
+export ZSH="/root/.oh-my-zsh"
+export OLDPWD
+2
+jeportie@minishell $> export A_123
+2
+jeportie@minishell $> export
+export ="$?"
+export ="$?"
+export ="•<`›b"
+export ="$?"
+export ="$?"
+export ="$?"
+export $?
+export $?
+export $?
+export $?="•<`›b"
+export DEFAULT_USER="vjej"
+export DIRHISTORY_SIZE="30"
+export HOME="/root"
+export HOSTNAME="01a40b8e35fb"
+export LESS="-R"
+export LOGNAME="root"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="rs"
+export MAIL="jeportie@student.42.fr"
+export OLDPWD="/root/projects/minishell"
+export PAGER="less"
+export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PROMPT_HOSTNAME="home"
+export PWD="/root/projects/minishell/test_integrated"
+export SHLVL="3"
+export TERM="xterm"
+export USER="jeportie"
+export VIRTUAL_ENV="/root/venv"
+export VIRTUAL_ENV_PROMPT="(venv) "
+export ZSH="/root/.oh-my-zsh"
+export OLDPWD
+2
+jeportie@minishell $> ls | pwd && (echo test && (cd .. && pwd)) && (false || echo 'error handled')
+Minishell: syntax error near unexpected token `cd .. && pwd'
+2
+jeportie@minishell $> (chmod 777 test.txt) && pwd | cat -e | (>> test.txt || echo FAIL)
+Minishell: Syntax Error: Expected a command.
+Minishell: Syntax Error:					Expected Command after pipe '|'.
+Minishell: Syntax Error:					Expected Command after logical operator.
+current token : >>
+Minishell: Syntax Error: Unexpected token '>>'

@@ -8,7 +8,7 @@ set command_file "test_commands.txt"
 set output_file "bash_output.txt"
 
 # Open bash to execute commands
-spawn bash
+spawn bash --posix
 
 # Redirect output to the output file in truncation mode
 log_file -noappend $output_file

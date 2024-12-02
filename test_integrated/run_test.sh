@@ -43,7 +43,9 @@ print_banner() {
 clean_outputs() {
     echo -e "${CYAN}Cleaning existing output files...${RESET}"
     rm -f "$BASH_OUTPUT" "$MINISHELL_OUTPUT" "$DIFF_FILE"
-    echo -e "${GREEN}Cleaned existing output files.${RESET}"
+    echo -e "${CYAN}Creating empty output files...${RESET}"
+    touch "$BASH_OUTPUT" "$MINISHELL_OUTPUT"
+    echo -e "${GREEN}Output files cleaned and initialized.${RESET}"
 }
 
 # ----------------------------
@@ -129,7 +131,7 @@ report_results() {
         local is_first_prompt_found=false
 
         while IFS= read -r line || [[ -n "$line" ]]; do
-            if [[ "$line" == *"\$>"* ]]; then
+            if [[ "$line" == *"jeportie@minishell \$>"* ]]; then
                 # Found a prompt line
                 if $is_first_prompt_found; then
                     outputs_ref+=("$current_output")

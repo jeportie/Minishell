@@ -1,6 +1,55 @@
-echo Hello, World!
-unknowncmd
-echo 'one two three' | wc -w
-echo 'file content' > testfile
-cat testfile
-rm testfile
+expr $? + $?
+/bin/ls
+/bin/ls -l
+/usr/bin/cat lib
+/usr/bin/cat -e lib
+/bin/ls-l
+/usr/bin/cat-e
+~/bin/ls
+~/bin/ls -l
+~/usr/bin/cat <file>
+~/usr/bin/cat -e <file>
+echo
+echo test
+echo ../lib
+echo -n
+echo -n test
+echo -nnnnnnnn test
+echo -n -nnnn -n test
+echo -n n-nnnn -n test
+env
+env -
+env -1
+env -a
+env - test
+env --
+env --a
+env -- test
+env ---
+env test
+env 123
+export
+export Z
+export
+export ZZ=
+export
+export ZZZ=ok
+export
+export ZZZZ="ok ok"
+export
+export Z+=" ko"
+export
+export Y YY= YYY=ok YYYY="ok ok"
+export
+unset Y YY YYY YYYY
+export
+export 123
+export
+export A 123
+export
+export A123
+export
+export A_123
+export
+ls | pwd && (echo test && (cd .. && pwd)) && (false || echo 'error handled')
+(chmod 777 test.txt) && pwd | cat -e | (>> test.txt || echo FAIL)
