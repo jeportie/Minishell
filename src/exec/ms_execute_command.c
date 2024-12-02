@@ -35,7 +35,11 @@ int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,
 	else if (ft_strncmp(cmd, "unset", 6) == 0)
 		return (ms_unset(cmd_node, context));
 	else if (ft_strncmp(cmd, "env", 4) == 0)
+	{
+		if (cmd_node->argc > 1 && !ft_strncmp(cmd_node->argv[1], "-i", 3))
+			return (ms_execute_external(cmd_node, context, manager, gcl));
 		return (ms_env(cmd_node, context));
+	}
 	else if (ft_strncmp(cmd, "exit", 5) == 0)
 		return (ms_exit(cmd_node, context));
 	else if (is_equal(cmd))
