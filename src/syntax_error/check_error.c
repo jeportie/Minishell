@@ -12,6 +12,19 @@
 
 #include "../../include/syntax.h"
 
+int	find_close_par(char *current, int i)
+{
+	if (!current[i])
+		return (0);
+	while (current[i])
+	{
+		if (current[i] == ')')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 static void	st_print_error_operator_redir(int error)
 {
 	if (error == 1)
@@ -39,6 +52,8 @@ int	check_error(t_syntax **syntax)
 	t_syntax	*synt;
 
 	synt = *syntax;
+	if (synt->p_open != synt->p_close)
+		synt->p_trigger = 2;
 	if (synt->error == 10)
 		synt->error = 1;
 	else if (synt->p_trigger > 0 || synt->sq_trigger || synt->dq_trigger
