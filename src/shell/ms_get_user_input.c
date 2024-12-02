@@ -40,10 +40,22 @@ char	*st_make_input(t_shell *shell)
 void	ms_get_user_input(t_shell *shell)
 {
 	char	*shell_prompt;
+	size_t	len;
 
 	shell_prompt = st_make_input(shell);
 	rl_event_hook = rl_event_dummy;
-	shell->user_input = readline(shell_prompt);
+	if (shell->interactive_mode)
+		shell->user_input = readline(shell_prompt);
+	else
+	{
+        shell->user_input = get_next_line(STDIN_FILENO);
+        if (shell->user_input)
+        {
+            len = ft_strlen(shell->user_input);
+            if (len > 0 && shell->user_input[len - 1] == '\n')
+                shell->user_input[len - 1] = '\0';
+		}
+    }
 	if (g_signal == 132)
 	{
 		shell->error_code = 130;

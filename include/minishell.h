@@ -50,6 +50,7 @@ typedef struct s_shell
 	t_env_data	*env_data;
 	char		*user_input;
 	int			error_code;
+	bool		interactive_mode;
 	t_gc		*gcl;
 }				t_shell;
 

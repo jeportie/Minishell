@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
-
 int	heredoc_parent_process(t_heredoc_params *params, pid_t pid)
 {
 	int	status;

@@ -21,7 +21,7 @@ void	heredoc_child_process(t_heredoc_params *params)
 	safe_close(params->pipefd[0]);
 	result = read_and_write_heredoc(params->pipefd[1], params->delimiter);
 	safe_close(params->pipefd[1]);
-	if (result == -1)
+	if (result != -1)
 		exit(1);
 	else if (result == 1)
 		exit(1);
