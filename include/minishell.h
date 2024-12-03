@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/27 10:47:52 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:49:47 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <stdlib.h>
 # include <signal.h>
 
-# define DEBUG 1
+# define DEBUG 0
+# define PROMPT_MODE 0
 # define PRINT_INFOS "assets/infos.txt"
 # define COPY_MODE 0644
 
