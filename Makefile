@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/11/28 10:36:38 by jeportie         ###   ########.fr        #
+#    Updated: 2024/12/03 17:10:21 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -278,6 +278,12 @@ debug:
 		fi \
 	else \
 		echo "No '# define DEBUG' found in headers."; \
+	fi
+
+nodebug:
+	@grep -Hn '# define DEBUG' include/*.h || echo "No DEBUG flag found."
+	@if grep -q '# define DEBUG' include/*.h; then \
+		sed -i 's/# define DEBUG.*/# define DEBUG 0 /' include/*.h; \
 	fi
 
 help:
