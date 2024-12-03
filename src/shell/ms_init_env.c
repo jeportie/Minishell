@@ -3,80 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ms_init_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 15:46:10 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:44:23 by gmarquis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-static char	*st_get_path(t_env_data *env_data)
-{
-	t_env	*current;
-	int		trigger;
-
-	trigger = 0;
-	current = env_data->env;
-	while (current)
-	{
-		if (current->var && !ft_strncmp(current->var, "PATH", 5))
-		{
-			trigger = 1;
-			return (current->value);
-			break ;
-		}
-		current = current->next;
-	}
-	if (trigger == 0)
-		return ("/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin");
-	return (NULL);
-}
-
-static char	*st_get_term(t_env_data *env_data)
-{
-	t_env	*current;
-	int		trigger;
-
-	trigger = 0;
-	current = env_data->env;
-	while (current)
-	{
-		if (current->var && !ft_strncmp(current->var, "TERM", 5))
-		{
-			trigger = 1;
-			return (current->value);
-			break ;
-		}
-		current = current->next;
-	}
-	if (trigger == 0)
-		return ("dumb");
-	return (NULL);
-}
-
-static char	*st_get_shell(t_env_data *env_data)
-{
-	t_env	*current;
-	int		trigger;
-
-	trigger = 0;
-	current = env_data->env;
-	while (current)
-	{
-		if (current->var && !ft_strncmp(current->var, "SHELL", 5))
-		{
-			trigger = 1;
-			return (current->value);
-			break ;
-		}
-		current = current->next;
-	}
-	if (trigger == 0)
-		return ("/bin/zsh");
-	return (NULL);
-}
 
 static char	**st_create_envp(t_shell *shell, t_env_data *env_data)
 {
@@ -108,14 +42,14 @@ void	ms_increment_shell_lvl(t_env *env, t_gc *gcl)
 	{
 		if (!ft_strncmp(current->var, "SHLVL", 6))
 		{
-			i = ft_atol(current->value);	
+			i = ft_atol(current->value);
 			if (i >= 999 && i <= INT_MAX)
 			{
 				ft_dprintf(2, "minishell: warning: shell level (%d) too high, resetting to 1\n", i);
 				current->value = "1";
 				return ;
 			}
-			else if (i >= INT_MAX) 
+			else if (i >= INT_MAX)
 			{
 				current->value = "0";
 				return ;
@@ -156,10 +90,7 @@ t_env_data	*ms_init_env(char **envp, t_shell *shell)
 			ms_env_add_back(&env_data->env, node);
 	}
 	ms_increment_shell_lvl(env_data->env, shell->gcl);
-	env_data->path = st_get_path(env_data);
-	env_data->term = st_get_term(env_data);
-	env_data->shell = st_get_shell(env_data);
-	env_data->oldpwd = 1;
+	init_fix_value(env_data);
 	gc_collect(shell->gcl);
 	return (env_data);
 }

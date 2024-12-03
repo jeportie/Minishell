@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/03 12:49:47 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:45:55 by gmarquis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_env_data
 	char	*path;
 	char	*term;
 	char	*shell;
+	char	*user;
 	bool	oldpwd;
 }				t_env_data;
 
@@ -58,6 +59,7 @@ typedef struct s_shell
 /* Init_shell */
 t_shell		ms_init_shell(int argc, char **argv, char **envp);
 void		ms_get_user_input(t_shell *shell);
+void		init_fix_value(t_env_data *env_data);
 t_env_data	*ms_init_env(char **envp, t_shell *shell);
 
 /* env_lst_utils */
