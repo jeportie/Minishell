@@ -89,6 +89,7 @@ int	main(int argc, char **argv, char **envp)
 
 	t_ast_node *(root) = NULL;
 	shell = ms_init_shell(argc, argv, envp);
+	shell.interactive_mode = isatty(STDIN_FILENO);
 	tokens = NULL;
 	while (1)
 	{
@@ -99,6 +100,8 @@ int	main(int argc, char **argv, char **envp)
 			rl_clear_history();
 			gc_cleanup(shell.gcl);
 			free(shell.gcl);
+			if (shell.interactive_mode)
+				ft_dprintf(1, "exit\n");
 			exit (shell.error_code);
 		}
 		if (ms_syntax_error(shell.user_input))

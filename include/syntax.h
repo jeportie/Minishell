@@ -25,6 +25,8 @@ typedef struct s_syntax
 	int		dq_trigger;
 	int		p_trigger;
 	int		p_char;
+	int		p_open;
+	int		p_close;
 	int		o_and;
 	int		o_or;
 	int		o_pipe;
@@ -37,6 +39,7 @@ typedef struct s_syntax
 /* Main fonction */
 int	ms_syntax_error(const char *input);
 
+int	find_close_par(char *current, int i);
 int	check_error(t_syntax **syntax);
 int	check_reinit(t_syntax **syntax);
 int	operator_gestion(t_syntax **syntax);

@@ -13,7 +13,7 @@
 #include "../../include/minishell.h"
 #include <unistd.h>
 
-void	ms_get_user_input(t_shell *shell)
+char	*st_make_input(t_shell *shell)
 {
 	char	*shell_prompt;
 	char	*error_code;
@@ -32,13 +32,34 @@ void	ms_get_user_input(t_shell *shell)
 	shell_prompt = gc_strjoin(shell_prompt, " | ", shell->gcl);
 	shell_prompt = gc_strjoin(shell_prompt, cwd, shell->gcl);
 	shell_prompt = gc_strjoin(shell_prompt, " $> ", shell->gcl);
+	if (!shell_prompt)
+		return ("minishell> ");
+	return(shell_prompt);
+}
+
+void	ms_get_user_input(t_shell *shell)
+{
+	char	*shell_prompt;
+	size_t	len;
+
+	shell_prompt = st_make_input(shell);
 	rl_event_hook = rl_event_dummy;
-	shell->user_input = readline(shell_prompt);
+	if (shell->interactive_mode)
+		shell->user_input = readline(shell_prompt);
+	else
+	{
+        shell->user_input = get_next_line(STDIN_FILENO);
+        if (shell->user_input)
+        {
+            len = ft_strlen(shell->user_input);
+            if (len > 0 && shell->user_input[len - 1] == '\n')
+                shell->user_input[len - 1] = '\0';
+		}
+    }
 	if (g_signal == 132)
 	{
 		shell->error_code = 130;
 		g_signal = 0;
-		printf("ici\n");
 		return (ms_get_user_input(shell));
 	}
 	gc_collect(shell->gcl);

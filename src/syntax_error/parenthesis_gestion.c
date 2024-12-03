@@ -18,17 +18,25 @@ static int	st_close_parenthesis(t_syntax **syntax)
 
 	synt = *syntax;
 	if (synt->r_in || synt->r_here || synt->r_out || synt->r_app)
-		return (synt->p_trigger = 2, 1);
+		return (synt->p_close++, synt->p_trigger = 2, 1);
 	else if (!synt->dq_trigger && !synt->sq_trigger && synt->p_trigger
 		&& synt->p_char == 0)
-		return (synt->p_trigger = 2, 1);
+		return (synt->p_close++, synt->p_trigger = 2, 1);
 	else if (!synt->dq_trigger && !synt->sq_trigger && !synt->p_trigger)
+	{
+		synt->p_close++;
+		if (find_close_par(synt->current, synt->i) || synt->i == synt->len_end)
+			return (synt->p_trigger = 0, 0);
 		return (synt->p_trigger = 2, 1);
+	}
 	else if (synt->o_and || synt->o_or || synt->o_pipe)
-		return (synt->p_trigger = 2, 1);
+		return (synt->p_close++, synt->p_trigger = 2, 1);
 	else if (!synt->dq_trigger && !synt->sq_trigger && synt->p_trigger
 		&& synt->p_char > 0)
+	{
+		synt->p_close++;
 		synt->p_trigger = 0;
+	}
 	return (0);
 }
 
@@ -65,8 +73,12 @@ static int	st_in_par(t_syntax **syntax)
 	i = synt->i;
 	if (synt->current[i + 1])
 		i++;
-	if (synt->current[i + 1] && (synt->current[i + 1] != ')'
-			&& synt->current[i] != '('))
+	if (find_close_par(synt->current, i))
+	{
+		synt->p_open++;
+		return (0);
+	}
+	else if (synt->current[i + 1] && (synt->current[i + 1] != ')' && synt->current[i] != '('))
 	{
 		ft_dprintf(2, "Minishell: syntax error near unexpected token `");
 		while (synt->current[i] && (synt->current[i] != ')'
@@ -98,6 +110,7 @@ static int	st_open_parenthesis(t_syntax **syntax)
 	{
 		synt->p_char = 0;
 		synt->p_trigger = 1;
+		synt->p_open++;
 		synt->o_and = 0;
 		synt->o_or = 0;
 		synt->o_pipe = 0;
