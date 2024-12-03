@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:00:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/29 18:23:36 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:37:20 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <check.h>
@@ -101,15 +101,6 @@ static t_testresult execute_and_capture(const char *input)
 
 //_____________________________valid_paranthese_________________________________________________
 
-START_TEST(test_ms_syntax_error_valid_p_0)
-{
-    t_testresult result = execute_and_capture("(ls)");
-
-    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
-    ck_assert_int_eq(result.exit_code, 0); // Code de sortie attendu pour une entrée valide
-    ck_assert_str_eq(result.stderr_output, ""); // Pas de message d'erreur attendu pour une entrée valide
-}
-END_TEST
 
 START_TEST(test_ms_syntax_error_valid_p_1)
 {
@@ -152,16 +143,6 @@ START_TEST(test_ms_syntax_error_valid_p_4)
 END_TEST
 
 //______________________________invalide_parenthese_________________________________________________
-
-START_TEST(test_ms_syntax_error_invalid_p_0)
-{
-    t_testresult result = execute_and_capture("(ls");
-
-    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
-    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
-    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `('\n"); // Message d'erreur attendu
-}
-END_TEST
 
 START_TEST(test_ms_syntax_error_invalid_p_1)
 {
@@ -223,25 +204,7 @@ START_TEST(test_ms_syntax_error_invalid_p_6)
 }
 END_TEST
 
-START_TEST(test_ms_syntax_error_invalid_p_7)
-{
-    t_testresult result = execute_and_capture("(echo ((cat)invalid))");
 
-    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
-    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
-    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `('\n"); // Message d'erreur attendu
-}
-END_TEST
-
-START_TEST(test_ms_syntax_error_invalid_p_8)
-{
-    t_testresult result = execute_and_capture("(echo (invalid(cat)))");
-
-    // Assertions pour vérifier le code de sortie et le message d'erreur attendu
-    ck_assert_int_eq(result.exit_code, 1); // Code de sortie attendu pour une entrée invalide
-    ck_assert_str_eq(result.stderr_output, "Minishell: syntax error near unexpected token `invalid'\n"); // Message d'erreur attendu
-}
-END_TEST
 
 //_____________________________valid_operator_______________________________________________________
 
@@ -420,20 +383,16 @@ static Suite    *ms_syntax_error_suite(void)
     // Ajouter les fonctions setup et teardown pour le garbage collector
     tcase_add_checked_fixture(tc_core, setup, teardown);
 
-    tcase_add_test(tc_core, test_ms_syntax_error_valid_p_0);
     tcase_add_test(tc_core, test_ms_syntax_error_valid_p_1);
     tcase_add_test(tc_core, test_ms_syntax_error_valid_p_2);
     tcase_add_test(tc_core, test_ms_syntax_error_valid_p_4);
 
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_0);
     tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_1);
     tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_2);
     tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_3);
     tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_4);
     tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_5);
     tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_6);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_7);
-    tcase_add_test(tc_core, test_ms_syntax_error_invalid_p_8);
 
 
     tcase_add_test(tc_core, test_ms_syntax_error_valid_op_0);

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:18 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/27 12:26:43 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:18:48 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int test_ms_init_shell_exit(int argc, char **argv, char **envp)
         }
         else
         {
-            return -1; // Error occurred
+            return EXIT_FAILURE; // Error occurred
         }
     }
     return -1; // Fork failed
