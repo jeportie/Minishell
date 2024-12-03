@@ -56,6 +56,7 @@ build_project() {
     # Capture the build output
     BUILD_LOG=$(mktemp)
     make -C .. fullclean > "$BUILD_LOG" 
+    make -C .. nodebug > "$BUILD_LOG"
     if make -C .. classic > "$BUILD_LOG" 2>&1; then
         echo -e "${GREEN}Build successful.${RESET}"
         rm "$BUILD_LOG"  # Remove the temporary log file if build succeeds
