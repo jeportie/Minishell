@@ -4,8 +4,8 @@
 set -e
 
 # Define the input files
-BASH_OUTPUT="bash_output.txt"
-MINISHELL_OUTPUT="minishell_output.txt"
+BASH_OUTPUT=".bash_output.txt"
+MINISHELL_OUTPUT=".minishell_output.txt"
 COMMANDS_FILE="test_commands.txt"
 
 # Check if all required files exist
@@ -25,31 +25,25 @@ clean_files() {
 clean_files "$BASH_OUTPUT"
 clean_files "$MINISHELL_OUTPUT"
 
-# Initialize an empty sed script
-sed_script=""
+sed -i '/exit$/d' "$BASH_OUTPUT" "$MINISHELL_OUTPUT"
 
-# Step 3: Read each command from test_commands.txt and construct exact match removal patterns
-while IFS= read -r cmd || [[ -n "$cmd" ]]; do
-    # Skip empty lines
-    [[ -z "$cmd" ]] && continue
+# Remove the first line from bash_output.txt if it contains PS1='$USER@minishell $> '
+first_line=$(head -n 1 "$BASH_OUTPUT")
+if [[ "$first_line" == *"PS1='\$USER@minishell \$> '"* ]]; then
+    # Remove the first line
+    sed -i '1d' "$BASH_OUTPUT"
+fi
 
-    # Escape special characters for sed
-    escaped_cmd=$(printf '%s\n' "$cmd" | sed 's/[\/&]/\\&/g')
+# Remove the last line from both output files if it contains both '#' and '$> ' (prompt)
+for file in "$BASH_OUTPUT" "$MINISHELL_OUTPUT"; do
+    last_line=$(tail -n 1 "$file")
+    if [[ "$last_line" == *"@minishell"* && "$last_line" == *"\$> "* ]]; then
+        # Remove the last line
+        sed -i '$d' "$file"
+    fi
+done
 
-    # Append a line deletion command for exact matches
-    sed_script="${sed_script}; /^${escaped_cmd}$/d"
-done < "$COMMANDS_FILE"
-
-# Step 4: Add the removal patterns for "echo $?" and "exit"
-sed_script="${sed_script}; /echo \$?/d"
-sed_script="${sed_script}; /^exit$/d"
-
-# Remove the leading semicolon from the sed script
-sed_script=${sed_script#; }
-
-# Step 5: Apply the sed script to both output files
-sed -i "$sed_script" "$BASH_OUTPUT" "$MINISHELL_OUTPUT"
-
-tail -n +3 "$BASH_OUTPUT" > tmp_file && mv tmp_file "$BASH_OUTPUT"
-
-echo "Truncation complete. Specified lines have been removed from '$BASH_OUTPUT' and '$MINISHELL_OUTPUT'."
+# Remove lines containing 'jeportie@minishell $> echo $?'
+for file in "$BASH_OUTPUT" "$MINISHELL_OUTPUT"; do
+    sed -i '/jeportie@minishell \$> echo \$?/d' "$file"
+done

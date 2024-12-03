@@ -8,10 +8,9 @@
 # set -x  # Uncomment for script debugging
 
 # Define variables for files
-BASH_OUTPUT="bash_output.txt"
-MINISHELL_OUTPUT="minishell_output.txt"
+BASH_OUTPUT=".bash_output.txt"
+MINISHELL_OUTPUT=".minishell_output.txt"
 COMMANDS_FILE="test_commands.txt"
-DIFF_FILE="diff.txt"  # Optional: Can be used to log detailed diffs
 
 # ----------------------------
 # Color Codes for Formatting
@@ -100,7 +99,7 @@ process_outputs() {
         echo -e "${RED}Processing output files failed. Please check process_outputs.sh.${RESET}"
         exit 1
     fi
-    ./remove_escape_codes.sh bash_output.txt minishell_output.txt
+    ./remove_escape_codes.sh .bash_output.txt .minishell_output.txt
 }
 
 # ----------------------------

@@ -1,11 +1,13 @@
 #!/usr/bin/expect -f
 
 # Disable timeout
-set timeout 1
+set timeout 0
 
 # Open the test_commands.txt file for reading
 set command_file "test_commands.txt"
-set output_file "minishell_output.txt"
+set output_file ".minishell_output.txt"
+
+set prompt "\$USER@minishell \$> "
 
 # Start minishell
 spawn ../minishell
@@ -13,20 +15,27 @@ spawn ../minishell
 # Redirect output to the output file in truncation mode
 log_file -noappend $output_file
 
+# Wait for initial shell prompt (Minishell's default prompt)
+expect -re "^$prompt"
+sleep 0.1
+
 # Read and execute each command from test_commands.txt
 set file [open $command_file r]
+
 while {[gets $file line] != -1} {
+    # Skip empty lines
+    if {[string trim $line] == ""} {
+        continue
+    }
     # Send the command to minishell
     send "$line\r"
-    expect {
-        -re "\n" { }
-    }
+    expect -re "^$prompt"
+    sleep 0.1
 
     # Send echo $? to minishell
     send "echo \$?\r"
-    expect {
-        -re "\n" { }
-    }
+    expect -re "^$prompt"
+    sleep 0.1
 }
 close $file
 

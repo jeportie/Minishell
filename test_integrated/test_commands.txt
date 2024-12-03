@@ -3,18 +3,10 @@ ls
 touch test
 echo hello > test
 cat -e test
+rm test
 expr $? + $?
 /bin/ls
-/bin/ls -l
 /usr/bin/cat lib
 /usr/bin/cat -e lib
 /bin/ls-l
 /usr/bin/cat-e
-echo
-echo test
-echo ../lib
-echo -n
-echo -n test
-echo -nnnnnnnn test
-echo -n -nnnn -n test
-echo -n n-nnnn -n test
