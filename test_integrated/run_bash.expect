@@ -1,0 +1,45 @@
+#!/usr/bin/expect
+
+# Disable timeout
+set timeout 1
+
+# Open the test_commands.txt file for reading
+set command_file "test_commands.txt"
+set output_file "bash_output.txt"
+
+# Open bash to execute commands
+spawn bash --posix
+
+# Redirect output to the output file in truncation mode
+log_file -noappend $output_file
+
+# Change bash prompt to $USER@minishell
+send "export PS1='\$USER@minishell \$> '\r"
+expect {
+    -re "\n" { }
+}
+
+# Read and execute each command from test_commands.txt
+set file [open $command_file r]
+while {[gets $file line] != -1} {
+    # Send the command to bash
+    send "$line\r"
+    expect {
+        -re "\n" { }
+    }
+
+    # Send echo $? to bash
+    send "echo \$?\r"
+    expect {
+        -re "\n" { }
+    }
+}
+close $file
+
+# Exit bash
+send "exit\r"
+expect eof
+
+# Stop logging after script completes
+log_file
+
