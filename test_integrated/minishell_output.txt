@@ -1,21 +1,20 @@
 jeportie@minishell $> expr $? + $?
-echo ../lib
 0
+export ZZZZ="ok ok"
 1
 jeportie@minishell $> /bin/ls
-env -- test
 bash_output.txt  minishell_output.txt  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands.txt
 0
 jeportie@minishell $> /bin/ls -l
-total 80
--rw-r--r-- 1 root root 44131 Dec  2 16:39 bash_output.txt
--rw-r--r-- 1 root root  1609 Dec  2 16:39 minishell_output.txt
--rwxr-xr-x 1 root root  1659 Dec  2 10:46 process_outputs.sh
--rwxr-xr-x 1 root root  1008 Dec  2 10:46 remove_escape_codes.sh
--rwxr-xr-x 1 root root   826 Dec  2 16:36 run_bash.expect
--rwxr-xr-x 1 root root   721 Dec  2 10:46 run_minishell.expect
--rwxr-xr-x 1 root root 11973 Dec  2 16:20 run_test.sh
--rw-r--r-- 1 root root   759 Dec  2 16:33 test_commands.txt
+total 84
+-rw-r--r-- 1 root root 46892 Dec  3 10:36 bash_output.txt
+-rw-r--r-- 1 root root  1676 Dec  3 10:36 minishell_output.txt
+-rwxr-xr-x 1 root root  1659 Nov 29 10:40 process_outputs.sh
+-rwxr-xr-x 1 root root  1008 Nov 29 15:42 remove_escape_codes.sh
+-rwxr-xr-x 1 root root   826 Dec  3 10:18 run_bash.expect
+-rwxr-xr-x 1 root root   721 Nov 28 15:35 run_minishell.expect
+-rwxr-xr-x 1 root root 12040 Dec  3 10:32 run_test.sh
+-rw-r--r-- 1 root root   759 Dec  3 10:18 test_commands.txt
 0
 jeportie@minishell $> /usr/bin/cat lib
 /usr/bin/cat: lib: No such file or directory
@@ -63,7 +62,8 @@ jeportie@minishell $> echo -n n-nnnn -n test
 jeportie@minishell $> env
 LSCOLORS=Gxfxcxdxbxegedabagacad
 LESS=-R
-HOSTNAME=01a40b8e35fb
+HOSTNAME=d6dadb3c138d
+OPENAI_API_KEY=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
 PWD=/root/projects/minishell/test_integrated
 LOGNAME=root
 PROMPT_HOSTNAME=home
@@ -97,7 +97,8 @@ minishell: env: ‚Äòtest‚Äô: No such file or directory
 jeportie@minishell $> env --
 LSCOLORS=Gxfxcxdxbxegedabagacad
 LESS=-R
-HOSTNAME=01a40b8e35fb
+HOSTNAME=d6dadb3c138d
+OPENAI_API_KEY=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
 PWD=/root/projects/minishell/test_integrated
 LOGNAME=root
 PROMPT_HOSTNAME=home
@@ -136,13 +137,14 @@ jeportie@minishell $> export
 export DEFAULT_USER="vjej"
 export DIRHISTORY_SIZE="30"
 export HOME="/root"
-export HOSTNAME="01a40b8e35fb"
+export HOSTNAME="d6dadb3c138d"
 export LESS="-R"
 export LOGNAME="root"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="rs"
 export MAIL="jeportie@student.42.fr"
 export OLDPWD="/root/projects/minishell"
+export OPENAI_API_KEY="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"
 export PAGER="less"
 export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PROMPT_HOSTNAME="home"
@@ -162,13 +164,14 @@ export $?
 export DEFAULT_USER="vjej"
 export DIRHISTORY_SIZE="30"
 export HOME="/root"
-export HOSTNAME="01a40b8e35fb"
+export HOSTNAME="d6dadb3c138d"
 export LESS="-R"
 export LOGNAME="root"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="rs"
 export MAIL="jeportie@student.42.fr"
 export OLDPWD="/root/projects/minishell"
+export OPENAI_API_KEY="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"
 export PAGER="less"
 export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PROMPT_HOSTNAME="home"
@@ -189,13 +192,14 @@ export $?
 export DEFAULT_USER="vjej"
 export DIRHISTORY_SIZE="30"
 export HOME="/root"
-export HOSTNAME="01a40b8e35fb"
+export HOSTNAME="d6dadb3c138d"
 export LESS="-R"
 export LOGNAME="root"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="rs"
 export MAIL="jeportie@student.42.fr"
 export OLDPWD="/root/projects/minishell"
+export OPENAI_API_KEY="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"
 export PAGER="less"
 export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PROMPT_HOSTNAME="home"
@@ -217,13 +221,14 @@ export $?
 export DEFAULT_USER="vjej"
 export DIRHISTORY_SIZE="30"
 export HOME="/root"
-export HOSTNAME="01a40b8e35fb"
+export HOSTNAME="d6dadb3c138d"
 export LESS="-R"
 export LOGNAME="root"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="rs"
 export MAIL="jeportie@student.42.fr"
 export OLDPWD="/root/projects/minishell"
+export OPENAI_API_KEY="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"
 export PAGER="less"
 export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PROMPT_HOSTNAME="home"
@@ -246,13 +251,14 @@ export $?
 export DEFAULT_USER="vjej"
 export DIRHISTORY_SIZE="30"
 export HOME="/root"
-export HOSTNAME="01a40b8e35fb"
+export HOSTNAME="d6dadb3c138d"
 export LESS="-R"
 export LOGNAME="root"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="rs"
 export MAIL="jeportie@student.42.fr"
 export OLDPWD="/root/projects/minishell"
+export OPENAI_API_KEY="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"
 export PAGER="less"
 export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PROMPT_HOSTNAME="home"
@@ -276,13 +282,14 @@ export $?
 export DEFAULT_USER="vjej"
 export DIRHISTORY_SIZE="30"
 export HOME="/root"
-export HOSTNAME="01a40b8e35fb"
+export HOSTNAME="d6dadb3c138d"
 export LESS="-R"
 export LOGNAME="root"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="rs"
 export MAIL="jeportie@student.42.fr"
 export OLDPWD="/root/projects/minishell"
+export OPENAI_API_KEY="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"
 export PAGER="less"
 export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PROMPT_HOSTNAME="home"
@@ -304,17 +311,18 @@ export
 export ="$?"
 export ="$?"
 export ="$?"
-export $?="êo<`›b"
+export $?="¿b[CV"
 export DEFAULT_USER="vjej"
 export DIRHISTORY_SIZE="30"
 export HOME="/root"
-export HOSTNAME="01a40b8e35fb"
+export HOSTNAME="d6dadb3c138d"
 export LESS="-R"
 export LOGNAME="root"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="rs"
 export MAIL="jeportie@student.42.fr"
 export OLDPWD="/root/projects/minishell"
+export OPENAI_API_KEY="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"
 export PAGER="less"
 export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PROMPT_HOSTNAME="home"
@@ -340,13 +348,14 @@ export $?
 export DEFAULT_USER="vjej"
 export DIRHISTORY_SIZE="30"
 export HOME="/root"
-export HOSTNAME="01a40b8e35fb"
+export HOSTNAME="d6dadb3c138d"
 export LESS="-R"
 export LOGNAME="root"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="rs"
 export MAIL="jeportie@student.42.fr"
 export OLDPWD="/root/projects/minishell"
+export OPENAI_API_KEY="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"
 export PAGER="less"
 export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PROMPT_HOSTNAME="home"
@@ -369,17 +378,18 @@ export
 export ="$?"
 export ="$?"
 export ="$?"
-export $?=""
+export $?="0w[CV"
 export DEFAULT_USER="vjej"
 export DIRHISTORY_SIZE="30"
 export HOME="/root"
-export HOSTNAME="01a40b8e35fb"
+export HOSTNAME="d6dadb3c138d"
 export LESS="-R"
 export LOGNAME="root"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="rs"
 export MAIL="jeportie@student.42.fr"
 export OLDPWD="/root/projects/minishell"
+export OPENAI_API_KEY="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"
 export PAGER="less"
 export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PROMPT_HOSTNAME="home"
@@ -403,17 +413,18 @@ export ="$?"
 export ="$?"
 export ="$?"
 export $?
-export $?="∞è<`›b"
+export $?=""
 export DEFAULT_USER="vjej"
 export DIRHISTORY_SIZE="30"
 export HOME="/root"
-export HOSTNAME="01a40b8e35fb"
+export HOSTNAME="d6dadb3c138d"
 export LESS="-R"
 export LOGNAME="root"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="rs"
 export MAIL="jeportie@student.42.fr"
 export OLDPWD="/root/projects/minishell"
+export OPENAI_API_KEY="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"
 export PAGER="less"
 export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PROMPT_HOSTNAME="home"
@@ -431,23 +442,24 @@ jeportie@minishell $> export A123
 jeportie@minishell $> export
 export ="$?"
 export ="$?"
-export =" d∂|"
+export 
 export ="$?"
 export ="$?"
 export ="$?"
 export $?
 export $?
-export $?="–ö<`›b"
+export $?="‡ç[CV"
 export DEFAULT_USER="vjej"
 export DIRHISTORY_SIZE="30"
 export HOME="/root"
-export HOSTNAME="01a40b8e35fb"
+export HOSTNAME="d6dadb3c138d"
 export LESS="-R"
 export LOGNAME="root"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="rs"
 export MAIL="jeportie@student.42.fr"
 export OLDPWD="/root/projects/minishell"
+export OPENAI_API_KEY="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"
 export PAGER="less"
 export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PROMPT_HOSTNAME="home"
@@ -465,24 +477,25 @@ jeportie@minishell $> export A_123
 jeportie@minishell $> export
 export ="$?"
 export ="$?"
-export ="•<`›b"
+export ="ô[CV"
 export ="$?"
 export ="$?"
 export ="$?"
 export $?
 export $?
 export $?
-export $?="•<`›b"
+export $?="ô[CV"
 export DEFAULT_USER="vjej"
 export DIRHISTORY_SIZE="30"
 export HOME="/root"
-export HOSTNAME="01a40b8e35fb"
+export HOSTNAME="d6dadb3c138d"
 export LESS="-R"
 export LOGNAME="root"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="rs"
 export MAIL="jeportie@student.42.fr"
 export OLDPWD="/root/projects/minishell"
+export OPENAI_API_KEY="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"
 export PAGER="less"
 export PATH="/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PROMPT_HOSTNAME="home"

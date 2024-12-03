@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:51:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/28 17:28:09 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/03 10:45:36 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	ms_get_user_input(t_shell *shell)
 	{
 		shell->error_code = 130;
 		g_signal = 0;
-		printf("ici\n");
 		return (ms_get_user_input(shell));
 	}
 	gc_collect(shell->gcl);

@@ -56,8 +56,8 @@ build_project() {
     
     # Capture the build output
     BUILD_LOG=$(mktemp)
-    
-    if make -C .. re > "$BUILD_LOG" 2>&1; then
+    make -C .. fullclean > "$BUILD_LOG" 
+    if make -C .. classic > "$BUILD_LOG" 2>&1; then
         echo -e "${GREEN}Build successful.${RESET}"
         rm "$BUILD_LOG"  # Remove the temporary log file if build succeeds
     else
@@ -340,7 +340,8 @@ main() {
 
     # Pass elapsed time to report_results
     report_results "$elapsed"
-}
+    make -C .. fullclean
+ }
 
 # Execute the main function
 main
