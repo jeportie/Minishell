@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:51:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/27 10:48:46 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:42:13 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ char	*st_make_input(t_shell *shell)
 	cwd = getcwd(NULL, 0);
 	gc_register(cwd, shell->gcl);
 	user = ms_get_env_value(shell->env_data->env, "USER", shell->error_code);
-	shell_prompt = gc_strjoin("(", error_code, shell->gcl);
-	shell_prompt = gc_strjoin(shell_prompt, ") ", shell->gcl);
-	shell_prompt = gc_strjoin(shell_prompt, user, shell->gcl);
-	shell_prompt = gc_strjoin(shell_prompt, "@minishell", shell->gcl);
-	shell_prompt = gc_strjoin(shell_prompt, " | ", shell->gcl);
-	shell_prompt = gc_strjoin(shell_prompt, cwd, shell->gcl);
-	shell_prompt = gc_strjoin(shell_prompt, " $> ", shell->gcl);
+	shell_prompt = gc_strjoin(user, "@minishell $> ", shell->gcl);
+//	shell_prompt = gc_strjoin("(", error_code, shell->gcl);
+//	shell_prompt = gc_strjoin(shell_prompt, ") ", shell->gcl);
+//	shell_prompt = gc_strjoin(shell_prompt, user, shell->gcl);
+//	shell_prompt = gc_strjoin(shell_prompt, "@minishell", shell->gcl);
+//	shell_prompt = gc_strjoin(shell_prompt, " | ", shell->gcl);
+//	shell_prompt = gc_strjoin(shell_prompt, cwd, shell->gcl);
+//	shell_prompt = gc_strjoin(shell_prompt, " $> ", shell->gcl);
 	if (!shell_prompt)
 		return ("minishell> ");
 	return(shell_prompt);
