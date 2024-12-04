@@ -1,27 +1,27 @@
-==61934== Memcheck, a memory error detector
-==61934== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==61934== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==61934== Command: ../minishell
-==61934== Parent PID: 60473
-==61934== 
-==61934== 
-==61934== HEAP SUMMARY:
-==61934==     in use at exit: 4,027 bytes in 2 blocks
-==61934==   total heap usage: 541 allocs, 539 frees, 24,129 bytes allocated
-==61934== 
-==61934== 11 bytes in 1 blocks are definitely lost in loss record 1 of 2
-==61934==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==61934==    by 0x115CF8: ft_extract_line (in /root/projects/minishell/minishell)
-==61934==    by 0x115EFE: get_next_line (in /root/projects/minishell/minishell)
-==61934==    by 0x110530: ms_get_user_input (in /root/projects/minishell/minishell)
-==61934==    by 0x11375C: main (in /root/projects/minishell/minishell)
-==61934== 
-==61934== LEAK SUMMARY:
-==61934==    definitely lost: 11 bytes in 1 blocks
-==61934==    indirectly lost: 0 bytes in 0 blocks
-==61934==      possibly lost: 0 bytes in 0 blocks
-==61934==    still reachable: 0 bytes in 0 blocks
-==61934==         suppressed: 4,016 bytes in 1 blocks
-==61934== 
-==61934== For lists of detected and suppressed errors, rerun with: -s
-==61934== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
+==1745== Memcheck, a memory error detector
+==1745== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==1745== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==1745== Command: ../minishell
+==1745== Parent PID: 293
+==1745== 
+==1745== 
+==1745== HEAP SUMMARY:
+==1745==     in use at exit: 4,027 bytes in 2 blocks
+==1745==   total heap usage: 541 allocs, 539 frees, 24,121 bytes allocated
+==1745== 
+==1745== 11 bytes in 1 blocks are definitely lost in loss record 1 of 2
+==1745==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1745==    by 0x11568C: ft_extract_line (in /root/projects/minishell/minishell)
+==1745==    by 0x115892: get_next_line (in /root/projects/minishell/minishell)
+==1745==    by 0x1110F5: ms_get_user_input (in /root/projects/minishell/minishell)
+==1745==    by 0x113916: main (in /root/projects/minishell/minishell)
+==1745== 
+==1745== LEAK SUMMARY:
+==1745==    definitely lost: 11 bytes in 1 blocks
+==1745==    indirectly lost: 0 bytes in 0 blocks
+==1745==      possibly lost: 0 bytes in 0 blocks
+==1745==    still reachable: 0 bytes in 0 blocks
+==1745==         suppressed: 4,016 bytes in 1 blocks
+==1745== 
+==1745== For lists of detected and suppressed errors, rerun with: -s
+==1745== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)

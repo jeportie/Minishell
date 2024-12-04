@@ -5,14 +5,14 @@ jeportie@minishell $> cd test_dir
 0
 jeportie@minishell $> ls -l
 total 0
--rw-r--r-- 1 root root 0 Dec  4 13:04 a1
--rw-r--r-- 1 root root 0 Dec  4 13:04 a2
--rw-r--r-- 1 root root 0 Dec  4 13:04 a3
--rw-r--r-- 1 root root 0 Dec  4 13:04 a4
--rw-r--r-- 1 root root 0 Dec  4 13:04 b1
--rw-r--r-- 1 root root 0 Dec  4 13:04 b2
--rw-r--r-- 1 root root 0 Dec  4 13:04 b3
--rw-r--r-- 1 root root 0 Dec  4 13:04 b4
+-rw-r--r-- 1 root root 0 Dec  4 16:19 a1
+-rw-r--r-- 1 root root 0 Dec  4 16:19 a2
+-rw-r--r-- 1 root root 0 Dec  4 16:19 a3
+-rw-r--r-- 1 root root 0 Dec  4 16:19 a4
+-rw-r--r-- 1 root root 0 Dec  4 16:19 b1
+-rw-r--r-- 1 root root 0 Dec  4 16:19 b2
+-rw-r--r-- 1 root root 0 Dec  4 16:19 b3
+-rw-r--r-- 1 root root 0 Dec  4 16:19 b4
 drwxr-xr-x 2 root root 6 Dec  4 13:05 c1
 drwxr-xr-x 2 root root 6 Dec  4 13:05 c2
 drwxr-xr-x 2 root root 6 Dec  4 13:05 c3
@@ -20,16 +20,16 @@ drwxr-xr-x 2 root root 6 Dec  4 13:05 c4
 0
 jeportie@minishell $> ls -la
 total 4
-drwxr-xr-x 6 root root  126 Dec  4 13:05 .
-drwxr-xr-x 6 root root 4096 Dec  4 16:15 ..
--rw-r--r-- 1 root root    0 Dec  4 13:04 a1
--rw-r--r-- 1 root root    0 Dec  4 13:04 a2
--rw-r--r-- 1 root root    0 Dec  4 13:04 a3
--rw-r--r-- 1 root root    0 Dec  4 13:04 a4
--rw-r--r-- 1 root root    0 Dec  4 13:04 b1
--rw-r--r-- 1 root root    0 Dec  4 13:04 b2
--rw-r--r-- 1 root root    0 Dec  4 13:04 b3
--rw-r--r-- 1 root root    0 Dec  4 13:04 b4
+drwxr-xr-x 6 root root  126 Dec  4 16:19 .
+drwxr-xr-x 6 root root 4096 Dec  4 16:19 ..
+-rw-r--r-- 1 root root    0 Dec  4 16:19 a1
+-rw-r--r-- 1 root root    0 Dec  4 16:19 a2
+-rw-r--r-- 1 root root    0 Dec  4 16:19 a3
+-rw-r--r-- 1 root root    0 Dec  4 16:19 a4
+-rw-r--r-- 1 root root    0 Dec  4 16:19 b1
+-rw-r--r-- 1 root root    0 Dec  4 16:19 b2
+-rw-r--r-- 1 root root    0 Dec  4 16:19 b3
+-rw-r--r-- 1 root root    0 Dec  4 16:19 b4
 drwxr-xr-x 2 root root    6 Dec  4 13:05 c1
 drwxr-xr-x 2 root root    6 Dec  4 13:05 c2
 drwxr-xr-x 2 root root    6 Dec  4 13:05 c3

@@ -7,9 +7,9 @@ animated_banner.py  process_outputs.sh	remove_escape_codes.sh	run_bash.expect  r
 jeportie@minishell $> touch test
 0
 jeportie@minishell $> echo hello > test
-hello
 0
 jeportie@minishell $> cat -e test
+hello$
 0
 jeportie@minishell $> rm test
 0
