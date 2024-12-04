@@ -483,6 +483,7 @@ main() {
     report_results "$elapsed"
     echo next!
     run_valgrind_tests
+    rm ../minishell
 
     # Exit the script based on the test results
     if [ "$test_failed_global" -gt 0 ]; then
