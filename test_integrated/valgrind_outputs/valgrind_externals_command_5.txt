@@ -1,27 +1,27 @@
-==3314== Memcheck, a memory error detector
-==3314== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==3314== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==3314== Command: ../minishell
-==3314== Parent PID: 1995
-==3314== 
-==3314== 
-==3314== HEAP SUMMARY:
-==3314==     in use at exit: 4,023 bytes in 2 blocks
-==3314==   total heap usage: 579 allocs, 577 frees, 25,226 bytes allocated
-==3314== 
-==3314== 7 bytes in 1 blocks are definitely lost in loss record 1 of 2
-==3314==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==3314==    by 0x115CF8: ft_extract_line (in /root/projects/minishell/minishell)
-==3314==    by 0x115EFE: get_next_line (in /root/projects/minishell/minishell)
-==3314==    by 0x110530: ms_get_user_input (in /root/projects/minishell/minishell)
-==3314==    by 0x11375C: main (in /root/projects/minishell/minishell)
-==3314== 
-==3314== LEAK SUMMARY:
-==3314==    definitely lost: 7 bytes in 1 blocks
-==3314==    indirectly lost: 0 bytes in 0 blocks
-==3314==      possibly lost: 0 bytes in 0 blocks
-==3314==    still reachable: 0 bytes in 0 blocks
-==3314==         suppressed: 4,016 bytes in 1 blocks
-==3314== 
-==3314== For lists of detected and suppressed errors, rerun with: -s
-==3314== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
+==55242== Memcheck, a memory error detector
+==55242== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==55242== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==55242== Command: ../minishell
+==55242== Parent PID: 53917
+==55242== 
+==55242== 
+==55242== HEAP SUMMARY:
+==55242==     in use at exit: 4,023 bytes in 2 blocks
+==55242==   total heap usage: 579 allocs, 577 frees, 25,210 bytes allocated
+==55242== 
+==55242== 7 bytes in 1 blocks are definitely lost in loss record 1 of 2
+==55242==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==55242==    by 0x115CF8: ft_extract_line (in /root/projects/minishell/minishell)
+==55242==    by 0x115EFE: get_next_line (in /root/projects/minishell/minishell)
+==55242==    by 0x110530: ms_get_user_input (in /root/projects/minishell/minishell)
+==55242==    by 0x11375C: main (in /root/projects/minishell/minishell)
+==55242== 
+==55242== LEAK SUMMARY:
+==55242==    definitely lost: 7 bytes in 1 blocks
+==55242==    indirectly lost: 0 bytes in 0 blocks
+==55242==      possibly lost: 0 bytes in 0 blocks
+==55242==    still reachable: 0 bytes in 0 blocks
+==55242==         suppressed: 4,016 bytes in 1 blocks
+==55242== 
+==55242== For lists of detected and suppressed errors, rerun with: -s
+==55242== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)

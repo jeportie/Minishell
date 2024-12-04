@@ -1,5 +1,5 @@
 jeportie@minishell $> ls
-process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh	test_commands  test_dir  test_outputs  valgrind_outputs
+animated_banner.py  process_outputs.sh	remove_escape_codes.sh	run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs  valgrind_outputs
 0
 jeportie@minishell $> cd test_dir
 0
@@ -21,7 +21,7 @@ drwxr-xr-x 2 root root 6 Dec  4 13:05 c4
 jeportie@minishell $> ls -la
 total 4
 drwxr-xr-x 6 root root  126 Dec  4 13:05 .
-drwxr-xr-x 6 root root 4096 Dec  4 14:02 ..
+drwxr-xr-x 6 root root 4096 Dec  4 16:09 ..
 -rw-r--r-- 1 root root    0 Dec  4 13:04 a1
 -rw-r--r-- 1 root root    0 Dec  4 13:04 a2
 -rw-r--r-- 1 root root    0 Dec  4 13:04 a3

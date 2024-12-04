@@ -13,23 +13,48 @@ CYAN="\033[1;36m"
 RESET="\033[0m"
 
 # ----------------------------
-# ASCII Art Banner
+# Start Animated Banner
 # ----------------------------
-print_banner() {
-    echo -e "${CYAN}"
-    echo -e "            __  __  _         _  _______          _   " 
-    echo -e "           |  \/  |(_)       (_)|__   __|        | |  ${GREEN}" 
-    echo -e "           | \  / | _  _ __   _    | |  ___  ___ | |_" 
-    echo -e "           | |\/| || || '_ \ | |   | | / _ \/ __|| __|${RED}"
-    echo -e "           | |  | || || | | || |   | ||  __/\__ \| |_"
-    echo -e "           |_|  |_||_||_| |_||_|   |_| \___||___/\___|"
-    echo -e "${RESET}"
+start_banner() {
+    # Start the animated banner in the background
+    python3 animated_banner.py &
+    BANNER_PID=$!
+    # Allow the banner to set up
+    sleep 0.1
+    # Move cursor below the banner area
+    move_cursor_below_banner
 }
 
+# ----------------------------
+# Stop Animated Banner
+# ----------------------------
+stop_banner() {
+    # Stop the animated banner
+    if [ -n "$BANNER_PID" ]; then
+        kill $BANNER_PID 2>/dev/null
+        wait $BANNER_PID 2>/dev/null
+        unset BANNER_PID
+        # Move cursor below the banner area
+        BANNER_HEIGHT=6  # Number of lines in the banner
+        echo -ne "\033[$((BANNER_HEIGHT + 1));1H"
+        sleep 1
+    fi
+}
+
+# ----------------------------
+# Ensure Outputs Appear Below Banner
+# ----------------------------
+move_cursor_below_banner() {
+    # Move the cursor to the line below the banner
+    BANNER_HEIGHT=6  # Number of lines in the banner
+    echo -ne "\033[$((BANNER_HEIGHT + 1));1H"  # Move cursor to line after the banner
+}
 # ----------------------------
 # Step 1: Clean Existing Output Files
 # ----------------------------
 clean_outputs() {
+    move_cursor_below_banner
+    echo "\n"
     echo -e "${CYAN}Cleaning existing output files...${RESET}"
     rm -f test_outputs/*.txt valgrind_outputs/*.txt
     echo -e "${GREEN}Output files cleaned.${RESET}"
@@ -39,6 +64,7 @@ clean_outputs() {
 # Step 2: Build the Minishell Project
 # ----------------------------
 build_project() {
+    move_cursor_below_banner
     echo -e "${CYAN}Building the project using make...${RESET}"
     
     # Capture the build output
@@ -60,6 +86,7 @@ build_project() {
 # Step 3: Run Expect Scripts
 # ----------------------------
 run_expect_scripts() {
+    move_cursor_below_banner
     # Find all test command files in test_commands/ directory
     test_files=(test_commands/*.txt)
 
@@ -95,6 +122,7 @@ run_expect_scripts() {
 # Step 4: Process Output Files
 # ----------------------------
 process_outputs() {
+    move_cursor_below_banner
     echo -e "${CYAN}Processing output files...${RESET}"
     # Find all group names
     test_files=(test_commands/*.txt)
@@ -125,9 +153,9 @@ process_outputs() {
 report_results() {
     local elapsed_time="$1"  # Receive elapsed time as an argument
 
-    echo -e "\n${BLUE}============================================================${RESET}"
-    echo -e "${BLUE}              TESTING MINISHELL VS POSIX SUMMARY            ${RESET}"
-    echo -e "${BLUE}============================================================${RESET}\n"
+    echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n${BLUE}======================================================================${RESET}"
+    echo -e "${BLUE}                   TESTING MINISHELL VS POSIX SUMMARY                 ${RESET}"
+    echo -e "${BLUE}======================================================================${RESET}\n"
 
     # Initialize overall counters
     total_tests=0
@@ -147,9 +175,9 @@ report_results() {
         MINISHELL_OUTPUT="test_outputs/minishell_output_${group_name}.txt"
         COMMANDS_FILE="$test_file"
 
-        echo -e "${BLUE}============================================================${RESET}"
-        echo -e "${BLUE}                     GROUP: ${group_name}                   ${RESET}"
-        echo -e "${BLUE}============================================================${RESET}\n"
+        echo -e "${BLUE}======================================================================${RESET}"
+        echo -e "${BLUE}                          GROUP: ${group_name}                        ${RESET}"
+        echo -e "${BLUE}======================================================================${RESET}\n"
 
         # Initialize group counters
         group_total_tests=0
@@ -363,9 +391,9 @@ report_results() {
     fi
 
     # Print overall summary
-    echo -e "${BLUE}============================================================${RESET}"
-    echo -e "${BLUE}                  OVERALL BASH TEST RESULTS                 ${RESET}"
-    echo -e "${BLUE}============================================================${RESET}\n"
+    echo -e "${BLUE}======================================================================${RESET}"
+    echo -e "${BLUE}                       OVERALL BASH TEST RESULTS                      ${RESET}"
+    echo -e "${BLUE}======================================================================${RESET}\n"
 
     echo -e "${BLUE}Group Results:${RESET}"
     for group_name in "${!group_results[@]}"; do
@@ -386,9 +414,9 @@ report_results() {
 # Step 6: Run Valgrind Tests
 # ----------------------------
 run_valgrind_tests() {
-    echo -e "\n${BLUE}============================================================${RESET}"
-    echo -e "${BLUE}                   VALGRIND MEMORY CHECK                    ${RESET}"
-    echo -e "${BLUE}============================================================${RESET}\n"
+    echo -e "\n${BLUE}======================================================================${RESET}"
+    echo -e "${BLUE}                        VALGRIND MEMORY CHECK                         ${RESET}"
+    echo -e "${BLUE}======================================================================${RESET}\n"
 
     mkdir -p valgrind_outputs
     # Initialize counters
@@ -459,7 +487,7 @@ run_valgrind_tests() {
 # Step 7: Main Execution Flow
 # ----------------------------
 main() {
-    print_banner
+    start_banner
     clean_outputs
     build_project
 
@@ -470,6 +498,7 @@ main() {
 
     run_expect_scripts
     process_outputs
+    stop_banner
 
     # ----------------------------
     # End Time Capture
