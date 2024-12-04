@@ -34,27 +34,27 @@ SRC = \
   src/builtins/copy_env_list.c \
   src/builtins/echec_malloc.c \
   src/builtins/export_utils.c \
-  src/builtins/ms_cd.c \
-  src/builtins/ms_echo.c \
-  src/builtins/ms_env.c \
   src/builtins/ms_exit.c \
   src/builtins/ms_export.c \
-  src/builtins/ms_pwd.c \
   src/builtins/ms_unset.c \
-  src/builtins/valide_var.c \
+  src/builtins/ms_pwd.c \
+  src/builtins/ms_cd.c \
+  src/builtins/builtins_utils.c \
+  src/builtins/ms_echo.c \
+  src/builtins/ms_env.c \
   src/exec/ms_concat_path.c \
   src/exec/ms_execute_ast.c \
   src/exec/ms_execute_external.c \
   src/exec/ms_execute_logical.c \
   src/exec/ms_execute_subshell.c \
   src/exec/ms_handle_error.c \
-  src/exec/ms_handle_redirections.c \
   src/exec/ms_heredoc_mode.c \
   src/exec/ms_parse_cmd_path.c \
   src/exec/ms_pipeline_helper.c \
   src/exec/ms_heredoc_helper.c \
-  src/exec/ms_execute_command.c \
   src/exec/ms_execute_pipeline.c \
+  src/exec/ms_handle_redirections.c \
+  src/exec/ms_execute_command.c \
   src/expand/ms_expand_args.c \
   src/expand/ms_expand_args_utils.c \
   src/expand/ms_expand_utils.c \

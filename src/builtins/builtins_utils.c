@@ -1,16 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valide_var.c                                       :+:      :+:    :+:   */
+/*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 10:59:46 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 11:00:14 by jeportie         ###   ########.fr       */
+/*   Created: 2024/12/04 10:47:09 by jeportie          #+#    #+#             */
+/*   Updated: 2024/12/04 10:50:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
+
+int	ms_safe_putstr_fd(char *s, int fd)
+{
+	size_t	len;
+	int		error;
+
+	if (!fd || !s)
+		return (1);
+	error = 0;
+	len = ft_strlen(s);
+	error = write(fd, s, len);
+	if (error < 0)
+	{
+		write(2, "minishell: write error: ", 24);
+		write(2, "no space left on device\n", 24);
+		return (1);
+	}
+	return (0);
+}
 
 int	valide_var(char *input)
 {

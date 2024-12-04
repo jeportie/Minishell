@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 16:27:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/04 13:48:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,25 @@ static void	st_order_env(t_env **tmp_env)
 	*tmp_env = sorted;
 }
 
-static void	st_print_order(t_env *tmp_env, t_env_data *env_data)
+static void	st_print_order(t_env *tmp_env, int fd)
 {
 	t_env	*tmp;
 
 	tmp = tmp_env;
 	while (tmp)
 	{
-		if (!ft_strncmp(tmp->var, "_", 2) && env_data->oldpwd == 1)
+		if (ft_strncmp(tmp->var, "_", 2))
 		{
-			ft_dprintf(1, "export OLDPWD\n");
-			return ;
-		}
-		else if (ft_strncmp(tmp->var, "_", 2))
-		{
-			ft_dprintf(1, "export ");
+			ms_safe_putstr_fd("export ", fd);
 			if (tmp->var)
-				ft_dprintf(1, "%s", tmp->var);
+				ms_safe_putstr_fd(tmp->var, fd);
 			if (tmp->value)
-				ft_dprintf(1, "=\"%s\"", tmp->value);
-			ft_dprintf(1, "\n");
+			{
+				ms_safe_putstr_fd("=\"", fd);
+				ms_safe_putstr_fd(tmp->value, fd);
+				ms_safe_putstr_fd("\"", fd);
+			}
+			ms_safe_putstr_fd("\n", fd);
 		}
 		tmp = tmp->next;
 	}
@@ -84,7 +83,7 @@ int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)
 	st_init_utils(&utils, context->shell);
 	if (cmd_node->argc == 1)
 		return (st_order_env(&tmp_env), st_print_order(tmp_env,
-				context->shell->env_data), 0);
+				context->stdout_fd), 0);
 	while (cmd_node->argv[i])
 	{
 		utils.flag = 0;

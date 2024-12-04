@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/03 14:47:38 by gmarquis         ###   ########.fr       */
+/*   Updated: 2024/12/04 13:50:33 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,4 @@ void	init_fix_value(t_env_data *env_data)
 	env_data->term = st_get_term(env_data);
 	env_data->shell = st_get_shell(env_data);
 	env_data->user = st_get_user(env_data);
-	env_data->oldpwd = 1;
 }

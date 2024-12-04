@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:20:22 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 16:47:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/04 10:49:22 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static char	*st_cd_with_option(char *cd, t_shell *shell, char *argv)
 					shell->error_code);
 			if (!cd)
 				return (ft_dprintf(2, "minishell: cd: OLDPWD not set\n"), NULL);
-			ft_printf("%s\n", cd);
+			ft_dprintf(1, "%s\n", cd);
 		}
 	}
 	if (!cd)

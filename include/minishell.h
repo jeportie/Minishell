@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/03 17:01:33 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/04 13:47:49 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_env_data
 	char	*term;
 	char	*shell;
 	char	*user;
-	bool	oldpwd;
 }				t_env_data;
 
 typedef struct s_shell

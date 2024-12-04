@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:07:30 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/04 09:26:29 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/04 10:19:47 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,
 	char *(cmd) = cmd_node->argv[0];
 	st_set_underscore_value(cmd_node, context, gcl);
 	if (ft_strncmp(cmd, "echo", 5) == 0)
-		return (ms_echo(cmd_node));
+		return (ms_echo(cmd_node, context->stdout_fd));
 	else if (ft_strncmp(cmd, "cd", 3) == 0)
 		return (ms_cd(cmd_node, context->shell));
 	else if (ft_strncmp(cmd, "pwd", 4) == 0)
-		return (ms_pwd());
+		return (ms_pwd(context->stdout_fd));
 	else if (ft_strncmp(cmd, "export", 7) == 0)
 		return (ms_export(cmd_node, context));
 	else if (ft_strncmp(cmd, "unset", 6) == 0)
