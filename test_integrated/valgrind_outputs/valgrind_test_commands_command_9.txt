@@ -1,0 +1,37 @@
+==47593== Memcheck, a memory error detector
+==47593== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==47593== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==47593== Command: ../minishell
+==47593== Parent PID: 46143
+==47593== 
+==47593== 
+==47593== HEAP SUMMARY:
+==47593==     in use at exit: 4,050 bytes in 3 blocks
+==47593==   total heap usage: 552 allocs, 549 frees, 24,498 bytes allocated
+==47593== 
+==47593== 13 bytes in 1 blocks are definitely lost in loss record 1 of 3
+==47593==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==47593==    by 0x114818: ft_strdup (in /root/projects/minishell/minishell)
+==47593==    by 0x10DDE0: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==47593==    by 0x10CED0: ms_execute_external (in /root/projects/minishell/minishell)
+==47593==    by 0x10CC80: ms_execute_command (in /root/projects/minishell/minishell)
+==47593==    by 0x10C8B7: ms_execute_ast (in /root/projects/minishell/minishell)
+==47593==    by 0x1136A5: run (in /root/projects/minishell/minishell)
+==47593==    by 0x1137DD: main (in /root/projects/minishell/minishell)
+==47593== 
+==47593== 21 bytes in 1 blocks are definitely lost in loss record 2 of 3
+==47593==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==47593==    by 0x115CF8: ft_extract_line (in /root/projects/minishell/minishell)
+==47593==    by 0x115EFE: get_next_line (in /root/projects/minishell/minishell)
+==47593==    by 0x110530: ms_get_user_input (in /root/projects/minishell/minishell)
+==47593==    by 0x11375C: main (in /root/projects/minishell/minishell)
+==47593== 
+==47593== LEAK SUMMARY:
+==47593==    definitely lost: 34 bytes in 2 blocks
+==47593==    indirectly lost: 0 bytes in 0 blocks
+==47593==      possibly lost: 0 bytes in 0 blocks
+==47593==    still reachable: 0 bytes in 0 blocks
+==47593==         suppressed: 4,016 bytes in 1 blocks
+==47593== 
+==47593== For lists of detected and suppressed errors, rerun with: -s
+==47593== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 1 from 1)

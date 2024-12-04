@@ -1,0 +1,6 @@
+ls
+cd test_dir
+ls -l
+ls -la
+cat -e .
+grep 

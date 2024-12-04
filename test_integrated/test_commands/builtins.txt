@@ -1,0 +1,11 @@
+echo Hello
+echo je suis un test
+echo "je suis un test"
+echo 'je suis un test'
+echo "je suis" "un test"
+echo 'je suis "un test"'
+pwd
+cd ..
+pwd
+cd -
+pwd

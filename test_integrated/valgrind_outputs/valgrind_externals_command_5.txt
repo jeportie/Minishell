@@ -1,0 +1,27 @@
+==47465== Memcheck, a memory error detector
+==47465== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==47465== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==47465== Command: ../minishell
+==47465== Parent PID: 46143
+==47465== 
+==47465== 
+==47465== HEAP SUMMARY:
+==47465==     in use at exit: 4,023 bytes in 2 blocks
+==47465==   total heap usage: 579 allocs, 577 frees, 25,210 bytes allocated
+==47465== 
+==47465== 7 bytes in 1 blocks are definitely lost in loss record 1 of 2
+==47465==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==47465==    by 0x115CF8: ft_extract_line (in /root/projects/minishell/minishell)
+==47465==    by 0x115EFE: get_next_line (in /root/projects/minishell/minishell)
+==47465==    by 0x110530: ms_get_user_input (in /root/projects/minishell/minishell)
+==47465==    by 0x11375C: main (in /root/projects/minishell/minishell)
+==47465== 
+==47465== LEAK SUMMARY:
+==47465==    definitely lost: 7 bytes in 1 blocks
+==47465==    indirectly lost: 0 bytes in 0 blocks
+==47465==      possibly lost: 0 bytes in 0 blocks
+==47465==    still reachable: 0 bytes in 0 blocks
+==47465==         suppressed: 4,016 bytes in 1 blocks
+==47465== 
+==47465== For lists of detected and suppressed errors, rerun with: -s
+==47465== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)

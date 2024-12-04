@@ -1,0 +1,32 @@
+jeportie@minishell $> echo Hello
+Hello
+0
+jeportie@minishell $> echo je suis un test
+je suis un test
+0
+jeportie@minishell $> echo "je suis un test"
+je suis un test
+0
+jeportie@minishell $> echo 'je suis un test'
+je suis un test
+0
+jeportie@minishell $> echo "je suis" "un test"
+je suis un test
+0
+jeportie@minishell $> echo 'je suis "un test"'
+je suis un test
+0
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
+0
+jeportie@minishell $> cd ..
+0
+jeportie@minishell $> pwd
+/root/projects/minishell
+0
+jeportie@minishell $> cd -
+/root/projects/minishell/test_integrated
+0
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
+0
