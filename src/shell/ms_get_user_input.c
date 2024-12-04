@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:51:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/03 14:49:09 by gmarquis         ###   ########.fr       */
+/*   Updated: 2024/12/04 09:16:14 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,42 @@
 char	*st_make_input(t_shell *shell)
 {
 	char	*shell_prompt;
-	//char	*error_code;
-	//char	*cwd;
 
-	//error_code = ft_itoa(shell->error_code);
-	//gc_register(error_code, shell->gcl);
-	//cwd = getcwd(NULL, 0);
-	//gc_register(cwd, shell->gcl);
 	shell_prompt = gc_strjoin(shell->env_data->user, "@minishell $> ",
-	shell->gcl);
-//	shell_prompt = gc_strjoin("(", error_code, shell->gcl);
-//	shell_prompt = gc_strjoin(shell_prompt, ") ", shell->gcl);
-//	shell_prompt = gc_strjoin(shell_prompt, user, shell->gcl);
-//	shell_prompt = gc_strjoin(shell_prompt, "@minishell", shell->gcl);
-//	shell_prompt = gc_strjoin(shell_prompt, " | ", shell->gcl);
-//	shell_prompt = gc_strjoin(shell_prompt, cwd, shell->gcl);
-//	shell_prompt = gc_strjoin(shell_prompt, " $> ", shell->gcl);
+			shell->gcl);
+	if (!shell_prompt)
+		return ("minishell> ");
+	return (shell_prompt);
+}
+
+/*
+char	*st_make_input(t_shell *shell)
+{
+	char	*shell_prompt;
+	char	*error_code;
+	char	*cwd;
+
+	error_code = ft_itoa(shell->error_code);
+	gc_register(error_code, shell->gcl);
+	cwd = getcwd(NULL, 0);
+	gc_register(cwd, shell->gcl);
+	shell_prompt = gc_strjoin("(", error_code, shell->gcl);
+	shell_prompt = gc_strjoin(shell_prompt, ") ", shell->gcl);
+	shell_prompt = gc_strjoin(shell_prompt, shell->env_data->user, shell->gcl);
+	shell_prompt = gc_strjoin(shell_prompt, "@minishell", shell->gcl);
+	shell_prompt = gc_strjoin(shell_prompt, " | ", shell->gcl);
+	shell_prompt = gc_strjoin(shell_prompt, cwd, shell->gcl);
+	shell_prompt = gc_strjoin(shell_prompt, " $> ", shell->gcl);
 	if (!shell_prompt)
 		return ("minishell> ");
 	return(shell_prompt);
 }
+*/
 
 void	ms_get_user_input(t_shell *shell)
 {
-	char	*shell_prompt;
-	size_t	len;
-
-	shell_prompt = st_make_input(shell);
+	char *(shell_prompt) = st_make_input(shell);
+	size_t (len) = 0;
 	rl_event_hook = rl_event_dummy;
 	if (shell->interactive_mode)
 		shell->user_input = readline(shell_prompt);
@@ -53,7 +62,7 @@ void	ms_get_user_input(t_shell *shell)
 		{
 			len = ft_strlen(shell->user_input);
 			if (len > 0 && shell->user_input[len - 1] == '\n')
-			shell->user_input[len - 1] = '\0';
+				shell->user_input[len - 1] = '\0';
 		}
 	}
 	if (g_signal == 132)

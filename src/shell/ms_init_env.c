@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/03 14:44:23 by gmarquis         ###   ########.fr       */
+/*   Updated: 2024/12/04 09:10:42 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,25 @@ static char	**st_create_envp(t_shell *shell, t_env_data *env_data)
 	return (envp);
 }
 
+static void	st_shell_lvl_helper(int i, t_env *current, t_gc *gcl)
+{
+	if (i >= INT_MAX)
+		current->value = "0";
+	else
+	{
+		current->value = ft_itoa(i + 1);
+		gc_register(current->value, gcl);
+		gc_lock(current->value, gcl);
+	}
+	return ;
+}
+
 void	ms_increment_shell_lvl(t_env *env, t_gc *gcl)
 {
 	t_env	*current;
-	long		i;
+	long	i;
 
-	current  = env;
+	current = env;
 	while (current)
 	{
 		if (!ft_strncmp(current->var, "SHLVL", 6))
@@ -45,22 +58,13 @@ void	ms_increment_shell_lvl(t_env *env, t_gc *gcl)
 			i = ft_atol(current->value);
 			if (i >= 999 && i <= INT_MAX)
 			{
-				ft_dprintf(2, "minishell: warning: shell level (%d) too high, resetting to 1\n", i);
+				ft_dprintf(2, "minishell: warning: shell level (%d)"
+					" too high, resetting to 1\n", i);
 				current->value = "1";
 				return ;
 			}
-			else if (i >= INT_MAX)
-			{
-				current->value = "0";
-				return ;
-			}
 			else
-			{
-				current->value = ft_itoa(i + 1);
-				gc_register(current->value, gcl);
-				gc_lock(current->value, gcl);
-				return ;
-			}
+				st_shell_lvl_helper(i, current, gcl);
 			i++;
 		}
 		current = current->next;

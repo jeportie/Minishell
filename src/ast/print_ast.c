@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:17:41 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 11:04:38 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/04 08:08:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,20 +105,17 @@ void	print_node_content(t_ast_node *node, int fd)
 
 void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
 {
-	char	new_prefix[256];
-	int		fd;
-
+	char (new_prefix)[256] = {0, };
 	if (node == NULL)
 		return ;
-	fd = open(PRINT_INFOS, O_WRONLY | O_APPEND , COPY_MODE);
+	int (fd) = open(PRINT_INFOS, O_WRONLY | O_APPEND, COPY_MODE);
 	ft_dprintf(fd, "%s", prefix);
 	print_branch(depth, is_left, fd);
 	ft_dprintf(fd, "%s", get_node_label(node));
 	print_node_content(node, fd);
 	ft_dprintf(fd, "\n");
-	int (single_branch) = (node->type == NODE_REDIRECT_OUT
-			|| node->type == NODE_REDIRECT_IN
-			|| node->type == NODE_REDIRECT_APPEND
+	int (single_branch) = (node->type == NODE_REDIRECT_OUT || node->type
+			== NODE_REDIRECT_IN || node->type == NODE_REDIRECT_APPEND
 			|| node->type == NODE_REDIRECT_HEREDOC
 			|| node->type == NODE_SUBSHELL);
 	if (!single_branch && is_left)

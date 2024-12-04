@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:16:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 16:37:00 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/04 08:25:41 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_proc_info(const t_proc_manager *manager)
 
 	if (DEBUG == 0)
 		return ;
-	fd = open(PRINT_INFOS, O_WRONLY | O_APPEND , COPY_MODE);
+	fd = open(PRINT_INFOS, O_WRONLY | O_APPEND, COPY_MODE);
 	while (current)
 	{
 		ft_dprintf(fd, "%s\t\t%d\t%d\t\t%d\t%d\t%d\t%d\t%d\n",
@@ -34,7 +34,7 @@ void	print_proc_info(const t_proc_manager *manager)
 			current->is_heredoc);
 		current = current->next;
 	}
-	ft_dprintf(fd, "----------------------------------------------------------------");
+	ft_dprintf(fd, "-----------------------------------------------------");
 	ft_dprintf(fd, "----------------\n");
 	ft_dprintf(fd, "\n");
 	close(fd);

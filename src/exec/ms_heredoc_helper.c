@@ -6,15 +6,17 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:08:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 19:47:20 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/04 08:24:47 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
+
 int	heredoc_parent_process(t_heredoc_params *params, pid_t pid)
 {
 	int	status;
 	int	ret;
+
 	ms_stop_std_signal();
 	safe_close(params->pipefd[1]);
 	waitpid(pid, &status, 0);
@@ -84,7 +86,8 @@ int	handle_child_status(int status, t_heredoc_params *params)
 		if (exit_status != 0)
 		{
 			ft_dprintf(1, "\n");
-			ft_dprintf(2, "Minishell: Error: «heredoc» délimité par la fin du fichier (au lieu de «%s»)\n", params->delimiter);
+			ft_dprintf(2, "Minishell: Error: «heredoc» délimité par la "
+				"fin du fichier (au lieu de «%s»)\n", params->delimiter);
 			params->context->exit_status = exit_status;
 			return (params->context->exit_status);
 		}
