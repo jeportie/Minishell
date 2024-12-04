@@ -1,0 +1,7 @@
+jeportie@minishell $> echo hello > test
+hello
+0
+jeportie@minishell $> cat -e test
+0
+jeportie@minishell $> rm test
+0

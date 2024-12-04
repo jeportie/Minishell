@@ -1,0 +1,27 @@
+==61672== Memcheck, a memory error detector
+==61672== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==61672== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==61672== Command: ../minishell
+==61672== Parent PID: 60473
+==61672== 
+==61672== 
+==61672== HEAP SUMMARY:
+==61672==     in use at exit: 4,038 bytes in 2 blocks
+==61672==   total heap usage: 557 allocs, 555 frees, 24,627 bytes allocated
+==61672== 
+==61672== 22 bytes in 1 blocks are definitely lost in loss record 1 of 2
+==61672==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==61672==    by 0x115CF8: ft_extract_line (in /root/projects/minishell/minishell)
+==61672==    by 0x115EFE: get_next_line (in /root/projects/minishell/minishell)
+==61672==    by 0x110530: ms_get_user_input (in /root/projects/minishell/minishell)
+==61672==    by 0x11375C: main (in /root/projects/minishell/minishell)
+==61672== 
+==61672== LEAK SUMMARY:
+==61672==    definitely lost: 22 bytes in 1 blocks
+==61672==    indirectly lost: 0 bytes in 0 blocks
+==61672==      possibly lost: 0 bytes in 0 blocks
+==61672==    still reachable: 0 bytes in 0 blocks
+==61672==         suppressed: 4,016 bytes in 1 blocks
+==61672== 
+==61672== For lists of detected and suppressed errors, rerun with: -s
+==61672== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)

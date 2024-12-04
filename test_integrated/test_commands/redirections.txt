@@ -1,0 +1,3 @@
+echo hello > test
+cat -e test
+rm test

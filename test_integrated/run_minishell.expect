@@ -3,9 +3,14 @@
 # Disable timeout
 set timeout 0
 
-# Open the test_commands.txt file for reading
-set command_file "test_commands.txt"
-set output_file ".minishell_output.txt"
+# Check if command file is provided
+if { [llength $argv] != 1 } {
+    puts "Usage: $argv0 <command_file>"
+    exit 1
+}
+set output_dir "test_outputs"
+set command_file [lindex $argv 0]
+set output_file "$output_dir/minishell_output_[file rootname [file tail $command_file]].txt"
 
 set prompt "\$USER@minishell \$> "
 
