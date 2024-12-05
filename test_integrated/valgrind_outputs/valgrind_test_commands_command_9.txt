@@ -1,30 +1,30 @@
-==13139== Memcheck, a memory error detector
-==13139== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==13139== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==13139== Command: ../minishell
-==13139== Parent PID: 11720
-==13139== 
-==13139== 
-==13139== HEAP SUMMARY:
-==13139==     in use at exit: 4,029 bytes in 2 blocks
-==13139==   total heap usage: 553 allocs, 551 frees, 24,530 bytes allocated
-==13139== 
-==13139== 13 bytes in 1 blocks are definitely lost in loss record 1 of 2
-==13139==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13139==    by 0x114A10: ft_strdup (in /root/projects/minishell/minishell)
-==13139==    by 0x10D466: ms_parse_cmd_path (in /root/projects/minishell/minishell)
-==13139==    by 0x10CD6E: ms_execute_external (in /root/projects/minishell/minishell)
-==13139==    by 0x10E20A: ms_execute_command (in /root/projects/minishell/minishell)
-==13139==    by 0x10C9FF: ms_execute_ast (in /root/projects/minishell/minishell)
-==13139==    by 0x11389D: run (in /root/projects/minishell/minishell)
-==13139==    by 0x1139D5: main (in /root/projects/minishell/minishell)
-==13139== 
-==13139== LEAK SUMMARY:
-==13139==    definitely lost: 13 bytes in 1 blocks
-==13139==    indirectly lost: 0 bytes in 0 blocks
-==13139==      possibly lost: 0 bytes in 0 blocks
-==13139==    still reachable: 0 bytes in 0 blocks
-==13139==         suppressed: 4,016 bytes in 1 blocks
-==13139== 
-==13139== For lists of detected and suppressed errors, rerun with: -s
-==13139== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
+==22904== Memcheck, a memory error detector
+==22904== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==22904== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==22904== Command: ../minishell
+==22904== Parent PID: 21485
+==22904== 
+==22904== 
+==22904== HEAP SUMMARY:
+==22904==     in use at exit: 4,029 bytes in 2 blocks
+==22904==   total heap usage: 553 allocs, 551 frees, 24,530 bytes allocated
+==22904== 
+==22904== 13 bytes in 1 blocks are definitely lost in loss record 1 of 2
+==22904==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22904==    by 0x114A10: ft_strdup (in /root/projects/minishell/minishell)
+==22904==    by 0x10D466: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==22904==    by 0x10CD6E: ms_execute_external (in /root/projects/minishell/minishell)
+==22904==    by 0x10E20A: ms_execute_command (in /root/projects/minishell/minishell)
+==22904==    by 0x10C9FF: ms_execute_ast (in /root/projects/minishell/minishell)
+==22904==    by 0x11389D: run (in /root/projects/minishell/minishell)
+==22904==    by 0x1139D5: main (in /root/projects/minishell/minishell)
+==22904== 
+==22904== LEAK SUMMARY:
+==22904==    definitely lost: 13 bytes in 1 blocks
+==22904==    indirectly lost: 0 bytes in 0 blocks
+==22904==      possibly lost: 0 bytes in 0 blocks
+==22904==    still reachable: 0 bytes in 0 blocks
+==22904==         suppressed: 4,016 bytes in 1 blocks
+==22904== 
+==22904== For lists of detected and suppressed errors, rerun with: -s
+==22904== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
