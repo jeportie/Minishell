@@ -167,7 +167,7 @@ process_outputs() {
 report_results() {
     local elapsed_time="$1"  # Receive elapsed time as an argument
 
-    echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n${BLUE}======================================================================${RESET}"
+    echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n${BLUE}======================================================================${RESET}"
     echo -e "${BLUE}                   TESTING MINISHELL VS POSIX SUMMARY                 ${RESET}"
     echo -e "${BLUE}======================================================================${RESET}\n"
 
