@@ -4,7 +4,9 @@ echo "je suis un test"
 echo 'je suis un test'
 echo "je suis" "un test"
 echo 'je suis "un test"'
-pwd
+pwd > test
+cat test
+rm test
 cd ..
 pwd
 cd -

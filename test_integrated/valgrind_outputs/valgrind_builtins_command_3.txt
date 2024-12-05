@@ -1,27 +1,20 @@
-==1499== Memcheck, a memory error detector
-==1499== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==1499== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==1499== Command: ../minishell
-==1499== Parent PID: 293
-==1499== 
-==1499== 
-==1499== HEAP SUMMARY:
-==1499==     in use at exit: 4,040 bytes in 2 blocks
-==1499==   total heap usage: 545 allocs, 543 frees, 24,302 bytes allocated
-==1499== 
-==1499== 24 bytes in 1 blocks are definitely lost in loss record 1 of 2
-==1499==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1499==    by 0x11568C: ft_extract_line (in /root/projects/minishell/minishell)
-==1499==    by 0x115892: get_next_line (in /root/projects/minishell/minishell)
-==1499==    by 0x1110F5: ms_get_user_input (in /root/projects/minishell/minishell)
-==1499==    by 0x113916: main (in /root/projects/minishell/minishell)
-==1499== 
-==1499== LEAK SUMMARY:
-==1499==    definitely lost: 24 bytes in 1 blocks
-==1499==    indirectly lost: 0 bytes in 0 blocks
-==1499==      possibly lost: 0 bytes in 0 blocks
-==1499==    still reachable: 0 bytes in 0 blocks
-==1499==         suppressed: 4,016 bytes in 1 blocks
-==1499== 
-==1499== For lists of detected and suppressed errors, rerun with: -s
-==1499== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
+==12930== Memcheck, a memory error detector
+==12930== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==12930== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==12930== Command: ../minishell
+==12930== Parent PID: 11720
+==12930== 
+==12930== 
+==12930== HEAP SUMMARY:
+==12930==     in use at exit: 4,016 bytes in 1 blocks
+==12930==   total heap usage: 546 allocs, 545 frees, 24,342 bytes allocated
+==12930== 
+==12930== LEAK SUMMARY:
+==12930==    definitely lost: 0 bytes in 0 blocks
+==12930==    indirectly lost: 0 bytes in 0 blocks
+==12930==      possibly lost: 0 bytes in 0 blocks
+==12930==    still reachable: 0 bytes in 0 blocks
+==12930==         suppressed: 4,016 bytes in 1 blocks
+==12930== 
+==12930== For lists of detected and suppressed errors, rerun with: -s
+==12930== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

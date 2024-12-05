@@ -1,27 +1,20 @@
-==1657== Memcheck, a memory error detector
-==1657== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==1657== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==1657== Command: ../minishell
-==1657== Parent PID: 293
-==1657== 
-==1657== 
-==1657== HEAP SUMMARY:
-==1657==     in use at exit: 4,028 bytes in 2 blocks
-==1657==   total heap usage: 545 allocs, 543 frees, 24,234 bytes allocated
-==1657== 
-==1657== 12 bytes in 1 blocks are definitely lost in loss record 1 of 2
-==1657==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1657==    by 0x11568C: ft_extract_line (in /root/projects/minishell/minishell)
-==1657==    by 0x115892: get_next_line (in /root/projects/minishell/minishell)
-==1657==    by 0x1110F5: ms_get_user_input (in /root/projects/minishell/minishell)
-==1657==    by 0x113916: main (in /root/projects/minishell/minishell)
-==1657== 
-==1657== LEAK SUMMARY:
-==1657==    definitely lost: 12 bytes in 1 blocks
-==1657==    indirectly lost: 0 bytes in 0 blocks
-==1657==      possibly lost: 0 bytes in 0 blocks
-==1657==    still reachable: 0 bytes in 0 blocks
-==1657==         suppressed: 4,016 bytes in 1 blocks
-==1657== 
-==1657== For lists of detected and suppressed errors, rerun with: -s
-==1657== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
+==13072== Memcheck, a memory error detector
+==13072== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==13072== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==13072== Command: ../minishell
+==13072== Parent PID: 11720
+==13072== 
+==13072== 
+==13072== HEAP SUMMARY:
+==13072==     in use at exit: 4,016 bytes in 1 blocks
+==13072==   total heap usage: 546 allocs, 545 frees, 24,274 bytes allocated
+==13072== 
+==13072== LEAK SUMMARY:
+==13072==    definitely lost: 0 bytes in 0 blocks
+==13072==    indirectly lost: 0 bytes in 0 blocks
+==13072==      possibly lost: 0 bytes in 0 blocks
+==13072==    still reachable: 0 bytes in 0 blocks
+==13072==         suppressed: 4,016 bytes in 1 blocks
+==13072== 
+==13072== For lists of detected and suppressed errors, rerun with: -s
+==13072== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

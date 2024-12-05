@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:51:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/04 09:16:14 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/05 09:55:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	ms_get_user_input(t_shell *shell)
 	else
 	{
 		shell->user_input = get_next_line(STDIN_FILENO);
+		gc_register(shell->user_input, shell->gcl);
+		gc_lock(shell->user_input, shell->gcl);
 		if (shell->user_input)
 		{
 			len = ft_strlen(shell->user_input);
