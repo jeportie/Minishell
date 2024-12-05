@@ -1,0 +1,10 @@
+jeportie@minishell $> cat << EOF
+> hello
+> test
+> EOF
+hello
+test
+0
+jeportie@minishell $> echo test ok
+test ok
+0

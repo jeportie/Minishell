@@ -5,5 +5,3 @@ echo "je suis un test"
 echo 'je suis un test'
 echo "je suis" "un test"
 echo 'je suis "un test"'
-echo je suis' un "test'"
-"

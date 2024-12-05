@@ -27,6 +27,9 @@ sleep 0.1
 # Read and execute each command from test_commands.txt
 set file [open $command_file r]
 
+# Initialize heredoc_mode to 0 (false)
+set heredoc_mode 0
+
 while {[gets $file line] != -1} {
     # Skip empty lines
     if {[string trim $line] == ""} {
@@ -37,10 +40,28 @@ while {[gets $file line] != -1} {
     expect -re "^$prompt"
     sleep 0.1
 
-    # Send echo $? to minishell
-    send "echo \$?\r"
-    expect -re "^$prompt"
-    sleep 0.1
+    # Check if entering heredoc mode
+    if {[regexp {<<\s*EOF} $line]} {
+        set heredoc_mode 1
+        continue
+    }
+    
+    # Check if exiting heredoc mode
+    if {$heredoc_mode && [string trim $line] == "EOF"} {
+        set heredoc_mode 0
+        # Send echo $? after exiting heredoc mode
+        send "echo \$?\r"
+        expect -re "^$prompt"
+        sleep 0.1
+        continue
+    }
+
+    # If not in heredoc mode, send echo $?
+    if {!$heredoc_mode} {
+        send "echo \$?\r"
+        expect -re "^$prompt"
+        sleep 0.1
+    }
 }
 close $file
 

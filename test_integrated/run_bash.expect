@@ -29,8 +29,11 @@ send "export PS1='$prompt'\r"
 expect -re "^$prompt"
 sleep 0.1
 
-# Read and execute each command from test_commands.txt
+# Read and execute each command from the command file
 set file [open $command_file r]
+
+# Initialize heredoc_mode to 0 (false)
+set heredoc_mode 0
 
 while {[gets $file line] != -1} {
     # Skip empty lines
@@ -42,10 +45,28 @@ while {[gets $file line] != -1} {
     expect -re "^$prompt"
     sleep 0.1
 
-    # Send echo $? to bash
-    send "echo \$?\r"
-    expect -re "^$prompt"
-    sleep 0.1
+    # Check if entering heredoc mode
+    if {[regexp {<<\s*EOF} $line]} {
+        set heredoc_mode 1
+        continue
+    }
+
+    # Check if exiting heredoc mode
+    if {$heredoc_mode && [string trim $line] == "EOF"} {
+        set heredoc_mode 0
+        # Send echo $? after exiting heredoc mode
+        send "echo \$?\r"
+        expect -re "^$prompt"
+        sleep 0.1
+        continue
+    }
+
+    # If not in heredoc mode, send echo $?
+    if {!$heredoc_mode} {
+        send "echo \$?\r"
+        expect -re "^$prompt"
+        sleep 0.1
+    }
 }
 close $file
 
