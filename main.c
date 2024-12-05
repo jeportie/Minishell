@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 16:23:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:21:08 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	print_ast_delimit(t_ast_node *root)
 
 	if (DEBUG == 0)
 		return ;
-	fd = open(PRINT_INFOS, O_WRONLY | O_APPEND , COPY_MODE);
+	fd = open(PRINT_INFOS, O_WRONLY | O_APPEND, COPY_MODE);
 	ft_dprintf(fd, "------------------------------------------------");
 	ft_dprintf(fd, "--------------------------------\nAST:\n");
 	print_ast(root, 0, "", 0);

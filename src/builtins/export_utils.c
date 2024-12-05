@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:35:57 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 15:29:15 by gmarquis         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:19:12 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,12 @@ void	add_export(t_export_utils *utils, t_env **ev, char *name_folder,
 	tmp->var = gc_strdup(name_folder, utils->shell->gcl);
 	if (!tmp->var)
 		echec_malloc(utils->shell->gcl, "tmp->var");
-	gc_register(tmp->var, utils->shell->gcl);
 	gc_lock(tmp->var, utils->shell->gcl);
 	if (value_folder)
 	{
 		tmp->value = gc_strdup(value_folder, utils->shell->gcl);
 		if (!tmp->value)
 			echec_malloc(utils->shell->gcl, "tmp->value");
-		gc_register(tmp->value, utils->shell->gcl);
 		gc_lock(tmp->value, utils->shell->gcl);
 	}
 	else
