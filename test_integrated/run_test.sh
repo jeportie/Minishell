@@ -12,6 +12,20 @@ BLUE="\033[1;34m"
 CYAN="\033[1;36m"
 RESET="\033[0m"
 
+# Initialize global test failure counter
+test_failed_global=0
+
+# ----------------------------
+# Argument Parsing
+# ----------------------------
+RUN_VALGRIND=false
+
+for arg in "$@"; do
+    if [ "$arg" == "--valgrind" ]; then
+        RUN_VALGRIND=true
+    fi
+done
+
 # ----------------------------
 # Start Animated Banner
 # ----------------------------
@@ -491,18 +505,14 @@ main() {
     clean_outputs
     build_project
 
-    # ----------------------------
     # Start Time Capture
-    # ----------------------------
     start_time=$(date +%s%N)
 
     run_expect_scripts
     process_outputs
     stop_banner
 
-    # ----------------------------
     # End Time Capture
-    # ----------------------------
     end_time=$(date +%s%N)
 
     # Calculate elapsed time in milliseconds
@@ -510,8 +520,9 @@ main() {
 
     # Pass elapsed time to report_results
     report_results "$elapsed"
-    echo next!
-    run_valgrind_tests
+    if [ "$RUN_VALGRIND" == true ]; then
+        run_valgrind_tests
+    fi
     make -C .. fullclean >> "$BUILD_LOG" 
 
     # Exit the script based on the test results
