@@ -1,0 +1,5 @@
+cat << EOF
+hello
+test
+EOF
+echo test ok

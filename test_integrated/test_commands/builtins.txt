@@ -1,9 +1,3 @@
-echo Hello
-echo je suis un test
-echo "je suis un test"
-echo 'je suis un test'
-echo "je suis" "un test"
-echo 'je suis "un test"'
 pwd > test
 cat test
 rm test

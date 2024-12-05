@@ -15,6 +15,9 @@ RESET="\033[0m"
 # Initialize global test failure counter
 test_failed_global=0
 
+# Initialize BUILD_LOG as empty
+BUILD_LOG=""
+
 # ----------------------------
 # Argument Parsing
 # ----------------------------
@@ -45,8 +48,8 @@ start_banner() {
 stop_banner() {
     # Stop the animated banner
     if [ -n "$BANNER_PID" ]; then
-        kill $BANNER_PID 2>/dev/null
-        wait $BANNER_PID 2>/dev/null
+        kill "$BANNER_PID" 2>/dev/null
+        wait "$BANNER_PID" 2>/dev/null
         unset BANNER_PID
         # Move cursor below the banner area
         BANNER_HEIGHT=6  # Number of lines in the banner
@@ -63,6 +66,7 @@ move_cursor_below_banner() {
     BANNER_HEIGHT=6  # Number of lines in the banner
     echo -ne "\033[$((BANNER_HEIGHT + 1));1H"  # Move cursor to line after the banner
 }
+
 # ----------------------------
 # Step 1: Clean Existing Output Files
 # ----------------------------
@@ -87,11 +91,9 @@ build_project() {
     make -C .. nodebug >> "$BUILD_LOG"
     if make -C .. classic >> "$BUILD_LOG" 2>&1; then
         echo -e "${GREEN}Build successful.${RESET}"
-        rm "$BUILD_LOG"  # Remove the temporary log file if build succeeds
     else
         echo -e "${RED}Build failed. Please check the error details below:${RESET}"
         cat "$BUILD_LOG"
-        rm "$BUILD_LOG"
         exit 1
     fi
 }
@@ -117,7 +119,7 @@ run_expect_scripts() {
         if ./run_bash.expect "$test_file" > /dev/null 2>&1; then
             echo -e "${GREEN}bash.expect executed successfully for group '${group_name}'.${RESET}"
         else
-            echo -e "${RED}bash.expect failed for group '${group_name}'. Pease check the script and permissions.${RESET}"
+            echo -e "${RED}bash.expect failed for group '${group_name}'. Please check the script and permissions.${RESET}"
             exit 1
         fi
         echo -e "${CYAN}Running minishell Expect script for group '${group_name}'...${RESET}"
@@ -128,8 +130,6 @@ run_expect_scripts() {
             exit 1
         fi
     done
-
-
 }
 
 # ----------------------------
@@ -167,7 +167,7 @@ process_outputs() {
 report_results() {
     local elapsed_time="$1"  # Receive elapsed time as an argument
 
-    echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n${BLUE}======================================================================${RESET}"
+    echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n${BLUE}======================================================================${RESET}"
     echo -e "${BLUE}                   TESTING MINISHELL VS POSIX SUMMARY                 ${RESET}"
     echo -e "${BLUE}======================================================================${RESET}\n"
 
@@ -198,9 +198,54 @@ report_results() {
         group_tests_passed=0
         group_tests_failed=0
 
-        # Read commands into array
+        # ----------------------------
+        # Enhanced Command Counting Logic Using grep
+        # ----------------------------
+
+        # Initialize variables for command counting
+        total_commands=0
+        in_multiline=0
+        multiline_end_token="EOF"
+
+        # Read commands file line by line to count commands accurately
+        while IFS= read -r line || [[ -n "$line" ]]; do
+            # Trim leading and trailing whitespace (spaces and tabs)
+            trimmed_line=$(echo "$line" | sed 's/^[ \t]*//;s/[ \t]*$//')
+
+            # Skip empty lines
+            if [[ -z "$trimmed_line" ]]; then
+                continue
+            fi
+
+            if [[ $in_multiline -eq 1 ]]; then
+                # Check if the current line is the end token
+                if [[ "$trimmed_line" == "$multiline_end_token" ]]; then
+                    in_multiline=0
+                fi
+                # Do not count lines inside multi-line command
+                continue
+            fi
+
+            # Use grep to check if the line contains '<< TOKEN'
+            if echo "$trimmed_line" | grep -q '<<[[:space:]]*[A-Za-z0-9_]\+'; then
+                # Extract the end token using grep and sed
+                multiline_end_token=$(echo "$trimmed_line" | grep -o '<<[[:space:]]*[A-Za-z0-9_]\+' | sed 's/<<[[:space:]]*//')
+                in_multiline=1
+                # Count the start of multi-line command as one command
+                ((total_commands++))
+                continue
+            fi
+
+            # For single-line commands, increment the counter
+            ((total_commands++))
+        done < "$COMMANDS_FILE"
+
+        # ----------------------------
+
+        # Read commands into array for processing
         mapfile -t commands < "$COMMANDS_FILE"
 
+        # Parse outputs
         # Function to parse outputs into an array of outputs per command
         parse_outputs() {
             local output_file="$1"
@@ -241,15 +286,24 @@ report_results() {
         declare -a minishell_outputs
         parse_outputs "$MINISHELL_OUTPUT" minishell_outputs
 
-        # Check if the number of commands matches the number of outputs
-        if [ "${#commands[@]}" -ne "${#bash_outputs[@]}" ] || [ "${#commands[@]}" -ne "${#minishell_outputs[@]}" ]; then
+        # ----------------------------
+        # Compare Command Counts
+        # ----------------------------
+
+        # Compare the counted commands with the outputs
+        bash_output_count="${#bash_outputs[@]}"
+        minishell_output_count="${#minishell_outputs[@]}"
+
+        if [ "$total_commands" -ne "$bash_output_count" ] || [ "$total_commands" -ne "$minishell_output_count" ]; then
             echo -e "${RED}Error: Number of commands and outputs do not match in group '${group_name}'.${RESET}"
-            echo -e "Commands: ${#commands[@]}, Bash Outputs: ${#bash_outputs[@]}, Minishell Outputs: ${#minishell_outputs[@]}"
+            echo -e "Commands: ${total_commands}, Bash Outputs: ${bash_output_count}, Minishell Outputs: ${minishell_output_count}"
             exit 1
         fi
 
+        # ----------------------------
+
         # Iterate over each command
-        for ((i=0; i<${#commands[@]}; i++)); do
+        for ((i=0; i<total_commands; i++)); do
             test_name="${commands[i]}"
             bash_output="${bash_outputs[i]}"
             mini_output="${minishell_outputs[i]}"
@@ -258,13 +312,13 @@ report_results() {
             ((total_tests++))
             ((group_total_tests++))
 
-            # Remove trailing newlines
+            # Remove trailing newlines and empty lines
             bash_output="$(echo -e "$bash_output" | sed '/^[[:space:]]*$/d')"
             mini_output="$(echo -e "$mini_output" | sed '/^[[:space:]]*$/d')"
 
             # Split outputs into lines
-            IFS=$'\n' read -d '' -r -a bash_lines <<< "$bash_output"
-            IFS=$'\n' read -d '' -r -a mini_lines <<< "$mini_output"
+            IFS=$'\n' read -r -d '' -a bash_lines <<< "$bash_output"
+            IFS=$'\n' read -r -d '' -a mini_lines <<< "$mini_output"
 
             # Remove the prompt line
             bash_prompt="${bash_lines[0]}"
@@ -535,3 +589,4 @@ main() {
 
 # Execute the main function
 main
+
