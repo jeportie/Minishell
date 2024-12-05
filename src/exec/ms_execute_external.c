@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 12:29:33 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:15:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,12 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	cmd_path = ms_parse_cmd_path(cmd_node->argv[0], context->shell);
 	if (cmd_path == NULL)
 	{
-		ft_dprintf(STDERR_FILENO, "minishell: command not found: %s\n",
-			cmd_node->argv[0]);
+		if (ft_strchr(cmd_node->argv[0], '/'))
+			ft_dprintf(STDERR_FILENO, "bash: %s: No such file or directory\n",
+				cmd_node->argv[0]);
+		else
+			ft_dprintf(STDERR_FILENO, "bash: %s: command not found\n",
+				cmd_node->argv[0]);
 		context->shell->error_code = 127;
 		return (context->shell->error_code);
 	}
