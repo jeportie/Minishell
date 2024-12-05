@@ -1,0 +1,28 @@
+jeportie@minishell $> echo
+
+0
+jeportie@minishell $> echo Hello
+Hello
+0
+jeportie@minishell $> echo je suis un test
+je suis un test
+0
+jeportie@minishell $> echo "je suis un test"
+je suis un test
+0
+jeportie@minishell $> echo 'je suis un test'
+je suis un test
+0
+jeportie@minishell $> echo "je suis" "un test"
+je suis un test
+0
+jeportie@minishell $> echo 'je suis "un test"'
+je suis "un test"
+0
+jeportie@minishell $> echo je suis' un "test'"
+> echo $?
+> "
+je suis un "test
+echo 0
+
+0
