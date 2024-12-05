@@ -1,33 +1,33 @@
-==22877== Memcheck, a memory error detector
-==22877== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==22877== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==22877== Command: ../minishell
-==22877== Parent PID: 21485
-==22877== 
-==22877== 
-==22877== HEAP SUMMARY:
-==22877==     in use at exit: 4,020 bytes in 3 blocks
-==22877==   total heap usage: 602 allocs, 599 frees, 25,786 bytes allocated
-==22877== 
-==22877== 4 bytes in 2 blocks are definitely lost in loss record 1 of 2
-==22877==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==22877==    by 0x115134: ft_itoa (in /root/projects/minishell/minishell)
-==22877==    by 0x110586: ms_get_env_value (in /root/projects/minishell/minishell)
-==22877==    by 0x10E7AF: ms_expand_arg (in /root/projects/minishell/minishell)
-==22877==    by 0x10EC47: nested_vars (in /root/projects/minishell/minishell)
-==22877==    by 0x10F689: ms_manage_arg_expand (in /root/projects/minishell/minishell)
-==22877==    by 0x10DF5C: st_set_underscore_value (in /root/projects/minishell/minishell)
-==22877==    by 0x10DFF7: ms_execute_command (in /root/projects/minishell/minishell)
-==22877==    by 0x10C9FF: ms_execute_ast (in /root/projects/minishell/minishell)
-==22877==    by 0x11389D: run (in /root/projects/minishell/minishell)
-==22877==    by 0x1139D5: main (in /root/projects/minishell/minishell)
-==22877== 
-==22877== LEAK SUMMARY:
-==22877==    definitely lost: 4 bytes in 2 blocks
-==22877==    indirectly lost: 0 bytes in 0 blocks
-==22877==      possibly lost: 0 bytes in 0 blocks
-==22877==    still reachable: 0 bytes in 0 blocks
-==22877==         suppressed: 4,016 bytes in 1 blocks
-==22877== 
-==22877== For lists of detected and suppressed errors, rerun with: -s
-==22877== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
+==33228== Memcheck, a memory error detector
+==33228== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==33228== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==33228== Command: ../minishell
+==33228== Parent PID: 31838
+==33228== 
+==33228== 
+==33228== HEAP SUMMARY:
+==33228==     in use at exit: 4,020 bytes in 3 blocks
+==33228==   total heap usage: 602 allocs, 599 frees, 25,786 bytes allocated
+==33228== 
+==33228== 4 bytes in 2 blocks are definitely lost in loss record 1 of 2
+==33228==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==33228==    by 0x1150DA: ft_itoa (in /root/projects/minishell/minishell)
+==33228==    by 0x11052C: ms_get_env_value (in /root/projects/minishell/minishell)
+==33228==    by 0x10E755: ms_expand_arg (in /root/projects/minishell/minishell)
+==33228==    by 0x10EBED: nested_vars (in /root/projects/minishell/minishell)
+==33228==    by 0x10F62F: ms_manage_arg_expand (in /root/projects/minishell/minishell)
+==33228==    by 0x10CAFC: st_set_underscore_value (in /root/projects/minishell/minishell)
+==33228==    by 0x10CB97: ms_execute_command (in /root/projects/minishell/minishell)
+==33228==    by 0x10C9A5: ms_execute_ast (in /root/projects/minishell/minishell)
+==33228==    by 0x113843: run (in /root/projects/minishell/minishell)
+==33228==    by 0x11397B: main (in /root/projects/minishell/minishell)
+==33228== 
+==33228== LEAK SUMMARY:
+==33228==    definitely lost: 4 bytes in 2 blocks
+==33228==    indirectly lost: 0 bytes in 0 blocks
+==33228==      possibly lost: 0 bytes in 0 blocks
+==33228==    still reachable: 0 bytes in 0 blocks
+==33228==         suppressed: 4,016 bytes in 1 blocks
+==33228== 
+==33228== For lists of detected and suppressed errors, rerun with: -s
+==33228== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
