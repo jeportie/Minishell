@@ -81,6 +81,7 @@ void	ms_manage_arg_expand(t_cmd_node *cmd_node,
 			if (is_wild(cmd_node->argv[i]))
 			{
 				matches = ms_expand_wild(cmd_node->argv[i], gcl);
+				//printf("-> %s\n", matches->matches[0]);
 				cmd_node->argc += matches->match_count - 1;
 				cmd_node->argv = cmd_arg_expansion(cmd_node->argv,
 						matches, gcl);
