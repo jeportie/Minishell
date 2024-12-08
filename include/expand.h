@@ -20,6 +20,7 @@
 # include <stdbool.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+#include <sys/stat.h>
 # include <fcntl.h>
 # include <dirent.h>
 
@@ -41,12 +42,8 @@ typedef struct s_wildcard_context
 	t_gc		*gcl;
 }				t_wildcard_context;
 
+void				expand_glob_recursive(const char *base_path, const char *pattern, t_wildcard_context *ctx);
 t_wildcard_context	*ms_expand_wild(const char *pattern, t_gc *gcl);
-int					initialize_context(t_wildcard_context *ctx,
-						const char *pattern, t_gc *gcl);
-int					add_match(t_wildcard_context *ctx, const char *filename);
-int					check_match(t_wildcard_context *ctx, struct dirent *entry);
-char				**finalize_matches(t_wildcard_context *ctx);
 
 bool				is_var(char *cmd);
 bool				is_wild(char *cmd);
