@@ -20,6 +20,7 @@ static int	ms_open_file(const char *filename, int flags, mode_t mode)
 	fd = open(filename, flags, mode);
 	if (fd == -1)
 		ft_dprintf(STDERR_FILENO, "Minishell: Error: open failed.\n");
+	//printf("%s %d\n", filename, fd);
 	return (fd);
 }
 
@@ -36,9 +37,12 @@ static int	redirect_mode(t_ast_node *node, int flags, int *context_fd,
 	fd = ms_open_file(redir_node->filename, flags, mode);
 	if (fd == -1)
 		return (-1);
+	//printf("%d\n", std_fd);
 	if (*context_fd != std_fd)
 		close(*context_fd);
+	//printf("%d %d\n", *context_fd, fd);
 	*context_fd = fd;
+	//printf("%d %d\n", *context_fd, fd);
 	return (0);
 }
 
