@@ -3,5 +3,16 @@ jeportie@minishell $> echo hello > test
 jeportie@minishell $> cat -e test
 hello$
 0
+jeportie@minishell $> cat < test > outfile1 > outfile2
+0
+jeportie@minishell $> cat -e outfile1
+hello$
+0
+jeportie@minishell $> cat -e outfile2
+0
+jeportie@minishell $> rm outfile1
+0
+jeportie@minishell $> rm outfile2
+0
 jeportie@minishell $> rm test
 0

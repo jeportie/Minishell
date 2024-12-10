@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/05 11:21:08 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:26:24 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 static void	print_token_delimit(t_token *tokens)
 {
 	int	fd;
-	
+
 	if (DEBUG == 0)
 		return ;
 	fd = open(PRINT_INFOS, O_WRONLY | O_TRUNC | O_CREAT, COPY_MODE);
@@ -41,11 +41,14 @@ static void	print_ast_delimit(t_ast_node *root)
 	ft_dprintf(fd, "------------------------------------------------");
 	ft_dprintf(fd, "--------------------------------\nAST:\n");
 	print_ast(root, 0, "", 0);
-	ft_dprintf(fd, "----------------------------------------------------------------");
+	ft_dprintf(fd, "-------------------------------------------"
+		"---------------------");
 	ft_dprintf(fd, "----------------\n");
 	ft_dprintf(fd, "Process Manager - Active Processes:\n");
-	ft_dprintf(fd, "Title\t\tPID\tParent PID\tLevel\tFD_in\tFD_out\tFD_err\tHeredoc\n");
-	ft_dprintf(fd, "----------------------------------------------------------------");
+	ft_dprintf(fd, "Title\t\tPID\tParent PID\tLevel"
+		"\tFD_in\tFD_out\tFD_err\tHeredoc\n");
+	ft_dprintf(fd, "-------------------------"
+		"---------------------------------------");
 	ft_dprintf(fd, "----------------\n");
 	close(fd);
 }
@@ -84,13 +87,10 @@ static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_shell	shell;
-	t_token	*tokens;
-
+	t_token *(tokens) = NULL;
 	t_ast_node *(root) = NULL;
-	shell = ms_init_shell(argc, argv, envp);
+	t_shell (shell) = ms_init_shell(argc, argv, envp);
 	shell.interactive_mode = isatty(STDIN_FILENO);
-	tokens = NULL;
 	while (1)
 	{
 		ms_init_std_signal();

@@ -1,3 +1,8 @@
 echo hello > test
 cat -e test
+cat < test > outfile1 > outfile2
+cat -e outfile1
+cat -e outfile2
+rm outfile1
+rm outfile2
 rm test

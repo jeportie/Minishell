@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 20:01:25 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 17:24:43 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:21:06 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static t_testresult execute_and_capture_echo(char **argv, int argc)
         close(stderr_pipefd[1]);
 
         t_cmd_node cmd_node = {.argv = argv, .argc = argc};
-        int exit_code = ms_echo(&cmd_node);
+        int exit_code = ms_echo(&cmd_node, 1);
         exit(exit_code);
     }
     else

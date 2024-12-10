@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:27:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 17:50:10 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:21:42 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static t_testresult execute_and_capture(void)
         close(stdout_pipefd[1]); // Fermer les extrémités originales d'écriture
         close(stderr_pipefd[1]);
 
-        int exit_code = ms_pwd();
+        int exit_code = ms_pwd(1);
         exit(exit_code);
     }
     else
