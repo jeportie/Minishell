@@ -2,33 +2,15 @@
 TOKENS:
 token  0 | type = 0
 value = cat
-token  1 | type = 2
-value = <
-token  2 | type = 0
-value = Makefile
-token  3 | type = 2
-value = >
-token  4 | type = 0
-value = outfile1
-token  5 | type = 2
-value = <
-token  6 | type = 0
-value = mini_test.txt
-token  7 | type = 2
-value = >
-token  8 | type = 0
-value = outfile2
+token  1 | type = 0
+value = out2
 --------------------------------------------------------------------------------
 AST:
-└── [1;33m>[0m (File: outfile2)
-    └── [1;33m<[0m (File: mini_test.txt)
-        └── [1;33m>[0m (File: outfile1)
-            └── [1;33m<[0m (File: Makefile)
-                └── [1;32m[CMD][0m (cat)
+└── [1;32m[CMD][0m (cat, out2)
 --------------------------------------------------------------------------------
 Process Manager - Active Processes:
 Title		PID	Parent PID	Level	FD_in	FD_out	FD_err	Heredoc
 --------------------------------------------------------------------------------
-cat		20941	20926		1	3	5	2	0
+cat		36700	36697		1	0	1	2	0
 ---------------------------------------------------------------------
 

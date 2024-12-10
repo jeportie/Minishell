@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 10:54:46 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:10:00 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_exec_context
 	bool		is_subprocess;
 	int			exit_status;
 	int			child_lvl;
+	bool		redirected;
 }				t_exec_context;
 
 typedef struct s_pipe_exec_params
