@@ -6,3 +6,9 @@ cat -e outfile2
 rm outfile1
 rm outfile2
 rm test
+echo hello > Makefile
+export a=Makefile
+cat < $a > outfile1
+cat outfile
+rm outfile1
+rm Makefile
