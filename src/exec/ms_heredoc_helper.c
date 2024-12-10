@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:08:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/05 18:15:46 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:40:22 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,6 @@ int	handle_child_status(int status, t_heredoc_params *params)
 		exit_status = WEXITSTATUS(status);
 		if (exit_status != 0)
 		{
-	//		ft_dprintf(1, "\n");
-	//		ft_dprintf(2, "Minishell: Error: «heredoc» délimité par la "
-	//			"fin du fichier (au lieu de «%s»)\n", params->delimiter);
 			params->context->exit_status = exit_status;
 			return (params->context->exit_status);
 		}

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:23:54 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 11:03:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:44:20 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdbool.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-#include <sys/stat.h>
+# include <sys/stat.h>
 # include <fcntl.h>
 # include <dirent.h>
 
@@ -37,12 +37,23 @@ typedef struct s_wildcard_context
 {
 	const char	*pattern;
 	char		**matches;
-	size_t		capacity;
 	size_t		match_count;
+	char		*slash;
 	t_gc		*gcl;
 }				t_wildcard_context;
 
-void				expand_glob_recursive(const char *base_path, const char *pattern, t_wildcard_context *ctx);
+typedef struct s_directory_context
+{
+	char				*slash;
+	const char			*base_path;
+	const char			*c_p;
+	const char			*r_p;
+	t_wildcard_context	*ctx;
+}				t_directory_context;
+
+int					st_add_match(t_wildcard_context *ctx, const char *match);
+void				expand_glob_recursive(const char *base_path,
+						const char *pattern, t_wildcard_context *ctx);
 t_wildcard_context	*ms_expand_wild(const char *pattern, t_gc *gcl);
 
 bool				is_var(char *cmd);

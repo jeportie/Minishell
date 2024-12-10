@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/05 13:15:45 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:17:11 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,8 @@ static void	ms_parent_process(pid_t pid, t_exec_context *context)
 int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 		t_proc_manager *manager, t_gc *gcl)
 {
-	pid_t			pid;
-	char			*cmd_path;
-	t_fork_params	fork_params;
-
-	cmd_path = ms_parse_cmd_path(cmd_node->argv[0], context->shell);
+	t_fork_params (fork_params);
+	char *(cmd_path) = ms_parse_cmd_path(cmd_node->argv[0], context->shell);
 	if (cmd_path == NULL)
 	{
 		if (ft_strchr(cmd_node->argv[0], '/'))
@@ -74,7 +71,7 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 		return (context->shell->error_code);
 	}
 	fork_init(&fork_params, context, false, cmd_node->argv[0]);
-	pid = safe_fork(manager, &fork_params);
+	pid_t (pid) = safe_fork(manager, &fork_params);
 	ms_init_parent_cmd_signal();
 	if (pid == 0)
 	{
@@ -84,6 +81,5 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	else
 		ms_parent_process(pid, context);
 	print_proc_info(manager);
-	ms_init_std_signal();
-	return (context->shell->error_code);
+	return (ms_init_std_signal(), context->shell->error_code);
 }

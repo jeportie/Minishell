@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:20:22 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/05 11:44:29 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:32:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,6 @@ int	ms_cd(t_cmd_node *cmd_node, t_shell *shell)
 		ft_dprintf(2, "minishell: cd: %s: No such file or directory\n",
 			cmd_node->argv[1]);
 	else
-	{
-//		if (cmd_node->argc == 2)
-//			free(cd);
 		return (st_none_chdir(shell));
-	}
 	return (0);
 }
