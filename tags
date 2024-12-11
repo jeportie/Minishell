@@ -5,12 +5,9 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 AST_H	include/ast.h	14;"	d
-BAR_WIDTH	make_interface/src/progress.c	17;"	d	file:
 BLUE	Makefile	/^BLUE    = \\033[34m$/;"	m
-BLUE	make_interface/config/Makefile	/^BLUE    = \\033[34m$/;"	m
 BLUE	test_integrated/animated_banner.py	/^BLUE = "\\033[1;34m"$/;"	v
 BOLD	Makefile	/^BOLD    = \\033[1m$/;"	m
-BOLD	make_interface/config/Makefile	/^BOLD    = \\033[1m$/;"	m
 BUFFER_SIZE	lib/libft/include/libft.h	28;"	d
 BUFFER_SIZE	lib/libft/include/printf.h	27;"	d
 BUILTINS_H	include/builtins.h	14;"	d
@@ -20,22 +17,15 @@ CC	Makefile	/^san: CC = clang$/;"	m
 CC	Makefile	/^val: CC = cc$/;"	m
 CC	lib/libft/Makefile	/^CC = gcc$/;"	m
 CC	lib/libgc/Makefile	/^CC = gcc$/;"	m
-CC	make_interface/config/Makefile	/^CC = 		{{CC}}$/;"	m
-CC	make_interface/config/Makefile	/^default: CC = cc$/;"	m
-CC	make_interface/config/Makefile	/^san: CC = clang$/;"	m
-CC	make_interface/config/Makefile	/^val: CC = cc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = 	-Wall -Wextra -Werror$/;"	m
 CFLAGS	lib/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	lib/libgc/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
-CFLAGS	make_interface/config/Makefile	/^CFLAGS = 	{{CFLAGS}}$/;"	m
 COPY_MODE	include/exec.h	25;"	d
 COPY_MODE	include/minishell.h	27;"	d
 CYAN	test_integrated/animated_banner.py	/^CYAN = "\\033[1;36m"$/;"	v
 DEBUG	include/minishell.h	24;"	d
 DEPFLAGS	Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
-DEPFLAGS	make_interface/config/Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
 DEPS	Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
-DEPS	make_interface/config/Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
 DirectoryOfThisScript	ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
 ERNOFORMAT	lib/libft/include/printf.h	/^	ERNOFORMAT,$/;"	e	enum:e_error
 ERNOMEM	lib/libft/include/printf.h	/^	ERNOMEM,$/;"	e	enum:e_error
@@ -47,27 +37,17 @@ EXEC_H	include/exec.h	14;"	d
 EXPAND_H	include/expand.h	14;"	d
 FlagsForFile	ycm_extra_conf.py	/^def FlagsForFile(filename):$/;"	f
 GREEN	Makefile	/^GREEN   = \\033[32m$/;"	m
-GREEN	make_interface/config/Makefile	/^GREEN   = \\033[32m$/;"	m
-GREEN	make_interface/src/make_prompt.c	21;"	d	file:
 GREEN	test_integrated/animated_banner.py	/^GREEN = "\\033[1;32m"$/;"	v
 HELG	Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
-HELG	make_interface/config/Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
 INCLUDES	Makefile	/^INCLUDES = -I.\/include -I.\/lib\/libgc\/include -I.\/lib\/libft\/include$/;"	m
-INCLUDES	make_interface/config/Makefile	/^INCLUDES =  {{INCLUDES}} $/;"	m
 LDFLAGS	Makefile	/^LDFLAGS = -lreadline -L.\/lib\/libgc -lgc -L.\/lib\/libft -lft$/;"	m
-LDFLAGS	make_interface/config/Makefile	/^LDFLAGS =	{{LIBDIRS}}$/;"	m
 LIBFT_H	lib/libft/include/libft.h	14;"	d
 LIBGC_H	lib/libgc/include/libgc.h	14;"	d
-MAX_FILES	make_interface/src/interactive_select.c	19;"	d	file:
-MAX_SLEEP_USEC	make_interface/src/progress.c	18;"	d	file:
 MINISHELL_H	include/minishell.h	14;"	d
-MIN_SLEEP_USEC	make_interface/src/progress.c	19;"	d	file:
 MakeRelativePathsAbsolute	ycm_extra_conf.py	/^def MakeRelativePathsAbsolute(flags, working_directory):$/;"	f
 NAME	Makefile	/^NAME = minishell$/;"	m
 NAME	lib/libft/Makefile	/^NAME = libft.a$/;"	m
 NAME	lib/libgc/Makefile	/^NAME = libgc.a$/;"	m
-NAME	make_interface/config/Makefile	/^NAME = {{NAME}}$/;"	m
-NC	make_interface/src/make_prompt.c	23;"	d	file:
 NODE_AND	include/ast.h	/^	NODE_AND,$/;"	e	enum:e_node_type
 NODE_COMMAND	include/ast.h	/^	NODE_COMMAND,$/;"	e	enum:e_node_type
 NODE_OR	include/ast.h	/^	NODE_OR,$/;"	e	enum:e_node_type
@@ -81,30 +61,21 @@ NOERR	lib/libft/include/printf.h	/^	NOERR,$/;"	e	enum:e_error
 OBJ	Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
 OBJ	lib/libft/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 OBJ	lib/libgc/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
-OBJ	make_interface/config/Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
 OBJ_DIR	Makefile	/^OBJ_DIR = 	obj$/;"	m
-OBJ_DIR	make_interface/config/Makefile	/^OBJ_DIR = 	obj$/;"	m
 PRINTF_H	lib/libft/include/printf.h	14;"	d
 PRINT_INFOS	include/minishell.h	26;"	d
 PROCESS_H	include/process.h	14;"	d
 PROMPT_MODE	include/minishell.h	25;"	d
 RED	Makefile	/^RED     = \\033[31m$/;"	m
-RED	make_interface/config/Makefile	/^RED     = \\033[31m$/;"	m
-RED	make_interface/src/make_prompt.c	22;"	d	file:
 RED	test_integrated/animated_banner.py	/^RED = "\\033[1;31m"$/;"	v
 RESET	Makefile	/^RESET   = \\033[0m$/;"	m
-RESET	make_interface/config/Makefile	/^RESET   = \\033[0m$/;"	m
 RESET	test_integrated/animated_banner.py	/^RESET = "\\033[0m"$/;"	v
 SANITIZE	Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
-SANITIZE	make_interface/config/Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
 SCRIPT_URL	Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeromeDev94\/make_interface.git$/;"	m
-SCRIPT_URL	make_interface/config/Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeportie\/make_interface.git$/;"	m
 SRC	Makefile	/^SRC = \\$/;"	m
 SRC	lib/libft/Makefile	/^SRC = \\$/;"	m
 SRC	lib/libgc/Makefile	/^SRC = src\/gc_cleanup.c \\$/;"	m
-SRC	make_interface/config/Makefile	/^SRC =$/;"	m
 SRC_DIR	Makefile	/^SRC_DIR = 	src$/;"	m
-SRC_DIR	make_interface/config/Makefile	/^SRC_DIR = 	src$/;"	m
 START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_create_command_node)$/;"	f
 START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_complex_command)$/;"	f
 START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_empty_input)$/;"	f
@@ -249,15 +220,10 @@ TOKEN_SUBSHELL_STOP	include/tokenize.h	/^	TOKEN_SUBSHELL_STOP,$/;"	e	enum:e_toke
 TOKEN_WORD	include/tokenize.h	/^	TOKEN_WORD,$/;"	e	enum:e_token_type
 TOTAL_STEPS	Makefile	/^TOTAL_STEPS := $(words $(OBJ))$/;"	m
 VALG	Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
-VALG	make_interface/config/Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
 VERBOSE	Makefile	/^VERBOSE ?= @$/;"	m
 VERBOSE	Makefile	/^classic: VERBOSE =$/;"	m
-VERBOSE	make_interface/config/Makefile	/^VERBOSE ?= @$/;"	m
-VERBOSE	make_interface/config/Makefile	/^classic: VERBOSE =$/;"	m
 VFLAGS	Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
-VFLAGS	make_interface/config/Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
 YELLOW	Makefile	/^YELLOW  = \\033[33m$/;"	m
-YELLOW	make_interface/config/Makefile	/^YELLOW  = \\033[33m$/;"	m
 YELLOW	test_integrated/animated_banner.py	/^YELLOW = "\\033[1;33m"$/;"	v
 add_cat	src/builtins/export_utils.c	/^void	add_cat(t_shell *shell, t_env *current, t_env *tmp, int flag)$/;"	f
 add_env_node	test_src/shell/test_ms_get_envp.c	/^void add_env_node(t_env **head, t_env *new_node)$/;"	f
@@ -323,7 +289,6 @@ create_redirect_node	src/ast/create_node.c	/^t_ast_node	*create_redirect_node(t_
 create_subshell_node	src/ast/create_node.c	/^t_ast_node	*create_subshell_node(t_ast_node *child, t_gc *gcl)$/;"	f
 create_token	src/token/lst_tokens.c	/^t_token	*create_token(t_token_type type, const char *value, t_gc *gcl)$/;"	f
 create_tokens	test_src/ast/test_ms_parse_tokens.c	/^t_token *create_tokens(t_gc *gcl, int count, ...)$/;"	f
-create_ycm_extra_conf	make_interface/config/build.sh	/^create_ycm_extra_conf() {$/;"	f
 ctx	include/expand.h	/^	t_wildcard_context	*ctx;$/;"	m	struct:s_directory_context
 current	include/syntax.h	/^	char	*current;$/;"	m	struct:s_syntax
 current	include/tokenize.h	/^	char					*current;$/;"	m	struct:s_op_state
@@ -333,7 +298,6 @@ data	include/ast.h	/^	t_node_data	data;$/;"	m	struct:s_ast_node
 define_type	src/ast/parse_redirection.c	/^static t_node_type	define_type(t_token **current_token)$/;"	f	file:
 delimiter	include/ast.h	/^	char				*delimiter;$/;"	m	struct:s_heredoc_node
 delimiter	include/exec.h	/^	const char		*delimiter;$/;"	m	struct:s_heredoc_params
-display_menu	make_interface/src/interactive_select.c	/^void	display_menu(WINDOW *menu_win, char *choices[], int n_choices, int hl)$/;"	f
 dq_trigger	include/syntax.h	/^	int		dq_trigger;$/;"	m	struct:s_syntax
 e_error	lib/libft/include/printf.h	/^typedef enum e_error$/;"	g
 e_node_type	include/ast.h	/^typedef enum e_node_type$/;"	g
@@ -405,17 +369,14 @@ ft_check_pid	lib/libft/src/utils/ft_check_pid.c	/^void	ft_check_pid(int pid)$/;"
 ft_concat_path	lib/libft/src/utils/ft_find_cmd_path.c	/^static char	*ft_concat_path(char **paths, const char *cmd)$/;"	f	file:
 ft_convert_spec	lib/libft/src/printf/ft_printf.c	/^static int	ft_convert_spec(t_format_spec spec, va_list args,$/;"	f	file:
 ft_count_words	lib/libft/src/string/ft_split.c	/^size_t	ft_count_words(char *str, char c)$/;"	f
-ft_count_words	make_interface/src/make_prompt.c	/^static size_t	ft_count_words(char *str, char c)$/;"	f	file:
 ft_dprintf	lib/libft/src/printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *format, ...)$/;"	f
 ft_extract	lib/libft/src/string/ft_split.c	/^static char	*ft_extract(const char **s, char c, char **tab, size_t i)$/;"	f	file:
-ft_extract	make_interface/src/make_prompt.c	/^static char	*ft_extract(const char **s, char c, char **tab, size_t i)$/;"	f	file:
 ft_extract_line	lib/libft/src/get_next_line/get_next_line.c	/^static char	*ft_extract_line(char *buffer)$/;"	f	file:
 ft_fill_base	lib/libft/src/conversion/ft_ulltoa_base.c	/^static char	*ft_fill_base(unsigned long long nbr, int size, char *base,$/;"	f	file:
 ft_fill_base	lib/libft/src/conversion/ft_utoa_base.c	/^static char	*ft_fill_base(unsigned int nbr, int size, char *base, char *res)$/;"	f	file:
 ft_find_cmd_path	lib/libft/src/utils/ft_find_cmd_path.c	/^char	*ft_find_cmd_path(char **envp, const char *cmd)$/;"	f
 ft_find_end	lib/libft/src/printf/ft_parse_format.c	/^static char	*ft_find_end(const char *start, t_format_spec *spec)$/;"	f	file:
 ft_free_memory	lib/libft/src/string/ft_split.c	/^static void	ft_free_memory(char **tab, size_t i)$/;"	f	file:
-ft_free_memory	make_interface/src/make_prompt.c	/^static void	ft_free_memory(char **tab, size_t i)$/;"	f	file:
 ft_getenv	lib/libft/src/utils/ft_getenv.c	/^char	*ft_getenv(char **envp, const char *name)$/;"	f
 ft_handle_char	lib/libft/src/printf/ft_handle_char.c	/^void	ft_handle_char(t_format_spec spec, va_list args, t_buffer *buf_info)$/;"	f
 ft_handle_hash_flag	lib/libft/src/printf/ft_handle_hash_flag.c	/^void	ft_handle_hash_flag(t_format_spec spec, int content, t_buffer *buf_info)$/;"	f
@@ -470,7 +431,6 @@ ft_read_buffer	lib/libft/src/get_next_line/get_next_line.c	/^static char	*ft_rea
 ft_realloc	lib/libft/src/memory/ft_realloc.c	/^void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)$/;"	f
 ft_snprintf	lib/libft/src/printf/ft_snprintf.c	/^int	ft_snprintf(char *str, size_t size, const char *format, ...)$/;"	f
 ft_split	lib/libft/src/string/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
-ft_split	make_interface/src/make_prompt.c	/^char	**ft_split(char const *s, char c)$/;"	f
 ft_strchr	lib/libft/src/string/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
 ft_strdup	lib/libft/src/string/ft_strdup.c	/^char	*ft_strdup(const char *s)$/;"	f
 ft_striteri	lib/libft/src/string/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char*))$/;"	f
@@ -479,7 +439,6 @@ ft_strjoin_free	lib/libft/src/string/ft_strjoin.c	/^char	*ft_strjoin_free(char *
 ft_strjoin_gnl	lib/libft/src/get_next_line/get_next_line.c	/^static char	*ft_strjoin_gnl(char const *s1, char const *s2)$/;"	f	file:
 ft_strlcat	lib/libft/src/string/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f
 ft_strlcpy	lib/libft/src/string/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f
-ft_strlcpy	make_interface/src/make_prompt.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f
 ft_strlen	lib/libft/src/string/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
 ft_strmapi	lib/libft/src/string/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
 ft_strncmp	lib/libft/src/string/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
@@ -489,7 +448,6 @@ ft_strsjoin	src/expand/ms_expand_args_utils.c	/^char	*ft_strsjoin(int argc, char
 ft_strtrim	lib/libft/src/string/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
 ft_substr	lib/libft/src/string/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
 ft_substr_len	lib/libft/src/string/ft_split.c	/^static size_t	ft_substr_len(char *str, char c)$/;"	f	file:
-ft_substr_len	make_interface/src/make_prompt.c	/^static size_t	ft_substr_len(char *str, char c)$/;"	f	file:
 ft_tolower	lib/libft/src/conversion/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
 ft_toupper	lib/libft/src/conversion/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
 ft_ulltoa_base	lib/libft/src/conversion/ft_ulltoa_base.c	/^char	*ft_ulltoa_base(unsigned long long nbr, char *base)$/;"	f
@@ -533,13 +491,11 @@ gcl	test_src/shell/test_ms_get_envp.c	/^static t_gc *gcl;$/;"	v	file:
 gcl	test_src/shell/test_ms_getenv.c	/^static t_gc *gcl;$/;"	v	file:
 gcl	test_src/token/test_ms_tokenize.c	/^static t_gc *gcl;$/;"	v	file:
 generate_src_list	lib/libft/update_makefile.sh	/^generate_src_list() {$/;"	f
-generate_src_list	make_interface/exec/update_makefile.sh	/^generate_src_list() {$/;"	f
 get_left_child	src/ast/print_ast.c	/^t_ast_node	*get_left_child(t_ast_node *node)$/;"	f
 get_next_line	lib/libft/src/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
 get_node_label	src/ast/print_ast.c	/^char	*get_node_label(t_ast_node *node)$/;"	f
 get_operator_map	src/token/tokenize_operator.c	/^static const t_operator_map	*get_operator_map(void)$/;"	f	file:
 get_right_child	src/ast/print_ast.c	/^t_ast_node	*get_right_child(t_ast_node *node)$/;"	f
-get_uml_files	make_interface/src/interactive_select.c	/^void	get_uml_files(char *directory, char *file_list[], int *count)$/;"	f
 handle_child_status	src/exec/ms_heredoc_helper.c	/^int	handle_child_status(int status, t_heredoc_params *params)$/;"	f
 handle_in_quote	src/token/tokenize_word.c	/^static void	handle_in_quote(t_copy_state *state)$/;"	f	file:
 handle_in_quote	src/token/tokenize_word_helper.c	/^static void	handle_in_quote(t_token_state *state)$/;"	f	file:
@@ -607,9 +563,6 @@ lines	test_integrated/animated_banner.py	/^lines = [$/;"	v
 logic	include/ast.h	/^	t_logic_node		logic;$/;"	m	union:u_node_data
 lst_tokens_suite	test_src/token/test_lst_tokens.c	/^Suite *lst_tokens_suite(void)$/;"	f
 main	main.c	/^int	main(int argc, char **argv, char **envp)$/;"	f
-main	make_interface/src/interactive_select.c	/^int	main(void)$/;"	f
-main	make_interface/src/make_prompt.c	/^int	main(void)$/;"	f
-main	make_interface/src/progress.c	/^int	main(int argc, char **argv)$/;"	f
 main	test_integrated/run_test.sh	/^main() {$/;"	f
 main	test_src/ast/test_ms_parse_tokens.c	/^int main(void)$/;"	f
 main	test_src/builtins/test_ms_echo.c	/^int main(void)$/;"	f
@@ -760,14 +713,12 @@ print_branch	src/ast/utils2.c	/^void	print_branch(int depth, int is_left, int fd
 print_lock	test_integrated/animated_banner.py	/^print_lock = threading.Lock()$/;"	v
 print_node_content	src/ast/print_ast.c	/^void	print_node_content(t_ast_node *node, int fd)$/;"	f
 print_proc_info	src/process/print_proc_info.c	/^void	print_proc_info(const t_proc_manager *manager)$/;"	f
-print_progress	make_interface/src/progress.c	/^void	print_progress(int step, int total)$/;"	f
 print_static_banner	test_integrated/animated_banner.py	/^def print_static_banner():$/;"	f
 print_token	src/token/lst_tokens.c	/^void	print_token(t_token *head)$/;"	f
 print_token_delimit	main.c	/^static void	print_token_delimit(t_token *tokens)$/;"	f	file:
 process_count	include/process.h	/^	int			process_count;$/;"	m	struct:s_proc_manager
 process_line	src/exec/ms_heredoc_helper.c	/^int	process_line(int write_fd, const char *delimiter, char **line_ptr)$/;"	f
 process_outputs	test_integrated/run_test.sh	/^process_outputs() {$/;"	f
-progressive_sleep	make_interface/src/progress.c	/^void	progressive_sleep(int step, int total)$/;"	f
 ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
 quote	include/tokenize.h	/^	char		quote;$/;"	m	struct:s_copy_state
 quote	include/tokenize.h	/^	char		quote;$/;"	m	struct:s_token_state
@@ -786,7 +737,6 @@ redirect_switch	src/exec/ms_execute_ast.c	/^static int	redirect_switch(t_ast_nod
 redirected	include/exec.h	/^	bool		redirected;$/;"	m	struct:s_exec_context
 redirection_nodes	src/exec/ms_handle_redirections.c	/^t_ast_node	**redirection_nodes(t_ast_node *node, t_gc *gcl)$/;"	f
 remove_escape_codes	test_integrated/remove_escape_codes.sh	/^    remove_escape_codes() {$/;"	f
-remove_newline	make_interface/src/make_prompt.c	/^void	remove_newline(char *str)$/;"	f
 report_results	test_integrated/run_test.sh	/^report_results() {$/;"	f
 restore_fd	src/process/redirect_fd.c	/^int	restore_fd(int fd, int saved_fd)$/;"	f
 right	include/ast.h	/^	struct s_ast_node	*right;$/;"	m	struct:s_logic_node	typeref:struct:s_logic_node::s_ast_node
@@ -795,7 +745,6 @@ right_child_process	src/exec/ms_pipeline_helper.c	/^void	right_child_process(t_p
 rl_event_dummy	src/signal/rl_event_dummy.c	/^int	rl_event_dummy(void)$/;"	f
 run	main.c	/^static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)$/;"	f	file:
 run_expect_scripts	test_integrated/run_test.sh	/^run_expect_scripts() {$/;"	f
-run_make_command	make_interface/src/make_prompt.c	/^void run_make_command(char *target, char *args)$/;"	f
 run_valgrind_tests	test_integrated/run_test.sh	/^run_valgrind_tests() {$/;"	f
 s_ast_node	include/ast.h	/^typedef struct s_ast_node$/;"	s
 s_buffer	lib/libft/include/printf.h	/^typedef struct s_buffer$/;"	s
@@ -1017,7 +966,6 @@ type	include/tokenize.h	/^	t_token_type	type;$/;"	m	struct:s_operator_map
 type	include/tokenize.h	/^	t_token_type	type;$/;"	m	struct:s_token
 type	lib/libft/include/printf.h	/^	char		type;$/;"	m	struct:s_format_spec
 u_node_data	include/ast.h	/^typedef union u_node_data$/;"	u
-update_makefile	make_interface/config/build.sh	/^update_makefile() {$/;"	f
 user	include/minishell.h	/^	char	*user;$/;"	m	struct:s_env_data
 user_input	include/minishell.h	/^	char		*user_input;$/;"	m	struct:s_shell
 valide_dollar	src/expand/ms_expand_utils.c	/^int	valide_dollar(char *input)$/;"	f

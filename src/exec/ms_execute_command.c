@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:07:30 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/11 15:09:30 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:56:50 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	st_set_underscore_value(t_cmd_node *cmd_node,
 
 	i = 0;
 	ms_manage_arg_expand(cmd_node, context, gcl);
-	printf("%s\n", cmd_node->argv[0]);
 	while (cmd_node->argv[i] != NULL)
 		i++;
 	if (i >= 1)
