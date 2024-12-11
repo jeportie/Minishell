@@ -12,3 +12,4 @@ cat < $a > outfile1
 cat outfile
 rm outfile1
 rm Makefile
+pwd > test && echo hello >> test
