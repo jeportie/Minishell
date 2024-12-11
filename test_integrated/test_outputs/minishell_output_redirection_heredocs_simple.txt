@@ -8,3 +8,32 @@ test
 jeportie@minishell $> echo test ok
 test ok
 0
+jeportie@minishell $> cat << $USER
+> echo $?
+> test
+> echo $?
+> test2
+> echo $?
+> jeportie
+> echo $?
+> cat << jeportie
+> echo $?
+> test
+> echo $?
+> test2
+> echo $?
+> $USER
+echo $?
+test
+echo $?
+test2
+echo $?
+jeportie
+echo $?
+cat << jeportie
+echo $?
+test
+echo $?
+test2
+echo $?
+0

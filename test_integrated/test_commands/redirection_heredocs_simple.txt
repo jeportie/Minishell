@@ -3,3 +3,11 @@ hello
 test
 EOF
 echo test ok
+cat << $USER
+test
+test2
+jeportie
+cat << jeportie
+test
+test2
+$USER
