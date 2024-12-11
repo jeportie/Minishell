@@ -7,9 +7,7 @@
 AST_H	include/ast.h	14;"	d
 BLUE	Makefile	/^BLUE    = \\033[34m$/;"	m
 BLUE	test_integrated/animated_banner.py	/^BLUE = "\\033[1;34m"$/;"	v
-BLUE	test_integrated/test_dir/Makefile	/^BLUE    = \\033[34m$/;"	m
 BOLD	Makefile	/^BOLD    = \\033[1m$/;"	m
-BOLD	test_integrated/test_dir/Makefile	/^BOLD    = \\033[1m$/;"	m
 BUFFER_SIZE	lib/libft/include/libft.h	28;"	d
 BUFFER_SIZE	lib/libft/include/printf.h	27;"	d
 BUILTINS_H	include/builtins.h	14;"	d
@@ -19,22 +17,15 @@ CC	Makefile	/^san: CC = clang$/;"	m
 CC	Makefile	/^val: CC = cc$/;"	m
 CC	lib/libft/Makefile	/^CC = gcc$/;"	m
 CC	lib/libgc/Makefile	/^CC = gcc$/;"	m
-CC	test_integrated/test_dir/Makefile	/^CC = 		cc$/;"	m
-CC	test_integrated/test_dir/Makefile	/^default: CC = cc$/;"	m
-CC	test_integrated/test_dir/Makefile	/^san: CC = clang$/;"	m
-CC	test_integrated/test_dir/Makefile	/^val: CC = cc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = 	-Wall -Wextra -Werror$/;"	m
 CFLAGS	lib/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	lib/libgc/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
-CFLAGS	test_integrated/test_dir/Makefile	/^CFLAGS = 	-Wall -Wextra -Werror$/;"	m
 COPY_MODE	include/exec.h	25;"	d
 COPY_MODE	include/minishell.h	27;"	d
 CYAN	test_integrated/animated_banner.py	/^CYAN = "\\033[1;36m"$/;"	v
 DEBUG	include/minishell.h	24;"	d
 DEPFLAGS	Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
-DEPFLAGS	test_integrated/test_dir/Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
 DEPS	Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
-DEPS	test_integrated/test_dir/Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
 DirectoryOfThisScript	ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
 ERNOFORMAT	lib/libft/include/printf.h	/^	ERNOFORMAT,$/;"	e	enum:e_error
 ERNOMEM	lib/libft/include/printf.h	/^	ERNOMEM,$/;"	e	enum:e_error
@@ -47,13 +38,9 @@ EXPAND_H	include/expand.h	14;"	d
 FlagsForFile	ycm_extra_conf.py	/^def FlagsForFile(filename):$/;"	f
 GREEN	Makefile	/^GREEN   = \\033[32m$/;"	m
 GREEN	test_integrated/animated_banner.py	/^GREEN = "\\033[1;32m"$/;"	v
-GREEN	test_integrated/test_dir/Makefile	/^GREEN   = \\033[32m$/;"	m
 HELG	Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
-HELG	test_integrated/test_dir/Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
 INCLUDES	Makefile	/^INCLUDES = -I.\/include -I.\/lib\/libgc\/include -I.\/lib\/libft\/include$/;"	m
-INCLUDES	test_integrated/test_dir/Makefile	/^INCLUDES = -I.\/include -I.\/lib\/libgc\/include -I.\/lib\/libft\/include$/;"	m
 LDFLAGS	Makefile	/^LDFLAGS = -lreadline -L.\/lib\/libgc -lgc -L.\/lib\/libft -lft$/;"	m
-LDFLAGS	test_integrated/test_dir/Makefile	/^LDFLAGS = -lreadline -L.\/lib\/libgc -lgc -L.\/lib\/libft -lft$/;"	m
 LIBFT_H	lib/libft/include/libft.h	14;"	d
 LIBGC_H	lib/libgc/include/libgc.h	14;"	d
 MINISHELL_H	include/minishell.h	14;"	d
@@ -61,7 +48,6 @@ MakeRelativePathsAbsolute	ycm_extra_conf.py	/^def MakeRelativePathsAbsolute(flag
 NAME	Makefile	/^NAME = minishell$/;"	m
 NAME	lib/libft/Makefile	/^NAME = libft.a$/;"	m
 NAME	lib/libgc/Makefile	/^NAME = libgc.a$/;"	m
-NAME	test_integrated/test_dir/Makefile	/^NAME = minishell$/;"	m
 NODE_AND	include/ast.h	/^	NODE_AND,$/;"	e	enum:e_node_type
 NODE_COMMAND	include/ast.h	/^	NODE_COMMAND,$/;"	e	enum:e_node_type
 NODE_OR	include/ast.h	/^	NODE_OR,$/;"	e	enum:e_node_type
@@ -75,29 +61,21 @@ NOERR	lib/libft/include/printf.h	/^	NOERR,$/;"	e	enum:e_error
 OBJ	Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
 OBJ	lib/libft/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 OBJ	lib/libgc/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
-OBJ	test_integrated/test_dir/Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
 OBJ_DIR	Makefile	/^OBJ_DIR = 	obj$/;"	m
-OBJ_DIR	test_integrated/test_dir/Makefile	/^OBJ_DIR = 	obj$/;"	m
 PRINTF_H	lib/libft/include/printf.h	14;"	d
 PRINT_INFOS	include/minishell.h	26;"	d
 PROCESS_H	include/process.h	14;"	d
 PROMPT_MODE	include/minishell.h	25;"	d
 RED	Makefile	/^RED     = \\033[31m$/;"	m
 RED	test_integrated/animated_banner.py	/^RED = "\\033[1;31m"$/;"	v
-RED	test_integrated/test_dir/Makefile	/^RED     = \\033[31m$/;"	m
 RESET	Makefile	/^RESET   = \\033[0m$/;"	m
 RESET	test_integrated/animated_banner.py	/^RESET = "\\033[0m"$/;"	v
-RESET	test_integrated/test_dir/Makefile	/^RESET   = \\033[0m$/;"	m
 SANITIZE	Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
-SANITIZE	test_integrated/test_dir/Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
 SCRIPT_URL	Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeromeDev94\/make_interface.git$/;"	m
-SCRIPT_URL	test_integrated/test_dir/Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeromeDev94\/make_interface.git$/;"	m
 SRC	Makefile	/^SRC = \\$/;"	m
 SRC	lib/libft/Makefile	/^SRC = \\$/;"	m
 SRC	lib/libgc/Makefile	/^SRC = src\/gc_cleanup.c \\$/;"	m
-SRC	test_integrated/test_dir/Makefile	/^SRC = \\$/;"	m
 SRC_DIR	Makefile	/^SRC_DIR = 	src$/;"	m
-SRC_DIR	test_integrated/test_dir/Makefile	/^SRC_DIR = 	src$/;"	m
 START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_create_command_node)$/;"	f
 START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_complex_command)$/;"	f
 START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_empty_input)$/;"	f
@@ -241,18 +219,12 @@ TOKEN_SUBSHELL_START	include/tokenize.h	/^	TOKEN_SUBSHELL_START,$/;"	e	enum:e_to
 TOKEN_SUBSHELL_STOP	include/tokenize.h	/^	TOKEN_SUBSHELL_STOP,$/;"	e	enum:e_token_type
 TOKEN_WORD	include/tokenize.h	/^	TOKEN_WORD,$/;"	e	enum:e_token_type
 TOTAL_STEPS	Makefile	/^TOTAL_STEPS := $(words $(OBJ))$/;"	m
-TOTAL_STEPS	test_integrated/test_dir/Makefile	/^TOTAL_STEPS := $(words $(OBJ))$/;"	m
 VALG	Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
-VALG	test_integrated/test_dir/Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
 VERBOSE	Makefile	/^VERBOSE ?= @$/;"	m
 VERBOSE	Makefile	/^classic: VERBOSE =$/;"	m
-VERBOSE	test_integrated/test_dir/Makefile	/^VERBOSE ?= @$/;"	m
-VERBOSE	test_integrated/test_dir/Makefile	/^classic: VERBOSE =$/;"	m
 VFLAGS	Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
-VFLAGS	test_integrated/test_dir/Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
 YELLOW	Makefile	/^YELLOW  = \\033[33m$/;"	m
 YELLOW	test_integrated/animated_banner.py	/^YELLOW = "\\033[1;33m"$/;"	v
-YELLOW	test_integrated/test_dir/Makefile	/^YELLOW  = \\033[33m$/;"	m
 add_cat	src/builtins/export_utils.c	/^void	add_cat(t_shell *shell, t_env *current, t_env *tmp, int flag)$/;"	f
 add_env_node	test_src/shell/test_ms_get_envp.c	/^void add_env_node(t_env **head, t_env *new_node)$/;"	f
 add_env_node	test_src/shell/test_ms_getenv.c	/^void add_env_node(t_env **head, t_env *new_node)$/;"	f
