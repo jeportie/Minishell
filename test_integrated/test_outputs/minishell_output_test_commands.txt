@@ -1,46 +1,33 @@
-<gmarquis>@minishell $> echo hello
+jeportie@minishell $> echo hello
 hello
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> ls
+jeportie@minishell $> ls
 animated_banner.py  process_outputs.sh	remove_escape_codes.sh	run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> touch test
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> touch test
 0
-<gmarquis>@minishell $> echo hello > test
-Minishell: Error: open failed.
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> echo hello > test
 0
-<gmarquis>@minishell $> cat -e test
+jeportie@minishell $> cat -e test
 hello$
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> rm test
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> rm test
 0
-<gmarquis>@minishell $> expr $? + $?
+jeportie@minishell $> expr $? + $?
 0
-<gmarquis>@minishell $> echo $?
 1
-<gmarquis>@minishell $> /bin/ls
+jeportie@minishell $> /bin/ls
 animated_banner.py  process_outputs.sh	remove_escape_codes.sh	run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> /usr/bin/cat lib
+jeportie@minishell $> /usr/bin/cat lib
 /usr/bin/cat: lib: No such file or directory
-<gmarquis>@minishell $> echo $?
 1
-<gmarquis>@minishell $> /usr/bin/cat -e lib
+jeportie@minishell $> /usr/bin/cat -e lib
 /usr/bin/cat: lib: No such file or directory
-<gmarquis>@minishell $> echo $?
 1
-<gmarquis>@minishell $> /bin/ls-l
+jeportie@minishell $> /bin/ls-l
 bash: /bin/ls-l: No such file or directory
-<gmarquis>@minishell $> echo $?
 127
-<gmarquis>@minishell $> /usr/bin/cat-e
+jeportie@minishell $> /usr/bin/cat-e
 bash: /usr/bin/cat-e: No such file or directory
-<gmarquis>@minishell $> echo $?
 127

@@ -1,28 +1,21 @@
-<gmarquis>@minishell $> echo
+jeportie@minishell $> echo
 
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> echo Hello
+jeportie@minishell $> echo Hello
 Hello
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> echo je suis un test
+jeportie@minishell $> echo je suis un test
 je suis un test
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> echo "je suis un test"
+jeportie@minishell $> echo "je suis un test"
 je suis un test
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> echo 'je suis un test'
+jeportie@minishell $> echo 'je suis un test'
 je suis un test
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> echo "je suis" "un test"
+jeportie@minishell $> echo "je suis" "un test"
 je suis un test
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> echo 'je suis "un test"'
+jeportie@minishell $> echo 'je suis "un test"'
 je suis "un test"
-<gmarquis>@minishell $> echo $?
 0

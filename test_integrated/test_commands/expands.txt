@@ -1,5 +1,8 @@
 cd test_dir
 echo a*
 echo *1
-expand a=test
+export a=test
 echo $a
+cd ..
+cd ..
+cat s*/*ll*

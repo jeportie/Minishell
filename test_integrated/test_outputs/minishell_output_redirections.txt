@@ -1,52 +1,31 @@
-<gmarquis>@minishell $> echo hello > test
-Minishell: Error: open failed.
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> echo hello > test
 0
-<gmarquis>@minishell $> cat -e test
+jeportie@minishell $> cat -e test
 hello$
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> cat < test > outfile1 > outfile2
-Minishell: Error: open failed.
-Minishell: Error: open failed.
-Minishell: Error: open failed.
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> cat < test > outfile1 > outfile2
 0
-<gmarquis>@minishell $> cat -e outfile1
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> cat -e outfile1
 0
-<gmarquis>@minishell $> cat -e outfile2
+jeportie@minishell $> cat -e outfile2
 hello$
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> rm outfile1
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> rm outfile1
 0
-<gmarquis>@minishell $> rm outfile2
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> rm outfile2
 0
-<gmarquis>@minishell $> rm test
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> rm test
 0
-<gmarquis>@minishell $> echo hello > Makefile
-Minishell: Error: open failed.
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> echo hello > Makefile
 0
-<gmarquis>@minishell $> export a=Makefile
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> export a=Makefile
 0
-<gmarquis>@minishell $> cat < $a > outfile1
-Minishell: Error: open failed.
-Minishell: Error: open failed.
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> cat < $a > outfile1
 0
-<gmarquis>@minishell $> cat outfile
+jeportie@minishell $> cat outfile
 cat: outfile: No such file or directory
-<gmarquis>@minishell $> echo $?
 1
-<gmarquis>@minishell $> rm outfile1
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> rm outfile1
 0
-<gmarquis>@minishell $> rm Makefile
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> rm Makefile
 0

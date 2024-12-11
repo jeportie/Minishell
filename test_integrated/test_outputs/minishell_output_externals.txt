@@ -1,44 +1,38 @@
-<gmarquis>@minishell $> ls
+jeportie@minishell $> ls
 animated_banner.py  process_outputs.sh	remove_escape_codes.sh	run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
-<gmarquis>@minishell $> echo $?
 0
-<gmarquis>@minishell $> cd test_dir
-<gmarquis>@minishell $> echo $?
+jeportie@minishell $> cd test_dir
 0
-<gmarquis>@minishell $> ls -l
+jeportie@minishell $> ls -l
 total 12
--rw-r--r-- 1 root root 12260 Dec 11 11:58 Makefile
--rw-r--r-- 1 root root     0 Dec 11 11:30 a1
--rw-r--r-- 1 root root     0 Dec 11 11:30 a2
--rw-r--r-- 1 root root     0 Dec 11 11:30 a3
--rw-r--r-- 1 root root     0 Dec 11 11:30 a4
--rw-r--r-- 1 root root     0 Dec 11 11:30 b1
--rw-r--r-- 1 root root     0 Dec 11 11:30 b2
--rw-r--r-- 1 root root     0 Dec 11 11:30 b3
--rw-r--r-- 1 root root     0 Dec 11 11:30 b4
-<gmarquis>@minishell $> echo $?
+-rw-r--r-- 1 root root 12260 Dec 11 13:38 Makefile
+-rw-r--r-- 1 root root     0 Dec 11 13:38 a1
+-rw-r--r-- 1 root root     0 Dec 11 13:38 a2
+-rw-r--r-- 1 root root     0 Dec 11 13:38 a3
+-rw-r--r-- 1 root root     0 Dec 11 13:38 a4
+-rw-r--r-- 1 root root     0 Dec 11 13:38 b1
+-rw-r--r-- 1 root root     0 Dec 11 13:38 b2
+-rw-r--r-- 1 root root     0 Dec 11 13:38 b3
+-rw-r--r-- 1 root root     0 Dec 11 13:38 b4
 0
-<gmarquis>@minishell $> ls -la
+jeportie@minishell $> ls -la
 total 16
-drwxr-xr-x 2 root root   102 Dec 11 11:58 .
-drwxr-xr-x 5 root root  4096 Dec 11 13:11 ..
--rw-r--r-- 1 root root 12260 Dec 11 11:58 Makefile
--rw-r--r-- 1 root root     0 Dec 11 11:30 a1
--rw-r--r-- 1 root root     0 Dec 11 11:30 a2
--rw-r--r-- 1 root root     0 Dec 11 11:30 a3
--rw-r--r-- 1 root root     0 Dec 11 11:30 a4
--rw-r--r-- 1 root root     0 Dec 11 11:30 b1
--rw-r--r-- 1 root root     0 Dec 11 11:30 b2
--rw-r--r-- 1 root root     0 Dec 11 11:30 b3
--rw-r--r-- 1 root root     0 Dec 11 11:30 b4
-<gmarquis>@minishell $> echo $?
+drwxr-xr-x 2 root root   102 Dec 11 13:38 .
+drwxr-xr-x 5 root root  4096 Dec 11 13:58 ..
+-rw-r--r-- 1 root root 12260 Dec 11 13:38 Makefile
+-rw-r--r-- 1 root root     0 Dec 11 13:38 a1
+-rw-r--r-- 1 root root     0 Dec 11 13:38 a2
+-rw-r--r-- 1 root root     0 Dec 11 13:38 a3
+-rw-r--r-- 1 root root     0 Dec 11 13:38 a4
+-rw-r--r-- 1 root root     0 Dec 11 13:38 b1
+-rw-r--r-- 1 root root     0 Dec 11 13:38 b2
+-rw-r--r-- 1 root root     0 Dec 11 13:38 b3
+-rw-r--r-- 1 root root     0 Dec 11 13:38 b4
 0
-<gmarquis>@minishell $> cat -e .
+jeportie@minishell $> cat -e .
 cat: .: Is a directory
-<gmarquis>@minishell $> echo $?
 1
-<gmarquis>@minishell $> grep 
+jeportie@minishell $> grep 
 Usage: grep [OPTION]... PATTERNS [FILE]...
 Try 'grep --help' for more information.
-<gmarquis>@minishell $> echo $?
 2

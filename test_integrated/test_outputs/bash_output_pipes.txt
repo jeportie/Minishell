@@ -1,4 +1,3 @@
-<gmarquis>@minishell $> echo Hello | cat -e
+jeportie@minishell $> echo Hello | cat -e
 Hello$
-<gmarquis>@minishell $> echo $?
 0
