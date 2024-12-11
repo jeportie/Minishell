@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:12:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/11 13:35:05 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:12:53 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,8 @@ char	**cmd_arg_expansion(char **argv, t_wildcard_context *match_ctx,
 void	ms_manage_arg_expand(t_cmd_node *cmd_node,
 			t_exec_context *context, t_gc *gcl)
 {
-	int					i;
-	t_wildcard_context	*matches;
-
-	i = 0;
+	t_wildcard_context *(matches) = NULL;
+	int (i) = 0;
 	if (!is_equal(cmd_node->argv[0]))
 	{
 		while (i < cmd_node->argc)
@@ -81,15 +79,12 @@ void	ms_manage_arg_expand(t_cmd_node *cmd_node,
 			if (is_wild(cmd_node->argv[i]))
 			{
 				matches = ms_expand_wild(cmd_node->argv[i], gcl);
-				/*int (i) = 0;
-				while(i < (int)matches->match_count)
+				if (matches->matches)
 				{
-					printf("%s\n", matches->matches[i]);
-					i++;
-				}*/
-				cmd_node->argc += matches->match_count - 1;
-				cmd_node->argv = cmd_arg_expansion(cmd_node->argv,
-						matches, gcl);
+					cmd_node->argc += matches->match_count - 1;
+					cmd_node->argv = cmd_arg_expansion(cmd_node->argv,
+							matches, gcl);
+				}
 			}
 			i++;
 		}
