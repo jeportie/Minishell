@@ -1,0 +1,12 @@
+<gmarquis>@minishell $> cat << EOF
+> hello
+> test
+> EOF
+hello
+test
+<gmarquis>@minishell $> echo $?
+0
+<gmarquis>@minishell $> echo test ok
+test ok
+<gmarquis>@minishell $> echo $?
+0

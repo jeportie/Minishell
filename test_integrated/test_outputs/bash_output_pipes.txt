@@ -1,0 +1,4 @@
+<gmarquis>@minishell $> echo Hello | cat -e
+Hello$
+<gmarquis>@minishell $> echo $?
+0

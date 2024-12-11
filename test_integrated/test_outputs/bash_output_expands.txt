@@ -1,21 +1,19 @@
-[?2004h(venv) %m%# export PS1='$USER@minishell $> '
-[?2004l[?2004hjeportie@minishell $> cd test_dir
-[?2004l[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> echo a*
-[?2004la1 a2 a3 a4
-[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> echo *1
-[?2004la1 b1 c1
-[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> expand a=test
-[?2004lexpand: 'a=test': No such file or directory
-[?2004hjeportie@minishell $> echo $?
-[?2004l1
-[?2004hjeportie@minishell $> echo $a
-[?2004l
-[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> 
+<gmarquis>@minishell $> cd test_dir
+<gmarquis>@minishell $> echo $?
+0
+<gmarquis>@minishell $> echo a*
+a1 a2 a3 a4
+<gmarquis>@minishell $> echo $?
+0
+<gmarquis>@minishell $> echo *1
+a1 b1
+<gmarquis>@minishell $> echo $?
+0
+<gmarquis>@minishell $> expand a=test
+expand: 'a=test': No such file or directory
+<gmarquis>@minishell $> echo $?
+1
+<gmarquis>@minishell $> echo $a
+
+<gmarquis>@minishell $> echo $?
+0

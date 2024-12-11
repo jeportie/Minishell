@@ -1,27 +1,25 @@
-[?2004hbash-5.2# export PS1='$USER@minishell $> '
-[?2004l[?2004hjeportie@minishell $> pwd > test
-[?2004l[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> cat test
-[?2004l/root/projects/minishell/test_integrated
-[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> rm test
-[?2004l[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> cd ..
-[?2004l[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> pwd
-[?2004l/root/projects/minishell
-[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> cd -
-[?2004l/root/projects/minishell/test_integrated
-[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> pwd
-[?2004l/root/projects/minishell/test_integrated
-[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> 
+<gmarquis>@minishell $> pwd > test
+<gmarquis>@minishell $> echo $?
+0
+<gmarquis>@minishell $> cat test
+/root/projects/minishell/test_integrated
+<gmarquis>@minishell $> echo $?
+0
+<gmarquis>@minishell $> rm test
+<gmarquis>@minishell $> echo $?
+0
+<gmarquis>@minishell $> cd ..
+<gmarquis>@minishell $> echo $?
+0
+<gmarquis>@minishell $> pwd
+/root/projects/minishell
+<gmarquis>@minishell $> echo $?
+0
+<gmarquis>@minishell $> cd -
+/root/projects/minishell/test_integrated
+<gmarquis>@minishell $> echo $?
+0
+<gmarquis>@minishell $> pwd
+/root/projects/minishell/test_integrated
+<gmarquis>@minishell $> echo $?
+0

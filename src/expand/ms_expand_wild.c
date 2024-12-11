@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 17:50:08 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/11 13:05:10 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:29:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	st_process_entry(struct dirent *entry, t_directory_context *dctx)
 		expand_glob_recursive(full_path, dctx->r_p, dctx->ctx);
 	else if (!dctx->slash && st_matches_p(entry->d_name, dctx->c_p))
 	{
-		if (!st_add_match(dctx->ctx, full_path))
+		if (!st_add_match(dctx->ctx, full_path + 2))
 		{
 			ft_dprintf(2, "Echec: ajout match\n");
 			return (0);
