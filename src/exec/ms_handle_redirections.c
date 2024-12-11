@@ -6,7 +6,8 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/10 17:47:32 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:40:33 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:39:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +29,7 @@ int	safe_open2(const char *filepath, int flags, int mode, t_shell *shell)
 		ft_dprintf(STDERR_FILENO, "Open failed\n");
 		return (-1);
 	}
+		ft_dprintf(STDERR_FILENO, "Minishell: Error: open failed.\n");
 	return (fd);
 }
 
@@ -48,6 +50,15 @@ static int	redirect_helper(t_ast_node *node, t_node_type type,
 			close(context->stdin_fd);
 		context->stdin_fd = fd;
 	}
+	redir_node = &node->data.redirect;
+	if (flags != O_RDONLY)
+		mode = COPY_MODE;
+	fd = ms_open_file(redir_node->filename, flags, mode);
+	if (fd == -1)
+		return (-1);
+	if (*context_fd != std_fd)
+		close(*context_fd);
+	*context_fd = fd;
 	return (0);
 }
 */
