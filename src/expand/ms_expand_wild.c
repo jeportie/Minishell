@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 17:50:08 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/10 22:18:16 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:05:10 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ t_wildcard_context	*ms_expand_wild(const char *pattern, t_gc *gcl)
 	t_wildcard_context	*ctx;
 
 	ctx = gc_malloc(sizeof(t_wildcard_context), gcl);
+	gc_lock(ctx, gcl);
 	if (!ctx)
 		return (NULL);
 	memset(ctx, 0, sizeof(t_wildcard_context));

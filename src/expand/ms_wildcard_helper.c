@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 20:43:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/10 20:44:04 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:05:56 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	st_add_match(t_wildcard_context *ctx, const char *match)
 			* sizeof(char *), ctx->gcl);
 	if (!new_matches)
 		return (0);
+	gc_lock(new_matches, ctx->gcl);
 	ctx->matches = new_matches;
 	ctx->matches[ctx->match_count] = gc_strdup(match, ctx->gcl);
 	gc_lock(ctx->matches[ctx->match_count], ctx->gcl);

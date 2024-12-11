@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:12:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 15:38:15 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:03:37 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static	void	expand_argv(char **new_argv, char **argv,
 	match_index = 0;
 	while (argv[argv_index])
 	{
-		if (argv[argv_index][0] == '*')
+		if (ft_strchr(argv[argv_index], '*'))
 		{
 			while (match_index < (int)match_ctx->match_count)
 			{
