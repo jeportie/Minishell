@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:53:49 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 11:56:07 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:07:08 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	safe_open(const char *filepath, int flags, int mode)
 {
-	int	fd;
+	int		fd;
 
 	fd = open(filepath, flags, mode);
 	if (fd == -1)

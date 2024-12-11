@@ -694,7 +694,6 @@ ms_init_shell_suite	test_src/shell/test_ms_init_shell.c	/^Suite *ms_init_shell_s
 ms_init_std_signal	src/signal/ms_init_std_signal.c	/^void	ms_init_std_signal(void)$/;"	f
 ms_init_std_signal_suite	test_src/signal/test_ms_init_std_signal.c	/^Suite *ms_init_std_signal_suite(void)$/;"	f
 ms_manage_arg_expand	src/expand/ms_manage_arg_expand.c	/^void	ms_manage_arg_expand(t_cmd_node *cmd_node,$/;"	f
-ms_open_file	src/exec/ms_handle_redirections.c	/^static int	ms_open_file(const char *filename, int flags, mode_t mode)$/;"	f	file:
 ms_parent_process	src/exec/ms_execute_external.c	/^static void	ms_parent_process(pid_t pid, t_exec_context *context)$/;"	f	file:
 ms_parse_cmd_path	src/exec/ms_parse_cmd_path.c	/^char	*ms_parse_cmd_path(const char *command, t_shell *shell)$/;"	f
 ms_parse_tokens	src/ast/ms_parse_tokens.c	/^t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)$/;"	f
@@ -780,8 +779,10 @@ read_and_write_heredoc	src/exec/ms_heredoc_helper.c	/^int	read_and_write_heredoc
 redir_gestion	src/syntax_error/redir_gestion.c	/^int	redir_gestion(t_syntax **syntax)$/;"	f
 redirect	include/ast.h	/^	t_redirect_node		redirect;$/;"	m	union:u_node_data
 redirect_fd	src/process/redirect_fd.c	/^int	redirect_fd(int old_fd, int new_fd)$/;"	f
-redirect_mode	src/exec/ms_handle_redirections.c	/^static int	redirect_mode(t_ast_node *node, int flags, int *context_fd,$/;"	f	file:
+redirect_mode	src/exec/ms_handle_redirections.c	/^static int	redirect_mode(t_ast_node *node, t_exec_context *context,$/;"	f	file:
 redirect_switch	src/exec/ms_execute_ast.c	/^static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,$/;"	f	file:
+redirected	include/exec.h	/^	bool		redirected;$/;"	m	struct:s_exec_context
+redirection_nodes	src/exec/ms_handle_redirections.c	/^t_ast_node	**redirection_nodes(t_ast_node *node, t_gc *gcl)$/;"	f
 remove_escape_codes	test_integrated/remove_escape_codes.sh	/^    remove_escape_codes() {$/;"	f
 remove_newline	make_interface/src/make_prompt.c	/^void	remove_newline(char *str)$/;"	f
 report_results	test_integrated/run_test.sh	/^report_results() {$/;"	f
@@ -835,6 +836,7 @@ s_wildcard_context	include/expand.h	/^typedef struct s_wildcard_context$/;"	s
 safe_close	src/process/safe_close.c	/^int	safe_close(int fd)$/;"	f
 safe_fork	src/process/safe_fork.c	/^pid_t	safe_fork(t_proc_manager *manager, t_fork_params *params)$/;"	f
 safe_open	src/process/safe_open.c	/^int	safe_open(const char *filepath, int flags, int mode)$/;"	f
+safe_open2	src/exec/ms_handle_redirections.c	/^int	safe_open2(const char *filepath, int flags, int mode, t_shell *shell)$/;"	f
 safe_pipe	src/process/safe_pipe.c	/^int	safe_pipe(int pipefd[2])$/;"	f
 setup	test_src/ast/test_ms_parse_tokens.c	/^void setup(void)$/;"	f
 setup	test_src/builtins/test_ms_echo.c	/^static void setup(void)$/;"	f	file:
