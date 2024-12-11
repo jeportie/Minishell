@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 17:34:19 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/04 09:29:52 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:11:47 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context,
 	pid_t				right_pid;
 	t_fork_params		fork_params;
 
+	printf("in pipe: fdin : %d\nfd out: %d\n", context->stdin_fd, context->stdout_fd);
 	init_helper(&params, pipe_node, context, manager);
 	init_left_fork_params(&fork_params, context, params);
 	left_pid = safe_fork(manager, &fork_params);
@@ -71,5 +72,6 @@ int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context,
 	print_proc_info(manager);
 	safe_close(params.pipefd[0]);
 	safe_close(params.pipefd[1]);
+	printf("in pipe: fdin : %d\n fd out: %d\n", context->stdin_fd, context->stdout_fd);
 	return (parent_process(left_pid, right_pid, context));
 }
