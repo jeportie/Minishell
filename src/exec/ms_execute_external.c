@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/10 22:17:11 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:15:17 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,14 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 		context->shell->error_code = 127;
 		return (context->shell->error_code);
 	}
+	ft_dprintf(2, "fdin : %d\nfdout : %d\n", context->stdin_fd, context->stdout_fd);
 	fork_init(&fork_params, context, false, cmd_node->argv[0]);
 	pid_t (pid) = safe_fork(manager, &fork_params);
 	ms_init_parent_cmd_signal();
 	if (pid == 0)
 	{
 		context->child_lvl = fork_params.child_lvl;
+
 		ms_child_process(cmd_node, context, cmd_path, gcl);
 	}
 	else

@@ -4,30 +4,34 @@ animated_banner.py  process_outputs.sh	remove_escape_codes.sh	run_bash.expect  r
 jeportie@minishell $> cd test_dir
 0
 jeportie@minishell $> ls -l
-total 12
--rw-r--r-- 1 root root 12260 Dec 11 13:38 Makefile
--rw-r--r-- 1 root root     0 Dec 11 13:38 a1
--rw-r--r-- 1 root root     0 Dec 11 13:38 a2
--rw-r--r-- 1 root root     0 Dec 11 13:38 a3
--rw-r--r-- 1 root root     0 Dec 11 13:38 a4
--rw-r--r-- 1 root root     0 Dec 11 13:38 b1
--rw-r--r-- 1 root root     0 Dec 11 13:38 b2
--rw-r--r-- 1 root root     0 Dec 11 13:38 b3
--rw-r--r-- 1 root root     0 Dec 11 13:38 b4
+total 0
+-rw-r--r-- 1 root root  0 Dec 11 13:38 a1
+-rw-r--r-- 1 root root  0 Dec 11 13:38 a2
+-rw-r--r-- 1 root root  0 Dec 11 13:38 a3
+-rw-r--r-- 1 root root  0 Dec 11 13:38 a4
+-rw-r--r-- 1 root root  0 Dec 11 13:38 b1
+-rw-r--r-- 1 root root  0 Dec 11 13:38 b2
+-rw-r--r-- 1 root root  0 Dec 11 13:38 b3
+-rw-r--r-- 1 root root  0 Dec 11 13:38 b4
+drwxr-xr-x 2 root root  6 Dec 11 14:04 s1
+drwxr-xr-x 2 root root 19 Dec 11 14:05 src
+drwxr-xr-x 2 root root  6 Dec 11 14:04 test
 0
 jeportie@minishell $> ls -la
-total 16
-drwxr-xr-x 2 root root   102 Dec 11 13:38 .
-drwxr-xr-x 5 root root  4096 Dec 11 13:58 ..
--rw-r--r-- 1 root root 12260 Dec 11 13:38 Makefile
--rw-r--r-- 1 root root     0 Dec 11 13:38 a1
--rw-r--r-- 1 root root     0 Dec 11 13:38 a2
--rw-r--r-- 1 root root     0 Dec 11 13:38 a3
--rw-r--r-- 1 root root     0 Dec 11 13:38 a4
--rw-r--r-- 1 root root     0 Dec 11 13:38 b1
--rw-r--r-- 1 root root     0 Dec 11 13:38 b2
--rw-r--r-- 1 root root     0 Dec 11 13:38 b3
--rw-r--r-- 1 root root     0 Dec 11 13:38 b4
+total 4
+drwxr-xr-x 5 root root  119 Dec 11 14:04 .
+drwxr-xr-x 5 root root 4096 Dec 11 14:11 ..
+-rw-r--r-- 1 root root    0 Dec 11 13:38 a1
+-rw-r--r-- 1 root root    0 Dec 11 13:38 a2
+-rw-r--r-- 1 root root    0 Dec 11 13:38 a3
+-rw-r--r-- 1 root root    0 Dec 11 13:38 a4
+-rw-r--r-- 1 root root    0 Dec 11 13:38 b1
+-rw-r--r-- 1 root root    0 Dec 11 13:38 b2
+-rw-r--r-- 1 root root    0 Dec 11 13:38 b3
+-rw-r--r-- 1 root root    0 Dec 11 13:38 b4
+drwxr-xr-x 2 root root    6 Dec 11 14:04 s1
+drwxr-xr-x 2 root root   19 Dec 11 14:05 src
+drwxr-xr-x 2 root root    6 Dec 11 14:04 test
 0
 jeportie@minishell $> cat -e .
 cat: .: Is a directory

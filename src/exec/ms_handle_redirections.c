@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/11 13:47:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:25:20 by jeportie         ###   ########.fr       */
 /*   Updated: 2024/12/10 13:39:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -90,7 +90,7 @@ static int	redirect_mode(t_ast_node *node, t_exec_context *context,
 		if (fd == -1)
 			return (-1);
 		if (context->stdout_fd != STDOUT_FILENO)
-			close(context->stdout_fd);
+			safe_close(context->stdout_fd);
 		context->stdout_fd = fd;
 	}
 	else if (node->type == NODE_REDIRECT_APPEND)

@@ -29,3 +29,11 @@ jeportie@minishell $> rm outfile1
 0
 jeportie@minishell $> rm Makefile
 0
+jeportie@minishell $> pwd > test && echo hello >> test
+0
+jeportie@minishell $> cat test
+/root/projects/minishell/test_integrated
+hello
+0
+jeportie@minishell $> rm test
+0

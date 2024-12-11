@@ -1,30 +1,20 @@
-[?2004h(venv) %m%# export PS1='$USER@minishell $> '
-[?2004l[?2004hjeportie@minishell $> cd test_dir
-[?2004l[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> echo a*
-[?2004la1 a2 a3 a4
-[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> echo *1
-[?2004la1 b1 s1
-[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> export a=test
-[?2004l[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> echo $a
-[?2004ltest
-[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> cd ..
-[?2004l[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> cd ..
-[?2004l[?2004hjeportie@minishell $> echo $?
-[?2004l0
-[?2004hjeportie@minishell $> cat s*/*ll*
-[?2004lcat: src/shell: Is a directory
-[?2004hjeportie@minishell $> echo $?
-[?2004l1
-[?2004hjeportie@minishell $> 
+jeportie@minishell $> cd test_dir
+0
+jeportie@minishell $> echo a*
+a1 a2 a3 a4
+0
+jeportie@minishell $> echo *1
+a1 b1 s1
+0
+jeportie@minishell $> export a=test
+0
+jeportie@minishell $> echo $a
+test
+0
+jeportie@minishell $> cd ..
+0
+jeportie@minishell $> cd ..
+0
+jeportie@minishell $> cat s*/*ll*
+cat: src/shell: Is a directory
+1

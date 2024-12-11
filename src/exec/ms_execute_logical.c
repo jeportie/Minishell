@@ -6,11 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:27:18 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 15:34:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:19:13 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
+#include "../../include/process.h"
 #include <readline/readline.h>
 
 int	ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,
@@ -27,6 +28,7 @@ int	ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,
 					context->shell->gcl);
 		return (-1);
 	}
+	printf("fdin : %d\nfd out: %d\n", context->stdin_fd, context->stdout_fd);
 	right_exit_status = 0;
 	left_exit_status = ms_execute_ast(logic_node->left, context, manager);
 	if ((type == NODE_AND && left_exit_status == 0)

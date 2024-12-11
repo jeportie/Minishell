@@ -13,3 +13,5 @@ cat outfile
 rm outfile1
 rm Makefile
 pwd > test && echo hello >> test
+cat test
+rm test
