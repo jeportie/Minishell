@@ -1,21 +1,29 @@
-jeportie@minishell $> echo
-
-0
-jeportie@minishell $> echo Hello
-Hello
-0
-jeportie@minishell $> echo je suis un test
-je suis un test
-0
-jeportie@minishell $> echo "je suis un test"
-je suis un test
-0
-jeportie@minishell $> echo 'je suis un test'
-je suis un test
-0
-jeportie@minishell $> echo "je suis" "un test"
-je suis un test
-0
-jeportie@minishell $> echo 'je suis "un test"'
-je suis "un test"
-0
+[?2004hjeportie@minishell $> echo
+[?2004l
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo Hello
+[?2004lHello
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo je suis un test
+[?2004lje suis un test
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo "je suis un test"
+[?2004lje suis un test
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo 'je suis un test'
+[?2004lje suis un test
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo "je suis" "un test"
+[?2004lje suis un test
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo 'je suis "un test"'
+[?2004lje suis "un test"
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> 

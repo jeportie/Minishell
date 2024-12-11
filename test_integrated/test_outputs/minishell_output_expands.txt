@@ -1,0 +1,23 @@
+[?2004hjeportie@minishell $> cd test_dir
+[?2004l[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo a*
+[?2004la*
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo *1
+[?2004l./c1 ./a1 ./b1
+free(): invalid pointer
+echo $?
+send: spawn id exp4 not open
+    while executing
+"send "echo \$?\r""
+    ("while" body line 29)
+    invoked from within
+"while {[gets $file line] != -1} {
+    # Skip empty lines
+    if {[string trim $line] == ""} {
+        continue
+    }
+    # Send the command to minishe..."
+    (file "./run_minishell.expect" line 33)

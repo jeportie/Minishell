@@ -1,0 +1,5 @@
+cd test_dir
+echo a*
+echo *1
+expand a=test
+echo $a

@@ -1,3 +1,0 @@
-jeportie@minishell $> echo Hello | cat -e
-Hello$
-0
