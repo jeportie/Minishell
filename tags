@@ -726,6 +726,8 @@ op_map	include/tokenize.h	/^	const t_operator_map	*op_map;$/;"	m	struct:s_op_sta
 op_str	include/tokenize.h	/^	char					*op_str;$/;"	m	struct:s_op_state
 op_str	include/tokenize.h	/^	const char		*op_str;$/;"	m	struct:s_operator_map
 operator_gestion	src/syntax_error/operator_gestion.c	/^int	operator_gestion(t_syntax **syntax)$/;"	f
+original_stdin	include/exec.h	/^	int			original_stdin;$/;"	m	struct:s_exec_context
+original_stdout	include/exec.h	/^	int			original_stdout;$/;"	m	struct:s_exec_context
 p_char	include/syntax.h	/^	int		p_char;$/;"	m	struct:s_syntax
 p_close	include/syntax.h	/^	int		p_close;$/;"	m	struct:s_syntax
 p_open	include/syntax.h	/^	int		p_open;$/;"	m	struct:s_syntax

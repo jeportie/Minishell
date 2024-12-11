@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/11 15:25:20 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:08:50 by jeportie         ###   ########.fr       */
 /*   Updated: 2024/12/10 13:39:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -71,6 +71,7 @@ static int	redirect_mode(t_ast_node *node, t_exec_context *context,
 	mode_t			mode;
 
 	mode = 0;
+
 	if (node->type == NODE_REDIRECT_IN)
 	{
 		redir_node = &node->data.redirect;
@@ -90,7 +91,7 @@ static int	redirect_mode(t_ast_node *node, t_exec_context *context,
 		if (fd == -1)
 			return (-1);
 		if (context->stdout_fd != STDOUT_FILENO)
-			safe_close(context->stdout_fd);
+			close(context->stdout_fd);
 		context->stdout_fd = fd;
 	}
 	else if (node->type == NODE_REDIRECT_APPEND)
@@ -167,11 +168,15 @@ t_ast_node	**redirection_nodes(t_ast_node *node, t_gc *gcl)
 int	ms_handle_redirections(t_ast_node *node, t_exec_context *context,
 		t_proc_manager *manager, t_gc *gcl)
 {
+	int			old_stdin;
+	int			old_stdout;
 	t_ast_node	**redir_list;
 	size_t		i;
 
 	if (!node)
 		return (0);
+	old_stdin = context->stdin_fd;
+	old_stdout = context->stdout_fd;
 	redir_list = redirection_nodes(node, gcl);
 	i = 0;
 	while (redir_list[i])
@@ -180,6 +185,8 @@ int	ms_handle_redirections(t_ast_node *node, t_exec_context *context,
 			return (-1);
 		i++;
 	}
+	context->original_stdin = old_stdin;
+    context->original_stdout = old_stdout;
 	context->redirected = true;
 	return (0);
 }
