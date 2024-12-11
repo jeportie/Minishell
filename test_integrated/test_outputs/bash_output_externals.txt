@@ -5,32 +5,38 @@ jeportie@minishell $> cd test_dir
 0
 jeportie@minishell $> ls -l
 total 0
--rw-r--r-- 1 root root  0 Dec 11 13:38 a1
--rw-r--r-- 1 root root  0 Dec 11 13:38 a2
--rw-r--r-- 1 root root  0 Dec 11 13:38 a3
--rw-r--r-- 1 root root  0 Dec 11 13:38 a4
--rw-r--r-- 1 root root  0 Dec 11 13:38 b1
--rw-r--r-- 1 root root  0 Dec 11 13:38 b2
--rw-r--r-- 1 root root  0 Dec 11 13:38 b3
--rw-r--r-- 1 root root  0 Dec 11 13:38 b4
+drwxr-xr-x 2 root root  6 Dec 11 18:02 1
+drwxr-xr-x 2 root root  6 Dec 11 18:02 11
+drwxr-xr-x 2 root root  6 Dec 11 18:02 111
+-rw-r--r-- 1 root root  0 Dec 11 16:29 a1
+-rw-r--r-- 1 root root  0 Dec 11 16:29 a2
+-rw-r--r-- 1 root root  0 Dec 11 16:29 a3
+-rw-r--r-- 1 root root  0 Dec 11 16:29 a4
+-rw-r--r-- 1 root root  0 Dec 11 16:29 b1
+-rw-r--r-- 1 root root  0 Dec 11 16:29 b2
+-rw-r--r-- 1 root root  0 Dec 11 16:29 b3
+-rw-r--r-- 1 root root  0 Dec 11 16:29 b4
 drwxr-xr-x 2 root root  6 Dec 11 14:04 s1
-drwxr-xr-x 2 root root 19 Dec 11 14:05 src
+drwxr-xr-x 2 root root 19 Dec 11 16:29 src
 drwxr-xr-x 2 root root  6 Dec 11 14:04 test
 0
 jeportie@minishell $> ls -la
 total 4
-drwxr-xr-x 5 root root  119 Dec 11 14:04 .
-drwxr-xr-x 5 root root 4096 Dec 11 14:11 ..
--rw-r--r-- 1 root root    0 Dec 11 13:38 a1
--rw-r--r-- 1 root root    0 Dec 11 13:38 a2
--rw-r--r-- 1 root root    0 Dec 11 13:38 a3
--rw-r--r-- 1 root root    0 Dec 11 13:38 a4
--rw-r--r-- 1 root root    0 Dec 11 13:38 b1
--rw-r--r-- 1 root root    0 Dec 11 13:38 b2
--rw-r--r-- 1 root root    0 Dec 11 13:38 b3
--rw-r--r-- 1 root root    0 Dec 11 13:38 b4
+drwxr-xr-x 8 root root  149 Dec 11 18:02 .
+drwxr-xr-x 5 root root 4096 Dec 11 18:02 ..
+drwxr-xr-x 2 root root    6 Dec 11 18:02 1
+drwxr-xr-x 2 root root    6 Dec 11 18:02 11
+drwxr-xr-x 2 root root    6 Dec 11 18:02 111
+-rw-r--r-- 1 root root    0 Dec 11 16:29 a1
+-rw-r--r-- 1 root root    0 Dec 11 16:29 a2
+-rw-r--r-- 1 root root    0 Dec 11 16:29 a3
+-rw-r--r-- 1 root root    0 Dec 11 16:29 a4
+-rw-r--r-- 1 root root    0 Dec 11 16:29 b1
+-rw-r--r-- 1 root root    0 Dec 11 16:29 b2
+-rw-r--r-- 1 root root    0 Dec 11 16:29 b3
+-rw-r--r-- 1 root root    0 Dec 11 16:29 b4
 drwxr-xr-x 2 root root    6 Dec 11 14:04 s1
-drwxr-xr-x 2 root root   19 Dec 11 14:05 src
+drwxr-xr-x 2 root root   19 Dec 11 16:29 src
 drwxr-xr-x 2 root root    6 Dec 11 14:04 test
 0
 jeportie@minishell $> cat -e .

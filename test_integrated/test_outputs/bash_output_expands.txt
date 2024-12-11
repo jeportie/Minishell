@@ -4,7 +4,7 @@ jeportie@minishell $> echo a*
 a1 a2 a3 a4
 0
 jeportie@minishell $> echo *1
-a1 b1 s1
+1 11 111 a1 b1 s1
 0
 jeportie@minishell $> export a=test
 0
