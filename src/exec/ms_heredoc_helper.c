@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:08:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/10 13:40:22 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:49:28 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	read_and_write_heredoc(int write_fd, const char *delimiter)
 	{
 		status = process_line(write_fd, delimiter, &line);
 		if (status == 1)
-			return (1);
+			return (ft_dprintf(2, "\nminishell: warning: here-document not "
+					"delimited by end-of-file (wanted `%s')\n", delimiter), 1);
 		if (status == 0)
 		{
 			free(line);
