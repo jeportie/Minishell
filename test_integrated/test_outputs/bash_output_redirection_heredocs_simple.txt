@@ -1,39 +1,19 @@
 jeportie@minishell $> cat << EOF
 > hello
-> test
 > EOF
 hello
-test
 0
-jeportie@minishell $> echo test ok
-test ok
-0
-jeportie@minishell $> cat << $USER
-> echo $?
+jeportie@minishell $> cat << GREG
 > test
-> echo $?
-> test2
-> echo $?
+> greg
+> GREG
+test
+greg
+0
+jeportie@minishell $> cat << jeportie
+> test
+> jerome
 > jeportie
-> echo $?
-> cat << jeportie
-> echo $?
-> test
-> echo $?
-> test2
-> echo $?
-> $USER
-echo 0
 test
-echo 0
-test2
-echo 0
-jeportie
-echo 0
-cat << jeportie
-echo 0
-test
-echo 0
-test2
-echo 0
+jerome
 0

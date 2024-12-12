@@ -1,13 +1,11 @@
 cat << EOF
 hello
-test
 EOF
-echo test ok
-cat << $USER
+cat << GREG
 test
-test2
-jeportie
+greg
+GREG
 cat << jeportie
 test
-test2
-$USER
+jerome
+jeportie

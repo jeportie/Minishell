@@ -199,17 +199,14 @@ report_results() {
         group_tests_failed=0
 
         # ----------------------------
-        # Enhanced Command Counting Logic Using grep
+        # Enhanced Command Counting Logic
         # ----------------------------
-
-        # Initialize variables for command counting
         total_commands=0
         in_multiline=0
         multiline_end_token="EOF"
 
-        # Read commands file line by line to count commands accurately
+        # Count the total commands
         while IFS= read -r line || [[ -n "$line" ]]; do
-            # Trim leading and trailing whitespace (spaces and tabs)
             trimmed_line=$(echo "$line" | sed 's/^[ \t]*//;s/[ \t]*$//')
 
             # Skip empty lines
@@ -218,46 +215,99 @@ report_results() {
             fi
 
             if [[ $in_multiline -eq 1 ]]; then
-                # Check if the current line is the end token
+                # Check if end of heredoc
                 if [[ "$trimmed_line" == "$multiline_end_token" ]]; then
                     in_multiline=0
                 fi
-                # Do not count lines inside multi-line command
                 continue
             fi
 
-            # Use grep to check if the line contains '<< TOKEN'
+            # Check for heredoc start
             if echo "$trimmed_line" | grep -q '<<[[:space:]]*[A-Za-z0-9_]\+'; then
-                # Extract the end token using grep and sed
                 multiline_end_token=$(echo "$trimmed_line" | grep -o '<<[[:space:]]*[A-Za-z0-9_]\+' | sed 's/<<[[:space:]]*//')
                 in_multiline=1
-                # Count the start of multi-line command as one command
                 ((total_commands++))
                 continue
             fi
 
-            # For single-line commands, increment the counter
+            # Single-line command
             ((total_commands++))
         done < "$COMMANDS_FILE"
 
-        # ----------------------------
-
-        # Read commands into array for processing
+        # Read all lines into commands
         mapfile -t commands < "$COMMANDS_FILE"
 
-        # Parse outputs
-        # Function to parse outputs into an array of outputs per command
+        # Check if this group has heredoc commands
+        has_heredoc=false
+        for cmd in "${commands[@]}"; do
+            if [[ "$cmd" == *'<<'* ]]; then
+                has_heredoc=true
+                break
+            fi
+        done
+
+        # If we have heredocs, filter out heredoc body lines first
+        declare -a filtered_commands
+        if $has_heredoc; then
+            in_heredoc=0
+            heredoc_delimiter=""
+            for cmd in "${commands[@]}"; do
+                trimmed_line=$(echo "$cmd" | sed 's/^[ \t]*//;s/[ \t]*$//')
+
+                # Skip empty lines
+                if [[ -z "$trimmed_line" ]]; then
+                    continue
+                fi
+
+                if [[ $in_heredoc -eq 1 ]]; then
+                    # Inside heredoc, check for end
+                    if [[ "$trimmed_line" == "$heredoc_delimiter" ]]; then
+                        in_heredoc=0
+                    fi
+                    # Don't add heredoc body lines
+                else
+                    # Not in heredoc
+                    if [[ "$trimmed_line" =~ '<<[[:space:]]*([A-Za-z0-9_]+)' ]]; then
+                        heredoc_delimiter="${BASH_REMATCH[1]}"
+                        in_heredoc=1
+                        filtered_commands+=("$trimmed_line")
+                    else
+                        # Normal command
+                        filtered_commands+=("$trimmed_line")
+                    fi
+                fi
+            done
+        else
+            # No heredocs, use commands as-is
+            filtered_commands=("${commands[@]}")
+        fi
+
+        # Now decide final test names:
+        # If we have heredocs, we only want the lines containing '<<'
+        # If no heredocs, we use filtered_commands directly.
+        declare -a final_test_names
+        if $has_heredoc; then
+            # Extract only heredoc start lines (containing '<<') from the original file
+            final_test_names=()
+            for c in "${commands[@]}"; do
+                if [[ "$c" == *'<<'* ]]; then
+                    final_test_names+=("$c")
+                fi
+            done
+        else
+            final_test_names=("${filtered_commands[@]}")
+        fi
+
         parse_outputs() {
             local output_file="$1"
-            local -n outputs_ref=$2  # Use nameref for output array
+            local -n outputs_ref=$2
 
-            outputs_ref=()  # Initialize the output array
+            outputs_ref=()
             local current_output=""
             local is_first_prompt_found=false
 
             while IFS= read -r line || [[ -n "$line" ]]; do
                 if [[ "$line" == *"@minishell \$>"* ]]; then
-                    # Found a prompt line
                     if $is_first_prompt_found; then
                         outputs_ref+=("$current_output")
                     else
@@ -269,28 +319,18 @@ report_results() {
                 fi
             done < "$output_file"
 
-            # Exclude the last output if it's from the 'exit' command
-            if [[ -n "$current_output" ]]; then
-                # Check if the current_output corresponds to 'exit'
-                if [[ "$current_output" != *"exit"* ]]; then
-                    outputs_ref+=("$current_output")
-                fi
+            if [[ -n "$current_output" && "$current_output" != *"exit"* ]]; then
+                outputs_ref+=("$current_output")
             fi
         }
 
-        # Parse bash outputs
+        # Parse bash and minishell outputs
         declare -a bash_outputs
         parse_outputs "$BASH_OUTPUT" bash_outputs
-
-        # Parse minishell outputs
         declare -a minishell_outputs
         parse_outputs "$MINISHELL_OUTPUT" minishell_outputs
 
-        # ----------------------------
-        # Compare Command Counts
-        # ----------------------------
-
-        # Compare the counted commands with the outputs
+        # Compare command counts
         bash_output_count="${#bash_outputs[@]}"
         minishell_output_count="${#minishell_outputs[@]}"
 
@@ -300,33 +340,27 @@ report_results() {
             exit 1
         fi
 
-        # ----------------------------
-
         # Iterate over each command
         for ((i=0; i<total_commands; i++)); do
-            test_name="${commands[i]}"
+            test_name="${final_test_names[i]}"
             bash_output="${bash_outputs[i]}"
             mini_output="${minishell_outputs[i]}"
 
-            # Increment counters
             ((total_tests++))
             ((group_total_tests++))
 
-            # Remove trailing newlines and empty lines
+            # Clean outputs
             bash_output="$(echo -e "$bash_output" | sed '/^[[:space:]]*$/d')"
             mini_output="$(echo -e "$mini_output" | sed '/^[[:space:]]*$/d')"
 
-            # Split outputs into lines
             IFS=$'\n' read -r -d '' -a bash_lines <<< "$bash_output"
             IFS=$'\n' read -r -d '' -a mini_lines <<< "$mini_output"
 
-            # Remove the prompt line
             bash_prompt="${bash_lines[0]}"
             mini_prompt="${mini_lines[0]}"
             bash_lines=("${bash_lines[@]:1}")
             mini_lines=("${mini_lines[@]:1}")
 
-            # Compare number of lines
             bash_line_count=${#bash_lines[@]}
             mini_line_count=${#mini_lines[@]}
 
@@ -334,17 +368,15 @@ report_results() {
             exit_code_mismatch=false
             output_number_mismatch=false
 
-            # Check for output number mismatch
+            # Check mismatches
             if [ "$bash_line_count" -ne "$mini_line_count" ]; then
                 output_number_mismatch=true
             else
                 if [ "$bash_line_count" -eq 1 ]; then
-                    # Only exit code is present
                     if [ "${bash_lines[0]}" != "${mini_lines[0]}" ]; then
                         exit_code_mismatch=true
                     fi
                 elif [ "$bash_line_count" -eq 2 ]; then
-                    # Output and exit code
                     if [ "${bash_lines[0]}" != "${mini_lines[0]}" ]; then
                         output_mismatch=true
                     fi
@@ -352,48 +384,32 @@ report_results() {
                         exit_code_mismatch=true
                     fi
                 else
-                    # More than 2 lines
-                    # Compare outputs except last line (assumed to be exit code)
-                    bash_output_content="${bash_lines[@]:0:${#bash_lines[@]}-1}"
-                    mini_output_content="${mini_lines[@]:0:${#mini_lines[@]}-1}"
+                    bash_output_content=("${bash_lines[@]:0:${#bash_lines[@]}-1}")
+                    mini_output_content=("${mini_lines[@]:0:${#mini_lines[@]}-1}")
+
                     if [ "${bash_output_content[*]}" != "${mini_output_content[*]}" ]; then
                         output_mismatch=true
                     fi
-                    # Compare exit codes
+
                     if [ "${bash_lines[-1]}" != "${mini_lines[-1]}" ]; then
                         exit_code_mismatch=true
                     fi
                 fi
             fi
 
-            # Determine test result
+            # Determine result
             if ! $output_mismatch && ! $exit_code_mismatch && ! $output_number_mismatch; then
-                # Test Passed
                 printf "\033[1;32m✓ %-50s\t(PASS)\033[0m\n" "$test_name"
                 ((tests_passed++))
                 ((group_tests_passed++))
             else
-                # Test Failed
                 printf "\033[1;31m✘ %-45s\t\t(FAIL)\033[0m\n" "$test_name"
-
-                # Display errors
                 error_msg=""
-                if $output_mismatch; then
-                    error_msg+="Output mismatch. "
-                fi
-                if $exit_code_mismatch; then
-                    error_msg+="Error code mismatch. "
-                fi
-                if $output_number_mismatch; then
-                    error_msg+="Output number mismatch. "
-                fi
+                $output_mismatch && error_msg+="Output mismatch. "
+                $exit_code_mismatch && error_msg+="Error code mismatch. "
+                $output_number_mismatch && error_msg+="Output number mismatch. "
 
                 echo -e "    \033[1;33mError(s):\033[0m $error_msg"
-
-                # Display differences
-                # Prepare outputs for diff
-                bash_diff_content="${bash_lines[*]}"
-                mini_diff_content="${mini_lines[*]}"
 
                 if $output_number_mismatch; then
                     echo -e "    \033[1;33mBash Output Lines:\033[0m $bash_line_count"
@@ -403,10 +419,9 @@ report_results() {
                 if $output_mismatch || $exit_code_mismatch || $output_number_mismatch; then
                     echo -e "    \033[1;33mDiff:\033[0m"
                     diff_output=$(diff -u <(echo "${mini_lines[*]}") <(echo "${bash_lines[*]}"))
-                    # Indent and color the diff
                     while IFS= read -r line; do
-                        if [[ $line == ---* ]] || [[ $line == +++* ]]; then
-                            continue  # Skip file headers in diff output
+                        if [[ $line == ---* || $line == +++* ]]; then
+                            continue
                         elif [[ $line == @@* ]]; then
                             echo -e "        \033[1;34m$line\033[0m"
                         elif [[ $line == -* ]]; then
@@ -419,7 +434,6 @@ report_results() {
                     done <<< "$diff_output"
                 fi
 
-                # Display exit code differences if they mismatch
                 if $exit_code_mismatch; then
                     bash_exit_code="${bash_lines[-1]}"
                     mini_exit_code="${mini_lines[-1]}"
@@ -433,17 +447,14 @@ report_results() {
             fi
         done
 
-        # Calculate group success rate
+        # Group summary
         if [ "$group_total_tests" -gt 0 ]; then
             group_success_rate=$(( (group_tests_passed * 100) / group_total_tests ))
         else
             group_success_rate=0
         fi
-
-        # Store group results
         group_results["$group_name"]="$group_success_rate"
 
-        # Print group summary
         echo -e "\n${BLUE}Group Summary for '${group_name}':${RESET}"
         echo -e "Total tests: $group_total_tests"
         echo -e "Passed: \033[1;32m$group_tests_passed\033[0m"
@@ -451,14 +462,13 @@ report_results() {
         echo -e "Success Rate: \033[1;36m${group_success_rate}%\033[0m\n"
     done
 
-    # Calculate overall success rate
+    # Overall summary
     if [ "$total_tests" -gt 0 ]; then
         overall_success_rate=$(( (tests_passed * 100) / total_tests ))
     else
         overall_success_rate=0
     fi
 
-    # Print overall summary
     echo -e "${BLUE}======================================================================${RESET}"
     echo -e "${BLUE}                       OVERALL BASH TEST RESULTS                      ${RESET}"
     echo -e "${BLUE}======================================================================${RESET}\n"
@@ -473,7 +483,6 @@ report_results() {
     echo -e "Failed: \033[1;31m$tests_failed\033[0m"
     echo -e "Overall Success Rate: \033[1;36m${overall_success_rate}%\033[0m"
 
-    # Print Total Test Time with the captured elapsed_time
     echo -e "${CYAN}Total Test time (real) = ${elapsed_time} ms${RESET}"
     test_failed_global=$tests_failed
 }
