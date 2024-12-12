@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 18:04:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:24:03 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ int		ms_handle_error(const char *msg, int exit_status, t_gc *gcl);
 void	fork_init(t_fork_params *fork_params, t_exec_context *context,
 			bool is_here_doc, char *title);
 
-int		ms_heredoc_mode(const char *delimiter, t_exec_context *context,
-			t_proc_manager *manager, t_gc *gcl);
+int		ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context,
+			t_proc_manager *manager);
 void	ft_generate_temp_filename(char *buffer, size_t buffer_size,
 			t_exec_context *context);
 #endif /* EXEC_H */

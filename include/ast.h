@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:45:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 11:01:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:17:39 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_heredoc_node
 {
 	struct s_ast_node	*child;
 	char				*delimiter;
+	char				*filename;
 }				t_heredoc_node;
 
 typedef struct s_logic_node

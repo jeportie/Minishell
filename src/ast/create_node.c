@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:58:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 18:03:47 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:18:29 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_ast_node	*create_heredoc_node(t_node_type type, t_ast_node *child,
 	node->type = type;
 	node->data.heredoc.child = child;
 	node->data.heredoc.delimiter = delimiter;
+	node->data.heredoc.filename = NULL;
 	return (node);
 }
 

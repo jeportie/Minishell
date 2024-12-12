@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 18:04:11 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:29:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,14 @@ void	ft_heredoc(t_tokenizer *tok, t_infos *infos, char *delimiter,
 		ft_quit(infos, 2, "Error: echec fork heredoc_buffer.\n", errno);
 }*/
 
-int	ms_heredoc_mode(const char *delimiter, t_exec_context *context,
-	t_proc_manager *manager, t_gc *gcl)
+int	ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context,
+	t_proc_manager *manager)
 {
-//	char	*delim;
-	char	tmp_filename[260];
-
-	if (gcl && delimiter && context && manager)
-		ft_generate_temp_filename(tmp_filename, sizeof(tmp_filename),
+	node->filename = "~/tmp/.ms_tmpfile_";
+	if (context && manager)
+		ft_generate_temp_filename(node->filename, sizeof(node->filename),
 			context);
-	printf("filename = %s\n", tmp_filename);
+	printf("filename = %s\n", node->filename);
 	return (0);
 }
 
