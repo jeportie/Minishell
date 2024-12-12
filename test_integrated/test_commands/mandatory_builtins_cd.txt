@@ -1,0 +1,9 @@
+pwd
+cd test_dir
+pwd
+cd ..
+pwd
+cd test_dir/src
+pwd
+cd ../..
+pwd

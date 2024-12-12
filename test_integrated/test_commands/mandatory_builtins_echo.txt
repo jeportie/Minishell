@@ -5,3 +5,8 @@ echo "je suis un test"
 echo 'je suis un test'
 echo "je suis" "un test"
 echo 'je suis "un test"'
+echo "Hello World"
+echo 'Hello World'
+echo "This is" "a test"
+echo 'He said: "Hello"'
+echo -n "No newline"

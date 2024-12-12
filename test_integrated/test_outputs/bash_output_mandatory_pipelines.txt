@@ -1,3 +1,15 @@
 jeportie@minishell $> echo Hello | cat -e
 Hello$
 0
+jeportie@minishell $> echo "Hello" | cat -e
+Hello$
+0
+jeportie@minishell $> ls | grep "test"
+run_test.sh
+test_commands
+test_dir
+test_outputs
+0
+jeportie@minishell $> echo "line1\nline2" | wc -l
+1
+0

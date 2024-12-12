@@ -1,0 +1,15 @@
+jeportie@minishell $> echo Hello
+Hello
+0
+jeportie@minishell $> echo "Hello World"
+Hello World
+0
+jeportie@minishell $> echo 'Hello World'
+Hello World
+0
+jeportie@minishell $> echo "Nested 'quotes' inside double quotes"
+Nested 'quotes' inside double quotes
+0
+jeportie@minishell $> echo 'Nested "quotes" inside single quotes'
+Nested "quotes" inside single quotes
+0

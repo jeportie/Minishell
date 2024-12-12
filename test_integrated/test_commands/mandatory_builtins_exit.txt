@@ -1,0 +1,12 @@
+bash
+export PS1='$USER@minishell $> '
+exit
+bash
+export PS1='$USER@minishell $> '
+exit 0
+bash
+export PS1='$USER@minishell $> '
+exit 42
+bash
+export PS1='$USER@minishell $> '
+exit 9999

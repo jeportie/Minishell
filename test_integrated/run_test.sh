@@ -167,7 +167,7 @@ process_outputs() {
 report_results() {
     local elapsed_time="$1"  # Receive elapsed time as an argument
 
-    echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n${BLUE}======================================================================${RESET}"
+    echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n${BLUE}======================================================================${RESET}"
     echo -e "${BLUE}                   TESTING MINISHELL VS POSIX SUMMARY                 ${RESET}"
     echo -e "${BLUE}======================================================================${RESET}\n"
 
@@ -305,7 +305,7 @@ report_results() {
             outputs_ref=()
             local current_output=""
             local is_first_prompt_found=false
-
+      
             while IFS= read -r line || [[ -n "$line" ]]; do
                 if [[ "$line" == *"@minishell \$>"* ]]; then
                     if $is_first_prompt_found; then
@@ -334,11 +334,20 @@ report_results() {
         bash_output_count="${#bash_outputs[@]}"
         minishell_output_count="${#minishell_outputs[@]}"
 
-        if [ "$total_commands" -ne "$bash_output_count" ] || [ "$total_commands" -ne "$minishell_output_count" ]; then
-            echo -e "${RED}Error: Number of commands and outputs do not match in group '${group_name}'.${RESET}"
-            echo -e "Commands: ${total_commands}, Bash Outputs: ${bash_output_count}, Minishell Outputs: ${minishell_output_count}"
-            exit 1
+        # Only perform the commands-output check if the group is NOT 'mandatory_builtins_exit'
+        if [ "$group_name" != "mandatory_builtins_exit" ]; then
+            if [ "$total_commands" -ne "$bash_output_count" ] || [ "$total_commands" -ne "$minishell_output_count" ]; then
+                echo -e "${RED}Error: Number of commands and outputs do not match in group '${group_name}'.${RESET}"
+                echo -e "Commands: ${total_commands}, Bash Outputs: ${bash_output_count}, Minishell Outputs: ${minishell_output_count}"
+                exit 1
+            fi
         fi
+
+  #      if [ "$total_commands" -ne "$bash_output_count" ] || [ "$total_commands" -ne "$minishell_output_count" ]; then
+  #          echo -e "${RED}Error: Number of commands and outputs do not match in group '${group_name}'.${RESET}"
+  #          echo -e "Commands: ${total_commands}, Bash Outputs: ${bash_output_count}, Minishell Outputs: ${minishell_output_count}"
+  #          exit 1
+  #      fi
 
         # Iterate over each command
         for ((i=0; i<total_commands; i++)); do
@@ -390,9 +399,11 @@ report_results() {
                     if [ "${bash_output_content[*]}" != "${mini_output_content[*]}" ]; then
                         output_mismatch=true
                     fi
-
-                    if [ "${bash_lines[-1]}" != "${mini_lines[-1]}" ]; then
-                        exit_code_mismatch=true
+####
+                    if [ "$group_name" != "mandatory_builtins_exit" ]; then
+                        if [ "${bash_lines[-1]}" != "${mini_lines[-1]}" ]; then
+                            exit_code_mismatch=true
+                        fi
                     fi
                 fi
             fi

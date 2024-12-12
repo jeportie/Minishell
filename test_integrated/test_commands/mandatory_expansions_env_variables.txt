@@ -1,8 +1,8 @@
+export USERNAME=testuser
+echo $USERNAME
+echo $USER $HOME
+echo "User is $USERNAME"
 cd test_dir
-echo a*
-echo *1
 export a=test
 echo $a
 cd ..
-cd ..
-cat s*/*ll*

@@ -37,3 +37,20 @@ hello
 0
 jeportie@minishell $> rm test
 0
+jeportie@minishell $> echo "Hello" > file1
+0
+jeportie@minishell $> cat file1
+Hello
+0
+jeportie@minishell $> echo "World" >> file1
+0
+jeportie@minishell $> cat file1
+Hello
+World
+0
+jeportie@minishell $> cat < file1
+Hello
+World
+0
+jeportie@minishell $> rm file1
+0

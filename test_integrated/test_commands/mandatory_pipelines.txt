@@ -1,1 +1,4 @@
 echo Hello | cat -e
+echo "Hello" | cat -e
+ls | grep "test"
+echo "line1\nline2" | wc -l

@@ -5,3 +5,9 @@ cd ..
 pwd
 cd -
 pwd
+pwd
+cd test_dir
+pwd
+cd ..
+pwd
+echo "Testing echo builtin"

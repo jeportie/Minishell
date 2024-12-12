@@ -19,3 +19,21 @@ je suis un test
 jeportie@minishell $> echo 'je suis "un test"'
 je suis "un test"
 0
+jeportie@minishell $> echo "Hello World"
+Hello World
+0
+jeportie@minishell $> echo 'Hello World'
+Hello World
+0
+jeportie@minishell $> echo "This is" "a test"
+This is a test
+0
+jeportie@minishell $> echo 'He said: "Hello"'
+He said: "Hello"
+0
+jeportie@minishell $> echo -n "No newline"
+0
+jeportie@minishell $> echo -e "Line1\nLine2" 
+Line1
+Line2
+0

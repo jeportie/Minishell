@@ -1,0 +1,3 @@
+( echo "Inside subshell" && pwd )
+( cd test_dir && ls )
+( env | grep SHLVL )

@@ -15,3 +15,9 @@ rm Makefile
 pwd > test && echo hello >> test
 cat test
 rm test
+echo "Hello" > file1
+cat file1
+echo "World" >> file1
+cat file1
+cat < file1
+rm file1

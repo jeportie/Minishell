@@ -1,0 +1,18 @@
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
+0
+jeportie@minishell $> cd test_dir
+0
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated/test_dir
+0
+jeportie@minishell $> cd src
+0
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated/test_dir/src
+0
+jeportie@minishell $> cd ../..
+0
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
+0

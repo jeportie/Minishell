@@ -1,0 +1,6 @@
+export MYVAR=42
+echo $MYVAR
+export MYVAR="Hello World"
+echo $MYVAR
+unset MYVAR
+echo $MYVAR

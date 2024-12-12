@@ -1,0 +1,4 @@
+cd nonexistent_dir
+ls nonexistingfile
+cat < nonexistent_file
+grep

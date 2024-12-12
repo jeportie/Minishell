@@ -17,3 +17,17 @@ jeportie@minishell $> cat << jeportie
 test
 jerome
 0
+jeportie@minishell $> cat << EOF
+> Hello from heredoc
+> EOF
+Hello from heredoc
+0
+jeportie@minishell $> cat << DELIM
+> Multiple
+> lines
+> in heredoc
+> DELIM
+Multiple
+lines
+in heredoc
+0

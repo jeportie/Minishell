@@ -9,3 +9,11 @@ cat << jeportie
 test
 jerome
 jeportie
+cat << EOF
+Hello from heredoc
+EOF
+cat << DELIM
+Multiple
+lines
+in heredoc
+DELIM

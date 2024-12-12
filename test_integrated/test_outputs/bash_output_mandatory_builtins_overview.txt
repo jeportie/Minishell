@@ -16,3 +16,19 @@ jeportie@minishell $> cd -
 jeportie@minishell $> pwd
 /root/projects/minishell/test_integrated
 0
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
+0
+jeportie@minishell $> cd test_dir
+0
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated/test_dir
+0
+jeportie@minishell $> cd ..
+0
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
+0
+jeportie@minishell $> echo "Testing echo builtin"
+Testing echo builtin
+0

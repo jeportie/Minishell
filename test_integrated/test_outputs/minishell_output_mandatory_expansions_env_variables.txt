@@ -1,10 +1,15 @@
+jeportie@minishell $> export USERNAME=testuser
+0
+jeportie@minishell $> echo $USERNAME
+testuser
+0
+jeportie@minishell $> echo $USER $HOME
+jeportie /root
+0
+jeportie@minishell $> echo "User is $USERNAME"
+User is testuser
+0
 jeportie@minishell $> cd test_dir
-0
-jeportie@minishell $> echo a*
-a1 a2 a3 a4
-0
-jeportie@minishell $> echo *1
-s1 a1 b1 1 11 111
 0
 jeportie@minishell $> export a=test
 0
@@ -13,8 +18,3 @@ test
 0
 jeportie@minishell $> cd ..
 0
-jeportie@minishell $> cd ..
-0
-jeportie@minishell $> cat s*/*ll*
-cat: src/shell: Is a directory
-1

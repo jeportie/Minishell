@@ -1,0 +1,14 @@
+jeportie@minishell $> true && echo "Success"
+Success
+0
+jeportie@minishell $> false && echo "Won't print"
+1
+jeportie@minishell $> false || echo "Fallback"
+Fallback
+0
+jeportie@minishell $> true || echo "Won't print"
+0
+jeportie@minishell $> echo "hello" && echo "world"
+hello
+world
+0

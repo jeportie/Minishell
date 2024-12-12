@@ -1,0 +1,5 @@
+true && echo "Success"
+false && echo "Won't print"
+false || echo "Fallback"
+true || echo "Won't print"
+echo "hello" && echo "world"
