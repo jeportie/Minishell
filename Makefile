@@ -43,25 +43,26 @@ SRC = \
   src/builtins/ms_pwd.c \
   src/builtins/ms_unset.c \
   src/exec/ms_concat_path.c \
-  src/exec/ms_execute_ast.c \
-  src/exec/ms_execute_command.c \
-  src/exec/ms_execute_external.c \
-  src/exec/ms_execute_logical.c \
-  src/exec/ms_execute_pipeline.c \
   src/exec/ms_execute_subshell.c \
   src/exec/ms_handle_error.c \
-  src/exec/ms_handle_redirections.c \
-  src/exec/ms_heredoc_helper.c \
-  src/exec/ms_heredoc_mode.c \
   src/exec/ms_parse_cmd_path.c \
   src/exec/ms_pipeline_helper.c \
+  src/exec/ms_execute_external.c \
+  src/exec/ms_execute_ast.c \
+  src/exec/ms_handle_redirections.c \
+  src/exec/ms_make_tmpfile.c \
+  src/exec/ms_execute_logical.c \
+  src/exec/ms_execute_pipeline.c \
+  src/exec/ms_execute_command.c \
+  src/exec/ms_heredoc_helper.c \
+  src/exec/ms_heredoc_mode.c \
   src/expand/ms_expand_args.c \
   src/expand/ms_expand_args_utils.c \
   src/expand/ms_expand_utils.c \
-  src/expand/ms_expand_wild.c \
-  src/expand/ms_manage_arg_expand.c \
   src/expand/ms_value_assign.c \
   src/expand/ms_wildcard_helper.c \
+  src/expand/ms_expand_wild.c \
+  src/expand/ms_manage_arg_expand.c \
   src/global.c \
   src/process/add_process.c \
   src/process/back_to_parent_stdout.c \
