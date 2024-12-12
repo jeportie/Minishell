@@ -1,0 +1,860 @@
+==19037== Memcheck, a memory error detector
+==19037== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==19037== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==19037== Command: ../minishell
+==19037== Parent PID: 14874
+==19037== 
+==19038== 
+==19038== HEAP SUMMARY:
+==19038==     in use at exit: 10,513 bytes in 226 blocks
+==19038==   total heap usage: 593 allocs, 367 frees, 23,611 bytes allocated
+==19038== 
+==19038== 1 bytes in 1 blocks are still reachable in loss record 1 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x116135: ft_update_buffer (in /root/projects/minishell/minishell)
+==19038==    by 0x1162C4: get_next_line (in /root/projects/minishell/minishell)
+==19038==    by 0x1112F9: ms_get_user_input (in /root/projects/minishell/minishell)
+==19038==    by 0x1142E9: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 2 bytes in 1 blocks are still reachable in loss record 2 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x115ABA: ft_itoa (in /root/projects/minishell/minishell)
+==19038==    by 0x1115BD: st_shell_lvl_helper (in /root/projects/minishell/minishell)
+==19038==    by 0x1116AB: ms_increment_shell_lvl (in /root/projects/minishell/minishell)
+==19038==    by 0x1117FD: ms_init_env (in /root/projects/minishell/minishell)
+==19038==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19038==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 3 bytes in 1 blocks are still reachable in loss record 3 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x114E78: gc_strdup (in /root/projects/minishell/minishell)
+==19038==    by 0x111B10: ms_set_env_value (in /root/projects/minishell/minishell)
+==19038==    by 0x10CC11: st_set_underscore_value (in /root/projects/minishell/minishell)
+==19038==    by 0x10CC55: ms_execute_command (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x10E4D2: left_child_process (in /root/projects/minishell/minishell)
+==19038==    by 0x10D4A3: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 8 bytes in 1 blocks are still reachable in loss record 4 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x114F0A: gc_init (in /root/projects/minishell/minishell)
+==19038==    by 0x1118AA: ms_init_shell (in /root/projects/minishell/minishell)
+==19038==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 13 bytes in 3 blocks are still reachable in loss record 6 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x113CC3: tokenize_word (in /root/projects/minishell/minishell)
+==19038==    by 0x1135B2: ms_tokenize (in /root/projects/minishell/minishell)
+==19038==    by 0x1141AC: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 16 bytes in 1 blocks are still reachable in loss record 7 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x10983B: create_command_node (in /root/projects/minishell/minishell)
+==19038==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19038==    by 0x109EB0: parse_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19038==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19038==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 18 bytes in 1 blocks are still reachable in loss record 9 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x116050: ft_extract_line (in /root/projects/minishell/minishell)
+==19038==    by 0x116256: get_next_line (in /root/projects/minishell/minishell)
+==19038==    by 0x1112F9: ms_get_user_input (in /root/projects/minishell/minishell)
+==19038==    by 0x1142E9: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 24 bytes in 1 blocks are still reachable in loss record 11 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x10983B: create_command_node (in /root/projects/minishell/minishell)
+==19038==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19038==    by 0x109EEA: parse_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19038==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19038==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 24 bytes in 1 blocks are still reachable in loss record 12 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x1106ED: init_manager (in /root/projects/minishell/minishell)
+==19038==    by 0x114237: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 32 bytes in 1 blocks are still reachable in loss record 13 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x1098A3: create_command_node (in /root/projects/minishell/minishell)
+==19038==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19038==    by 0x109EB0: parse_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19038==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19038==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 32 bytes in 1 blocks are still reachable in loss record 14 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x1098A3: create_command_node (in /root/projects/minishell/minishell)
+==19038==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19038==    by 0x109EEA: parse_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19038==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19038==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 32 bytes in 1 blocks are still reachable in loss record 15 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x109971: create_pipe_node (in /root/projects/minishell/minishell)
+==19038==    by 0x109F2C: parse_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19038==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19038==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 40 bytes in 1 blocks are still reachable in loss record 16 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x11170A: ms_init_env (in /root/projects/minishell/minishell)
+==19038==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19038==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 40 bytes in 1 blocks are still reachable in loss record 17 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11479C: gc_register (in /root/projects/minishell/minishell)
+==19038==    by 0x1115DC: st_shell_lvl_helper (in /root/projects/minishell/minishell)
+==19038==    by 0x1116AB: ms_increment_shell_lvl (in /root/projects/minishell/minishell)
+==19038==    by 0x1117FD: ms_init_env (in /root/projects/minishell/minishell)
+==19038==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19038==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 40 bytes in 1 blocks are still reachable in loss record 18 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11479C: gc_register (in /root/projects/minishell/minishell)
+==19038==    by 0x11131C: ms_get_user_input (in /root/projects/minishell/minishell)
+==19038==    by 0x1142E9: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 40 bytes in 1 blocks are still reachable in loss record 19 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x10983B: create_command_node (in /root/projects/minishell/minishell)
+==19038==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19038==    by 0x109EB0: parse_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19038==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19038==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 40 bytes in 1 blocks are still reachable in loss record 20 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x1098A3: create_command_node (in /root/projects/minishell/minishell)
+==19038==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19038==    by 0x109EB0: parse_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19038==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19038==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 40 bytes in 1 blocks are still reachable in loss record 21 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x10983B: create_command_node (in /root/projects/minishell/minishell)
+==19038==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19038==    by 0x109EEA: parse_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19038==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19038==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 40 bytes in 1 blocks are still reachable in loss record 22 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x1098A3: create_command_node (in /root/projects/minishell/minishell)
+==19038==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19038==    by 0x109EEA: parse_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19038==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19038==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 40 bytes in 1 blocks are still reachable in loss record 23 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x109971: create_pipe_node (in /root/projects/minishell/minishell)
+==19038==    by 0x109F2C: parse_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19038==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19038==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 40 bytes in 1 blocks are still reachable in loss record 24 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x1106ED: init_manager (in /root/projects/minishell/minishell)
+==19038==    by 0x114237: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 40 bytes in 1 blocks are still reachable in loss record 25 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x114E78: gc_strdup (in /root/projects/minishell/minishell)
+==19038==    by 0x111B10: ms_set_env_value (in /root/projects/minishell/minishell)
+==19038==    by 0x10CC11: st_set_underscore_value (in /root/projects/minishell/minishell)
+==19038==    by 0x10CC55: ms_execute_command (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x10E4D2: left_child_process (in /root/projects/minishell/minishell)
+==19038==    by 0x10D4A3: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 40 bytes in 1 blocks are still reachable in loss record 26 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11471D: gc_nest_register (in /root/projects/minishell/minishell)
+==19038==    by 0x10E408: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19038==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19038==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x10E4D2: left_child_process (in /root/projects/minishell/minishell)
+==19038==    by 0x10D4A3: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 40 bytes in 1 blocks are still reachable in loss record 27 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x1103C0: add_process (in /root/projects/minishell/minishell)
+==19038==    by 0x1109BB: safe_fork (in /root/projects/minishell/minishell)
+==19038==    by 0x10D185: ms_execute_external (in /root/projects/minishell/minishell)
+==19038==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x10E4D2: left_child_process (in /root/projects/minishell/minishell)
+==19038==    by 0x10D4A3: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 48 bytes in 1 blocks are still reachable in loss record 28 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x11170A: ms_init_env (in /root/projects/minishell/minishell)
+==19038==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19038==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 48 bytes in 1 blocks are still reachable in loss record 29 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x1103C0: add_process (in /root/projects/minishell/minishell)
+==19038==    by 0x1109BB: safe_fork (in /root/projects/minishell/minishell)
+==19038==    by 0x10D185: ms_execute_external (in /root/projects/minishell/minishell)
+==19038==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x10E4D2: left_child_process (in /root/projects/minishell/minishell)
+==19038==    by 0x10D4A3: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 64 bytes in 1 blocks are still reachable in loss record 30 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11525A: ft_split (in /root/projects/minishell/minishell)
+==19038==    by 0x10E3BD: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19038==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19038==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x10E4D2: left_child_process (in /root/projects/minishell/minishell)
+==19038==    by 0x10D4A3: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 70 bytes in 5 blocks are still reachable in loss record 31 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x111978: gc_strjoin (in /root/projects/minishell/minishell)
+==19038==    by 0x10C8A5: ms_concat_path (in /root/projects/minishell/minishell)
+==19038==    by 0x10E2D8: swipe_paths (in /root/projects/minishell/minishell)
+==19038==    by 0x10E436: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19038==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19038==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x10E4D2: left_child_process (in /root/projects/minishell/minishell)
+==19038==    by 0x10D4A3: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 76 bytes in 7 blocks are still reachable in loss record 32 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11519E: ft_extract (in /root/projects/minishell/minishell)
+==19038==    by 0x1152A5: ft_split (in /root/projects/minishell/minishell)
+==19038==    by 0x10E3BD: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19038==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19038==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x10E4D2: left_child_process (in /root/projects/minishell/minishell)
+==19038==    by 0x10D4A3: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 80 bytes in 5 blocks are still reachable in loss record 33 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x111978: gc_strjoin (in /root/projects/minishell/minishell)
+==19038==    by 0x10C8D3: ms_concat_path (in /root/projects/minishell/minishell)
+==19038==    by 0x10E2D8: swipe_paths (in /root/projects/minishell/minishell)
+==19038==    by 0x10E436: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19038==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19038==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x10E4D2: left_child_process (in /root/projects/minishell/minishell)
+==19038==    by 0x10D4A3: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 120 bytes in 3 blocks are still reachable in loss record 34 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x113CC3: tokenize_word (in /root/projects/minishell/minishell)
+==19038==    by 0x1135B2: ms_tokenize (in /root/projects/minishell/minishell)
+==19038==    by 0x1141AC: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 200 bytes in 5 blocks are still reachable in loss record 35 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x111978: gc_strjoin (in /root/projects/minishell/minishell)
+==19038==    by 0x10C8A5: ms_concat_path (in /root/projects/minishell/minishell)
+==19038==    by 0x10E2D8: swipe_paths (in /root/projects/minishell/minishell)
+==19038==    by 0x10E436: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19038==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19038==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x10E4D2: left_child_process (in /root/projects/minishell/minishell)
+==19038==    by 0x10D4A3: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 200 bytes in 5 blocks are still reachable in loss record 36 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x111978: gc_strjoin (in /root/projects/minishell/minishell)
+==19038==    by 0x10C8D3: ms_concat_path (in /root/projects/minishell/minishell)
+==19038==    by 0x10E2D8: swipe_paths (in /root/projects/minishell/minishell)
+==19038==    by 0x10E436: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19038==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19038==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x10E4D2: left_child_process (in /root/projects/minishell/minishell)
+==19038==    by 0x10D4A3: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 280 bytes in 7 blocks are still reachable in loss record 37 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11479C: gc_register (in /root/projects/minishell/minishell)
+==19038==    by 0x114702: gc_nest_register (in /root/projects/minishell/minishell)
+==19038==    by 0x10E408: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19038==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19038==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x10E4D2: left_child_process (in /root/projects/minishell/minishell)
+==19038==    by 0x10D4A3: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19038==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19038==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19038==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 624 bytes in 26 blocks are still reachable in loss record 38 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x110DC2: ms_env_create_node (in /root/projects/minishell/minishell)
+==19038==    by 0x11179B: ms_init_env (in /root/projects/minishell/minishell)
+==19038==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19038==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 829 bytes in 52 blocks are still reachable in loss record 39 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11519E: ft_extract (in /root/projects/minishell/minishell)
+==19038==    by 0x1152A5: ft_split (in /root/projects/minishell/minishell)
+==19038==    by 0x110E2A: ms_env_create_node (in /root/projects/minishell/minishell)
+==19038==    by 0x11179B: ms_init_env (in /root/projects/minishell/minishell)
+==19038==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19038==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 1,040 bytes in 26 blocks are still reachable in loss record 40 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19038==    by 0x110DC2: ms_env_create_node (in /root/projects/minishell/minishell)
+==19038==    by 0x11179B: ms_init_env (in /root/projects/minishell/minishell)
+==19038==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19038==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== 2,080 bytes in 52 blocks are still reachable in loss record 41 of 42
+==19038==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19038==    by 0x11479C: gc_register (in /root/projects/minishell/minishell)
+==19038==    by 0x114702: gc_nest_register (in /root/projects/minishell/minishell)
+==19038==    by 0x110E56: ms_env_create_node (in /root/projects/minishell/minishell)
+==19038==    by 0x11179B: ms_init_env (in /root/projects/minishell/minishell)
+==19038==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19038==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19038== 
+==19038== LEAK SUMMARY:
+==19038==    definitely lost: 0 bytes in 0 blocks
+==19038==    indirectly lost: 0 bytes in 0 blocks
+==19038==      possibly lost: 0 bytes in 0 blocks
+==19038==    still reachable: 6,444 bytes in 222 blocks
+==19038==         suppressed: 4,069 bytes in 4 blocks
+==19038== 
+==19038== For lists of detected and suppressed errors, rerun with: -s
+==19038== ERROR SUMMARY: 38 errors from 38 contexts (suppressed: 4 from 4)
+==19039== 
+==19039== HEAP SUMMARY:
+==19039==     in use at exit: 10,613 bytes in 228 blocks
+==19039==   total heap usage: 595 allocs, 367 frees, 23,711 bytes allocated
+==19039== 
+==19039== 1 bytes in 1 blocks are still reachable in loss record 1 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x116135: ft_update_buffer (in /root/projects/minishell/minishell)
+==19039==    by 0x1162C4: get_next_line (in /root/projects/minishell/minishell)
+==19039==    by 0x1112F9: ms_get_user_input (in /root/projects/minishell/minishell)
+==19039==    by 0x1142E9: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 2 bytes in 1 blocks are still reachable in loss record 2 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x115ABA: ft_itoa (in /root/projects/minishell/minishell)
+==19039==    by 0x1115BD: st_shell_lvl_helper (in /root/projects/minishell/minishell)
+==19039==    by 0x1116AB: ms_increment_shell_lvl (in /root/projects/minishell/minishell)
+==19039==    by 0x1117FD: ms_init_env (in /root/projects/minishell/minishell)
+==19039==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19039==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 5 bytes in 1 blocks are still reachable in loss record 3 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x114E78: gc_strdup (in /root/projects/minishell/minishell)
+==19039==    by 0x111B10: ms_set_env_value (in /root/projects/minishell/minishell)
+==19039==    by 0x10CC11: st_set_underscore_value (in /root/projects/minishell/minishell)
+==19039==    by 0x10CC55: ms_execute_command (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x10E574: right_child_process (in /root/projects/minishell/minishell)
+==19039==    by 0x10D518: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 8 bytes in 1 blocks are still reachable in loss record 4 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x114F0A: gc_init (in /root/projects/minishell/minishell)
+==19039==    by 0x1118AA: ms_init_shell (in /root/projects/minishell/minishell)
+==19039==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 13 bytes in 3 blocks are still reachable in loss record 6 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x113CC3: tokenize_word (in /root/projects/minishell/minishell)
+==19039==    by 0x1135B2: ms_tokenize (in /root/projects/minishell/minishell)
+==19039==    by 0x1141AC: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 16 bytes in 1 blocks are still reachable in loss record 7 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x10983B: create_command_node (in /root/projects/minishell/minishell)
+==19039==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19039==    by 0x109EB0: parse_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19039==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19039==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 18 bytes in 1 blocks are still reachable in loss record 9 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x116050: ft_extract_line (in /root/projects/minishell/minishell)
+==19039==    by 0x116256: get_next_line (in /root/projects/minishell/minishell)
+==19039==    by 0x1112F9: ms_get_user_input (in /root/projects/minishell/minishell)
+==19039==    by 0x1142E9: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 24 bytes in 1 blocks are still reachable in loss record 11 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x10983B: create_command_node (in /root/projects/minishell/minishell)
+==19039==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19039==    by 0x109EEA: parse_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19039==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19039==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 24 bytes in 1 blocks are still reachable in loss record 12 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x1106ED: init_manager (in /root/projects/minishell/minishell)
+==19039==    by 0x114237: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 32 bytes in 1 blocks are still reachable in loss record 13 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x1098A3: create_command_node (in /root/projects/minishell/minishell)
+==19039==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19039==    by 0x109EB0: parse_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19039==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19039==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 32 bytes in 1 blocks are still reachable in loss record 14 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x1098A3: create_command_node (in /root/projects/minishell/minishell)
+==19039==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19039==    by 0x109EEA: parse_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19039==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19039==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 32 bytes in 1 blocks are still reachable in loss record 15 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x109971: create_pipe_node (in /root/projects/minishell/minishell)
+==19039==    by 0x109F2C: parse_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19039==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19039==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 16 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x11170A: ms_init_env (in /root/projects/minishell/minishell)
+==19039==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19039==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 17 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11479C: gc_register (in /root/projects/minishell/minishell)
+==19039==    by 0x1115DC: st_shell_lvl_helper (in /root/projects/minishell/minishell)
+==19039==    by 0x1116AB: ms_increment_shell_lvl (in /root/projects/minishell/minishell)
+==19039==    by 0x1117FD: ms_init_env (in /root/projects/minishell/minishell)
+==19039==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19039==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 18 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11479C: gc_register (in /root/projects/minishell/minishell)
+==19039==    by 0x11131C: ms_get_user_input (in /root/projects/minishell/minishell)
+==19039==    by 0x1142E9: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 19 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x10983B: create_command_node (in /root/projects/minishell/minishell)
+==19039==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19039==    by 0x109EB0: parse_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19039==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19039==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 20 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x1098A3: create_command_node (in /root/projects/minishell/minishell)
+==19039==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19039==    by 0x109EB0: parse_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19039==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19039==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 21 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x10983B: create_command_node (in /root/projects/minishell/minishell)
+==19039==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19039==    by 0x109EEA: parse_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19039==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19039==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 22 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x1098A3: create_command_node (in /root/projects/minishell/minishell)
+==19039==    by 0x109D10: parse_command (in /root/projects/minishell/minishell)
+==19039==    by 0x109EEA: parse_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19039==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19039==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 23 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x109971: create_pipe_node (in /root/projects/minishell/minishell)
+==19039==    by 0x109F2C: parse_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x109DA6: parse_logical (in /root/projects/minishell/minishell)
+==19039==    by 0x109B4E: ms_parse_tokens (in /root/projects/minishell/minishell)
+==19039==    by 0x1141D3: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 24 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x1106ED: init_manager (in /root/projects/minishell/minishell)
+==19039==    by 0x114237: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 25 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x1103C0: add_process (in /root/projects/minishell/minishell)
+==19039==    by 0x1109BB: safe_fork (in /root/projects/minishell/minishell)
+==19039==    by 0x10D484: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 26 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x114E78: gc_strdup (in /root/projects/minishell/minishell)
+==19039==    by 0x111B10: ms_set_env_value (in /root/projects/minishell/minishell)
+==19039==    by 0x10CC11: st_set_underscore_value (in /root/projects/minishell/minishell)
+==19039==    by 0x10CC55: ms_execute_command (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x10E574: right_child_process (in /root/projects/minishell/minishell)
+==19039==    by 0x10D518: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 27 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11471D: gc_nest_register (in /root/projects/minishell/minishell)
+==19039==    by 0x10E408: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19039==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19039==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x10E574: right_child_process (in /root/projects/minishell/minishell)
+==19039==    by 0x10D518: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 40 bytes in 1 blocks are still reachable in loss record 28 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x1103C0: add_process (in /root/projects/minishell/minishell)
+==19039==    by 0x1109BB: safe_fork (in /root/projects/minishell/minishell)
+==19039==    by 0x10D185: ms_execute_external (in /root/projects/minishell/minishell)
+==19039==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x10E574: right_child_process (in /root/projects/minishell/minishell)
+==19039==    by 0x10D518: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 48 bytes in 1 blocks are still reachable in loss record 29 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x11170A: ms_init_env (in /root/projects/minishell/minishell)
+==19039==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19039==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 48 bytes in 1 blocks are still reachable in loss record 30 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x1103C0: add_process (in /root/projects/minishell/minishell)
+==19039==    by 0x1109BB: safe_fork (in /root/projects/minishell/minishell)
+==19039==    by 0x10D484: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 48 bytes in 1 blocks are still reachable in loss record 31 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x1103C0: add_process (in /root/projects/minishell/minishell)
+==19039==    by 0x1109BB: safe_fork (in /root/projects/minishell/minishell)
+==19039==    by 0x10D185: ms_execute_external (in /root/projects/minishell/minishell)
+==19039==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x10E574: right_child_process (in /root/projects/minishell/minishell)
+==19039==    by 0x10D518: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 64 bytes in 1 blocks are still reachable in loss record 32 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11525A: ft_split (in /root/projects/minishell/minishell)
+==19039==    by 0x10E3BD: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19039==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19039==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x10E574: right_child_process (in /root/projects/minishell/minishell)
+==19039==    by 0x10D518: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 70 bytes in 5 blocks are still reachable in loss record 33 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x111978: gc_strjoin (in /root/projects/minishell/minishell)
+==19039==    by 0x10C8A5: ms_concat_path (in /root/projects/minishell/minishell)
+==19039==    by 0x10E2D8: swipe_paths (in /root/projects/minishell/minishell)
+==19039==    by 0x10E436: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19039==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19039==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x10E574: right_child_process (in /root/projects/minishell/minishell)
+==19039==    by 0x10D518: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 76 bytes in 7 blocks are still reachable in loss record 34 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11519E: ft_extract (in /root/projects/minishell/minishell)
+==19039==    by 0x1152A5: ft_split (in /root/projects/minishell/minishell)
+==19039==    by 0x10E3BD: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19039==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19039==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x10E574: right_child_process (in /root/projects/minishell/minishell)
+==19039==    by 0x10D518: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 90 bytes in 5 blocks are still reachable in loss record 35 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x111978: gc_strjoin (in /root/projects/minishell/minishell)
+==19039==    by 0x10C8D3: ms_concat_path (in /root/projects/minishell/minishell)
+==19039==    by 0x10E2D8: swipe_paths (in /root/projects/minishell/minishell)
+==19039==    by 0x10E436: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19039==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19039==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x10E574: right_child_process (in /root/projects/minishell/minishell)
+==19039==    by 0x10D518: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 120 bytes in 3 blocks are still reachable in loss record 36 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x113CC3: tokenize_word (in /root/projects/minishell/minishell)
+==19039==    by 0x1135B2: ms_tokenize (in /root/projects/minishell/minishell)
+==19039==    by 0x1141AC: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 200 bytes in 5 blocks are still reachable in loss record 37 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x111978: gc_strjoin (in /root/projects/minishell/minishell)
+==19039==    by 0x10C8A5: ms_concat_path (in /root/projects/minishell/minishell)
+==19039==    by 0x10E2D8: swipe_paths (in /root/projects/minishell/minishell)
+==19039==    by 0x10E436: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19039==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19039==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x10E574: right_child_process (in /root/projects/minishell/minishell)
+==19039==    by 0x10D518: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 200 bytes in 5 blocks are still reachable in loss record 38 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x111978: gc_strjoin (in /root/projects/minishell/minishell)
+==19039==    by 0x10C8D3: ms_concat_path (in /root/projects/minishell/minishell)
+==19039==    by 0x10E2D8: swipe_paths (in /root/projects/minishell/minishell)
+==19039==    by 0x10E436: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19039==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19039==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x10E574: right_child_process (in /root/projects/minishell/minishell)
+==19039==    by 0x10D518: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 280 bytes in 7 blocks are still reachable in loss record 39 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11479C: gc_register (in /root/projects/minishell/minishell)
+==19039==    by 0x114702: gc_nest_register (in /root/projects/minishell/minishell)
+==19039==    by 0x10E408: ms_parse_cmd_path (in /root/projects/minishell/minishell)
+==19039==    by 0x10D0B8: ms_execute_external (in /root/projects/minishell/minishell)
+==19039==    by 0x10CE68: ms_execute_command (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA5D: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x10E574: right_child_process (in /root/projects/minishell/minishell)
+==19039==    by 0x10D518: ms_execute_pipeline (in /root/projects/minishell/minishell)
+==19039==    by 0x10CA88: ms_execute_ast (in /root/projects/minishell/minishell)
+==19039==    by 0x114252: run (in /root/projects/minishell/minishell)
+==19039==    by 0x11436A: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 624 bytes in 26 blocks are still reachable in loss record 40 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11457E: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x110DC2: ms_env_create_node (in /root/projects/minishell/minishell)
+==19039==    by 0x11179B: ms_init_env (in /root/projects/minishell/minishell)
+==19039==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19039==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 829 bytes in 52 blocks are still reachable in loss record 41 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11519E: ft_extract (in /root/projects/minishell/minishell)
+==19039==    by 0x1152A5: ft_split (in /root/projects/minishell/minishell)
+==19039==    by 0x110E2A: ms_env_create_node (in /root/projects/minishell/minishell)
+==19039==    by 0x11179B: ms_init_env (in /root/projects/minishell/minishell)
+==19039==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19039==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 1,040 bytes in 26 blocks are still reachable in loss record 42 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11459D: gc_malloc (in /root/projects/minishell/minishell)
+==19039==    by 0x110DC2: ms_env_create_node (in /root/projects/minishell/minishell)
+==19039==    by 0x11179B: ms_init_env (in /root/projects/minishell/minishell)
+==19039==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19039==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== 2,080 bytes in 52 blocks are still reachable in loss record 43 of 44
+==19039==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19039==    by 0x11479C: gc_register (in /root/projects/minishell/minishell)
+==19039==    by 0x114702: gc_nest_register (in /root/projects/minishell/minishell)
+==19039==    by 0x110E56: ms_env_create_node (in /root/projects/minishell/minishell)
+==19039==    by 0x11179B: ms_init_env (in /root/projects/minishell/minishell)
+==19039==    by 0x1118C1: ms_init_shell (in /root/projects/minishell/minishell)
+==19039==    by 0x1142C6: main (in /root/projects/minishell/minishell)
+==19039== 
+==19039== LEAK SUMMARY:
+==19039==    definitely lost: 0 bytes in 0 blocks
+==19039==    indirectly lost: 0 bytes in 0 blocks
+==19039==      possibly lost: 0 bytes in 0 blocks
+==19039==    still reachable: 6,544 bytes in 224 blocks
+==19039==         suppressed: 4,069 bytes in 4 blocks
+==19039== 
+==19039== For lists of detected and suppressed errors, rerun with: -s
+==19039== ERROR SUMMARY: 40 errors from 40 contexts (suppressed: 4 from 4)
+==19037== 
+==19037== HEAP SUMMARY:
+==19037==     in use at exit: 4,016 bytes in 1 blocks
+==19037==   total heap usage: 558 allocs, 557 frees, 24,695 bytes allocated
+==19037== 
+==19037== LEAK SUMMARY:
+==19037==    definitely lost: 0 bytes in 0 blocks
+==19037==    indirectly lost: 0 bytes in 0 blocks
+==19037==      possibly lost: 0 bytes in 0 blocks
+==19037==    still reachable: 0 bytes in 0 blocks
+==19037==         suppressed: 4,016 bytes in 1 blocks
+==19037== 
+==19037== For lists of detected and suppressed errors, rerun with: -s
+==19037== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

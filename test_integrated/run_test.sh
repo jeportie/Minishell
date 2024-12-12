@@ -167,7 +167,7 @@ process_outputs() {
 report_results() {
     local elapsed_time="$1"  # Receive elapsed time as an argument
 
-    echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n${BLUE}======================================================================${RESET}"
+    echo -e "${BLUE}======================================================================${RESET}"
     echo -e "${BLUE}                   TESTING MINISHELL VS POSIX SUMMARY                 ${RESET}"
     echo -e "${BLUE}======================================================================${RESET}\n"
 
@@ -190,7 +190,7 @@ report_results() {
         COMMANDS_FILE="$test_file"
 
         echo -e "${BLUE}======================================================================${RESET}"
-        echo -e "${BLUE}                          GROUP: ${group_name}                        ${RESET}"
+        echo -e "${BLUE}                GROUP: ${group_name}                        ${RESET}"
         echo -e "${BLUE}======================================================================${RESET}\n"
 
         # Initialize group counters
@@ -575,6 +575,7 @@ run_valgrind_tests() {
 # Step 7: Main Execution Flow
 # ----------------------------
 main() {
+    clear
     start_banner
     clean_outputs
     build_project
@@ -585,6 +586,8 @@ main() {
     run_expect_scripts
     process_outputs
     stop_banner
+    clear
+    python3 noanimated_banner.py
 
     # End Time Capture
     end_time=$(date +%s%N)
