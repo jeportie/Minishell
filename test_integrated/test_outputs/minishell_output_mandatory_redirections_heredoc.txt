@@ -1,0 +1,19 @@
+jeportie@minishell $> cat << EOF
+> hello
+> EOF
+hello
+0
+jeportie@minishell $> cat << GREG
+> test
+> greg
+> GREG
+test
+greg
+0
+jeportie@minishell $> cat << jeportie
+> test
+> jerome
+> jeportie
+test
+jerome
+0

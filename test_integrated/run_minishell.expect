@@ -29,6 +29,7 @@ set file [open $command_file r]
 
 # Initialize heredoc_mode to 0 (false)
 set heredoc_mode 0
+set heredoc_delimiter ""
 
 while {[gets $file line] != -1} {
     # Skip empty lines
@@ -41,13 +42,15 @@ while {[gets $file line] != -1} {
     sleep 0.1
 
     # Check if entering heredoc mode
-    if {[regexp {<<\s*EOF} $line]} {
+    if {[regexp {<<\s*(\S+)} $line match delim]} {
+        # We're entering heredoc mode. Store delimiter.
         set heredoc_mode 1
+        set heredoc_delimiter $delim
         continue
     }
     
     # Check if exiting heredoc mode
-    if {$heredoc_mode && [string trim $line] == "EOF"} {
+    if {$heredoc_mode && [string trim $line] == $heredoc_delimiter} {
         set heredoc_mode 0
         # Send echo $? after exiting heredoc mode
         send "echo \$?\r"

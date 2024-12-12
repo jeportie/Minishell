@@ -1,0 +1,11 @@
+cat << EOF
+hello
+EOF
+cat << GREG
+test
+greg
+GREG
+cat << jeportie
+test
+jerome
+jeportie
