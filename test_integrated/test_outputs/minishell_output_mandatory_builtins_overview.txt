@@ -1,27 +1,20 @@
-gmarquis@minishell $> pwd > test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd > test
 0
-gmarquis@minishell $> cat test
+jeportie@minishell $> cat test
 /root/projects/minishell/test_integrated
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm test
 0
-gmarquis@minishell $> cd ..
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd ..
 0
-gmarquis@minishell $> pwd
+jeportie@minishell $> pwd
 /root/projects/minishell
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cd -
+jeportie@minishell $> cd -
 /root/projects/minishell/test_integrated
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> pwd
+jeportie@minishell $> pwd
 /root/projects/minishell/test_integrated
-gmarquis@minishell $> echo $?
 0
 jeportie@minishell $> pwd
 /root/projects/minishell/test_integrated
