@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/11 17:08:50 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:48:37 by jeportie         ###   ########.fr       */
 /*   Updated: 2024/12/10 13:39:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -71,7 +71,6 @@ static int	redirect_mode(t_ast_node *node, t_exec_context *context,
 	mode_t			mode;
 
 	mode = 0;
-
 	if (node->type == NODE_REDIRECT_IN)
 	{
 		redir_node = &node->data.redirect;
@@ -186,7 +185,7 @@ int	ms_handle_redirections(t_ast_node *node, t_exec_context *context,
 		i++;
 	}
 	context->original_stdin = old_stdin;
-    context->original_stdout = old_stdout;
+	context->original_stdout = old_stdout;
 	context->redirected = true;
 	return (0);
 }

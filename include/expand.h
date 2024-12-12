@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:23:54 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/10 20:44:20 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 10:27:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ typedef struct s_directory_context
 	t_wildcard_context	*ctx;
 }				t_directory_context;
 
-int					st_add_match(t_wildcard_context *ctx, const char *match);
+void				sort_wild(t_wildcard_context *ctx);
+int					add_matches(t_wildcard_context *ctx, const char *match);
 void				expand_glob_recursive(const char *base_path,
 						const char *pattern, t_wildcard_context *ctx);
 t_wildcard_context	*ms_expand_wild(const char *pattern, t_gc *gcl);

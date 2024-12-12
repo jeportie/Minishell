@@ -1,14 +1,16 @@
-jeportie@minishell $> cat << EOF
+gmarquis@minishell $> cat << EOF
 > hello
 > test
 > EOF
 hello
 test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo test ok
+gmarquis@minishell $> echo test ok
 test ok
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat << $USER
+gmarquis@minishell $> cat << $USER
 > echo $?
 > test
 > echo $?
@@ -36,4 +38,5 @@ test
 echo 0
 test2
 echo 0
+gmarquis@minishell $> echo $?
 0

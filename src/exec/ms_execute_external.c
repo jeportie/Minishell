@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/11 17:50:53 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:47:14 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	if (pid == 0)
 	{
 		context->child_lvl = fork_params.child_lvl;
-
 		ms_child_process(cmd_node, context, cmd_path, gcl);
 	}
 	else

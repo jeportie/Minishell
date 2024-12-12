@@ -6,20 +6,21 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/11 17:50:14 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 14:35:52 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 
-void	heredoc_child_process(t_heredoc_params *params)
+void	heredoc_child_process(t_exec_context *context, t_heredoc_params *params)
 {
 	int	result;
 
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_IGN);
 	safe_close(params->pipefd[0]);
-	result = read_and_write_heredoc(params->pipefd[1], params->delimiter);
+	result = read_and_write_heredoc(context, params->pipefd[1],
+			params->delimiter);
 	safe_close(params->pipefd[1]);
 	if (result != -1)
 		exit(1);
@@ -31,13 +32,10 @@ void	heredoc_child_process(t_heredoc_params *params)
 int	ms_heredoc_mode(const char *delimiter, t_exec_context *context,
 	t_proc_manager *manager, t_gc *gcl)
 {
-	t_heredoc_params	params;
-	pid_t				pid;
-	t_fork_params		fork_params;
+	t_fork_params	fork_params;
+	pid_t			pid;
 
-	params.delimiter = delimiter;
-	params.context = context;
-	params.manager = manager;
+	t_heredoc_params (params) = {delimiter, context, manager, {0}};
 	safe_pipe(params.pipefd);
 	fork_init(&fork_params, context, true, "heredoc");
 	pid = safe_fork(manager, &fork_params);
@@ -45,13 +43,12 @@ int	ms_heredoc_mode(const char *delimiter, t_exec_context *context,
 	{
 		ms_handle_error("minishell: Error: fork failed for heredoc.\n", 0, gcl);
 		safe_close(params.pipefd[0]);
-		safe_close(params.pipefd[1]);
-		return (-1);
+		return (safe_close(params.pipefd[1]), -1);
 	}
 	if (pid == 0)
 	{
 		context->child_lvl = fork_params.child_lvl;
-		heredoc_child_process(&params);
+		heredoc_child_process(context, &params);
 	}
 	else
 		return (heredoc_parent_process(&params, pid));

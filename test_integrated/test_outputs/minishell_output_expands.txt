@@ -1,20 +1,54 @@
-jeportie@minishell $> cd test_dir
+gmarquis@minishell $> cd test_dir
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo a*
+gmarquis@minishell $> echo a*
+0
+a1
+a2
+a3
+a4
+1
+2
+3
+a1
+a2
+a3
+a4
 a1 a2 a3 a4
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo *1
-s1 a1 b1 1 11 111
+gmarquis@minishell $> echo *1
 0
-jeportie@minishell $> export a=test
+a1
+b1
+1
+2
+3
+a1
+b1
+a1 b1
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo $a
+gmarquis@minishell $> export a=test
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo $a
 test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cd ..
+gmarquis@minishell $> cd ..
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cd ..
+gmarquis@minishell $> cd ..
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat s*/*ll*
+gmarquis@minishell $> cat s*/*ll*
+0
+src/shell
+1
+2
+3
+src/shell
 cat: src/shell: Is a directory
+gmarquis@minishell $> echo $?
 1

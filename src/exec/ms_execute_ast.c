@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/11 17:46:44 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:47:57 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,
 		t_exec_context *context, t_proc_manager *manager)
 {
-	int	result;
-
+	int (result);
 	if (context->redirected == false)
 	{
 		if (ms_handle_redirections(node, context, manager,
