@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:12:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/11 17:56:30 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:46:44 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static	void	expand_argv(char **new_argv, char **argv,
 		argv_index++;
 		new_argv_index++;
 	}
-	//new_argv[new_argv_index] = NULL;
 }
 
 char	**cmd_arg_expansion(char **argv, t_wildcard_context *match_ctx,

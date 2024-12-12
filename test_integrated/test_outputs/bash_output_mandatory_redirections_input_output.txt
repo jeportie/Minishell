@@ -1,41 +1,58 @@
-jeportie@minishell $> echo hello > test
+gmarquis@minishell $> echo hello > test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat -e test
+gmarquis@minishell $> cat -e test
 hello$
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat < test > outfile1 > outfile2
+gmarquis@minishell $> cat < test > outfile1 > outfile2
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat -e outfile1
+gmarquis@minishell $> cat -e outfile1
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat -e outfile2
+gmarquis@minishell $> cat -e outfile2
 hello$
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> rm outfile1
+gmarquis@minishell $> rm outfile1
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> rm outfile2
+gmarquis@minishell $> rm outfile2
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> rm test
+gmarquis@minishell $> rm test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo hello > Makefile
+gmarquis@minishell $> echo hello > Makefile
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> export a=Makefile
+gmarquis@minishell $> export a=Makefile
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat < $a > outfile1
+gmarquis@minishell $> cat < $a > outfile1
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat outfile
+gmarquis@minishell $> cat outfile
 cat: outfile: No such file or directory
+gmarquis@minishell $> echo $?
 1
-jeportie@minishell $> rm outfile1
+gmarquis@minishell $> rm outfile1
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> rm Makefile
+gmarquis@minishell $> rm Makefile
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> pwd > test && echo hello >> test
+gmarquis@minishell $> pwd > test && echo hello >> test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat test
+gmarquis@minishell $> cat test
 /root/projects/minishell/test_integrated
 hello
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> rm test
+gmarquis@minishell $> rm test
+gmarquis@minishell $> echo $?
 0
 jeportie@minishell $> echo "Hello" > file1
 0

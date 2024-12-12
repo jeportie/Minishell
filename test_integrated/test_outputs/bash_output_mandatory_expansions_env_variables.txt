@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 jeportie@minishell $> export USERNAME=testuser
 0
 jeportie@minishell $> echo $USERNAME
@@ -12,9 +13,36 @@ User is testuser
 jeportie@minishell $> cd test_dir
 0
 jeportie@minishell $> export a=test
+=======
+gmarquis@minishell $> cd test_dir
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo $a
+gmarquis@minishell $> echo a*
+a1 a2 a3 a4
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo *1
+a1 b1
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> export a=test
+gmarquis@minishell $> echo $?
+>>>>>>> refs/remotes/origin/first_review
+0
+gmarquis@minishell $> echo $a
 test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cd ..
+gmarquis@minishell $> cd ..
+gmarquis@minishell $> echo $?
 0
+<<<<<<< HEAD
+=======
+gmarquis@minishell $> cd ..
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat s*/*ll*
+cat: src/shell: Is a directory
+gmarquis@minishell $> echo $?
+1
+>>>>>>> refs/remotes/origin/first_review

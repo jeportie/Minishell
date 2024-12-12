@@ -1,0 +1,42 @@
+gmarquis@minishell $> cat << EOF
+> hello
+> test
+> EOF
+hello
+test
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo test ok
+test ok
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat << $USER
+> echo $?
+> test
+> echo $?
+> test2
+> echo $?
+> jeportie
+> echo $?
+> cat << jeportie
+> echo $?
+> test
+> echo $?
+> test2
+> echo $?
+> $USER
+echo $?
+test
+echo $?
+test2
+echo $?
+jeportie
+echo $?
+cat << jeportie
+echo $?
+test
+echo $?
+test2
+echo $?
+gmarquis@minishell $> echo $?
+0

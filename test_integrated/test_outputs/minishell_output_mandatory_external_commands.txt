@@ -1,27 +1,39 @@
-jeportie@minishell $> ls
+gmarquis@minishell $> ls
 animated_banner.py  process_outputs.sh	remove_escape_codes.sh	run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cd test_dir
+gmarquis@minishell $> cd test_dir
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ls -l
+gmarquis@minishell $> ls -l
 total 0
-drwxr-xr-x 2 root root  6 Dec 11 18:02 1
-drwxr-xr-x 2 root root  6 Dec 11 18:02 11
-drwxr-xr-x 2 root root  6 Dec 11 18:02 111
--rw-r--r-- 1 root root  0 Dec 11 16:29 a1
--rw-r--r-- 1 root root  0 Dec 11 16:29 a2
--rw-r--r-- 1 root root  0 Dec 11 16:29 a3
--rw-r--r-- 1 root root  0 Dec 11 16:29 a4
--rw-r--r-- 1 root root  0 Dec 11 16:29 b1
--rw-r--r-- 1 root root  0 Dec 11 16:29 b2
--rw-r--r-- 1 root root  0 Dec 11 16:29 b3
--rw-r--r-- 1 root root  0 Dec 11 16:29 b4
-drwxr-xr-x 2 root root  6 Dec 11 14:04 s1
-drwxr-xr-x 2 root root 19 Dec 11 16:29 src
-drwxr-xr-x 2 root root  6 Dec 11 14:04 test
+-rw-r--r-- 1 root root  0 Dec 11 14:08 a1
+-rw-r--r-- 1 root root  0 Dec 11 14:08 a2
+-rw-r--r-- 1 root root  0 Dec 11 14:08 a3
+-rw-r--r-- 1 root root  0 Dec 11 14:08 a4
+-rw-r--r-- 1 root root  0 Dec 11 14:08 b1
+-rw-r--r-- 1 root root  0 Dec 11 14:08 b2
+-rw-r--r-- 1 root root  0 Dec 11 14:08 b3
+-rw-r--r-- 1 root root  0 Dec 11 14:08 b4
+drwxr-xr-x 2 root root 19 Dec 11 14:08 src
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ls -la
+gmarquis@minishell $> ls -la
 total 4
+<<<<<<< HEAD:test_integrated/test_outputs/bash_output_externals.txt
+drwxr-xr-x 3 root root   97 Dec 11 14:08 .
+drwxr-xr-x 5 root root 4096 Dec 12 11:11 ..
+-rw-r--r-- 1 root root    0 Dec 11 14:08 a1
+-rw-r--r-- 1 root root    0 Dec 11 14:08 a2
+-rw-r--r-- 1 root root    0 Dec 11 14:08 a3
+-rw-r--r-- 1 root root    0 Dec 11 14:08 a4
+-rw-r--r-- 1 root root    0 Dec 11 14:08 b1
+-rw-r--r-- 1 root root    0 Dec 11 14:08 b2
+-rw-r--r-- 1 root root    0 Dec 11 14:08 b3
+-rw-r--r-- 1 root root    0 Dec 11 14:08 b4
+drwxr-xr-x 2 root root   19 Dec 11 14:08 src
+gmarquis@minishell $> echo $?
+=======
 drwxr-xr-x 8 root root  149 Dec 11 18:02 .
 drwxr-xr-x 5 root root 4096 Dec 12 15:46 ..
 drwxr-xr-x 2 root root    6 Dec 11 18:02 1
@@ -38,10 +50,13 @@ drwxr-xr-x 2 root root    6 Dec 11 18:02 111
 drwxr-xr-x 2 root root    6 Dec 11 14:04 s1
 drwxr-xr-x 2 root root   19 Dec 11 16:29 src
 drwxr-xr-x 2 root root    6 Dec 11 14:04 test
+>>>>>>> refs/remotes/origin/first_review:test_integrated/test_outputs/minishell_output_mandatory_external_commands.txt
 0
-jeportie@minishell $> cat -e .
+gmarquis@minishell $> cat -e .
 cat: .: Is a directory
+gmarquis@minishell $> echo $?
 1
+<<<<<<< HEAD
 jeportie@minishell $> cat /etc/passwd
 root:x:0:0:root:/root:/usr/bin/zsh
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
@@ -71,6 +86,10 @@ jeportie@minishell $> /bin/echo "External echo"
 External echo
 0
 jeportie@minishell $> grep
+=======
+gmarquis@minishell $> grep 
+>>>>>>> refs/remotes/origin/first_review
 Usage: grep [OPTION]... PATTERNS [FILE]...
 Try 'grep --help' for more information.
+gmarquis@minishell $> echo $?
 2
