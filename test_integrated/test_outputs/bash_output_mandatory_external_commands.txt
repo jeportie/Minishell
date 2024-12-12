@@ -23,7 +23,7 @@ drwxr-xr-x 2 root root  6 Dec 11 14:04 test
 jeportie@minishell $> ls -la
 total 4
 drwxr-xr-x 8 root root  149 Dec 11 18:02 .
-drwxr-xr-x 5 root root 4096 Dec 12 11:29 ..
+drwxr-xr-x 5 root root 4096 Dec 12 12:58 ..
 drwxr-xr-x 2 root root    6 Dec 11 18:02 1
 drwxr-xr-x 2 root root    6 Dec 11 18:02 11
 drwxr-xr-x 2 root root    6 Dec 11 18:02 111
