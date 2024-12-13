@@ -21,7 +21,7 @@
 # include <stdlib.h>
 # include <signal.h>
 
-# define DEBUG 1 
+# define DEBUG 0 
 # define PROMPT_MODE 0
 # define PRINT_INFOS "assets/infos.txt"
 # define COPY_MODE 0644

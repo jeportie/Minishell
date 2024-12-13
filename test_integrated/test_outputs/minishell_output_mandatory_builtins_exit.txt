@@ -1,27 +1,27 @@
 jeportie@minishell $> bash
-]0;root@63484e3c9a49: ~/projects/minishell/test_integratedroot@63484e3c9a49:~/projects/minishell/test_integrated# echo $?
+]0;root@c8b848062d2c: ~/projects/minishell/test_integratedroot@c8b848062d2c:~/projects/minishell/test_integrated# echo $?
 0
-]0;root@63484e3c9a49: ~/projects/minishell/test_integratedroot@63484e3c9a49:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+]0;root@c8b848062d2c: ~/projects/minishell/test_integratedroot@c8b848062d2c:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
 0
 0
 jeportie@minishell $> bash
-]0;root@63484e3c9a49: ~/projects/minishell/test_integratedroot@63484e3c9a49:~/projects/minishell/test_integrated# echo $?
+]0;root@c8b848062d2c: ~/projects/minishell/test_integratedroot@c8b848062d2c:~/projects/minishell/test_integrated# echo $?
 0
-]0;root@63484e3c9a49: ~/projects/minishell/test_integratedroot@63484e3c9a49:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+]0;root@c8b848062d2c: ~/projects/minishell/test_integratedroot@c8b848062d2c:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
 0
 jeportie@minishell $> exit 0
 0
 jeportie@minishell $> bash
-]0;root@63484e3c9a49: ~/projects/minishell/test_integratedroot@63484e3c9a49:~/projects/minishell/test_integrated# echo $?
+]0;root@c8b848062d2c: ~/projects/minishell/test_integratedroot@c8b848062d2c:~/projects/minishell/test_integrated# echo $?
 0
-]0;root@63484e3c9a49: ~/projects/minishell/test_integratedroot@63484e3c9a49:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+]0;root@c8b848062d2c: ~/projects/minishell/test_integratedroot@c8b848062d2c:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
 0
 jeportie@minishell $> exit 42
 42
 jeportie@minishell $> bash
-]0;root@63484e3c9a49: ~/projects/minishell/test_integratedroot@63484e3c9a49:~/projects/minishell/test_integrated# echo $?
+]0;root@c8b848062d2c: ~/projects/minishell/test_integratedroot@c8b848062d2c:~/projects/minishell/test_integrated# echo $?
 0
-]0;root@63484e3c9a49: ~/projects/minishell/test_integratedroot@63484e3c9a49:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+]0;root@c8b848062d2c: ~/projects/minishell/test_integratedroot@c8b848062d2c:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
 0
 jeportie@minishell $> exit 9999
 15
