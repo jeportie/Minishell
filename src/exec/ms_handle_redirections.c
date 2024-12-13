@@ -108,7 +108,8 @@ static int	redirect_mode(t_ast_node *node, t_exec_context *context,
 	else if (node->type == NODE_REDIRECT_HEREDOC)
 	{
 		heredoc_node = &node->data.heredoc;
-		if (ms_heredoc_mode(heredoc_node, context, manager) != 0)
+		if (ms_heredoc_mode(heredoc_node->delimiter,
+				context, manager, gcl) != 0)
 			return (ms_handle_error("Minishell: Error: heredoc failed.\n",
 					-1, gcl));
 	}

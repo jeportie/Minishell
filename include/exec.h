@@ -97,11 +97,19 @@ char	*ms_parse_cmd_path(const char *command, t_shell *shell);
 char	*ms_concat_path(const char *path, const char *command, t_gc *gcl);
 
 int		ms_handle_error(const char *msg, int exit_status, t_gc *gcl);
+int		ms_heredoc_mode(const char *delimiter, t_exec_context *context,
+			t_proc_manager *manager, t_gc *gcl);
+int		heredoc_parent_process(t_heredoc_params *params, pid_t pid);
+int		process_line(t_exec_context *context, int write_fd,
+			const char *delimiter, char **line_ptr);
+int		read_and_write_heredoc(t_exec_context *context, int write_fd,
+			const char *delimiter);
+int		handle_child_status(int status, t_heredoc_params *params);
 void	fork_init(t_fork_params *fork_params, t_exec_context *context,
 			bool is_here_doc, char *title);
 
-int		ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context,
+/*int		ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context,
 			t_proc_manager *manager);
 void	ft_generate_temp_filename(char *buffer, size_t buffer_size,
-			t_exec_context *context);
+			t_exec_context *context);*/
 #endif /* EXEC_H */

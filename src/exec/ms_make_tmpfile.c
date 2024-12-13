@@ -12,7 +12,7 @@
 
 #include "../../include/exec.h"
 
-static void	ft_give_index(int n, char *str)
+/*static void	ft_give_index(int n, char *str)
 {
 	if (n > 99)
 	{
@@ -60,7 +60,7 @@ void	ft_generate_temp_filename(char *buffer, size_t buffer_size,
 		ft_memset(buffer, 0, 260 * sizeof(char));
 		return (ft_generate_temp_filename(buffer, sizeof(buffer), context));
 	}
-}
+}*/
 
 /*void	ft_generate(t_infos *infos, t_tokenizer *tok, char *tmp_filename,
 	char *delimiter)
