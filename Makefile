@@ -78,12 +78,12 @@ SRC = \
   src/exec/ms_execute_subshell.c \
   src/exec/ms_parse_cmd_path.c \
   src/exec/ms_heredoc_mode.c \
-  src/exec/ms_make_tmpfile.c \
   src/exec/ms_handle_redirections.c \
   src/exec/ms_pipeline_helper.c \
   src/exec/ms_execute_pipeline.c \
   src/global.c \
   src/signal/ms_init_parent_cmd_signal.c \
+  src/signal/ms_heredoc_signal.c \
   src/signal/rl_event_dummy.c \
   src/signal/ms_init_std_signal.c \
   src/signal/ms_init_child_cmd_signal.c \

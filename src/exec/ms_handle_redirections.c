@@ -7,7 +7,6 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
 /*   Updated: 2024/12/12 18:24:48 by jeportie         ###   ########.fr       */
-/*   Updated: 2024/12/10 13:39:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +69,10 @@ static int	redirect_mode(t_ast_node *node, t_exec_context *context,
 	int				fd;
 	mode_t			mode;
 
+	if (manager)
+	{
+		;
+	}
 	mode = 0;
 	if (node->type == NODE_REDIRECT_IN)
 	{
@@ -108,8 +111,7 @@ static int	redirect_mode(t_ast_node *node, t_exec_context *context,
 	else if (node->type == NODE_REDIRECT_HEREDOC)
 	{
 		heredoc_node = &node->data.heredoc;
-		if (ms_heredoc_mode(heredoc_node->delimiter,
-				context, manager, gcl) != 0)
+		if (ms_heredoc_mode(heredoc_node, context) != 0)
 			return (ms_handle_error("Minishell: Error: heredoc failed.\n",
 					-1, gcl));
 	}

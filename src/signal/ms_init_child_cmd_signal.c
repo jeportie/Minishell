@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_init_child_cmd_signal.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:55:03 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 16:50:16 by jeportie         ###   ########.fr       */
+/*   Created: 2024/10/15 11:55:03 by gmarquis          #+#    #+#             */
+/*   Updated: 2024/11/22 16:50:16 by gmarquis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

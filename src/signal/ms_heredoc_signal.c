@@ -1,14 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_heredoc_helper.c                                :+:      :+:    :+:   */
+/*   ms_heredoc_mode.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 18:08:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 17:31:53 by gmarquis         ###   ########.fr       */
+/*   Created: 2024/12/13 14:22:00 by gmarquis          #+#    #+#             */
+/*   Updated: 2024/12/13 14:23:35 by gmarquis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
-#include "../../include/expand.h"
+
+void	ms_heredoc_signal(int sig)
+{
+	if (sig == SIGINT)
+	{
+		exit(130);
+	}
+}

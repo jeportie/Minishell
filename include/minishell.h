@@ -66,6 +66,7 @@ t_env		*ms_env_create_node(t_shell *shell, const char *env_line);
 void		ms_env_add_back(t_env **env, t_env *new_node);
 
 /* signal */
+void		ms_heredoc_signal(int sig);
 int			rl_event_dummy(void);
 void		ms_init_parent_cmd_signal(void);
 void		ms_init_child_cmd_signal(void);

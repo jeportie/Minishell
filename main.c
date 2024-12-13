@@ -102,7 +102,6 @@ int	main(int argc, char **argv, char **envp)
 		{
 			rl_clear_history();
 			gc_cleanup(shell.gcl);
-			free(shell.gcl);
 			if (shell.interactive_mode)
 				ft_dprintf(1, "exit\n");
 			exit (shell.error_code);
