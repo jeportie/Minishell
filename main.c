@@ -65,6 +65,7 @@ static void	init_context(t_exec_context *data, t_shell *shell)
 	data->redirected = false;
 	data->original_stdin = STDIN_FILENO;
 	data->original_stdout = STDOUT_FILENO;
+	data->tmpfile_counter = 0;
 }
 
 static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)

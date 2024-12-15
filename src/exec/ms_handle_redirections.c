@@ -120,6 +120,8 @@ static int	redirect_mode(t_ast_node *node, t_exec_context *context,
 		if (context->stdin_fd != STDIN_FILENO)
 			close(context->stdin_fd);
 		context->stdin_fd = fd;
+		unlink(node->data.heredoc.filename);
+		context->tmpfile_counter--;
 	}
 	else
 		return (ms_handle_error("Minishell: Error: "
