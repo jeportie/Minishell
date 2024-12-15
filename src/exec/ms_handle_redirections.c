@@ -111,9 +111,7 @@ static int	redirect_mode(t_ast_node *node, t_exec_context *context,
 	else if (node->type == NODE_REDIRECT_HEREDOC)
 	{
 		heredoc_node = &node->data.heredoc;
-		if (ms_heredoc_mode(heredoc_node, context) != 0)
-			return (ms_handle_error("Minishell: Error: heredoc failed.\n",
-					-1, gcl));
+		ms_heredoc_mode(heredoc_node, context);
 		fd = safe_open2(node->data.heredoc.filename, O_RDONLY, mode, context->shell);
 		if (fd == -1)
 			return (-1);

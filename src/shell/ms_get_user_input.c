@@ -74,5 +74,7 @@ void	ms_get_user_input(t_shell *shell)
 	gc_collect(shell->gcl);
 	if (!shell->user_input)
 		return ;
+	if (shell->user_input[0] == '\0')
+		ms_get_user_input(shell);
 	add_history(shell->user_input);
 }

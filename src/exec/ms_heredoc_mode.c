@@ -13,27 +13,6 @@
 #include "../../include/expand.h"
 # include <sys/stat.h>
 
-/*void	ft_sig_int_handler(int sig)
-{
-	if (sig == SIGINT && (g_signal == 0 || g_signal == 130))
-	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-	}
-	if ((sig == SIGINT && g_signal == 2) || (sig == SIGINT && g_signal == 1))
-		printf("\n");
-	g_signal = 130;
-}
-
-void	ft_setup_signal_handlers(void)
-{
-	signal(SIGINT, ft_sig_int_handler);
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGTSTP, SIG_IGN);
-}*/
-
 static char	*st_maj_herdoc_line(t_shell *shell, char *line, char *delimiter, int fd)
 {
 	char *(tmp) = NULL;
@@ -74,6 +53,7 @@ static void	st_heredoc_child_process(t_shell *shell, char *delimiter,
 		exit (errno);
 	}
 	signal(SIGINT, ms_heredoc_signal);
+	signal(SIGQUIT, SIG_IGN);
 	while (1)
 	{
 		ft_dprintf(1, "\033[1;36m>\033[0m ");
@@ -97,6 +77,14 @@ static void	st_heredoc_child_process(t_shell *shell, char *delimiter,
 	exit(0);
 }
 
+void	st_parent_here_signal(int sig)
+{
+	if (sig == SIGINT)
+	{
+		g_signal = 130;
+	}
+}
+
 static void	st_fork_heredoc(t_heredoc_node *node, t_exec_context *context)
 {
 	int	status;
@@ -105,13 +93,26 @@ static void	st_fork_heredoc(t_heredoc_node *node, t_exec_context *context)
 	if (pid == 0)
 		st_heredoc_child_process(context->shell, node->delimiter, node->filename);
 	else if (pid > 0)
+	{
+		signal(SIGQUIT, st_parent_here_signal);
+		signal(SIGQUIT, SIG_IGN);
 		waitpid(pid, &status, 0);
+	}
 	else
 	{
 		ft_dprintf(2, "Error: echec fork heredoc_buffer.\n");
 		rl_clear_history();
 		gc_cleanup(context->shell->gcl);
 		exit (errno);
+	}
+	if (WIFEXITED(status))
+		context->shell->error_code = WEXITSTATUS(status);
+	else if (WIFSIGNALED(status))
+		context->shell->error_code = 128 + WTERMSIG(status);
+	if (context->shell->error_code == 130)
+	{
+		int fd = open(node->filename, O_TRUNC);
+		close(fd);
 	}
 }
 
