@@ -114,6 +114,12 @@ static int	redirect_mode(t_ast_node *node, t_exec_context *context,
 		if (ms_heredoc_mode(heredoc_node, context) != 0)
 			return (ms_handle_error("Minishell: Error: heredoc failed.\n",
 					-1, gcl));
+		fd = safe_open2(node->data.heredoc.filename, O_RDONLY, mode, context->shell);
+		if (fd == -1)
+			return (-1);
+		if (context->stdin_fd != STDIN_FILENO)
+			close(context->stdin_fd);
+		context->stdin_fd = fd;
 	}
 	else
 		return (ms_handle_error("Minishell: Error: "

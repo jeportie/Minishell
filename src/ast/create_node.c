@@ -59,6 +59,7 @@ t_ast_node	*create_heredoc_node(t_node_type type, t_ast_node *child,
 	node = (t_ast_node *)gc_malloc(sizeof(t_ast_node), gcl);
 	gc_lock(node, gcl);
 	node->type = type;
+	node->data.heredoc.type = 2;
 	node->data.heredoc.child = child;
 	node->data.heredoc.delimiter = delimiter;
 	node->data.heredoc.filename = NULL;

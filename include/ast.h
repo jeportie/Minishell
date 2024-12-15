@@ -52,6 +52,7 @@ typedef struct s_redirect_node
 
 typedef struct s_heredoc_node
 {
+	t_node_type			type;
 	struct s_ast_node	*child;
 	char				*delimiter;
 	char				*filename;
