@@ -16,7 +16,7 @@ void	ms_heredoc_signal(int sig)
 {
 	if (sig == SIGINT)
 	{
-		printf("\n");
-		exit(130);
+		g_signal = 130;
+		rl_done = 1;
 	}
 }

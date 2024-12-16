@@ -90,8 +90,7 @@ int		ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,
 			t_node_type type, t_proc_manager *manager);
 int		ms_execute_subshell(t_subshell_node *subshell_node,
 			t_exec_context *context, t_proc_manager *manager);
-int		ms_handle_redirections(t_ast_node *node, t_exec_context *context,
-			t_proc_manager *manager, t_gc *gcl);
+int		ms_handle_redirections(t_ast_node *node, t_exec_context *context, t_gc *gcl);
 
 char	*ms_parse_cmd_path(const char *command, t_shell *shell);
 char	*ms_concat_path(const char *path, const char *command, t_gc *gcl);
