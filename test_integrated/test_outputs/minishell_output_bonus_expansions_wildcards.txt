@@ -5,14 +5,6 @@ a1  a2	a3  a4
 0
 jeportie@minishell $> ls *1
 a1  b1
-
-1:
-
-11:
-
-111:
-
-s1:
 0
 jeportie@minishell $> ls *src*
 hello
@@ -24,5 +16,5 @@ jeportie@minishell $> echo a*
 a1 a2 a3 a4
 0
 jeportie@minishell $> echo *1
-1 11 111 a1 b1 s1
+a1 b1
 0

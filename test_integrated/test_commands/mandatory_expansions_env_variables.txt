@@ -2,7 +2,6 @@ export USERNAME=testuser
 echo $USERNAME
 echo $USER $HOME
 echo "User is $USERNAME"
-cd test_dir
 export a=test
 echo $a
 cd ..
