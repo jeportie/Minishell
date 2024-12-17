@@ -19,7 +19,7 @@ drwxr-xr-x 2 root root 4096 Dec 17 10:41 src
 jeportie@minishell $> ls -la
 total 12
 drwxr-xr-x 3 root root 4096 Dec 17 10:41 .
-drwxr-xr-x 6 root root 4096 Dec 17 11:34 ..
+drwxr-xr-x 6 root root 4096 Dec 17 13:19 ..
 -rw-r--r-- 1 root root    0 Dec 17 10:41 a1
 -rw-r--r-- 1 root root    0 Dec 17 10:41 a2
 -rw-r--r-- 1 root root    0 Dec 17 10:41 a3
