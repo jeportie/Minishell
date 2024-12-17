@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 15:47:14 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:32:27 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 			char *cmd_path, t_gc *gcl)
 {
 	char	**envp;
-	t_gc	*child_gcl;
+//	t_gc	*child_gcl;
 
 	ms_init_child_cmd_signal();
-	child_gcl = gc_init();
+//	child_gcl = gc_init();
 	if (!init_io(context->stdin_fd, context->stdout_fd, context->stderr_fd))
 		exit(ms_handle_error("minishell: redirection error: dup2\n",
 				EXIT_FAILURE, gcl));
-	envp = ms_get_envp(context->shell->env_data->env, child_gcl);
+	envp = ms_get_envp(context->shell->env_data->env, /*child_*/gcl);
 	if (!envp)
 		exit(ms_handle_error("memory allocation error\n", EXIT_FAILURE, gcl));
-	gc_nest_register(envp, child_gcl);
+//	gc_nest_register(envp, child_gcl);
 	execve(cmd_path, cmd_node->argv, envp);
 	ft_dprintf(STDERR_FILENO, "minishell: execve error");
-	gc_cleanup(child_gcl);
+//	gc_cleanup(child_gcl);
 	exit(EXIT_FAILURE);
 }
 
@@ -57,7 +57,8 @@ static void	ms_parent_process(pid_t pid, t_exec_context *context)
 int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 		t_proc_manager *manager, t_gc *gcl)
 {
-	t_fork_params (fork_params);
+	t_fork_params	fork_params;
+
 	char *(cmd_path) = ms_parse_cmd_path(cmd_node->argv[0], context->shell);
 	if (cmd_path == NULL)
 	{
@@ -80,6 +81,5 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 	}
 	else
 		ms_parent_process(pid, context);
-	print_proc_info(manager);
 	return (ms_init_std_signal(), context->shell->error_code);
 }
