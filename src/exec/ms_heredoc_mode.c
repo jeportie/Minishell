@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/17 11:26:05 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:10:30 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,6 @@ static void	st_heredoc_child_process(t_shell *shell, char *delimiter, char *file
 	exit(0);
 }
 
-
 static void	st_fork_heredoc(t_heredoc_node *node, t_exec_context *context)
 {
 	int	status;
@@ -202,5 +201,6 @@ int	ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context)
 {
 	node->filename = st_generate_tmp_filename(context);
 	st_fork_heredoc(node, context);
+	g_signal = 0;
 	return (0);
 }

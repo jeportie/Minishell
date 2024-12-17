@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:51:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/10 13:32:15 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:09:28 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ void	ms_get_user_input(t_shell *shell)
 	size_t (len) = 0;
 	rl_event_hook = rl_event_dummy;
 	if (shell->interactive_mode)
+	{
 		shell->user_input = readline(st_make_input(shell));
+		printf("%s\n", shell->user_input);
+	}
 	else
 	{
 		shell->user_input = get_next_line(STDIN_FILENO);
