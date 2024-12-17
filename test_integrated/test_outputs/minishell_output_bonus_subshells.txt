@@ -3,7 +3,7 @@ Inside subshell
 /root/projects/minishell/test_integrated
 0
 jeportie@minishell $> ( cd test_dir && ls )
-1  11  111  a1	a2  a3	a4  b1	b2  b3	b4  s1	src  test
+a1  a2	a3  a4	b1  b2	b3  b4	src
 0
 jeportie@minishell $> ( env | grep SHLVL )
 SHLVL=3

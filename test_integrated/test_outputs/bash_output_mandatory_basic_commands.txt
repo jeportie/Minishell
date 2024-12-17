@@ -2,7 +2,8 @@ jeportie@minishell $> echo hello
 hello
 0
 jeportie@minishell $> ls
-animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
+animated_banner.py    process_outputs.sh      run_bash.expect	    run_test.sh    test_dir	 valgrind_outputs
+noanimated_banner.py  remove_escape_codes.sh  run_minishell.expect  test_commands  test_outputs
 0
 jeportie@minishell $> touch test
 0
@@ -17,7 +18,8 @@ jeportie@minishell $> expr $? + $?
 0
 1
 jeportie@minishell $> /bin/ls
-animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
+animated_banner.py    process_outputs.sh      run_bash.expect	    run_test.sh    test_dir	 valgrind_outputs
+noanimated_banner.py  remove_escape_codes.sh  run_minishell.expect  test_commands  test_outputs
 0
 jeportie@minishell $> /usr/bin/cat lib
 /usr/bin/cat: lib: No such file or directory

@@ -9,8 +9,6 @@ jeportie /root
 jeportie@minishell $> echo "User is $USERNAME"
 User is testuser
 0
-jeportie@minishell $> cd test_dir
-0
 jeportie@minishell $> export a=test
 0
 jeportie@minishell $> echo $a

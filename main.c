@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/17 11:43:44 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:56:01 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,5 @@ int	main(int argc, char **argv, char **envp)
 			run(&shell, tokens, root);
 	}
 	gc_cleanup(shell.gcl);
-	free(shell.gcl);
 	return (shell.error_code = 333);
 }

@@ -93,6 +93,7 @@ build_project() {
         echo -e "${GREEN}Build successful.${RESET}"
     else
         echo -e "${RED}Build failed. Please check the error details below:${RESET}"
+        stop_banner
         cat "$BUILD_LOG"
         exit 1
     fi
@@ -109,6 +110,7 @@ run_expect_scripts() {
     # Check if any test files are found
     if [ ${#test_files[@]} -eq 0 ]; then
         echo -e "${RED}No test command files found in test_commands/ directory.${RESET}"
+        stop_banner
         exit 1
     fi
 
@@ -120,6 +122,7 @@ run_expect_scripts() {
             echo -e "${GREEN}bash.expect executed successfully for group '${group_name}'.${RESET}"
         else
             echo -e "${RED}bash.expect failed for group '${group_name}'. Please check the script and permissions.${RESET}"
+            stop_banner
             exit 1
         fi
         echo -e "${CYAN}Running minishell Expect script for group '${group_name}'...${RESET}"
@@ -127,6 +130,7 @@ run_expect_scripts() {
             echo -e "${GREEN}minishell.expect executed successfully for group '${group_name}'.${RESET}"
         else
             echo -e "${RED}minishell.expect failed for group '${group_name}'. Please check the script and permissions.${RESET}"
+            stop_banner
             exit 1
         fi
     done
@@ -150,6 +154,7 @@ process_outputs() {
         echo -e "${GREEN}Output files processed successfully.${RESET}"
     else
         echo -e "${RED}Processing output files failed. Please check process_outputs.sh.${RESET}"
+        stop_banner
         exit 1
     fi
 
