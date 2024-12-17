@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:51:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/10 13:32:15 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:42:19 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ char	*st_make_input(t_shell *shell)
 
 void	ms_get_user_input(t_shell *shell)
 {
-	size_t (len) = 0;
 	rl_event_hook = rl_event_dummy;
 	if (shell->interactive_mode)
 		shell->user_input = readline(st_make_input(shell));
@@ -61,7 +60,7 @@ void	ms_get_user_input(t_shell *shell)
 		gc_lock(shell->user_input, shell->gcl);
 		if (shell->user_input)
 		{
-			len = ft_strlen(shell->user_input);
+			size_t (len) = ft_strlen(shell->user_input);
 			if (len > 0 && shell->user_input[len - 1] == '\n')
 				shell->user_input[len - 1] = '\0';
 		}
@@ -71,8 +70,9 @@ void	ms_get_user_input(t_shell *shell)
 		shell->error_code = 130;
 		return (g_signal = 0, ms_get_user_input(shell));
 	}
-	gc_collect(shell->gcl);
 	if (!shell->user_input)
 		return ;
+	if (shell->user_input[0] == '\0')
+		ms_get_user_input(shell);
 	add_history(shell->user_input);
 }

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_init_parent_cmd_signal.c                        :+:      :+:    :+:   */
+/*   ms_heredoc_signal.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:55:03 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/11/06 15:39:34 by gmarquis         ###   ########.fr       */
+/*   Created: 2024/12/13 14:22:00 by gmarquis          #+#    #+#             */
+/*   Updated: 2024/12/17 14:04:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static void	st_sigint_cmd_handler(int sig)
+void	ms_heredoc_signal(int sig)
 {
 	if (sig == SIGINT)
-		printf("\n");
-	g_signal = 130;
+	{
+		g_signal = 130;
+		rl_done = 1;
+	}
 }
 
-static void	st_sigquit_cmd_handler(int sig)
+void	st_parent_here_signal(int sig)
 {
-	if (sig == SIGQUIT)
-		printf("Quitter (core dumped).\n");
-	g_signal = 131;
-}
-
-void	ms_init_parent_cmd_signal(void)
-{
-	signal(SIGINT, st_sigint_cmd_handler);
-	signal(SIGQUIT, st_sigquit_cmd_handler);
+	if (sig == SIGINT)
+	{
+		g_signal = 130;
+		rl_done = 1;
+	}
 }

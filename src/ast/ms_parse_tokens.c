@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:31:06 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/14 13:42:12 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/17 11:54:57 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)
 	}
 	current_token = tokens;
 	ast_root = parse_logical(&current_token, gcl);
-	if (current_token != NULL)
-	{
-		printf("current token : %s\n", current_token->token);
-		ft_dprintf(STDERR, "Minishell: Syntax Error: Unexpected token '%s'\n",
-			current_token->token);
-		return (NULL);
-	}
 	if (!ast_root)
 	{
 		ft_dprintf(STDERR, "Minishell: Error: Failed to parse tokens.\n");

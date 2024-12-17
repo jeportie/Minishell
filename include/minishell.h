@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 18:13:17 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/17 11:25:53 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ t_env		*ms_env_create_node(t_shell *shell, const char *env_line);
 void		ms_env_add_back(t_env **env, t_env *new_node);
 
 /* signal */
+void		ms_heredoc_signal(int sig);
+void		st_parent_here_signal(int sig);
 int			rl_event_dummy(void);
 void		ms_init_parent_cmd_signal(void);
 void		ms_init_child_cmd_signal(void);

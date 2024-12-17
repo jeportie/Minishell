@@ -7,7 +7,6 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
 /*   Updated: 2024/12/12 18:24:48 by jeportie         ###   ########.fr       */
-/*   Updated: 2024/12/10 13:39:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +61,7 @@ static int	redirect_helper(t_ast_node *node, t_node_type type,
 }
 */
 
-static int	redirect_mode(t_ast_node *node, t_exec_context *context,
-		t_proc_manager *manager, t_gc *gcl)
+static int	redirect_mode(t_ast_node *node, t_exec_context *context, t_gc *gcl)
 {
 	t_redirect_node	*redir_node;
 	t_heredoc_node	*heredoc_node;
@@ -108,10 +106,15 @@ static int	redirect_mode(t_ast_node *node, t_exec_context *context,
 	else if (node->type == NODE_REDIRECT_HEREDOC)
 	{
 		heredoc_node = &node->data.heredoc;
-		if (ms_heredoc_mode(heredoc_node->delimiter,
-				context, manager, gcl) != 0)
-			return (ms_handle_error("Minishell: Error: heredoc failed.\n",
-					-1, gcl));
+		ms_heredoc_mode(heredoc_node, context);
+		fd = safe_open2(node->data.heredoc.filename, O_RDONLY, mode, context->shell);
+		if (fd == -1)
+			return (-1);
+		if (context->stdin_fd != STDIN_FILENO)
+			close(context->stdin_fd);
+		context->stdin_fd = fd;
+		unlink(node->data.heredoc.filename);
+		context->tmpfile_counter--;
 	}
 	else
 		return (ms_handle_error("Minishell: Error: "
@@ -164,8 +167,7 @@ t_ast_node	**redirection_nodes(t_ast_node *node, t_gc *gcl)
 	}
 }
 
-int	ms_handle_redirections(t_ast_node *node, t_exec_context *context,
-		t_proc_manager *manager, t_gc *gcl)
+int	ms_handle_redirections(t_ast_node *node, t_exec_context *context, t_gc *gcl)
 {
 	int			old_stdin;
 	int			old_stdout;
@@ -180,7 +182,7 @@ int	ms_handle_redirections(t_ast_node *node, t_exec_context *context,
 	i = 0;
 	while (redir_list[i])
 	{
-		if (redirect_mode(redir_list[i], context, manager, gcl) != 0)
+		if (redirect_mode(redir_list[i], context, gcl) != 0)
 			return (-1);
 		i++;
 	}

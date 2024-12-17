@@ -18,7 +18,7 @@ static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,
 	int (result);
 	if (context->redirected == false)
 	{
-		if (ms_handle_redirections(node, context, manager,
+		if (ms_handle_redirections(node, context,
 				context->shell->gcl) != 0)
 			return (-1);
 	}
