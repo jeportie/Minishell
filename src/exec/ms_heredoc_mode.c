@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 18:29:38 by gmarquis         ###   ########.fr       */
+/*   Updated: 2024/12/17 11:26:05 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static void	st_heredoc_child_process(t_shell *shell, char *delimiter, char *file
 		if (g_signal == 130) 
 		{
 			close(fd);
-			fd = open(filename, O_TRUNC);
+			fd = open(filename, O_WRONLY | O_TRUNC);
 			close(fd);
 			exit (130);
 		}
@@ -142,14 +142,6 @@ static void	st_heredoc_child_process(t_shell *shell, char *delimiter, char *file
 	exit(0);
 }
 
-void	st_parent_here_signal(int sig)
-{
-	if (sig == SIGINT)
-	{
-		g_signal = 130;
-		rl_done = 1;
-	}
-}
 
 static void	st_fork_heredoc(t_heredoc_node *node, t_exec_context *context)
 {
