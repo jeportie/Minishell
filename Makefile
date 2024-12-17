@@ -15,90 +15,90 @@ NAME = minishell
 ### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
-  src/expand/ms_expand_args.c \
-  src/expand/ms_expand_args_utils.c \
-  src/expand/ms_expand_wild.c \
-  src/expand/ms_expand_utils.c \
-  src/expand/ms_manage_arg_expand.c \
-  src/expand/ms_value_assign.c \
-  src/expand/ms_wildcard_helper.c \
+  src/token/tokenize_word.c \
+  src/token/ms_tokenize.c \
   src/token/lst_tokens.c \
+  src/token/tokenize_operator.c \
   src/token/tokenize_frame.c \
   src/token/utils.c \
-  src/token/ms_tokenize.c \
-  src/token/tokenize_operator.c \
   src/token/tokenize_word_helper.c \
-  src/token/tokenize_word.c \
-  src/syntax_error/ms_syntax_error.c \
-  src/syntax_error/operator_gestion.c \
-  src/syntax_error/quote_gestion.c \
-  src/syntax_error/parenthesis_gestion.c \
-  src/syntax_error/check_reinit.c \
-  src/syntax_error/redir_gestion.c \
-  src/syntax_error/check_error.c \
-  src/ast/parse_logical.c \
-  src/ast/parse_redirection.c \
   src/ast/ms_parse_tokens.c \
-  src/ast/print_ast.c \
-  src/ast/utils.c \
-  src/ast/create_command_node.c \
-  src/ast/create_node.c \
-  src/ast/parse_pipeline.c \
-  src/ast/parse_subshell.c \
-  src/ast/parse_command.c \
   src/ast/utils2.c \
-  src/process/clean_process.c \
-  src/process/clean_manager.c \
-  src/process/back_to_parent_stdout.c \
-  src/process/redirect_fd.c \
-  src/process/safe_fork.c \
-  src/process/safe_pipe.c \
-  src/process/print_proc_info.c \
-  src/process/safe_open.c \
-  src/process/add_process.c \
-  src/process/init_proc_manager.c \
-  src/process/safe_close.c \
-  src/shell/ms_getenv.c \
-  src/shell/ms_env_add_back.c \
-  src/shell/ms_get_envp.c \
-  src/shell/ms_init_env.c \
-  src/shell/ms_get_user_input.c \
-  src/shell/ms_get_env_value.c \
-  src/shell/ms_init_shell.c \
-  src/shell/ms_set_env_value.c \
-  src/shell/ms_env_create_node.c \
-  src/shell/init_fix_value.c \
-  src/exec/ms_execute_logical.c \
-  src/exec/ms_execute_external.c \
-  src/exec/ms_heredoc_helper.c \
-  src/exec/ms_execute_command.c \
-  src/exec/ms_execute_ast.c \
-  src/exec/ms_concat_path.c \
-  src/exec/ms_handle_error.c \
-  src/exec/ms_execute_subshell.c \
-  src/exec/ms_parse_cmd_path.c \
-  src/exec/ms_heredoc_mode.c \
-  src/exec/ms_handle_redirections.c \
-  src/exec/ms_pipeline_helper.c \
-  src/exec/ms_execute_pipeline.c \
-  src/global.c \
+  src/ast/parse_logical.c \
+  src/ast/create_node.c \
+  src/ast/create_command_node.c \
+  src/ast/parse_command.c \
+  src/ast/parse_subshell.c \
+  src/ast/utils.c \
+  src/ast/parse_pipeline.c \
+  src/ast/parse_redirection.c \
+  src/ast/print_ast.c \
   src/signal/ms_init_parent_cmd_signal.c \
-  src/signal/ms_heredoc_signal.c \
-  src/signal/rl_event_dummy.c \
   src/signal/ms_init_std_signal.c \
-  src/signal/ms_init_child_cmd_signal.c \
   src/signal/ms_stop_std_signal.c \
+  src/signal/ms_heredoc_signal.c \
+  src/signal/ms_init_child_cmd_signal.c \
+  src/signal/rl_event_dummy.c \
+  src/process/clean_manager.c \
+  src/process/safe_fork.c \
+  src/process/redirect_fd.c \
+  src/process/init_proc_manager.c \
+  src/process/safe_pipe.c \
+  src/process/add_process.c \
+  src/process/safe_open.c \
+  src/process/safe_close.c \
+  src/process/back_to_parent_stdout.c \
+  src/process/print_proc_info.c \
+  src/process/clean_process.c \
+  src/builtins/ms_export.c \
+  src/builtins/builtins_utils.c \
+  src/builtins/ms_unset.c \
   src/builtins/ms_echo.c \
-  src/builtins/echec_malloc.c \
+  src/builtins/ms_env.c \
+  src/builtins/export_utils.c \
   src/builtins/copy_env_list.c \
+  src/builtins/echec_malloc.c \
+  src/builtins/ms_exit.c \
   src/builtins/ms_pwd.c \
   src/builtins/ms_cd.c \
-  src/builtins/builtins_utils.c \
-  src/builtins/export_utils.c \
-  src/builtins/ms_exit.c \
-  src/builtins/ms_env.c \
-  src/builtins/ms_export.c \
-  src/builtins/ms_unset.c 
+  src/syntax_error/parenthesis_gestion.c \
+  src/syntax_error/redir_gestion.c \
+  src/syntax_error/operator_gestion.c \
+  src/syntax_error/check_reinit.c \
+  src/syntax_error/ms_syntax_error.c \
+  src/syntax_error/check_error.c \
+  src/syntax_error/quote_gestion.c \
+  src/global.c \
+  src/exec/ms_parse_cmd_path.c \
+  src/exec/ms_pipeline_helper.c \
+  src/exec/ms_handle_redirections.c \
+  src/exec/ms_concat_path.c \
+  src/exec/ms_execute_logical.c \
+  src/exec/ms_handle_error.c \
+  src/exec/ms_execute_pipeline.c \
+  src/exec/ms_heredoc_mode.c \
+  src/exec/ms_execute_command.c \
+  src/exec/ms_execute_subshell.c \
+  src/exec/ms_heredoc_child.c \
+  src/exec/ms_execute_external.c \
+  src/exec/ms_execute_ast.c \
+  src/shell/init_fix_value.c \
+  src/shell/ms_env_add_back.c \
+  src/shell/ms_get_user_input.c \
+  src/shell/ms_getenv.c \
+  src/shell/ms_env_create_node.c \
+  src/shell/ms_get_envp.c \
+  src/shell/ms_init_shell.c \
+  src/shell/ms_get_env_value.c \
+  src/shell/ms_set_env_value.c \
+  src/shell/ms_init_env.c \
+  src/expand/ms_manage_arg_expand.c \
+  src/expand/ms_expand_args_utils.c \
+  src/expand/ms_value_assign.c \
+  src/expand/ms_wildcard_helper.c \
+  src/expand/ms_expand_wild.c \
+  src/expand/ms_expand_args.c \
+  src/expand/ms_expand_utils.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #
