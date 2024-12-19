@@ -6,12 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:59:50 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 00:33:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:08:28 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ast.h"
 #include "../../include/tokenize.h"
+#include <readline/readline.h>
 
 static t_node_type	define_type(t_token **current_token)
 {
@@ -64,8 +65,9 @@ t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child,
 			if (i > 16)
 			{
 				ft_dprintf(STDERR, "bash: maximum here-document count exceeded\n");
+				rl_clear_history();
 				gc_cleanup(gcl);
-				exit(EXIT_FAILURE);
+				exit(2);
 			}
 			shell->heredocs[i] = &((t_ast_node*)child)->data.heredoc;
 		}

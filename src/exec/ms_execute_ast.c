@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/18 16:26:24 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:13:53 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,
 	return (result);
 }
 */
+
 /*
 int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
 	t_proc_manager *manager)
@@ -73,8 +74,46 @@ int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
 }
 */
 
+void	ms_preprocess_heredocs(t_ast_node *node, t_exec_context *context,
+		t_proc_manager *manager)
+{
+	int	i;
+
+	i = 0;
+	while (i < 16 && context->shell->heredocs[i])
+	{
+		ms_heredoc_mode(context->shell->heredocs[i], context);
+		i++;
+	}
+}
+
+t_job_list	*ms_create_job_lists(t_ast_node *node, t_exec_context *context)
+{
+	t_job_list	*result;
+
+	return (result);
+}
+
+void	ms_prepare_pipes(t_job_list *jobs_list, t_exec_context *context, t_proc_manager *manager)
+{
+
+}
+
+int	ms_exec_jobs(t_job_list *jobs_list, t_exec_context *context,
+		t_proc_manager *manager)
+{
+
+}
+
 int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
 	t_proc_manager *manager)
 {
+	int			result;
+	t_job_list	*jobs_list;
 
+	ms_preprocess_heredocs(node, context, manager);
+	jobs_list = ms_create_job_lists(node, context);
+	ms_prepare_pipes(jobs_list, context, manager);
+	result = ms_exec_jobs(jobs_list, context, manager);
+	return (result);
 }
