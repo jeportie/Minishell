@@ -1,20 +1,27 @@
-jeportie@minishell $> cd test_dir
+gmarquis@minishell $> cd test_dir
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ls a*
+gmarquis@minishell $> ls a*
 a1  a2	a3  a4
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ls *1
+gmarquis@minishell $> ls *1
 a1  b1
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ls *src*
+gmarquis@minishell $> ls *src*
 hello
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat s*/*ll*
+gmarquis@minishell $> cat s*/*ll*
 /root/projects/minishell/test_integrated/test_dir/src
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo a*
+gmarquis@minishell $> echo a*
 a1 a2 a3 a4
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo *1
+gmarquis@minishell $> echo *1
 a1 b1
+gmarquis@minishell $> echo $?
 0

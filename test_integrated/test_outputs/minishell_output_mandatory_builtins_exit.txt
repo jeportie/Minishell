@@ -1,27 +1,35 @@
-jeportie@minishell $> bash
-]0;root@b40c84a2cb33: ~/projects/minishell/test_integratedroot@b40c84a2cb33:~/projects/minishell/test_integrated# echo $?
+gmarquis@minishell $> bash
+]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# echo $?
 0
-]0;root@b40c84a2cb33: ~/projects/minishell/test_integratedroot@b40c84a2cb33:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# export PS1='$USER@minishell $> '
+gmarquis@minishell $> echo $?
 0
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> bash
-]0;root@b40c84a2cb33: ~/projects/minishell/test_integratedroot@b40c84a2cb33:~/projects/minishell/test_integrated# echo $?
+gmarquis@minishell $> bash
+]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# echo $?
 0
-]0;root@b40c84a2cb33: ~/projects/minishell/test_integratedroot@b40c84a2cb33:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# export PS1='$USER@minishell $> '
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> exit 0
+gmarquis@minishell $> exit 0
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> bash
-]0;root@b40c84a2cb33: ~/projects/minishell/test_integratedroot@b40c84a2cb33:~/projects/minishell/test_integrated# echo $?
+gmarquis@minishell $> bash
+]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# echo $?
 0
-]0;root@b40c84a2cb33: ~/projects/minishell/test_integratedroot@b40c84a2cb33:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# export PS1='$USER@minishell $> '
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> exit 42
+gmarquis@minishell $> exit 42
+gmarquis@minishell $> echo $?
 42
-jeportie@minishell $> bash
-]0;root@b40c84a2cb33: ~/projects/minishell/test_integratedroot@b40c84a2cb33:~/projects/minishell/test_integrated# echo $?
+gmarquis@minishell $> bash
+]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# echo $?
 0
-]0;root@b40c84a2cb33: ~/projects/minishell/test_integratedroot@b40c84a2cb33:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# export PS1='$USER@minishell $> '
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> exit 9999
+gmarquis@minishell $> exit 9999
+gmarquis@minishell $> echo $?
 15

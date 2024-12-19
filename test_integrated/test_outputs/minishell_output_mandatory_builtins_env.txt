@@ -1,13 +1,18 @@
-jeportie@minishell $> env | grep USER | grep -v PS1
-USER=jeportie
+gmarquis@minishell $> env | grep USER | grep -v PS1
+USER=gmarquis
 DEFAULT_USER=vjej
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> export TESTVAR=hello
+gmarquis@minishell $> export TESTVAR=hello
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> env | grep TESTVAR
+gmarquis@minishell $> env | grep TESTVAR
 TESTVAR=hello
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> unset TESTVAR
+gmarquis@minishell $> unset TESTVAR
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> env | grep TESTVAR
+gmarquis@minishell $> env | grep TESTVAR
+gmarquis@minishell $> echo $?
 0

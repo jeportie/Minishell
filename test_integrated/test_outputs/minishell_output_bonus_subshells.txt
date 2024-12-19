@@ -1,10 +1,13 @@
-jeportie@minishell $> ( echo "Inside subshell" && pwd )
+gmarquis@minishell $> ( echo "Inside subshell" && pwd )
 Inside subshell
-/root/projects/minishell/test_integrated
+/root/projects/Minishell/test_integrated
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ( cd test_dir && ls )
+gmarquis@minishell $> ( cd test_dir && ls )
 a1  a2	a3  a4	b1  b2	b3  b4	src
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ( env | grep SHLVL )
+gmarquis@minishell $> ( env | grep SHLVL )
 SHLVL=3
+gmarquis@minishell $> echo $?
 0

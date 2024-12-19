@@ -1,14 +1,19 @@
-jeportie@minishell $> true && echo "Success"
+gmarquis@minishell $> true && echo "Success"
 Success
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> false && echo "Won't print"
+gmarquis@minishell $> false && echo "Won't print"
+gmarquis@minishell $> echo $?
 1
-jeportie@minishell $> false || echo "Fallback"
+gmarquis@minishell $> false || echo "Fallback"
 Fallback
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> true || echo "Won't print"
+gmarquis@minishell $> true || echo "Won't print"
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo "hello" && echo "world"
+gmarquis@minishell $> echo "hello" && echo "world"
 hello
 world
+gmarquis@minishell $> echo $?
 0
