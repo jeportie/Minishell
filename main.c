@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 16:51:45 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:51:40 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "include/ast.h"
 #include "include/exec.h"
 #include "include/process.h"
+#include "lib/libft/include/libft.h"
 #include <fcntl.h>
 
 static void	print_token_delimit(t_token *tokens)
@@ -121,6 +122,7 @@ int	main(int argc, char **argv, char **envp)
 			shell.error_code = 2;
 		else
 			run(&shell, tokens, root);
+		ft_bzero(shell.heredocs, 16);
 	}
 	gc_cleanup(shell.gcl);
 	return (shell.error_code = 333);

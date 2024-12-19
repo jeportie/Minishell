@@ -956,7 +956,9 @@ ms_execute_ast	src/exec/ms_execute_ast.c	/^int	ms_execute_ast(t_ast_node *node, 
 ms_execute_command	src/exec/ms_execute_command.c	/^int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,$/;"	f
 ms_execute_external	src/exec/ms_execute_external.c	/^int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,$/;"	f
 ms_execute_logical	src/exec/ms_execute_logical.c	/^int	ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,$/;"	f
-ms_execute_pipeline	src/exec/ms_execute_pipeline.c	/^int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context,$/;"	f
+ms_execute_logical_node	src/exec/ms_execute_ast.c	/^static int	ms_execute_logical_node(t_ast_node *node, t_exec_context *context,$/;"	f	file:
+ms_execute_pipeline	src/exec/ms_execute_pipeline.c	/^int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context, t_proc_manager *manager)$/;"	f
+ms_execute_pipelines	src/exec/ms_execute_pipeline.c	/^int	ms_execute_pipelines(t_pipe_node *pipe_node, t_exec_context *context,$/;"	f
 ms_execute_subshell	src/exec/ms_execute_subshell.c	/^int	ms_execute_subshell(t_subshell_node *subshell_node,$/;"	f
 ms_exit	src/builtins/ms_exit.c	/^int	ms_exit(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
 ms_exit_suite	test_src/builtins/test_ms_exit.c	/^static Suite *ms_exit_suite(void)$/;"	f	file:
@@ -1165,6 +1167,8 @@ st_atoll_safe	src/builtins/ms_exit.c	/^static long long	st_atoll_safe(const char
 st_cd_with_option	src/builtins/ms_cd.c	/^static char	*st_cd_with_option(char *cd, t_shell *shell, char *argv)$/;"	f	file:
 st_check_env_var	src/exec/ms_heredoc_child.c	/^static void	st_check_env_var(t_shell *shell, t_here_helper *help)$/;"	f	file:
 st_close_parenthesis	src/syntax_error/parenthesis_gestion.c	/^static int	st_close_parenthesis(t_syntax **syntax)$/;"	f	file:
+st_collect_pipeline_commands	src/exec/ms_execute_pipeline.c	/^static t_ast_node	**st_collect_pipeline_commands(t_pipe_node *pipe_node, int count, t_gc *gcl)$/;"	f	file:
+st_count_pipeline_commands	src/exec/ms_execute_pipeline.c	/^static int	st_count_pipeline_commands(t_pipe_node *pipe_node)$/;"	f	file:
 st_create_envp	src/shell/ms_init_env.c	/^static char	**st_create_envp(t_shell *shell, t_env_data *env_data)$/;"	f	file:
 st_echo_utils	src/builtins/ms_echo.c	/^static void	st_echo_utils(t_echo_utils *utils, char **cmd, int fd)$/;"	f	file:
 st_exit_code	src/builtins/ms_exit.c	/^static void	st_exit_code(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f	file:
@@ -1204,6 +1208,7 @@ st_redir_out	src/syntax_error/redir_gestion.c	/^static int	st_redir_out(t_syntax
 st_reinit_operator	src/syntax_error/check_reinit.c	/^static int	st_reinit_operator(char c)$/;"	f	file:
 st_reinit_redir	src/syntax_error/check_reinit.c	/^static int	st_reinit_redir(char c)$/;"	f	file:
 st_set_underscore_value	src/exec/ms_execute_command.c	/^static void	st_set_underscore_value(t_cmd_node *cmd_node,$/;"	f	file:
+st_setup_pipes_and_exec	src/exec/ms_execute_pipeline.c	/^static pid_t	*st_setup_pipes_and_exec(int num_commands, int pipefd[2], t_gc *gcl)$/;"	f	file:
 st_shell_lvl_helper	src/shell/ms_init_env.c	/^static void	st_shell_lvl_helper(int i, t_env *current, t_gc *gcl)$/;"	f	file:
 st_sigint_cmd_handler	src/signal/ms_init_child_cmd_signal.c	/^static void	st_sigint_cmd_handler(int sig)$/;"	f	file:
 st_sigint_cmd_handler	src/signal/ms_init_parent_cmd_signal.c	/^static void	st_sigint_cmd_handler(int sig)$/;"	f	file:
@@ -1212,6 +1217,7 @@ st_sigquit_cmd_handler	src/signal/ms_init_child_cmd_signal.c	/^static void	st_si
 st_sigquit_cmd_handler	src/signal/ms_init_parent_cmd_signal.c	/^static void	st_sigquit_cmd_handler(int sig)$/;"	f	file:
 st_unset_utils	src/builtins/ms_unset.c	/^static void	st_unset_utils(t_exec_context *context, t_env *prev, t_env *current)$/;"	f	file:
 st_valid_numeric_code	src/builtins/ms_exit.c	/^static int	st_valid_numeric_code(char *str)$/;"	f	file:
+st_wait_all_childs	src/exec/ms_execute_pipeline.c	/^static	int	st_wait_all_childs(int num_commands, pid_t *pids, t_gc *gcl)$/;"	f	file:
 st_whithout_minus	src/builtins/ms_env.c	/^static char	*st_whithout_minus(char *str)$/;"	f	file:
 start_banner	test_integrated/run_test.sh	/^start_banner() {$/;"	f
 start_quote	include/tokenize.h	/^	char		start_quote;$/;"	m	struct:s_token_state

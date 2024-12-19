@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:49:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/07 15:05:50 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 22:43:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	safe_pipe(int pipefd[2])
 	if (pipe(pipefd) == -1)
 	{
 		ft_dprintf(STDERR_FILENO, "minishell: error: pipe failed\n");
-		exit(EXIT_FAILURE);
+		return (-1);
 	}
 	return (0);
 }

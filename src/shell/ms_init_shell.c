@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:40:35 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 00:32:38 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:07:16 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ t_shell	ms_init_shell(int argc, char **argv, char **envp)
 	ft_memset(&shell, 0, sizeof(t_shell));
 	shell.gcl = gc_init();
 	shell.env_data = ms_init_env(envp, &shell);
-	ft_memset(&shell.heredocs, 0, sizeof(shell.heredocs));
+	ft_bzero(&shell.heredocs, 16);
 	return (shell);
 }

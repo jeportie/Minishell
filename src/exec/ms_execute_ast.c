@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 16:51:25 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 20:51:44 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,36 @@ static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,
 	return (result);
 }
 
+static int	ms_execute_logical_node(t_ast_node *node, t_exec_context *context,
+				t_proc_manager *manager)
+{
+	int		left_status;
+	bool	run_right;
+	int		right_status;
+
+	left_status = ms_execute_ast(node->data.logic.left, context, manager);
+	run_right = false;
+	if (node->type == NODE_AND && left_status == 0)
+		run_right = true;
+	else if (node->type == NODE_OR && left_status != 0)
+		run_right = true;
+	if (run_right)
+	{
+		right_status = ms_execute_ast(node->data.logic.right, context, manager);
+		context->shell->error_code = right_status;
+		return (right_status);
+	}
+	context->shell->error_code = left_status;
+	return (left_status);
+}
+
 int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
 	t_proc_manager *manager)
 {
 	if (!node)
-		return (ms_handle_error("Error: Null AST node.\n", -1,
-				context->shell->gcl));
+		return (ms_handle_error("Error: Null AST node.\n", -1, context->shell->gcl));
 	if (node->type == NODE_AND || node->type == NODE_OR)
-		return (ms_execute_logical(&node->data.logic, context, node->type,
-				manager));
+		return (ms_execute_logical_node(node, context, manager));
 	else if (node->type == NODE_COMMAND)
 		return (ms_execute_command(&node->data.command, context, manager,
 				context->shell->gcl));
