@@ -6,14 +6,14 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:56:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 13:18:53 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/18 23:15:09 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ast.h"
 #include "../../include/tokenize.h"
 
-t_ast_node	*parse_pipeline(t_token **current_token, t_gc *gcl)
+t_ast_node	*parse_pipeline(t_token **current_token, t_shell *shell, t_gc *gcl)
 {
 	t_ast_node	*left_node;
 	t_ast_node	*right_node;

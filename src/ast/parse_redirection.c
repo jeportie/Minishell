@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:59:50 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 18:00:24 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 00:33:01 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ static t_node_type	define_type(t_token **current_token)
 }
 
 t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child,
-	t_gc *gcl)
+	t_shell *shell, t_gc *gcl)
 {
 	t_node_type	redir_type;
 	char		*filename;
+	int			i;
 
 	while (*current_token && is_redir_op(*current_token))
 	{
@@ -55,7 +56,19 @@ t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child,
 		filename = (*current_token)->token;
 		*current_token = (*current_token)->next;
 		if (redir_type == NODE_REDIRECT_HEREDOC)
+		{
 			child = create_heredoc_node(redir_type, child, filename, gcl);
+			i = 0;
+			while (shell->heredocs[i])
+				i++;
+			if (i > 16)
+			{
+				ft_dprintf(STDERR, "bash: maximum here-document count exceeded\n");
+				gc_cleanup(gcl);
+				exit(EXIT_FAILURE);
+			}
+			shell->heredocs[i] = &((t_ast_node*)child)->data.heredoc;
+		}
 		else
 			child = create_redirect_node(redir_type, child, filename, gcl);
 		if (!child)

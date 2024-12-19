@@ -6,12 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 15:47:57 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:26:24 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 
+/*
 static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,
 		t_exec_context *context, t_proc_manager *manager)
 {
@@ -41,7 +42,8 @@ static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,
 	}
 	return (result);
 }
-
+*/
+/*
 int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
 	t_proc_manager *manager)
 {
@@ -68,4 +70,11 @@ int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
 	else
 		return (ms_handle_error("Unsupported node type", -1,
 				context->shell->gcl));
+}
+*/
+
+int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
+	t_proc_manager *manager)
+{
+
 }

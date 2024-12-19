@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:58:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 18:18:29 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/18 23:10:39 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_ast_node	*create_heredoc_node(t_node_type type, t_ast_node *child,
 	char *delimiter, t_gc *gcl)
 {
 	t_ast_node	*node;
+	int			i;
 
 	node = (t_ast_node *)gc_malloc(sizeof(t_ast_node), gcl);
 	gc_lock(node, gcl);

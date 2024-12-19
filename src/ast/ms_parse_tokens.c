@@ -6,14 +6,14 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:31:06 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/17 11:54:57 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/18 23:14:30 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ast.h"
 #include "../../include/tokenize.h"
 
-t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)
+t_ast_node	*ms_parse_tokens(t_token *tokens, t_shell *shell, t_gc *gcl)
 {
 	t_ast_node	*ast_root;
 	t_token		*current_token;
@@ -24,7 +24,7 @@ t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)
 		return (NULL);
 	}
 	current_token = tokens;
-	ast_root = parse_logical(&current_token, gcl);
+	ast_root = parse_logical(&current_token, shell, gcl);
 	if (!ast_root)
 	{
 		ft_dprintf(STDERR, "Minishell: Error: Failed to parse tokens.\n");

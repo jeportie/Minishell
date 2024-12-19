@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/17 11:25:53 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 00:31:07 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 
 extern int	g_signal;
 
+struct s_heredoc_node;
+typedef struct s_heredoc_node	t_heredoc_node;
+
 typedef struct s_env
 {
 	char			*var;
@@ -48,11 +51,12 @@ typedef struct s_env_data
 
 typedef struct s_shell
 {
-	t_env_data	*env_data;
-	char		*user_input;
-	int			error_code;
-	bool		interactive_mode;
-	t_gc		*gcl;
+	t_env_data		*env_data;
+	char			*user_input;
+	int				error_code;
+	bool			interactive_mode;
+	t_gc			*gcl;
+	t_heredoc_node	*heredocs[16];
 }				t_shell;
 
 /* Init_shell */
