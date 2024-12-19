@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:45:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/18 23:16:03 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:40:27 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ t_ast_node	*parse_pipeline(t_token **current_token, t_shell *shell, t_gc *gcl);
 t_ast_node	*parse_command(t_token **current_token, t_shell *shell, t_gc *gcl);
 t_ast_node	*parse_redirection(t_token **current_token,
 				t_ast_node *child, t_shell *shell, t_gc *gcl);
-t_ast_node	*parse_subshell(t_token **current_token, t_gc *gcl);
+t_ast_node	*parse_subshell(t_token **current_token, t_shell *shell, t_gc *gcl);
 
 /* Node Functions*/
 t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl);

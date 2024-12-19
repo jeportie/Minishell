@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/17 16:56:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:51:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,18 @@ static void	init_context(t_exec_context *data, t_shell *shell)
 	data->tmpfile_counter = 0;
 }
 
+void	ms_preprocess_heredocs(t_exec_context *context)
+{
+	int	i;
+
+	i = 0;
+	while (i < 16 && context->shell->heredocs[i])
+	{
+		ms_heredoc_mode(context->shell->heredocs[i], context);
+		i++;
+	}
+}
+
 static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 {
 	t_exec_context	context;
@@ -75,13 +87,14 @@ static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 
 	tokens = ms_tokenize(shell->user_input, shell->gcl);
 	print_token_delimit(tokens);
-	root = ms_parse_tokens(tokens, shell->gcl);
+	root = ms_parse_tokens(tokens, shell, shell->gcl);
 	if (!root)
 		return ;
 	print_ast_delimit(root);
 	gc_collect(shell->gcl);
 	init_context(&context, shell);
 	proc_manager = init_manager(shell->gcl);
+	ms_preprocess_heredocs(&context);
 	ms_execute_ast(root, &context, proc_manager);
 	gc_collect(shell->gcl);
 }

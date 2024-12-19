@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 18:24:48 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:42:36 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static int	redirect_helper(t_ast_node *node, t_node_type type,
 static int	redirect_mode(t_ast_node *node, t_exec_context *context, t_gc *gcl)
 {
 	t_redirect_node	*redir_node;
-	t_heredoc_node	*heredoc_node;
 	int				fd;
 	mode_t			mode;
 
@@ -105,8 +104,6 @@ static int	redirect_mode(t_ast_node *node, t_exec_context *context, t_gc *gcl)
 	}
 	else if (node->type == NODE_REDIRECT_HEREDOC)
 	{
-		heredoc_node = &node->data.heredoc;
-		ms_heredoc_mode(heredoc_node, context);
 		fd = safe_open2(node->data.heredoc.filename, O_RDONLY, mode, context->shell);
 		if (fd == -1)
 			return (-1);

@@ -6,13 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 14:13:53 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:51:25 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 
-/*
 static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,
 		t_exec_context *context, t_proc_manager *manager)
 {
@@ -42,23 +41,21 @@ static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,
 	}
 	return (result);
 }
-*/
 
-/*
 int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
 	t_proc_manager *manager)
 {
 	if (!node)
 		return (ms_handle_error("Error: Null AST node.\n", -1,
 				context->shell->gcl));
-	if (node->type == NODE_COMMAND)
+	if (node->type == NODE_AND || node->type == NODE_OR)
+		return (ms_execute_logical(&node->data.logic, context, node->type,
+				manager));
+	else if (node->type == NODE_COMMAND)
 		return (ms_execute_command(&node->data.command, context, manager,
 				context->shell->gcl));
 	else if (node->type == NODE_PIPE)
 		return (ms_execute_pipeline(&node->data.pipe, context, manager));
-	else if (node->type == NODE_AND || node->type == NODE_OR)
-		return (ms_execute_logical(&node->data.logic, context, node->type,
-				manager));
 	else if (node->type == NODE_SUBSHELL)
 		return (ms_execute_subshell(&node->data.subshell, context, manager));
 	else if (node->type == NODE_REDIRECT_IN || node->type == NODE_REDIRECT_OUT
@@ -71,49 +68,4 @@ int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
 	else
 		return (ms_handle_error("Unsupported node type", -1,
 				context->shell->gcl));
-}
-*/
-
-void	ms_preprocess_heredocs(t_ast_node *node, t_exec_context *context,
-		t_proc_manager *manager)
-{
-	int	i;
-
-	i = 0;
-	while (i < 16 && context->shell->heredocs[i])
-	{
-		ms_heredoc_mode(context->shell->heredocs[i], context);
-		i++;
-	}
-}
-
-t_job_list	*ms_create_job_lists(t_ast_node *node, t_exec_context *context)
-{
-	t_job_list	*result;
-
-	return (result);
-}
-
-void	ms_prepare_pipes(t_job_list *jobs_list, t_exec_context *context, t_proc_manager *manager)
-{
-
-}
-
-int	ms_exec_jobs(t_job_list *jobs_list, t_exec_context *context,
-		t_proc_manager *manager)
-{
-
-}
-
-int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
-	t_proc_manager *manager)
-{
-	int			result;
-	t_job_list	*jobs_list;
-
-	ms_preprocess_heredocs(node, context, manager);
-	jobs_list = ms_create_job_lists(node, context);
-	ms_prepare_pipes(jobs_list, context, manager);
-	result = ms_exec_jobs(jobs_list, context, manager);
-	return (result);
 }

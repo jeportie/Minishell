@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 12:27:58 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:28:34 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,6 @@ typedef struct s_here_helper
 	int		count_line;
 	int		fd;
 }				t_here_helper;
-
-typedef struct s_job_list
-{
-	t_ast_node			*job;
-	t_node_type			next_op;
-	struct s_job_list	*next;
-}				t_job_list;
 
 int		ms_execute_ast(t_ast_node *node, t_exec_context *context,
 			t_proc_manager *manager);
