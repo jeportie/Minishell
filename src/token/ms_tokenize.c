@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 20:49:16 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/18 22:45:28 by gmarquis         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:36:48 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@
 
 static void	st_move_token(t_token **top, t_token **prev, t_token **current)
 {
-	t_token *swap = (*current)->next;
+	t_token	*swap;
 
+	swap = (*current)->next;
 	(*current)->next = (*top)->next;
 	(*top)->next = *current;
 	(*prev)->next = swap;
@@ -30,7 +31,9 @@ static void	st_move_token(t_token **top, t_token **prev, t_token **current)
 
 static void	st_init_sort_helper(t_sort_token_helper	*h, t_token *tokens)
 {
-	t_token *current = tokens;
+	t_token	*current;
+
+	current = tokens;
 	h->current = tokens;
 	h->head = h->current;
 	h->top = h->head;
@@ -40,7 +43,7 @@ static void	st_init_sort_helper(t_sort_token_helper	*h, t_token *tokens)
 	h->final_path = 0;
 	h->i = 0;
 	h->len = 0;
-	while(current)
+	while (current)
 	{
 		h->len++;
 		current = current->next;
@@ -99,58 +102,6 @@ static void	st_sort_token_list(t_token **tokens)
 	}
 	*tokens = h.head;
 }
-
-/*static void	st_sort_token_list(t_token **tokens)
-{
-	t_token *current = *tokens;
-	t_token *head = current;
-	t_token *top = head;
-	t_token *prev = current;
-	bool	redir = 0;
-	bool	trigger = 0;
-	bool	final_path = 0;
-	int		i = 0;
-	int		len = st_list_len(current);
-	while (current)
-	{
-		if (current->type == TOKEN_REDIRECTION && redir == 0)
-		{
-			redir = 1;
-			trigger = 1;
-		}
-		else if (current->type == TOKEN_WORD || current->type == TOKEN_EXPAND)
-		{
-			if (redir == 1)
-				redir = 0;
-			else if (redir == 0 && top != current && trigger == 1)
-			{
-				st_move_token(&top, &prev, &current);
-				top = current;
-				current = prev;
-				trigger = 0;
-				final_path = 1;
-			}
-			else
-				top = current;
-		}
-		else
-		{
-			if (i < len - 1)
-				top = current->next;
-			trigger = 0;
-		}
-		i++;
-		prev = current;
-		if (current)
-			current = current->next;
-		if (!current && final_path == 1)
-		{
-			current = head;
-			final_path = 0;
-		}
-	}
-	*tokens = head;
-}*/
 
 t_token	*ms_tokenize(const char *command_line, t_gc *gcl)
 {

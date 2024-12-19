@@ -6,17 +6,18 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/17 14:13:52 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:26:40 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/expand.h"
+#include "../../include/exec.h"
 #include <sys/stat.h>
 
 static void	st_fork_heredoc(t_heredoc_node *node, t_exec_context *context)
 {
 	int	status;
 
+	status = 0;
 	pid_t (pid) = fork();
 	if (pid == 0)
 		st_heredoc_child_process(context->shell, node->delimiter,
