@@ -343,6 +343,10 @@ PROMPT_MODE	include/minishell.h	25;"	d
 RED	Makefile	/^RED     = \\033[31m$/;"	m
 RED	test_integrated/animated_banner.py	/^RED = "\\033[1;31m"$/;"	v
 RED	test_integrated/noanimated_banner.py	/^RED = "\\033[1;31m"$/;"	v
+REDIR_APPEND	include/exec.h	/^	REDIR_APPEND,$/;"	e	enum:e_redir_type
+REDIR_HEREDOC	include/exec.h	/^	REDIR_HEREDOC$/;"	e	enum:e_redir_type
+REDIR_IN	include/exec.h	/^	REDIR_IN,$/;"	e	enum:e_redir_type
+REDIR_OUT	include/exec.h	/^	REDIR_OUT,$/;"	e	enum:e_redir_type
 RESET	Makefile	/^RESET   = \\033[0m$/;"	m
 RESET	test_integrated/animated_banner.py	/^RESET = "\\033[0m"$/;"	v
 RESET	test_integrated/noanimated_banner.py	/^RESET = "\\033[0m"$/;"	v
@@ -622,6 +626,7 @@ delimiter	include/exec.h	/^	const char		*delimiter;$/;"	m	struct:s_heredoc_param
 dq_trigger	include/syntax.h	/^	int		dq_trigger;$/;"	m	struct:s_syntax
 e_error	lib/libft/include/printf.h	/^typedef enum e_error$/;"	g
 e_node_type	include/ast.h	/^typedef enum e_node_type$/;"	g
+e_redir_type	include/exec.h	/^typedef enum e_redir_type$/;"	g
 e_token_type	include/tokenize.h	/^typedef enum e_token_type$/;"	g
 echec_malloc	src/builtins/echec_malloc.c	/^void	echec_malloc(t_gc *gcl, char *message)$/;"	f
 env	include/minishell.h	/^	t_env	*env;$/;"	m	struct:s_env_data
@@ -662,6 +667,7 @@ fd_out	include/process.h	/^	int			fd_out;$/;"	m	struct:s_fork_params
 fd_out	include/process.h	/^	int			fd_out;$/;"	m	struct:s_proc_params
 filename	include/ast.h	/^	char					*filename;$/;"	m	struct:s_heredoc_node
 filename	include/ast.h	/^	char				*filename;$/;"	m	struct:s_redirect_node
+filename	include/exec.h	/^	char			*filename;$/;"	m	struct:s_redir
 find_close_par	src/syntax_error/check_error.c	/^int	find_close_par(char *current, int i)$/;"	f
 find_dollar	src/expand/ms_expand_utils.c	/^char	*find_dollar(char *arg)$/;"	f
 flag	include/builtins.h	/^	int		flag;$/;"	m	struct:s_export_utils
@@ -861,6 +867,7 @@ init_op_state	src/token/tokenize_operator.c	/^static void	init_op_state(const ch
 initialize_token_state	src/token/tokenize_word_helper.c	/^static void	initialize_token_state(t_token_state *state, const char *current,$/;"	f	file:
 interactive_mode	include/minishell.h	/^	bool			interactive_mode;$/;"	m	struct:s_shell
 is_array	lib/libgc/include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
+is_builtin_that_must_run_in_parent	src/exec/ms_execute_ast.c	/^bool is_builtin_that_must_run_in_parent(t_cmd_node *cmd_node)$/;"	f
 is_command_op	src/ast/utils.c	/^bool	is_command_op(t_token *current_token)$/;"	f
 is_equal	src/expand/ms_expand_utils.c	/^bool	is_equal(char *cmd)$/;"	f
 is_expand	include/ast.h	/^	bool	is_expand;$/;"	m	struct:s_cmd_node
@@ -885,7 +892,6 @@ is_wild	src/expand/ms_expand_utils.c	/^bool	is_wild(char *cmd)$/;"	f
 j	include/tokenize.h	/^	int			j;$/;"	m	struct:s_copy_state
 left	include/ast.h	/^	struct s_ast_node	*left;$/;"	m	struct:s_logic_node	typeref:struct:s_logic_node::s_ast_node
 left	include/ast.h	/^	struct s_ast_node	*left;$/;"	m	struct:s_pipe_node	typeref:struct:s_pipe_node::s_ast_node
-left_child_process	src/exec/ms_pipeline_helper.c	/^void	left_child_process(t_pipe_exec_params *params)$/;"	f
 len	include/tokenize.h	/^	int			len;$/;"	m	struct:s_token_state
 len_end	include/syntax.h	/^	int		len_end;$/;"	m	struct:s_syntax
 line	include/exec.h	/^	char	*line;$/;"	m	struct:s_here_helper
@@ -938,9 +944,12 @@ minishell_suite	test_src/shell/test_ms_get_user_input.c	/^Suite	*minishell_suite
 mock_add_history	test_src/shell/test_ms_get_user_input.c	/^void	mock_add_history(const char *line)$/;"	f
 mock_readline	test_src/shell/test_ms_get_user_input.c	/^char	*mock_readline(const char *prompt)$/;"	f
 move_cursor_below_banner	test_integrated/run_test.sh	/^move_cursor_below_banner() {$/;"	f
+ms_add_redir	src/exec/ms_handle_redirections.c	/^static t_redir	*ms_add_redir(t_redir **head, t_redir_type type, char *filename, t_gc *gcl)$/;"	f	file:
+ms_apply_redirections	src/exec/ms_handle_redirections.c	/^int ms_apply_redirections(t_redir *redir_list)$/;"	f
 ms_cd	src/builtins/ms_cd.c	/^int	ms_cd(t_cmd_node *cmd_node, t_shell *shell)$/;"	f
 ms_check_alloc	src/exec/ms_concat_path.c	/^static void	ms_check_alloc(void *ptr, t_gc *gcl)$/;"	f	file:
 ms_child_process	src/exec/ms_execute_external.c	/^static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,$/;"	f	file:
+ms_collect_redirections	src/exec/ms_handle_redirections.c	/^t_redir	*ms_collect_redirections(t_ast_node *node, t_gc *gcl, t_shell *shell)$/;"	f
 ms_concat_path	src/exec/ms_concat_path.c	/^char	*ms_concat_path(const char *path, const char *command, t_gc *gcl)$/;"	f
 ms_copy_assign	src/expand/ms_value_assign.c	/^static	void	ms_copy_assign(char *var, char *value, char *cmd)$/;"	f	file:
 ms_echo	src/builtins/ms_echo.c	/^int	ms_echo(t_cmd_node *cmd_node, int fd)$/;"	f
@@ -952,8 +961,7 @@ ms_env_suite	test_src/builtins/test_ms_env.c	/^Suite *ms_env_suite(void)$/;"	f
 ms_execute_ast	src/exec/ms_execute_ast.c	/^int	ms_execute_ast(t_ast_node *node, t_exec_context *context,$/;"	f
 ms_execute_command	src/exec/ms_execute_command.c	/^int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,$/;"	f
 ms_execute_external	src/exec/ms_execute_external.c	/^int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,$/;"	f
-ms_execute_logical	src/exec/ms_execute_logical.c	/^int	ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,$/;"	f
-ms_execute_logical_node	src/exec/ms_execute_ast.c	/^static int	ms_execute_logical_node(t_ast_node *node, t_exec_context *context,$/;"	f	file:
+ms_execute_logical	src/exec/ms_execute_logical.c	/^int	ms_execute_logical(t_ast_node *node, t_exec_context *context,$/;"	f
 ms_execute_pipeline	src/exec/ms_execute_pipeline.c	/^int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context, t_proc_manager *manager)$/;"	f
 ms_execute_subshell	src/exec/ms_execute_subshell.c	/^int	ms_execute_subshell(t_subshell_node *subshell_node,$/;"	f
 ms_exit	src/builtins/ms_exit.c	/^int	ms_exit(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
@@ -971,7 +979,6 @@ ms_get_user_input	src/shell/ms_get_user_input.c	/^void	ms_get_user_input(t_shell
 ms_getenv	src/shell/ms_getenv.c	/^char	*ms_getenv(const char *name, t_env_data *env_data)$/;"	f
 ms_getenv_suite	test_src/shell/test_ms_getenv.c	/^Suite *ms_getenv_suite(void)$/;"	f
 ms_handle_error	src/exec/ms_handle_error.c	/^int	ms_handle_error(const char *msg, int exit_status, t_gc *gcl)$/;"	f
-ms_handle_redirections	src/exec/ms_handle_redirections.c	/^int	ms_handle_redirections(t_ast_node *node, t_exec_context *context, t_gc *gcl)$/;"	f
 ms_heredoc_mode	src/exec/ms_heredoc_mode.c	/^int	ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context)$/;"	f
 ms_heredoc_signal	src/signal/ms_heredoc_signal.c	/^void	ms_heredoc_signal(int sig)$/;"	f
 ms_increment_shell_lvl	src/shell/ms_init_env.c	/^void	ms_increment_shell_lvl(t_env *env, t_gc *gcl)$/;"	f
@@ -984,6 +991,8 @@ ms_init_shell_suite	test_src/shell/test_ms_init_shell.c	/^Suite *ms_init_shell_s
 ms_init_std_signal	src/signal/ms_init_std_signal.c	/^void	ms_init_std_signal(void)$/;"	f
 ms_init_std_signal_suite	test_src/signal/test_ms_init_std_signal.c	/^Suite *ms_init_std_signal_suite(void)$/;"	f
 ms_manage_arg_expand	src/expand/ms_manage_arg_expand.c	/^void	ms_manage_arg_expand(t_cmd_node *cmd_node,$/;"	f
+ms_node_type_to_redir_type	src/exec/ms_handle_redirections.c	/^static t_redir_type	ms_node_type_to_redir_type(t_node_type ntype)$/;"	f	file:
+ms_open_redir_file	src/exec/ms_handle_redirections.c	/^static int	ms_open_redir_file(t_redir_type type, const char *filename)$/;"	f	file:
 ms_parent_process	src/exec/ms_execute_external.c	/^static void	ms_parent_process(pid_t pid, t_exec_context *context)$/;"	f	file:
 ms_parse_cmd_path	src/exec/ms_parse_cmd_path.c	/^char	*ms_parse_cmd_path(const char *command, t_shell *shell)$/;"	f
 ms_parse_tokens	src/ast/ms_parse_tokens.c	/^t_ast_node	*ms_parse_tokens(t_token *tokens, t_shell *shell, t_gc *gcl)$/;"	f
@@ -1007,6 +1016,7 @@ name_suite	test_src/expand/test_ms_expand_args.c	/^Suite *name_suite(void)$/;"	f
 nb_printed	lib/libft/include/printf.h	/^	int		nb_printed;$/;"	m	struct:s_buffer
 nested_vars	src/expand/ms_expand_args_utils.c	/^char	*nested_vars(char *arg, t_shell *shell)$/;"	f
 new_arg	include/expand.h	/^	char	*new_arg;$/;"	m	struct:s_expand_utils
+next	include/exec.h	/^	struct s_redir	*next;$/;"	m	struct:s_redir	typeref:struct:s_redir::s_redir
 next	include/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
 next	include/process.h	/^	struct s_proc_info	*next;$/;"	m	struct:s_proc_info	typeref:struct:s_proc_info::s_proc_info
 next	include/tokenize.h	/^	struct s_token	*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
@@ -1028,7 +1038,6 @@ p_trigger	include/syntax.h	/^	int		p_trigger;$/;"	m	struct:s_syntax
 parent_pid	include/process.h	/^	pid_t				parent_pid;$/;"	m	struct:s_proc_info
 parent_pid	include/process.h	/^	pid_t		parent_pid;$/;"	m	struct:s_proc_manager
 parent_pid	include/process.h	/^	pid_t		parent_pid;$/;"	m	struct:s_proc_params
-parent_process	src/exec/ms_pipeline_helper.c	/^int	parent_process(pid_t left_pid, pid_t right_pid,$/;"	f
 parenthesis_gestion	src/syntax_error/parenthesis_gestion.c	/^int	parenthesis_gestion(t_syntax **syntax)$/;"	f
 parse_command	src/ast/parse_command.c	/^t_ast_node	*parse_command(t_token **current_token, t_shell *shell, t_gc *gcl)$/;"	f
 parse_env	src/shell/ms_get_envp.c	/^void	parse_env(char **result, int *i, t_env *env, t_gc *gcl)$/;"	f
@@ -1070,18 +1079,15 @@ r_in	include/syntax.h	/^	int		r_in;$/;"	m	struct:s_syntax
 r_out	include/syntax.h	/^	int		r_out;$/;"	m	struct:s_syntax
 r_p	include/expand.h	/^	const char			*r_p;$/;"	m	struct:s_directory_context
 redir_gestion	src/syntax_error/redir_gestion.c	/^int	redir_gestion(t_syntax **syntax)$/;"	f
+redir_list	include/exec.h	/^	t_redir		*redir_list;$/;"	m	struct:s_exec_context
 redirect	include/ast.h	/^	t_redirect_node		redirect;$/;"	m	union:u_node_data
 redirect_fd	src/process/redirect_fd.c	/^int	redirect_fd(int old_fd, int new_fd)$/;"	f
-redirect_mode	src/exec/ms_handle_redirections.c	/^static int	redirect_mode(t_ast_node *node, t_exec_context *context, t_gc *gcl)$/;"	f	file:
-redirect_switch	src/exec/ms_execute_ast.c	/^static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,$/;"	f	file:
 redirected	include/exec.h	/^	bool		redirected;$/;"	m	struct:s_exec_context
-redirection_nodes	src/exec/ms_handle_redirections.c	/^t_ast_node	**redirection_nodes(t_ast_node *node, t_gc *gcl)$/;"	f
 remove_escape_codes	test_integrated/remove_escape_codes.sh	/^    remove_escape_codes() {$/;"	f
 report_results	test_integrated/run_test.sh	/^report_results() {$/;"	f
 restore_fd	src/process/redirect_fd.c	/^int	restore_fd(int fd, int saved_fd)$/;"	f
 right	include/ast.h	/^	struct s_ast_node	*right;$/;"	m	struct:s_logic_node	typeref:struct:s_logic_node::s_ast_node
 right	include/ast.h	/^	struct s_ast_node	*right;$/;"	m	struct:s_pipe_node	typeref:struct:s_pipe_node::s_ast_node
-right_child_process	src/exec/ms_pipeline_helper.c	/^void	right_child_process(t_pipe_exec_params *params)$/;"	f
 rl_event_dummy	src/signal/rl_event_dummy.c	/^int	rl_event_dummy(void)$/;"	f
 run	main.c	/^static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)$/;"	f	file:
 run_expect_scripts	test_integrated/run_test.sh	/^run_expect_scripts() {$/;"	f
@@ -1113,6 +1119,7 @@ s_pipe_node	include/ast.h	/^typedef struct s_pipe_node$/;"	s
 s_proc_info	include/process.h	/^typedef struct s_proc_info$/;"	s
 s_proc_manager	include/process.h	/^typedef struct s_proc_manager$/;"	s
 s_proc_params	include/process.h	/^typedef struct s_proc_params$/;"	s
+s_redir	include/exec.h	/^typedef struct s_redir$/;"	s
 s_redirect_node	include/ast.h	/^typedef struct s_redirect_node$/;"	s
 s_shell	include/minishell.h	/^typedef struct s_shell$/;"	s
 s_subshell_exec_params	include/exec.h	/^typedef struct s_subshell_exec_params$/;"	s
@@ -1128,7 +1135,6 @@ s_wildcard_context	include/expand.h	/^typedef struct s_wildcard_context$/;"	s
 safe_close	src/process/safe_close.c	/^int	safe_close(int fd)$/;"	f
 safe_fork	src/process/safe_fork.c	/^pid_t	safe_fork(t_proc_manager *manager, t_fork_params *params)$/;"	f
 safe_open	src/process/safe_open.c	/^int	safe_open(const char *filepath, int flags, int mode)$/;"	f
-safe_open2	src/exec/ms_handle_redirections.c	/^int	safe_open2(const char *filepath, int flags, int mode, t_shell *shell)$/;"	f
 safe_pipe	src/process/safe_pipe.c	/^int	safe_pipe(int pipefd[2])$/;"	f
 setup	lib/libft/check_testunit_template.c	/^void setup(void)$/;"	f
 setup	lib/libft/test_src/printf/test_ft_snprintf.c	/^void setup(void)$/;"	f
@@ -1163,7 +1169,7 @@ st_atoll_safe	src/builtins/ms_exit.c	/^static long long	st_atoll_safe(const char
 st_cd_with_option	src/builtins/ms_cd.c	/^static char	*st_cd_with_option(char *cd, t_shell *shell, char *argv)$/;"	f	file:
 st_check_env_var	src/exec/ms_heredoc_child.c	/^static void	st_check_env_var(t_shell *shell, t_here_helper *help)$/;"	f	file:
 st_close_parenthesis	src/syntax_error/parenthesis_gestion.c	/^static int	st_close_parenthesis(t_syntax **syntax)$/;"	f	file:
-st_collect_pipeline_commands	src/exec/ms_execute_pipeline.c	/^static t_ast_node	**st_collect_pipeline_commands(t_pipe_node *pipe_node, int count, t_gc *gcl)$/;"	f	file:
+st_collect_pipeline_commands	src/exec/ms_execute_pipeline.c	/^static t_ast_node **st_collect_pipeline_commands(t_pipe_node *pipe_node, int count, t_gc *gcl)$/;"	f	file:
 st_count_pipeline_commands	src/exec/ms_execute_pipeline.c	/^static int	st_count_pipeline_commands(t_pipe_node *pipe_node)$/;"	f	file:
 st_create_envp	src/shell/ms_init_env.c	/^static char	**st_create_envp(t_shell *shell, t_env_data *env_data)$/;"	f	file:
 st_echo_utils	src/builtins/ms_echo.c	/^static void	st_echo_utils(t_echo_utils *utils, char **cmd, int fd)$/;"	f	file:
@@ -1204,7 +1210,6 @@ st_redir_out	src/syntax_error/redir_gestion.c	/^static int	st_redir_out(t_syntax
 st_reinit_operator	src/syntax_error/check_reinit.c	/^static int	st_reinit_operator(char c)$/;"	f	file:
 st_reinit_redir	src/syntax_error/check_reinit.c	/^static int	st_reinit_redir(char c)$/;"	f	file:
 st_set_underscore_value	src/exec/ms_execute_command.c	/^static void	st_set_underscore_value(t_cmd_node *cmd_node,$/;"	f	file:
-st_setup_pipes_and_exec	src/exec/ms_execute_pipeline.c	/^static pid_t	*st_setup_pipes_and_exec(int num_commands, int pipefd[2], t_gc *gcl)$/;"	f	file:
 st_shell_lvl_helper	src/shell/ms_init_env.c	/^static void	st_shell_lvl_helper(int i, t_env *current, t_gc *gcl)$/;"	f	file:
 st_sigint_cmd_handler	src/signal/ms_init_child_cmd_signal.c	/^static void	st_sigint_cmd_handler(int sig)$/;"	f	file:
 st_sigint_cmd_handler	src/signal/ms_init_parent_cmd_signal.c	/^static void	st_sigint_cmd_handler(int sig)$/;"	f	file:
@@ -1213,7 +1218,6 @@ st_sigquit_cmd_handler	src/signal/ms_init_child_cmd_signal.c	/^static void	st_si
 st_sigquit_cmd_handler	src/signal/ms_init_parent_cmd_signal.c	/^static void	st_sigquit_cmd_handler(int sig)$/;"	f	file:
 st_unset_utils	src/builtins/ms_unset.c	/^static void	st_unset_utils(t_exec_context *context, t_env *prev, t_env *current)$/;"	f	file:
 st_valid_numeric_code	src/builtins/ms_exit.c	/^static int	st_valid_numeric_code(char *str)$/;"	f	file:
-st_wait_all_childs	src/exec/ms_execute_pipeline.c	/^static	int	st_wait_all_childs(int num_commands, pid_t *pids, t_gc *gcl)$/;"	f	file:
 st_whithout_minus	src/builtins/ms_env.c	/^static char	*st_whithout_minus(char *str)$/;"	f	file:
 start_banner	test_integrated/run_test.sh	/^start_banner() {$/;"	f
 start_quote	include/tokenize.h	/^	char		start_quote;$/;"	m	struct:s_token_state
@@ -1233,7 +1237,7 @@ stop	include/tokenize.h	/^	bool		stop;$/;"	m	struct:s_token_state
 stop_banner	test_integrated/run_test.sh	/^stop_banner() {$/;"	f
 stop_event	test_integrated/animated_banner.py	/^    stop_event = threading.Event()$/;"	v
 subshell	include/ast.h	/^	t_subshell_node		subshell;$/;"	m	union:u_node_data
-subshell_child_process	src/exec/ms_execute_subshell.c	/^static void	subshell_child_process(t_subshell_exec_params *params)$/;"	f	file:
+subshell_child_process	src/exec/ms_execute_subshell.c	/^static void subshell_child_process(t_subshell_exec_params *params)$/;"	f	file:
 subshell_node	include/exec.h	/^	t_subshell_node	*subshell_node;$/;"	m	struct:s_subshell_exec_params
 subshell_parent_process	src/exec/ms_execute_subshell.c	/^static int	subshell_parent_process(pid_t pid, t_exec_context *context)$/;"	f	file:
 suppress_leading_patterns	test_integrated/remove_escape_codes.sh	/^    suppress_leading_patterns() {$/;"	f
@@ -1269,6 +1273,8 @@ t_pipe_node	include/ast.h	/^}				t_pipe_node;$/;"	t	typeref:struct:s_pipe_node
 t_proc_info	include/process.h	/^}				t_proc_info;$/;"	t	typeref:struct:s_proc_info
 t_proc_manager	include/process.h	/^}				t_proc_manager;$/;"	t	typeref:struct:s_proc_manager
 t_proc_params	include/process.h	/^}			t_proc_params;$/;"	t	typeref:struct:s_proc_params
+t_redir	include/exec.h	/^}				t_redir;$/;"	t	typeref:struct:s_redir
+t_redir_type	include/exec.h	/^}				t_redir_type;$/;"	t	typeref:enum:e_redir_type
 t_redirect_node	include/ast.h	/^}				t_redirect_node;$/;"	t	typeref:struct:s_redirect_node
 t_shell	include/minishell.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
 t_subshell_exec_params	include/exec.h	/^}				t_subshell_exec_params;$/;"	t	typeref:struct:s_subshell_exec_params
@@ -1322,6 +1328,7 @@ trigger	include/builtins.h	/^	int	trigger;$/;"	m	struct:s_echo_utils
 type	include/ast.h	/^	t_node_type				type;$/;"	m	struct:s_heredoc_node
 type	include/ast.h	/^	t_node_type			type;$/;"	m	struct:s_redirect_node
 type	include/ast.h	/^	t_node_type	type;$/;"	m	struct:s_ast_node
+type	include/exec.h	/^	t_redir_type	type;$/;"	m	struct:s_redir
 type	include/tokenize.h	/^	t_token_type			type;$/;"	m	struct:s_op_state
 type	include/tokenize.h	/^	t_token_type	type;$/;"	m	struct:s_operator_map
 type	include/tokenize.h	/^	t_token_type	type;$/;"	m	struct:s_token

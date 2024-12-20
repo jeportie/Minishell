@@ -6,185 +6,135 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 16:42:36 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:06:04 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 #include "../../include/expand.h"
 #include <fcntl.h>
+#include <unistd.h>
 
-int	safe_open2(const char *filepath, int flags, int mode, t_shell *shell)
+static t_redir	*ms_add_redir(t_redir **head, t_redir_type type, char *filename, t_gc *gcl)
 {
-	int		fd;
+	t_redir	*new_node;
 
-	if (is_var((char *)filepath))
+	new_node = gc_malloc(sizeof(t_redir), gcl);
+	new_node->type = type;
+	new_node->filename = filename;
+	new_node->next = *head;
+	*head = new_node;
+	return (new_node);
+}
+
+static t_redir_type	ms_node_type_to_redir_type(t_node_type ntype)
+{
+	if (ntype == NODE_REDIRECT_IN)
+		return (REDIR_IN);
+	else if (ntype == NODE_REDIRECT_OUT)
+		return (REDIR_OUT);
+	else if (ntype == NODE_REDIRECT_APPEND)
+		return (REDIR_APPEND);
+	else if (ntype == NODE_REDIRECT_HEREDOC)
+		return (REDIR_HEREDOC);
+	return (-1);
+}
+
+t_redir	*ms_collect_redirections(t_ast_node *node, t_gc *gcl, t_shell *shell)
+{
+	t_redir	*redir_list;
+	t_node_type ntype;
+
+	redir_list = NULL;
+	while (node && (node->type == NODE_REDIRECT_IN || node->type == NODE_REDIRECT_OUT
+			|| node->type == NODE_REDIRECT_APPEND || node->type == NODE_REDIRECT_HEREDOC))
 	{
-		filepath = nested_vars((char *)filepath, shell);
+		ntype = node->type;
+		if (ntype == NODE_REDIRECT_HEREDOC)
+		{
+			ms_add_redir(&redir_list, ms_node_type_to_redir_type(ntype),
+					node->data.heredoc.filename, gcl);
+			node = node->data.heredoc.child;
+		}
+		else
+		{
+			char *filename = node->data.redirect.filename;
+			if (is_var(filename))
+				filename = nested_vars(filename, shell);
+			ms_add_redir(&redir_list, ms_node_type_to_redir_type(ntype), filename, gcl);
+			node = node->data.redirect.child;
+		}
 	}
-	fd = open(filepath, flags, mode);
+	return (redir_list);
+}
+
+static int	ms_open_redir_file(t_redir_type type, const char *filename)
+{
+	int flags;
+	int fd;
+	mode_t mode = 0644;
+
+	if (type == REDIR_IN)
+		flags = O_RDONLY;
+	else if (type == REDIR_OUT)
+		flags = O_WRONLY | O_CREAT | O_TRUNC;
+	else if (type == REDIR_APPEND)
+		flags = O_WRONLY | O_CREAT | O_APPEND;
+	else
+		flags = O_RDONLY;
+
+	fd = open(filename, flags, mode);
 	if (fd == -1)
 	{
-		ft_dprintf(STDERR_FILENO, "Open failed\n");
-		return (-1);
+		ft_dprintf(STDERR_FILENO, "minishell: %s: No such file or directory\n", filename);
 	}
 	return (fd);
 }
 
-/*
-static int	redirect_helper(t_ast_node *node, t_node_type type,
-		t_exec_context *context, t_redirect_node *redir_node)
+int ms_apply_redirections(t_redir *redir_list)
 {
-	int	fd;
+    t_redir *current = redir_list;
+    int fd;
 
-	mode_t (mode) = 0;
-	if (node->type == type)
-	{
-		redir_node = &node->data.redirect;
-		fd = safe_open2(redir_node->filename, O_RDONLY, mode, context->shell);
-		if (fd == -1)
-			return (-1);
-		if (context->stdin_fd != STDIN_FILENO)
-			close(context->stdin_fd);
-		context->stdin_fd = fd;
-	}
-	redir_node = &node->data.redirect;
-	if (flags != O_RDONLY)
-		mode = COPY_MODE;
-	fd = ms_open_file(redir_node->filename, flags, mode);
-	if (fd == -1)
-		return (-1);
-	if (*context_fd != std_fd)
-		close(*context_fd);
-	*context_fd = fd;
-	return (0);
-}
-*/
+    while (current)
+    {
+        dprintf(STDERR_FILENO, "DEBUG: Applying redirection for %s\n", current->filename);
+        fd = ms_open_redir_file(current->type, current->filename);
+        if (fd == -1)
+        {
+            dprintf(STDERR_FILENO, "DEBUG: Failed to open %s\n", current->filename);
+            return (-1);
+        }
 
-static int	redirect_mode(t_ast_node *node, t_exec_context *context, t_gc *gcl)
-{
-	t_redirect_node	*redir_node;
-	int				fd;
-	mode_t			mode;
-
-	mode = 0;
-	if (node->type == NODE_REDIRECT_IN)
-	{
-		redir_node = &node->data.redirect;
-		fd = safe_open2(redir_node->filename, O_RDONLY, mode, context->shell);
-		if (fd == -1)
-			return (-1);
-		if (context->stdin_fd != STDIN_FILENO)
-			close(context->stdin_fd);
-		context->stdin_fd = fd;
-	}
-	else if (node->type == NODE_REDIRECT_OUT)
-	{
-		redir_node = &node->data.redirect;
-		mode = COPY_MODE;
-		fd = safe_open2(redir_node->filename, O_WRONLY | O_CREAT
-				| O_TRUNC, mode, context->shell);
-		if (fd == -1)
-			return (-1);
-		if (context->stdout_fd != STDOUT_FILENO)
-			close(context->stdout_fd);
-		context->stdout_fd = fd;
-	}
-	else if (node->type == NODE_REDIRECT_APPEND)
-	{
-		redir_node = &node->data.redirect;
-		mode = COPY_MODE;
-		fd = safe_open2(redir_node->filename, O_WRONLY | O_CREAT
-				| O_APPEND, mode, context->shell);
-		if (fd == -1)
-			return (-1);
-		if (context->stdout_fd != STDOUT_FILENO)
-			close(context->stdout_fd);
-		context->stdout_fd = fd;
-	}
-	else if (node->type == NODE_REDIRECT_HEREDOC)
-	{
-		fd = safe_open2(node->data.heredoc.filename, O_RDONLY, mode, context->shell);
-		if (fd == -1)
-			return (-1);
-		if (context->stdin_fd != STDIN_FILENO)
-			close(context->stdin_fd);
-		context->stdin_fd = fd;
-		unlink(node->data.heredoc.filename);
-		context->tmpfile_counter--;
-	}
-	else
-		return (ms_handle_error("Minishell: Error: "
-				"unsupported redirection type.\n", -1, gcl));
-	return (0);
+        if (current->type == REDIR_IN || current->type == REDIR_HEREDOC)
+        {
+            dprintf(STDERR_FILENO, "DEBUG: Redirecting STDIN from %s\n", current->filename);
+            if (dup2(fd, STDIN_FILENO) == -1)
+            {
+                dprintf(STDERR_FILENO, "DEBUG: dup2 error on STDIN\n");
+                close(fd);
+                return (-1);
+            }
+            close(fd);
+   //         if (current->type == REDIR_HEREDOC)
+   //         {
+   //             dprintf(STDERR_FILENO, "DEBUG: Unlinking HEREDOC file %s\n", current->filename);
+   //             unlink(current->filename);
+   //         }
+        }
+        else if (current->type == REDIR_OUT || current->type == REDIR_APPEND)
+        {
+            dprintf(STDERR_FILENO, "DEBUG: Redirecting STDOUT to %s\n", current->filename);
+            if (dup2(fd, STDOUT_FILENO) == -1)
+            {
+                dprintf(STDERR_FILENO, "DEBUG: dup2 error on STDOUT\n");
+                close(fd);
+                return (-1);
+            }
+            close(fd);
+        }
+        current = current->next;
+    }
+    return (0);
 }
 
-t_ast_node	**redirection_nodes(t_ast_node *node, t_gc *gcl)
-{
-	t_ast_node	**child_array;
-	t_ast_node	**result;
-	size_t		len;
-	size_t		i;
-	t_ast_node	*child;
-
-	if (!node)
-	{
-		result = gc_malloc(sizeof(t_ast_node *), gcl);
-		result[0] = NULL;
-		return (result);
-	}
-	if (node->type == NODE_REDIRECT_IN || node->type == NODE_REDIRECT_OUT
-		|| node->type == NODE_REDIRECT_APPEND
-		|| node->type == NODE_REDIRECT_HEREDOC)
-	{
-		if (node->type == NODE_REDIRECT_HEREDOC)
-			child = node->data.heredoc.child;
-		else
-			child = node->data.redirect.child;
-		child_array = redirection_nodes(child, gcl);
-		len = 0;
-		while (child_array[len])
-			len++;
-		result = gc_malloc(sizeof(t_ast_node *) * (len + 2), gcl);
-		i = 0;
-		while (i < len)
-		{
-			result[i] = child_array[i];
-			i++;
-		}
-		result[len] = node;
-		result[len + 1] = NULL;
-		return (result);
-	}
-	else
-	{
-		result = gc_malloc(sizeof(t_ast_node *), gcl);
-		result[0] = NULL;
-		return (result);
-	}
-}
-
-int	ms_handle_redirections(t_ast_node *node, t_exec_context *context, t_gc *gcl)
-{
-	int			old_stdin;
-	int			old_stdout;
-	t_ast_node	**redir_list;
-	size_t		i;
-
-	if (!node)
-		return (0);
-	old_stdin = context->stdin_fd;
-	old_stdout = context->stdout_fd;
-	redir_list = redirection_nodes(node, gcl);
-	i = 0;
-	while (redir_list[i])
-	{
-		if (redirect_mode(redir_list[i], context, gcl) != 0)
-			return (-1);
-		i++;
-	}
-	context->original_stdin = old_stdin;
-	context->original_stdout = old_stdout;
-	context->redirected = true;
-	return (0);
-}

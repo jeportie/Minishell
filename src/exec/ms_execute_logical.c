@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:27:18 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/11 16:50:59 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:28:56 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,25 @@
 #include "../../include/process.h"
 #include <readline/readline.h>
 
-int	ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,
-		t_node_type type, t_proc_manager *manager)
+int	ms_execute_logical(t_ast_node *node, t_exec_context *context,
+				t_proc_manager *manager)
 {
-	int	left_exit_status;
-	int	right_exit_status;
+	int		left_status;
+	bool	run_right;
+	int		right_status;
 
-	if (!logic_node || !context || !manager)
+	left_status = ms_execute_ast(node->data.logic.left, context, manager);
+	run_right = false;
+	if (node->type == NODE_AND && left_status == 0)
+		run_right = true;
+	else if (node->type == NODE_OR && left_status != 0)
+		run_right = true;
+	if (run_right)
 	{
-		if (context)
-			context->exit_status
-				= ms_handle_error("Invalid arguments to ms_execute_logical", 1,
-					context->shell->gcl);
-		return (-1);
+		right_status = ms_execute_ast(node->data.logic.right, context, manager);
+		context->shell->error_code = right_status;
+		return (right_status);
 	}
-	right_exit_status = 0;
-	left_exit_status = ms_execute_ast(logic_node->left, context, manager);
-	if ((type == NODE_AND && left_exit_status == 0)
-		|| (type == NODE_OR && left_exit_status))
-	{
-		right_exit_status = ms_execute_ast(logic_node->right, context, manager);
-		context->shell->error_code = right_exit_status;
-	}
-	else
-		context->shell->error_code = left_exit_status;
-	return (context->shell->error_code);
+	context->shell->error_code = left_status;
+	return (left_status);
 }

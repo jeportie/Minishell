@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 16:28:34 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/20 12:37:41 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,21 @@
 
 # define COPY_MODE 0644
 
+typedef enum e_redir_type
+{
+	REDIR_IN,
+	REDIR_OUT,
+	REDIR_APPEND,
+	REDIR_HEREDOC
+}				t_redir_type;
+
+typedef struct s_redir
+{
+	t_redir_type	type;
+	char			*filename;
+	struct s_redir	*next;
+}				t_redir;
+
 typedef struct s_exec_context
 {
 	int			stdin_fd;
@@ -37,6 +52,7 @@ typedef struct s_exec_context
 	int			original_stdin;
 	int			original_stdout;
 	int			tmpfile_counter;
+	t_redir		*redir_list;
 }				t_exec_context;
 
 typedef struct s_pipe_exec_params
@@ -91,17 +107,13 @@ int		ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 int		ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context,
 			t_proc_manager *manager);
 
-void	left_child_process(t_pipe_exec_params *params);
-void	right_child_process(t_pipe_exec_params *params);
-int		parent_process(pid_t left_pid, pid_t right_pid,
-			t_exec_context *context);
-
-int		ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,
-			t_node_type type, t_proc_manager *manager);
+int		ms_execute_logical(t_ast_node *node, t_exec_context *context,
+			t_proc_manager *manager);
 int		ms_execute_subshell(t_subshell_node *subshell_node,
 			t_exec_context *context, t_proc_manager *manager);
-int		ms_handle_redirections(t_ast_node *node, t_exec_context *context,
-			t_gc *gcl);
+
+t_redir	*ms_collect_redirections(t_ast_node *node, t_gc *gcl, t_shell *shell);
+int		ms_apply_redirections(t_redir *redir_list);
 
 char	*ms_parse_cmd_path(const char *command, t_shell *shell);
 char	*ms_concat_path(const char *path, const char *command, t_gc *gcl);

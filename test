@@ -1,0 +1,13 @@
+Makefile
+assets
+include
+infile
+lib
+main.c
+minishell
+obj
+src
+test
+test_integrated
+test_src
+ycm_extra_conf.py

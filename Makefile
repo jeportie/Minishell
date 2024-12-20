@@ -26,7 +26,6 @@ SRC = \
   src/exec/ms_execute_ast.c \
   src/exec/ms_heredoc_mode.c \
   src/exec/ms_execute_logical.c \
-  src/exec/ms_pipeline_helper.c \
   src/exec/ms_execute_pipeline.c \
   src/signal/ms_init_child_cmd_signal.c \
   src/signal/ms_init_parent_cmd_signal.c \

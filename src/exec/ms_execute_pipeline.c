@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 17:34:19 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 23:49:29 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:34:00 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,157 +34,179 @@ static int	st_count_pipeline_commands(t_pipe_node *pipe_node)
 	return (count);
 }
 
-static t_ast_node	**st_collect_pipeline_commands(t_pipe_node *pipe_node, int count, t_gc *gcl)
+static t_ast_node **st_collect_pipeline_commands(t_pipe_node *pipe_node, int count, t_gc *gcl)
 {
-	t_ast_node	**commands;
-	t_ast_node	*current;
-	int			i;
+    t_ast_node **commands;
+    t_ast_node *current;
+    int i;
 
-	current = (t_ast_node *)pipe_node;
-	commands = gc_malloc(sizeof(t_ast_node *) * (count + 1), gcl);
-	i = 0;
-	while (current->type == NODE_PIPE && i < count - 1)
-	{
-		commands[i++] = current->data.pipe.left;
-		current = current->data.pipe.right;
-	}
-	commands[i++] = current;
-	commands[i] = NULL;
-	return (commands);
-}
-
-static pid_t	*st_setup_pipes_and_exec(int num_commands, int pipefd[2], t_gc *gcl)
-{
-	int		i;
-	pid_t	*pids;
-	int		in_fd;
-
-	in_fd = STDIN_FILENO;
-	i = 0;
-	pids = gc_malloc(sizeof(pid_t) * num_commands, gcl);
-	while (i < num_commands)
-	{
-		if (i < num_commands - 1)
-		{
-			if (safe_pipe(pipefd) == -1)
-				return (NULL);
-		}
-		else
-		{
-			pipefd[0] = STDIN_FILENO;
-			pipefd[1] = STDOUT_FILENO;
-		}
-		pids[i] = execute_command();
-		if (pids[i] < 0)
-		{
-			ft_dprintf(STDERR_FILENO, "Failed to execute command.\n");
-			free(pids);
-			return (NULL);
-		}
-		if (pipefd[1] != STDOUT_FILENO)
-			close(pipefd[1]);
-		if (in_fd != STDIN_FILENO)
-			close(in_fd);
-		in_fd = pipefd[0];
-	}
-	return (pids);
-}
-
-static	int	st_wait_all_childs(int num_commands, pid_t *pids, t_gc *gcl)
-{
-	int	i;
-	int	last_status;
-
-	i = 0;
-	last_status = 0;
-	while (i < num_commands)
-	{
-		int	status;
-		waitpid(pids[i], &status, 0);
-		if (WIFEXITED(status))
-			last_status = WEXITSTATUS(status);
-		else if (WIFSIGNALED(status))
-			last_status = 128 + WTERMSIG(status);
-		i++;
-	}
-	gc_collect(gcl);
-	return (last_status);
+    fprintf(stderr, "DEBUG: Collecting pipeline commands\n");
+    current = (t_ast_node *)pipe_node;
+    commands = gc_malloc(sizeof(t_ast_node *) * (count + 1), gcl);
+    i = 0;
+    while (current->type == NODE_PIPE && i < count - 1)
+    {
+        fprintf(stderr, "DEBUG: Pipeline node step %d, node type: %d\n", i, current->type);
+        commands[i++] = current->data.pipe.left;
+        current = current->data.pipe.right;
+    }
+    fprintf(stderr, "DEBUG: Last pipeline node type: %d\n", current->type);
+    commands[i++] = current;
+    commands[i] = NULL;
+    return (commands);
 }
 
 int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context, t_proc_manager *manager)
 {
+	t_gc		*gcl;
 	int			num_commands;
 	t_ast_node	**commands;
 	pid_t		*pids;
-	int			pipefd[2];
+	int			**pipes;
+	int			i;
 
+	fprintf(stderr, "DEBUG: Entering ms_execute_pipeline\n");
+
+	gcl = context->shell->gcl;
 	num_commands = st_count_pipeline_commands(pipe_node);
-	commands = st_collect_pipeline_commands(pipe_node, num_commands, context->shell->gcl);
-	pids = st_setup_pipes_and_exec(num_commands, pipefd, context->shell->gcl);
-	return (st_wait_all_childs(num_commands, pids, context->shell->gcl));
-}
+	fprintf(stderr, "DEBUG: Number of commands in pipeline: %d\n", num_commands);
+	commands = st_collect_pipeline_commands(pipe_node, num_commands, gcl);
+	pids = gc_malloc(sizeof(pid_t) * num_commands, gcl);
 
-///////////////////////////////////////////////////////////////////////////////
-/* OLD RECURSIVE VERSION
-static	void	init_left_fork_params(t_fork_params *fork_params,
-	t_exec_context *context, t_pipe_exec_params params)
-{
-	fork_params->child_lvl = context->child_lvl + 1;
-	fork_params->fd_in = context->stdin_fd;
-	fork_params->fd_out = params.pipefd[1];
-	fork_params->fd_error = context->stderr_fd;
-	fork_params->is_heredoc = false;
-	fork_params->title = "L-Pipe";
-}
-
-static	void	init_right_fork_params(t_fork_params *fork_params,
-	t_exec_context *context, t_pipe_exec_params params)
-{
-	fork_params->child_lvl = context->child_lvl + 1;
-	fork_params->fd_in = params.pipefd[0];
-	fork_params->fd_out = context->stdout_fd;
-	fork_params->fd_error = context->stderr_fd;
-	fork_params->is_heredoc = false;
-	fork_params->title = "R-Pipe";
-}
-
-void	init_helper(t_pipe_exec_params *params, t_pipe_node *pipe_node,
-			t_exec_context *context, t_proc_manager *manager)
-{
-	params->pipe_node = pipe_node;
-	params->context = context;
-	params->manager = manager;
-	safe_pipe(params->pipefd);
-}
-
-int	ms_execute_pipelines(t_pipe_node *pipe_node, t_exec_context *context,
-	t_proc_manager *manager)
-{
-	t_pipe_exec_params	params;
-	pid_t				left_pid;
-	pid_t				right_pid;
-	t_fork_params		fork_params;
-
-	init_helper(&params, pipe_node, context, manager);
-	init_left_fork_params(&fork_params, context, params);
-	left_pid = safe_fork(manager, &fork_params);
-	if (left_pid == 0)
+	if (num_commands > 1)
 	{
-		context->child_lvl = fork_params.child_lvl;
-		left_child_process(&params);
+		pipes = gc_malloc(sizeof(int *) * (num_commands - 1), gcl);
+		i = 0;
+		while (i < num_commands - 1)
+		{
+			pipes[i] = gc_malloc(sizeof(int) * 2, gcl);
+			if (safe_pipe(pipes[i]) == -1)
+			{
+				fprintf(stderr, "DEBUG: Pipe creation failed\n");
+				return (ms_handle_error("Pipe failed\n", 1, gcl));
+			}
+			fprintf(stderr, "DEBUG: Created pipe %d with fds [%d, %d]\n", i, pipes[i][0], pipes[i][1]);
+			i++;
+		}
 	}
-	print_proc_info(manager);
-	init_right_fork_params(&fork_params, context, params);
-	right_pid = safe_fork(manager, &fork_params);
-	if (right_pid == 0)
+	else
 	{
-		context->child_lvl = fork_params.child_lvl;
-		right_child_process(&params);
+		pipes = NULL;
 	}
-	print_proc_info(manager);
-	safe_close(params.pipefd[0]);
-	safe_close(params.pipefd[1]);
-	return (parent_process(left_pid, right_pid, context));
+
+	i = 0;
+	while (i < num_commands)
+	{
+		fprintf(stderr, "DEBUG: Setting up command %d\n", i);
+		t_redir *redir_list = ms_collect_redirections(commands[i], gcl, context->shell);
+		context->redir_list = redir_list;
+		t_ast_node *final_node = commands[i];
+		while (final_node && (final_node->type == NODE_REDIRECT_IN
+				|| final_node->type == NODE_REDIRECT_OUT
+				|| final_node->type == NODE_REDIRECT_APPEND
+				|| final_node->type == NODE_REDIRECT_HEREDOC))
+		{
+			if (final_node->type == NODE_REDIRECT_HEREDOC)
+				final_node = final_node->data.heredoc.child;
+			else
+				final_node = final_node->data.redirect.child;
+		}
+		fprintf(stderr, "DEBUG: final_node type: %d\n", final_node ? (int)final_node->type : -1);
+		if (final_node && final_node->type == NODE_COMMAND)
+		{
+		    fprintf(stderr, "DEBUG: final_node type: %d\n", final_node ? (int)final_node->type : -1);
+		}
+		else
+		{
+		    fprintf(stderr, "DEBUG: final_node is not a command\n");
+		}
+		fprintf(stderr, "DEBUG: Forking for command %d\n", i);
+		pid_t pid = fork();
+		if (pid < 0)
+		{
+			fprintf(stderr, "DEBUG: Fork failed for command %d\n", i);
+			return (ms_handle_error("Fork failed\n", 1, gcl));
+		}
+		if (pid == 0) // Child
+		{
+			fprintf(stderr, "DEBUG: In child process %d (pid: %d)\n", i, getpid());
+			ms_init_child_cmd_signal();
+
+			// Redirect stdin from previous pipe (if any)
+			if (i > 0)
+			{
+				fprintf(stderr, "DEBUG: Command %d duping stdin from pipe %d read end\n", i, i-1);
+				if (dup2(pipes[i - 1][0], STDIN_FILENO) == -1)
+					perror("DEBUG: dup2 on STDIN failed");
+			}
+
+			// Redirect stdout to next pipe (if any)
+			if (i < num_commands - 1)
+			{
+				fprintf(stderr, "DEBUG: Command %d duping stdout to pipe %d write end\n", i, i);
+				if (dup2(pipes[i][1], STDOUT_FILENO) == -1)
+					perror("DEBUG: dup2 on STDOUT failed");
+			}
+
+			// Close all pipes in child
+			int j = 0;
+			while (num_commands > 1 && j < num_commands - 1)
+			{
+				close(pipes[j][0]);
+				close(pipes[j][1]);
+				j++;
+			}
+
+			if (context->redir_list && ms_apply_redirections(context->redir_list) != 0)
+			{
+				fprintf(stderr, "DEBUG: Redirection failed in child for command %d\n", i);
+				exit(1);
+			}
+
+			fprintf(stderr, "DEBUG: Executing final_node in child %d (pid: %d)\n", i, getpid());
+			int exit_code = ms_execute_ast(final_node, context, manager);
+			fprintf(stderr, "DEBUG: Child %d (pid: %d) finished with exit_code: %d\n", i, getpid(), exit_code);
+			exit(exit_code);
+		}
+		else // Parent
+		{
+			fprintf(stderr, "DEBUG: In parent after fork for command %d, child pid: %d\n", i, pid);
+			pids[i] = pid;
+			context->redir_list = NULL;
+		}
+		i++;
+	}
+
+	// Close all pipes in parent
+	i = 0;
+	while (num_commands > 1 && i < num_commands - 1)
+	{
+		fprintf(stderr, "DEBUG: Parent closing pipe %d read and write ends\n", i);
+		close(pipes[i][0]);
+		close(pipes[i][1]);
+		i++;
+	}
+
+	// Wait for all children
+	i = 0;
+	int last_status = 0;
+	while (i < num_commands)
+	{
+		int status;
+		pid_t w = waitpid(pids[i], &status, 0);
+		fprintf(stderr, "DEBUG: Waited for pid %d, status = %d\n", w, status);
+		if (WIFEXITED(status))
+			last_status = WEXITSTATUS(status);
+		else if (WIFSIGNALED(status))
+			last_status = 128 + WTERMSIG(status);
+		else
+			last_status = -1;
+		i++;
+	}
+
+	fprintf(stderr, "DEBUG: Pipeline finished with status %d\n", last_status);
+	context->shell->error_code = last_status;
+	fprintf(stderr, "DEBUG: Leaving ms_execute_pipeline\n");
+	return (last_status);
 }
-*/
-///////////////////////////////////////////////////////////////////////////
+
