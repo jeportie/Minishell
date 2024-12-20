@@ -17,3 +17,13 @@ Multiple
 lines
 in heredoc
 DELIM
+cat << $USER
+test
+gmarquis
+jeportie
+$USER
+cat << EOF
+$USER
+$PATH
+EOF 
+EOF

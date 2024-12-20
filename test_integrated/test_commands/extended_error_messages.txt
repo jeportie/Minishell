@@ -1,4 +1,15 @@
 cd nonexistent_dir
 ls nonexistingfile
 cat < nonexistent_file
-grep
+mkdir test_dir
+./test_dir
+touch test_file
+rm -rf test_file
+cat test_dir
+rm -rf nonexist_dire
+echo /dev/full
+chmod 000 test_file
+echo test > test_file
+rm test_file
+chmod 777 test_file
+rm test_file
