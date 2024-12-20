@@ -855,12 +855,9 @@ init	lib/libgc/src/gc_nest_register.c	/^static t_gc_node	*init(t_gc_node *new_no
 init	lib/libgc/src/gc_register.c	/^static t_gc_node	*init(t_gc_node *new_node, const char *filename, t_gc *gcl)$/;"	f	file:
 init_context	main.c	/^static void	init_context(t_exec_context *data, t_shell *shell)$/;"	f	file:
 init_fix_value	src/shell/init_fix_value.c	/^void	init_fix_value(t_env_data *env_data)$/;"	f
-init_helper	src/exec/ms_execute_pipeline.c	/^void	init_helper(t_pipe_exec_params *params, t_pipe_node *pipe_node,$/;"	f
 init_io	src/process/redirect_fd.c	/^int	init_io(int new_in, int new_out, int new_err)$/;"	f
-init_left_fork_params	src/exec/ms_execute_pipeline.c	/^static	void	init_left_fork_params(t_fork_params *fork_params,$/;"	f	file:
 init_manager	src/process/init_proc_manager.c	/^t_proc_manager	*init_manager(t_gc *gcl)$/;"	f
 init_op_state	src/token/tokenize_operator.c	/^static void	init_op_state(const char **input, t_op_state *op_state)$/;"	f	file:
-init_right_fork_params	src/exec/ms_execute_pipeline.c	/^static	void	init_right_fork_params(t_fork_params *fork_params,$/;"	f	file:
 initialize_token_state	src/token/tokenize_word_helper.c	/^static void	initialize_token_state(t_token_state *state, const char *current,$/;"	f	file:
 interactive_mode	include/minishell.h	/^	bool			interactive_mode;$/;"	m	struct:s_shell
 is_array	lib/libgc/include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
@@ -958,7 +955,6 @@ ms_execute_external	src/exec/ms_execute_external.c	/^int	ms_execute_external(t_c
 ms_execute_logical	src/exec/ms_execute_logical.c	/^int	ms_execute_logical(t_logic_node *logic_node, t_exec_context *context,$/;"	f
 ms_execute_logical_node	src/exec/ms_execute_ast.c	/^static int	ms_execute_logical_node(t_ast_node *node, t_exec_context *context,$/;"	f	file:
 ms_execute_pipeline	src/exec/ms_execute_pipeline.c	/^int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context, t_proc_manager *manager)$/;"	f
-ms_execute_pipelines	src/exec/ms_execute_pipeline.c	/^int	ms_execute_pipelines(t_pipe_node *pipe_node, t_exec_context *context,$/;"	f
 ms_execute_subshell	src/exec/ms_execute_subshell.c	/^int	ms_execute_subshell(t_subshell_node *subshell_node,$/;"	f
 ms_exit	src/builtins/ms_exit.c	/^int	ms_exit(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
 ms_exit_suite	test_src/builtins/test_ms_exit.c	/^static Suite *ms_exit_suite(void)$/;"	f	file:

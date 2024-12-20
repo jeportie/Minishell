@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 17:34:19 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 23:19:14 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/19 23:49:29 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static t_ast_node	**st_collect_pipeline_commands(t_pipe_node *pipe_node, int cou
 		commands[i++] = current->data.pipe.left;
 		current = current->data.pipe.right;
 	}
-	commands[i++] = current; // Last command/node in the pipeline
+	commands[i++] = current;
 	commands[i] = NULL;
 	return (commands);
 }
@@ -93,14 +93,14 @@ static pid_t	*st_setup_pipes_and_exec(int num_commands, int pipefd[2], t_gc *gcl
 static	int	st_wait_all_childs(int num_commands, pid_t *pids, t_gc *gcl)
 {
 	int	i;
-	int	last_status = 0;
+	int	last_status;
 
 	i = 0;
+	last_status = 0;
 	while (i < num_commands)
 	{
 		int	status;
 		waitpid(pids[i], &status, 0);
-
 		if (WIFEXITED(status))
 			last_status = WEXITSTATUS(status);
 		else if (WIFSIGNALED(status))
@@ -111,25 +111,21 @@ static	int	st_wait_all_childs(int num_commands, pid_t *pids, t_gc *gcl)
 	return (last_status);
 }
 
-
 int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context, t_proc_manager *manager)
 {
 	int			num_commands;
 	t_ast_node	**commands;
 	pid_t		*pids;
 	int			pipefd[2];
-	int			in_fd = STDIN_FILENO;
 
 	num_commands = st_count_pipeline_commands(pipe_node);
 	commands = st_collect_pipeline_commands(pipe_node, num_commands, context->shell->gcl);
 	pids = st_setup_pipes_and_exec(num_commands, pipefd, context->shell->gcl);
-
 	return (st_wait_all_childs(num_commands, pids, context->shell->gcl));
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////
-
+/* OLD RECURSIVE VERSION
 static	void	init_left_fork_params(t_fork_params *fork_params,
 	t_exec_context *context, t_pipe_exec_params params)
 {
@@ -190,5 +186,5 @@ int	ms_execute_pipelines(t_pipe_node *pipe_node, t_exec_context *context,
 	safe_close(params.pipefd[1]);
 	return (parent_process(left_pid, right_pid, context));
 }
-
+*/
 ///////////////////////////////////////////////////////////////////////////

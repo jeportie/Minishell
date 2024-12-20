@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 20:51:44 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/20 00:01:04 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,23 +70,15 @@ int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
 {
 	if (!node)
 		return (ms_handle_error("Error: Null AST node.\n", -1, context->shell->gcl));
+
 	if (node->type == NODE_AND || node->type == NODE_OR)
 		return (ms_execute_logical_node(node, context, manager));
-	else if (node->type == NODE_COMMAND)
-		return (ms_execute_command(&node->data.command, context, manager,
-				context->shell->gcl));
-	else if (node->type == NODE_PIPE)
-		return (ms_execute_pipeline(&node->data.pipe, context, manager));
+
 	else if (node->type == NODE_SUBSHELL)
 		return (ms_execute_subshell(&node->data.subshell, context, manager));
-	else if (node->type == NODE_REDIRECT_IN || node->type == NODE_REDIRECT_OUT
-		|| node->type == NODE_REDIRECT_APPEND)
-		return (redirect_switch(node->data.redirect.child, node, context,
-				manager));
-	else if (node->type == NODE_REDIRECT_HEREDOC)
-		return (redirect_switch(node->data.heredoc.child, node, context,
-				manager));
+
+	else if (node->type == NODE_PIPE)
+		return (ms_execute_pipeline(&node->data.pipe, context, manager));
 	else
-		return (ms_handle_error("Unsupported node type", -1,
-				context->shell->gcl));
+		return (ms_execute_redirection_and_command(node, context, manager));
 }
