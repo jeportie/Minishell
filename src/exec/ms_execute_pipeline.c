@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 17:34:19 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/20 16:34:00 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/22 09:58:44 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
  * on the right side meaning we have a logic operator or subshell node.
  */
 
-static int	st_count_pipeline_commands(t_pipe_node *pipe_node)
+static int	st_count_pipeline_commands(t_ast_node *node)
 {
 	int			count;
 	t_ast_node	*current;
 
 	count = 1;
-	current = (t_ast_node *)pipe_node;
+	current = node;
 	while (current->type == NODE_PIPE)
 	{
 		count++;
@@ -34,14 +34,14 @@ static int	st_count_pipeline_commands(t_pipe_node *pipe_node)
 	return (count);
 }
 
-static t_ast_node **st_collect_pipeline_commands(t_pipe_node *pipe_node, int count, t_gc *gcl)
+static t_ast_node **st_collect_pipeline_commands(t_ast_node *node, int count, t_gc *gcl)
 {
     t_ast_node **commands;
     t_ast_node *current;
     int i;
 
     fprintf(stderr, "DEBUG: Collecting pipeline commands\n");
-    current = (t_ast_node *)pipe_node;
+    current = node;
     commands = gc_malloc(sizeof(t_ast_node *) * (count + 1), gcl);
     i = 0;
     while (current->type == NODE_PIPE && i < count - 1)
@@ -56,7 +56,7 @@ static t_ast_node **st_collect_pipeline_commands(t_pipe_node *pipe_node, int cou
     return (commands);
 }
 
-int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context, t_proc_manager *manager)
+int	ms_execute_pipeline(t_ast_node *node, t_exec_context *context, t_proc_manager *manager)
 {
 	t_gc		*gcl;
 	int			num_commands;
@@ -68,9 +68,9 @@ int	ms_execute_pipeline(t_pipe_node *pipe_node, t_exec_context *context, t_proc_
 	fprintf(stderr, "DEBUG: Entering ms_execute_pipeline\n");
 
 	gcl = context->shell->gcl;
-	num_commands = st_count_pipeline_commands(pipe_node);
+	num_commands = st_count_pipeline_commands(node);
 	fprintf(stderr, "DEBUG: Number of commands in pipeline: %d\n", num_commands);
-	commands = st_collect_pipeline_commands(pipe_node, num_commands, gcl);
+	commands = st_collect_pipeline_commands(node, num_commands, gcl);
 	pids = gc_malloc(sizeof(pid_t) * num_commands, gcl);
 
 	if (num_commands > 1)

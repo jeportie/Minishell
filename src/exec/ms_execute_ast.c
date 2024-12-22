@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/20 15:00:53 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/22 09:55:10 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
 	else if (node->type == NODE_SUBSHELL)
 		return (ms_execute_subshell(&node->data.subshell, context, manager));
 	else if (node->type == NODE_PIPE)
-		return (ms_execute_pipeline(&node->data.pipe, context, manager));
+		return (ms_execute_pipeline(node, context, manager));
 	else if (node->type == NODE_COMMAND)
 		return (ms_execute_command(&node->data.command, context, manager, context->shell->gcl));
 	else
