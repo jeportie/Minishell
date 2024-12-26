@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/20 16:06:04 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/26 11:06:03 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-static t_redir	*ms_add_redir(t_redir **head, t_redir_type type, char *filename, t_gc *gcl)
+static t_redir	*ms_add_redir(t_redir **head, t_redir_type type,
+	char *filename, t_gc *gcl)
 {
 	t_redir	*new_node;
 
@@ -42,26 +43,30 @@ static t_redir_type	ms_node_type_to_redir_type(t_node_type ntype)
 
 t_redir	*ms_collect_redirections(t_ast_node *node, t_gc *gcl, t_shell *shell)
 {
-	t_redir	*redir_list;
-	t_node_type ntype;
+	t_redir		*redir_list;
+	t_node_type	ntype;
+	char		*filename;
 
 	redir_list = NULL;
-	while (node && (node->type == NODE_REDIRECT_IN || node->type == NODE_REDIRECT_OUT
-			|| node->type == NODE_REDIRECT_APPEND || node->type == NODE_REDIRECT_HEREDOC))
+	while (node && (node->type == NODE_REDIRECT_IN
+			|| node->type == NODE_REDIRECT_OUT
+			|| node->type == NODE_REDIRECT_APPEND
+			|| node->type == NODE_REDIRECT_HEREDOC))
 	{
 		ntype = node->type;
 		if (ntype == NODE_REDIRECT_HEREDOC)
 		{
 			ms_add_redir(&redir_list, ms_node_type_to_redir_type(ntype),
-					node->data.heredoc.filename, gcl);
+				node->data.heredoc.filename, gcl);
 			node = node->data.heredoc.child;
 		}
 		else
 		{
-			char *filename = node->data.redirect.filename;
+			filename = node->data.redirect.filename;
 			if (is_var(filename))
 				filename = nested_vars(filename, shell);
-			ms_add_redir(&redir_list, ms_node_type_to_redir_type(ntype), filename, gcl);
+			ms_add_redir(&redir_list, ms_node_type_to_redir_type(ntype),
+				filename, gcl);
 			node = node->data.redirect.child;
 		}
 	}
@@ -70,9 +75,8 @@ t_redir	*ms_collect_redirections(t_ast_node *node, t_gc *gcl, t_shell *shell)
 
 static int	ms_open_redir_file(t_redir_type type, const char *filename)
 {
-	int flags;
-	int fd;
-	mode_t mode = 0644;
+	int		flags;
+	int		fd;
 
 	if (type == REDIR_IN)
 		flags = O_RDONLY;
@@ -82,59 +86,52 @@ static int	ms_open_redir_file(t_redir_type type, const char *filename)
 		flags = O_WRONLY | O_CREAT | O_APPEND;
 	else
 		flags = O_RDONLY;
-
-	fd = open(filename, flags, mode);
+	fd = open(filename, flags, COPY_MODE);
 	if (fd == -1)
 	{
-		ft_dprintf(STDERR_FILENO, "minishell: %s: No such file or directory\n", filename);
+		ft_dprintf(STDERR_FILENO, "minishell: %s: No such file or directory\n",
+			filename);
 	}
 	return (fd);
 }
 
-int ms_apply_redirections(t_redir *redir_list)
+int	ms_apply_redirections(t_redir *redir_list)
 {
-    t_redir *current = redir_list;
-    int fd;
+	t_redir	*current;
+	int		fd;
 
-    while (current)
-    {
-        dprintf(STDERR_FILENO, "DEBUG: Applying redirection for %s\n", current->filename);
-        fd = ms_open_redir_file(current->type, current->filename);
-        if (fd == -1)
-        {
-            dprintf(STDERR_FILENO, "DEBUG: Failed to open %s\n", current->filename);
-            return (-1);
-        }
-
-        if (current->type == REDIR_IN || current->type == REDIR_HEREDOC)
-        {
-            dprintf(STDERR_FILENO, "DEBUG: Redirecting STDIN from %s\n", current->filename);
-            if (dup2(fd, STDIN_FILENO) == -1)
-            {
-                dprintf(STDERR_FILENO, "DEBUG: dup2 error on STDIN\n");
-                close(fd);
-                return (-1);
-            }
-            close(fd);
-   //         if (current->type == REDIR_HEREDOC)
-   //         {
-   //             dprintf(STDERR_FILENO, "DEBUG: Unlinking HEREDOC file %s\n", current->filename);
-   //             unlink(current->filename);
-   //         }
-        }
-        else if (current->type == REDIR_OUT || current->type == REDIR_APPEND)
-        {
-            dprintf(STDERR_FILENO, "DEBUG: Redirecting STDOUT to %s\n", current->filename);
-            if (dup2(fd, STDOUT_FILENO) == -1)
-            {
-                dprintf(STDERR_FILENO, "DEBUG: dup2 error on STDOUT\n");
-                close(fd);
-                return (-1);
-            }
-            close(fd);
-        }
-        current = current->next;
-    }
-    return (0);
+	current = redir_list;
+	while (current)
+	{
+		fd = ms_open_redir_file(current->type, current->filename);
+		if (fd == -1)
+		{
+			dprintf(STDERR_FILENO, "minishell: Failed to open %s\n", current->filename);
+			return (-1);
+		}
+		if (current->type == REDIR_IN || current->type == REDIR_HEREDOC)
+		{
+			if (dup2(fd, STDIN_FILENO) == -1)
+			{
+				dprintf(STDERR_FILENO, "minishell: dup2 error on STDIN\n");
+				close(fd);
+				return (-1);
+			}
+			close(fd);
+			//if (current->type == REDIR_HEREDOC)
+			//	unlink(current->filename);
+		}
+		else if (current->type == REDIR_OUT || current->type == REDIR_APPEND)
+		{
+			if (dup2(fd, STDOUT_FILENO) == -1)
+			{
+				dprintf(STDERR_FILENO, "minishell: dup2 error on STDOUT\n");
+				close(fd);
+				return (-1);
+			}
+			close(fd);
+		}
+		current = current->next;
+	}
+	return (0);
 }
-
