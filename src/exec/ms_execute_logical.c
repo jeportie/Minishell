@@ -6,22 +6,20 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:27:18 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/20 10:28:56 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/27 21:04:20 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
-#include "../../include/process.h"
 #include <readline/readline.h>
 
-int	ms_execute_logical(t_ast_node *node, t_exec_context *context,
-				t_proc_manager *manager)
+int	ms_execute_logical(t_ast_node *node, t_exec_context *context)
 {
 	int		left_status;
 	bool	run_right;
 	int		right_status;
 
-	left_status = ms_execute_ast(node->data.logic.left, context, manager);
+	left_status = ms_execute_ast(node->data.logic.left, context);
 	run_right = false;
 	if (node->type == NODE_AND && left_status == 0)
 		run_right = true;
@@ -29,7 +27,7 @@ int	ms_execute_logical(t_ast_node *node, t_exec_context *context,
 		run_right = true;
 	if (run_right)
 	{
-		right_status = ms_execute_ast(node->data.logic.right, context, manager);
+		right_status = ms_execute_ast(node->data.logic.right, context);
 		context->shell->error_code = right_status;
 		return (right_status);
 	}

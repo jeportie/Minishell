@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:23:54 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 10:27:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/27 21:08:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "ast.h"
 # include "minishell.h"
-# include "process.h"
 # include "exec.h"
 # include <stdbool.h>
 # include <sys/types.h>

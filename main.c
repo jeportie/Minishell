@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/27 17:45:55 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/27 21:16:17 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "include/tokenize.h"
 #include "include/ast.h"
 #include "include/exec.h"
-#include "include/process.h"
 #include "lib/libft/include/libft.h"
 #include <fcntl.h>
 
@@ -84,7 +83,6 @@ void	ms_preprocess_heredocs(t_exec_context *context)
 static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 {
 	t_exec_context	context;
-	t_proc_manager	*proc_manager;
 
 	tokens = ms_tokenize(shell->user_input, shell->gcl);
 //	print_token_delimit(tokens);
@@ -94,9 +92,8 @@ static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 //	print_ast_delimit(root);
 //	gc_collect(shell->gcl);
 	init_context(&context, shell);
-	proc_manager = init_manager(shell->gcl);
 	ms_preprocess_heredocs(&context);
-	ms_execute_ast(root, &context, proc_manager);
+	ms_execute_ast(root, &context);
 //	gc_collect(shell->gcl);
 }
 

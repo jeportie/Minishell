@@ -6,12 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 17:34:19 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/26 18:39:34 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/27 21:14:16 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
-#include "../../include/process.h"
 
 /* We leverage the AST structure -> in a pipeline, pipes will always
  * be right child nodes and commands will always be left child nodes
@@ -104,20 +103,18 @@ static void	st_setup_child_io(int i, int num_commands, int **pipes)
 	}
 }
 
-static int	st_child_exit(t_ast_node *final_node,
-	t_exec_context *context, t_proc_manager *manager)
+static int	st_child_exit(t_ast_node *final_node, t_exec_context *context)
 {
 	int	exit_code;
 
 	if (context->redir_list && ms_apply_redirections(context->redir_list) != 0)
 		exit(1);
-	exit_code = ms_execute_ast(final_node, context, manager);
+	exit_code = ms_execute_ast(final_node, context);
 	exit(exit_code);
 }
 
 static void	st_pipe_process(pid_t *pids, int i, int num_commands,
-		t_ast_node *final_node, t_exec_context *context,
-		t_proc_manager *manager, int **pipes)
+		t_ast_node *final_node, t_exec_context *context, int **pipes)
 {
 	pids[i] = fork();
 	if (pids[i] < 0)
@@ -129,15 +126,14 @@ static void	st_pipe_process(pid_t *pids, int i, int num_commands,
 	{
 		ms_init_child_cmd_signal();
 		st_setup_child_io(i, num_commands, pipes);
-		exit(st_child_exit(final_node, context, manager));
+		exit(st_child_exit(final_node, context));
 	}
 	else
 		context->redir_list = NULL;
 }
 
 pid_t	*ms_fork_pipeline_commands(t_ast_node **commands, int **pipes,
-		int num_commands, t_exec_context *context,
-		t_proc_manager *manager, t_gc *gcl)
+		int num_commands, t_exec_context *context, t_gc *gcl)
 {
 	int			i;
 	pid_t		*pids;
@@ -158,8 +154,7 @@ pid_t	*ms_fork_pipeline_commands(t_ast_node **commands, int **pipes,
 			else
 				final_node = final_node->data.redirect.child;
 		}
-		st_pipe_process(pids, i, num_commands, final_node, context,
-			manager, pipes);
+		st_pipe_process(pids, i, num_commands, final_node, context, pipes);
 		i++;
 	}
 	return (pids);
@@ -172,8 +167,8 @@ static void st_close_parent_pipes(int num_commands, int **pipes)
 	i = 0;
 	while (num_commands > 1 && i < num_commands - 1)
 	{
-		close(pipes[i][0]);
-		close(pipes[i][1]);
+		safe_close(pipes[i][0]);
+		safe_close(pipes[i][1]);
 		i++;
 	}
 }
@@ -201,8 +196,7 @@ static int st_wait_for_childs(int num_commands, pid_t *pids, t_exec_context *con
 	return (last_status);
 }
 
-int	ms_execute_pipeline(t_ast_node *node, t_exec_context *context,
-	t_proc_manager *manager)
+int	ms_execute_pipeline(t_ast_node *node, t_exec_context *context)
 {
 	t_gc		*gcl;
 	int			num_commands;
@@ -215,7 +209,7 @@ int	ms_execute_pipeline(t_ast_node *node, t_exec_context *context,
 	commands = st_collect_pipeline_commands(node, num_commands, gcl);
 	pipes = st_prepare_pipes(num_commands, gcl);
 	pids = ms_fork_pipeline_commands(commands, pipes, num_commands,
-			context, manager, gcl);
+			context, gcl);
 	st_close_parent_pipes(num_commands, pipes);
 	return (st_wait_for_childs(num_commands, pids, context));
 }

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/26 10:41:37 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/27 21:00:17 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	is_builtin_that_must_run_in_parent(t_cmd_node *cmd_node)
 }
 
 static int	redir_in_command(t_ast_node *node, t_exec_context *context,
-		t_proc_manager *manager, t_redir *redir_list)
+		t_redir *redir_list)
 {
 	int	saved_stdin;
 	int	saved_stdout;
@@ -46,8 +46,7 @@ static int	redir_in_command(t_ast_node *node, t_exec_context *context,
 		context->redir_list = NULL;
 		return (1);
 	}
-	ret = ms_execute_command(&node->data.command, context, manager,
-			context->shell->gcl);
+	ret = ms_execute_command(&node->data.command, context, context->shell->gcl);
 	dup2(saved_stdin, STDIN_FILENO);
 	dup2(saved_stdout, STDOUT_FILENO);
 	close(saved_stdin);
@@ -56,8 +55,7 @@ static int	redir_in_command(t_ast_node *node, t_exec_context *context,
 	return (ret);
 }
 
-int	ms_execute_redirection(t_ast_node *node, t_exec_context *context,
-		t_proc_manager *manager)
+int	ms_execute_redirection(t_ast_node *node, t_exec_context *context)
 {
 	t_redir	*redir_list;
 
@@ -77,29 +75,28 @@ int	ms_execute_redirection(t_ast_node *node, t_exec_context *context,
 		return (ms_handle_error("Redirection with no command\n", 1,
 				context->shell->gcl));
 	if (node->type == NODE_COMMAND)
-		return (redir_in_command(node, context, manager, redir_list));
+		return (redir_in_command(node, context, redir_list));
 	else
 	{
 		context->redir_list = redir_list;
-		return (ms_execute_ast(node, context, manager));
+		return (ms_execute_ast(node, context));
 	}
 }
 
-int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
-	t_proc_manager *manager)
+int	ms_execute_ast(t_ast_node *node, t_exec_context *context)
 {
 	if (!node)
 		return (ms_handle_error("Error: Null AST node.\n", -1,
 				context->shell->gcl));
 	if (node->type == NODE_AND || node->type == NODE_OR)
-		return (ms_execute_logical(node, context, manager));
+		return (ms_execute_logical(node, context));
 	else if (node->type == NODE_SUBSHELL)
-		return (ms_execute_subshell(&node->data.subshell, context, manager));
+		return (ms_execute_subshell(&node->data.subshell, context));
 	else if (node->type == NODE_PIPE)
-		return (ms_execute_pipeline(node, context, manager));
+		return (ms_execute_pipeline(node, context));
 	else if (node->type == NODE_COMMAND)
-		return (ms_execute_command(&node->data.command, context, manager,
+		return (ms_execute_command(&node->data.command, context,
 				context->shell->gcl));
 	else
-		return (ms_execute_redirection(node, context, manager));
+		return (ms_execute_redirection(node, context));
 }
