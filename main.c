@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/20 16:40:37 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/27 17:45:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "lib/libft/include/libft.h"
 #include <fcntl.h>
 
-static void	print_token_delimit(t_token *tokens)
+void	print_token_delimit(t_token *tokens)
 {
 	int	fd;
 
@@ -32,7 +32,7 @@ static void	print_token_delimit(t_token *tokens)
 	close(fd);
 }
 
-static void	print_ast_delimit(t_ast_node *root)
+void	print_ast_delimit(t_ast_node *root)
 {
 	int	fd;
 
@@ -87,11 +87,11 @@ static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 	t_proc_manager	*proc_manager;
 
 	tokens = ms_tokenize(shell->user_input, shell->gcl);
-	print_token_delimit(tokens);
+//	print_token_delimit(tokens);
 	root = ms_parse_tokens(tokens, shell, shell->gcl);
 	if (!root)
 		return ;
-	print_ast_delimit(root);
+//	print_ast_delimit(root);
 //	gc_collect(shell->gcl);
 	init_context(&context, shell);
 	proc_manager = init_manager(shell->gcl);

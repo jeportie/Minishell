@@ -6,12 +6,25 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:47:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/26 11:48:39 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/27 19:18:19 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 #include "../../include/process.h"
+
+static t_redir	*append_redir_list(t_redir *list1, t_redir *list2)
+{
+	t_redir	*tmp;
+
+	if (!list1)
+		return (list2);
+	tmp = list1;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = list2;
+	return (list1);
+}
 
 static void	subshell_child_process(t_subshell_exec_params *params)
 {
@@ -48,8 +61,14 @@ int	ms_execute_subshell(t_subshell_node *subshell_node,
 	pid_t					pid;
 	t_fork_params			fork_params;
 	t_subshell_exec_params	params;
-	t_redir					*redir_list;
+	t_redir					*parent_redirs;
+	t_redir					*subshell_redirs;
+	t_redir					*merged_redirs;
 
+	parent_redirs = context->redir_list;
+	subshell_redirs = ms_collect_redirections(subshell_node->child,
+			context->shell->gcl, context->shell);
+	merged_redirs = append_redir_list(parent_redirs, subshell_redirs);
 	params.subshell_node = subshell_node;
 	params.context = context;
 	params.manager = manager;
@@ -59,15 +78,13 @@ int	ms_execute_subshell(t_subshell_node *subshell_node,
 	fork_params.fd_error = context->stderr_fd;
 	fork_params.is_heredoc = false;
 	fork_params.title = "in subshell process.\n";
-	redir_list = ms_collect_redirections(subshell_node->child,
-			context->shell->gcl, context->shell);
-	context->redir_list = redir_list;
-	pid = safe_fork(manager, &fork_params);
+	context->redir_list = merged_redirs;
+	pid = fork();
 	if (pid == 0)
 	{
 		context->child_lvl = fork_params.child_lvl;
 		subshell_child_process(&params);
 	}
-	print_proc_info(manager);
+//	print_proc_info(manager);
 	return (subshell_parent_process(pid, context));
 }
