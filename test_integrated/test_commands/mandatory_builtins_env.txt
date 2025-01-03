@@ -3,7 +3,7 @@ env -
 env 1
 env --
 env - -
-export a=ok b= c
+export a=ok b=c
 env
 export a= b=ok c=ok
 env

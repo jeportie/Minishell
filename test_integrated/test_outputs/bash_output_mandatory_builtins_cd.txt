@@ -2,7 +2,8 @@ jeportie@minishell $> pwd
 /root/projects/minishell/test_integrated
 0
 jeportie@minishell $> mkdir test_cd
-0
+mkdir: cannot create directory 'test_cd': File exists
+1
 jeportie@minishell $> cd test_cd
 0
 jeportie@minishell $> pwd
@@ -14,7 +15,8 @@ jeportie@minishell $> pwd
 /root/projects/minishell/test_integrated
 0
 jeportie@minishell $> mkdir test_cd/test1
-0
+mkdir: cannot create directory 'test_cd/test1': File exists
+1
 jeportie@minishell $> cd test_cd/test1
 0
 jeportie@minishell $> pwd

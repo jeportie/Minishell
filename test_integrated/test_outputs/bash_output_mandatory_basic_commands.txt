@@ -1,12 +1,12 @@
 jeportie@minishell $> ls
-animated_banner.py  noanimated_banner.py  out0	out1  outfile  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_2.txt  test_commands  test_dir  test_outputs
+animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_2.txt  test_cd  test_commands  test_dir	test_outputs
 0
 jeportie@minishell $> df
 Filesystem     1K-blocks     Used Available Use% Mounted on
-overlay        478676712 73960032 380327816  17% /
+overlay        478676712 73962224 380325624  17% /
 tmpfs              65536        0     65536   0% /dev
 shm                65536        0     65536   0% /dev/shm
-/dev/sda2      478676712 73960032 380327816  17% /root/.ssh
+/dev/sda2      478676712 73962224 380325624  17% /root/.ssh
 tmpfs            3999892        0   3999892   0% /proc/asound
 tmpfs            3999892        0   3999892   0% /proc/acpi
 tmpfs            3999892        0   3999892   0% /proc/scsi
@@ -29,15 +29,14 @@ jeportie@minishell $> tree
 .
 |-- animated_banner.py
 |-- noanimated_banner.py
-|-- out0
-|-- out1
-|-- outfile
 |-- process_outputs.sh
 |-- remove_escape_codes.sh
 |-- run_bash.expect
 |-- run_minishell.expect
 |-- run_test.sh
 |-- test_2.txt
+|-- test_cd
+|   `-- test1
 |-- test_commands
 |   |-- bonus_expansions_wildcards.txt
 |   |-- bonus_logical_operators.txt
@@ -79,12 +78,12 @@ jeportie@minishell $> tree
     |-- minishell_output_bonus_subshells.txt
     `-- minishell_output_extended_error_messages.txt
 
-5 directories, 47 files
+7 directories, 44 files
 0
 jeportie@minishell $> ps
     PID TTY          TIME CMD
-   8043 pts/1    00:00:00 bash
-   8051 pts/1    00:00:00 ps
+  12221 pts/1    00:00:00 bash
+  12229 pts/1    00:00:00 ps
 0
 jeportie@minishell $> ps -e
     PID TTY          TIME CMD
@@ -93,15 +92,13 @@ jeportie@minishell $> ps -e
    1363 ?        00:00:00 clangd.main
    2852 ?        00:00:00 python3
    2872 ?        00:00:00 clangd.main
-   4815 pts/0    00:00:17 vim
-   4817 ?        00:00:00 python3
    4820 ?        00:00:00 python3
    4840 ?        00:00:01 clangd.main
-   7150 pts/0    00:00:00 run_test.sh
-   7152 pts/0    00:00:00 python3
-   8042 pts/0    00:00:00 run_bash.expect
-   8043 pts/1    00:00:00 bash
-   8052 pts/1    00:00:00 ps
+  11328 pts/0    00:00:00 run_test.sh
+  11330 pts/0    00:00:00 python3
+  12220 pts/0    00:00:00 run_bash.expect
+  12221 pts/1    00:00:00 bash
+  12230 pts/1    00:00:00 ps
 0
 jeportie@minishell $> touch test
 0
@@ -117,7 +114,7 @@ jeportie@minishell $> expr $? + $?
 0
 1
 jeportie@minishell $> /bin/ls
-animated_banner.py  noanimated_banner.py  out0	out1  outfile  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test  test_2.txt  test_commands	test_dir  test_outputs
+animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test	test_2.txt  test_cd  test_commands  test_dir  test_outputs
 0
 jeportie@minishell $> /usr/bin/cat test
 test

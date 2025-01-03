@@ -23,8 +23,8 @@ jeportie@minishell $> export a=outfile2
 jeportie@minishell $> cat < $a > outfile1
 0
 jeportie@minishell $> cat < outfile
-0
-0
+bash: outfile: No such file or directory
+1
 jeportie@minishell $> cat < outfile1
 hello
 0
@@ -123,15 +123,13 @@ tmpfs           3.9G     0  3.9G   0% /sys/devices/virtual/powercap$
    1363 ?        00:00:00 clangd.main$
    2852 ?        00:00:00 python3$
    2872 ?        00:00:00 clangd.main$
-   4815 pts/0    00:00:17 vim$
-   4817 ?        00:00:00 python3$
    4820 ?        00:00:00 python3$
    4840 ?        00:00:01 clangd.main$
-   7150 pts/0    00:00:00 run_test.sh$
-   7152 pts/0    00:00:00 python3$
-   8506 pts/0    00:00:00 run_bash.expect$
-   8507 pts/1    00:00:00 bash$
-   8551 pts/1    00:00:00 ps$
+  11328 pts/0    00:00:00 run_test.sh$
+  11330 pts/0    00:00:00 python3$
+  12684 pts/0    00:00:00 run_bash.expect$
+  12685 pts/1    00:00:00 bash$
+  12729 pts/1    00:00:00 ps$
 0
 jeportie@minishell $> ls > out -l -a && df -h >> out
 0

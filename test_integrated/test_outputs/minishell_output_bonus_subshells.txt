@@ -11,15 +11,13 @@ SHLVL=3
 jeportie@minishell $> ls | (cat)
 animated_banner.py
 noanimated_banner.py
-out0
-out1
-outfile
 process_outputs.sh
 remove_escape_codes.sh
 run_bash.expect
 run_minishell.expect
 run_test.sh
 test_2.txt
+test_cd
 test_commands
 test_dir
 test_outputs
@@ -29,9 +27,6 @@ jeportie@minishell $> ls | (cat | (cat -e > test))
 jeportie@minishell $> cat test
 animated_banner.py$
 noanimated_banner.py$
-out0$
-out1$
-outfile$
 process_outputs.sh$
 remove_escape_codes.sh$
 run_bash.expect$
@@ -39,6 +34,7 @@ run_minishell.expect$
 run_test.sh$
 test$
 test_2.txt$
+test_cd$
 test_commands$
 test_dir$
 test_outputs$
