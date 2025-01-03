@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:08:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/17 15:14:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:20:36 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,17 @@ void	st_heredoc_child_process(t_shell *shell,
 	while (1)
 	{
 		help.line = readline("\033[1;36m>\033[0m ");
+		if (!help.line)
+		{
+			printf("DEBUG: got NULL line => break (Ctrl+D?)\n");
+			break ;
+		}
+		printf("DEBUG: typed=[%s], delim=[%s]\n", help.line, help.delim);
+		if (strcmp(help.line, help.delim) == 0)
+		{
+			printf("DEBUG: matched delimiter => break\n");
+			break ;
+		}
 		if (g_signal == 130)
 		{
 			close(help.fd);
