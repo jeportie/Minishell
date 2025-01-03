@@ -1,63 +1,88 @@
-<<<<<<< HEAD
 jeportie@minishell $> bash
-]0;root@d8fb2cde3439: ~/projects/minishell/test_integratedroot@d8fb2cde3439:~/projects/minishell/test_integrated# echo $?
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
 0
-]0;root@d8fb2cde3439: ~/projects/minishell/test_integratedroot@d8fb2cde3439:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
-=======
-gmarquis@minishell $> bash
-]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# echo $?
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
 0
-]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# export PS1='$USER@minishell $> '
-gmarquis@minishell $> echo $?
->>>>>>> first_review
 0
-gmarquis@minishell $> echo $?
-0
-<<<<<<< HEAD
 jeportie@minishell $> bash
-]0;root@d8fb2cde3439: ~/projects/minishell/test_integratedroot@d8fb2cde3439:~/projects/minishell/test_integrated# echo $?
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
 0
-]0;root@d8fb2cde3439: ~/projects/minishell/test_integratedroot@d8fb2cde3439:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
-=======
-gmarquis@minishell $> bash
-]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# echo $?
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
 0
-]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# export PS1='$USER@minishell $> '
-gmarquis@minishell $> echo $?
->>>>>>> first_review
+jeportie@minishell $> exit 0
 0
-gmarquis@minishell $> exit 0
-gmarquis@minishell $> echo $?
-0
-<<<<<<< HEAD
 jeportie@minishell $> bash
-]0;root@d8fb2cde3439: ~/projects/minishell/test_integratedroot@d8fb2cde3439:~/projects/minishell/test_integrated# echo $?
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
 0
-]0;root@d8fb2cde3439: ~/projects/minishell/test_integratedroot@d8fb2cde3439:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
-=======
-gmarquis@minishell $> bash
-]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# echo $?
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
 0
-]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# export PS1='$USER@minishell $> '
-gmarquis@minishell $> echo $?
->>>>>>> first_review
-0
-gmarquis@minishell $> exit 42
-gmarquis@minishell $> echo $?
+jeportie@minishell $> exit 42
 42
-<<<<<<< HEAD
 jeportie@minishell $> bash
-]0;root@d8fb2cde3439: ~/projects/minishell/test_integratedroot@d8fb2cde3439:~/projects/minishell/test_integrated# echo $?
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
 0
-]0;root@d8fb2cde3439: ~/projects/minishell/test_integratedroot@d8fb2cde3439:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
-=======
-gmarquis@minishell $> bash
-]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# echo $?
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
 0
-]0;root@70c34fa928f3: ~/projects/Minishell/test_integratedroot@70c34fa928f3:~/projects/Minishell/test_integrated# export PS1='$USER@minishell $> '
-gmarquis@minishell $> echo $?
->>>>>>> first_review
+jeportie@minishell $> exit -1
+255
+jeportie@minishell $> bash
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
 0
-gmarquis@minishell $> exit 9999
-gmarquis@minishell $> echo $?
-15
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+0
+jeportie@minishell $> exit 255
+255
+jeportie@minishell $> bash
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
+0
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+0
+jeportie@minishell $> exit 256
+0
+jeportie@minishell $> bash
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
+0
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+0
+jeportie@minishell $> exit 257
+1
+jeportie@minishell $> bash
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
+0
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# bash
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
+0
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+0
+jeportie@minishell $> exit 2147483648
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
+0
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+0
+jeportie@minishell $> exit 1 2
+bash: exit: too many arguments
+1
+jeportie@minishell $> bash
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
+0
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+0
+jeportie@minishell $> exit abc
+bash: exit: abc: numeric argument required
+2
+jeportie@minishell $> bash
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
+0
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+0
+jeportie@minishell $> exit abc def
+bash: exit: abc: numeric argument required
+2
+jeportie@minishell $> bash
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# echo $?
+0
+]0;root@8b484aec4bb6: ~/projects/minishell/test_integratedroot@8b484aec4bb6:~/projects/minishell/test_integrated# export PS1='$USER@minishell $> '
+0
+jeportie@minishell $> exit 99999999999999999999999999999999999999999999999999999999999999999999999999999
+bash: exit: 99999999999999999999999999999999999999999999999999999999999999999999999999999: numeric argument required
+2

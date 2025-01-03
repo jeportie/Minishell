@@ -1,23 +1,138 @@
-gmarquis@minishell $> env | grep USER | grep -v PS1
-USER=gmarquis
+jeportie@minishell $> env
+LSCOLORS=Gxfxcxdxbxegedabagacad
+LESS=-R
+HOSTNAME=8b484aec4bb6
+PWD=/root/projects/minishell/test_integrated
+LOGNAME=root
+PROMPT_HOSTNAME=home
+HOME=/root
+LS_COLORS=rs
+VIRTUAL_ENV=/root/venv
+TERM=xterm
+ZSH=/root/.oh-my-zsh
+USER=jeportie
+SHLVL=3
+PAGER=less
+VIRTUAL_ENV_PROMPT=(venv) 
+DIRHISTORY_SIZE=30
+PATH=/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAIL=jeportie@student.42.fr
 DEFAULT_USER=vjej
-gmarquis@minishell $> echo $?
+OLDPWD=/root/projects/minishell
+_=env
 0
-gmarquis@minishell $> export TESTVAR=hello
-gmarquis@minishell $> echo $?
+jeportie@minishell $> env -
 0
-gmarquis@minishell $> env | grep TESTVAR
-TESTVAR=hello
-gmarquis@minishell $> echo $?
+jeportie@minishell $> env 1
+minishell: env: ‘1’: No such file or directory
 0
-gmarquis@minishell $> unset TESTVAR
-gmarquis@minishell $> echo $?
+jeportie@minishell $> env --
+LSCOLORS=Gxfxcxdxbxegedabagacad
+LESS=-R
+HOSTNAME=8b484aec4bb6
+PWD=/root/projects/minishell/test_integrated
+LOGNAME=root
+PROMPT_HOSTNAME=home
+HOME=/root
+LS_COLORS=rs
+VIRTUAL_ENV=/root/venv
+TERM=xterm
+ZSH=/root/.oh-my-zsh
+USER=jeportie
+SHLVL=3
+PAGER=less
+VIRTUAL_ENV_PROMPT=(venv) 
+DIRHISTORY_SIZE=30
+PATH=/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAIL=jeportie@student.42.fr
+DEFAULT_USER=vjej
+OLDPWD=/root/projects/minishell
+_=--
 0
-<<<<<<< HEAD
-jeportie@minishell $> env | grep TESTVAR
-1
-=======
-gmarquis@minishell $> env | grep TESTVAR
-gmarquis@minishell $> echo $?
+jeportie@minishell $> env - -
+minishell: env: ‘-’: No such file or directory
 0
->>>>>>> first_review
+jeportie@minishell $> export a=ok b= c
+0
+jeportie@minishell $> env
+LSCOLORS=Gxfxcxdxbxegedabagacad
+LESS=-R
+HOSTNAME=8b484aec4bb6
+PWD=/root/projects/minishell/test_integrated
+LOGNAME=root
+PROMPT_HOSTNAME=home
+HOME=/root
+LS_COLORS=rs
+VIRTUAL_ENV=/root/venv
+TERM=xterm
+ZSH=/root/.oh-my-zsh
+USER=jeportie
+SHLVL=3
+PAGER=less
+VIRTUAL_ENV_PROMPT=(venv) 
+DIRHISTORY_SIZE=30
+PATH=/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAIL=jeportie@student.42.fr
+DEFAULT_USER=vjej
+OLDPWD=/root/projects/minishell
+_=env
+a=ok
+b=
+0
+jeportie@minishell $> export a= b=ok c=ok
+0
+jeportie@minishell $> env
+LSCOLORS=Gxfxcxdxbxegedabagacad
+LESS=-R
+HOSTNAME=8b484aec4bb6
+PWD=/root/projects/minishell/test_integrated
+LOGNAME=root
+PROMPT_HOSTNAME=home
+HOME=/root
+LS_COLORS=rs
+VIRTUAL_ENV=/root/venv
+TERM=xterm
+ZSH=/root/.oh-my-zsh
+USER=jeportie
+SHLVL=3
+PAGER=less
+VIRTUAL_ENV_PROMPT=(venv) 
+DIRHISTORY_SIZE=30
+PATH=/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAIL=jeportie@student.42.fr
+DEFAULT_USER=vjej
+OLDPWD=/root/projects/minishell
+_=env
+a=
+b=ok
+c=ok
+0
+jeportie@minishell $> unset a b c
+0
+jeportie@minishell $> env
+LSCOLORS=Gxfxcxdxbxegedabagacad
+LESS=-R
+HOSTNAME=8b484aec4bb6
+PWD=/root/projects/minishell/test_integrated
+LOGNAME=root
+PROMPT_HOSTNAME=home
+HOME=/root
+LS_COLORS=rs
+VIRTUAL_ENV=/root/venv
+TERM=xterm
+ZSH=/root/.oh-my-zsh
+USER=jeportie
+SHLVL=3
+PAGER=less
+VIRTUAL_ENV_PROMPT=(venv) 
+DIRHISTORY_SIZE=30
+PATH=/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAIL=jeportie@student.42.fr
+DEFAULT_USER=vjej
+OLDPWD=/root/projects/minishell
+_=env
+0
+jeportie@minishell $> env | grep USER
+USER=jeportie
+DEFAULT_USER=vjej
+0

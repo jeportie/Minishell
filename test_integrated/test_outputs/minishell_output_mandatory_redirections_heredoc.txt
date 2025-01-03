@@ -1,83 +1,54 @@
-gmarquis@minishell $> cat << EOF
+jeportie@minishell $> cat << EOF
 > hello
 > EOF
-<<<<<<< HEAD
-echo $?
-echo $?
-cat << GREG
-cat << GREG
-test
-test
-greg
-greg
-GREG
-GREG
-echo $?
-echo $?
-cat << jeportie
-cat << jeportie
-test
-test
-jerome
-jerome
-jeportie
-jeportie
-echo $?
-echo $?
-cat << EOF
-cat << EOF
-Hello from heredoc
-Hello from heredoc
-EOF
-EOF
-echo $?
-echo $?
-cat << DELIM
-cat << DELIM
-Multiple
-=======
 hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat << GREG
+jeportie@minishell $> cat << GREG
 > test
 > greg
 > GREG
 test
 greg
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat << jeportie
+jeportie@minishell $> cat << jeportie
 > test
 > jerome
 > jeportie
 test
 jerome
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat << EOF
+jeportie@minishell $> cat << EOF
 > Hello from heredoc
 > EOF
 Hello from heredoc
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat << DELIM
+jeportie@minishell $> cat << DELIM
 > Multiple
 > lines
 > in heredoc
 > DELIM
->>>>>>> first_review
 Multiple
 lines
-lines
 in heredoc
-<<<<<<< HEAD
-in heredoc
-DELIM
-DELIM
-echo $?
-echo $?
-=======
-gmarquis@minishell $> echo $?
 0
->>>>>>> first_review
+jeportie@minishell $> cat << $USER
+> test
+> gmarquis
+> jeportie
+> $USER
+test
+gmarquis
+jeportie
+0
+jeportie@minishell $> cat << EOF
+> $USER
+> $PATH
+> EOF 
+> echo $?
+minishell: export: `cho $?': not a valid identifier
+> EOF
+jeportie
+/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+EOF 
+
+0

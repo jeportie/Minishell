@@ -1,47 +1,35 @@
-gmarquis@minishell $> pwd > test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd > test
 0
-gmarquis@minishell $> cat test
-/root/projects/Minishell/test_integrated
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat test
+/root/projects/minishell/test_integrated
 0
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm test
 0
-gmarquis@minishell $> cd ..
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd ..
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell
 0
-gmarquis@minishell $> cd -
-/root/projects/Minishell/test_integrated
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd -
+/root/projects/minishell/test_integrated
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
 0
-gmarquis@minishell $> cd test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd test_dir
+minishell: cd: test_dir: No such file or directory
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated/test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
 0
-gmarquis@minishell $> cd ..
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd ..
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell
 0
-gmarquis@minishell $> echo "Testing echo builtin"
+jeportie@minishell $> echo "Testing echo builtin"
 Testing echo builtin
-gmarquis@minishell $> echo $?
 0

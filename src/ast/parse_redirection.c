@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:59:50 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/03 16:33:14 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/03 19:14:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static t_node_type	define_type(t_token **current_token)
 	return (redir_type);
 }
 
-static void	st_redirect_helper(t_ast_node *child, t_node_type redir_type,
-	t_shell *shell, char *filename)
+static t_ast_node	*st_redirect_helper(t_ast_node *child,
+		t_node_type redir_type, t_shell *shell, char *filename)
 {
 	int			i;
 
@@ -53,6 +53,7 @@ static void	st_redirect_helper(t_ast_node *child, t_node_type redir_type,
 		exit(2);
 	}
 	shell->heredocs[i] = &((t_ast_node *)child)->data.heredoc;
+	return (child);
 }
 
 t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child,
@@ -75,7 +76,7 @@ t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child,
 		filename = (*current_token)->token;
 		*current_token = (*current_token)->next;
 		if (redir_type == NODE_REDIRECT_HEREDOC)
-			st_redirect_helper(child, redir_type, shell, filename);
+			child = st_redirect_helper(child, redir_type, shell, filename);
 		else
 			child = create_redirect_node(redir_type, child, filename, gcl);
 		if (!child)

@@ -1,20 +1,29 @@
-gmarquis@minishell $> echo Hello
+jeportie@minishell $> echo Hello
 Hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo "Hello World"
+jeportie@minishell $> echo "Hello World"
 Hello World
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo 'Hello World'
+jeportie@minishell $> echo 'Hello World'
 Hello World
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo "Nested 'quotes' inside double quotes"
+jeportie@minishell $> echo "Nested 'quotes' inside double quotes"
 Nested 'quotes' inside double quotes
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo 'Nested "quotes" inside single quotes'
+jeportie@minishell $> echo 'Nested "quotes" inside single quotes'
 Nested "quotes" inside single quotes
-gmarquis@minishell $> echo $?
+0
+jeportie@minishell $> echo test > 'out'
+0
+jeportie@minishell $> cat 'out'
+test
+0
+jeportie@minishell $> rm 'out'
+0
+jeportie@minishell $> echo test > "out"
+0
+jeportie@minishell $> cat "out"
+test
+0
+jeportie@minishell $> rm "out"
 0

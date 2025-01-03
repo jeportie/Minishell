@@ -1,55 +1,137 @@
-gmarquis@minishell $> echo hello
-hello
-gmarquis@minishell $> echo $?
-0
-<<<<<<< HEAD
 jeportie@minishell $> ls
-animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
-=======
-gmarquis@minishell $> ls
-animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
-gmarquis@minishell $> echo $?
->>>>>>> first_review
+animated_banner.py  noanimated_banner.py  out0	out1  outfile  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_2.txt  test_commands  test_dir  test_outputs
 0
-gmarquis@minishell $> touch test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> df
+Filesystem     1K-blocks     Used Available Use% Mounted on
+overlay        478676712 73960032 380327816  17% /
+tmpfs              65536        0     65536   0% /dev
+shm                65536        0     65536   0% /dev/shm
+/dev/sda2      478676712 73960032 380327816  17% /root/.ssh
+tmpfs            3999892        0   3999892   0% /proc/asound
+tmpfs            3999892        0   3999892   0% /proc/acpi
+tmpfs            3999892        0   3999892   0% /proc/scsi
+tmpfs            3999892        0   3999892   0% /sys/firmware
+tmpfs            3999892        0   3999892   0% /sys/devices/virtual/powercap
 0
-gmarquis@minishell $> echo hello > test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay         457G   71G  363G  17% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/sda2       457G   71G  363G  17% /root/.ssh
+tmpfs           3.9G     0  3.9G   0% /proc/asound
+tmpfs           3.9G     0  3.9G   0% /proc/acpi
+tmpfs           3.9G     0  3.9G   0% /proc/scsi
+tmpfs           3.9G     0  3.9G   0% /sys/firmware
+tmpfs           3.9G     0  3.9G   0% /sys/devices/virtual/powercap
 0
-gmarquis@minishell $> cat -e test
-hello$
-gmarquis@minishell $> echo $?
+jeportie@minishell $> tree
+.
+|-- animated_banner.py
+|-- noanimated_banner.py
+|-- out0
+|-- out1
+|-- outfile
+|-- process_outputs.sh
+|-- remove_escape_codes.sh
+|-- run_bash.expect
+|-- run_minishell.expect
+|-- run_test.sh
+|-- test_2.txt
+|-- test_commands
+|   |-- bonus_expansions_wildcards.txt
+|   |-- bonus_logical_operators.txt
+|   |-- bonus_subshells.txt
+|   |-- extended_error_messages.txt
+|   |-- mandatory_basic_commands.txt
+|   |-- mandatory_builtins_cd.txt
+|   |-- mandatory_builtins_echo.txt
+|   |-- mandatory_builtins_env.txt
+|   |-- mandatory_builtins_exit.txt
+|   |-- mandatory_builtins_export_unset.txt
+|   |-- mandatory_builtins_overview.txt
+|   |-- mandatory_builtins_pwd.txt
+|   |-- mandatory_expansions_env_variables.txt
+|   |-- mandatory_external_commands.txt
+|   |-- mandatory_pipelines.txt
+|   |-- mandatory_quoting.txt
+|   |-- mandatory_redirections_heredoc.txt
+|   `-- mandatory_redirections_input_output.txt
+|-- test_dir
+|   |-- a1
+|   |-- a2
+|   |-- a3
+|   |-- a4
+|   |-- b1
+|   |-- b2
+|   |-- b3
+|   |-- b4
+|   `-- src
+|       `-- hello
+`-- test_outputs
+    |-- bash_output_bonus_expansions_wildcards.txt
+    |-- bash_output_bonus_logical_operators.txt
+    |-- bash_output_bonus_subshells.txt
+    |-- bash_output_extended_error_messages.txt
+    |-- bash_output_mandatory_basic_commands.txt
+    |-- minishell_output_bonus_expansions_wildcards.txt
+    |-- minishell_output_bonus_logical_operators.txt
+    |-- minishell_output_bonus_subshells.txt
+    `-- minishell_output_extended_error_messages.txt
+
+5 directories, 47 files
 0
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> ps
+    PID TTY          TIME CMD
+   8043 pts/1    00:00:00 bash
+   8051 pts/1    00:00:00 ps
 0
-gmarquis@minishell $> expr $? + $?
+jeportie@minishell $> ps -e
+    PID TTY          TIME CMD
+      1 pts/0    00:00:02 zsh
+   1343 ?        00:00:00 python3
+   1363 ?        00:00:00 clangd.main
+   2852 ?        00:00:00 python3
+   2872 ?        00:00:00 clangd.main
+   4815 pts/0    00:00:17 vim
+   4817 ?        00:00:00 python3
+   4820 ?        00:00:00 python3
+   4840 ?        00:00:01 clangd.main
+   7150 pts/0    00:00:00 run_test.sh
+   7152 pts/0    00:00:00 python3
+   8042 pts/0    00:00:00 run_bash.expect
+   8043 pts/1    00:00:00 bash
+   8052 pts/1    00:00:00 ps
 0
-gmarquis@minishell $> echo $?
+jeportie@minishell $> touch test
+0
+jeportie@minishell $> echo test > test
+0
+jeportie@minishell $> mkdir test_dir
+mkdir: cannot create directory 'test_dir': File exists
 1
-<<<<<<< HEAD
+jeportie@minishell $> cat -e test
+test$
+0
+jeportie@minishell $> expr $? + $?
+0
+1
 jeportie@minishell $> /bin/ls
-animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
-=======
-gmarquis@minishell $> /bin/ls
-animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
-gmarquis@minishell $> echo $?
->>>>>>> first_review
+animated_banner.py  noanimated_banner.py  out0	out1  outfile  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test  test_2.txt  test_commands	test_dir  test_outputs
 0
-gmarquis@minishell $> /usr/bin/cat lib
-/usr/bin/cat: lib: No such file or directory
-gmarquis@minishell $> echo $?
-1
-gmarquis@minishell $> /usr/bin/cat -e lib
-/usr/bin/cat: lib: No such file or directory
-gmarquis@minishell $> echo $?
-1
-gmarquis@minishell $> /bin/ls-l
+jeportie@minishell $> /usr/bin/cat test
+test
+0
+jeportie@minishell $> /usr/bin/cat -e test
+test$
+0
+jeportie@minishell $> /bin/ls-l
 bash: /bin/ls-l: No such file or directory
-gmarquis@minishell $> echo $?
 127
-gmarquis@minishell $> /usr/bin/cat-e
+jeportie@minishell $> /usr/bin/cat-e
 bash: /usr/bin/cat-e: No such file or directory
-gmarquis@minishell $> echo $?
 127
+jeportie@minishell $> rm test
+0
+jeportie@minishell $> rm -rf test_dir
+0
