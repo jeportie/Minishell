@@ -1,17 +1,42 @@
-gmarquis@minishell $> cd nonexistent_dir
+jeportie@minishell $> cd nonexistent_dir
 minishell: cd: nonexistent_dir: No such file or directory
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> ls nonexistingfile
+jeportie@minishell $> ls nonexistingfile
 ls: cannot access 'nonexistingfile': No such file or directory
-gmarquis@minishell $> echo $?
 2
-gmarquis@minishell $> cat < nonexistent_file
-Open failed
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < nonexistent_file
+minishell: nonexistent_file: No such file or directory
+minishell: Failed to open nonexistent_file
 2
-gmarquis@minishell $> grep
-Usage: grep [OPTION]... PATTERNS [FILE]...
-Try 'grep --help' for more information.
-gmarquis@minishell $> echo $?
-2
+jeportie@minishell $> mkdir test_dir
+mkdir: cannot create directory 'test_dir': File exists
+1
+jeportie@minishell $> ./test_dir
+minishell: execve errorfree(): double free detected in tcache 2
+echo $?
+134
+jeportie@minishell $> touch test_file
+0
+jeportie@minishell $> rm -rf test_file
+0
+jeportie@minishell $> cat test_dir
+cat: test_dir: Is a directory
+1
+jeportie@minishell $> rm -rf nonexist_dire
+0
+jeportie@minishell $> echo /dev/full
+/dev/full
+0
+jeportie@minishell $> chmod 000 test_file
+chmod: cannot access 'test_file': No such file or directory
+1
+jeportie@minishell $> echo test > test_file
+1
+jeportie@minishell $> rm test_file
+0
+jeportie@minishell $> chmod 777 test_file
+chmod: cannot access 'test_file': No such file or directory
+1
+jeportie@minishell $> rm test_file
+rm: cannot remove 'test_file': No such file or directory
+1

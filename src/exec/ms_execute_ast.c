@@ -6,66 +6,112 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 15:47:57 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:33:46 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 
-static int	redirect_switch(t_ast_node *to_child, t_ast_node *node,
-		t_exec_context *context, t_proc_manager *manager)
+void	init_context(t_exec_context *data, t_shell *shell)
 {
-	int (result);
-	if (context->redirected == false)
-	{
-		if (ms_handle_redirections(node, context,
-				context->shell->gcl) != 0)
-			return (-1);
-	}
-	result = ms_execute_ast(to_child, context, manager);
-	if (context->redirected)
-	{
-		if (context->stdout_fd != STDOUT_FILENO)
-		{
-			dup2(context->original_stdout, STDOUT_FILENO);
-			close(context->stdout_fd);
-			context->stdout_fd = STDOUT_FILENO;
-		}
-		if (context->stdin_fd != STDIN_FILENO)
-		{
-			dup2(context->original_stdin, STDIN_FILENO);
-			close(context->stdin_fd);
-			context->stdin_fd = STDIN_FILENO;
-		}
-		context->redirected = false;
-	}
-	return (result);
+	data->stdin_fd = STDIN_FILENO;
+	data->stdout_fd = STDOUT_FILENO;
+	data->stderr_fd = STDERR_FILENO;
+	data->shell = shell;
+	data->is_subprocess = false;
+	data->exit_status = 0;
+	data->child_lvl = 0;
+	data->redirected = false;
+	data->original_stdin = STDIN_FILENO;
+	data->original_stdout = STDOUT_FILENO;
+	data->tmpfile_counter = 0;
 }
 
-int	ms_execute_ast(t_ast_node *node, t_exec_context *context,
-	t_proc_manager *manager)
+bool	is_builtin_that_must_run_in_parent(t_cmd_node *cmd_node)
+{
+	if (!cmd_node || !cmd_node->argv[0])
+		return (false);
+	if (ft_strncmp(cmd_node->argv[0], "cd", 3) == 0)
+		return (true);
+	if (ft_strncmp(cmd_node->argv[0], "export", 7) == 0)
+		return (true);
+	if (ft_strncmp(cmd_node->argv[0], "unset", 6) == 0)
+		return (true);
+	if (ft_strncmp(cmd_node->argv[0], "exit", 5) == 0)
+		return (true);
+	return (false);
+}
+
+static int	redir_in_command(t_ast_node *node, t_exec_context *context,
+		t_redir *redir_list)
+{
+	int	saved_stdin;
+	int	saved_stdout;
+	int	ret;
+
+	context->redir_list = redir_list;
+	saved_stdin = dup(STDIN_FILENO);
+	saved_stdout = dup(STDOUT_FILENO);
+	if (ms_apply_redirections(context->redir_list) != 0)
+	{
+		dup2(saved_stdin, STDIN_FILENO);
+		dup2(saved_stdout, STDOUT_FILENO);
+		close(saved_stdin);
+		close(saved_stdout);
+		context->redir_list = NULL;
+		return (1);
+	}
+	ret = ms_execute_command(&node->data.command, context, context->shell->gcl);
+	dup2(saved_stdin, STDIN_FILENO);
+	dup2(saved_stdout, STDOUT_FILENO);
+	close(saved_stdin);
+	close(saved_stdout);
+	context->redir_list = NULL;
+	return (ret);
+}
+
+int	ms_execute_redirection(t_ast_node *node, t_exec_context *context)
+{
+	t_redir	*redir_list;
+
+	redir_list = ms_collect_redirections(node, context->shell->gcl,
+			context->shell);
+	while (node && (node->type == NODE_REDIRECT_IN
+			|| node->type == NODE_REDIRECT_OUT
+			|| node->type == NODE_REDIRECT_APPEND
+			|| node->type == NODE_REDIRECT_HEREDOC))
+	{
+		if (node->type == NODE_REDIRECT_HEREDOC)
+			node = node->data.heredoc.child;
+		else
+			node = node->data.redirect.child;
+	}
+	if (!node)
+		return (ms_handle_error("Redirection with no command\n", 1,
+				context->shell->gcl));
+	if (node->type == NODE_COMMAND)
+		return (redir_in_command(node, context, redir_list));
+	else
+	{
+		context->redir_list = redir_list;
+		return (ms_execute_ast(node, context));
+	}
+}
+
+int	ms_execute_ast(t_ast_node *node, t_exec_context *context)
 {
 	if (!node)
 		return (ms_handle_error("Error: Null AST node.\n", -1,
 				context->shell->gcl));
-	if (node->type == NODE_COMMAND)
-		return (ms_execute_command(&node->data.command, context, manager,
-				context->shell->gcl));
-	else if (node->type == NODE_PIPE)
-		return (ms_execute_pipeline(&node->data.pipe, context, manager));
-	else if (node->type == NODE_AND || node->type == NODE_OR)
-		return (ms_execute_logical(&node->data.logic, context, node->type,
-				manager));
+	if (node->type == NODE_AND || node->type == NODE_OR)
+		return (ms_execute_logical(node, context));
 	else if (node->type == NODE_SUBSHELL)
-		return (ms_execute_subshell(&node->data.subshell, context, manager));
-	else if (node->type == NODE_REDIRECT_IN || node->type == NODE_REDIRECT_OUT
-		|| node->type == NODE_REDIRECT_APPEND)
-		return (redirect_switch(node->data.redirect.child, node, context,
-				manager));
-	else if (node->type == NODE_REDIRECT_HEREDOC)
-		return (redirect_switch(node->data.heredoc.child, node, context,
-				manager));
-	else
-		return (ms_handle_error("Unsupported node type", -1,
+		return (ms_execute_subshell(&node->data.subshell, context));
+	else if (node->type == NODE_PIPE)
+		return (ms_execute_pipeline(node, context));
+	else if (node->type == NODE_COMMAND)
+		return (ms_execute_command(&node->data.command, context,
 				context->shell->gcl));
+	else
+		return (ms_execute_redirection(node, context));
 }

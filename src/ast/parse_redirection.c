@@ -6,12 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:59:50 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 18:00:24 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/03 19:14:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ast.h"
 #include "../../include/tokenize.h"
+#include <readline/readline.h>
 
 static t_node_type	define_type(t_token **current_token)
 {
@@ -34,8 +35,29 @@ static t_node_type	define_type(t_token **current_token)
 	return (redir_type);
 }
 
+static t_ast_node	*st_redirect_helper(t_ast_node *child,
+		t_node_type redir_type, t_shell *shell, char *filename)
+{
+	int			i;
+
+	child = create_heredoc_node(redir_type, child, filename, shell->gcl);
+	i = 0;
+	while (shell->heredocs[i])
+		i++;
+	if (i > 16)
+	{
+		ft_dprintf(STDERR,
+			"bash: maximum here-document count exceeded\n");
+		rl_clear_history();
+		gc_cleanup(shell->gcl);
+		exit(2);
+	}
+	shell->heredocs[i] = &((t_ast_node *)child)->data.heredoc;
+	return (child);
+}
+
 t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child,
-	t_gc *gcl)
+	t_shell *shell, t_gc *gcl)
 {
 	t_node_type	redir_type;
 	char		*filename;
@@ -48,14 +70,13 @@ t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child,
 		*current_token = (*current_token)->next;
 		if (!*current_token || !is_command_op(*current_token))
 		{
-			ft_dprintf(STDERR,
-				"Syntax Error: Expected filename after redirection.\n");
+			ft_dprintf(STDERR, "Error: Expected filename after redirection.\n");
 			return (NULL);
 		}
 		filename = (*current_token)->token;
 		*current_token = (*current_token)->next;
 		if (redir_type == NODE_REDIRECT_HEREDOC)
-			child = create_heredoc_node(redir_type, child, filename, gcl);
+			child = st_redirect_helper(child, redir_type, shell, filename);
 		else
 			child = create_redirect_node(redir_type, child, filename, gcl);
 		if (!child)

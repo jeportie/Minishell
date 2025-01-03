@@ -6,14 +6,14 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:31:06 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/17 11:54:57 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:47:21 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ast.h"
 #include "../../include/tokenize.h"
 
-t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)
+t_ast_node	*ms_parse_tokens(t_token *tokens, t_shell *shell, t_gc *gcl)
 {
 	t_ast_node	*ast_root;
 	t_token		*current_token;
@@ -24,13 +24,35 @@ t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl)
 		return (NULL);
 	}
 	current_token = tokens;
-	ast_root = parse_logical(&current_token, gcl);
+	ast_root = parse_logical(&current_token, shell, gcl);
 	if (!ast_root)
 	{
 		ft_dprintf(STDERR, "Minishell: Error: Failed to parse tokens.\n");
 		return (NULL);
 	}
 	return (ast_root);
+}
+
+void	print_ast_delimit(t_ast_node *root)
+{
+	int	fd;
+
+	if (DEBUG == 0)
+		return ;
+	fd = open(PRINT_INFOS, O_WRONLY | O_APPEND, COPY_MODE);
+	ft_dprintf(fd, "------------------------------------------------");
+	ft_dprintf(fd, "--------------------------------\nAST:\n");
+	print_ast(root, 0, "", 0);
+	ft_dprintf(fd, "-------------------------------------------"
+		"---------------------");
+	ft_dprintf(fd, "----------------\n");
+	ft_dprintf(fd, "Process Manager - Active Processes:\n");
+	ft_dprintf(fd, "Title\t\tPID\tParent PID\tLevel"
+		"\tFD_in\tFD_out\tFD_err\tHeredoc\n");
+	ft_dprintf(fd, "-------------------------"
+		"---------------------------------------");
+	ft_dprintf(fd, "----------------\n");
+	close(fd);
 }
 
 /*

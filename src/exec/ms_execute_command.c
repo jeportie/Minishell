@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:07:30 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/11 17:56:50 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/27 21:01:07 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ static void	st_set_underscore_value(t_cmd_node *cmd_node,
 		ms_set_env_value(context->shell, "_", cmd_node->argv[i - 1]);
 }
 
-int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,
-	t_proc_manager *manager, t_gc *gcl)
+int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl)
 {
 	char *(cmd) = cmd_node->argv[0];
 	st_set_underscore_value(cmd_node, context, gcl);
@@ -45,7 +44,7 @@ int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,
 	else if (ft_strncmp(cmd, "env", 4) == 0)
 	{
 		if (cmd_node->argc > 1 && !ft_strncmp(cmd_node->argv[1], "-i", 3))
-			return (ms_execute_external(cmd_node, context, manager, gcl));
+			return (ms_execute_external(cmd_node, context, gcl));
 		return (ms_env(cmd_node, context));
 	}
 	else if (ft_strncmp(cmd, "exit", 5) == 0)
@@ -53,5 +52,5 @@ int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,
 	else if (is_equal(cmd))
 		return (ms_value_assign(context->shell, cmd_node, gcl));
 	else
-		return (ms_execute_external(cmd_node, context, manager, gcl));
+		return (ms_execute_external(cmd_node, context, gcl));
 }

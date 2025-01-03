@@ -6,22 +6,36 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:47:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 15:33:17 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/27 21:07:10 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
-#include "../../include/process.h"
+
+static t_redir	*append_redir_list(t_redir *list1, t_redir *list2)
+{
+	t_redir	*tmp;
+
+	if (!list1)
+		return (list2);
+	tmp = list1;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = list2;
+	return (list1);
+}
 
 static void	subshell_child_process(t_subshell_exec_params *params)
 {
 	t_exec_context	child_context;
 
-	child_context = *(params->context);
+	child_context = *params->context;
 	child_context.is_subprocess = true;
 	child_context.child_lvl = params->context->child_lvl;
-	exit(ms_execute_ast(params->subshell_node->child, &child_context,
-			params->manager));
+	if (child_context.redir_list
+		&& ms_apply_redirections(child_context.redir_list) != 0)
+		exit(1);
+	exit(ms_execute_ast(params->subshell_node->child, &child_context));
 }
 
 static int	subshell_parent_process(pid_t pid, t_exec_context *context)
@@ -35,31 +49,28 @@ static int	subshell_parent_process(pid_t pid, t_exec_context *context)
 		context->shell->error_code = 128 + WTERMSIG(status);
 	else
 		context->shell->error_code = -1;
+	context->redir_list = NULL;
 	return (context->shell->error_code);
 }
 
 int	ms_execute_subshell(t_subshell_node *subshell_node,
-	t_exec_context *context, t_proc_manager *manager)
+	t_exec_context *context)
 {
 	pid_t					pid;
-	t_fork_params			fork_params;
 	t_subshell_exec_params	params;
+	t_redir					*parent_redirs;
+	t_redir					*subshell_redirs;
+	t_redir					*merged_redirs;
 
+	parent_redirs = context->redir_list;
+	subshell_redirs = ms_collect_redirections(subshell_node->child,
+			context->shell->gcl, context->shell);
+	merged_redirs = append_redir_list(parent_redirs, subshell_redirs);
 	params.subshell_node = subshell_node;
 	params.context = context;
-	params.manager = manager;
-	fork_params.child_lvl = context->child_lvl + 1;
-	fork_params.fd_in = context->stdin_fd;
-	fork_params.fd_out = context->stdout_fd;
-	fork_params.fd_error = context->stderr_fd;
-	fork_params.is_heredoc = false;
-	fork_params.title = "in subshell process.\n";
-	pid = safe_fork(manager, &fork_params);
+	context->redir_list = merged_redirs;
+	pid = fork();
 	if (pid == 0)
-	{
-		context->child_lvl = fork_params.child_lvl;
 		subshell_child_process(&params);
-	}
-	print_proc_info(manager);
 	return (subshell_parent_process(pid, context));
 }

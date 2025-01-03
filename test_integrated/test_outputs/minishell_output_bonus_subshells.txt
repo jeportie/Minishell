@@ -1,13 +1,48 @@
-gmarquis@minishell $> ( echo "Inside subshell" && pwd )
+jeportie@minishell $> ( echo "Inside subshell" && pwd )
 Inside subshell
-/root/projects/Minishell/test_integrated
-gmarquis@minishell $> echo $?
+/root/projects/minishell/test_integrated
 0
-gmarquis@minishell $> ( cd test_dir && ls )
+jeportie@minishell $> ( cd test_dir && ls )
 a1  a2	a3  a4	b1  b2	b3  b4	src
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> ( env | grep SHLVL )
+jeportie@minishell $> ( env | grep SHLVL )
 SHLVL=3
-gmarquis@minishell $> echo $?
 0
+jeportie@minishell $> ls | (cat)
+animated_banner.py
+noanimated_banner.py
+process_outputs.sh
+remove_escape_codes.sh
+run_bash.expect
+run_minishell.expect
+run_test.sh
+test_2.txt
+test_cd
+test_commands
+test_dir
+test_outputs
+0
+jeportie@minishell $> ls | (cat | (cat -e > test))
+0
+jeportie@minishell $> cat test
+animated_banner.py$
+noanimated_banner.py$
+process_outputs.sh$
+remove_escape_codes.sh$
+run_bash.expect$
+run_minishell.expect$
+run_test.sh$
+test$
+test_2.txt$
+test_cd$
+test_commands$
+test_dir$
+test_outputs$
+0
+jeportie@minishell $> rm test
+0
+jeportie@minishell $> (export TEST=ok) && env | grep TEST
+1
+jeportie@minishell $> (mkdir test_dir && cd test_dir && pwd) && pwd && rm -rf test_dir
+mkdir: cannot create directory 'test_dir': File exists
+1

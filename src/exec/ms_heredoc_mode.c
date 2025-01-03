@@ -6,12 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 10:26:40 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/03 16:56:29 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
-#include <sys/stat.h>
 
 static void	st_fork_heredoc(t_heredoc_node *node, t_exec_context *context)
 {
@@ -76,4 +75,16 @@ int	ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context)
 	st_fork_heredoc(node, context);
 	g_signal = 0;
 	return (0);
+}
+
+void	ms_preprocess_heredocs(t_exec_context *context)
+{
+	int	i;
+
+	i = 0;
+	while (i < 16 && context->shell->heredocs[i])
+	{
+		ms_heredoc_mode(context->shell->heredocs[i], context);
+		i++;
+	}
 }

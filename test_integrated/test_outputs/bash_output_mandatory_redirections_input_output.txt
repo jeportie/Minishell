@@ -1,288 +1,153 @@
-gmarquis@minishell $> echo hello > test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo hello > test
 0
-gmarquis@minishell $> cat -e < test
+jeportie@minishell $> cat -e < test
 hello$
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat < test > outfile1 > outfile2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < test > outfile1 > outfile2
 0
-gmarquis@minishell $> cat -e < outfile1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat -e < outfile1
 0
-gmarquis@minishell $> cat -e < outfile2
+jeportie@minishell $> cat -e < outfile2
 hello$
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm outfile1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm outfile1
 0
-gmarquis@minishell $> rm outfile2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm outfile2
 0
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm test
 0
-gmarquis@minishell $> echo hello > outfile2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo hello > outfile2
 0
-gmarquis@minishell $> export a=outfile2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> export a=outfile2
 0
-gmarquis@minishell $> cat < $a > outfile1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < $a > outfile1
 0
-gmarquis@minishell $> cat < outfile
+jeportie@minishell $> cat < outfile
 bash: outfile: No such file or directory
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> cat < outfile1
+jeportie@minishell $> cat < outfile1
 hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat < $a
+jeportie@minishell $> cat < $a
 hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm outfile1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm outfile1
 0
-gmarquis@minishell $> rm $a
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm $a
 0
-gmarquis@minishell $> pwd > test && echo hello >> test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd > test && echo hello >> test
 0
-gmarquis@minishell $> cat < test
-/root/projects/Minishell/test_integrated
+jeportie@minishell $> cat < test
+/root/projects/minishell/test_integrated
 hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm test
 0
-gmarquis@minishell $> echo "Hello" > file1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo "Hello" > file1
 0
-gmarquis@minishell $> cat file1
+jeportie@minishell $> cat file1
 Hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo ' World' >> file1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo ' World' >> file1
 0
-gmarquis@minishell $> cat < file1
+jeportie@minishell $> cat < file1
 Hello
  World
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat file1
+jeportie@minishell $> cat file1
 Hello
  World
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm file1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm file1
 0
-gmarquis@minishell $> echo test > out0 > out1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo test > out0 > out1
 0
-gmarquis@minishell $> cat < out0 > out2 -e < out1 > out3
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < out0 > out2 -e < out1 > out3
 0
-gmarquis@minishell $> cat < out1
+jeportie@minishell $> cat < out1
 test
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat < out2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < out2
 0
-gmarquis@minishell $> cat < out3
+jeportie@minishell $> cat < out3
 test$
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> chmod 000 out3
-gmarquis@minishell $> echo $?
+jeportie@minishell $> chmod 000 out3
 0
-gmarquis@minishell $> cat < out3
-bash: out3: Permission denied
-gmarquis@minishell $> echo $?
-1
-gmarquis@minishell $> chmod 777 out3
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < out3
+test$
 0
-gmarquis@minishell $> chmod 000 out1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> chmod 777 out3
 0
-gmarquis@minishell $> cat < out0 > out2 -e < out1 > out3
-bash: out1: Permission denied
-gmarquis@minishell $> echo $?
-1
-gmarquis@minishell $> chmod 777 out1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> chmod 000 out1
 0
-gmarquis@minishell $> rm out0
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < out0 > out2 -e < out1 > out3
 0
-gmarquis@minishell $> rm out1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> chmod 777 out1
 0
-gmarquis@minishell $> rm out2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm out0
 0
-gmarquis@minishell $> rm out3
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm out1
 0
-gmarquis@minishell $> tree > out && ../../../usr/bin/ps >> out -e
+jeportie@minishell $> rm out2
+0
+jeportie@minishell $> rm out3
+0
+jeportie@minishell $> tree > out && ../../../usr/bin/ps >> out -e
 bash: ../../../usr/bin/ps: No such file or directory
-gmarquis@minishell $> echo $?
 127
-gmarquis@minishell $> /usr/bin/ls -l | cat -e >> out
-gmarquis@minishell $> echo $?
+jeportie@minishell $> /usr/bin/ls -l | cat -e >> out
 0
-gmarquis@minishell $> chmod 000 out
-gmarquis@minishell $> echo $?
+jeportie@minishell $> chmod 000 out
 0
-gmarquis@minishell $> df -h > out
-bash: out: Permission denied
-gmarquis@minishell $> echo $?
-1
-gmarquis@minishell $> chmod 777 out
-gmarquis@minishell $> echo $?
+jeportie@minishell $> df -h > out
 0
-gmarquis@minishell $> ps -e >> out
-gmarquis@minishell $> echo $?
+jeportie@minishell $> chmod 777 out
 0
-gmarquis@minishell $> cat < out -e
-.$
-|-- animated_banner.py$
-|-- noanimated_banner.py$
-|-- out$
-|-- process_outputs.sh$
-|-- remove_escape_codes.sh$
-|-- run_bash.expect$
-|-- run_minishell.expect$
-|-- run_test.sh$
-|-- test_commands$
-|   |-- bonus_expansions_wildcards.txt$
-|   |-- bonus_logical_operators.txt$
-|   |-- bonus_subshells.txt$
-|   |-- extended_error_messages.txt$
-|   |-- mandatory_basic_commands.txt$
-|   |-- mandatory_builtins_cd.txt$
-|   |-- mandatory_builtins_echo.txt$
-|   |-- mandatory_builtins_env.txt$
-|   |-- mandatory_builtins_exit.txt$
-|   |-- mandatory_builtins_export_unset.txt$
-|   |-- mandatory_builtins_overview.txt$
-|   |-- mandatory_builtins_pwd.txt$
-|   |-- mandatory_expansions_env_variables.txt$
-|   |-- mandatory_external_commands.txt$
-|   |-- mandatory_pipelines.txt$
-|   |-- mandatory_quoting.txt$
-|   |-- mandatory_redirections_heredoc.txt$
-|   `-- mandatory_redirections_input_output.txt$
-|-- test_dir$
-|   |-- a1$
-|   |-- a2$
-|   |-- a3$
-|   |-- a4$
-|   |-- b1$
-|   |-- b2$
-|   |-- b3$
-|   |-- b4$
-|   `-- src$
-|       `-- hello$
-`-- test_outputs$
-    |-- bash_output_bonus_expansions_wildcards.txt$
-    |-- bash_output_bonus_logical_operators.txt$
-    |-- bash_output_bonus_subshells.txt$
-    |-- bash_output_extended_error_messages.txt$
-    |-- bash_output_mandatory_basic_commands.txt$
-    |-- bash_output_mandatory_builtins_cd.txt$
-    |-- bash_output_mandatory_builtins_echo.txt$
-    |-- bash_output_mandatory_builtins_env.txt$
-    |-- bash_output_mandatory_builtins_exit.txt$
-    |-- bash_output_mandatory_builtins_export_unset.txt$
-    |-- bash_output_mandatory_builtins_overview.txt$
-    |-- bash_output_mandatory_builtins_pwd.txt$
-    |-- bash_output_mandatory_expansions_env_variables.txt$
-    |-- bash_output_mandatory_external_commands.txt$
-    |-- bash_output_mandatory_pipelines.txt$
-    |-- bash_output_mandatory_quoting.txt$
-    |-- bash_output_mandatory_redirections_heredoc.txt$
-    |-- bash_output_mandatory_redirections_input_output.txt$
-    |-- minishell_output_bonus_expansions_wildcards.txt$
-    |-- minishell_output_bonus_logical_operators.txt$
-    |-- minishell_output_bonus_subshells.txt$
-    |-- minishell_output_extended_error_messages.txt$
-    |-- minishell_output_mandatory_basic_commands.txt$
-    |-- minishell_output_mandatory_builtins_cd.txt$
-    |-- minishell_output_mandatory_builtins_echo.txt$
-    |-- minishell_output_mandatory_builtins_env.txt$
-    |-- minishell_output_mandatory_builtins_exit.txt$
-    |-- minishell_output_mandatory_builtins_export_unset.txt$
-    |-- minishell_output_mandatory_builtins_overview.txt$
-    |-- minishell_output_mandatory_builtins_pwd.txt$
-    |-- minishell_output_mandatory_expansions_env_variables.txt$
-    |-- minishell_output_mandatory_external_commands.txt$
-    |-- minishell_output_mandatory_pipelines.txt$
-    |-- minishell_output_mandatory_quoting.txt$
-    `-- minishell_output_mandatory_redirections_heredoc.txt$
-$
-5 directories, 70 files$
-total 68$$
--rwxr-xr-x 1 root root  5894 Dec 19 10:19 animated_banner.py$$
--rwxr-xr-x 1 root root  1674 Dec 19 10:19 noanimated_banner.py$$
--rw-r--r-- 1 root root  2845 Dec 19 12:46 out$$
--rwxr-xr-x 1 root root  1892 Dec 19 10:19 process_outputs.sh$$
--rwxr-xr-x 1 root root  1115 Dec 19 10:19 remove_escape_codes.sh$$
--rwxr-xr-x 1 root root  1839 Dec 19 10:19 run_bash.expect$$
--rwxr-xr-x 1 root root  1745 Dec 19 10:19 run_minishell.expect$$
--rwxr-xr-x 1 root root 22565 Dec 19 10:19 run_test.sh$$
-drwxr-xr-x 2 root root  4096 Dec 19 12:45 test_commands$$
-drwxr-xr-x 3 root root  4096 Dec 19 10:19 test_dir$$
-drwxr-xr-x 2 root root  4096 Dec 19 12:46 test_outputs$$
+jeportie@minishell $> ps -e >> out
+0
+jeportie@minishell $> cat < out -e
+Filesystem      Size  Used Avail Use% Mounted on$
+overlay         457G   71G  363G  17% /$
+tmpfs            64M     0   64M   0% /dev$
+shm              64M     0   64M   0% /dev/shm$
+/dev/sda2       457G   71G  363G  17% /root/.ssh$
+tmpfs           3.9G     0  3.9G   0% /proc/asound$
+tmpfs           3.9G     0  3.9G   0% /proc/acpi$
+tmpfs           3.9G     0  3.9G   0% /proc/scsi$
+tmpfs           3.9G     0  3.9G   0% /sys/firmware$
+tmpfs           3.9G     0  3.9G   0% /sys/devices/virtual/powercap$
     PID TTY          TIME CMD$
-      1 pts/0    00:00:00 zsh$
-   1844 pts/0    00:00:45 vim$
-   1846 ?        00:00:00 python3$
-   1849 ?        00:00:01 python3$
-   1864 ?        00:00:01 clangd.main$
-   2647 ?        00:00:00 clangd.main$
-   2926 pts/0    00:00:00 run_test.sh$
-   2928 pts/0    00:00:00 python3$
-   4052 pts/0    00:00:00 run_bash.expect$
-   4053 pts/1    00:00:00 bash$
-   4097 pts/1    00:00:00 ps$
-gmarquis@minishell $> echo $?
+      1 pts/0    00:00:02 zsh$
+   1343 ?        00:00:00 python3$
+   1363 ?        00:00:00 clangd.main$
+   2852 ?        00:00:00 python3$
+   2872 ?        00:00:00 clangd.main$
+   4820 ?        00:00:00 python3$
+   4840 ?        00:00:01 clangd.main$
+  11328 pts/0    00:00:00 run_test.sh$
+  11330 pts/0    00:00:00 python3$
+  12684 pts/0    00:00:00 run_bash.expect$
+  12685 pts/1    00:00:00 bash$
+  12729 pts/1    00:00:00 ps$
 0
-gmarquis@minishell $> ls > out -l -a && df -h >> out
-gmarquis@minishell $> echo $?
+jeportie@minishell $> ls > out -l -a && df -h >> out
 0
-gmarquis@minishell $> ps >> out -e || df > out -h
-gmarquis@minishell $> echo $?
+jeportie@minishell $> ps >> out -e || df > out -h
 0
-gmarquis@minishell $> cat < out -e | wc > out -l
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < out -e | wc > out -l
 0
-gmarquis@minishell $> /bin/cat -e < Makefile | wc -l > out
+jeportie@minishell $> /bin/cat -e < Makefile | wc -l > out
 bash: Makefile: No such file or directory
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat -e < Makefile | /usr/bin/wc > outfile -l
+jeportie@minishell $> cat -e < Makefile | /usr/bin/wc > outfile -l
 bash: Makefile: No such file or directory
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat -e < out
+jeportie@minishell $> cat -e < out
 0$
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> chmod 000 out
-gmarquis@minishell $> echo $?
+jeportie@minishell $> chmod 000 out
 0
-gmarquis@minishell $> rm out || chmod 777 out && rm out
+jeportie@minishell $> rm out || chmod 777 out && rm out
 rm: cannot remove 'out': No such file or directory
-gmarquis@minishell $> echo $?
 1

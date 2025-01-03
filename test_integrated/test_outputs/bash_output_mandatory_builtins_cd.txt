@@ -1,32 +1,51 @@
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
 0
-gmarquis@minishell $> cd test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> mkdir test_cd
+mkdir: cannot create directory 'test_cd': File exists
+1
+jeportie@minishell $> cd test_cd
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated/test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated/test_cd
 0
-gmarquis@minishell $> cd ..
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd ..
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
 0
-gmarquis@minishell $> cd test_dir/src
-gmarquis@minishell $> echo $?
+jeportie@minishell $> mkdir test_cd/test1
+mkdir: cannot create directory 'test_cd/test1': File exists
+1
+jeportie@minishell $> cd test_cd/test1
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated/test_dir/src
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated/test_cd/test1
 0
-gmarquis@minishell $> cd ../..
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd ../..
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
+0
+jeportie@minishell $> cd
+0
+jeportie@minishell $> pwd
+/root
+0
+jeportie@minishell $> cd -
+/root/projects/minishell/test_integrated
+0
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
+0
+jeportie@minishell $> cd ~
+0
+jeportie@minishell $> pwd
+/root
+0
+jeportie@minishell $> cd - -
+bash: cd: too many arguments
+1
+jeportie@minishell $> pwd
+/root
 0

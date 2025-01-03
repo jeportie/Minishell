@@ -1,12 +1,9 @@
 ls
-df
 df -h
-tree
 ps
 ps -e
 touch test
 echo test > test
-mkdir test_dir
 cat -e test
 expr $? + $?
 /bin/ls
@@ -15,4 +12,3 @@ expr $? + $?
 /bin/ls-l
 /usr/bin/cat-e
 rm test
-rm -rf test_dir

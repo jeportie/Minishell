@@ -1,25 +1,37 @@
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
 0
-gmarquis@minishell $> cd test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd test_dir
+bash: cd: test_dir: No such file or directory
+1
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated/test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd src
+bash: cd: src: No such file or directory
+1
+jeportie@minishell $> pwd
+/root/projects/minishell/test_integrated
 0
-gmarquis@minishell $> cd src
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd ../..
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated/test_dir/src
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects
 0
-gmarquis@minishell $> cd ../..
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd -
+/root/projects
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_integrated
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd 123
+/root/projects
+0
+jeportie@minishell $> pwd > test
+0
+jeportie@minishell $> cat < test
+/root/projects
+0
+jeportie@minishell $> pwd >> test
+0
+jeportie@minishell $> cat < test
+/root/projects
+/root/projects
 0

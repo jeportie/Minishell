@@ -1,94 +1,68 @@
-gmarquis@minishell $> echo hello > test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo hello > test
 0
-gmarquis@minishell $> cat -e < test
+jeportie@minishell $> cat -e < test
 hello$
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat < test > outfile1 > outfile2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < test > outfile1 > outfile2
 0
-gmarquis@minishell $> cat -e < outfile1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat -e < outfile1
 0
-gmarquis@minishell $> cat -e < outfile2
+jeportie@minishell $> cat -e < outfile2
 hello$
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm outfile1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm outfile1
 0
-gmarquis@minishell $> rm outfile2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm outfile2
 0
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm test
 0
-gmarquis@minishell $> echo hello > outfile2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo hello > outfile2
 0
-gmarquis@minishell $> export a=outfile2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> export a=outfile2
 0
-gmarquis@minishell $> cat < $a > outfile1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < $a > outfile1
 0
-gmarquis@minishell $> cat < outfile
+jeportie@minishell $> cat < outfile
 0
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat < outfile1
+jeportie@minishell $> cat < outfile1
 hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat < $a
+jeportie@minishell $> cat < $a
 hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm outfile1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm outfile1
 0
-gmarquis@minishell $> rm $a
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm $a
 0
-gmarquis@minishell $> pwd > test && echo hello >> test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd > test && echo hello >> test
 0
-gmarquis@minishell $> cat < test
-/root/projects/Minishell/test_integrated
+jeportie@minishell $> cat < test
+/root/projects/minishell/test_integrated
 hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm test
 0
-gmarquis@minishell $> echo "Hello" > file1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo "Hello" > file1
 0
-gmarquis@minishell $> cat file1
+jeportie@minishell $> cat file1
 Hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo ' World' >> file1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo ' World' >> file1
 0
-gmarquis@minishell $> cat < file1
+jeportie@minishell $> cat < file1
 Hello
  World
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat file1
+jeportie@minishell $> cat file1
 Hello
  World
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm file1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm file1
 0
-gmarquis@minishell $> echo test > out0 > out1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo test > out0 > out1
 0
-gmarquis@minishell $> cat < out0 > out2 -e < out1 > out3
+jeportie@minishell $> cat < out0 > out2 -e < out1 > out3
 echo $?
 cat < out1
 echo $?
