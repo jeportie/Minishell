@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 jeportie@minishell $> ls
 animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
+=======
+gmarquis@minishell $> ls
+animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
+gmarquis@minishell $> echo $?
+>>>>>>> first_review
 0
-jeportie@minishell $> cd test_dir
+gmarquis@minishell $> cd test_dir
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ls -l
+gmarquis@minishell $> ls -l
 total 4
+<<<<<<< HEAD
 -rw-r--r-- 1 root root    0 Dec 14 11:57 a1
 -rw-r--r-- 1 root root    0 Dec 14 11:57 a2
 -rw-r--r-- 1 root root    0 Dec 14 11:57 a3
@@ -14,9 +22,22 @@ total 4
 -rw-r--r-- 1 root root    0 Dec 14 11:57 b3
 -rw-r--r-- 1 root root    0 Dec 14 11:57 b4
 drwxr-xr-x 2 root root 4096 Dec 14 11:57 src
+=======
+-rw-r--r-- 1 root root    0 Dec 19 10:19 a1
+-rw-r--r-- 1 root root    0 Dec 19 10:19 a2
+-rw-r--r-- 1 root root    0 Dec 19 10:19 a3
+-rw-r--r-- 1 root root    0 Dec 19 10:19 a4
+-rw-r--r-- 1 root root    0 Dec 19 10:19 b1
+-rw-r--r-- 1 root root    0 Dec 19 10:19 b2
+-rw-r--r-- 1 root root    0 Dec 19 10:19 b3
+-rw-r--r-- 1 root root    0 Dec 19 10:19 b4
+drwxr-xr-x 2 root root 4096 Dec 19 10:19 src
+gmarquis@minishell $> echo $?
+>>>>>>> first_review
 0
-jeportie@minishell $> ls -la
+gmarquis@minishell $> ls -la
 total 12
+<<<<<<< HEAD
 drwxr-xr-x 3 root root 4096 Dec 14 11:57 .
 drwxr-xr-x 5 root root 4096 Jan  3 16:47 ..
 -rw-r--r-- 1 root root    0 Dec 14 11:57 a1
@@ -28,11 +49,26 @@ drwxr-xr-x 5 root root 4096 Jan  3 16:47 ..
 -rw-r--r-- 1 root root    0 Dec 14 11:57 b3
 -rw-r--r-- 1 root root    0 Dec 14 11:57 b4
 drwxr-xr-x 2 root root 4096 Dec 14 11:57 src
+=======
+drwxr-xr-x 3 root root 4096 Dec 19 10:19 .
+drwxr-xr-x 5 root root 4096 Dec 19 12:46 ..
+-rw-r--r-- 1 root root    0 Dec 19 10:19 a1
+-rw-r--r-- 1 root root    0 Dec 19 10:19 a2
+-rw-r--r-- 1 root root    0 Dec 19 10:19 a3
+-rw-r--r-- 1 root root    0 Dec 19 10:19 a4
+-rw-r--r-- 1 root root    0 Dec 19 10:19 b1
+-rw-r--r-- 1 root root    0 Dec 19 10:19 b2
+-rw-r--r-- 1 root root    0 Dec 19 10:19 b3
+-rw-r--r-- 1 root root    0 Dec 19 10:19 b4
+drwxr-xr-x 2 root root 4096 Dec 19 10:19 src
+gmarquis@minishell $> echo $?
+>>>>>>> first_review
 0
-jeportie@minishell $> cat -e .
+gmarquis@minishell $> cat -e .
 cat: .: Is a directory
+gmarquis@minishell $> echo $?
 1
-jeportie@minishell $> cat /etc/passwd
+gmarquis@minishell $> cat /etc/passwd
 root:x:0:0:root:/root:/usr/bin/zsh
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
 bin:x:2:2:bin:/bin:/usr/sbin/nologin
@@ -53,14 +89,18 @@ _apt:x:42:65534::/nonexistent:/usr/sbin/nologin
 nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
 ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
 messagebus:x:100:102::/nonexistent:/usr/sbin/nologin
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> which grep
+gmarquis@minishell $> which grep
 /usr/bin/grep
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> /bin/echo "External echo"
+gmarquis@minishell $> /bin/echo "External echo"
 External echo
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> grep
+gmarquis@minishell $> grep
 Usage: grep [OPTION]... PATTERNS [FILE]...
 Try 'grep --help' for more information.
+gmarquis@minishell $> echo $?
 2

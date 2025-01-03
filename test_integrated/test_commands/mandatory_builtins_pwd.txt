@@ -5,3 +5,9 @@ cd src
 pwd
 cd ../..
 pwd
+pwd -
+pwd 123
+pwd > test
+cat < test
+pwd >> test
+cat < test

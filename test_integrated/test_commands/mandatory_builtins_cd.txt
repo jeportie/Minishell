@@ -1,9 +1,19 @@
 pwd
-cd test_dir
+mkdir test_cd
+cd test_cd
 pwd
 cd ..
 pwd
-cd test_dir/src
+mkdir test_cd/test1
+cd test_cd/test1
 pwd
 cd ../..
+pwd
+cd
+pwd
+cd -
+pwd
+cd ~
+pwd
+cd - -
 pwd

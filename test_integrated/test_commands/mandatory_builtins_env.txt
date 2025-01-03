@@ -1,5 +1,12 @@
-env | grep USER | grep -v PS1
-export TESTVAR=hello
-env | grep TESTVAR
-unset TESTVAR
-env | grep TESTVAR
+env
+env -
+env 1
+env --
+env - -
+export a=ok b= c
+env
+export a= b=ok c=ok
+env
+unset a b c
+env
+env | grep USER

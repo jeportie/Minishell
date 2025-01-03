@@ -36,6 +36,19 @@ typedef struct s_token
 	struct s_token	*next;
 }			t_token;
 
+typedef struct s_sort_token_helper
+{
+	t_token	*current;
+	t_token	*head;
+	t_token	*top;
+	t_token	*prev;
+	bool	redir;
+	bool	trigger;
+	bool	final_path;
+	int		i;
+	int		len;
+}				t_sort_token_helper;
+
 typedef struct s_operator_map
 {
 	const char		*op_str;

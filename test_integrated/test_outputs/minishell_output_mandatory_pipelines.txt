@@ -1,15 +1,19 @@
-jeportie@minishell $> echo Hello | cat -e
+gmarquis@minishell $> echo Hello | cat -e
 Hello$
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo "Hello" | cat -e
+gmarquis@minishell $> echo "Hello" | cat -e
 Hello$
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ls | grep "test"
+gmarquis@minishell $> ls | grep "test"
 run_test.sh
 test_commands
 test_dir
 test_outputs
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo "line1\nline2" | wc -l
+gmarquis@minishell $> echo "line1\nline2" | wc -l
 1
+gmarquis@minishell $> echo $?
 0

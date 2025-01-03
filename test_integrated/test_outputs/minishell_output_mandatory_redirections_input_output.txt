@@ -1,56 +1,148 @@
-jeportie@minishell $> echo hello > test
+gmarquis@minishell $> echo hello > test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat -e test
+gmarquis@minishell $> cat -e < test
 hello$
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat < test > outfile1 > outfile2
+gmarquis@minishell $> cat < test > outfile1 > outfile2
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat -e outfile1
+gmarquis@minishell $> cat -e < outfile1
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat -e outfile2
+gmarquis@minishell $> cat -e < outfile2
 hello$
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> rm outfile1
+gmarquis@minishell $> rm outfile1
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> rm outfile2
+gmarquis@minishell $> rm outfile2
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> rm test
+gmarquis@minishell $> rm test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo hello > Makefile
+gmarquis@minishell $> echo hello > outfile2
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> export a=Makefile
+gmarquis@minishell $> export a=outfile2
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat < $a > outfile1
+gmarquis@minishell $> cat < $a > outfile1
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat outfile
-cat: outfile: No such file or directory
-1
-jeportie@minishell $> rm outfile1
+gmarquis@minishell $> cat < outfile
 0
-jeportie@minishell $> rm Makefile
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> pwd > test && echo hello >> test
-0
-jeportie@minishell $> cat test
-/root/projects/minishell/test_integrated
+gmarquis@minishell $> cat < outfile1
 hello
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> rm test
+gmarquis@minishell $> cat < $a
+hello
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo "Hello" > file1
+gmarquis@minishell $> rm outfile1
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat file1
+gmarquis@minishell $> rm $a
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> pwd > test && echo hello >> test
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat < test
+/root/projects/Minishell/test_integrated
+hello
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> rm test
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo "Hello" > file1
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat file1
 Hello
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo "World" >> file1
+gmarquis@minishell $> echo ' World' >> file1
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat file1
+gmarquis@minishell $> cat < file1
 Hello
-World
+ World
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat < file1
+gmarquis@minishell $> cat file1
 Hello
-World
+ World
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> rm file1
+gmarquis@minishell $> rm file1
+gmarquis@minishell $> echo $?
 0
+gmarquis@minishell $> echo test > out0 > out1
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat < out0 > out2 -e < out1 > out3
+echo $?
+cat < out1
+echo $?
+cat < out2
+echo $?
+cat < out3
+echo $?
+chmod 000 out3
+echo $?
+cat < out3
+echo $?
+chmod 777 out3
+echo $?
+chmod 000 out1
+echo $?
+cat < out0 > out2 -e < out1 > out3
+echo $?
+chmod 777 out1
+echo $?
+rm out0
+echo $?
+rm out1
+echo $?
+rm out2
+echo $?
+rm out3
+echo $?
+tree > out && ../../../usr/bin/ps >> out -e
+echo $?
+/usr/bin/ls -l | cat -e >> out
+echo $?
+chmod 000 out
+echo $?
+df -h > out
+echo $?
+chmod 777 out
+echo $?
+ps -e >> out
+echo $?
+cat < out -e
+echo $?
+ls > out -l -a && df -h >> out
+echo $?
+ps >> out -e || df > out -h
+echo $?
+cat < out -e | wc > out -l
+echo $?
+/bin/cat -e < Makefile | wc -l > out
+echo $?
+cat -e < Makefile | /usr/bin/wc > outfile -l
+echo $?
+cat -e < out
+echo $?
+chmod 000 out
+echo $?
+rm out || chmod 777 out && rm out
+echo $?

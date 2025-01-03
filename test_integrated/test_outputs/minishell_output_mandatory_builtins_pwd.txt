@@ -1,18 +1,25 @@
-jeportie@minishell $> pwd
-/root/projects/minishell/test_integrated
+gmarquis@minishell $> pwd
+/root/projects/Minishell/test_integrated
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cd test_dir
+gmarquis@minishell $> cd test_dir
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> pwd
-/root/projects/minishell/test_integrated/test_dir
+gmarquis@minishell $> pwd
+/root/projects/Minishell/test_integrated/test_dir
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cd src
+gmarquis@minishell $> cd src
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> pwd
-/root/projects/minishell/test_integrated/test_dir/src
+gmarquis@minishell $> pwd
+/root/projects/Minishell/test_integrated/test_dir/src
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cd ../..
+gmarquis@minishell $> cd ../..
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> pwd
-/root/projects/minishell/test_integrated
+gmarquis@minishell $> pwd
+/root/projects/Minishell/test_integrated
+gmarquis@minishell $> echo $?
 0

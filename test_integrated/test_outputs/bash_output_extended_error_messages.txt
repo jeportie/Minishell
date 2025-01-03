@@ -1,13 +1,17 @@
-jeportie@minishell $> cd nonexistent_dir
+gmarquis@minishell $> cd nonexistent_dir
 bash: cd: nonexistent_dir: No such file or directory
+gmarquis@minishell $> echo $?
 1
-jeportie@minishell $> ls nonexistingfile
+gmarquis@minishell $> ls nonexistingfile
 ls: cannot access 'nonexistingfile': No such file or directory
+gmarquis@minishell $> echo $?
 2
-jeportie@minishell $> cat < nonexistent_file
+gmarquis@minishell $> cat < nonexistent_file
 bash: nonexistent_file: No such file or directory
+gmarquis@minishell $> echo $?
 1
-jeportie@minishell $> grep
+gmarquis@minishell $> grep
 Usage: grep [OPTION]... PATTERNS [FILE]...
 Try 'grep --help' for more information.
+gmarquis@minishell $> echo $?
 2

@@ -2,3 +2,5 @@ echo Hello | cat -e
 echo "Hello" | cat -e
 ls | grep "test"
 echo "line1\nline2" | wc -l
+df -h | wc -l | cat -e
+sleep 10 | sleep 5 | sleep 1

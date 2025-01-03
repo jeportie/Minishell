@@ -1,12 +1,18 @@
-echo hello
 ls
+df
+df -h
+tree
+ps
+ps -e
 touch test
-echo hello > test
+echo test > test
+mkdir test_dir
 cat -e test
-rm test
 expr $? + $?
 /bin/ls
-/usr/bin/cat lib
-/usr/bin/cat -e lib
+/usr/bin/cat test
+/usr/bin/cat -e test
 /bin/ls-l
 /usr/bin/cat-e
+rm test
+rm -rf test_dir

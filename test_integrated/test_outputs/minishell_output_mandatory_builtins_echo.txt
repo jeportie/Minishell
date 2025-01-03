@@ -1,35 +1,47 @@
-jeportie@minishell $> echo
+gmarquis@minishell $> echo
 
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo Hello
+gmarquis@minishell $> echo Hello
 Hello
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo je suis un test
+gmarquis@minishell $> echo je suis un test
 je suis un test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo "je suis un test"
+gmarquis@minishell $> echo "je suis un test"
 je suis un test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo 'je suis un test'
+gmarquis@minishell $> echo 'je suis un test'
 je suis un test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo "je suis" "un test"
+gmarquis@minishell $> echo "je suis" "un test"
 je suis un test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo 'je suis "un test"'
+gmarquis@minishell $> echo 'je suis "un test"'
 je suis "un test"
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo "Hello World"
+gmarquis@minishell $> echo "Hello World"
 Hello World
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo 'Hello World'
+gmarquis@minishell $> echo 'Hello World'
 Hello World
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo "This is" "a test"
+gmarquis@minishell $> echo "This is" "a test"
 This is a test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo 'He said: "Hello"'
+gmarquis@minishell $> echo 'He said: "Hello"'
 He said: "Hello"
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo -n "No newline"
+gmarquis@minishell $> echo -n "No newline"
+No newlinegmarquis@minishell $> echo $?
 0

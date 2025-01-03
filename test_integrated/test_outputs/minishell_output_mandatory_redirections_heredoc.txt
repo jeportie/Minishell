@@ -1,6 +1,7 @@
-jeportie@minishell $> cat << EOF
+gmarquis@minishell $> cat << EOF
 > hello
 > EOF
+<<<<<<< HEAD
 echo $?
 echo $?
 cat << GREG
@@ -34,12 +35,49 @@ echo $?
 cat << DELIM
 cat << DELIM
 Multiple
+=======
+hello
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat << GREG
+> test
+> greg
+> GREG
+test
+greg
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat << jeportie
+> test
+> jerome
+> jeportie
+test
+jerome
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat << EOF
+> Hello from heredoc
+> EOF
+Hello from heredoc
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat << DELIM
+> Multiple
+> lines
+> in heredoc
+> DELIM
+>>>>>>> first_review
 Multiple
 lines
 lines
 in heredoc
+<<<<<<< HEAD
 in heredoc
 DELIM
 DELIM
 echo $?
 echo $?
+=======
+gmarquis@minishell $> echo $?
+0
+>>>>>>> first_review
