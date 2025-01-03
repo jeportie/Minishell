@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/26 11:06:03 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/03 16:43:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,15 @@ static t_redir_type	ms_node_type_to_redir_type(t_node_type ntype)
 	return (-1);
 }
 
+static bool	st_is_redir(t_ast_node *node)
+{
+	if (node->type == NODE_REDIRECT_IN || node->type == NODE_REDIRECT_OUT
+		|| node->type == NODE_REDIRECT_APPEND
+		|| node->type == NODE_REDIRECT_HEREDOC)
+		return (true);
+	return (false);
+}
+
 t_redir	*ms_collect_redirections(t_ast_node *node, t_gc *gcl, t_shell *shell)
 {
 	t_redir		*redir_list;
@@ -48,10 +57,7 @@ t_redir	*ms_collect_redirections(t_ast_node *node, t_gc *gcl, t_shell *shell)
 	char		*filename;
 
 	redir_list = NULL;
-	while (node && (node->type == NODE_REDIRECT_IN
-			|| node->type == NODE_REDIRECT_OUT
-			|| node->type == NODE_REDIRECT_APPEND
-			|| node->type == NODE_REDIRECT_HEREDOC))
+	while (node && st_is_redir(node))
 	{
 		ntype = node->type;
 		if (ntype == NODE_REDIRECT_HEREDOC)
@@ -106,7 +112,8 @@ int	ms_apply_redirections(t_redir *redir_list)
 		fd = ms_open_redir_file(current->type, current->filename);
 		if (fd == -1)
 		{
-			dprintf(STDERR_FILENO, "minishell: Failed to open %s\n", current->filename);
+			dprintf(STDERR_FILENO, "minishell: Failed to open %s\n",
+				current->filename);
 			return (-1);
 		}
 		if (current->type == REDIR_IN || current->type == REDIR_HEREDOC)
@@ -118,8 +125,6 @@ int	ms_apply_redirections(t_redir *redir_list)
 				return (-1);
 			}
 			close(fd);
-			//if (current->type == REDIR_HEREDOC)
-			//	unlink(current->filename);
 		}
 		else if (current->type == REDIR_OUT || current->type == REDIR_APPEND)
 		{
@@ -135,3 +140,8 @@ int	ms_apply_redirections(t_redir *redir_list)
 	}
 	return (0);
 }
+
+/*
+			//if (current->type == REDIR_HEREDOC)
+			//	unlink(current->filename);
+*/

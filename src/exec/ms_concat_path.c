@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:57:10 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/27 21:12:40 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/02 17:08:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,37 +59,4 @@ int	init_io(int new_in, int new_out, int new_err)
 			return (0);
 	}
 	return (1);
-}
-
-int	safe_pipe(int pipefd[2])
-{
-	if (pipe(pipefd) == -1)
-	{
-		ft_dprintf(STDERR_FILENO, "minishell: error: pipe failed\n");
-		return (-1);
-	}
-	return (0);
-}
-
-int	safe_open(const char *filepath, int flags, int mode)
-{
-	int		fd;
-
-	fd = open(filepath, flags, mode);
-	if (fd == -1)
-	{
-		ft_dprintf(STDERR_FILENO, "Open failed\n");
-		return (-1);
-	}
-	return (fd);
-}
-
-int	safe_close(int fd)
-{
-	if (close(fd) == -1)
-	{
-		ft_dprintf(STDERR_FILENO, "Close failed\n");
-		return (-1);
-	}
-	return (fd);
 }

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/27 21:11:04 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:33:20 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ typedef struct s_here_helper
 	int		fd;
 }				t_here_helper;
 
+void	init_context(t_exec_context *data, t_shell *shell);
+
 int		ms_execute_ast(t_ast_node *node, t_exec_context *context);
 int		ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,
 			t_gc *gcl);
@@ -100,7 +102,8 @@ int		ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
 int		ms_execute_pipeline(t_ast_node *node, t_exec_context *context);
 
 int		ms_execute_logical(t_ast_node *node, t_exec_context *context);
-int		ms_execute_subshell(t_subshell_node *subshell_node, t_exec_context *context);
+int		ms_execute_subshell(t_subshell_node *subshell_node,
+			t_exec_context *context);
 
 t_redir	*ms_collect_redirections(t_ast_node *node, t_gc *gcl, t_shell *shell);
 int		ms_apply_redirections(t_redir *redir_list);
@@ -110,6 +113,7 @@ char	*ms_concat_path(const char *path, const char *command, t_gc *gcl);
 
 int		ms_handle_error(const char *msg, int exit_status, t_gc *gcl);
 
+void	ms_preprocess_heredocs(t_exec_context *context);
 int		ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context);
 void	st_heredoc_child_process(t_shell *shell,
 			char *delimiter, char *filename);

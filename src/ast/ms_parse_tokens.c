@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:31:06 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/18 23:14:30 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:47:21 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,28 @@ t_ast_node	*ms_parse_tokens(t_token *tokens, t_shell *shell, t_gc *gcl)
 		return (NULL);
 	}
 	return (ast_root);
+}
+
+void	print_ast_delimit(t_ast_node *root)
+{
+	int	fd;
+
+	if (DEBUG == 0)
+		return ;
+	fd = open(PRINT_INFOS, O_WRONLY | O_APPEND, COPY_MODE);
+	ft_dprintf(fd, "------------------------------------------------");
+	ft_dprintf(fd, "--------------------------------\nAST:\n");
+	print_ast(root, 0, "", 0);
+	ft_dprintf(fd, "-------------------------------------------"
+		"---------------------");
+	ft_dprintf(fd, "----------------\n");
+	ft_dprintf(fd, "Process Manager - Active Processes:\n");
+	ft_dprintf(fd, "Title\t\tPID\tParent PID\tLevel"
+		"\tFD_in\tFD_out\tFD_err\tHeredoc\n");
+	ft_dprintf(fd, "-------------------------"
+		"---------------------------------------");
+	ft_dprintf(fd, "----------------\n");
+	close(fd);
 }
 
 /*

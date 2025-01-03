@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/27 21:03:44 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/02 17:03:09 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ static void	ms_parent_process(pid_t pid, t_exec_context *context)
 	context->redir_list = NULL;
 }
 
-int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl)
+int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
+			t_gc *gcl)
 {
 	char *(cmd_path) = ms_parse_cmd_path(cmd_node->argv[0], context->shell);
 	if (cmd_path == NULL)
@@ -71,11 +72,12 @@ int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl
 	ms_init_parent_cmd_signal();
 	if (pid == 0)
 	{
-	    if (context->redir_list && ms_apply_redirections(context->redir_list) != 0)
-	        exit(1);
-	    ms_child_process(cmd_node, context, cmd_path, gcl);
+		if (context->redir_list
+			&& ms_apply_redirections(context->redir_list) != 0)
+			exit(1);
+		ms_child_process(cmd_node, context, cmd_path, gcl);
 	}
 	else
-	    ms_parent_process(pid, context);
+		ms_parent_process(pid, context);
 	return (ms_init_std_signal(), context->shell->error_code);
 }

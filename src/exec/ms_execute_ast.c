@@ -6,11 +6,26 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/27 21:00:17 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:33:46 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
+
+void	init_context(t_exec_context *data, t_shell *shell)
+{
+	data->stdin_fd = STDIN_FILENO;
+	data->stdout_fd = STDOUT_FILENO;
+	data->stderr_fd = STDERR_FILENO;
+	data->shell = shell;
+	data->is_subprocess = false;
+	data->exit_status = 0;
+	data->child_lvl = 0;
+	data->redirected = false;
+	data->original_stdin = STDIN_FILENO;
+	data->original_stdout = STDOUT_FILENO;
+	data->tmpfile_counter = 0;
+}
 
 bool	is_builtin_that_must_run_in_parent(t_cmd_node *cmd_node)
 {

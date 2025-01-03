@@ -10,4 +10,4 @@ TESTVAR=hello
 jeportie@minishell $> unset TESTVAR
 0
 jeportie@minishell $> env | grep TESTVAR
-0
+1

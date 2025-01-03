@@ -6,14 +6,15 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:59:01 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/19 16:41:04 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/03 16:19:43 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ast.h"
 #include "../../include/tokenize.h"
 
-static t_ast_node	*in_subshell(t_token **current_token, t_shell *shell, t_gc *gcl)
+static t_ast_node	*in_subshell(t_token **current_token, t_shell *shell,
+		t_gc *gcl)
 {
 	t_ast_node	*node;
 
