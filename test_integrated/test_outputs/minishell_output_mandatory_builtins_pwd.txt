@@ -2,36 +2,34 @@ jeportie@minishell $> pwd
 /root/projects/minishell/test_integrated
 0
 jeportie@minishell $> cd test_dir
-minishell: cd: test_dir: No such file or directory
 0
 jeportie@minishell $> pwd
-/root/projects/minishell/test_integrated
+/root/projects/minishell/test_integrated/test_dir
 0
 jeportie@minishell $> cd src
-minishell: cd: src: No such file or directory
 0
 jeportie@minishell $> pwd
-/root/projects/minishell/test_integrated
+/root/projects/minishell/test_integrated/test_dir/src
 0
 jeportie@minishell $> cd ../..
 0
 jeportie@minishell $> pwd
-/root/projects
+/root/projects/minishell/test_integrated
 0
 jeportie@minishell $> pwd -
-/root/projects
+/root/projects/minishell/test_integrated
 0
 jeportie@minishell $> pwd 123
-/root/projects
+/root/projects/minishell/test_integrated
 0
 jeportie@minishell $> pwd > test
 0
 jeportie@minishell $> cat < test
-/root/projects
+/root/projects/minishell/test_integrated
 0
 jeportie@minishell $> pwd >> test
 0
 jeportie@minishell $> cat < test
-/root/projects
-/root/projects
+/root/projects/minishell/test_integrated
+/root/projects/minishell/test_integrated
 0

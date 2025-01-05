@@ -52,7 +52,7 @@ _=--
 jeportie@minishell $> env - -
 minishell: env: ‘-’: No such file or directory
 0
-jeportie@minishell $> export a=ok b= c
+jeportie@minishell $> export a=ok b=c
 0
 jeportie@minishell $> env
 LSCOLORS=Gxfxcxdxbxegedabagacad
@@ -77,7 +77,7 @@ DEFAULT_USER=vjej
 OLDPWD=/root/projects/minishell
 _=env
 a=ok
-b=
+b=c
 0
 jeportie@minishell $> export a= b=ok c=ok
 0

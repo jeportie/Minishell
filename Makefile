@@ -17,6 +17,7 @@ NAME = minishell
 SRC = \
   src/exec/ms_execute_command.c \
   src/exec/ms_concat_path.c \
+  src/exec/ms_apply_redirections.c \
   src/exec/ms_execute_external.c \
   src/exec/ms_handle_error.c \
   src/exec/ms_execute_subshell.c \
@@ -26,6 +27,7 @@ SRC = \
   src/exec/ms_heredoc_child.c \
   src/exec/ms_execute_ast.c \
   src/exec/ms_heredoc_mode.c \
+  src/exec/ms_handle_pipeline.c \
   src/exec/ms_execute_logical.c \
   src/exec/ms_execute_pipeline.c \
   src/signal/ms_init_child_cmd_signal.c \

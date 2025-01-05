@@ -20,15 +20,14 @@ jeportie@minishell $> pwd
 /root/projects/minishell/test_integrated
 0
 jeportie@minishell $> cd test_dir
-bash: cd: test_dir: No such file or directory
-1
+0
 jeportie@minishell $> pwd
-/root/projects/minishell/test_integrated
+/root/projects/minishell/test_integrated/test_dir
 0
 jeportie@minishell $> cd ..
 0
 jeportie@minishell $> pwd
-/root/projects/minishell
+/root/projects/minishell/test_integrated
 0
 jeportie@minishell $> echo "Testing echo builtin"
 Testing echo builtin

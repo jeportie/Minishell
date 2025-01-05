@@ -17,7 +17,6 @@ run_bash.expect
 run_minishell.expect
 run_test.sh
 test_2.txt
-test_cd
 test_commands
 test_dir
 test_outputs
@@ -34,7 +33,6 @@ run_minishell.expect$
 run_test.sh$
 test$
 test_2.txt$
-test_cd$
 test_commands$
 test_dir$
 test_outputs$

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:39:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 16:21:22 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/05 17:57:29 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,18 @@ void	print_token(t_token *head)
 		current = current->next;
 		i++;
 	}
+	close(fd);
+}
+
+void	print_token_delimit(t_token *tokens)
+{
+	int	fd;
+
+	if (DEBUG == 0)
+		return ;
+	fd = open(PRINT_INFOS, O_WRONLY | O_TRUNC | O_CREAT, COPY_MODE);
+	ft_dprintf(fd, "-----------------------------------------------------");
+	ft_dprintf(fd, "---------------------------\nTOKENS:\n");
+	print_token(tokens);
 	close(fd);
 }

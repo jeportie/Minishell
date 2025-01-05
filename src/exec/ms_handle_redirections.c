@@ -6,14 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/03 16:43:38 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:01:49 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 #include "../../include/expand.h"
-#include <fcntl.h>
-#include <unistd.h>
 
 static t_redir	*ms_add_redir(t_redir **head, t_redir_type type,
 	char *filename, t_gc *gcl)
@@ -79,7 +77,7 @@ t_redir	*ms_collect_redirections(t_ast_node *node, t_gc *gcl, t_shell *shell)
 	return (redir_list);
 }
 
-static int	ms_open_redir_file(t_redir_type type, const char *filename)
+int	ms_open_redir_file(t_redir_type type, const char *filename)
 {
 	int		flags;
 	int		fd;
@@ -100,48 +98,3 @@ static int	ms_open_redir_file(t_redir_type type, const char *filename)
 	}
 	return (fd);
 }
-
-int	ms_apply_redirections(t_redir *redir_list)
-{
-	t_redir	*current;
-	int		fd;
-
-	current = redir_list;
-	while (current)
-	{
-		fd = ms_open_redir_file(current->type, current->filename);
-		if (fd == -1)
-		{
-			dprintf(STDERR_FILENO, "minishell: Failed to open %s\n",
-				current->filename);
-			return (-1);
-		}
-		if (current->type == REDIR_IN || current->type == REDIR_HEREDOC)
-		{
-			if (dup2(fd, STDIN_FILENO) == -1)
-			{
-				dprintf(STDERR_FILENO, "minishell: dup2 error on STDIN\n");
-				close(fd);
-				return (-1);
-			}
-			close(fd);
-		}
-		else if (current->type == REDIR_OUT || current->type == REDIR_APPEND)
-		{
-			if (dup2(fd, STDOUT_FILENO) == -1)
-			{
-				dprintf(STDERR_FILENO, "minishell: dup2 error on STDOUT\n");
-				close(fd);
-				return (-1);
-			}
-			close(fd);
-		}
-		current = current->next;
-	}
-	return (0);
-}
-
-/*
-			//if (current->type == REDIR_HEREDOC)
-			//	unlink(current->filename);
-*/

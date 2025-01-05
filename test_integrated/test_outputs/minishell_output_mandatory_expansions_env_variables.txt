@@ -20,3 +20,4 @@ test
 jeportie@minishell $> echo $INVALIDE
 
 0
+free(): invalid next size (fast)

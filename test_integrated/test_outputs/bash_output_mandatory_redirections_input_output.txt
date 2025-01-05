@@ -118,18 +118,13 @@ tmpfs           3.9G     0  3.9G   0% /proc/scsi$
 tmpfs           3.9G     0  3.9G   0% /sys/firmware$
 tmpfs           3.9G     0  3.9G   0% /sys/devices/virtual/powercap$
     PID TTY          TIME CMD$
-      1 pts/0    00:00:02 zsh$
-   1343 ?        00:00:00 python3$
-   1363 ?        00:00:00 clangd.main$
-   2852 ?        00:00:00 python3$
-   2872 ?        00:00:00 clangd.main$
-   4820 ?        00:00:00 python3$
-   4840 ?        00:00:01 clangd.main$
-  11328 pts/0    00:00:00 run_test.sh$
-  11330 pts/0    00:00:00 python3$
-  12684 pts/0    00:00:00 run_bash.expect$
-  12685 pts/1    00:00:00 bash$
-  12729 pts/1    00:00:00 ps$
+      1 pts/0    00:00:03 zsh$
+  14930 ?        00:00:00 python3$
+  16324 pts/0    00:00:00 run_test.sh$
+  16326 pts/0    00:00:00 python3$
+  17672 pts/0    00:00:00 run_bash.expect$
+  17673 pts/1    00:00:00 bash$
+  17719 pts/1    00:00:00 ps$
 0
 jeportie@minishell $> ls > out -l -a && df -h >> out
 0

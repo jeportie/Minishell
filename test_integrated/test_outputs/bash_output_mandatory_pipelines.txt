@@ -6,9 +6,11 @@ Hello$
 0
 jeportie@minishell $> ls | grep "test"
 run_test.sh
+test
 test_2.txt
 test_cd
 test_commands
+test_dir
 test_outputs
 0
 jeportie@minishell $> echo "line1\nline2" | wc -l

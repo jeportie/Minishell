@@ -1,38 +1,33 @@
 jeportie@minishell $> ls
-animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_2.txt  test_cd  test_commands  test_outputs
+animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test	test_2.txt  test_cd  test_commands  test_dir  test_outputs
 0
 jeportie@minishell $> cd test_dir
-minishell: cd: test_dir: No such file or directory
 0
 jeportie@minishell $> ls -l
-total 68
--rwxr-xr-x 1 root root  5894 Jan  3 18:54 animated_banner.py
--rwxr-xr-x 1 root root  1674 Jan  3 18:54 noanimated_banner.py
--rwxr-xr-x 1 root root  1892 Jan  3 18:54 process_outputs.sh
--rwxr-xr-x 1 root root  1115 Jan  3 18:54 remove_escape_codes.sh
--rwxr-xr-x 1 root root  1839 Jan  3 18:54 run_bash.expect
--rwxr-xr-x 1 root root  1745 Jan  3 18:54 run_minishell.expect
--rwxr-xr-x 1 root root 22565 Jan  3 18:54 run_test.sh
--rw-r--r-- 1 root root     2 Jan  3 19:26 test_2.txt
-drwxr-xr-x 3 root root  4096 Jan  3 19:15 test_cd
-drwxr-xr-x 2 root root  4096 Jan  3 19:04 test_commands
-drwxr-xr-x 2 root root  4096 Jan  3 19:28 test_outputs
+total 4
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 a1
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 a2
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 a3
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 a4
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 b1
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 b2
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 b3
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 b4
+drwxrwxr-x 2 ubuntu ubuntu 4096 Dec 27 21:27 src
 0
 jeportie@minishell $> ls -la
-total 76
-drwxr-xr-x  5 root   root    4096 Jan  3 19:27 .
-drwxrwxr-x 11 ubuntu ubuntu  4096 Jan  3 19:26 ..
--rwxr-xr-x  1 root   root    5894 Jan  3 18:54 animated_banner.py
--rwxr-xr-x  1 root   root    1674 Jan  3 18:54 noanimated_banner.py
--rwxr-xr-x  1 root   root    1892 Jan  3 18:54 process_outputs.sh
--rwxr-xr-x  1 root   root    1115 Jan  3 18:54 remove_escape_codes.sh
--rwxr-xr-x  1 root   root    1839 Jan  3 18:54 run_bash.expect
--rwxr-xr-x  1 root   root    1745 Jan  3 18:54 run_minishell.expect
--rwxr-xr-x  1 root   root   22565 Jan  3 18:54 run_test.sh
--rw-r--r--  1 root   root       2 Jan  3 19:26 test_2.txt
-drwxr-xr-x  3 root   root    4096 Jan  3 19:15 test_cd
-drwxr-xr-x  2 root   root    4096 Jan  3 19:04 test_commands
-drwxr-xr-x  2 root   root    4096 Jan  3 19:28 test_outputs
+total 12
+drwxrwxr-x 3 ubuntu ubuntu 4096 Dec 27 21:27 .
+drwxr-xr-x 6 root   root   4096 Jan  3 19:53 ..
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 a1
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 a2
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 a3
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 a4
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 b1
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 b2
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 b3
+-rw-rw-r-- 1 ubuntu ubuntu    0 Dec 27 21:27 b4
+drwxrwxr-x 2 ubuntu ubuntu 4096 Dec 27 21:27 src
 0
 jeportie@minishell $> cat -e .
 cat: .: Is a directory

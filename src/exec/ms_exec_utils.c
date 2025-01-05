@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:07:45 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/02 17:08:04 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:28:36 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,12 @@ int	safe_close(int fd)
 		return (-1);
 	}
 	return (fd);
+}
+
+bool	is_redirect_node(t_ast_node *node)
+{
+	return (node->type == NODE_REDIRECT_IN
+		|| node->type == NODE_REDIRECT_OUT
+		|| node->type == NODE_REDIRECT_APPEND
+		|| node->type == NODE_REDIRECT_HEREDOC);
 }

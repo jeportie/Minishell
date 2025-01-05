@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/02 16:33:20 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:34:56 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,35 +91,45 @@ typedef struct s_here_helper
 	int		fd;
 }				t_here_helper;
 
-void	init_context(t_exec_context *data, t_shell *shell);
+void		init_context(t_exec_context *data, t_shell *shell);
+bool		is_redirect_node(t_ast_node *node);
 
-int		ms_execute_ast(t_ast_node *node, t_exec_context *context);
-int		ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context,
-			t_gc *gcl);
-int		ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,
-			t_gc *gcl);
+int			ms_execute_ast(t_ast_node *node, t_exec_context *context);
+int			ms_execute_command(t_cmd_node *cmd_node,
+				t_exec_context *context, t_gc *gcl);
+int			ms_execute_external(t_cmd_node *cmd_node,
+				t_exec_context *context, t_gc *gcl);
 
-int		ms_execute_pipeline(t_ast_node *node, t_exec_context *context);
+int			ms_execute_pipeline(t_ast_node *node, t_exec_context *context);
+int			count_pipeline_commands(t_ast_node *node);
+t_ast_node	**collect_pipeline_commands(t_ast_node *node, int count, t_gc *gcl);
+int			**prepare_pipes(int num_commands, t_gc *gcl);
+void		pipe_process(pid_t *pids, int i, int num_commands,
+				t_ast_node *final_node, t_exec_context *context, int **pipes);
+pid_t		*ms_fork_pipeline_commands(t_ast_node **commands, int **pipes,
+				int num_commands, t_exec_context *context, t_gc *gcl);
 
-int		ms_execute_logical(t_ast_node *node, t_exec_context *context);
-int		ms_execute_subshell(t_subshell_node *subshell_node,
-			t_exec_context *context);
+int			ms_execute_logical(t_ast_node *node, t_exec_context *context);
+int			ms_execute_subshell(t_subshell_node *subshell_node,
+				t_exec_context *context);
 
-t_redir	*ms_collect_redirections(t_ast_node *node, t_gc *gcl, t_shell *shell);
-int		ms_apply_redirections(t_redir *redir_list);
+t_redir		*ms_collect_redirections(t_ast_node *node, t_gc *gcl,
+				t_shell *shell);
+int			ms_apply_redirections(t_redir *redir_list);
+int			ms_open_redir_file(t_redir_type type, const char *filename);
 
-char	*ms_parse_cmd_path(const char *command, t_shell *shell);
-char	*ms_concat_path(const char *path, const char *command, t_gc *gcl);
+char		*ms_parse_cmd_path(const char *command, t_shell *shell);
+char		*ms_concat_path(const char *path, const char *command, t_gc *gcl);
 
-int		ms_handle_error(const char *msg, int exit_status, t_gc *gcl);
+int			ms_handle_error(const char *msg, int exit_status, t_gc *gcl);
 
-void	ms_preprocess_heredocs(t_exec_context *context);
-int		ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context);
-void	st_heredoc_child_process(t_shell *shell,
-			char *delimiter, char *filename);
+void		ms_preprocess_heredocs(t_exec_context *context);
+int			ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context);
+void		st_heredoc_child_process(t_shell *shell,
+				char *delimiter, char *filename);
 
-int		init_io(int new_in, int new_out, int new_err);
-int		safe_pipe(int pipefd[2]);
-int		safe_open(const char *filepath, int flags, int mode);
-int		safe_close(int fd);
+int			init_io(int new_in, int new_out, int new_err);
+int			safe_pipe(int pipefd[2]);
+int			safe_open(const char *filepath, int flags, int mode);
+int			safe_close(int fd);
 #endif /* EXEC_H */
