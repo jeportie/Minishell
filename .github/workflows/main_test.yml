@@ -48,6 +48,5 @@ jobs:
       # Run Tests
       - name: Run Tests
         run: |
-          cd test_minishell/build
-          ctest --output-on-failure
-
+          cd test_integrated
+          ./run_test.sh
