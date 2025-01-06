@@ -6,15 +6,17 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:17:41 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 15:42:51 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/04 08:08:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ast.h"
+#include "../../include/minishell.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <fcntl.h>
 
 t_ast_node	*get_left_child(t_ast_node *node)
 {
@@ -73,7 +75,7 @@ char	*get_node_label(t_ast_node *node)
 		return ("[UNKNOWN]");
 }
 
-void	print_node_content(t_ast_node *node)
+void	print_node_content(t_ast_node *node, int fd)
 {
 	int			i;
 	t_cmd_node	cmd;
@@ -83,38 +85,37 @@ void	print_node_content(t_ast_node *node)
 	if (node->type == NODE_COMMAND)
 	{
 		cmd = node->data.command;
-		printf(" (");
+		ft_dprintf(fd, " (");
 		i = 0;
 		while (i < cmd.argc)
 		{
-			printf("%s", cmd.argv[i]);
+			ft_dprintf(fd, "%s", cmd.argv[i]);
 			if (i < cmd.argc - 1)
-				printf(", ");
+				ft_dprintf(fd, ", ");
 			i++;
 		}
-		printf(")");
+		ft_dprintf(fd, ")");
 	}
 	else if (node->type == NODE_REDIRECT_OUT || node->type == NODE_REDIRECT_IN
 		|| node->type == NODE_REDIRECT_APPEND)
-		printf(" (File: %s)", node->data.redirect.filename);
+		ft_dprintf(fd, " (File: %s)", node->data.redirect.filename);
 	else if (node->type == NODE_REDIRECT_HEREDOC)
-		printf(" (Delimiter: %s)", node->data.heredoc.delimiter);
+		ft_dprintf(fd, " (Delimiter: %s)", node->data.heredoc.delimiter);
 }
 
 void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
 {
-	char	new_prefix[256];
-
+	char (new_prefix)[256] = {0, };
 	if (node == NULL)
 		return ;
-	printf("%s", prefix);
-	print_branch(depth, is_left);
-	printf("%s", get_node_label(node));
-	print_node_content(node);
-	printf("\n");
-	int (single_branch) = (node->type == NODE_REDIRECT_OUT
-			|| node->type == NODE_REDIRECT_IN
-			|| node->type == NODE_REDIRECT_APPEND
+	int (fd) = open(PRINT_INFOS, O_WRONLY | O_APPEND, COPY_MODE);
+	ft_dprintf(fd, "%s", prefix);
+	print_branch(depth, is_left, fd);
+	ft_dprintf(fd, "%s", get_node_label(node));
+	print_node_content(node, fd);
+	ft_dprintf(fd, "\n");
+	int (single_branch) = (node->type == NODE_REDIRECT_OUT || node->type
+			== NODE_REDIRECT_IN || node->type == NODE_REDIRECT_APPEND
 			|| node->type == NODE_REDIRECT_HEREDOC
 			|| node->type == NODE_SUBSHELL);
 	if (!single_branch && is_left)
@@ -128,4 +129,5 @@ void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
 	}
 	else
 		print_ast(get_left_child(node), depth + 1, new_prefix, 0);
+	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:31:13 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/29 16:26:51 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 10:41:32 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 static t_gc *gcl;
 
+static t_shell shell;
+
 void setup(void)
 {
     gcl = gc_init();
@@ -32,6 +34,11 @@ void setup(void)
         perror("gc_init");
         exit(EXIT_FAILURE);
     }
+    shell.env_data = NULL;
+    shell.user_input = NULL;
+	shell.error_code = 1;
+	shell.interactive_mode = 0;
+    shell.gcl = gcl;
 }
 
 void teardown(void)
@@ -106,7 +113,7 @@ START_TEST(test_parse_simple_command)
     t_token *tokens = create_tokens(gcl, 1, TOKEN_WORD, "ls");
     t_token *current_token = tokens;
 
-    t_ast_node *ast = parse_command(&current_token, gcl);
+    t_ast_node *ast = parse_command(&current_token, &shell, gcl);
     
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_COMMAND);
@@ -125,7 +132,7 @@ START_TEST(test_parse_pipeline)
                                     TOKEN_WORD, "src");
     t_token *current_token = tokens;
 
-    t_ast_node *ast = parse_pipeline(&current_token, gcl);
+    t_ast_node *ast = parse_pipeline(&current_token, &shell, gcl);
     
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_PIPE);
@@ -150,7 +157,7 @@ START_TEST(test_parse_redirection)
                                     TOKEN_WORD, "output.txt");
     t_token *current_token = tokens;
 
-    t_ast_node *ast = parse_command(&current_token, gcl);
+    t_ast_node *ast = parse_command(&current_token, &shell, gcl);
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_REDIRECT_OUT);
 
@@ -173,7 +180,7 @@ START_TEST(test_parse_logical)
                                     TOKEN_WORD, "world");
     t_token *current_token = tokens;
 
-    t_ast_node *ast = parse_logical(&current_token, gcl);
+    t_ast_node *ast = parse_logical(&current_token, &shell, gcl);
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_AND);
 
@@ -198,7 +205,7 @@ START_TEST(test_parse_subshell)
                                     TOKEN_SUBSHELL_STOP, ")");
     t_token *current_token = tokens;
 
-    t_ast_node *ast = parse_subshell(&current_token, gcl);
+    t_ast_node *ast = parse_subshell(&current_token, &shell, gcl);
     
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_SUBSHELL);
@@ -217,7 +224,7 @@ START_TEST(test_parse_heredoc)
                                     TOKEN_WORD, "EOF");
     t_token *current_token = tokens;
 
-    t_ast_node *ast = parse_command(&current_token, gcl);
+    t_ast_node *ast = parse_command(&current_token, &shell, gcl);
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_REDIRECT_HEREDOC);
 
@@ -246,7 +253,7 @@ START_TEST(test_parse_complex_command)
                                     TOKEN_SUBSHELL_STOP, ")");
     t_token *current_token = tokens;
 
-    t_ast_node *ast = parse_logical(&current_token, gcl);
+    t_ast_node *ast = parse_logical(&current_token, &shell, gcl);
     ck_assert_ptr_nonnull(ast);
     ck_assert_int_eq(ast->type, NODE_AND);
 
@@ -280,7 +287,7 @@ START_TEST(test_parse_syntax_error)
                                     TOKEN_PIPE, "|");
     t_token *current_token = tokens;
 
-    t_ast_node *ast = parse_pipeline(&current_token, gcl);
+    t_ast_node *ast = parse_pipeline(&current_token, &shell, gcl);
     ck_assert_ptr_null(ast);
 }
 END_TEST
@@ -293,7 +300,7 @@ START_TEST(test_parse_unexpected_token)
                                     TOKEN_WORD, "hello");
     t_token *current_token = tokens;
 
-    t_ast_node *ast = parse_logical(&current_token, gcl);
+    t_ast_node *ast = parse_logical(&current_token, &shell, gcl);
     ck_assert_ptr_null(ast);
 }
 END_TEST
@@ -313,7 +320,7 @@ START_TEST(test_parse_empty_input)
         }
 
         t_token *current_token = NULL;
-        t_ast_node *ast = ms_parse_tokens(current_token, child_gcl);
+        t_ast_node *ast = ms_parse_tokens(current_token, &shell, child_gcl);
         if (ast != NULL)
         {
             gc_cleanup(child_gcl);

@@ -1,0 +1,9 @@
+ls
+cd test_dir
+ls -l
+ls -la
+cat -e .
+cat /etc/passwd
+which grep
+/bin/echo "External echo"
+grep

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 13:25:19 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 16:31:21 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/04 13:25:19 by gmarquis          #+#    #+#             */
+/*   Updated: 2024/12/04 13:49:54 by gmarquis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int	ms_unset(t_cmd_node *cmd_node, t_exec_context *context)
 				st_unset_utils(context, prev, current);
 				break ;
 			}
-			else if (!ft_strncmp("OLDPWD", cmd_node->argv[i], 7))
-				context->shell->env_data->oldpwd = 0;
 			prev = current;
 			current = current->next;
 		}

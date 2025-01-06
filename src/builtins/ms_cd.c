@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 13:20:22 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 16:47:18 by jeportie         ###   ########.fr       */
+/*   Created: 2024/11/04 13:20:22 by gmarquis          #+#    #+#             */
+/*   Updated: 2024/12/10 13:32:45 by gmarquis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static int	st_none_chdir(t_shell *shell)
 
 	tmp_env = shell->env_data->env;
 	cwd = getcwd(NULL, 0);
-	gc_register(cwd, shell->gcl);
 	if (cwd)
 	{
 		pwd = ms_get_env_value(tmp_env, "PWD", shell->error_code);
 		gc_unlock(pwd, shell->gcl);
 		ms_set_env_value(shell, "OLDPWD", pwd);
 		ms_set_env_value(shell, "PWD", cwd);
+		free (cwd);
 		return (0);
 	}
 	else
@@ -56,11 +56,11 @@ static char	*st_cd_with_option(char *cd, t_shell *shell, char *argv)
 					shell->error_code);
 			if (!cd)
 				return (ft_dprintf(2, "minishell: cd: OLDPWD not set\n"), NULL);
-			ft_printf("%s\n", cd);
+			ft_dprintf(1, "%s\n", cd);
 		}
 	}
 	if (!cd)
-		cd = ft_strdup(argv);
+		cd = gc_strdup(argv, shell->gcl);
 	if (!cd)
 		echec_malloc(shell->gcl, "cd");
 	return (cd);
@@ -87,10 +87,6 @@ int	ms_cd(t_cmd_node *cmd_node, t_shell *shell)
 		ft_dprintf(2, "minishell: cd: %s: No such file or directory\n",
 			cmd_node->argv[1]);
 	else
-	{
-		if (cmd_node->argc == 2)
-			free(cd);
 		return (st_none_chdir(shell));
-	}
 	return (0);
 }

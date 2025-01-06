@@ -1,0 +1,59 @@
+jeportie@minishell $> ls
+animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_2.txt  test_commands  test_dir  test_outputs
+0
+jeportie@minishell $> df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay         457G   71G  363G  17% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/sda2       457G   71G  363G  17% /root/.ssh
+tmpfs           3.9G     0  3.9G   0% /proc/asound
+tmpfs           3.9G     0  3.9G   0% /proc/acpi
+tmpfs           3.9G     0  3.9G   0% /proc/scsi
+tmpfs           3.9G     0  3.9G   0% /sys/firmware
+tmpfs           3.9G     0  3.9G   0% /sys/devices/virtual/powercap
+0
+jeportie@minishell $> ps
+    PID TTY          TIME CMD
+  17217 pts/1    00:00:00 bash
+  17223 pts/1    00:00:00 ps
+0
+jeportie@minishell $> ps -e
+    PID TTY          TIME CMD
+      1 pts/0    00:00:03 zsh
+   4820 ?        00:00:00 python3
+   4840 ?        00:00:01 clangd.main
+  14930 ?        00:00:00 python3
+  16324 pts/0    00:00:00 run_test.sh
+  16326 pts/0    00:00:00 python3
+  17216 pts/0    00:00:00 run_bash.expect
+  17217 pts/1    00:00:00 bash
+  17224 pts/1    00:00:00 ps
+0
+jeportie@minishell $> touch test
+0
+jeportie@minishell $> echo test > test
+0
+jeportie@minishell $> cat -e test
+test$
+0
+jeportie@minishell $> expr $? + $?
+0
+1
+jeportie@minishell $> /bin/ls
+animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test	test_2.txt  test_commands  test_dir  test_outputs
+0
+jeportie@minishell $> /usr/bin/cat test
+test
+0
+jeportie@minishell $> /usr/bin/cat -e test
+test$
+0
+jeportie@minishell $> /bin/ls-l
+bash: /bin/ls-l: No such file or directory
+127
+jeportie@minishell $> /usr/bin/cat-e
+bash: /usr/bin/cat-e: No such file or directory
+127
+jeportie@minishell $> rm test
+0

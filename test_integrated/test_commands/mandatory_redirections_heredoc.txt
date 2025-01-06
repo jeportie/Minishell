@@ -1,0 +1,29 @@
+cat << EOF
+hello
+EOF
+cat << GREG
+test
+greg
+GREG
+cat << jeportie
+test
+jerome
+jeportie
+cat << EOF
+Hello from heredoc
+EOF
+cat << DELIM
+Multiple
+lines
+in heredoc
+DELIM
+cat << $USER
+test
+gmarquis
+jeportie
+$USER
+cat << EOF
+$USER
+$PATH
+EOF 
+EOF

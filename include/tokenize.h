@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:01:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/14 15:31:30 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:24:40 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@
 # define STDERR 2
 
 # include "minishell.h"
-
-/*
- * NOTE:
- * TOKEN_EXPAND includes expand like wildcards or dollar, execs and commands
- */
 
 typedef enum e_token_type
 {
@@ -40,6 +35,19 @@ typedef struct s_token
 	char			*token;
 	struct s_token	*next;
 }			t_token;
+
+typedef struct s_sort_token_helper
+{
+	t_token	*current;
+	t_token	*head;
+	t_token	*top;
+	t_token	*prev;
+	bool	redir;
+	bool	trigger;
+	bool	final_path;
+	int		i;
+	int		len;
+}				t_sort_token_helper;
 
 typedef struct s_operator_map
 {
@@ -102,5 +110,8 @@ t_token	*tokenize_word(const char **input, t_gc *gcl);
 t_token	*tokenize_operator(const char **input, t_gc *gcl);
 t_token	*tokenize_quote(const char **input, t_gc *gcl);
 t_token	*tokenize_frame(const char **input, t_gc *gcl);
+
+/* Debug Log Functions */
+void	print_token_delimit(t_token *tokens);
 
 #endif /*TOKENIZE_H*/

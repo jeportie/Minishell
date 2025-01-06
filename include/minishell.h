@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 16:09:21 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 09:27:08 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,15 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <signal.h>
+# include <fcntl.h>
 
-extern int	g_signal;
+# define DEBUG 0 
+# define PROMPT_MODE 0
+# define PRINT_INFOS "assets/infos.txt"
+# define COPY_MODE 0644
+
+extern int						g_signal;
+typedef struct s_heredoc_node	t_heredoc_node;
 
 typedef struct s_env
 {
@@ -38,20 +45,23 @@ typedef struct s_env_data
 	char	*path;
 	char	*term;
 	char	*shell;
-	bool	oldpwd;
+	char	*user;
 }				t_env_data;
 
 typedef struct s_shell
 {
-	t_env_data	*env_data;
-	char		*user_input;
-	int			error_code;
-	t_gc		*gcl;
+	t_env_data		*env_data;
+	char			*user_input;
+	int				error_code;
+	bool			interactive_mode;
+	t_gc			*gcl;
+	t_heredoc_node	*heredocs[16];
 }				t_shell;
 
 /* Init_shell */
 t_shell		ms_init_shell(int argc, char **argv, char **envp);
 void		ms_get_user_input(t_shell *shell);
+void		init_fix_value(t_env_data *env_data);
 t_env_data	*ms_init_env(char **envp, t_shell *shell);
 
 /* env_lst_utils */
@@ -59,6 +69,9 @@ t_env		*ms_env_create_node(t_shell *shell, const char *env_line);
 void		ms_env_add_back(t_env **env, t_env *new_node);
 
 /* signal */
+void		ms_heredoc_signal(int sig);
+void		st_parent_here_signal(int sig);
+int			rl_event_dummy(void);
 void		ms_init_parent_cmd_signal(void);
 void		ms_init_child_cmd_signal(void);
 void		ms_init_std_signal(void);
@@ -68,5 +81,7 @@ char		*ms_get_env_value(t_env *env, char *name, int error_code);
 void		ms_set_env_value(t_shell *shell, char *name, char *value);
 char		**ms_get_envp(t_env *env, t_gc *gcl);
 char		*ms_getenv(const char *name, t_env_data *env_data);
+
+/* Debug Log functions */
 
 #endif /*MINISHELL_H*/

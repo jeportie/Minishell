@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:38:15 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/17 09:12:44 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:05:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,12 @@ START_TEST(test_ms_init_env_without_envp)
     t_shell shell = {.gcl = gcl};
     t_env_data env_data;
     shell.env_data = &env_data;
+    char    **mock;
 
-    shell.env_data = ms_init_env(NULL, &shell);
+    mock = gc_malloc(sizeof(char *), gcl);
+    memset(mock, 0, sizeof(char **));
+
+    shell.env_data = ms_init_env(mock, &shell);
 
     ck_assert(!shell.env_data->env_exist);
     ck_assert_ptr_nonnull(shell.env_data->env);

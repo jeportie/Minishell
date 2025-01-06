@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:40:25 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 13:47:06 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:21:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ t_token	*tokenize_frame(const char **input, t_gc *gcl)
 	}
 	current = (char *)*input;
 	value = (char *)gc_malloc(sizeof(char) * 2, gcl);
-	gc_lock(value, gcl);
 	value[0] = current[0];
 	value[1] = '\0';
 	(*input)++;

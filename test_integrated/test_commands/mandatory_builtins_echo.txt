@@ -1,0 +1,35 @@
+echo
+echo Hello
+echo je suis un test
+echo "Helo"
+echo "je suis un test"
+echo 'Hello'
+echo 'je suis un test'
+echo "Hello" "je suis un test"
+echo 'Hello' 'je suis un test'
+echo Hello "je suis un test"
+echo Hello 'je suis un test'
+echo -n
+echo -n Hello
+echo -n je suis un test
+echo -n "Helo"
+echo -n "je suis un test"
+echo -n 'Hello'
+echo -n 'je suis un test'
+echo -n "Hello" "je suis un test"
+echo -n 'Hello' 'je suis un test'
+echo -n Hello "je suis un test"
+echo -n Hello 'je suis un test'
+echo -nnnnnnnnnnnnnnnn -n -n
+echo -nnnnnnnnnnnnnnnn n-n -n Hello
+echo -nnnnnnnnnnnnnnnn -n -nnnnnn-nnnnnnn je suis un test
+echo Hello > test
+cat test
+echo -n Hello > test
+cat test
+echo Hello je suis un test > test
+cat test
+echo -n Hello je suis un test > test
+cat test
+echo < test
+rm test

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_init_std_signal.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:55:03 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 15:39:34 by jeportie         ###   ########.fr       */
+/*   Created: 2024/10/15 11:55:03 by gmarquis          #+#    #+#             */
+/*   Updated: 2024/11/27 10:51:15 by gmarquis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,9 @@
 
 static void	st_sigint_std_handler(int sig)
 {
+	rl_done = 1;
 	if (sig == SIGINT)
-	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-	}
-	g_signal = 130;
+		g_signal = 132;
 }
 
 void	ms_init_std_signal(void)

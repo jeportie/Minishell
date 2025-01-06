@@ -1,0 +1,19 @@
+pwd
+mkdir test_cd
+cd test_cd
+pwd
+cd ..
+pwd
+mkdir test_cd/test1
+cd test_cd/test1
+pwd
+cd ../..
+pwd
+cd
+pwd
+cd -
+pwd
+cd ~
+pwd
+cd - -
+pwd

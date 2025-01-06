@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:45:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/14 15:29:58 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:27:43 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ typedef struct s_redirect_node
 
 typedef struct s_heredoc_node
 {
-	struct s_ast_node	*child;
-	char				*delimiter;
+	t_node_type				type;
+	struct s_ast_node		*child;
+	char					*delimiter;
+	char					*filename;
 }				t_heredoc_node;
 
 typedef struct s_logic_node
@@ -84,16 +86,16 @@ typedef struct s_ast_node
 }				t_ast_node;
 
 /* Main Function */
-t_ast_node	*ms_parse_tokens(t_token *tokens, t_gc *gcl);
+t_ast_node	*ms_parse_tokens(t_token *tokens, t_shell *shell, t_gc *gcl);
 
 /* Parsing functions */
 t_ast_node	*parse_sequence(t_token **current_token, t_gc *gcl);
-t_ast_node	*parse_logical(t_token **current_token, t_gc *gcl);
-t_ast_node	*parse_pipeline(t_token **current_token, t_gc *gcl);
-t_ast_node	*parse_command(t_token **current_token, t_gc *gcl);
+t_ast_node	*parse_logical(t_token **current_token, t_shell *shell, t_gc *gcl);
+t_ast_node	*parse_pipeline(t_token **current_token, t_shell *shell, t_gc *gcl);
+t_ast_node	*parse_command(t_token **current_token, t_shell *shell, t_gc *gcl);
 t_ast_node	*parse_redirection(t_token **current_token,
-				t_ast_node *child, t_gc *gcl);
-t_ast_node	*parse_subshell(t_token **current_token, t_gc *gcl);
+				t_ast_node *child, t_shell *shell, t_gc *gcl);
+t_ast_node	*parse_subshell(t_token **current_token, t_shell *shell, t_gc *gcl);
 
 /* Node Functions*/
 t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl);
@@ -114,6 +116,7 @@ bool		is_redir_op(t_token *current_token);
 bool		is_sbs_start(t_token *current_token);
 bool		is_sbs_stop(t_token *current_token);
 void		print_ast(t_ast_node *node, int depth, char *prefix, int is_left);
-void		print_branch(int depth, int is_left);
+void		print_branch(int depth, int is_left, int fd);
+void		print_ast_delimit(t_ast_node *root);
 
 #endif /*AST_H*/

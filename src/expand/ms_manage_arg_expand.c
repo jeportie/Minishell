@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:12:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 15:38:15 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:46:44 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static	void	expand_argv(char **new_argv, char **argv,
 	match_index = 0;
 	while (argv[argv_index])
 	{
-		if (argv[argv_index][0] == '*')
+		if (ft_strchr(argv[argv_index], '*'))
 		{
 			while (match_index < (int)match_ctx->match_count)
 			{
@@ -39,7 +39,6 @@ static	void	expand_argv(char **new_argv, char **argv,
 		argv_index++;
 		new_argv_index++;
 	}
-	new_argv[new_argv_index] = NULL;
 }
 
 char	**cmd_arg_expansion(char **argv, t_wildcard_context *match_ctx,
@@ -65,10 +64,8 @@ char	**cmd_arg_expansion(char **argv, t_wildcard_context *match_ctx,
 void	ms_manage_arg_expand(t_cmd_node *cmd_node,
 			t_exec_context *context, t_gc *gcl)
 {
-	int					i;
-	t_wildcard_context	*matches;
-
-	i = 0;
+	t_wildcard_context *(matches) = NULL;
+	int (i) = 0;
 	if (!is_equal(cmd_node->argv[0]))
 	{
 		while (i < cmd_node->argc)
@@ -81,9 +78,12 @@ void	ms_manage_arg_expand(t_cmd_node *cmd_node,
 			if (is_wild(cmd_node->argv[i]))
 			{
 				matches = ms_expand_wild(cmd_node->argv[i], gcl);
-				cmd_node->argc += matches->match_count - 1;
-				cmd_node->argv = cmd_arg_expansion(cmd_node->argv,
-						matches, gcl);
+				if (matches->matches)
+				{
+					cmd_node->argc += matches->match_count - 1;
+					cmd_node->argv = cmd_arg_expansion(cmd_node->argv,
+							matches, gcl);
+				}
 			}
 			i++;
 		}

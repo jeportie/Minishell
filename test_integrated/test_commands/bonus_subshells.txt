@@ -1,0 +1,9 @@
+( echo "Inside subshell" && pwd )
+( cd test_dir && ls )
+( env | grep SHLVL )
+ls | (cat)
+ls | (cat | (cat -e > test))
+cat test
+rm test
+(export TEST=ok) && env | grep TEST
+(mkdir test_dir && cd test_dir && pwd) && pwd && rm -rf test_dir

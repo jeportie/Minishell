@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:52:27 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/31 12:26:33 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:21:40 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static t_token	*allocator(const char **input, t_op_state *v, t_gc *gcl)
 	type = v->op_map[v->i].type;
 	value = (char *)gc_malloc(sizeof(char) * (v->op_len + 1), gcl);
 	ft_strlcpy(value, v->op_str, v->op_len + 1);
-	gc_lock(value, gcl);
 	*input += v->op_len;
 	return (create_token(type, value, gcl));
 }
@@ -74,7 +73,6 @@ t_token	*tokenize_operator(const char **input, t_gc *gcl)
 	v.value = (char *)gc_malloc(sizeof(char) * 2, gcl);
 	v.value[0] = *v.current;
 	v.value[1] = '\0';
-	gc_lock(v.value, gcl);
 	*input += 1;
 	return (create_token(TOKEN_WORD, v.value, gcl));
 }

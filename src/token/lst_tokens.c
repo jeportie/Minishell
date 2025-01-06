@@ -6,11 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:39:47 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/31 13:21:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/05 17:57:29 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/tokenize.h"
+#include <fcntl.h>
 
 void	add_token(t_token **head, t_token *new_token, t_gc *gcl)
 {
@@ -48,14 +49,30 @@ void	print_token(t_token *head)
 {
 	t_token	*current;
 	int		i;
+	int		fd;
 
 	current = head;
 	i = 0;
+	fd = open(PRINT_INFOS, O_WRONLY | O_APPEND, COPY_MODE);
 	while (current)
 	{
-		printf("token %2d | type = %d\nvalue = %s\n", i,
+		ft_dprintf(fd, "token %2d | type = %d\nvalue = %s\n", i,
 			current->type, current->token);
 		current = current->next;
 		i++;
 	}
+	close(fd);
+}
+
+void	print_token_delimit(t_token *tokens)
+{
+	int	fd;
+
+	if (DEBUG == 0)
+		return ;
+	fd = open(PRINT_INFOS, O_WRONLY | O_TRUNC | O_CREAT, COPY_MODE);
+	ft_dprintf(fd, "-----------------------------------------------------");
+	ft_dprintf(fd, "---------------------------\nTOKENS:\n");
+	print_token(tokens);
+	close(fd);
 }

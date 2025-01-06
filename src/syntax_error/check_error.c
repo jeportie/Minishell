@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 15:12:29 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/28 13:30:17 by jeportie         ###   ########.fr       */
+/*   Created: 2024/10/24 15:12:29 by gmarquis          #+#    #+#             */
+/*   Updated: 2024/12/03 13:29:14 by gmarquis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/syntax.h"
+
+int	find_close_par(char *current, int i)
+{
+	if (!current[i])
+		return (0);
+	while (current[i])
+	{
+		if (current[i] == ')')
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 static void	st_print_error_operator_redir(int error)
 {
@@ -39,6 +52,8 @@ int	check_error(t_syntax **syntax)
 	t_syntax	*synt;
 
 	synt = *syntax;
+	if (synt->p_open != synt->p_close)
+		synt->p_trigger = 2;
 	if (synt->error == 10)
 		synt->error = 1;
 	else if (synt->p_trigger > 0 || synt->sq_trigger || synt->dq_trigger

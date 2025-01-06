@@ -1,0 +1,82 @@
+#!/usr/bin/expect
+
+# Disable timeout
+set timeout 0
+
+# Check if command file is provided
+if { [llength $argv] != 1 } {
+    puts "Usage: $argv0 <command_file>"
+    exit 1
+}
+set output_dir "test_outputs"
+set command_file [lindex $argv 0]
+set output_file "$output_dir/bash_output_[file rootname [file tail $command_file]].txt"
+
+set prompt "\$USER@minishell \$> "
+
+# Open bash to execute commands
+spawn bash --posix
+
+# Redirect output to the output file in truncation mode
+log_file -noappend $output_file
+
+# Wait for initial shell prompt (default bash prompt)
+expect -re ".*\$ "
+sleep 0.1
+
+# Change bash prompt to $USER@minishell
+send "export PS1='$prompt'\r"
+expect -re "^$prompt"
+sleep 0.1
+
+# Read and execute each command from the command file
+set file [open $command_file r]
+
+# Initialize heredoc_mode to 0 (false)
+set heredoc_mode 0
+set heredoc_delimiter ""
+
+while {[gets $file line] != -1} {
+    # Skip empty lines
+    if {[string trim $line] == ""} {
+        continue
+    }
+    # Send the command to minishell
+    send "$line\r"
+    expect -re "^$prompt"
+    sleep 0.1
+
+    # Check if entering heredoc mode
+    if {[regexp {<<\s*(\S+)} $line match delim]} {
+        # We're entering heredoc mode. Store delimiter.
+        set heredoc_mode 1
+        set heredoc_delimiter $delim
+        continue
+    }
+    
+    # Check if exiting heredoc mode
+    if {$heredoc_mode && [string trim $line] == $heredoc_delimiter} {
+        set heredoc_mode 0
+        # Send echo $? after exiting heredoc mode
+        send "echo \$?\r"
+        expect -re "^$prompt"
+        sleep 0.1
+        continue
+    }
+
+    # If not in heredoc mode, send echo $?
+    if {!$heredoc_mode} {
+        send "echo \$?\r"
+        expect -re "^$prompt"
+        sleep 0.1
+    }
+}
+close $file
+
+# Exit bash
+send "exit\r"
+expect eof
+
+# Stop logging after script completes
+log_file
+

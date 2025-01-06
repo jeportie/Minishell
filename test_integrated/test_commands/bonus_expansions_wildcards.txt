@@ -1,0 +1,7 @@
+cd test_dir
+ls a*
+ls *1
+ls *src*
+cat s*/*ll*
+echo a*
+echo *1

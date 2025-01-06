@@ -1,0 +1,14 @@
+ls
+df -h
+ps
+ps -e
+touch test
+echo test > test
+cat -e test
+expr $? + $?
+/bin/ls
+/usr/bin/cat test
+/usr/bin/cat -e test
+/bin/ls-l
+/usr/bin/cat-e
+rm test

@@ -1,0 +1,11 @@
+echo Hello
+echo "Hello World"
+echo 'Hello World'
+echo "Nested 'quotes' inside double quotes"
+echo 'Nested "quotes" inside single quotes'
+echo test > 'out'
+cat 'out'
+rm 'out'
+echo test > "out"
+cat "out"
+rm "out"

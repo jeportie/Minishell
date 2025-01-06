@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:23:54 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 11:03:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/12/27 21:08:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include "ast.h"
 # include "minishell.h"
-# include "process.h"
 # include "exec.h"
 # include <stdbool.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+# include <sys/stat.h>
 # include <fcntl.h>
 # include <dirent.h>
 
@@ -36,17 +36,25 @@ typedef struct s_wildcard_context
 {
 	const char	*pattern;
 	char		**matches;
-	size_t		capacity;
 	size_t		match_count;
+	char		*slash;
 	t_gc		*gcl;
 }				t_wildcard_context;
 
+typedef struct s_directory_context
+{
+	char				*slash;
+	const char			*base_path;
+	const char			*c_p;
+	const char			*r_p;
+	t_wildcard_context	*ctx;
+}				t_directory_context;
+
+void				sort_wild(t_wildcard_context *ctx);
+int					add_matches(t_wildcard_context *ctx, const char *match);
+void				expand_glob_recursive(const char *base_path,
+						const char *pattern, t_wildcard_context *ctx);
 t_wildcard_context	*ms_expand_wild(const char *pattern, t_gc *gcl);
-int					initialize_context(t_wildcard_context *ctx,
-						const char *pattern, t_gc *gcl);
-int					add_match(t_wildcard_context *ctx, const char *filename);
-int					check_match(t_wildcard_context *ctx, struct dirent *entry);
-char				**finalize_matches(t_wildcard_context *ctx);
 
 bool				is_var(char *cmd);
 bool				is_wild(char *cmd);
