@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:21:40 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/05 18:35:16 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 09:09:35 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,40 +64,43 @@ static int	st_child_exit(t_ast_node *final_node, t_exec_context *context)
 	exit(exit_code);
 }
 
-void	pipe_process(pid_t *pids, int i, int num_commands,
-		t_ast_node *final_node, t_exec_context *context, int **pipes)
+//refactored with struct for only 4 parameters in the function
+void	pipe_process(t_pipe_helper *args, t_ast_node *final_node,
+				t_exec_context *context, int **pipes)
 {
-	pids[i] = fork();
-	if (pids[i] < 0)
+	args->pids[args->i] = fork();
+	if (args->pids[args->i] < 0)
 	{
 		ms_handle_error("minishell: fork failed\n", 1, context->shell->gcl);
-		pids[i] = -1;
+		args->pids[args->i] = -1;
 	}
-	else if (pids[i] == 0)
+	else if (args->pids[args->i] == 0)
 	{
 		ms_init_child_cmd_signal();
-		st_setup_child_io(i, num_commands, pipes);
+		st_setup_child_io(args->i, args->num_commands, pipes);
 		exit(st_child_exit(final_node, context));
 	}
 	else
 		context->redir_list = NULL;
 }
 
+//refactored with struct init
 pid_t	*ms_fork_pipeline_commands(t_ast_node **commands, int **pipes,
-		int num_commands, t_exec_context *context, t_gc *gcl)
+		int num_commands, t_exec_context *context)
 {
-	int			i;
-	pid_t		*pids;
-	t_redir		*redir_list;
-	t_ast_node	*final_node;
+	t_pipe_helper	args;
+	t_redir			*redir_list;
+	t_ast_node		*final_node;
 
-	i = 0;
-	pids = gc_malloc(sizeof(pid_t) * num_commands, gcl);
-	while (i < num_commands)
+	args.i = 0;
+	args.pids = gc_malloc(sizeof(pid_t) * num_commands, context->shell->gcl);
+	args.num_commands = num_commands;
+	while (args.i < num_commands)
 	{
-		redir_list = ms_collect_redirections(commands[i], gcl, context->shell);
+		redir_list = ms_collect_redirections(commands[args.i],
+				context->shell->gcl, context->shell);
 		context->redir_list = redir_list;
-		final_node = commands[i];
+		final_node = commands[args.i];
 		while (final_node && is_redirect_node(final_node))
 		{
 			if (final_node->type == NODE_REDIRECT_HEREDOC)
@@ -105,8 +108,8 @@ pid_t	*ms_fork_pipeline_commands(t_ast_node **commands, int **pipes,
 			else
 				final_node = final_node->data.redirect.child;
 		}
-		pipe_process(pids, i, num_commands, final_node, context, pipes);
-		i++;
+		pipe_process(&args, final_node, context, pipes);
+		args.i++;
 	}
-	return (pids);
+	return (args.pids);
 }

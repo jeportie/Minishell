@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/05 18:34:56 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 09:10:29 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,13 @@ typedef struct s_here_helper
 	int		fd;
 }				t_here_helper;
 
+typedef struct s_pipe_helper
+{
+	pid_t	*pids;
+	int		i;
+	int		num_commands;
+}				t_pipe_helper;
+
 void		init_context(t_exec_context *data, t_shell *shell);
 bool		is_redirect_node(t_ast_node *node);
 
@@ -104,10 +111,10 @@ int			ms_execute_pipeline(t_ast_node *node, t_exec_context *context);
 int			count_pipeline_commands(t_ast_node *node);
 t_ast_node	**collect_pipeline_commands(t_ast_node *node, int count, t_gc *gcl);
 int			**prepare_pipes(int num_commands, t_gc *gcl);
-void		pipe_process(pid_t *pids, int i, int num_commands,
-				t_ast_node *final_node, t_exec_context *context, int **pipes);
+void		pipe_process(t_pipe_helper *args, t_ast_node *final_node,
+				t_exec_context *context, int **pipes);
 pid_t		*ms_fork_pipeline_commands(t_ast_node **commands, int **pipes,
-				int num_commands, t_exec_context *context, t_gc *gcl);
+				int num_commands, t_exec_context *context);
 
 int			ms_execute_logical(t_ast_node *node, t_exec_context *context);
 int			ms_execute_subshell(t_subshell_node *subshell_node,

@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/02 16:49:12 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 09:27:08 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@
 # define PRINT_INFOS "assets/infos.txt"
 # define COPY_MODE 0644
 
-extern int	g_signal;
-
-struct		s_heredoc_node;
+extern int						g_signal;
 typedef struct s_heredoc_node	t_heredoc_node;
 
 typedef struct s_env

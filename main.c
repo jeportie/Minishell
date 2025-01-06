@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/02 16:59:55 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 09:14:01 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 	t_exec_context	context;
 
 	tokens = ms_tokenize(shell->user_input, shell->gcl);
-//	print_token_delimit(tokens);
+	print_token_delimit(tokens);
 	root = ms_parse_tokens(tokens, shell, shell->gcl);
 	if (!root)
 		return ;
-//	print_ast_delimit(root);
-//	gc_collect(shell->gcl);
+	print_ast_delimit(root);
+	gc_collect(shell->gcl);
 	init_context(&context, shell);
 	ms_preprocess_heredocs(&context);
 	ms_execute_ast(root, &context);
-//	gc_collect(shell->gcl);
+	gc_collect(shell->gcl);
 }
 
 static void	st_quit_prompt(t_shell *shell)

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 17:34:19 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/05 18:34:29 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 08:26:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	ms_execute_pipeline(t_ast_node *node, t_exec_context *context)
 	commands = collect_pipeline_commands(node, num_commands, gcl);
 	pipes = prepare_pipes(num_commands, gcl);
 	pids = ms_fork_pipeline_commands(commands, pipes, num_commands,
-			context, gcl);
+			context);
 	st_close_parent_pipes(num_commands, pipes);
 	return (st_wait_for_childs(num_commands, pids, context));
 }
