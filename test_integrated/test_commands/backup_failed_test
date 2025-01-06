@@ -1,0 +1,2 @@
+cat < out0 > out2 -e < out1 > out3
+ls > out -l -a && df -h >> out

@@ -1,7 +1,7 @@
 ls
 df -h
-ps
-ps -e
+man
+git remote -v
 touch test
 echo test > test
 cat -e test
