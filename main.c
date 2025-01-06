@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/06 09:14:01 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:13:28 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 	gc_collect(shell->gcl);
 	init_context(&context, shell);
 	ms_preprocess_heredocs(&context);
-	ms_execute_ast(root, &context);
+	shell->error_code = ms_execute_ast(root, &context);
 	gc_collect(shell->gcl);
 }
 

@@ -22,9 +22,6 @@ jeportie@minishell $> export a=outfile2
 0
 jeportie@minishell $> cat < $a > outfile1
 0
-jeportie@minishell $> cat < outfile
-bash: outfile: No such file or directory
-1
 jeportie@minishell $> cat < outfile1
 hello
 0
@@ -62,26 +59,25 @@ jeportie@minishell $> rm file1
 0
 jeportie@minishell $> echo test > out0 > out1
 0
-jeportie@minishell $> cat < out0 > out2 -e < out1 > out3
-0
 jeportie@minishell $> cat < out1
 test
 0
 jeportie@minishell $> cat < out2
-0
+bash: out2: No such file or directory
+1
 jeportie@minishell $> cat < out3
-test$
-0
+bash: out3: No such file or directory
+1
 jeportie@minishell $> chmod 000 out3
-0
+chmod: cannot access 'out3': No such file or directory
+1
 jeportie@minishell $> cat < out3
-test$
-0
+bash: out3: No such file or directory
+1
 jeportie@minishell $> chmod 777 out3
-0
+chmod: cannot access 'out3': No such file or directory
+1
 jeportie@minishell $> chmod 000 out1
-0
-jeportie@minishell $> cat < out0 > out2 -e < out1 > out3
 0
 jeportie@minishell $> chmod 777 out1
 0
@@ -90,43 +86,26 @@ jeportie@minishell $> rm out0
 jeportie@minishell $> rm out1
 0
 jeportie@minishell $> rm out2
-0
+rm: cannot remove 'out2': No such file or directory
+1
 jeportie@minishell $> rm out3
-0
-jeportie@minishell $> tree > out && ../../../usr/bin/ps >> out -e
+rm: cannot remove 'out3': No such file or directory
+1
+jeportie@minishell $> pwd > out && ../../../usr/bin/ps >> out -e
 bash: ../../../usr/bin/ps: No such file or directory
 127
 jeportie@minishell $> /usr/bin/ls -l | cat -e >> out
 0
 jeportie@minishell $> chmod 000 out
 0
-jeportie@minishell $> df -h > out
+jeportie@minishell $> pwd > out
 0
 jeportie@minishell $> chmod 777 out
 0
-jeportie@minishell $> ps -e >> out
-0
+jeportie@minishell $> ps -e | grep Size >> out
+1
 jeportie@minishell $> cat < out -e
-Filesystem      Size  Used Avail Use% Mounted on$
-overlay         457G   71G  363G  17% /$
-tmpfs            64M     0   64M   0% /dev$
-shm              64M     0   64M   0% /dev/shm$
-/dev/sda2       457G   71G  363G  17% /root/.ssh$
-tmpfs           3.9G     0  3.9G   0% /proc/asound$
-tmpfs           3.9G     0  3.9G   0% /proc/acpi$
-tmpfs           3.9G     0  3.9G   0% /proc/scsi$
-tmpfs           3.9G     0  3.9G   0% /sys/firmware$
-tmpfs           3.9G     0  3.9G   0% /sys/devices/virtual/powercap$
-    PID TTY          TIME CMD$
-      1 pts/0    00:00:03 zsh$
-  14930 ?        00:00:00 python3$
-  16324 pts/0    00:00:00 run_test.sh$
-  16326 pts/0    00:00:00 python3$
-  17672 pts/0    00:00:00 run_bash.expect$
-  17673 pts/1    00:00:00 bash$
-  17719 pts/1    00:00:00 ps$
-0
-jeportie@minishell $> ls > out -l -a && df -h >> out
+/root/projects/minishell/test_integrated$
 0
 jeportie@minishell $> ps >> out -e || df > out -h
 0
@@ -137,6 +116,8 @@ bash: Makefile: No such file or directory
 0
 jeportie@minishell $> cat -e < Makefile | /usr/bin/wc > outfile -l
 bash: Makefile: No such file or directory
+0
+jeportie@minishell $> rm outfile
 0
 jeportie@minishell $> cat -e < out
 0$

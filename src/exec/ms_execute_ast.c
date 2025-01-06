@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/02 16:33:46 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:02:46 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static int	redir_in_command(t_ast_node *node, t_exec_context *context,
 		close(saved_stdin);
 		close(saved_stdout);
 		context->redir_list = NULL;
+		context->shell->error_code = 1;
 		return (1);
 	}
 	ret = ms_execute_command(&node->data.command, context, context->shell->gcl);

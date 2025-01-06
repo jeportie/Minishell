@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:20:22 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/12/10 13:32:45 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:09:24 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static int	st_none_chdir(t_shell *shell)
 	}
 	else
 	{
-		ft_dprintf(2, "minishell: chdir: error retrieving "
+		ft_dprintf(2, "%s: chdir: error retrieving "
 			"current directory: getcwd: cannot access parent "
-			"directories: No such file or directory\n");
+			"directories: No such file or directory\n", SHELL);
 		return (1);
 	}
 }
@@ -48,14 +48,14 @@ static char	*st_cd_with_option(char *cd, t_shell *shell, char *argv)
 			cd = ms_get_env_value(shell->env_data->env, "HOME",
 					shell->error_code);
 			if (!cd)
-				return (ft_dprintf(2, "minishell: cd: HOME not set\n"), NULL);
+				return (ft_dprintf(2, "%s: cd: HOME not set\n", SHELL), NULL);
 		}
 		else if (!ft_strncmp(argv, "-", 2))
 		{
 			cd = ms_get_env_value(shell->env_data->env, "OLDPWD",
 					shell->error_code);
 			if (!cd)
-				return (ft_dprintf(2, "minishell: cd: OLDPWD not set\n"), NULL);
+				return (ft_dprintf(2, "%s: cd: OLDPWD not set\n", SHELL), NULL);
 			ft_dprintf(1, "%s\n", cd);
 		}
 	}
@@ -73,19 +73,19 @@ int	ms_cd(t_cmd_node *cmd_node, t_shell *shell)
 	{
 		cd = ms_get_env_value(shell->env_data->env, "HOME", shell->error_code);
 		if (!cd)
-			return (ft_dprintf(2, "minishell: cd: HOME not set\n"), 1);
+			return (ft_dprintf(2, "%s: cd: HOME not set\n", SHELL), 1);
 	}
 	else if (cmd_node->argc >= 3)
-		return (ft_dprintf(2, "minishell: cd: too many arguments\n"), 1);
+		return (ft_dprintf(2, "%s: cd: too many arguments\n", SHELL), 1);
 	else
 	{
 		cd = st_cd_with_option(NULL, shell, cmd_node->argv[1]);
 		if (!cd)
-			return (1);
+			return (0);
 	}
 	if (chdir(cd))
-		ft_dprintf(2, "minishell: cd: %s: No such file or directory\n",
-			cmd_node->argv[1]);
+		ft_dprintf(2, "%s: cd: %s: No such file or directory\n",
+			SHELL, cmd_node->argv[1]);
 	else
 		return (st_none_chdir(shell));
 	return (0);

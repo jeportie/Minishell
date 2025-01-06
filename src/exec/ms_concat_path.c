@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:57:10 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/02 17:08:15 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:31:07 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	ms_check_alloc(void *ptr, t_gc *gcl)
 {
 	if (!ptr)
 	{
-		ft_dprintf(STDERR_FILENO, "error: minishell: memory allocation error");
+		ft_dprintf(STDERR_FILENO, "minishell: memory allocation error");
 		gc_cleanup(gcl);
 		exit(EXIT_FAILURE);
 	}

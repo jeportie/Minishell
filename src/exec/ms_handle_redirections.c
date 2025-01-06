@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/05 18:01:49 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:53:28 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ int	ms_open_redir_file(t_redir_type type, const char *filename)
 	fd = open(filename, flags, COPY_MODE);
 	if (fd == -1)
 	{
-		ft_dprintf(STDERR_FILENO, "minishell: %s: No such file or directory\n",
-			filename);
+		ft_dprintf(STDERR_FILENO, "%s: %s: No such file or directory\n",
+			SHELL, filename);
 	}
 	return (fd);
 }

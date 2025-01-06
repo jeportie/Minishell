@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:00:21 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/05 18:09:56 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:30:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,7 @@ int	ms_apply_redirections(t_redir *redir_list)
 	{
 		fd = ms_open_redir_file(current->type, current->filename);
 		if (fd == -1)
-		{
-			dprintf(STDERR_FILENO, "minishell: Failed to open %s\n",
-				current->filename);
 			return (-1);
-		}
 		if (current->type == REDIR_IN || current->type == REDIR_HEREDOC)
 		{
 			if (!st_dup_helper(fd, STDIN_FILENO))
