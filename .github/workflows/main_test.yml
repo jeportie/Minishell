@@ -7,7 +7,11 @@ on:
     branches: [ main ]
 
 jobs:
+<<<<<<< HEAD
   build-and-test:
+=======
+  build-and-test-main:
+>>>>>>> main
     runs-on: ubuntu-latest
     container:
       image: jeportie/vjej:latest
@@ -48,5 +52,11 @@ jobs:
       # Run Tests
       - name: Run Tests
         run: |
+<<<<<<< HEAD
           cd test_integrated
           ./run_test.sh
+=======
+          cd test_minishell/build
+          ctest --output-on-failure
+
+>>>>>>> main

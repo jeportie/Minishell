@@ -6,12 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:28:24 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 11:58:49 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:34:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-#include "../../include/exec.h"
 
 static int	count_envlines(t_env *envi)
 {

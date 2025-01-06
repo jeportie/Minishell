@@ -38,4 +38,9 @@ jobs:
         run: |
           norminette src/
           norminette include/
+<<<<<<< HEAD
           norminette lib/libft/src lib/libft/include lib/libgc
+=======
+          norminette lib/
+
+>>>>>>> main

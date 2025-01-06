@@ -3,11 +3,11 @@ animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_code
 0
 jeportie@minishell $> df -h
 Filesystem                                  Size  Used Avail Use% Mounted on
-overlay                                      35G   23G   11G  70% /
+overlay                                      35G   23G   10G  70% /
 tmpfs                                        64M     0   64M   0% /dev
 shm                                          64M     0   64M   0% /dev/shm
-/dev/sda                                    4.7G  853M  3.9G  18% /root/.ssh
-/dev/mapper/ubuntu--vg-ubuntu--lv--goinfre   35G   23G   11G  70% /etc/hosts
+/dev/sda                                    4.7G  855M  3.9G  18% /root/.ssh
+/dev/mapper/ubuntu--vg-ubuntu--lv--goinfre   35G   23G   10G  70% /etc/hosts
 tmpfs                                       7.7G     0  7.7G   0% /proc/asound
 tmpfs                                       7.7G     0  7.7G   0% /proc/acpi
 tmpfs                                       7.7G     0  7.7G   0% /proc/scsi
