@@ -31,20 +31,6 @@ jobs:
           cd lib/libgc
           make
 
-      # Build Minishell (optional)
-      # - name: Build Minishell
-      #  run: |
-      #    make test
-
-      # Build Test Suite
-      - name: Build Test Suite
-        run: |
-          cd test_minishell
-          mkdir -p build
-          cd build
-          cmake ..
-          make
-
       # Run Tests
       - name: Run Tests
         run: |
