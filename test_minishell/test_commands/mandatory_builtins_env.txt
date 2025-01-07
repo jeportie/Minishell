@@ -1,0 +1,10 @@
+env | grep HOME 
+export a=ok b=c
+env | grep a=ok b=c
+export a= b=ok c=ok
+env | grep a= b=ok c=ok
+unset a b c
+env 1 | grep HOME
+env - | grep HOME
+env -- | grep HOME
+env - - | grep HOME
