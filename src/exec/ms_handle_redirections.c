@@ -6,25 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/06 14:53:28 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:57:22 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 #include "../../include/expand.h"
-
-static t_redir	*ms_add_redir(t_redir **head, t_redir_type type,
-	char *filename, t_gc *gcl)
-{
-	t_redir	*new_node;
-
-	new_node = gc_malloc(sizeof(t_redir), gcl);
-	new_node->type = type;
-	new_node->filename = filename;
-	new_node->next = *head;
-	*head = new_node;
-	return (new_node);
-}
 
 static t_redir_type	ms_node_type_to_redir_type(t_node_type ntype)
 {
@@ -37,6 +24,19 @@ static t_redir_type	ms_node_type_to_redir_type(t_node_type ntype)
 	else if (ntype == NODE_REDIRECT_HEREDOC)
 		return (REDIR_HEREDOC);
 	return (-1);
+}
+
+static t_redir	*ms_add_redir(t_redir **head, int ntype,
+		char *filename, t_gc *gcl)
+{
+	t_redir	*new_node;
+
+	new_node = gc_malloc(sizeof(t_redir), gcl);
+	new_node->type = ntype;
+	new_node->filename = filename;
+	new_node->next = *head;
+	*head = new_node;
+	return (new_node);
 }
 
 static bool	st_is_redir(t_ast_node *node)

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:15:58 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/06 09:10:29 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:17:10 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ char		*ms_concat_path(const char *path, const char *command, t_gc *gcl);
 int			ms_handle_error(const char *msg, int exit_status, t_gc *gcl);
 
 void		ms_preprocess_heredocs(t_exec_context *context);
-int			ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context);
+int		ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context);
 void		st_heredoc_child_process(t_shell *shell,
 				char *delimiter, char *filename);
 
