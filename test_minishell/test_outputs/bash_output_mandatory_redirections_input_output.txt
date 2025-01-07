@@ -35,7 +35,7 @@ jeportie@minishell $> rm $a
 jeportie@minishell $> pwd > test && echo hello >> test
 0
 jeportie@minishell $> cat < test
-/root/projects/minishell/test_integrated
+/root/projects/minishell/test_minishell
 hello
 0
 jeportie@minishell $> rm test
@@ -105,7 +105,7 @@ jeportie@minishell $> chmod 777 out
 jeportie@minishell $> ps -e | grep Size >> out
 1
 jeportie@minishell $> cat < out -e
-/root/projects/minishell/test_integrated$
+/root/projects/minishell/test_minishell$
 0
 jeportie@minishell $> ps >> out -e || df > out -h
 0
