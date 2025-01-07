@@ -65,6 +65,7 @@ SRC = \
   src/expand/ms_manage_arg_expand.c \
   src/expand/ms_value_assign.c \
   src/expand/ms_wildcard_helper.c \
+  src/global.c \
   src/shell/init_fix_value.c \
   src/shell/ms_env_add_back.c \
   src/shell/ms_env_create_node.c \
@@ -88,7 +89,13 @@ SRC = \
   src/token/tokenize_operator.c \
   src/token/tokenize_word.c \
   src/token/tokenize_word_helper.c \
-  src/token/utils.c \
+  src/env_lst_utils/ms_env_add_back.c \
+  src/env_lst_utils/ms_env_create_node.c \
+  src/init_shell/ms_init_env.c \
+  src/init_shell/ms_init_shell.c \
+  src/init_shell/ms_get_user_input.c \
+  src/signal/ms_init_std_signal.c \
+  src/signal/ms_stop_std_signal.c \
   src/global.c 
 ### END AUTO GENERATED FILES ###
 
