@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 20:50:52 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/05 21:17:19 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/07 13:43:07 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ START_TEST(test_ms_exit_with_invalid_code)
     t_testresult result = execute_and_capture_exit(argv, 2, 2);
 
     ck_assert_int_eq(result.exit_code, 2);
-    ck_assert_str_eq(result.stderr_output, "exit\nminishell: exit: invalid: numeric argument required\n");
+    ck_assert_str_eq(result.stderr_output, "exit\nbash: exit: invalid: numeric argument required\n");
 }
 END_TEST
 
@@ -142,7 +142,7 @@ START_TEST(test_ms_exit_with_too_many_arguments)
     t_testresult result = execute_and_capture_exit(argv, 3, 1);
 
     ck_assert_int_eq(result.exit_code, 1);
-    ck_assert_str_eq(result.stderr_output, "exit\nminishell: exit: too many arguments\n");
+    ck_assert_str_eq(result.stderr_output, "exit\nbash: exit: too many arguments\n");
 }
 END_TEST
 

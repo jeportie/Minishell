@@ -1,0 +1,17 @@
+jeportie@minishell $> (exit 1)
+1
+jeportie@minishell $> (exit 0)
+0
+jeportie@minishell $> (exit 42)
+42
+jeportie@minishell $> (exit 999)
+231
+jeportie@minishell $> (exit 424242)
+50
+jeportie@minishell $> (exit 9999999999999999)
+255
+jeportie@minishell $> (exit 999999999999999999999999999999999999999999999999999)
+bash: exit: 999999999999999999999999999999999999999999999999999: numeric argument required
+2
+jeportie@minishell $> (exit 9999999999999999)
+255

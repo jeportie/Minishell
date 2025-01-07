@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:11 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/11/19 11:21:58 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/07 13:07:51 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ static void	st_exit_code(t_cmd_node *cmd_node, t_exec_context *context)
 	}
 	else
 	{
-		ft_dprintf(2, "exit\nminishell: exit: %s"
-			": numeric argument required\n", cmd_node->argv[1]);
+		ft_dprintf(2, "exit\n%s: exit: %s"
+			": numeric argument required\n", SHELL, cmd_node->argv[1]);
 		gc_cleanup(context->shell->gcl);
 		exit (2);
 	}
@@ -100,6 +100,6 @@ int	ms_exit(t_cmd_node *cmd_node, t_exec_context *context)
 	}
 	else if (cmd_node->argc == 2)
 		st_exit_code(cmd_node, context);
-	ft_dprintf(2, "exit\nminishell: exit: too many arguments\n");
+	ft_dprintf(2, "exit\n%s: exit: too many arguments\n", SHELL);
 	return (1);
 }

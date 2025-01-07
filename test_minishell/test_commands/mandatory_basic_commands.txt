@@ -1,5 +1,4 @@
 ls
-df -h
 man
 git remote -v
 touch test

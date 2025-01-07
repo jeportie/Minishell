@@ -1,19 +1,6 @@
 jeportie@minishell $> ls
 animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
 0
-jeportie@minishell $> df -h
-Filesystem                                  Size  Used Avail Use% Mounted on
-overlay                                      35G   15G   19G  45% /
-tmpfs                                        64M     0   64M   0% /dev
-shm                                          64M     0   64M   0% /dev/shm
-/dev/sda                                    4.7G  860M  3.9G  19% /root/.ssh
-/dev/mapper/ubuntu--vg-ubuntu--lv--goinfre   35G   15G   19G  45% /etc/hosts
-tmpfs                                       7.7G     0  7.7G   0% /proc/asound
-tmpfs                                       7.7G     0  7.7G   0% /proc/acpi
-tmpfs                                       7.7G     0  7.7G   0% /proc/scsi
-tmpfs                                       7.7G     0  7.7G   0% /sys/firmware
-tmpfs                                       7.7G     0  7.7G   0% /sys/devices/virtual/powercap
-0
 jeportie@minishell $> man
 This system has been minimized by removing packages and content that are
 not required on a system that users do not log into.
