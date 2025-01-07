@@ -8,6 +8,7 @@ on:
 
 jobs:
   build-and-test:
+    #build-and-test-main:
     runs-on: ubuntu-latest
     container:
       image: jeportie/vjej:latest
@@ -31,11 +32,6 @@ jobs:
           cd lib/libgc
           make
 
-      # Build Minishell (optional)
-      # - name: Build Minishell
-      #  run: |
-      #    make test
-
       # Build Test Suite
       - name: Build Test Suite
         run: |
@@ -50,3 +46,5 @@ jobs:
         run: |
           cd test_integrated
           ./run_test.sh
+          #cd test_minishell/build
+          #ctest --output-on-failure
