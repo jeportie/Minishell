@@ -32,19 +32,10 @@ jobs:
           cd lib/libgc
           make
 
-      # Build Test Suite
-      - name: Build Test Suite
-        run: |
-          cd test_minishell
-          mkdir -p build
-          cd build
-          cmake ..
-          make
-
       # Run Tests
       - name: Run Tests
         run: |
-          cd test_integrated
+          cd test_minishell
           ./run_test.sh
           #cd test_minishell/build
           #ctest --output-on-failure

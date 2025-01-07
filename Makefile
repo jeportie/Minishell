@@ -6,22 +6,89 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/10/02 14:56:22 by jeportie         ###   ########.fr        #
+#    Updated: 2025/01/07 09:09:35 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Minishell
+NAME = minishell
 
 ### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
-  src/env_lst_utils/ms_env_add_back.c \
-  src/env_lst_utils/ms_env_create_node.c \
-  src/init_shell/ms_init_env.c \
-  src/init_shell/ms_init_shell.c \
-  src/init_shell/ms_get_user_input.c \
+  src/signal/ms_heredoc_signal.c \
+  src/signal/ms_init_child_cmd_signal.c \
+  src/signal/ms_init_parent_cmd_signal.c \
   src/signal/ms_init_std_signal.c \
   src/signal/ms_stop_std_signal.c \
+  src/signal/rl_event_dummy.c \
+  src/ast/create_command_node.c \
+  src/ast/create_node.c \
+  src/ast/ms_parse_tokens.c \
+  src/ast/parse_command.c \
+  src/ast/parse_logical.c \
+  src/ast/parse_pipeline.c \
+  src/ast/parse_redirection.c \
+  src/ast/parse_subshell.c \
+  src/ast/print_ast.c \
+  src/ast/utils.c \
+  src/ast/utils2.c \
+  src/builtins/builtins_utils.c \
+  src/builtins/copy_env_list.c \
+  src/builtins/echec_malloc.c \
+  src/builtins/export_utils.c \
+  src/builtins/ms_cd.c \
+  src/builtins/ms_echo.c \
+  src/builtins/ms_env.c \
+  src/builtins/ms_exit.c \
+  src/builtins/ms_export.c \
+  src/builtins/ms_pwd.c \
+  src/builtins/ms_unset.c \
+  src/exec/ms_apply_redirections.c \
+  src/exec/ms_concat_path.c \
+  src/exec/ms_exec_utils.c \
+  src/exec/ms_execute_ast.c \
+  src/exec/ms_execute_command.c \
+  src/exec/ms_execute_external.c \
+  src/exec/ms_execute_logical.c \
+  src/exec/ms_execute_pipeline.c \
+  src/exec/ms_execute_subshell.c \
+  src/exec/ms_handle_error.c \
+  src/exec/ms_handle_pipeline.c \
+  src/exec/ms_handle_redirections.c \
+  src/exec/ms_heredoc_child.c \
+  src/exec/ms_heredoc_mode.c \
+  src/exec/ms_parse_cmd_path.c \
+  src/expand/ms_expand_args.c \
+  src/expand/ms_expand_args_utils.c \
+  src/expand/ms_expand_utils.c \
+  src/expand/ms_expand_wild.c \
+  src/expand/ms_manage_arg_expand.c \
+  src/expand/ms_value_assign.c \
+  src/expand/ms_wildcard_helper.c \
+  src/shell/init_fix_value.c \
+  src/shell/ms_env_add_back.c \
+  src/shell/ms_env_create_node.c \
+  src/shell/ms_get_env_value.c \
+  src/shell/ms_get_envp.c \
+  src/shell/ms_get_user_input.c \
+  src/shell/ms_getenv.c \
+  src/shell/ms_init_env.c \
+  src/shell/ms_init_shell.c \
+  src/shell/ms_set_env_value.c \
+  src/syntax_error/check_error.c \
+  src/syntax_error/check_reinit.c \
+  src/syntax_error/ms_syntax_error.c \
+  src/syntax_error/operator_gestion.c \
+  src/syntax_error/parenthesis_gestion.c \
+  src/syntax_error/quote_gestion.c \
+  src/syntax_error/redir_gestion.c \
+  src/token/lst_tokens.c \
+  src/token/ms_tokenize.c \
+  src/token/tokenize_frame.c \
+  src/token/tokenize_operator.c \
+  src/token/tokenize_word.c \
+  src/token/tokenize_word_helper.c \
+  src/token/utils.c \
   src/global.c 
 ### END AUTO GENERATED FILES ###
 
@@ -203,6 +270,12 @@ debug:
 		fi \
 	else \
 		echo "No '# define DEBUG' found in headers."; \
+	fi
+
+nodebug:
+	@grep -Hn '# define DEBUG' include/*.h || echo "No DEBUG flag found."
+	@if grep -q '# define DEBUG' include/*.h; then \
+		sed -i 's/# define DEBUG.*/# define DEBUG 0 /' include/*.h; \
 	fi
 
 help:
