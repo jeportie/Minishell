@@ -97,6 +97,7 @@ ARCHITECTURE_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	
 ARCHITECTURE_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	726;"	d	file:
 ARCHITECTURE_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	730;"	d	file:
 BLUE	Makefile	/^BLUE    = \\033[34m$/;"	m
+BLUE	test_minishell/animated_banner.py	/^BLUE = "\\033[1;34m"$/;"	v
 BOLD	Makefile	/^BOLD    = \\033[1m$/;"	m
 BUFFER_SIZE	lib/libft/include/libft.h	28;"	d
 BUFFER_SIZE	lib/libft/include/printf.h	27;"	d
@@ -469,6 +470,8 @@ COMPILER_VERSION_TWEAK	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompil
 COMPILER_VERSION_TWEAK	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	393;"	d	file:
 COMPILER_VERSION_TWEAK	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	403;"	d	file:
 COMPILER_VERSION_TWEAK	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	51;"	d	file:
+CYAN	test_minishell/animated_banner.py	/^CYAN = "\\033[1;36m"$/;"	v
+CYAN	test_minishell/noanimated_banner.py	/^CYAN = "\\033[1;36m"$/;"	v
 C_VERSION	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	817;"	d	file:
 C_VERSION	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	819;"	d	file:
 C_VERSION	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	822;"	d	file:
@@ -497,6 +500,8 @@ ERROR	lib/libft/include/libft.h	31;"	d
 ERROR	lib/libft/include/printf.h	30;"	d
 FlagsForFile	ycm_extra_conf.py	/^def FlagsForFile(filename):$/;"	f
 GREEN	Makefile	/^GREEN   = \\033[32m$/;"	m
+GREEN	test_minishell/animated_banner.py	/^GREEN = "\\033[1;32m"$/;"	v
+GREEN	test_minishell/noanimated_banner.py	/^GREEN = "\\033[1;32m"$/;"	v
 HELG	Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
 HEX	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	745;"	d	file:
 HEX	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	745;"	d	file:
@@ -588,10 +593,13 @@ PLATFORM_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	569;
 PLATFORM_ID	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	572;"	d	file:
 PRINTF_H	lib/libft/include/printf.h	14;"	d
 RED	Makefile	/^RED     = \\033[31m$/;"	m
+RED	test_minishell/animated_banner.py	/^RED = "\\033[1;31m"$/;"	v
+RED	test_minishell/noanimated_banner.py	/^RED = "\\033[1;31m"$/;"	v
 RESET	Makefile	/^RESET   = \\033[0m$/;"	m
+RESET	test_minishell/animated_banner.py	/^RESET = "\\033[0m"$/;"	v
+RESET	test_minishell/noanimated_banner.py	/^RESET = "\\033[0m"$/;"	v
 RM	lib/libft/test_src/build/Makefile	/^RM = \/usr\/bin\/cmake -E rm -f$/;"	m
 RM	test_src/build/Makefile	/^RM = \/usr\/bin\/cmake -E rm -f$/;"	m
-RUN_MINISHELL_COMMAND_H	test_minishell/run_minishell_command.h	14;"	d
 SANITIZE	Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
 SCRIPT_URL	Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeromeDev94\/make_interface.git$/;"	m
 SHELL	lib/libft/test_src/build/Makefile	/^SHELL = \/bin\/sh$/;"	m
@@ -662,7 +670,6 @@ START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_percen
 START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_simple)$/;"	f
 START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_truncation)$/;"	f
 START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_various_specifiers)$/;"	f
-START_TEST	test_minishell/test_main.c	/^START_TEST(test_echo_simple)$/;"	f
 START_TEST	test_src/env_lst_utils/test_ms_env_add_back.c	/^START_TEST(test_add_null_node) {$/;"	f
 START_TEST	test_src/env_lst_utils/test_ms_env_add_back.c	/^START_TEST(test_add_to_empty_list) {$/;"	f
 START_TEST	test_src/env_lst_utils/test_ms_env_add_back.c	/^START_TEST(test_add_to_non_empty_list) {$/;"	f
@@ -693,12 +700,19 @@ VERBOSE	Makefile	/^VERBOSE ?= @$/;"	m
 VERBOSE	Makefile	/^classic: VERBOSE =$/;"	m
 VFLAGS	Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
 YELLOW	Makefile	/^YELLOW  = \\033[33m$/;"	m
+YELLOW	test_minishell/animated_banner.py	/^YELLOW = "\\033[1;33m"$/;"	v
 __has_include	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	17;"	d	file:
 __has_include	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	17;"	d	file:
+animate_banner	test_minishell/animated_banner.py	/^def animate_banner(stop_event):$/;"	f
+banner_height	test_minishell/animated_banner.py	/^banner_height = len(lines)  # Number of lines in the banner$/;"	v
 buf_fd	lib/libft/include/printf.h	/^	int		buf_fd;$/;"	m	struct:s_buffer
 buf_last	lib/libft/include/printf.h	/^	char	buf_last;$/;"	m	struct:s_buffer
 buffer	lib/libft/include/printf.h	/^	char	*buffer;$/;"	m	struct:s_buffer
+build_project	test_minishell/run_test.sh	/^build_project() {$/;"	f
+clean_files	test_minishell/process_outputs.sh	/^    clean_files() {$/;"	f
+clean_outputs	test_minishell/run_test.sh	/^clean_outputs() {$/;"	f
 compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+compute_indentation	test_minishell/animated_banner.py	/^def compute_indentation(initial_indent, movement_amount, start_frame, duration, current_frame):$/;"	f
 const	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
 const	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
 create_env_node	test_src/env_lst_utils/test_ms_env_add_back.c	/^t_env *create_env_node(const char *var, const char *value) {$/;"	f
@@ -873,12 +887,14 @@ init	lib/libgc/src/gc_register.c	/^static t_gc_node	*init(t_gc_node *new_node, c
 is_array	lib/libgc/include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
 is_locked	lib/libgc/include/libgc.h	/^	bool				is_locked;$/;"	m	struct:s_gc_node
 is_marked	lib/libgc/include/libgc.h	/^	bool				is_marked;$/;"	m	struct:s_gc_node
+lines	test_minishell/animated_banner.py	/^lines = [$/;"	v
+lines	test_minishell/noanimated_banner.py	/^lines = [$/;"	v
 main	lib/libft/check_testunit_template.c	/^int main(void)$/;"	f
 main	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
 main	lib/libft/test_src/printf/test_ft_snprintf.c	/^int main(void)$/;"	f
 main	main.c	/^int	main(int argc, char **argv, char **envp)$/;"	f
-main	test_minishell/test_main.c	/^int main(void)$/;"	f
+main	test_minishell/run_test.sh	/^main() {$/;"	f
 main	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
 main	test_src/env_lst_utils/test_ms_env_add_back.c	/^int main(void) {$/;"	f
@@ -889,11 +905,11 @@ main	test_src/init_shell/test_ms_init_shell.c	/^int main(void)$/;"	f
 main	test_src/signal/test_ms_init_std_signal.c	/^int main(void)$/;"	f
 main	test_src/signal/test_ms_stop_std_signal.c	/^int main(void)$/;"	f
 max_size	lib/libft/include/printf.h	/^	size_t	max_size;$/;"	m	struct:s_buffer
-minishell_suite	test_minishell/test_main.c	/^Suite *minishell_suite(void)$/;"	f
 minishell_suite	test_src/env_lst_utils/test_ms_env_add_back.c	/^Suite *minishell_suite(void) {$/;"	f
 minishell_suite	test_src/init_shell/test_ms_get_user_input.c	/^Suite	*minishell_suite(void)$/;"	f
 mock_add_history	test_src/init_shell/test_ms_get_user_input.c	/^void	mock_add_history(const char *line)$/;"	f
 mock_readline	test_src/init_shell/test_ms_get_user_input.c	/^char	*mock_readline(const char *prompt)$/;"	f
+move_cursor_below_banner	test_minishell/run_test.sh	/^move_cursor_below_banner() {$/;"	f
 ms_env_add_back	src/env_lst_utils/ms_env_add_back.c	/^void	ms_env_add_back(t_env **env, t_env *new_node)$/;"	f
 ms_env_create_node	src/env_lst_utils/ms_env_create_node.c	/^t_env	*ms_env_create_node(t_shell *shell, const char *env_line)$/;"	f
 ms_get_user_input	src/init_shell/ms_get_user_input.c	/^void	ms_get_user_input(t_shell *shell)$/;"	f
@@ -910,13 +926,21 @@ name_suite	lib/libft/test_src/printf/test_ft_snprintf.c	/^Suite *name_suite(void
 nb_printed	lib/libft/include/printf.h	/^	int		nb_printed;$/;"	m	struct:s_buffer
 next	include/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
 next	lib/libgc/include/libgc.h	/^	struct s_gc_node	*next;$/;"	m	struct:s_gc_node	typeref:struct:s_gc_node::s_gc_node
+parse_outputs	test_minishell/run_test.sh	/^        parse_outputs() {$/;"	f
 path	include/minishell.h	/^	char	*path;$/;"	m	struct:s_env_data
 precision	lib/libft/include/printf.h	/^	int			precision;$/;"	m	struct:s_format_spec
+print_banner	test_minishell/animated_banner.py	/^def print_banner(frame):$/;"	f
+print_lock	test_minishell/animated_banner.py	/^print_lock = threading.Lock()$/;"	v
+print_static_banner	test_minishell/animated_banner.py	/^def print_static_banner():$/;"	f
+print_static_banner	test_minishell/noanimated_banner.py	/^def print_static_banner():$/;"	f
+process_outputs	test_minishell/run_test.sh	/^process_outputs() {$/;"	f
 ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
 qnxnto	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
-read_from_fd	test_minishell/run_minishell_command.c	/^static char	*read_from_fd(int fd)$/;"	f	file:
-run_minishell_command	test_minishell/run_minishell_command.c	/^int	run_minishell_command(const char *exec_path, const char *command, char **output)$/;"	f
+remove_escape_codes	test_minishell/remove_escape_codes.sh	/^    remove_escape_codes() {$/;"	f
+report_results	test_minishell/run_test.sh	/^report_results() {$/;"	f
+run_expect_scripts	test_minishell/run_test.sh	/^run_expect_scripts() {$/;"	f
+run_valgrind_tests	test_minishell/run_test.sh	/^run_valgrind_tests() {$/;"	f
 s_buffer	lib/libft/include/printf.h	/^typedef struct s_buffer$/;"	s
 s_env	include/minishell.h	/^typedef struct s_env$/;"	s
 s_env_data	include/minishell.h	/^typedef struct s_env_data$/;"	s
@@ -928,12 +952,17 @@ setup	lib/libft/check_testunit_template.c	/^void setup(void)$/;"	f
 setup	lib/libft/test_src/printf/test_ft_snprintf.c	/^void setup(void)$/;"	f
 shell	include/minishell.h	/^	char	*shell;$/;"	m	struct:s_env_data
 shell_lvl	include/minishell.h	/^	int		shell_lvl;$/;"	m	struct:s_env_data
+signal_handler	test_minishell/animated_banner.py	/^    def signal_handler(sig, frame):$/;"	f
 size	lib/libgc/include/libgc.h	/^	size_t				size;$/;"	m	struct:s_gc_node
 st_create_envp	src/init_shell/ms_init_env.c	/^static char	**st_create_envp(t_shell *shell, t_env_data *env_data)$/;"	f	file:
 st_get_path	src/init_shell/ms_init_env.c	/^static char	*st_get_path(t_env_data *env_data)$/;"	f	file:
 st_get_shell	src/init_shell/ms_init_env.c	/^static char	*st_get_shell(t_env_data *env_data)$/;"	f	file:
 st_get_term	src/init_shell/ms_init_env.c	/^static char	*st_get_term(t_env_data *env_data)$/;"	f	file:
 st_sigint_std_handler	src/signal/ms_init_std_signal.c	/^static void	st_sigint_std_handler(int sig)$/;"	f	file:
+start_banner	test_minishell/run_test.sh	/^start_banner() {$/;"	f
+stop_banner	test_minishell/run_test.sh	/^stop_banner() {$/;"	f
+stop_event	test_minishell/animated_banner.py	/^    stop_event = threading.Event()$/;"	v
+suppress_leading_patterns	test_minishell/remove_escape_codes.sh	/^    suppress_leading_patterns() {$/;"	f
 t_buffer	lib/libft/include/printf.h	/^}			t_buffer;$/;"	t	typeref:struct:s_buffer
 t_env	include/minishell.h	/^}				t_env;$/;"	t	typeref:struct:s_env
 t_env_data	include/minishell.h	/^}				t_env_data;$/;"	t	typeref:struct:s_env_data

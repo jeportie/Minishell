@@ -1,0 +1,17 @@
+pwd
+cd test_dir
+pwd
+cd src
+pwd
+cd ..
+pwd
+cd .
+pwd
+cd -
+pwd
+cd ~
+pwd
+cd - -
+pwd
+cd
+pwd

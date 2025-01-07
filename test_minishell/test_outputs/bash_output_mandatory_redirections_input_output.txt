@@ -1,0 +1,129 @@
+jeportie@minishell $> echo hello > test
+0
+jeportie@minishell $> cat -e < test
+hello$
+0
+jeportie@minishell $> cat < test > outfile1 > outfile2
+0
+jeportie@minishell $> cat -e < outfile1
+0
+jeportie@minishell $> cat -e < outfile2
+hello$
+0
+jeportie@minishell $> rm outfile1
+0
+jeportie@minishell $> rm outfile2
+0
+jeportie@minishell $> rm test
+0
+jeportie@minishell $> echo hello > outfile2
+0
+jeportie@minishell $> export a=outfile2
+0
+jeportie@minishell $> cat < $a > outfile1
+0
+jeportie@minishell $> cat < outfile1
+hello
+0
+jeportie@minishell $> cat < $a
+hello
+0
+jeportie@minishell $> rm outfile1
+0
+jeportie@minishell $> rm $a
+0
+jeportie@minishell $> pwd > test && echo hello >> test
+0
+jeportie@minishell $> cat < test
+/root/projects/minishell/test_integrated
+hello
+0
+jeportie@minishell $> rm test
+0
+jeportie@minishell $> echo "Hello" > file1
+0
+jeportie@minishell $> cat file1
+Hello
+0
+jeportie@minishell $> echo ' World' >> file1
+0
+jeportie@minishell $> cat < file1
+Hello
+ World
+0
+jeportie@minishell $> cat file1
+Hello
+ World
+0
+jeportie@minishell $> rm file1
+0
+jeportie@minishell $> echo test > out0 > out1
+0
+jeportie@minishell $> cat < out1
+test
+0
+jeportie@minishell $> cat < out2
+bash: out2: No such file or directory
+1
+jeportie@minishell $> cat < out3
+bash: out3: No such file or directory
+1
+jeportie@minishell $> chmod 000 out3
+chmod: cannot access 'out3': No such file or directory
+1
+jeportie@minishell $> cat < out3
+bash: out3: No such file or directory
+1
+jeportie@minishell $> chmod 777 out3
+chmod: cannot access 'out3': No such file or directory
+1
+jeportie@minishell $> chmod 000 out1
+0
+jeportie@minishell $> chmod 777 out1
+0
+jeportie@minishell $> rm out0
+0
+jeportie@minishell $> rm out1
+0
+jeportie@minishell $> rm out2
+rm: cannot remove 'out2': No such file or directory
+1
+jeportie@minishell $> rm out3
+rm: cannot remove 'out3': No such file or directory
+1
+jeportie@minishell $> pwd > out && ../../../usr/bin/ps >> out -e
+bash: ../../../usr/bin/ps: No such file or directory
+127
+jeportie@minishell $> /usr/bin/ls -l | cat -e >> out
+0
+jeportie@minishell $> chmod 000 out
+0
+jeportie@minishell $> pwd > out
+0
+jeportie@minishell $> chmod 777 out
+0
+jeportie@minishell $> ps -e | grep Size >> out
+1
+jeportie@minishell $> cat < out -e
+/root/projects/minishell/test_integrated$
+0
+jeportie@minishell $> ps >> out -e || df > out -h
+0
+jeportie@minishell $> cat < out -e | wc > out -l
+0
+jeportie@minishell $> /bin/cat -e < Makefile | wc -l > out
+bash: Makefile: No such file or directory
+0
+jeportie@minishell $> cat -e < Makefile | /usr/bin/wc > outfile -l
+bash: Makefile: No such file or directory
+0
+jeportie@minishell $> rm outfile
+0
+jeportie@minishell $> cat -e < out
+0$
+0
+jeportie@minishell $> chmod 000 out
+0
+jeportie@minishell $> rm out || chmod 777 out && rm out
+rm: cannot remove 'out': No such file or directory
+1

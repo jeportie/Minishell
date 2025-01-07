@@ -1,0 +1,52 @@
+echo hello > test
+cat -e < test
+cat < test > outfile1 > outfile2
+cat -e < outfile1
+cat -e < outfile2
+rm outfile1
+rm outfile2
+rm test
+echo hello > outfile2
+export a=outfile2
+cat < $a > outfile1
+cat < outfile1
+cat < $a
+rm outfile1
+rm $a
+pwd > test && echo hello >> test
+cat < test
+rm test
+echo "Hello" > file1
+cat file1
+echo ' World' >> file1
+cat < file1
+cat file1
+rm file1
+echo test > out0 > out1
+cat < out1
+cat < out2
+cat < out3
+chmod 000 out3
+cat < out3
+chmod 777 out3
+chmod 000 out1
+chmod 777 out1
+rm out0
+rm out1
+rm out2
+rm out3
+pwd > out && ../../../usr/bin/ps >> out -e
+/usr/bin/ls -l | cat -e >> out
+chmod 000 out
+pwd > out
+chmod 777 out
+ps -e | grep Size >> out
+cat < out -e
+ps >> out -e || df > out -h
+cat < out -e | wc > out -l
+/bin/cat -e < Makefile | wc -l > out
+cat -e < Makefile | /usr/bin/wc > outfile -l
+rm outfile
+cat -e < out
+chmod 000 out
+rm out || chmod 777 out && rm out

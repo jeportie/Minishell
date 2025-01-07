@@ -1,0 +1,6 @@
+true && echo "Success"
+false && echo "Won't print"
+false || echo "Fallback"
+true || echo "Won't print"
+echo "hello" && echo "world"
+clear && export a=onj b=jej c=o d && ((ls -la | cat -e > test.txt) && unset a | echo -nnnnnnnnnn B) && export d=m && (((unset a b c d) && echo -n -n -n -n $a$c) && (cat test.txt | (wc -w | (echo > test.txt)) && (cat -e < test.txt > test_2.txt && (rm -rf test.txt)))) && echo -n "ur " && (export d+=on && (echo -n -nnnn -n $d)) && (unset a) &&cd |  unset a && (export b=bon && echo -n " $b ") && unset b c d | (echo J || echo greg)
