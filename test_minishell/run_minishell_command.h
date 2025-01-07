@@ -1,15 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   global.c                                           :+:      :+:    :+:   */
+/*   run_minishell_command.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 14:51:38 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/07 08:46:24 by jeportie         ###   ########.fr       */
+/*   Created: 2024/10/25 22:52:52 by jeportie          #+#    #+#             */
+/*   Updated: 2024/10/25 22:54:51 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#ifndef RUN_MINISHELL_COMMAND_H
+# define RUN_MINISHELL_COMMAND_H
 
-int	g_signal;
+int	run_minishell_command(const char *exec_path, const char *command, char **output);
+
+#endif
