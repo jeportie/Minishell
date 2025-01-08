@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 10:00:35 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:12:46 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,15 @@ static void	st_handle_execve_error(const char *cmd_path)
 
 static int	is_directory(const char *path)
 {
-	struct stat	path_stat;
+	DIR	*dir;
 
-	if (stat(path, &path_stat) == -1)
-		return (0);
-	return (S_ISDIR(path_stat.st_mode));
+	dir = opendir(path);
+	if (dir)
+	{
+		closedir(dir);
+		return (1);
+	}
+	return (0);
 }
 
 static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
