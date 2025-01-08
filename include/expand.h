@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:23:54 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/27 21:08:15 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:35:13 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,9 @@ char				*nested_vars(char *arg, t_shell *shell);
 
 void				ms_manage_arg_expand(t_cmd_node *cmd_node,
 						t_exec_context *context, t_gc *gcl);
+
+int					var_len(char *arg, t_gc *gcl);
+
+char				*ms_extract_var(char *arg, t_gc *gcl);
 
 #endif /* EXPAND_H */

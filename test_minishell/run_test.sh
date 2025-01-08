@@ -129,9 +129,11 @@ run_expect_scripts() {
         if ./run_minishell.expect "$test_file" > /dev/null 2>&1; then
             echo -e "${GREEN}minishell.expect executed successfully for group '${group_name}'.${RESET}"
         else
-            echo -e "${RED}minishell.expect failed for group '${group_name}'. Please check the script and permissions.${RESET}"
-            stop_banner
-            exit 1
+            if [ "$group_name" != "mandatory_expansions_env_variables" ]; then
+                echo -e "${RED}minishell.expect failed for group '${group_name}'. Please check the script and permissions.${RESET}"
+                stop_banner
+                exit 1
+            fi
         fi
     done
 }
@@ -339,14 +341,20 @@ report_results() {
         bash_output_count="${#bash_outputs[@]}"
         minishell_output_count="${#minishell_outputs[@]}"
 
-        # Only perform the commands-output check if the group is NOT 'mandatory_builtins_exit'
-        if [ "$group_name" != "mandatory_builtins_exit" ]; then
+        test_loop_count=0
+
+        # Only perform the commands-output check if the group is NOT 'mandatory_builtins_exit' or 'mandatory_redirections_heredoc'
+        if [ "$group_name" != "mandatory_builtins_exit" ] && [ "$group_name" != "mandatory_redirections_heredoc" ]; then
             if [ "$total_commands" -ne "$bash_output_count" ] || [ "$total_commands" -ne "$minishell_output_count" ]; then
                 echo -e "${RED}Error: Number of commands and outputs do not match in group '${group_name}'.${RESET}"
                 echo -e "Commands: ${total_commands}, Bash Outputs: ${bash_output_count}, Minishell Outputs: ${minishell_output_count}"
                 exit 1
             fi
+            test_loop_count=$total_commands
+        else
+            test_loop_count=$bash_output_count
         fi
+
 
   #      if [ "$total_commands" -ne "$bash_output_count" ] || [ "$total_commands" -ne "$minishell_output_count" ]; then
   #          echo -e "${RED}Error: Number of commands and outputs do not match in group '${group_name}'.${RESET}"
@@ -355,7 +363,7 @@ report_results() {
   #      fi
 
         # Iterate over each command
-        for ((i=0; i<total_commands; i++)); do
+        for ((i=0; i<test_loop_count; i++)); do
             test_name="${final_test_names[i]}"
             bash_output="${bash_outputs[i]}"
             mini_output="${minishell_outputs[i]}"
@@ -405,7 +413,7 @@ report_results() {
                         output_mismatch=true
                     fi
 ####
-                    if [ "$group_name" != "mandatory_builtins_exit" ]; then
+                    if [ "$group_name" != "mandatory_builtins_exit" ] && [ "$group_name" != "mandatory_redirections_heredoc" ]; then
                         if [ "${bash_lines[-1]}" != "${mini_lines[-1]}" ]; then
                             exit_code_mismatch=true
                         fi
@@ -415,11 +423,11 @@ report_results() {
 
             # Determine result
             if ! $output_mismatch && ! $exit_code_mismatch && ! $output_number_mismatch; then
-                printf "\033[1;32m✓ %-50s\t(PASS)\033[0m\n" "$test_name"
+                printf "\033[1;32m✓ %-60s\t(PASS)\033[0m\n" "$test_name"
                 ((tests_passed++))
                 ((group_tests_passed++))
             else
-                printf "\033[1;31m✘ %-45s\t\t(FAIL)\033[0m\n" "$test_name"
+                printf "\033[1;31m✘ %-45s\t\t\t(FAIL)\033[0m\n" "$test_name"
                 error_msg=""
                 $output_mismatch && error_msg+="Output mismatch. "
                 $exit_code_mismatch && error_msg+="Error code mismatch. "

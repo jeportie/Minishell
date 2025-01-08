@@ -1,0 +1,28 @@
+jeportie@minishell $> export a=test
+0
+jeportie@minishell $> echo $a
+test
+0
+jeportie@minishell $> echo " $a "
+ test 
+0
+jeportie@minishell $> echo $USER $HOME
+jeportie /root
+0
+jeportie@minishell $> export USERNAME=testuser
+0
+jeportie@minishell $> echo $USERNAME
+testuser
+0
+jeportie@minishell $> echo $USER $HOME
+jeportie /root
+0
+jeportie@minishell $> echo "User is $USERNAME"
+User is testuser
+0
+jeportie@minishell $> echo 'User is $USERNAME'
+User is $USERNAME
+0
+jeportie@minishell $> echo $INVALIDE
+
+0

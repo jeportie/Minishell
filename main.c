@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/07 09:09:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:05:53 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 #include "include/syntax.h"
 #include "include/exec.h"
 #include "lib/libft/include/libft.h"
+
+static void	st_delete_tmp_files(void)
+{
+	char	filepath[32];
+
+	int (n) = 0;
+	while (n <= 255)
+	{
+		ft_snprintf(filepath, sizeof(filepath), "/tmp/.ms_tmpfile_%d", n);
+		if (access(filepath, F_OK) == 0)
+		{
+			if (unlink(filepath) != 0)
+				ft_dprintf(2, "Failed to delete tmpfile.\n");
+		}
+		n++;
+	}
+}
 
 static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 {
@@ -30,6 +47,7 @@ static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
 	ms_preprocess_heredocs(&context);
 	shell->error_code = ms_execute_ast(root, &context);
 	gc_collect(shell->gcl);
+	st_delete_tmp_files();
 }
 
 static void	st_quit_prompt(t_shell *shell)

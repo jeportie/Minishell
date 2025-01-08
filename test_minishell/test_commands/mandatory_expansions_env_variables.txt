@@ -1,8 +1,10 @@
+export a=test
+echo $a
+echo " $a "
+echo $USER $HOME
 export USERNAME=testuser
 echo $USERNAME
 echo $USER $HOME
 echo "User is $USERNAME"
 echo 'User is $USERNAME'
-export a=test
-echo $a
 echo $INVALIDE

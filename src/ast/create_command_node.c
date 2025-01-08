@@ -6,24 +6,36 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:10:28 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 16:09:39 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:58:43 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ast.h"
 #include "../../include/tokenize.h"
 
-static void	assign_token_to_argv(t_token **current, char **argv)
+static bool	st_is_expand(t_token *current_token)
 {
-	int	i;
+	if (current_token->type == TOKEN_EXPAND)
+		return (true);
+	return (false);
+}
+
+static bool	assign_token_to_argv(t_token **current, char **argv)
+{
+	int		i;
+	bool	is_expand;
 
 	i = 0;
+	is_expand = false;
 	while (*current && is_command_op(*current))
 	{
 		argv[i] = (*current)->token;
+		if (st_is_expand(*current))
+			is_expand = true;
 		i++;
 		*current = (*current)->next;
 	}
+	return (is_expand);
 }
 
 static int	argc_count(t_token **current)
@@ -51,11 +63,12 @@ t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl)
 	argc = argc_count(current_token);
 	argv = (char **)gc_malloc(sizeof(char *) * (argc + 1), gcl);
 	gc_lock(argv, gcl);
-	assign_token_to_argv(current_token, argv);
+	command.is_expand = false;
+	if (!assign_token_to_argv(current_token, argv))
+		command.is_expand = true;
 	argv[argc] = NULL;
 	command.argv = argv;
 	command.argc = argc;
-	command.is_expand = false;
 	command_node = gc_malloc(sizeof(t_ast_node), gcl);
 	gc_lock(command_node, gcl);
 	command_node->type = NODE_COMMAND;
