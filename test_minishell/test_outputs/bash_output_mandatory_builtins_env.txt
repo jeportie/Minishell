@@ -1,27 +1,37 @@
-jeportie@minishell $> env | grep HOME 
+gmarquis@minishell $> env | grep HOME 
 HOME=/root
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> export a=ok b=c
+gmarquis@minishell $> export a=ok b=c
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> env | grep a=ok b=c
+gmarquis@minishell $> env | grep a=ok b=c
 grep: b=c: No such file or directory
+gmarquis@minishell $> echo $?
 2
-jeportie@minishell $> export a= b=ok c=ok
+gmarquis@minishell $> export a= b=ok c=ok
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> env | grep a= b=ok c=ok
+gmarquis@minishell $> env | grep a= b=ok c=ok
 grep: b=ok: No such file or directory
 grep: c=ok: No such file or directory
+gmarquis@minishell $> echo $?
 2
-jeportie@minishell $> unset a b c
+gmarquis@minishell $> unset a b c
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> env 1 | grep HOME
+gmarquis@minishell $> env 1 | grep HOME
 env: '1': No such file or directory
+gmarquis@minishell $> echo $?
 1
-jeportie@minishell $> env - | grep HOME
+gmarquis@minishell $> env - | grep HOME
+gmarquis@minishell $> echo $?
 1
-jeportie@minishell $> env -- | grep HOME
+gmarquis@minishell $> env -- | grep HOME
 HOME=/root
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> env - - | grep HOME
+gmarquis@minishell $> env - - | grep HOME
 env: '-': No such file or directory
+gmarquis@minishell $> echo $?
 1

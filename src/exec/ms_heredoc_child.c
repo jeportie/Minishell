@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:08:10 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/03 19:07:57 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:57:16 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	st_check_env_var(t_shell *shell, t_here_helper *help)
 		help->line = ft_strjoin_free(help->line, "\n");
 }
 
-static int	st_process_heredo_line(t_shell *shell, t_here_helper *help)
+static int	st_process_heredoc_line(t_shell *shell, t_here_helper *help)
 {
 	if (!help->line)
 	{
@@ -91,10 +91,13 @@ void	st_heredoc_child_process(t_shell *shell,
 		{
 			close(help.fd);
 			help.fd = open(filename, O_WRONLY | O_TRUNC);
-			close(help.fd);
+			if (help.fd == -1)
+				ft_dprintf(2, "Error: heredoc open fail.\n");
+			else
+				close(help.fd);
 			exit (130);
 		}
-		if (!st_process_heredo_line(shell, &help))
+		if (!st_process_heredoc_line(shell, &help))
 			break ;
 	}
 	exit(0);

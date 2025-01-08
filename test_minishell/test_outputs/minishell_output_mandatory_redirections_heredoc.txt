@@ -1,28 +1,32 @@
-jeportie@minishell $> cat << EOF
+gmarquis@minishell $> cat << EOF
 > hello
 > EOF
 hello
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat << EOF
+gmarquis@minishell $> cat << EOF
 > Hello from heredoc
 > EOF
 Hello from heredoc
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat << GREG
+gmarquis@minishell $> cat << GREG
 > test
 > greg
 > GREG
 test
 greg
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat << jeportie
+gmarquis@minishell $> cat << jeportie
 > test
 > jerome
 > jeportie
 test
 jerome
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat << DELIM
+gmarquis@minishell $> cat << DELIM
 > Multiple
 > lines
 > in heredoc
@@ -30,8 +34,9 @@ jeportie@minishell $> cat << DELIM
 Multiple
 lines
 in heredoc
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat << $USER
+gmarquis@minishell $> cat << $USER
 > test
 > gmarquis
 > jeportie
@@ -39,11 +44,13 @@ jeportie@minishell $> cat << $USER
 test
 gmarquis
 jeportie
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat << EOF
+gmarquis@minishell $> cat << EOF
 > $USER
 > $PATH
 > EOF
-jeportie
+gmarquis
 /root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+gmarquis@minishell $> echo $?
 0
