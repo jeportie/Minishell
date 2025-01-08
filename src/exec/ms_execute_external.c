@@ -6,11 +6,25 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/02 17:03:09 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 11:37:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
+#include <sys/stat.h>
+
+static int	is_directory(const char *path)
+{
+	DIR	*dir;
+
+	dir = opendir(path);
+	if (dir)
+	{
+		closedir(dir);
+		return (1);
+	}
+	return (0);
+}
 
 static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 			char *cmd_path, t_gc *gcl)
@@ -27,9 +41,12 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 	if (!envp)
 		exit(ms_handle_error("memory allocation error\n", EXIT_FAILURE, gcl));
 	gc_nest_register(envp, child_gcl);
+	if (is_directory(cmd_path))
+	{
+		ft_dprintf(2, SHELL ": %s: is a directory\n", cmd_path);
+		exit(EXIT_FAILURE);
+	}
 	execve(cmd_path, cmd_node->argv, envp);
-	ft_dprintf(STDERR_FILENO, "minishell: execve error");
-	gc_cleanup(child_gcl);
 	exit(EXIT_FAILURE);
 }
 

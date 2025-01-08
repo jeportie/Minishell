@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:20:22 by gmarquis          #+#    #+#             */
-/*   Updated: 2025/01/06 15:09:24 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:02:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,11 @@ int	ms_cd(t_cmd_node *cmd_node, t_shell *shell)
 			return (0);
 	}
 	if (chdir(cd))
+	{
 		ft_dprintf(2, "%s: cd: %s: No such file or directory\n",
 			SHELL, cmd_node->argv[1]);
+		return (1);
+	}
 	else
 		return (st_none_chdir(shell));
 	return (0);

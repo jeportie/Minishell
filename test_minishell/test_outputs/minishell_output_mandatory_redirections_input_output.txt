@@ -62,17 +62,33 @@ jeportie@minishell $> echo test > out0 > out1
 jeportie@minishell $> cat < out1
 test
 0
+<<<<<<< HEAD
+gmarquis@minishell $> cat < out2
+bash: out2: No such file or directory
+gmarquis@minishell $> echo $?
+1
+gmarquis@minishell $> cat < out3
+bash: out3: No such file or directory
+gmarquis@minishell $> echo $?
+=======
 jeportie@minishell $> cat < out2
 bash: out2: No such file or directory
 1
 jeportie@minishell $> cat < out3
 bash: out3: No such file or directory
+>>>>>>> develop
 1
 jeportie@minishell $> chmod 000 out3
 chmod: cannot access 'out3': No such file or directory
 1
+<<<<<<< HEAD
+gmarquis@minishell $> cat < out3
+bash: out3: No such file or directory
+gmarquis@minishell $> echo $?
+=======
 jeportie@minishell $> cat < out3
 bash: out3: No such file or directory
+>>>>>>> develop
 1
 jeportie@minishell $> chmod 777 out3
 chmod: cannot access 'out3': No such file or directory
@@ -111,11 +127,21 @@ jeportie@minishell $> ps >> out -e || df > out -h
 0
 jeportie@minishell $> cat < out -e | wc > out -l
 0
+<<<<<<< HEAD
+gmarquis@minishell $> /bin/cat -e < Makefile | wc -l > out
+bash: Makefile: No such file or directory
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat -e < Makefile | /usr/bin/wc > outfile -l
+bash: Makefile: No such file or directory
+gmarquis@minishell $> echo $?
+=======
 jeportie@minishell $> /bin/cat -e < Makefile | wc -l > out
 bash: Makefile: No such file or directory
 0
 jeportie@minishell $> cat -e < Makefile | /usr/bin/wc > outfile -l
 bash: Makefile: No such file or directory
+>>>>>>> develop
 0
 jeportie@minishell $> rm outfile
 0

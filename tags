@@ -857,6 +857,7 @@ interactive_mode	include/minishell.h	/^	bool			interactive_mode;$/;"	m	struct:s_
 is_array	lib/libgc/include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
 is_builtin_that_must_run_in_parent	src/exec/ms_execute_ast.c	/^bool	is_builtin_that_must_run_in_parent(t_cmd_node *cmd_node)$/;"	f
 is_command_op	src/ast/utils.c	/^bool	is_command_op(t_token *current_token)$/;"	f
+is_directory	src/exec/ms_execute_external.c	/^static int	is_directory(const char *path)$/;"	f	file:
 is_equal	src/expand/ms_expand_utils.c	/^bool	is_equal(char *cmd)$/;"	f
 is_expand	include/ast.h	/^	bool	is_expand;$/;"	m	struct:s_cmd_node
 is_expand	include/tokenize.h	/^	bool		is_expand;$/;"	m	struct:s_token_state

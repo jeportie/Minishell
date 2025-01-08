@@ -32,8 +32,14 @@ jeportie@minishell $> cd ~
 jeportie@minishell $> pwd
 /root
 0
+<<<<<<< HEAD
+gmarquis@minishell $> cd - -
+bash: cd: too many arguments
+gmarquis@minishell $> echo $?
+=======
 jeportie@minishell $> cd - -
 bash: cd: too many arguments
+>>>>>>> develop
 1
 jeportie@minishell $> pwd
 /root

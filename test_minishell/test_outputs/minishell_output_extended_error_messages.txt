@@ -1,11 +1,23 @@
+<<<<<<< HEAD
+gmarquis@minishell $> cd nonexistent_dir
+bash: cd: nonexistent_dir: No such file or directory
+gmarquis@minishell $> echo $?
+=======
 jeportie@minishell $> cd nonexistent_dir
 bash: cd: nonexistent_dir: No such file or directory
+>>>>>>> develop
 0
 jeportie@minishell $> ls nonexistingfile
 ls: cannot access 'nonexistingfile': No such file or directory
 2
+<<<<<<< HEAD
+gmarquis@minishell $> cat < nonexistent_file
+bash: nonexistent_file: No such file or directory
+gmarquis@minishell $> echo $?
+=======
 jeportie@minishell $> cat < nonexistent_file
 bash: nonexistent_file: No such file or directory
+>>>>>>> develop
 1
 jeportie@minishell $> mkdir test_dir
 mkdir: cannot create directory 'test_dir': File exists
