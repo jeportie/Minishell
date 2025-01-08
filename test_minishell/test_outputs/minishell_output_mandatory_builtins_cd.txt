@@ -46,7 +46,7 @@ gmarquis@minishell $> pwd
 gmarquis@minishell $> echo $?
 0
 gmarquis@minishell $> cd - -
-minishell: cd: too many arguments
+bash: cd: too many arguments
 gmarquis@minishell $> echo $?
 1
 gmarquis@minishell $> pwd

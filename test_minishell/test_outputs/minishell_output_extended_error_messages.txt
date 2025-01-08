@@ -1,5 +1,5 @@
 gmarquis@minishell $> cd nonexistent_dir
-minishell: cd: nonexistent_dir: No such file or directory
+bash: cd: nonexistent_dir: No such file or directory
 gmarquis@minishell $> echo $?
 0
 gmarquis@minishell $> ls nonexistingfile
@@ -7,7 +7,7 @@ ls: cannot access 'nonexistingfile': No such file or directory
 gmarquis@minishell $> echo $?
 2
 gmarquis@minishell $> cat < nonexistent_file
-minishell: nonexistent_file: No such file or directory
+bash: nonexistent_file: No such file or directory
 gmarquis@minishell $> echo $?
 1
 gmarquis@minishell $> mkdir test_dir

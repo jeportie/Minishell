@@ -32,11 +32,11 @@ SRC = \
   src/builtins/export_utils.c \
   src/builtins/ms_cd.c \
   src/builtins/ms_echo.c \
-  src/builtins/ms_env.c \
-  src/builtins/ms_exit.c \
   src/builtins/ms_export.c \
   src/builtins/ms_pwd.c \
   src/builtins/ms_unset.c \
+  src/builtins/ms_env.c \
+  src/builtins/ms_exit.c \
   src/exec/ms_concat_path.c \
   src/exec/ms_exec_utils.c \
   src/exec/ms_execute_ast.c \
@@ -48,10 +48,10 @@ SRC = \
   src/exec/ms_handle_error.c \
   src/exec/ms_handle_pipeline.c \
   src/exec/ms_parse_cmd_path.c \
-  src/exec/ms_heredoc_child.c \
-  src/exec/ms_heredoc_mode.c \
   src/exec/ms_apply_redirections.c \
   src/exec/ms_handle_redirections.c \
+  src/exec/ms_heredoc_child.c \
+  src/exec/ms_heredoc_mode.c \
   src/expand/ms_expand_args.c \
   src/expand/ms_expand_args_utils.c \
   src/expand/ms_expand_utils.c \

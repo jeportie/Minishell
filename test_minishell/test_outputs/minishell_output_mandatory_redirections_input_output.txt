@@ -89,11 +89,11 @@ test
 gmarquis@minishell $> echo $?
 0
 gmarquis@minishell $> cat < out2
-minishell: out2: No such file or directory
+bash: out2: No such file or directory
 gmarquis@minishell $> echo $?
 1
 gmarquis@minishell $> cat < out3
-minishell: out3: No such file or directory
+bash: out3: No such file or directory
 gmarquis@minishell $> echo $?
 1
 gmarquis@minishell $> chmod 000 out3
@@ -101,7 +101,7 @@ chmod: cannot access 'out3': No such file or directory
 gmarquis@minishell $> echo $?
 1
 gmarquis@minishell $> cat < out3
-minishell: out3: No such file or directory
+bash: out3: No such file or directory
 gmarquis@minishell $> echo $?
 1
 gmarquis@minishell $> chmod 777 out3
@@ -158,11 +158,11 @@ gmarquis@minishell $> cat < out -e | wc > out -l
 gmarquis@minishell $> echo $?
 0
 gmarquis@minishell $> /bin/cat -e < Makefile | wc -l > out
-minishell: Makefile: No such file or directory
+bash: Makefile: No such file or directory
 gmarquis@minishell $> echo $?
 0
 gmarquis@minishell $> cat -e < Makefile | /usr/bin/wc > outfile -l
-minishell: Makefile: No such file or directory
+bash: Makefile: No such file or directory
 gmarquis@minishell $> echo $?
 0
 gmarquis@minishell $> rm outfile

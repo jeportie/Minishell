@@ -6,11 +6,47 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/02 17:03:09 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:00:35 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
+#include <sys/stat.h>
+
+static void	st_handle_execve_error(const char *cmd_path)
+{
+	if (errno == EISDIR)
+		ft_dprintf(2, "minishell: is a directory: %s\n", cmd_path);
+	else if (errno == EACCES)
+		ft_dprintf(2, "minishell: permission denied: %s\n", cmd_path);
+	else if (errno == EFAULT)
+		ft_dprintf(2, "minishell: bad address: %s\n", cmd_path);
+	else if (errno == EINVAL)
+		ft_dprintf(2, "minishell: invalid argument: %s\n", cmd_path);
+	else if (errno == EIO)
+		ft_dprintf(2, "minishell: input/output error: %s\n", cmd_path);
+	else if (errno == ELIBBAD)
+		ft_dprintf(2, "minishell: bad shared library: %s\n", cmd_path);
+	else if (errno == ENOENT)
+		ft_dprintf(2, "minishell: no such file or directory: %s\n", cmd_path);
+	else if (errno == ENOMEM)
+		ft_dprintf(2, "minishell: out of memory: %s\n", cmd_path);
+	else if (errno == ENOTDIR)
+		ft_dprintf(2, "minishell: not a directory in path: %s\n", cmd_path);
+	else if (errno == ETXTBSY)
+		ft_dprintf(2, "minishell: text file busy: %s\n", cmd_path);
+	else
+		ft_dprintf(2, "minishell: unknown error (%d): %s\n", errno, cmd_path);
+}
+
+static int	is_directory(const char *path)
+{
+	struct stat	path_stat;
+
+	if (stat(path, &path_stat) == -1)
+		return (0);
+	return (S_ISDIR(path_stat.st_mode));
+}
 
 static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 			char *cmd_path, t_gc *gcl)
@@ -27,9 +63,13 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 	if (!envp)
 		exit(ms_handle_error("memory allocation error\n", EXIT_FAILURE, gcl));
 	gc_nest_register(envp, child_gcl);
+	if (is_directory(cmd_path))
+	{
+		ft_dprintf(2, SHELL ": %s: is a directory\n", cmd_path);
+		exit(EXIT_FAILURE);
+	}
 	execve(cmd_path, cmd_node->argv, envp);
-	ft_dprintf(STDERR_FILENO, "minishell: execve error");
-	gc_cleanup(child_gcl);
+	st_handle_execve_error(cmd_path);
 	exit(EXIT_FAILURE);
 }
 
