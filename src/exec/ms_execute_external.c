@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 11:37:15 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:47:16 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 	gc_nest_register(envp, child_gcl);
 	if (is_directory(cmd_path))
 	{
-		ft_dprintf(2, SHELL ": %s: is a directory\n", cmd_path);
-		exit(EXIT_FAILURE);
+		ft_dprintf(2, SHELL ": %s: Is a directory\n", cmd_path);
+		exit(126);
 	}
 	execve(cmd_path, cmd_node->argv, envp);
 	exit(EXIT_FAILURE);
