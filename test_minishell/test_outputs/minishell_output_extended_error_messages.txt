@@ -1,55 +1,40 @@
-gmarquis@minishell $> cd nonexistent_dir
-minishell: cd: nonexistent_dir: No such file or directory
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd nonexistent_dir
+bash: cd: nonexistent_dir: No such file or directory
 0
-gmarquis@minishell $> ls nonexistingfile
+jeportie@minishell $> ls nonexistingfile
 ls: cannot access 'nonexistingfile': No such file or directory
-gmarquis@minishell $> echo $?
 2
-gmarquis@minishell $> cat < nonexistent_file
-minishell: nonexistent_file: No such file or directory
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < nonexistent_file
+bash: nonexistent_file: No such file or directory
 1
-gmarquis@minishell $> mkdir test_dir
+jeportie@minishell $> mkdir test_dir
 mkdir: cannot create directory 'test_dir': File exists
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> ./test_dir
+jeportie@minishell $> ./test_dir
 minishell: execve errorfree(): double free detected in tcache 2
-gmarquis@minishell $> echo $?
 134
-gmarquis@minishell $> touch test_file
-gmarquis@minishell $> echo $?
+jeportie@minishell $> touch test_file
 0
-gmarquis@minishell $> rm -rf test_file
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm -rf test_file
 0
-gmarquis@minishell $> cat test_dir
+jeportie@minishell $> cat test_dir
 cat: test_dir: Is a directory
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> rm -rf nonexist_dire
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm -rf nonexist_dire
 0
-gmarquis@minishell $> echo /dev/full
+jeportie@minishell $> echo /dev/full
 /dev/full
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> chmod 000 test_file
+jeportie@minishell $> chmod 000 test_file
 chmod: cannot access 'test_file': No such file or directory
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> echo test > test_file
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo test > test_file
 0
-gmarquis@minishell $> rm test_file
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm test_file
 0
-gmarquis@minishell $> chmod 777 test_file
+jeportie@minishell $> chmod 777 test_file
 chmod: cannot access 'test_file': No such file or directory
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> rm test_file
+jeportie@minishell $> rm test_file
 rm: cannot remove 'test_file': No such file or directory
-gmarquis@minishell $> echo $?
 1

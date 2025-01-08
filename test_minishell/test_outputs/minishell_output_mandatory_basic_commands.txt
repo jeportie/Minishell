@@ -1,54 +1,41 @@
-gmarquis@minishell $> ls
+jeportie@minishell $> ls
 animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> man
+jeportie@minishell $> man
 This system has been minimized by removing packages and content that are
 not required on a system that users do not log into.
 
 To restore this content, including manpages, you can run the 'unminimize'
 command. You will still need to ensure the 'man-db' package is installed.
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> git remote -v
-origin	git@github.com:jeportie/Minishell.git (fetch)
-origin	git@github.com:jeportie/Minishell.git (push)
-gmarquis@minishell $> echo $?
+jeportie@minishell $> git remote -v
+origin	git@github.com:jeportie/minishell.git (fetch)
+origin	git@github.com:jeportie/minishell.git (push)
 0
-gmarquis@minishell $> touch test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> touch test
 0
-gmarquis@minishell $> echo test > test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo test > test
 0
-gmarquis@minishell $> cat -e test
+jeportie@minishell $> cat -e test
 test$
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> expr $? + $?
+jeportie@minishell $> expr $? + $?
 0
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> /bin/ls
+jeportie@minishell $> /bin/ls
 animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test	test_commands  test_dir  test_outputs
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> /usr/bin/cat test
+jeportie@minishell $> /usr/bin/cat test
 test
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> /usr/bin/cat -e test
+jeportie@minishell $> /usr/bin/cat -e test
 test$
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> /bin/ls-l
+jeportie@minishell $> /bin/ls-l
 bash: /bin/ls-l: No such file or directory
-gmarquis@minishell $> echo $?
 127
-gmarquis@minishell $> /usr/bin/cat-e
+jeportie@minishell $> /usr/bin/cat-e
 bash: /usr/bin/cat-e: No such file or directory
-gmarquis@minishell $> echo $?
 127
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm test
 0

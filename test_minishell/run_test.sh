@@ -427,7 +427,7 @@ report_results() {
                 ((tests_passed++))
                 ((group_tests_passed++))
             else
-                printf "\033[1;31m✘ %-55s\t\t(FAIL)\033[0m\n" "$test_name"
+                printf "\033[1;31m✘ %-45s\t\t\t(FAIL)\033[0m\n" "$test_name"
                 error_msg=""
                 $output_mismatch && error_msg+="Output mismatch. "
                 $exit_code_mismatch && error_msg+="Error code mismatch. "
