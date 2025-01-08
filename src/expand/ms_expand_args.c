@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:04:44 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 13:55:22 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:11:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ static void	helper_copy(t_expand_utils *ex_utils, char *arg, int *old_arg_index,
 			if (arg[new_arg_index] == '}')
 				new_arg_index++;
 		}
-	//	if (*old_arg_index < (int)ft_strlen(new_arg) - 1)
-		if (*old_arg_index < ex_utils->total_len) 
+		if (*old_arg_index < ex_utils->total_len)
 		{
 			ex_utils->new_arg[*old_arg_index] = arg[new_arg_index];
 			(*old_arg_index)++;
