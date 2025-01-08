@@ -1,0 +1,47 @@
+gmarquis@minishell $> pwd > test
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat test
+/root/projects/minishell/test_minishell
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> rm test
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cd ..
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> pwd
+/root/projects/minishell
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cd -
+/root/projects/minishell/test_minishell
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> pwd
+/root/projects/minishell/test_minishell
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> pwd
+/root/projects/minishell/test_minishell
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cd test_dir
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> pwd
+/root/projects/minishell/test_minishell/test_dir
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cd ..
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> pwd
+/root/projects/minishell/test_minishell
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo "Testing echo builtin"
+Testing echo builtin
+gmarquis@minishell $> echo $?
+0

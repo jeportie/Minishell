@@ -1,35 +1,48 @@
-jeportie@minishell $> pwd
+gmarquis@minishell $> pwd
 /root/projects/minishell/test_minishell
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cd test_dir
+gmarquis@minishell $> cd test_dir
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> pwd
+gmarquis@minishell $> pwd
 /root/projects/minishell/test_minishell/test_dir
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cd src
+gmarquis@minishell $> cd src
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> pwd
+gmarquis@minishell $> pwd
 /root/projects/minishell/test_minishell/test_dir/src
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cd ../..
+gmarquis@minishell $> cd ../..
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> pwd
+gmarquis@minishell $> pwd
 /root/projects/minishell/test_minishell
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> pwd -
+gmarquis@minishell $> pwd -
 /root/projects/minishell/test_minishell
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> pwd 123
+gmarquis@minishell $> pwd 123
 /root/projects/minishell/test_minishell
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> pwd > test
+gmarquis@minishell $> pwd > test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat < test
+gmarquis@minishell $> cat < test
 /root/projects/minishell/test_minishell
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> pwd >> test
+gmarquis@minishell $> pwd >> test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat < test
+gmarquis@minishell $> cat < test
 /root/projects/minishell/test_minishell
 /root/projects/minishell/test_minishell
+gmarquis@minishell $> echo $?
 0

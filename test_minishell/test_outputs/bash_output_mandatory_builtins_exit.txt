@@ -1,0 +1,25 @@
+gmarquis@minishell $> (exit 1)
+gmarquis@minishell $> echo $?
+1
+gmarquis@minishell $> (exit 0)
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> (exit 42)
+gmarquis@minishell $> echo $?
+42
+gmarquis@minishell $> (exit 999)
+gmarquis@minishell $> echo $?
+231
+gmarquis@minishell $> (exit 424242)
+gmarquis@minishell $> echo $?
+50
+gmarquis@minishell $> (exit 9999999999999999)
+gmarquis@minishell $> echo $?
+255
+gmarquis@minishell $> (exit 999999999999999999999999999999999999999999999999999)
+bash: exit: 999999999999999999999999999999999999999999999999999: numeric argument required
+gmarquis@minishell $> echo $?
+2
+gmarquis@minishell $> (exit 9999999999999999)
+gmarquis@minishell $> echo $?
+255

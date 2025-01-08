@@ -1,0 +1,27 @@
+gmarquis@minishell $> cd test_dir
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> ls a*
+a1  a2	a3  a4
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> ls *1
+a1  b1
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> ls *src*
+hello
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat s*/*ll*
+/root/projects/minishell/test_integrated/test_dir/src
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo a*
+a1 a2 a3 a4
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo *1
+a1 b1
+gmarquis@minishell $> echo $?
+0

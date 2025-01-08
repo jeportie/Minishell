@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:22:43 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/12/04 11:17:27 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:40:53 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,12 @@ int	ms_env(t_cmd_node *cmd_node, t_exec_context *context)
 		}
 		else
 		{
-			ft_dprintf(2, "minishell: env: invalid option -- \'%s\'\n",
+			ft_dprintf(2, "env: invalid option -- \'%s\'\n",
 				st_whithout_minus(cmd_node->argv[1]));
 			return (125);
 		}
 	}
-	ft_dprintf(2, "minishell: env: ‘%s"
-		"’: No such file or directory\n", st_first_arg(cmd_node->argv));
+	ft_dprintf(2, "env: '%s"
+		"': No such file or directory\n", st_first_arg(cmd_node->argv));
 	return (127);
 }

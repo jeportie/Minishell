@@ -1,0 +1,38 @@
+gmarquis@minishell $> export a=test
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo $a
+test
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo $USER $HOME
+gmarquis /root
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo 'User is $USERNAME'
+User is $USERNAME
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> export USERNAME=testuser
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo $USERNAME
+testuser
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo $USER $HOME
+gmarquis /root
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo "User is $USERNAME"
+User is testuser
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo 'User is $USERNAME'
+User is $USERNAME
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo $INVALIDE
+
+gmarquis@minishell $> echo $?
+0

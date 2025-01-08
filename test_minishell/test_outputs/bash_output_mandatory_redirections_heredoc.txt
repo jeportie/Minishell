@@ -1,0 +1,56 @@
+gmarquis@minishell $> cat << EOF
+> hello
+> EOF
+hello
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat << EOF
+> Hello from heredoc
+> EOF
+Hello from heredoc
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat << GREG
+> test
+> greg
+> GREG
+test
+greg
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat << jeportie
+> test
+> jerome
+> jeportie
+test
+jerome
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat << DELIM
+> Multiple
+> lines
+> in heredoc
+> DELIM
+Multiple
+lines
+in heredoc
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat << $USER
+> test
+> gmarquis
+> jeportie
+> $USER
+test
+gmarquis
+jeportie
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> cat << EOF
+> $USER
+> $PATH
+> EOF
+gmarquis
+/root/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+gmarquis@minishell $> echo $?
+0

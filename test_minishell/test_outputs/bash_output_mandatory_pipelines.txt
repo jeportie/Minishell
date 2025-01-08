@@ -1,0 +1,30 @@
+gmarquis@minishell $> echo Hello | cat -e
+Hello$
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo "Hello" | cat -e
+Hello$
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> ls | grep "test"
+run_test.sh
+test
+test_commands
+test_dir
+test_outputs
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo "line1\nline2" | wc -l
+1
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> df -h | wc -l | cat -e
+11$
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> echo test | cat | cat | cat | cat | cat | cat -e
+test$
+gmarquis@minishell $> echo $?
+0
+gmarquis@minishell $> sleep 10 | sleep 5 | sleep 1
+echo $?
