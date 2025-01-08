@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:04:44 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 13:57:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:11:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static char	*ms_extract_var(char *arg, t_gc *gcl)
 	return (var[j] = '\0', var);
 }
 
-static void	helper_copy(char *new_arg, char *arg, int *old_arg_index,
+static void	helper_copy(t_expand_utils *ex_utils, char *arg, int *old_arg_index,
 		int new_arg_index)
 {
 	while (arg[new_arg_index] && (ft_isalnum(arg[new_arg_index])
@@ -77,14 +77,14 @@ static void	helper_copy(char *new_arg, char *arg, int *old_arg_index,
 			if (arg[new_arg_index] == '}')
 				new_arg_index++;
 		}
-		if (*old_arg_index < (int)ft_strlen(new_arg) - 1)
+		if (*old_arg_index < ex_utils->total_len)
 		{
-			new_arg[*old_arg_index] = arg[new_arg_index];
+			ex_utils->new_arg[*old_arg_index] = arg[new_arg_index];
 			(*old_arg_index)++;
 		}
 		new_arg_index++;
 	}
-	new_arg[*old_arg_index] = '\0';
+	ex_utils->new_arg[*old_arg_index] = '\0';
 }
 
 static void	copy_expanded_cmd(char *arg, bool is_nested,
@@ -109,7 +109,7 @@ static void	copy_expanded_cmd(char *arg, bool is_nested,
 		arg_index++;
 		expand_index++;
 	}
-	helper_copy(ex_utils->new_arg, arg, &arg_index, i);
+	helper_copy(ex_utils, arg, &arg_index, i);
 }
 
 char	*ms_expand_arg(char *arg, t_shell *shell, bool is_nested)

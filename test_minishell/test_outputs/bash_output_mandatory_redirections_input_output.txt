@@ -1,181 +1,129 @@
-gmarquis@minishell $> echo hello > test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo hello > test
 0
-gmarquis@minishell $> cat -e < test
+jeportie@minishell $> cat -e < test
 hello$
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat < test > outfile1 > outfile2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < test > outfile1 > outfile2
 0
-gmarquis@minishell $> cat -e < outfile1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat -e < outfile1
 0
-gmarquis@minishell $> cat -e < outfile2
+jeportie@minishell $> cat -e < outfile2
 hello$
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm outfile1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm outfile1
 0
-gmarquis@minishell $> rm outfile2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm outfile2
 0
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm test
 0
-gmarquis@minishell $> echo hello > outfile2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo hello > outfile2
 0
-gmarquis@minishell $> export a=outfile2
-gmarquis@minishell $> echo $?
+jeportie@minishell $> export a=outfile2
 0
-gmarquis@minishell $> cat < $a > outfile1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < $a > outfile1
 0
-gmarquis@minishell $> cat < outfile1
+jeportie@minishell $> cat < outfile1
 hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat < $a
+jeportie@minishell $> cat < $a
 hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm outfile1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm outfile1
 0
-gmarquis@minishell $> rm $a
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm $a
 0
-gmarquis@minishell $> pwd > test && echo hello >> test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd > test && echo hello >> test
 0
-gmarquis@minishell $> cat < test
+jeportie@minishell $> cat < test
 /root/projects/minishell/test_minishell
 hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm test
 0
-gmarquis@minishell $> echo "Hello" > file1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo "Hello" > file1
 0
-gmarquis@minishell $> cat file1
+jeportie@minishell $> cat file1
 Hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo ' World' >> file1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo ' World' >> file1
 0
-gmarquis@minishell $> cat < file1
+jeportie@minishell $> cat < file1
 Hello
  World
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat file1
+jeportie@minishell $> cat file1
 Hello
  World
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm file1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm file1
 0
-gmarquis@minishell $> echo test > out0 > out1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo test > out0 > out1
 0
-gmarquis@minishell $> cat < out1
+jeportie@minishell $> cat < out1
 test
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat < out2
+jeportie@minishell $> cat < out2
 bash: out2: No such file or directory
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> cat < out3
+jeportie@minishell $> cat < out3
 bash: out3: No such file or directory
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> chmod 000 out3
+jeportie@minishell $> chmod 000 out3
 chmod: cannot access 'out3': No such file or directory
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> cat < out3
+jeportie@minishell $> cat < out3
 bash: out3: No such file or directory
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> chmod 777 out3
+jeportie@minishell $> chmod 777 out3
 chmod: cannot access 'out3': No such file or directory
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> chmod 000 out1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> chmod 000 out1
 0
-gmarquis@minishell $> chmod 777 out1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> chmod 777 out1
 0
-gmarquis@minishell $> rm out0
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm out0
 0
-gmarquis@minishell $> rm out1
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm out1
 0
-gmarquis@minishell $> rm out2
+jeportie@minishell $> rm out2
 rm: cannot remove 'out2': No such file or directory
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> rm out3
+jeportie@minishell $> rm out3
 rm: cannot remove 'out3': No such file or directory
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> pwd > out && ../../../usr/bin/ps >> out -e
+jeportie@minishell $> pwd > out && ../../../usr/bin/ps >> out -e
 bash: ../../../usr/bin/ps: No such file or directory
-gmarquis@minishell $> echo $?
 127
-gmarquis@minishell $> /usr/bin/ls -l | cat -e >> out
-gmarquis@minishell $> echo $?
+jeportie@minishell $> /usr/bin/ls -l | cat -e >> out
 0
-gmarquis@minishell $> chmod 000 out
-gmarquis@minishell $> echo $?
+jeportie@minishell $> chmod 000 out
 0
-gmarquis@minishell $> pwd > out
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd > out
 0
-gmarquis@minishell $> chmod 777 out
-gmarquis@minishell $> echo $?
+jeportie@minishell $> chmod 777 out
 0
-gmarquis@minishell $> ps -e | grep Size >> out
-gmarquis@minishell $> echo $?
+jeportie@minishell $> ps -e | grep Size >> out
 1
-gmarquis@minishell $> cat < out -e
+jeportie@minishell $> cat < out -e
 /root/projects/minishell/test_minishell$
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> ps >> out -e || df > out -h
-gmarquis@minishell $> echo $?
+jeportie@minishell $> ps >> out -e || df > out -h
 0
-gmarquis@minishell $> cat < out -e | wc > out -l
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cat < out -e | wc > out -l
 0
-gmarquis@minishell $> /bin/cat -e < Makefile | wc -l > out
+jeportie@minishell $> /bin/cat -e < Makefile | wc -l > out
 bash: Makefile: No such file or directory
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cat -e < Makefile | /usr/bin/wc > outfile -l
+jeportie@minishell $> cat -e < Makefile | /usr/bin/wc > outfile -l
 bash: Makefile: No such file or directory
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm outfile
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm outfile
 0
-gmarquis@minishell $> cat -e < out
+jeportie@minishell $> cat -e < out
 0$
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> chmod 000 out
-gmarquis@minishell $> echo $?
+jeportie@minishell $> chmod 000 out
 0
-gmarquis@minishell $> rm out || chmod 777 out && rm out
+jeportie@minishell $> rm out || chmod 777 out && rm out
 rm: cannot remove 'out': No such file or directory
-gmarquis@minishell $> echo $?
 1

@@ -561,7 +561,7 @@ append_redir_list	src/exec/ms_execute_subshell.c	/^static t_redir	*append_redir_
 argc	include/ast.h	/^	int		argc;$/;"	m	struct:s_cmd_node
 argc_count	src/ast/create_command_node.c	/^static int	argc_count(t_token **current)$/;"	f	file:
 argv	include/ast.h	/^	char	**argv;$/;"	m	struct:s_cmd_node
-assign_token_to_argv	src/ast/create_command_node.c	/^static void	assign_token_to_argv(t_token **current, char **argv)$/;"	f	file:
+assign_token_to_argv	src/ast/create_command_node.c	/^static bool	assign_token_to_argv(t_token **current, char **argv)$/;"	f	file:
 ast_suite	test_src/ast/test_ms_parse_tokens.c	/^Suite *ast_suite(void)$/;"	f
 banner_height	test_minishell/animated_banner.py	/^banner_height = len(lines)  # Number of lines in the banner$/;"	v
 base_path	include/expand.h	/^	const char			*base_path;$/;"	m	struct:s_directory_context
@@ -820,7 +820,7 @@ head	lib/libgc/include/libgc.h	/^	t_gc_node	*head;$/;"	m	struct:s_garbage_collec
 help_word	src/token/tokenize_word.c	/^t_token	*help_word(char *value, t_gc *gcl, bool is_expand)$/;"	f
 helper	lib/libgc/src/gc_realloc.c	/^static void	*helper(t_gc_node *current, void *ptr, size_t size, t_gc *gcl)$/;"	f	file:
 helper	src/expand/ms_value_assign.c	/^static void	helper(t_cmd_node *cmd_node, t_shell *shell)$/;"	f	file:
-helper_copy	src/expand/ms_expand_args.c	/^static void	helper_copy(char *new_arg, char *arg, int *old_arg_index,$/;"	f	file:
+helper_copy	src/expand/ms_expand_args.c	/^static void	helper_copy(t_expand_utils *ex_utils, char *arg, int *old_arg_index,$/;"	f	file:
 heredoc	include/ast.h	/^	t_heredoc_node		heredoc;$/;"	m	union:u_node_data
 heredocs	include/minishell.h	/^	t_heredoc_node	*heredocs[16];$/;"	m	struct:s_shell
 i	include/builtins.h	/^	int	i;$/;"	m	struct:s_echo_utils
@@ -1171,6 +1171,7 @@ st_init_here_helper	src/exec/ms_heredoc_child.c	/^static void	st_init_here_helpe
 st_init_sort_helper	src/token/ms_tokenize.c	/^static void	st_init_sort_helper(t_sort_token_helper	*h, t_token *tokens)$/;"	f	file:
 st_init_utils	src/builtins/ms_export.c	/^static void	st_init_utils(t_export_utils *utils, t_shell *shell)$/;"	f	file:
 st_is_and	src/syntax_error/check_reinit.c	/^static int	st_is_and(t_syntax **syntax)$/;"	f	file:
+st_is_expand	src/ast/create_command_node.c	/^static bool	st_is_expand(t_token *current_token)$/;"	f	file:
 st_is_n	src/builtins/ms_echo.c	/^static int	st_is_n(char *str)$/;"	f	file:
 st_is_redir	src/exec/ms_handle_redirections.c	/^static bool	st_is_redir(t_ast_node *node)$/;"	f	file:
 st_line_check	src/syntax_error/ms_syntax_error.c	/^static int	st_line_check(t_syntax *synt)$/;"	f	file:
