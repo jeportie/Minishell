@@ -1,30 +1,18 @@
-<<<<<<< HEAD
-gmarquis@minishell $> cd nonexistent_dir
-bash: cd: nonexistent_dir: No such file or directory
-gmarquis@minishell $> echo $?
-=======
 jeportie@minishell $> cd nonexistent_dir
 bash: cd: nonexistent_dir: No such file or directory
->>>>>>> develop
-0
+1
 jeportie@minishell $> ls nonexistingfile
 ls: cannot access 'nonexistingfile': No such file or directory
 2
-<<<<<<< HEAD
-gmarquis@minishell $> cat < nonexistent_file
-bash: nonexistent_file: No such file or directory
-gmarquis@minishell $> echo $?
-=======
 jeportie@minishell $> cat < nonexistent_file
 bash: nonexistent_file: No such file or directory
->>>>>>> develop
 1
 jeportie@minishell $> mkdir test_dir
 mkdir: cannot create directory 'test_dir': File exists
 1
 jeportie@minishell $> ./test_dir
-minishell: execve errorfree(): double free detected in tcache 2
-134
+bash: ./test_dir: is a directory
+1
 jeportie@minishell $> touch test_file
 0
 jeportie@minishell $> rm -rf test_file
