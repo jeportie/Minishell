@@ -1,0 +1,1338 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	583;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	586;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	589;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	592;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	595;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	599;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	601;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	603;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	607;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	610;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	613;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	618;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	621;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	624;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	629;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	632;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	635;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	638;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	641;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	644;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	647;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	650;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	653;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	656;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	659;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	664;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	667;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	670;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	673;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	676;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	679;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	684;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	687;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	690;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	693;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	696;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	700;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	703;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	708;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	711;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	714;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	717;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	720;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	723;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	726;"	d	file:
+ARCHITECTURE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	730;"	d	file:
+AST_H	include/ast.h	14;"	d
+BLUE	Makefile	/^BLUE    = \\033[34m$/;"	m
+BLUE	test_minishell/animated_banner.py	/^BLUE = "\\033[1;34m"$/;"	v
+BOLD	Makefile	/^BOLD    = \\033[1m$/;"	m
+BUFFER_SIZE	lib/libft/include/libft.h	28;"	d
+BUFFER_SIZE	lib/libft/include/printf.h	27;"	d
+BUILTINS_H	include/builtins.h	14;"	d
+CC	Makefile	/^CC = 		cc$/;"	m
+CC	Makefile	/^default: CC = cc$/;"	m
+CC	Makefile	/^san: CC = clang$/;"	m
+CC	Makefile	/^val: CC = cc$/;"	m
+CC	lib/libft/Makefile	/^CC = gcc$/;"	m
+CC	lib/libgc/Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = 	-Wall -Wextra -Werror$/;"	m
+CFLAGS	lib/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	lib/libgc/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CMAKE_BINARY_DIR	lib/libft/test_src/build/Makefile	/^CMAKE_BINARY_DIR = \/root\/projects\/minishell\/lib\/libft\/test_src\/build$/;"	m
+CMAKE_BINARY_DIR	test_src/Makefile	/^CMAKE_BINARY_DIR = \/root\/projects\/minishell\/test_src$/;"	m
+CMAKE_COMMAND	lib/libft/test_src/build/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_COMMAND	test_src/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_SOURCE_DIR	lib/libft/test_src/build/Makefile	/^CMAKE_SOURCE_DIR = \/root\/projects\/minishell\/lib\/libft\/test_src$/;"	m
+CMAKE_SOURCE_DIR	test_src/Makefile	/^CMAKE_SOURCE_DIR = \/root\/projects\/minishell\/test_src$/;"	m
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	109;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	117;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	123;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	129;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	138;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	147;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	161;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	168;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	175;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	182;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	190;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	198;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	205;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	212;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	220;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	228;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	236;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	241;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	248;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	256;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	25;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	272;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	281;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	287;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	293;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	296;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	299;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	302;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	317;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	332;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	339;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	353;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	369;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	379;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	397;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	407;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	421;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	438;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	441;"	d	file:
+COMPILER_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	71;"	d	file:
+COMPILER_VERSION	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	258;"	d	file:
+COMPILER_VERSION_INTERNAL	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	265;"	d	file:
+COMPILER_VERSION_INTERNAL	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	267;"	d	file:
+COMPILER_VERSION_INTERNAL	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	284;"	d	file:
+COMPILER_VERSION_INTERNAL	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	336;"	d	file:
+COMPILER_VERSION_INTERNAL	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	412;"	d	file:
+COMPILER_VERSION_INTERNAL	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	417;"	d	file:
+COMPILER_VERSION_INTERNAL_STR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	232;"	d	file:
+COMPILER_VERSION_INTERNAL_STR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	252;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	110;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	118;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	125;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	131;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	140;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	150;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	155;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	163;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	170;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	177;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	183;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	191;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	200;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	207;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	213;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	221;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	229;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	237;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	243;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	249;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	260;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	275;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	282;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	288;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	305;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	310;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	321;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	333;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	343;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	354;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	35;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	370;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	381;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	400;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	409;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	414;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	423;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	428;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	43;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	83;"	d	file:
+COMPILER_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	87;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	111;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	119;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	126;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	132;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	141;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	151;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	156;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	164;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	171;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	178;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	184;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	192;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	201;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	208;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	214;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	222;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	230;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	238;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	244;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	250;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	261;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	276;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	283;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	289;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	306;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	311;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	322;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	334;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	344;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	355;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	36;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	372;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	382;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	401;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	410;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	415;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	424;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	429;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	44;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	84;"	d	file:
+COMPILER_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	88;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	113;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	120;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	134;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	143;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	152;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	157;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	165;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	172;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	179;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	185;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	193;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	202;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	209;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	216;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	224;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	231;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	245;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	251;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	262;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	277;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	290;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	307;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	312;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	323;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	335;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	345;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	357;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	375;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	386;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	389;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	38;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	402;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	40;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	411;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	416;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	425;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	430;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	47;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	85;"	d	file:
+COMPILER_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	89;"	d	file:
+COMPILER_VERSION_TWEAK	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	186;"	d	file:
+COMPILER_VERSION_TWEAK	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	194;"	d	file:
+COMPILER_VERSION_TWEAK	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	329;"	d	file:
+COMPILER_VERSION_TWEAK	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	393;"	d	file:
+COMPILER_VERSION_TWEAK	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	403;"	d	file:
+COMPILER_VERSION_TWEAK	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	51;"	d	file:
+COPY_MODE	include/exec.h	24;"	d
+COPY_MODE	include/minishell.h	28;"	d
+CYAN	test_minishell/animated_banner.py	/^CYAN = "\\033[1;36m"$/;"	v
+CYAN	test_minishell/noanimated_banner.py	/^CYAN = "\\033[1;36m"$/;"	v
+C_VERSION	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	817;"	d	file:
+C_VERSION	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	819;"	d	file:
+C_VERSION	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	822;"	d	file:
+C_VERSION	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	824;"	d	file:
+C_VERSION	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	826;"	d	file:
+C_VERSION	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	828;"	d	file:
+C_VERSION	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	830;"	d	file:
+DEBUG	include/minishell.h	25;"	d
+DEC	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	734;"	d	file:
+DEPFLAGS	Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
+DEPS	Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
+DirectoryOfThisScript	ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+EQUALS	lib/libft/test_src/build/Makefile	/^EQUALS = =$/;"	m
+EQUALS	test_src/Makefile	/^EQUALS = =$/;"	m
+ERNOFORMAT	lib/libft/include/printf.h	/^	ERNOFORMAT,$/;"	e	enum:e_error
+ERNOMEM	lib/libft/include/printf.h	/^	ERNOMEM,$/;"	e	enum:e_error
+ERNOWRITE	lib/libft/include/printf.h	/^	ERNOWRITE,$/;"	e	enum:e_error
+ERR	include/ast.h	/^	ERR$/;"	e	enum:e_node_type
+ERROR	lib/libft/include/libft.h	31;"	d
+ERROR	lib/libft/include/printf.h	30;"	d
+EXEC_H	include/exec.h	14;"	d
+EXPAND_H	include/expand.h	14;"	d
+FlagsForFile	ycm_extra_conf.py	/^def FlagsForFile(filename):$/;"	f
+GREEN	Makefile	/^GREEN   = \\033[32m$/;"	m
+GREEN	test_minishell/animated_banner.py	/^GREEN = "\\033[1;32m"$/;"	v
+GREEN	test_minishell/noanimated_banner.py	/^GREEN = "\\033[1;32m"$/;"	v
+HELG	Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
+HEX	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	745;"	d	file:
+ID_VOID_MAIN	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
+INCLUDES	Makefile	/^INCLUDES = -I.\/include -I.\/lib\/libgc\/include -I.\/lib\/libft\/include$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS = -lreadline -L.\/lib\/libgc -lgc -L.\/lib\/libft -lft$/;"	m
+LIBFT_H	lib/libft/include/libft.h	14;"	d
+LIBGC_H	lib/libgc/include/libgc.h	14;"	d
+MINISHELL_H	include/minishell.h	14;"	d
+MakeRelativePathsAbsolute	ycm_extra_conf.py	/^def MakeRelativePathsAbsolute(flags, working_directory):$/;"	f
+NAME	Makefile	/^NAME = minishell$/;"	m
+NAME	lib/libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	lib/libgc/Makefile	/^NAME = libgc.a$/;"	m
+NODE_AND	include/ast.h	/^	NODE_AND,$/;"	e	enum:e_node_type
+NODE_COMMAND	include/ast.h	/^	NODE_COMMAND,$/;"	e	enum:e_node_type
+NODE_OR	include/ast.h	/^	NODE_OR,$/;"	e	enum:e_node_type
+NODE_PIPE	include/ast.h	/^	NODE_PIPE,$/;"	e	enum:e_node_type
+NODE_REDIRECT_APPEND	include/ast.h	/^	NODE_REDIRECT_APPEND,$/;"	e	enum:e_node_type
+NODE_REDIRECT_HEREDOC	include/ast.h	/^	NODE_REDIRECT_HEREDOC,$/;"	e	enum:e_node_type
+NODE_REDIRECT_IN	include/ast.h	/^	NODE_REDIRECT_IN,$/;"	e	enum:e_node_type
+NODE_REDIRECT_OUT	include/ast.h	/^	NODE_REDIRECT_OUT,$/;"	e	enum:e_node_type
+NODE_SUBSHELL	include/ast.h	/^	NODE_SUBSHELL,$/;"	e	enum:e_node_type
+NOERR	lib/libft/include/printf.h	/^	NOERR,$/;"	e	enum:e_error
+OBJ	Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
+OBJ	lib/libft/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OBJ	lib/libgc/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OBJ_DIR	Makefile	/^OBJ_DIR = 	obj$/;"	m
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	466;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	469;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	472;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	475;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	478;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	481;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	484;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	487;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	490;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	493;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	496;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	499;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	502;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	505;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	508;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	511;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	514;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	517;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	520;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	523;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	526;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	529;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	532;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	535;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	538;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	542;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	545;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	548;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	551;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	554;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	557;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	562;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	565;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	569;"	d	file:
+PLATFORM_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	572;"	d	file:
+PRINTF_H	lib/libft/include/printf.h	14;"	d
+PRINT_INFOS	include/minishell.h	27;"	d
+PROMPT_MODE	include/minishell.h	26;"	d
+RED	Makefile	/^RED     = \\033[31m$/;"	m
+RED	test_minishell/animated_banner.py	/^RED = "\\033[1;31m"$/;"	v
+RED	test_minishell/noanimated_banner.py	/^RED = "\\033[1;31m"$/;"	v
+REDIR_APPEND	include/exec.h	/^	REDIR_APPEND,$/;"	e	enum:e_redir_type
+REDIR_HEREDOC	include/exec.h	/^	REDIR_HEREDOC$/;"	e	enum:e_redir_type
+REDIR_IN	include/exec.h	/^	REDIR_IN,$/;"	e	enum:e_redir_type
+REDIR_OUT	include/exec.h	/^	REDIR_OUT,$/;"	e	enum:e_redir_type
+RESET	Makefile	/^RESET   = \\033[0m$/;"	m
+RESET	test_minishell/animated_banner.py	/^RESET = "\\033[0m"$/;"	v
+RESET	test_minishell/noanimated_banner.py	/^RESET = "\\033[0m"$/;"	v
+RM	lib/libft/test_src/build/Makefile	/^RM = \/usr\/bin\/cmake -E rm -f$/;"	m
+RM	test_src/Makefile	/^RM = \/usr\/bin\/cmake -E rm -f$/;"	m
+SANITIZE	Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
+SCRIPT_URL	Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeromeDev94\/make_interface.git$/;"	m
+SHELL	include/minishell.h	30;"	d
+SHELL	lib/libft/test_src/build/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	test_src/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SIMULATE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	27;"	d	file:
+SIMULATE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	30;"	d	file:
+SIMULATE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	319;"	d	file:
+SIMULATE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	341;"	d	file:
+SIMULATE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	360;"	d	file:
+SIMULATE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	73;"	d	file:
+SIMULATE_ID	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	76;"	d	file:
+SIMULATE_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	326;"	d	file:
+SIMULATE_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	348;"	d	file:
+SIMULATE_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	361;"	d	file:
+SIMULATE_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	55;"	d	file:
+SIMULATE_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	59;"	d	file:
+SIMULATE_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	61;"	d	file:
+SIMULATE_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	93;"	d	file:
+SIMULATE_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	97;"	d	file:
+SIMULATE_VERSION_MAJOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	99;"	d	file:
+SIMULATE_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	102;"	d	file:
+SIMULATE_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	327;"	d	file:
+SIMULATE_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	349;"	d	file:
+SIMULATE_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	362;"	d	file:
+SIMULATE_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	56;"	d	file:
+SIMULATE_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	64;"	d	file:
+SIMULATE_VERSION_MINOR	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	94;"	d	file:
+SIMULATE_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	105;"	d	file:
+SIMULATE_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	364;"	d	file:
+SIMULATE_VERSION_PATCH	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	67;"	d	file:
+SRC	Makefile	/^SRC = \\$/;"	m
+SRC	lib/libft/Makefile	/^SRC = \\$/;"	m
+SRC	lib/libgc/Makefile	/^SRC = src\/gc_cleanup.c \\$/;"	m
+SRC_DIR	Makefile	/^SRC_DIR = 	src$/;"	m
+START_TEST	lib/libft/check_testunit_template.c	/^START_TEST(name_of_the_test_function)$/;"	f
+START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_empty_format)$/;"	f
+START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_exact_size)$/;"	f
+START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_large_numbers)$/;"	f
+START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_null_pointer)$/;"	f
+START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_null_string)$/;"	f
+START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_percent_sign)$/;"	f
+START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_simple)$/;"	f
+START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_truncation)$/;"	f
+START_TEST	lib/libft/test_src/printf/test_ft_snprintf.c	/^START_TEST(test_various_specifiers)$/;"	f
+START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_create_command_node)$/;"	f
+START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_complex_command)$/;"	f
+START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_empty_input)$/;"	f
+START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_heredoc)$/;"	f
+START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_logical)$/;"	f
+START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_pipeline)$/;"	f
+START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_redirection)$/;"	f
+START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_simple_command)$/;"	f
+START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_subshell)$/;"	f
+START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_syntax_error)$/;"	f
+START_TEST	test_src/ast/test_ms_parse_tokens.c	/^START_TEST(test_parse_unexpected_token)$/;"	f
+START_TEST	test_src/builtins/test_ms_echo.c	/^START_TEST(test_ms_echo_basic)$/;"	f
+START_TEST	test_src/builtins/test_ms_echo.c	/^START_TEST(test_ms_echo_no_newline_0)$/;"	f
+START_TEST	test_src/builtins/test_ms_echo.c	/^START_TEST(test_ms_echo_no_newline_1)$/;"	f
+START_TEST	test_src/builtins/test_ms_echo.c	/^START_TEST(test_ms_echo_no_newline_2)$/;"	f
+START_TEST	test_src/builtins/test_ms_echo.c	/^START_TEST(test_ms_echo_no_newline_3)$/;"	f
+START_TEST	test_src/builtins/test_ms_env.c	/^START_TEST(test_ms_env_no_options)$/;"	f
+START_TEST	test_src/builtins/test_ms_exit.c	/^START_TEST(test_ms_exit_with_invalid_code)$/;"	f
+START_TEST	test_src/builtins/test_ms_exit.c	/^START_TEST(test_ms_exit_with_too_many_arguments)$/;"	f
+START_TEST	test_src/builtins/test_ms_exit.c	/^START_TEST(test_ms_exit_with_valid_code)$/;"	f
+START_TEST	test_src/builtins/test_ms_export.c	/^START_TEST(test_ms_export_new_var)$/;"	f
+START_TEST	test_src/builtins/test_ms_pwd.c	/^START_TEST(test_ms_pwd_valid)$/;"	f
+START_TEST	test_src/builtins/test_ms_unset.c	/^START_TEST(test_ms_unset_first_value)$/;"	f
+START_TEST	test_src/check_testunit_template.c	/^START_TEST(name_of_the_test_function)$/;"	f
+START_TEST	test_src/expand/test_ms_expand_args.c	/^START_TEST(test_ms_expand_arg_simple_expand)$/;"	f
+START_TEST	test_src/shell/test_ms_env_add_back.c	/^START_TEST(test_add_null_node) {$/;"	f
+START_TEST	test_src/shell/test_ms_env_add_back.c	/^START_TEST(test_add_to_empty_list) {$/;"	f
+START_TEST	test_src/shell/test_ms_env_add_back.c	/^START_TEST(test_add_to_non_empty_list) {$/;"	f
+START_TEST	test_src/shell/test_ms_env_add_back.c	/^START_TEST(test_add_with_null_env) {$/;"	f
+START_TEST	test_src/shell/test_ms_env_create_node.c	/^START_TEST(test_create_node_basic)$/;"	f
+START_TEST	test_src/shell/test_ms_env_create_node.c	/^START_TEST(test_create_node_no_equals)$/;"	f
+START_TEST	test_src/shell/test_ms_env_create_node.c	/^START_TEST(test_create_node_no_value)$/;"	f
+START_TEST	test_src/shell/test_ms_get_env_value.c	/^START_TEST(test_ms_get_env_value_existing)$/;"	f
+START_TEST	test_src/shell/test_ms_get_env_value.c	/^START_TEST(test_ms_get_env_value_non_existing)$/;"	f
+START_TEST	test_src/shell/test_ms_get_envp.c	/^START_TEST(test_ms_get_envp_duplicate_names)$/;"	f
+START_TEST	test_src/shell/test_ms_get_envp.c	/^START_TEST(test_ms_get_envp_empty_list)$/;"	f
+START_TEST	test_src/shell/test_ms_get_envp.c	/^START_TEST(test_ms_get_envp_empty_var_value)$/;"	f
+START_TEST	test_src/shell/test_ms_get_envp.c	/^START_TEST(test_ms_get_envp_env_list_integrity)$/;"	f
+START_TEST	test_src/shell/test_ms_get_envp.c	/^START_TEST(test_ms_get_envp_long_var_value)$/;"	f
+START_TEST	test_src/shell/test_ms_get_envp.c	/^START_TEST(test_ms_get_envp_null_env)$/;"	f
+START_TEST	test_src/shell/test_ms_get_envp.c	/^START_TEST(test_ms_get_envp_null_value)$/;"	f
+START_TEST	test_src/shell/test_ms_get_envp.c	/^START_TEST(test_ms_get_envp_null_var)$/;"	f
+START_TEST	test_src/shell/test_ms_get_envp.c	/^START_TEST(test_ms_get_envp_special_characters)$/;"	f
+START_TEST	test_src/shell/test_ms_get_envp.c	/^START_TEST(test_ms_get_envp_typical)$/;"	f
+START_TEST	test_src/shell/test_ms_get_user_input.c	/^START_TEST(test_ms_get_user_input_empty)$/;"	f
+START_TEST	test_src/shell/test_ms_get_user_input.c	/^START_TEST(test_ms_get_user_input_normal)$/;"	f
+START_TEST	test_src/shell/test_ms_get_user_input.c	/^START_TEST(test_ms_get_user_input_special_chars)$/;"	f
+START_TEST	test_src/shell/test_ms_getenv.c	/^START_TEST(test_ms_getenv_case_sensitivity)$/;"	f
+START_TEST	test_src/shell/test_ms_getenv.c	/^START_TEST(test_ms_getenv_duplicate_names)$/;"	f
+START_TEST	test_src/shell/test_ms_getenv.c	/^START_TEST(test_ms_getenv_empty_name)$/;"	f
+START_TEST	test_src/shell/test_ms_getenv.c	/^START_TEST(test_ms_getenv_existing_variable)$/;"	f
+START_TEST	test_src/shell/test_ms_getenv.c	/^START_TEST(test_ms_getenv_long_variable)$/;"	f
+START_TEST	test_src/shell/test_ms_getenv.c	/^START_TEST(test_ms_getenv_nonexistent_variable)$/;"	f
+START_TEST	test_src/shell/test_ms_getenv.c	/^START_TEST(test_ms_getenv_null_env_data)$/;"	f
+START_TEST	test_src/shell/test_ms_getenv.c	/^START_TEST(test_ms_getenv_null_env_list)$/;"	f
+START_TEST	test_src/shell/test_ms_getenv.c	/^START_TEST(test_ms_getenv_null_name)$/;"	f
+START_TEST	test_src/shell/test_ms_getenv.c	/^START_TEST(test_ms_getenv_null_value)$/;"	f
+START_TEST	test_src/shell/test_ms_getenv.c	/^START_TEST(test_ms_getenv_similar_names)$/;"	f
+START_TEST	test_src/shell/test_ms_getenv.c	/^START_TEST(test_ms_getenv_special_characters)$/;"	f
+START_TEST	test_src/shell/test_ms_init_env.c	/^START_TEST(test_ms_init_env_with_envp)$/;"	f
+START_TEST	test_src/shell/test_ms_init_env.c	/^START_TEST(test_ms_init_env_without_envp)$/;"	f
+START_TEST	test_src/shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_no_args)$/;"	f
+START_TEST	test_src/shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_empty_envp)$/;"	f
+START_TEST	test_src/shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_envp)$/;"	f
+START_TEST	test_src/shell/test_ms_init_shell.c	/^START_TEST(test_ms_init_shell_with_invalid_argc)$/;"	f
+START_TEST	test_src/signal/test_ms_init_std_signal.c	/^START_TEST(test_ms_init_std_signal_sigint)$/;"	f
+START_TEST	test_src/signal/test_ms_init_std_signal.c	/^START_TEST(test_ms_init_std_signal_sigquit)$/;"	f
+START_TEST	test_src/signal/test_ms_stop_std_signal.c	/^START_TEST(test_ms_stop_std_signal_sigint)$/;"	f
+START_TEST	test_src/signal/test_ms_stop_std_signal.c	/^START_TEST(test_ms_stop_std_signal_sigquit)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_dq_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_dq_1)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_1)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_2)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_op_3)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_1)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_2)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_3)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_4)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_5)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_p_6)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_r_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_r_1)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_r_2)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_sq_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_invalid_sq_1)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_dq_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_op_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_p_1)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_p_2)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_p_3)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_p_4)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_r_0)$/;"	f
+START_TEST	test_src/syntax_error/test_ms_syntax_error.c	/^START_TEST(test_ms_syntax_error_valid_sq_0)$/;"	f
+START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_add_multiple_tokens)$/;"	f
+START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_add_token)$/;"	f
+START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_add_token_null_head)$/;"	f
+START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_add_token_null_token)$/;"	f
+START_TEST	test_src/token/test_lst_tokens.c	/^START_TEST(test_create_token)$/;"	f
+START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_logical_operators)$/;"	f
+START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_multiple_redirections)$/;"	f
+START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_pipe)$/;"	f
+START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_quotes)$/;"	f
+START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_redirection)$/;"	f
+START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_single_quotes)$/;"	f
+START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_subshell)$/;"	f
+START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_command_with_wildcards)$/;"	f
+START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_complex_command)$/;"	f
+START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_empty_input)$/;"	f
+START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_input_with_only_whitespace)$/;"	f
+START_TEST	test_src/token/test_ms_tokenize.c	/^START_TEST(test_simple_command)$/;"	f
+START_TEST	test_src/token/test_tokenize_frame.c	/^START_TEST(test_tokenize_frame_basic)$/;"	f
+START_TEST	test_src/token/test_tokenize_frame.c	/^START_TEST(test_tokenize_frame_null_input)$/;"	f
+START_TEST	test_src/token/test_tokenize_operator.c	/^START_TEST(test_tokenize_invalid_operator)$/;"	f
+START_TEST	test_src/token/test_tokenize_operator.c	/^START_TEST(test_tokenize_operator_basic)$/;"	f
+START_TEST	test_src/token/test_tokenize_operator.c	/^START_TEST(test_tokenize_operator_null_input)$/;"	f
+START_TEST	test_src/token/test_tokenize_word.c	/^START_TEST(test_tokenize_word_basic)$/;"	f
+START_TEST	test_src/token/test_tokenize_word.c	/^START_TEST(test_tokenize_word_empty_input)$/;"	f
+START_TEST	test_src/token/test_tokenize_word.c	/^START_TEST(test_tokenize_word_null_input)$/;"	f
+START_TEST	test_src/token/test_tokenize_word.c	/^START_TEST(test_tokenize_word_with_whitespace)$/;"	f
+STDERR	include/tokenize.h	16;"	d
+STDERR_BUFFER_SIZE	test_src/builtins/test_ms_echo.c	20;"	d	file:
+STDERR_BUFFER_SIZE	test_src/builtins/test_ms_exit.c	20;"	d	file:
+STDERR_BUFFER_SIZE	test_src/builtins/test_ms_pwd.c	20;"	d	file:
+STDERR_BUFFER_SIZE	test_src/syntax_error/test_ms_syntax_error.c	19;"	d	file:
+STDOUT_BUFFER_SIZE	test_src/builtins/test_ms_echo.c	21;"	d	file:
+STDOUT_BUFFER_SIZE	test_src/builtins/test_ms_exit.c	21;"	d	file:
+STDOUT_BUFFER_SIZE	test_src/builtins/test_ms_pwd.c	21;"	d	file:
+STRINGIFY	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	462;"	d	file:
+STRINGIFY_HELPER	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	461;"	d	file:
+SYNTAX_H	include/syntax.h	14;"	d
+TOKENIZE_H	include/tokenize.h	14;"	d
+TOKEN_AND	include/tokenize.h	/^	TOKEN_AND,$/;"	e	enum:e_token_type
+TOKEN_EXPAND	include/tokenize.h	/^	TOKEN_EXPAND,$/;"	e	enum:e_token_type
+TOKEN_OR	include/tokenize.h	/^	TOKEN_OR,$/;"	e	enum:e_token_type
+TOKEN_PIPE	include/tokenize.h	/^	TOKEN_PIPE,$/;"	e	enum:e_token_type
+TOKEN_REDIRECTION	include/tokenize.h	/^	TOKEN_REDIRECTION,$/;"	e	enum:e_token_type
+TOKEN_SUBSHELL_START	include/tokenize.h	/^	TOKEN_SUBSHELL_START,$/;"	e	enum:e_token_type
+TOKEN_SUBSHELL_STOP	include/tokenize.h	/^	TOKEN_SUBSHELL_STOP,$/;"	e	enum:e_token_type
+TOKEN_WORD	include/tokenize.h	/^	TOKEN_WORD,$/;"	e	enum:e_token_type
+TOTAL_STEPS	Makefile	/^TOTAL_STEPS := $(words $(OBJ))$/;"	m
+VALG	Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
+VERBOSE	Makefile	/^VERBOSE ?= @$/;"	m
+VERBOSE	Makefile	/^classic: VERBOSE =$/;"	m
+VFLAGS	Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
+YELLOW	Makefile	/^YELLOW  = \\033[33m$/;"	m
+YELLOW	test_minishell/animated_banner.py	/^YELLOW = "\\033[1;33m"$/;"	v
+__has_include	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	17;"	d	file:
+add_cat	src/builtins/export_utils.c	/^void	add_cat(t_shell *shell, t_env *current, t_env *tmp, int flag)$/;"	f
+add_env_node	test_src/shell/test_ms_get_envp.c	/^void add_env_node(t_env **head, t_env *new_node)$/;"	f
+add_env_node	test_src/shell/test_ms_getenv.c	/^void add_env_node(t_env **head, t_env *new_node)$/;"	f
+add_export	src/builtins/export_utils.c	/^void	add_export(t_export_utils *utils, t_env **ev, char *name_folder,$/;"	f
+add_export_utils	src/builtins/export_utils.c	/^void	add_export_utils(t_export_utils *utils, t_env **env, t_env *tmp)$/;"	f
+add_matches	src/expand/ms_wildcard_helper.c	/^int	add_matches(t_wildcard_context *ctx, const char *match)$/;"	f
+add_token	src/token/lst_tokens.c	/^void	add_token(t_token **head, t_token *new_token, t_gc *gcl)$/;"	f
+allocator	src/token/tokenize_operator.c	/^static t_token	*allocator(const char **input, t_op_state *v, t_gc *gcl)$/;"	f	file:
+animate_banner	test_minishell/animated_banner.py	/^def animate_banner(stop_event):$/;"	f
+append_redir_list	src/exec/ms_execute_subshell.c	/^static t_redir	*append_redir_list(t_redir *list1, t_redir *list2)$/;"	f	file:
+argc	include/ast.h	/^	int		argc;$/;"	m	struct:s_cmd_node
+argc_count	src/ast/create_command_node.c	/^static int	argc_count(t_token **current)$/;"	f	file:
+argv	include/ast.h	/^	char	**argv;$/;"	m	struct:s_cmd_node
+assign_token_to_argv	src/ast/create_command_node.c	/^static void	assign_token_to_argv(t_token **current, char **argv)$/;"	f	file:
+ast_suite	test_src/ast/test_ms_parse_tokens.c	/^Suite *ast_suite(void)$/;"	f
+banner_height	test_minishell/animated_banner.py	/^banner_height = len(lines)  # Number of lines in the banner$/;"	v
+base_path	include/expand.h	/^	const char			*base_path;$/;"	m	struct:s_directory_context
+buf_fd	lib/libft/include/printf.h	/^	int		buf_fd;$/;"	m	struct:s_buffer
+buf_last	lib/libft/include/printf.h	/^	char	buf_last;$/;"	m	struct:s_buffer
+buffer	lib/libft/include/printf.h	/^	char	*buffer;$/;"	m	struct:s_buffer
+build_project	test_minishell/run_test.sh	/^build_project() {$/;"	f
+c_p	include/expand.h	/^	const char			*c_p;$/;"	m	struct:s_directory_context
+check_error	src/syntax_error/check_error.c	/^int	check_error(t_syntax **syntax)$/;"	f
+check_reinit	src/syntax_error/check_reinit.c	/^int	check_reinit(t_syntax **syntax)$/;"	f
+child	include/ast.h	/^	struct s_ast_node		*child;$/;"	m	struct:s_heredoc_node	typeref:struct:s_heredoc_node::s_ast_node
+child	include/ast.h	/^	struct s_ast_node	*child;$/;"	m	struct:s_redirect_node	typeref:struct:s_redirect_node::s_ast_node
+child	include/ast.h	/^	struct s_ast_node	*child;$/;"	m	struct:s_subshell_node	typeref:struct:s_subshell_node::s_ast_node
+child_lvl	include/exec.h	/^	int			child_lvl;$/;"	m	struct:s_exec_context
+clean_files	test_minishell/process_outputs.sh	/^    clean_files() {$/;"	f
+clean_outputs	test_minishell/run_test.sh	/^clean_outputs() {$/;"	f
+cmd_arg_expansion	src/expand/ms_manage_arg_expand.c	/^char	**cmd_arg_expansion(char **argv, t_wildcard_context *match_ctx,$/;"	f
+cmd_node	include/exec.h	/^	t_cmd_node		*cmd_node;$/;"	m	struct:s_external_exec_params
+cmd_path	include/exec.h	/^	char			*cmd_path;$/;"	m	struct:s_external_exec_params
+collect_pipeline_commands	src/exec/ms_execute_pipeline.c	/^t_ast_node	**collect_pipeline_commands(t_ast_node *node, int count, t_gc *gcl)$/;"	f
+command	include/ast.h	/^	t_cmd_node			command;$/;"	m	union:u_node_data
+compilation_database_folder	ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+compute_indentation	test_minishell/animated_banner.py	/^def compute_indentation(initial_indent, movement_amount, start_frame, duration, current_frame):$/;"	f
+const	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
+context	include/exec.h	/^	t_exec_context	*context;$/;"	m	struct:s_external_exec_params
+context	include/exec.h	/^	t_exec_context	*context;$/;"	m	struct:s_heredoc_params
+context	include/exec.h	/^	t_exec_context	*context;$/;"	m	struct:s_pipe_exec_params
+context	include/exec.h	/^	t_exec_context	*context;$/;"	m	struct:s_subshell_exec_params
+copy_argv_to_str	src/expand/ms_expand_args_utils.c	/^char	*copy_argv_to_str(char *dest, int argc, char **argv)$/;"	f
+copy_env_list	src/builtins/copy_env_list.c	/^t_env	*copy_env_list(t_env *env, t_gc *gcl)$/;"	f
+copy_expanded_cmd	src/expand/ms_expand_args.c	/^static void	copy_expanded_cmd(char *arg, bool is_nested,$/;"	f	file:
+copy_token_value	src/token/tokenize_word.c	/^static int	copy_token_value(char *value, const char *current, char start_quote)$/;"	f	file:
+count_dollars	src/expand/ms_expand_args_utils.c	/^int	count_dollars(char *arg)$/;"	f
+count_envlines	src/shell/ms_get_envp.c	/^static int	count_envlines(t_env *envi)$/;"	f	file:
+count_line	include/exec.h	/^	int		count_line;$/;"	m	struct:s_here_helper
+count_pipeline_commands	src/exec/ms_execute_pipeline.c	/^int	count_pipeline_commands(t_ast_node *node)$/;"	f
+create_command_node	src/ast/create_command_node.c	/^t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl)$/;"	f
+create_env_node	test_src/shell/test_ms_env_add_back.c	/^t_env *create_env_node(const char *var, const char *value) {$/;"	f
+create_env_node	test_src/shell/test_ms_get_env_value.c	/^t_env *create_env_node(char *var, char *value)$/;"	f
+create_env_node	test_src/shell/test_ms_get_envp.c	/^t_env *create_env_node(const char *var, const char *value)$/;"	f
+create_env_node	test_src/shell/test_ms_getenv.c	/^t_env *create_env_node(const char *var, const char *value)$/;"	f
+create_heredoc_node	src/ast/create_node.c	/^t_ast_node	*create_heredoc_node(t_node_type type, t_ast_node *child,$/;"	f
+create_logical_node	src/ast/create_node.c	/^t_ast_node	*create_logical_node(t_node_type type, t_ast_node *left,$/;"	f
+create_pipe_node	src/ast/create_node.c	/^t_ast_node	*create_pipe_node(t_ast_node *left, t_ast_node *right, t_gc *gcl)$/;"	f
+create_redirect_node	src/ast/create_node.c	/^t_ast_node	*create_redirect_node(t_node_type type, t_ast_node *child,$/;"	f
+create_subshell_node	src/ast/create_node.c	/^t_ast_node	*create_subshell_node(t_ast_node *child, t_gc *gcl)$/;"	f
+create_token	src/token/lst_tokens.c	/^t_token	*create_token(t_token_type type, const char *value, t_gc *gcl)$/;"	f
+create_tokens	test_src/ast/test_ms_parse_tokens.c	/^t_token *create_tokens(t_gc *gcl, int count, ...)$/;"	f
+ctx	include/expand.h	/^	t_wildcard_context	*ctx;$/;"	m	struct:s_directory_context
+current	include/syntax.h	/^	char	*current;$/;"	m	struct:s_syntax
+current	include/tokenize.h	/^	char					*current;$/;"	m	struct:s_op_state
+current	include/tokenize.h	/^	const char	*current;$/;"	m	struct:s_copy_state
+current	include/tokenize.h	/^	const char	*current;$/;"	m	struct:s_token_state
+current	include/tokenize.h	/^	t_token	*current;$/;"	m	struct:s_sort_token_helper
+data	include/ast.h	/^	t_node_data	data;$/;"	m	struct:s_ast_node
+define_type	src/ast/parse_redirection.c	/^static t_node_type	define_type(t_token **current_token)$/;"	f	file:
+delim	include/exec.h	/^	char	*delim;$/;"	m	struct:s_here_helper
+delimiter	include/ast.h	/^	char					*delimiter;$/;"	m	struct:s_heredoc_node
+delimiter	include/exec.h	/^	const char		*delimiter;$/;"	m	struct:s_heredoc_params
+dq_trigger	include/syntax.h	/^	int		dq_trigger;$/;"	m	struct:s_syntax
+e_error	lib/libft/include/printf.h	/^typedef enum e_error$/;"	g
+e_node_type	include/ast.h	/^typedef enum e_node_type$/;"	g
+e_redir_type	include/exec.h	/^typedef enum e_redir_type$/;"	g
+e_token_type	include/tokenize.h	/^typedef enum e_token_type$/;"	g
+echec_malloc	src/builtins/echec_malloc.c	/^void	echec_malloc(t_gc *gcl, char *message)$/;"	f
+env	include/minishell.h	/^	t_env	*env;$/;"	m	struct:s_env_data
+env_data	include/minishell.h	/^	t_env_data		*env_data;$/;"	m	struct:s_shell
+env_exist	include/minishell.h	/^	bool	env_exist;$/;"	m	struct:s_env_data
+env_suite	test_src/shell/test_ms_env_create_node.c	/^Suite *env_suite(void)$/;"	f
+error	include/builtins.h	/^	int	error;$/;"	m	struct:s_echo_utils
+error	include/syntax.h	/^	int		error;$/;"	m	struct:s_syntax
+error	lib/libft/include/printf.h	/^	int			error;$/;"	m	struct:s_format_spec
+error	lib/libft/include/printf.h	/^	int		error;$/;"	m	struct:s_buffer
+error_code	include/minishell.h	/^	int				error_code;$/;"	m	struct:s_shell
+execute_and_capture	test_src/builtins/test_ms_pwd.c	/^static t_testresult execute_and_capture(void)$/;"	f	file:
+execute_and_capture	test_src/syntax_error/test_ms_syntax_error.c	/^static t_testresult execute_and_capture(const char *input)$/;"	f	file:
+execute_and_capture_echo	test_src/builtins/test_ms_echo.c	/^static t_testresult execute_and_capture_echo(char **argv, int argc)$/;"	f	file:
+execute_and_capture_exit	test_src/builtins/test_ms_exit.c	/^static t_testresult execute_and_capture_exit(char **argv, int argc, int expected_exit_code)$/;"	f	file:
+exit_code	test_src/builtins/test_ms_echo.c	/^    int exit_code;$/;"	m	struct:s_testresult	file:
+exit_code	test_src/builtins/test_ms_exit.c	/^    int exit_code;$/;"	m	struct:s_testresult	file:
+exit_code	test_src/builtins/test_ms_pwd.c	/^    int exit_code;$/;"	m	struct:s_testresult	file:
+exit_code	test_src/syntax_error/test_ms_syntax_error.c	/^    int exit_code;$/;"	m	struct:s_testresult	file:
+exit_status	include/exec.h	/^	int			exit_status;$/;"	m	struct:s_exec_context
+expand_argv	src/expand/ms_manage_arg_expand.c	/^static	void	expand_argv(char **new_argv, char **argv,$/;"	f	file:
+expand_glob_recursive	src/expand/ms_expand_wild.c	/^void	expand_glob_recursive(const char *base_path, const char *pattern,$/;"	f
+expand_nested_vars	src/expand/ms_expand_args_utils.c	/^char	**expand_nested_vars(char *arg, int dollars, t_shell *shell)$/;"	f
+expand_var	include/expand.h	/^	char	*expand_var;$/;"	m	struct:s_expand_utils
+extract_folder	src/builtins/export_utils.c	/^char	*extract_folder(t_export_utils *utils, char *cmd)$/;"	f
+extract_value	src/builtins/export_utils.c	/^char	*extract_value(t_export_utils *utils, char *cmd, int size)$/;"	f
+fd	include/exec.h	/^	int		fd;$/;"	m	struct:s_here_helper
+fd	lib/libgc/include/libgc.h	/^	int					fd;$/;"	m	struct:s_gc_node
+filename	include/ast.h	/^	char					*filename;$/;"	m	struct:s_heredoc_node
+filename	include/ast.h	/^	char				*filename;$/;"	m	struct:s_redirect_node
+filename	include/exec.h	/^	char			*filename;$/;"	m	struct:s_redir
+final_path	include/tokenize.h	/^	bool	final_path;$/;"	m	struct:s_sort_token_helper
+find_close_par	src/syntax_error/check_error.c	/^int	find_close_par(char *current, int i)$/;"	f
+find_dollar	src/expand/ms_expand_utils.c	/^char	*find_dollar(char *arg)$/;"	f
+flag	include/builtins.h	/^	int		flag;$/;"	m	struct:s_export_utils
+flag	include/builtins.h	/^	int	flag;$/;"	m	struct:s_echo_utils
+flag_hash	lib/libft/include/printf.h	/^	int			flag_hash;$/;"	m	struct:s_format_spec
+flag_minus	lib/libft/include/printf.h	/^	int			flag_minus;$/;"	m	struct:s_format_spec
+flag_plus	lib/libft/include/printf.h	/^	int			flag_plus;$/;"	m	struct:s_format_spec
+flag_space	lib/libft/include/printf.h	/^	int			flag_space;$/;"	m	struct:s_format_spec
+flag_zero	lib/libft/include/printf.h	/^	int			flag_zero;$/;"	m	struct:s_format_spec
+flags	ycm_extra_conf.py	/^flags = [$/;"	v
+free_env_list	test_src/shell/test_ms_env_add_back.c	/^void free_env_list(t_env *env) {$/;"	f
+free_env_list	test_src/shell/test_ms_get_env_value.c	/^void free_env_list(t_env *env)$/;"	f
+ft_apply_precision	lib/libft/src/printf/ft_apply_precision.c	/^void	ft_apply_precision(t_format_spec spec, char **formatted_content)$/;"	f
+ft_apply_width	lib/libft/src/printf/ft_apply_width.c	/^void	ft_apply_width(t_format_spec spec, t_buffer *buf_info, int content_len)$/;"	f
+ft_atoi	lib/libft/src/conversion/ft_atoi.c	/^int	ft_atoi(const char *nptr)$/;"	f
+ft_atol	lib/libft/src/conversion/ft_atol.c	/^long	ft_atol(const char *nptr)$/;"	f
+ft_buffer_add	lib/libft/src/printf/ft_buffer_add.c	/^void	ft_buffer_add(t_buffer *buf_info, char c)$/;"	f
+ft_buffer_flush	lib/libft/src/printf/ft_buffer_flush.c	/^int	ft_buffer_flush(t_buffer *buf_info)$/;"	f
+ft_bzero	lib/libft/src/memory/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_calloc	lib/libft/src/memory/ft_calloc.c	/^void	*ft_calloc(size_t nmemb, size_t size)$/;"	f
+ft_check_fd	lib/libft/src/utils/ft_check_fd.c	/^void	ft_check_fd(int fd, const char *error_message)$/;"	f
+ft_check_flush	lib/libft/src/printf/ft_printf.c	/^void	ft_check_flush(t_buffer *buf_info)$/;"	f
+ft_check_format	lib/libft/src/printf/ft_check_format.c	/^int	ft_check_format(t_format_spec *spec)$/;"	f
+ft_check_malloc	lib/libft/src/utils/ft_check_malloc.c	/^void	ft_check_malloc(void *ptr, const char *error_message)$/;"	f
+ft_check_pid	lib/libft/src/utils/ft_check_pid.c	/^void	ft_check_pid(int pid)$/;"	f
+ft_concat_path	lib/libft/src/utils/ft_find_cmd_path.c	/^static char	*ft_concat_path(char **paths, const char *cmd)$/;"	f	file:
+ft_convert_spec	lib/libft/src/printf/ft_printf.c	/^static int	ft_convert_spec(t_format_spec spec, va_list args,$/;"	f	file:
+ft_count_words	lib/libft/src/string/ft_split.c	/^size_t	ft_count_words(char *str, char c)$/;"	f
+ft_dprintf	lib/libft/src/printf/ft_dprintf.c	/^int	ft_dprintf(int fd, const char *format, ...)$/;"	f
+ft_extract	lib/libft/src/string/ft_split.c	/^static char	*ft_extract(const char **s, char c, char **tab, size_t i)$/;"	f	file:
+ft_extract_line	lib/libft/src/get_next_line/get_next_line.c	/^static char	*ft_extract_line(char *buffer)$/;"	f	file:
+ft_fill_base	lib/libft/src/conversion/ft_ulltoa_base.c	/^static char	*ft_fill_base(unsigned long long nbr, int size, char *base,$/;"	f	file:
+ft_fill_base	lib/libft/src/conversion/ft_utoa_base.c	/^static char	*ft_fill_base(unsigned int nbr, int size, char *base, char *res)$/;"	f	file:
+ft_find_cmd_path	lib/libft/src/utils/ft_find_cmd_path.c	/^char	*ft_find_cmd_path(char **envp, const char *cmd)$/;"	f
+ft_find_end	lib/libft/src/printf/ft_parse_format.c	/^static char	*ft_find_end(const char *start, t_format_spec *spec)$/;"	f	file:
+ft_free_memory	lib/libft/src/string/ft_split.c	/^static void	ft_free_memory(char **tab, size_t i)$/;"	f	file:
+ft_getenv	lib/libft/src/utils/ft_getenv.c	/^char	*ft_getenv(char **envp, const char *name)$/;"	f
+ft_handle_char	lib/libft/src/printf/ft_handle_char.c	/^void	ft_handle_char(t_format_spec spec, va_list args, t_buffer *buf_info)$/;"	f
+ft_handle_hash_flag	lib/libft/src/printf/ft_handle_hash_flag.c	/^void	ft_handle_hash_flag(t_format_spec spec, int content, t_buffer *buf_info)$/;"	f
+ft_handle_hexadecimal	lib/libft/src/printf/ft_handle_hexadecimal.c	/^int	ft_handle_hexadecimal(t_format_spec spec, va_list args, t_buffer *buf_info)$/;"	f
+ft_handle_int	lib/libft/src/printf/ft_handle_int.c	/^int	ft_handle_int(t_format_spec spec, va_list args, t_buffer *buf_info)$/;"	f
+ft_handle_plus_flag	lib/libft/src/printf/ft_handle_plus_flag.c	/^void	ft_handle_plus_flag(t_format_spec spec, int content, t_buffer *buf_info)$/;"	f
+ft_handle_pointer	lib/libft/src/printf/ft_handle_pointer.c	/^int	ft_handle_pointer(t_format_spec spec, va_list args, t_buffer *buf_info)$/;"	f
+ft_handle_space_flag	lib/libft/src/printf/ft_handle_space_flag.c	/^void	ft_handle_space_flag(t_format_spec spec, int content,$/;"	f
+ft_handle_string	lib/libft/src/printf/ft_handle_string.c	/^void	ft_handle_string(t_format_spec spec, va_list args, t_buffer *buf_info)$/;"	f
+ft_intlen	lib/libft/src/conversion/ft_itoa.c	/^static size_t	ft_intlen(long n)$/;"	f	file:
+ft_isalnum	lib/libft/src/bool/ft_isalnum.c	/^bool	ft_isalnum(int c)$/;"	f
+ft_isalpha	lib/libft/src/bool/ft_isalpha.c	/^bool	ft_isalpha(int c)$/;"	f
+ft_isascii	lib/libft/src/bool/ft_isascii.c	/^bool	ft_isascii(int c)$/;"	f
+ft_isconvert_spec	lib/libft/src/printf/ft_isconvert_spec.c	/^int	ft_isconvert_spec(char c)$/;"	f
+ft_isdigit	lib/libft/src/bool/ft_isdigit.c	/^bool	ft_isdigit(int c)$/;"	f
+ft_isflag	lib/libft/src/printf/ft_isflag.c	/^int	ft_isflag(char c)$/;"	f
+ft_isprint	lib/libft/src/bool/ft_isprint.c	/^bool	ft_isprint(int c)$/;"	f
+ft_issign	lib/libft/src/conversion/ft_atoi.c	/^static int	ft_issign(int c, int *sign)$/;"	f	file:
+ft_issign	lib/libft/src/conversion/ft_atol.c	/^static int	ft_issign(int c, int *sign)$/;"	f	file:
+ft_isspace	lib/libft/src/bool/ft_isspace.c	/^bool	ft_isspace(int c)$/;"	f
+ft_isxdigit	lib/libft/src/bool/ft_isxdigit.c	/^bool	ft_isxdigit(int c)$/;"	f
+ft_itoa	lib/libft/src/conversion/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_loop_helper	lib/libft/src/printf/ft_snprintf.c	/^static int	ft_loop_helper(const char *format, va_list args, t_buffer *buf_info)$/;"	f	file:
+ft_memchr	lib/libft/src/memory/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memcmp	lib/libft/src/memory/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcpy	lib/libft/src/memory/ft_memcpy.c	/^void	*ft_memcpy(void *dest, const void *src, size_t n)$/;"	f
+ft_memmove	lib/libft/src/memory/ft_memmove.c	/^void	*ft_memmove(void *dest, const void *src, size_t n)$/;"	f
+ft_memset	lib/libft/src/memory/ft_memset.c	/^void	*ft_memset(void *s, int c, size_t n)$/;"	f
+ft_memset	lib/libgc/src/gc_init.c	/^static void	*ft_memset(void *s, int c, size_t n)$/;"	f	file:
+ft_nbr_len	lib/libft/src/printf/ft_nbr_len.c	/^int	ft_nbr_len(unsigned long long nbr, int base_len)$/;"	f
+ft_new_str	lib/libft/src/printf/ft_apply_precision.c	/^static int	ft_new_str(char **new_str, t_format_spec *spec, int total_len,$/;"	f	file:
+ft_parse_flags	lib/libft/src/printf/ft_parse_flags.c	/^void	ft_parse_flags(const char *format, t_format_spec *spec)$/;"	f
+ft_parse_format	lib/libft/src/printf/ft_parse_format.c	/^t_format_spec	ft_parse_format(const char **format)$/;"	f
+ft_parse_precision	lib/libft/src/printf/ft_parse_flags.c	/^static void	ft_parse_precision(const char *format, t_format_spec *spec,$/;"	f	file:
+ft_parse_width	lib/libft/src/printf/ft_parse_flags.c	/^static void	ft_parse_width(const char *format, t_format_spec *spec, size_t *i)$/;"	f	file:
+ft_perror	lib/libft/src/printf/ft_perror.c	/^void	ft_perror(t_error error)$/;"	f
+ft_prepare_hex_content	lib/libft/src/printf/ft_handle_hexadecimal.c	/^static int	ft_prepare_hex_content(t_format_spec spec, unsigned int content,$/;"	f	file:
+ft_prepare_int	lib/libft/src/printf/ft_handle_int.c	/^static int	ft_prepare_int(t_format_spec spec, long long content,$/;"	f	file:
+ft_prepare_pointer	lib/libft/src/printf/ft_handle_pointer.c	/^static int	ft_prepare_pointer(char **adresse, t_buffer *buf_info, void *ptr)$/;"	f	file:
+ft_printf	lib/libft/src/printf/ft_printf.c	/^int	ft_printf(const char *format, ...)$/;"	f
+ft_process_format_specifier	lib/libft/src/printf/ft_printf.c	/^int	ft_process_format_specifier(const char **format, va_list args,$/;"	f
+ft_process_formatted_hex	lib/libft/src/printf/ft_handle_hexadecimal.c	/^static void	ft_process_formatted_hex(t_format_spec spec, unsigned int content,$/;"	f	file:
+ft_process_int	lib/libft/src/printf/ft_handle_int.c	/^static void	ft_process_int(t_format_spec spec, long long content,$/;"	f	file:
+ft_process_pointer	lib/libft/src/printf/ft_handle_pointer.c	/^static void	ft_process_pointer(t_format_spec spec, char *adresse,$/;"	f	file:
+ft_psh_flags	lib/libft/src/printf/ft_parse_flags.c	/^static void	ft_psh_flags(const char *format, t_format_spec *spec, size_t *i)$/;"	f	file:
+ft_putchar_fd	lib/libft/src/io/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putendl_fd	lib/libft/src/io/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putnbr_fd	lib/libft/src/io/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putstr_fd	lib/libft/src/io/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_read_buffer	lib/libft/src/get_next_line/get_next_line.c	/^static char	*ft_read_buffer(int fd, char *buffer)$/;"	f	file:
+ft_realloc	lib/libft/src/memory/ft_realloc.c	/^void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)$/;"	f
+ft_snprintf	lib/libft/src/printf/ft_snprintf.c	/^int	ft_snprintf(char *str, size_t size, const char *format, ...)$/;"	f
+ft_split	lib/libft/src/string/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_strchr	lib/libft/src/string/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strdup	lib/libft/src/string/ft_strdup.c	/^char	*ft_strdup(const char *s)$/;"	f
+ft_striteri	lib/libft/src/string/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char*))$/;"	f
+ft_strjoin	lib/libft/src/string/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin_free	lib/libft/src/string/ft_strjoin.c	/^char	*ft_strjoin_free(char *s1, const char *s2)$/;"	f
+ft_strjoin_gnl	lib/libft/src/get_next_line/get_next_line.c	/^static char	*ft_strjoin_gnl(char const *s1, char const *s2)$/;"	f	file:
+ft_strlcat	lib/libft/src/string/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f
+ft_strlcpy	lib/libft/src/string/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f
+ft_strlen	lib/libft/src/string/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strmapi	lib/libft/src/string/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strncmp	lib/libft/src/string/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strnstr	lib/libft/src/string/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strrchr	lib/libft/src/string/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strsjoin	src/expand/ms_expand_args_utils.c	/^char	*ft_strsjoin(int argc, char **argv, t_gc *gcl)$/;"	f
+ft_strtrim	lib/libft/src/string/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_substr	lib/libft/src/string/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr_len	lib/libft/src/string/ft_split.c	/^static size_t	ft_substr_len(char *str, char c)$/;"	f	file:
+ft_tolower	lib/libft/src/conversion/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_toupper	lib/libft/src/conversion/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_ulltoa_base	lib/libft/src/conversion/ft_ulltoa_base.c	/^char	*ft_ulltoa_base(unsigned long long nbr, char *base)$/;"	f
+ft_update_buffer	lib/libft/src/get_next_line/get_next_line.c	/^static char	*ft_update_buffer(char *buffer)$/;"	f	file:
+ft_utoa_base	lib/libft/src/conversion/ft_utoa_base.c	/^char	*ft_utoa_base(unsigned int nbr, char *base)$/;"	f
+ft_zero_minus_flags	lib/libft/src/printf/ft_parse_flags.c	/^static void	ft_zero_minus_flags(const char *format, t_format_spec *spec,$/;"	f	file:
+g_garbage_collector	test_src/builtins/test_ms_echo.c	/^static t_gc *g_garbage_collector;  \/\/ Déclaration globale du garbage collector$/;"	v	file:
+g_garbage_collector	test_src/builtins/test_ms_exit.c	/^static t_gc *g_garbage_collector;$/;"	v	file:
+g_garbage_collector	test_src/builtins/test_ms_pwd.c	/^static t_gc *g_garbage_collector;  \/\/ Déclaration globale du garbage collector$/;"	v	file:
+g_garbage_collector	test_src/syntax_error/test_ms_syntax_error.c	/^static t_gc *g_garbage_collector;  \/\/ Déclaration globale du garbage collector$/;"	v	file:
+g_signal	src/global.c	/^int	g_signal;$/;"	v
+gc_cleanup	lib/libgc/src/gc_cleanup.c	/^void	gc_cleanup(t_gc *gcl)$/;"	f
+gc_collect	lib/libgc/src/gc_collect.c	/^void	gc_collect(t_gc *gcl)$/;"	f
+gc_delete_node	lib/libgc/src/gc_collect.c	/^static void	gc_delete_node(t_gc_node **prev, t_gc_node **current, t_gc *gcl)$/;"	f	file:
+gc_fd_register	lib/libgc/src/gc_fd_register.c	/^void	gc_fd_register(int fd, t_gc *gcl)$/;"	f
+gc_free	lib/libgc/src/gc_free.c	/^void	gc_free(void *ptr, t_gc *gcl)$/;"	f
+gc_init	lib/libgc/src/gc_init.c	/^void	*gc_init(void)$/;"	f
+gc_lock	lib/libgc/src/gc_mark_lock.c	/^void	gc_lock(void *ptr, t_gc *gcl)$/;"	f
+gc_malloc	lib/libgc/src/gc_malloc.c	/^void	*gc_malloc(size_t size, t_gc *gcl)$/;"	f
+gc_mark	lib/libgc/src/gc_mark_lock.c	/^void	gc_mark(void *ptr, t_gc *gcl)$/;"	f
+gc_memcpy	lib/libgc/src/gc_free.c	/^void	*gc_memcpy(void *dest, const void *src, size_t n)$/;"	f
+gc_nest_lock	lib/libgc/src/gc_mark_lock.c	/^void	gc_nest_lock(void *ptr, t_gc *gcl)$/;"	f
+gc_nest_register	lib/libgc/src/gc_nest_register.c	/^void	gc_nest_register(void *ptr, t_gc *gcl)$/;"	f
+gc_realloc	lib/libgc/src/gc_realloc.c	/^void	*gc_realloc(void *ptr, size_t size, t_gc *gcl)$/;"	f
+gc_register	lib/libgc/src/gc_register.c	/^void	gc_register(void *ptr, t_gc *gcl)$/;"	f
+gc_strdup	lib/libgc/src/gc_free.c	/^char	*gc_strdup(const char *s, t_gc *gcl)$/;"	f
+gc_strjoin	src/shell/ms_set_env_value.c	/^char	*gc_strjoin(char *s1, char *s2, t_gc *gcl)$/;"	f
+gc_strlen	lib/libgc/src/gc_free.c	/^int	gc_strlen(const char *str)$/;"	f
+gc_temp_file_register	lib/libgc/src/gc_register.c	/^void	gc_temp_file_register(const char *filename, t_gc *gcl)$/;"	f
+gc_unlock	lib/libgc/src/gc_mark_lock.c	/^void	gc_unlock(void *ptr, t_gc *gcl)$/;"	f
+gcl	include/expand.h	/^	t_gc		*gcl;$/;"	m	struct:s_wildcard_context
+gcl	include/minishell.h	/^	t_gc			*gcl;$/;"	m	struct:s_shell
+gcl	lib/libft/check_testunit_template.c	/^static t_gc *gcl;$/;"	v	file:
+gcl	lib/libft/test_src/printf/test_ft_snprintf.c	/^static t_gc *gcl;$/;"	v	file:
+gcl	test_src/ast/test_ms_parse_tokens.c	/^static t_gc *gcl;$/;"	v	file:
+gcl	test_src/builtins/test_ms_export.c	/^static t_gc *gcl;$/;"	v	file:
+gcl	test_src/builtins/test_ms_unset.c	/^static	t_gc *gcl;$/;"	v	file:
+gcl	test_src/check_testunit_template.c	/^static t_gc *gcl;$/;"	v	file:
+gcl	test_src/expand/test_ms_expand_args.c	/^static	t_gc *gcl;$/;"	v	file:
+gcl	test_src/shell/test_ms_get_envp.c	/^static t_gc *gcl;$/;"	v	file:
+gcl	test_src/shell/test_ms_getenv.c	/^static t_gc *gcl;$/;"	v	file:
+gcl	test_src/token/test_ms_tokenize.c	/^static t_gc *gcl;$/;"	v	file:
+generate_src_list	lib/libft/update_makefile.sh	/^generate_src_list() {$/;"	f
+get_left_child	src/ast/print_ast.c	/^t_ast_node	*get_left_child(t_ast_node *node)$/;"	f
+get_next_line	lib/libft/src/get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_node_label	src/ast/print_ast.c	/^char	*get_node_label(t_ast_node *node)$/;"	f
+get_operator_map	src/token/tokenize_operator.c	/^static const t_operator_map	*get_operator_map(void)$/;"	f	file:
+get_right_child	src/ast/print_ast.c	/^t_ast_node	*get_right_child(t_ast_node *node)$/;"	f
+handle_in_quote	src/token/tokenize_word.c	/^static void	handle_in_quote(t_copy_state *state)$/;"	f	file:
+handle_in_quote	src/token/tokenize_word_helper.c	/^static void	handle_in_quote(t_token_state *state)$/;"	f	file:
+handle_not_in_quote	src/token/tokenize_word.c	/^static void	handle_not_in_quote(t_copy_state *state)$/;"	f	file:
+handle_not_in_quote	src/token/tokenize_word_helper.c	/^static void	handle_not_in_quote(t_token_state *state)$/;"	f	file:
+head	include/tokenize.h	/^	t_token	*head;$/;"	m	struct:s_sort_token_helper
+head	lib/libgc/include/libgc.h	/^	t_gc_node	*head;$/;"	m	struct:s_garbage_collector
+help_word	src/token/tokenize_word.c	/^t_token	*help_word(char *value, t_gc *gcl, bool is_expand)$/;"	f
+helper	lib/libgc/src/gc_realloc.c	/^static void	*helper(t_gc_node *current, void *ptr, size_t size, t_gc *gcl)$/;"	f	file:
+helper	src/expand/ms_value_assign.c	/^static void	helper(t_cmd_node *cmd_node, t_shell *shell)$/;"	f	file:
+helper_copy	src/expand/ms_expand_args.c	/^static void	helper_copy(char *new_arg, char *arg, int *old_arg_index,$/;"	f	file:
+heredoc	include/ast.h	/^	t_heredoc_node		heredoc;$/;"	m	union:u_node_data
+heredocs	include/minishell.h	/^	t_heredoc_node	*heredocs[16];$/;"	m	struct:s_shell
+i	include/builtins.h	/^	int	i;$/;"	m	struct:s_echo_utils
+i	include/exec.h	/^	int		i;$/;"	m	struct:s_pipe_helper
+i	include/syntax.h	/^	int		i;$/;"	m	struct:s_syntax
+i	include/tokenize.h	/^	int						i;$/;"	m	struct:s_op_state
+i	include/tokenize.h	/^	int			i;$/;"	m	struct:s_copy_state
+i	include/tokenize.h	/^	int			i;$/;"	m	struct:s_token_state
+i	include/tokenize.h	/^	int		i;$/;"	m	struct:s_sort_token_helper
+in_quote	include/tokenize.h	/^	bool		in_quote;$/;"	m	struct:s_copy_state
+in_quote	include/tokenize.h	/^	bool		in_quote;$/;"	m	struct:s_token_state
+in_subshell	src/ast/parse_command.c	/^static t_ast_node	*in_subshell(t_token **current_token, t_shell *shell,$/;"	f	file:
+index	lib/libft/include/printf.h	/^	int		index;$/;"	m	struct:s_buffer
+info_arch	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_compiler	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_cray	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";$/;"	v
+info_language_extensions_default	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^const char* info_language_extensions_default = "INFO" ":" "extensions_default["$/;"	v
+info_language_standard_default	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^const char* info_language_standard_default =$/;"	v
+info_platform	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_simulate	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate_version	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_simulate_version[] = {$/;"	v
+info_version	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version[] = {$/;"	v
+info_version	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version = "INFO" ":" "compiler_version[" COMPILER_VERSION "]";$/;"	v
+info_version_internal	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v
+info_version_internal	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INTERNAL_STR "]";$/;"	v
+init	lib/libgc/src/gc_nest_register.c	/^static t_gc_node	*init(t_gc_node *new_node, void *ptr, t_gc *gcl)$/;"	f	file:
+init	lib/libgc/src/gc_register.c	/^static t_gc_node	*init(t_gc_node *new_node, const char *filename, t_gc *gcl)$/;"	f	file:
+init_context	src/exec/ms_execute_ast.c	/^void	init_context(t_exec_context *data, t_shell *shell)$/;"	f
+init_fix_value	src/shell/init_fix_value.c	/^void	init_fix_value(t_env_data *env_data)$/;"	f
+init_io	src/exec/ms_concat_path.c	/^int	init_io(int new_in, int new_out, int new_err)$/;"	f
+init_op_state	src/token/tokenize_operator.c	/^static void	init_op_state(const char **input, t_op_state *op_state)$/;"	f	file:
+initialize_token_state	src/token/tokenize_word_helper.c	/^static void	initialize_token_state(t_token_state *state, const char *current,$/;"	f	file:
+interactive_mode	include/minishell.h	/^	bool			interactive_mode;$/;"	m	struct:s_shell
+is_array	lib/libgc/include/libgc.h	/^	bool				is_array;$/;"	m	struct:s_gc_node
+is_builtin_that_must_run_in_parent	src/exec/ms_execute_ast.c	/^bool	is_builtin_that_must_run_in_parent(t_cmd_node *cmd_node)$/;"	f
+is_command_op	src/ast/utils.c	/^bool	is_command_op(t_token *current_token)$/;"	f
+is_directory	src/exec/ms_execute_external.c	/^static int	is_directory(const char *path)$/;"	f	file:
+is_equal	src/expand/ms_expand_utils.c	/^bool	is_equal(char *cmd)$/;"	f
+is_expand	include/ast.h	/^	bool	is_expand;$/;"	m	struct:s_cmd_node
+is_expand	include/tokenize.h	/^	bool		is_expand;$/;"	m	struct:s_token_state
+is_frame	src/token/utils.c	/^bool	is_frame(char c)$/;"	f
+is_locked	lib/libgc/include/libgc.h	/^	bool				is_locked;$/;"	m	struct:s_gc_node
+is_logical_op	src/ast/utils.c	/^bool	is_logical_op(t_token *current_token)$/;"	f
+is_marked	lib/libgc/include/libgc.h	/^	bool				is_marked;$/;"	m	struct:s_gc_node
+is_operator	src/token/utils.c	/^bool	is_operator(char c)$/;"	f
+is_pipe_op	src/ast/utils.c	/^bool	is_pipe_op(t_token *current_token)$/;"	f
+is_quote	src/token/utils.c	/^bool	is_quote(char c)$/;"	f
+is_redir_op	src/ast/utils2.c	/^bool	is_redir_op(t_token *current_token)$/;"	f
+is_redirect_node	src/exec/ms_exec_utils.c	/^bool	is_redirect_node(t_ast_node *node)$/;"	f
+is_sbs_start	src/ast/utils2.c	/^bool	is_sbs_start(t_token *current_token)$/;"	f
+is_sbs_stop	src/ast/utils2.c	/^bool	is_sbs_stop(t_token *current_token)$/;"	f
+is_subprocess	include/exec.h	/^	bool		is_subprocess;$/;"	m	struct:s_exec_context
+is_var	src/expand/ms_expand_utils.c	/^bool	is_var(char *cmd)$/;"	f
+is_whitespace	src/token/utils.c	/^bool	is_whitespace(char c)$/;"	f
+is_wild	src/expand/ms_expand_utils.c	/^bool	is_wild(char *cmd)$/;"	f
+j	include/tokenize.h	/^	int			j;$/;"	m	struct:s_copy_state
+left	include/ast.h	/^	struct s_ast_node	*left;$/;"	m	struct:s_logic_node	typeref:struct:s_logic_node::s_ast_node
+left	include/ast.h	/^	struct s_ast_node	*left;$/;"	m	struct:s_pipe_node	typeref:struct:s_pipe_node::s_ast_node
+len	include/tokenize.h	/^	int			len;$/;"	m	struct:s_token_state
+len	include/tokenize.h	/^	int		len;$/;"	m	struct:s_sort_token_helper
+len_end	include/syntax.h	/^	int		len_end;$/;"	m	struct:s_syntax
+line	include/exec.h	/^	char	*line;$/;"	m	struct:s_here_helper
+lines	test_minishell/animated_banner.py	/^lines = [$/;"	v
+lines	test_minishell/noanimated_banner.py	/^lines = [$/;"	v
+logic	include/ast.h	/^	t_logic_node		logic;$/;"	m	union:u_node_data
+lst_tokens_suite	test_src/token/test_lst_tokens.c	/^Suite *lst_tokens_suite(void)$/;"	f
+main	lib/libft/check_testunit_template.c	/^int main(void)$/;"	f
+main	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
+main	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+main	lib/libft/test_src/printf/test_ft_snprintf.c	/^int main(void)$/;"	f
+main	main.c	/^int	main(int argc, char **argv, char **envp)$/;"	f
+main	test_minishell/run_test.sh	/^main() {$/;"	f
+main	test_src/ast/test_ms_parse_tokens.c	/^int main(void)$/;"	f
+main	test_src/builtins/test_ms_echo.c	/^int main(void)$/;"	f
+main	test_src/builtins/test_ms_env.c	/^int main(void)$/;"	f
+main	test_src/builtins/test_ms_exit.c	/^int main(void)$/;"	f
+main	test_src/builtins/test_ms_export.c	/^int main(void)$/;"	f
+main	test_src/builtins/test_ms_pwd.c	/^int main(void)$/;"	f
+main	test_src/builtins/test_ms_unset.c	/^int main(void)$/;"	f
+main	test_src/check_testunit_template.c	/^int main(void)$/;"	f
+main	test_src/expand/test_ms_expand_args.c	/^int main(void)$/;"	f
+main	test_src/shell/test_ms_env_add_back.c	/^int main(void) {$/;"	f
+main	test_src/shell/test_ms_env_create_node.c	/^int main(void)$/;"	f
+main	test_src/shell/test_ms_get_env_value.c	/^int main(void)$/;"	f
+main	test_src/shell/test_ms_get_envp.c	/^int main(void)$/;"	f
+main	test_src/shell/test_ms_get_user_input.c	/^int	main(void)$/;"	f
+main	test_src/shell/test_ms_getenv.c	/^int main(void)$/;"	f
+main	test_src/shell/test_ms_init_env.c	/^int main(void)$/;"	f
+main	test_src/shell/test_ms_init_shell.c	/^int main(void)$/;"	f
+main	test_src/signal/test_ms_init_std_signal.c	/^int main(void)$/;"	f
+main	test_src/signal/test_ms_stop_std_signal.c	/^int main(void)$/;"	f
+main	test_src/syntax_error/test_ms_syntax_error.c	/^int main(void)$/;"	f
+main	test_src/token/test_lst_tokens.c	/^int main(void)$/;"	f
+main	test_src/token/test_ms_tokenize.c	/^int main(void)$/;"	f
+main	test_src/token/test_tokenize_frame.c	/^int main(void)$/;"	f
+main	test_src/token/test_tokenize_operator.c	/^int main(void)$/;"	f
+main	test_src/token/test_tokenize_word.c	/^int main(void)$/;"	f
+malloc_error	src/shell/ms_get_envp.c	/^void	malloc_error(t_gc *gcl)$/;"	f
+match_count	include/expand.h	/^	size_t		match_count;$/;"	m	struct:s_wildcard_context
+matches	include/expand.h	/^	char		**matches;$/;"	m	struct:s_wildcard_context
+max_size	lib/libft/include/printf.h	/^	size_t	max_size;$/;"	m	struct:s_buffer
+minishell_suite	test_src/shell/test_ms_env_add_back.c	/^Suite *minishell_suite(void) {$/;"	f
+minishell_suite	test_src/shell/test_ms_get_user_input.c	/^Suite	*minishell_suite(void)$/;"	f
+mock_add_history	test_src/shell/test_ms_get_user_input.c	/^void	mock_add_history(const char *line)$/;"	f
+mock_readline	test_src/shell/test_ms_get_user_input.c	/^char	*mock_readline(const char *prompt)$/;"	f
+move_cursor_below_banner	test_minishell/run_test.sh	/^move_cursor_below_banner() {$/;"	f
+ms_add_redir	src/exec/ms_handle_redirections.c	/^static t_redir	*ms_add_redir(t_redir **head, int ntype,$/;"	f	file:
+ms_apply_redirections	src/exec/ms_apply_redirections.c	/^int	ms_apply_redirections(t_redir *redir_list)$/;"	f
+ms_cd	src/builtins/ms_cd.c	/^int	ms_cd(t_cmd_node *cmd_node, t_shell *shell)$/;"	f
+ms_check_alloc	src/exec/ms_concat_path.c	/^static void	ms_check_alloc(void *ptr, t_gc *gcl)$/;"	f	file:
+ms_child_process	src/exec/ms_execute_external.c	/^static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,$/;"	f	file:
+ms_collect_redirections	src/exec/ms_handle_redirections.c	/^t_redir	*ms_collect_redirections(t_ast_node *node, t_gc *gcl, t_shell *shell)$/;"	f
+ms_concat_path	src/exec/ms_concat_path.c	/^char	*ms_concat_path(const char *path, const char *command, t_gc *gcl)$/;"	f
+ms_copy_assign	src/expand/ms_value_assign.c	/^static	void	ms_copy_assign(char *var, char *value, char *cmd)$/;"	f	file:
+ms_echo	src/builtins/ms_echo.c	/^int	ms_echo(t_cmd_node *cmd_node, int fd)$/;"	f
+ms_echo_suite	test_src/builtins/test_ms_echo.c	/^static Suite *ms_echo_suite(void)$/;"	f	file:
+ms_env	src/builtins/ms_env.c	/^int	ms_env(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
+ms_env_add_back	src/shell/ms_env_add_back.c	/^void	ms_env_add_back(t_env **env, t_env *new_node)$/;"	f
+ms_env_create_node	src/shell/ms_env_create_node.c	/^t_env	*ms_env_create_node(t_shell *shell, const char *env_line)$/;"	f
+ms_env_suite	test_src/builtins/test_ms_env.c	/^Suite *ms_env_suite(void)$/;"	f
+ms_execute_ast	src/exec/ms_execute_ast.c	/^int	ms_execute_ast(t_ast_node *node, t_exec_context *context)$/;"	f
+ms_execute_command	src/exec/ms_execute_command.c	/^int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl)$/;"	f
+ms_execute_external	src/exec/ms_execute_external.c	/^int	ms_execute_external(t_cmd_node *cmd_node, t_exec_context *context,$/;"	f
+ms_execute_logical	src/exec/ms_execute_logical.c	/^int	ms_execute_logical(t_ast_node *node, t_exec_context *context)$/;"	f
+ms_execute_pipeline	src/exec/ms_execute_pipeline.c	/^int	ms_execute_pipeline(t_ast_node *node, t_exec_context *context)$/;"	f
+ms_execute_redirection	src/exec/ms_execute_ast.c	/^int	ms_execute_redirection(t_ast_node *node, t_exec_context *context)$/;"	f
+ms_execute_subshell	src/exec/ms_execute_subshell.c	/^int	ms_execute_subshell(t_subshell_node *subshell_node,$/;"	f
+ms_exit	src/builtins/ms_exit.c	/^int	ms_exit(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
+ms_exit_suite	test_src/builtins/test_ms_exit.c	/^static Suite *ms_exit_suite(void)$/;"	f	file:
+ms_expand_arg	src/expand/ms_expand_args.c	/^char	*ms_expand_arg(char *arg, t_shell *shell, bool is_nested)$/;"	f
+ms_expand_wild	src/expand/ms_expand_wild.c	/^t_wildcard_context	*ms_expand_wild(const char *pattern, t_gc *gcl)$/;"	f
+ms_export	src/builtins/ms_export.c	/^int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
+ms_export_suite	test_src/builtins/test_ms_export.c	/^static Suite *ms_export_suite(void)$/;"	f	file:
+ms_extract_var	src/expand/ms_expand_args.c	/^static char	*ms_extract_var(char *arg, t_gc *gcl)$/;"	f	file:
+ms_fork_pipeline_commands	src/exec/ms_handle_pipeline.c	/^pid_t	*ms_fork_pipeline_commands(t_ast_node **commands, int **pipes,$/;"	f
+ms_get_env_value	src/shell/ms_get_env_value.c	/^char	*ms_get_env_value(t_env *env, char *name, int error_code)$/;"	f
+ms_get_env_value_suite	test_src/shell/test_ms_get_env_value.c	/^static Suite *ms_get_env_value_suite(void)$/;"	f	file:
+ms_get_envp	src/shell/ms_get_envp.c	/^char	**ms_get_envp(t_env *env, t_gc *gcl)$/;"	f
+ms_get_envp_suite	test_src/shell/test_ms_get_envp.c	/^Suite *ms_get_envp_suite(void)$/;"	f
+ms_get_user_input	src/shell/ms_get_user_input.c	/^void	ms_get_user_input(t_shell *shell)$/;"	f
+ms_getenv	src/shell/ms_getenv.c	/^char	*ms_getenv(const char *name, t_env_data *env_data)$/;"	f
+ms_getenv_suite	test_src/shell/test_ms_getenv.c	/^Suite *ms_getenv_suite(void)$/;"	f
+ms_handle_error	src/exec/ms_handle_error.c	/^int	ms_handle_error(const char *msg, int exit_status, t_gc *gcl)$/;"	f
+ms_heredoc_mode	src/exec/ms_heredoc_mode.c	/^int	ms_heredoc_mode(t_heredoc_node *node, t_exec_context *context)$/;"	f
+ms_heredoc_signal	src/signal/ms_heredoc_signal.c	/^void	ms_heredoc_signal(int sig)$/;"	f
+ms_increment_shell_lvl	src/shell/ms_init_env.c	/^void	ms_increment_shell_lvl(t_env *env, t_gc *gcl)$/;"	f
+ms_init_child_cmd_signal	src/signal/ms_init_child_cmd_signal.c	/^void	ms_init_child_cmd_signal(void)$/;"	f
+ms_init_env	src/shell/ms_init_env.c	/^t_env_data	*ms_init_env(char **envp, t_shell *shell)$/;"	f
+ms_init_env_suite	test_src/shell/test_ms_init_env.c	/^Suite *ms_init_env_suite(void)$/;"	f
+ms_init_parent_cmd_signal	src/signal/ms_init_parent_cmd_signal.c	/^void	ms_init_parent_cmd_signal(void)$/;"	f
+ms_init_shell	src/shell/ms_init_shell.c	/^t_shell	ms_init_shell(int argc, char **argv, char **envp)$/;"	f
+ms_init_shell_suite	test_src/shell/test_ms_init_shell.c	/^Suite *ms_init_shell_suite(void)$/;"	f
+ms_init_std_signal	src/signal/ms_init_std_signal.c	/^void	ms_init_std_signal(void)$/;"	f
+ms_init_std_signal_suite	test_src/signal/test_ms_init_std_signal.c	/^Suite *ms_init_std_signal_suite(void)$/;"	f
+ms_manage_arg_expand	src/expand/ms_manage_arg_expand.c	/^void	ms_manage_arg_expand(t_cmd_node *cmd_node,$/;"	f
+ms_node_type_to_redir_type	src/exec/ms_handle_redirections.c	/^static t_redir_type	ms_node_type_to_redir_type(t_node_type ntype)$/;"	f	file:
+ms_open_redir_file	src/exec/ms_handle_redirections.c	/^int	ms_open_redir_file(t_redir_type type, const char *filename)$/;"	f
+ms_parent_process	src/exec/ms_execute_external.c	/^static void	ms_parent_process(pid_t pid, t_exec_context *context)$/;"	f	file:
+ms_parse_cmd_path	src/exec/ms_parse_cmd_path.c	/^char	*ms_parse_cmd_path(const char *command, t_shell *shell)$/;"	f
+ms_parse_tokens	src/ast/ms_parse_tokens.c	/^t_ast_node	*ms_parse_tokens(t_token *tokens, t_shell *shell, t_gc *gcl)$/;"	f
+ms_preprocess_heredocs	src/exec/ms_heredoc_mode.c	/^void	ms_preprocess_heredocs(t_exec_context *context)$/;"	f
+ms_pwd	src/builtins/ms_pwd.c	/^int	ms_pwd(int fd)$/;"	f
+ms_pwd_suite	test_src/builtins/test_ms_pwd.c	/^static Suite    *ms_pwd_suite(void)$/;"	f	file:
+ms_safe_putstr_fd	src/builtins/builtins_utils.c	/^int	ms_safe_putstr_fd(char *s, int fd)$/;"	f
+ms_set_env_value	src/shell/ms_set_env_value.c	/^void	ms_set_env_value(t_shell *shell, char *name, char *value)$/;"	f
+ms_stop_std_signal	src/signal/ms_stop_std_signal.c	/^void	ms_stop_std_signal(void)$/;"	f
+ms_stop_std_signal_suite	test_src/signal/test_ms_stop_std_signal.c	/^Suite *ms_stop_std_signal_suite(void)$/;"	f
+ms_syntax_error	src/syntax_error/ms_syntax_error.c	/^int	ms_syntax_error(const char *input)$/;"	f
+ms_syntax_error_suite	test_src/syntax_error/test_ms_syntax_error.c	/^static Suite    *ms_syntax_error_suite(void)$/;"	f	file:
+ms_tokenize	src/token/ms_tokenize.c	/^t_token	*ms_tokenize(const char *command_line, t_gc *gcl)$/;"	f
+ms_unset	src/builtins/ms_unset.c	/^int	ms_unset(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f
+ms_value_assign	src/expand/ms_value_assign.c	/^int	ms_value_assign(t_shell *shell, t_cmd_node *cmd_node, t_gc *gcl)$/;"	f
+name_suite	lib/libft/check_testunit_template.c	/^Suite *name_suite(void)$/;"	f
+name_suite	lib/libft/test_src/printf/test_ft_snprintf.c	/^Suite *name_suite(void)$/;"	f
+name_suite	test_src/builtins/test_ms_unset.c	/^Suite *name_suite(void)$/;"	f
+name_suite	test_src/check_testunit_template.c	/^Suite *name_suite(void)$/;"	f
+name_suite	test_src/expand/test_ms_expand_args.c	/^Suite *name_suite(void)$/;"	f
+nb_printed	lib/libft/include/printf.h	/^	int		nb_printed;$/;"	m	struct:s_buffer
+nested_vars	src/expand/ms_expand_args_utils.c	/^char	*nested_vars(char *arg, t_shell *shell)$/;"	f
+new_arg	include/expand.h	/^	char	*new_arg;$/;"	m	struct:s_expand_utils
+next	include/exec.h	/^	struct s_redir	*next;$/;"	m	struct:s_redir	typeref:struct:s_redir::s_redir
+next	include/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
+next	include/tokenize.h	/^	struct s_token	*next;$/;"	m	struct:s_token	typeref:struct:s_token::s_token
+next	lib/libgc/include/libgc.h	/^	struct s_gc_node	*next;$/;"	m	struct:s_gc_node	typeref:struct:s_gc_node::s_gc_node
+num_commands	include/exec.h	/^	int		num_commands;$/;"	m	struct:s_pipe_helper
+o_and	include/syntax.h	/^	int		o_and;$/;"	m	struct:s_syntax
+o_or	include/syntax.h	/^	int		o_or;$/;"	m	struct:s_syntax
+o_pipe	include/syntax.h	/^	int		o_pipe;$/;"	m	struct:s_syntax
+op_len	include/tokenize.h	/^	int						op_len;$/;"	m	struct:s_op_state
+op_map	include/tokenize.h	/^	const t_operator_map	*op_map;$/;"	m	struct:s_op_state
+op_str	include/tokenize.h	/^	char					*op_str;$/;"	m	struct:s_op_state
+op_str	include/tokenize.h	/^	const char		*op_str;$/;"	m	struct:s_operator_map
+operator_gestion	src/syntax_error/operator_gestion.c	/^int	operator_gestion(t_syntax **syntax)$/;"	f
+original_stdin	include/exec.h	/^	int			original_stdin;$/;"	m	struct:s_exec_context
+original_stdout	include/exec.h	/^	int			original_stdout;$/;"	m	struct:s_exec_context
+p_char	include/syntax.h	/^	int		p_char;$/;"	m	struct:s_syntax
+p_close	include/syntax.h	/^	int		p_close;$/;"	m	struct:s_syntax
+p_open	include/syntax.h	/^	int		p_open;$/;"	m	struct:s_syntax
+p_trigger	include/syntax.h	/^	int		p_trigger;$/;"	m	struct:s_syntax
+parenthesis_gestion	src/syntax_error/parenthesis_gestion.c	/^int	parenthesis_gestion(t_syntax **syntax)$/;"	f
+parse_command	src/ast/parse_command.c	/^t_ast_node	*parse_command(t_token **current_token, t_shell *shell, t_gc *gcl)$/;"	f
+parse_env	src/shell/ms_get_envp.c	/^void	parse_env(char **result, int *i, t_env *env, t_gc *gcl)$/;"	f
+parse_logical	src/ast/parse_logical.c	/^t_ast_node	*parse_logical(t_token **current_token, t_shell *shell, t_gc *gcl)$/;"	f
+parse_outputs	test_minishell/run_test.sh	/^        parse_outputs() {$/;"	f
+parse_pipeline	src/ast/parse_pipeline.c	/^t_ast_node	*parse_pipeline(t_token **current_token, t_shell *shell, t_gc *gcl)$/;"	f
+parse_redirection	src/ast/parse_redirection.c	/^t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child,$/;"	f
+parse_subshell	src/ast/parse_subshell.c	/^t_ast_node	*parse_subshell(t_token **current_token, t_shell *shell, t_gc *gcl)$/;"	f
+path	include/minishell.h	/^	char	*path;$/;"	m	struct:s_env_data
+pattern	include/expand.h	/^	const char	*pattern;$/;"	m	struct:s_wildcard_context
+pids	include/exec.h	/^	pid_t	*pids;$/;"	m	struct:s_pipe_helper
+pipe	include/ast.h	/^	t_pipe_node			pipe;$/;"	m	union:u_node_data
+pipe_node	include/exec.h	/^	t_pipe_node		*pipe_node;$/;"	m	struct:s_pipe_exec_params
+pipe_process	src/exec/ms_handle_pipeline.c	/^void	pipe_process(t_pipe_helper *args, t_ast_node *final_node,$/;"	f
+pipefd	include/exec.h	/^	int				pipefd[2];$/;"	m	struct:s_heredoc_params
+pipefd	include/exec.h	/^	int				pipefd[2];$/;"	m	struct:s_pipe_exec_params
+precision	lib/libft/include/printf.h	/^	int			precision;$/;"	m	struct:s_format_spec
+prepare_pipes	src/exec/ms_handle_pipeline.c	/^int	**prepare_pipes(int num_commands, t_gc *gcl)$/;"	f
+prev	include/tokenize.h	/^	t_token	*prev;$/;"	m	struct:s_sort_token_helper
+print_ast	src/ast/print_ast.c	/^void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)$/;"	f
+print_ast_delimit	src/ast/ms_parse_tokens.c	/^void	print_ast_delimit(t_ast_node *root)$/;"	f
+print_banner	test_minishell/animated_banner.py	/^def print_banner(frame):$/;"	f
+print_branch	src/ast/utils2.c	/^void	print_branch(int depth, int is_left, int fd)$/;"	f
+print_lock	test_minishell/animated_banner.py	/^print_lock = threading.Lock()$/;"	v
+print_node_content	src/ast/print_ast.c	/^void	print_node_content(t_ast_node *node, int fd)$/;"	f
+print_static_banner	test_minishell/animated_banner.py	/^def print_static_banner():$/;"	f
+print_static_banner	test_minishell/noanimated_banner.py	/^def print_static_banner():$/;"	f
+print_token	src/token/lst_tokens.c	/^void	print_token(t_token *head)$/;"	f
+print_token_delimit	src/token/lst_tokens.c	/^void	print_token_delimit(t_token *tokens)$/;"	f
+process_outputs	test_minishell/run_test.sh	/^process_outputs() {$/;"	f
+ptr	lib/libgc/include/libgc.h	/^	void				*ptr;$/;"	m	struct:s_gc_node
+qnxnto	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+quote	include/tokenize.h	/^	char		quote;$/;"	m	struct:s_copy_state
+quote	include/tokenize.h	/^	char		quote;$/;"	m	struct:s_token_state
+quote_gestion	src/syntax_error/quote_gestion.c	/^int	quote_gestion(t_syntax **syntax)$/;"	f
+r_app	include/syntax.h	/^	int		r_app;$/;"	m	struct:s_syntax
+r_here	include/syntax.h	/^	int		r_here;$/;"	m	struct:s_syntax
+r_in	include/syntax.h	/^	int		r_in;$/;"	m	struct:s_syntax
+r_out	include/syntax.h	/^	int		r_out;$/;"	m	struct:s_syntax
+r_p	include/expand.h	/^	const char			*r_p;$/;"	m	struct:s_directory_context
+redir	include/tokenize.h	/^	bool	redir;$/;"	m	struct:s_sort_token_helper
+redir_gestion	src/syntax_error/redir_gestion.c	/^int	redir_gestion(t_syntax **syntax)$/;"	f
+redir_in_command	src/exec/ms_execute_ast.c	/^static int	redir_in_command(t_ast_node *node, t_exec_context *context,$/;"	f	file:
+redir_list	include/exec.h	/^	t_redir		*redir_list;$/;"	m	struct:s_exec_context
+redirect	include/ast.h	/^	t_redirect_node		redirect;$/;"	m	union:u_node_data
+redirect_fd	src/exec/ms_concat_path.c	/^int	redirect_fd(int old_fd, int new_fd)$/;"	f
+redirected	include/exec.h	/^	bool		redirected;$/;"	m	struct:s_exec_context
+remove_escape_codes	test_minishell/remove_escape_codes.sh	/^    remove_escape_codes() {$/;"	f
+report_results	test_minishell/run_test.sh	/^report_results() {$/;"	f
+right	include/ast.h	/^	struct s_ast_node	*right;$/;"	m	struct:s_logic_node	typeref:struct:s_logic_node::s_ast_node
+right	include/ast.h	/^	struct s_ast_node	*right;$/;"	m	struct:s_pipe_node	typeref:struct:s_pipe_node::s_ast_node
+rl_event_dummy	src/signal/rl_event_dummy.c	/^int	rl_event_dummy(void)$/;"	f
+run	main.c	/^static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)$/;"	f	file:
+run_expect_scripts	test_minishell/run_test.sh	/^run_expect_scripts() {$/;"	f
+run_valgrind_tests	test_minishell/run_test.sh	/^run_valgrind_tests() {$/;"	f
+s_ast_node	include/ast.h	/^typedef struct s_ast_node$/;"	s
+s_buffer	lib/libft/include/printf.h	/^typedef struct s_buffer$/;"	s
+s_cmd_node	include/ast.h	/^typedef struct s_cmd_node$/;"	s
+s_copy_state	include/tokenize.h	/^typedef struct s_copy_state$/;"	s
+s_directory_context	include/expand.h	/^typedef struct s_directory_context$/;"	s
+s_echo_utils	include/builtins.h	/^typedef struct s_echo_utils$/;"	s
+s_env	include/minishell.h	/^typedef struct s_env$/;"	s
+s_env_data	include/minishell.h	/^typedef struct s_env_data$/;"	s
+s_exec_context	include/exec.h	/^typedef struct s_exec_context$/;"	s
+s_expand_utils	include/expand.h	/^typedef struct s_expand_utils$/;"	s
+s_export_utils	include/builtins.h	/^typedef struct s_export_utils$/;"	s
+s_external_exec_params	include/exec.h	/^typedef struct s_external_exec_params$/;"	s
+s_format_spec	lib/libft/include/printf.h	/^typedef struct s_format_spec$/;"	s
+s_garbage_collector	lib/libgc/include/libgc.h	/^typedef struct s_garbage_collector$/;"	s
+s_gc_node	lib/libgc/include/libgc.h	/^typedef struct s_gc_node$/;"	s
+s_here_helper	include/exec.h	/^typedef struct s_here_helper$/;"	s
+s_heredoc_node	include/ast.h	/^typedef struct s_heredoc_node$/;"	s
+s_heredoc_params	include/exec.h	/^typedef struct s_heredoc_params$/;"	s
+s_logic_node	include/ast.h	/^typedef struct s_logic_node$/;"	s
+s_op_state	include/tokenize.h	/^typedef struct s_op_state$/;"	s
+s_operator_map	include/tokenize.h	/^typedef struct s_operator_map$/;"	s
+s_pipe_exec_params	include/exec.h	/^typedef struct s_pipe_exec_params$/;"	s
+s_pipe_helper	include/exec.h	/^typedef struct s_pipe_helper$/;"	s
+s_pipe_node	include/ast.h	/^typedef struct s_pipe_node$/;"	s
+s_redir	include/exec.h	/^typedef struct s_redir$/;"	s
+s_redirect_node	include/ast.h	/^typedef struct s_redirect_node$/;"	s
+s_shell	include/minishell.h	/^typedef struct s_shell$/;"	s
+s_sort_token_helper	include/tokenize.h	/^typedef struct s_sort_token_helper$/;"	s
+s_subshell_exec_params	include/exec.h	/^typedef struct s_subshell_exec_params$/;"	s
+s_subshell_node	include/ast.h	/^typedef struct s_subshell_node$/;"	s
+s_syntax	include/syntax.h	/^typedef struct s_syntax$/;"	s
+s_testresult	test_src/builtins/test_ms_echo.c	/^typedef struct s_testresult$/;"	s	file:
+s_testresult	test_src/builtins/test_ms_exit.c	/^typedef struct s_testresult$/;"	s	file:
+s_testresult	test_src/builtins/test_ms_pwd.c	/^typedef struct s_testresult$/;"	s	file:
+s_testresult	test_src/syntax_error/test_ms_syntax_error.c	/^typedef struct s_testresult$/;"	s	file:
+s_token	include/tokenize.h	/^typedef struct s_token$/;"	s
+s_token_state	include/tokenize.h	/^typedef struct s_token_state$/;"	s
+s_wildcard_context	include/expand.h	/^typedef struct s_wildcard_context$/;"	s
+safe_close	src/exec/ms_exec_utils.c	/^int	safe_close(int fd)$/;"	f
+safe_open	src/exec/ms_exec_utils.c	/^int	safe_open(const char *filepath, int flags, int mode)$/;"	f
+safe_pipe	src/exec/ms_exec_utils.c	/^int	safe_pipe(int pipefd[2])$/;"	f
+setup	lib/libft/check_testunit_template.c	/^void setup(void)$/;"	f
+setup	lib/libft/test_src/printf/test_ft_snprintf.c	/^void setup(void)$/;"	f
+setup	test_src/ast/test_ms_parse_tokens.c	/^void setup(void)$/;"	f
+setup	test_src/builtins/test_ms_echo.c	/^static void setup(void)$/;"	f	file:
+setup	test_src/builtins/test_ms_exit.c	/^static void setup(void)$/;"	f	file:
+setup	test_src/builtins/test_ms_export.c	/^void setup(void)$/;"	f
+setup	test_src/builtins/test_ms_pwd.c	/^static void setup(void)$/;"	f	file:
+setup	test_src/builtins/test_ms_unset.c	/^void setup(void)$/;"	f
+setup	test_src/check_testunit_template.c	/^void setup(void)$/;"	f
+setup	test_src/expand/test_ms_expand_args.c	/^void	setup(void)$/;"	f
+setup	test_src/shell/test_ms_get_envp.c	/^void setup(void)$/;"	f
+setup	test_src/shell/test_ms_getenv.c	/^void setup(void)$/;"	f
+setup	test_src/syntax_error/test_ms_syntax_error.c	/^static void setup(void)$/;"	f	file:
+setup	test_src/token/test_ms_tokenize.c	/^void    setup(void)$/;"	f
+setup_shell	test_src/builtins/test_ms_env.c	/^void setup_shell(t_shell *shell) {$/;"	f
+shell	include/builtins.h	/^	t_shell	*shell;$/;"	m	struct:s_export_utils
+shell	include/exec.h	/^	t_shell		*shell;$/;"	m	struct:s_exec_context
+shell	include/minishell.h	/^	char	*shell;$/;"	m	struct:s_env_data
+shell	test_src/ast/test_ms_parse_tokens.c	/^static t_shell shell;$/;"	v	file:
+shell_lvl	include/minishell.h	/^	int		shell_lvl;$/;"	m	struct:s_env_data
+signal_handler	test_minishell/animated_banner.py	/^    def signal_handler(sig, frame):$/;"	f
+size	lib/libgc/include/libgc.h	/^	size_t				size;$/;"	m	struct:s_gc_node
+skip_whitespace	src/token/utils.c	/^void	skip_whitespace(const char **input)$/;"	f
+slash	include/expand.h	/^	char				*slash;$/;"	m	struct:s_directory_context
+slash	include/expand.h	/^	char		*slash;$/;"	m	struct:s_wildcard_context
+sort_wild	src/expand/ms_wildcard_helper.c	/^void	sort_wild(t_wildcard_context *ctx)$/;"	f
+sq_trigger	include/syntax.h	/^	int		sq_trigger;$/;"	m	struct:s_syntax
+st_add_new_env_value	src/shell/ms_set_env_value.c	/^static void	st_add_new_env_value(t_shell *shell, char *name, char *value)$/;"	f	file:
+st_and_verif	src/syntax_error/operator_gestion.c	/^static int	st_and_verif(t_syntax **syntax)$/;"	f	file:
+st_atoll_safe	src/builtins/ms_exit.c	/^static long long	st_atoll_safe(const char *str, int *error)$/;"	f	file:
+st_cd_with_option	src/builtins/ms_cd.c	/^static char	*st_cd_with_option(char *cd, t_shell *shell, char *argv)$/;"	f	file:
+st_check_env_var	src/exec/ms_heredoc_child.c	/^static void	st_check_env_var(t_shell *shell, t_here_helper *help)$/;"	f	file:
+st_check_token	src/token/ms_tokenize.c	/^static int	st_check_token(t_sort_token_helper	*h)$/;"	f	file:
+st_child_exit	src/exec/ms_handle_pipeline.c	/^static int	st_child_exit(t_ast_node *final_node, t_exec_context *context)$/;"	f	file:
+st_close_parent_pipes	src/exec/ms_execute_pipeline.c	/^static void	st_close_parent_pipes(int num_commands, int **pipes)$/;"	f	file:
+st_close_parenthesis	src/syntax_error/parenthesis_gestion.c	/^static int	st_close_parenthesis(t_syntax **syntax)$/;"	f	file:
+st_create_envp	src/shell/ms_init_env.c	/^static char	**st_create_envp(t_shell *shell, t_env_data *env_data)$/;"	f	file:
+st_delete_tmp_files	main.c	/^static void	st_delete_tmp_files(void)$/;"	f	file:
+st_dup_helper	src/exec/ms_apply_redirections.c	/^static int	st_dup_helper(int fd, int std_fileno)$/;"	f	file:
+st_echo_utils	src/builtins/ms_echo.c	/^static void	st_echo_utils(t_echo_utils *utils, char **cmd, int fd)$/;"	f	file:
+st_exit_code	src/builtins/ms_exit.c	/^static void	st_exit_code(t_cmd_node *cmd_node, t_exec_context *context)$/;"	f	file:
+st_first_arg	src/builtins/ms_env.c	/^static char	*st_first_arg(char **strs)$/;"	f	file:
+st_fork_heredoc	src/exec/ms_heredoc_mode.c	/^static void	st_fork_heredoc(t_heredoc_node *node, t_exec_context *context)$/;"	f	file:
+st_generate_tmp_filename	src/exec/ms_heredoc_mode.c	/^static char	*st_generate_tmp_filename(t_exec_context *context)$/;"	f	file:
+st_get_path	src/shell/init_fix_value.c	/^static char	*st_get_path(t_env_data *env_data)$/;"	f	file:
+st_get_shell	src/shell/init_fix_value.c	/^static char	*st_get_shell(t_env_data *env_data)$/;"	f	file:
+st_get_term	src/shell/init_fix_value.c	/^static char	*st_get_term(t_env_data *env_data)$/;"	f	file:
+st_get_user	src/shell/init_fix_value.c	/^static char	*st_get_user(t_env_data *env_data)$/;"	f	file:
+st_get_value	src/builtins/copy_env_list.c	/^static char	*st_get_value(t_env *current, t_gc *gcl)$/;"	f	file:
+st_heredoc_child_process	src/exec/ms_heredoc_child.c	/^void	st_heredoc_child_process(t_shell *shell,$/;"	f
+st_in_par	src/syntax_error/parenthesis_gestion.c	/^static int	st_in_par(t_syntax **syntax)$/;"	f	file:
+st_in_parenthesis	src/syntax_error/parenthesis_gestion.c	/^static int	st_in_parenthesis(t_syntax **syntax)$/;"	f	file:
+st_init_here_helper	src/exec/ms_heredoc_child.c	/^static void	st_init_here_helper(t_here_helper *help, t_shell *shell,$/;"	f	file:
+st_init_sort_helper	src/token/ms_tokenize.c	/^static void	st_init_sort_helper(t_sort_token_helper	*h, t_token *tokens)$/;"	f	file:
+st_init_utils	src/builtins/ms_export.c	/^static void	st_init_utils(t_export_utils *utils, t_shell *shell)$/;"	f	file:
+st_is_and	src/syntax_error/check_reinit.c	/^static int	st_is_and(t_syntax **syntax)$/;"	f	file:
+st_is_n	src/builtins/ms_echo.c	/^static int	st_is_n(char *str)$/;"	f	file:
+st_is_redir	src/exec/ms_handle_redirections.c	/^static bool	st_is_redir(t_ast_node *node)$/;"	f	file:
+st_line_check	src/syntax_error/ms_syntax_error.c	/^static int	st_line_check(t_syntax *synt)$/;"	f	file:
+st_make_input	src/shell/ms_get_user_input.c	/^char	*st_make_input(t_shell *shell)$/;"	f
+st_matches_p	src/expand/ms_expand_wild.c	/^static int	st_matches_p(const char *filename, const char *pattern)$/;"	f	file:
+st_move_token	src/token/ms_tokenize.c	/^static void	st_move_token(t_token **top, t_token **prev, t_token **current)$/;"	f	file:
+st_none_chdir	src/builtins/ms_cd.c	/^static int	st_none_chdir(t_shell *shell)$/;"	f	file:
+st_numeric_code	src/builtins/ms_exit.c	/^static int	st_numeric_code(char *str)$/;"	f	file:
+st_open_parenthesis	src/syntax_error/parenthesis_gestion.c	/^static int	st_open_parenthesis(t_syntax **syntax)$/;"	f	file:
+st_or_verif	src/syntax_error/operator_gestion.c	/^static int	st_or_verif(t_syntax **syntax)$/;"	f	file:
+st_order_env	src/builtins/ms_export.c	/^static void	st_order_env(t_env **tmp_env)$/;"	f	file:
+st_parent_here_signal	src/signal/ms_heredoc_signal.c	/^void	st_parent_here_signal(int sig)$/;"	f
+st_pipe_verif	src/syntax_error/operator_gestion.c	/^static int	st_pipe_verif(t_syntax **syntax)$/;"	f	file:
+st_print_env	src/builtins/ms_env.c	/^static int	st_print_env(t_env *env, int fd)$/;"	f	file:
+st_print_error_operator_redir	src/syntax_error/check_error.c	/^static void	st_print_error_operator_redir(int error)$/;"	f	file:
+st_print_order	src/builtins/ms_export.c	/^static void	st_print_order(t_env *tmp_env, int fd)$/;"	f	file:
+st_process_directory	src/expand/ms_expand_wild.c	/^static void	st_process_directory(DIR *dir, t_directory_context *dctx)$/;"	f	file:
+st_process_entry	src/expand/ms_expand_wild.c	/^static int	st_process_entry(struct dirent *entry, t_directory_context *dctx)$/;"	f	file:
+st_process_heredoc_line	src/exec/ms_heredoc_child.c	/^static int	st_process_heredoc_line(t_shell *shell, t_here_helper *help)$/;"	f	file:
+st_quit_prompt	main.c	/^static void	st_quit_prompt(t_shell *shell)$/;"	f	file:
+st_redir_in	src/syntax_error/redir_gestion.c	/^static int	st_redir_in(t_syntax **syntax)$/;"	f	file:
+st_redir_out	src/syntax_error/redir_gestion.c	/^static int	st_redir_out(t_syntax **syntax)$/;"	f	file:
+st_redirect_helper	src/ast/parse_redirection.c	/^static t_ast_node	*st_redirect_helper(t_ast_node *child,$/;"	f	file:
+st_reinit_operator	src/syntax_error/check_reinit.c	/^static int	st_reinit_operator(char c)$/;"	f	file:
+st_reinit_redir	src/syntax_error/check_reinit.c	/^static int	st_reinit_redir(char c)$/;"	f	file:
+st_set_underscore_value	src/exec/ms_execute_command.c	/^static void	st_set_underscore_value(t_cmd_node *cmd_node,$/;"	f	file:
+st_setup_child_io	src/exec/ms_handle_pipeline.c	/^static void	st_setup_child_io(int i, int num_commands, int **pipes)$/;"	f	file:
+st_shell_lvl_helper	src/shell/ms_init_env.c	/^static void	st_shell_lvl_helper(int i, t_env *current, t_gc *gcl)$/;"	f	file:
+st_sigint_cmd_handler	src/signal/ms_init_child_cmd_signal.c	/^static void	st_sigint_cmd_handler(int sig)$/;"	f	file:
+st_sigint_cmd_handler	src/signal/ms_init_parent_cmd_signal.c	/^static void	st_sigint_cmd_handler(int sig)$/;"	f	file:
+st_sigint_std_handler	src/signal/ms_init_std_signal.c	/^static void	st_sigint_std_handler(int sig)$/;"	f	file:
+st_sigquit_cmd_handler	src/signal/ms_init_child_cmd_signal.c	/^static void	st_sigquit_cmd_handler(int sig)$/;"	f	file:
+st_sigquit_cmd_handler	src/signal/ms_init_parent_cmd_signal.c	/^static void	st_sigquit_cmd_handler(int sig)$/;"	f	file:
+st_sort_token_list	src/token/ms_tokenize.c	/^static void	st_sort_token_list(t_token **tokens)$/;"	f	file:
+st_unset_utils	src/builtins/ms_unset.c	/^static void	st_unset_utils(t_exec_context *context, t_env *prev, t_env *current)$/;"	f	file:
+st_valid_numeric_code	src/builtins/ms_exit.c	/^static int	st_valid_numeric_code(char *str)$/;"	f	file:
+st_wait_for_childs	src/exec/ms_execute_pipeline.c	/^static int	st_wait_for_childs(int num_commands, pid_t *pids,$/;"	f	file:
+st_whithout_minus	src/builtins/ms_env.c	/^static char	*st_whithout_minus(char *str)$/;"	f	file:
+start_banner	test_minishell/run_test.sh	/^start_banner() {$/;"	f
+start_quote	include/tokenize.h	/^	char		start_quote;$/;"	m	struct:s_token_state
+start_var	include/expand.h	/^	char	*start_var;$/;"	m	struct:s_expand_utils
+stderr_fd	include/exec.h	/^	int			stderr_fd;$/;"	m	struct:s_exec_context
+stderr_output	test_src/builtins/test_ms_echo.c	/^    char stderr_output[STDERR_BUFFER_SIZE];$/;"	m	struct:s_testresult	file:
+stderr_output	test_src/builtins/test_ms_exit.c	/^    char stderr_output[STDERR_BUFFER_SIZE];$/;"	m	struct:s_testresult	file:
+stderr_output	test_src/builtins/test_ms_pwd.c	/^    char stderr_output[STDERR_BUFFER_SIZE];$/;"	m	struct:s_testresult	file:
+stderr_output	test_src/syntax_error/test_ms_syntax_error.c	/^    char stderr_output[STDERR_BUFFER_SIZE];$/;"	m	struct:s_testresult	file:
+stdin_fd	include/exec.h	/^	int			stdin_fd;$/;"	m	struct:s_exec_context
+stdout_fd	include/exec.h	/^	int			stdout_fd;$/;"	m	struct:s_exec_context
+stdout_output	test_src/builtins/test_ms_echo.c	/^    char stdout_output[STDOUT_BUFFER_SIZE];$/;"	m	struct:s_testresult	file:
+stdout_output	test_src/builtins/test_ms_exit.c	/^    char stdout_output[STDOUT_BUFFER_SIZE];$/;"	m	struct:s_testresult	file:
+stdout_output	test_src/builtins/test_ms_pwd.c	/^    char stdout_output[STDOUT_BUFFER_SIZE];$/;"	m	struct:s_testresult	file:
+stop	include/tokenize.h	/^	bool		stop;$/;"	m	struct:s_copy_state
+stop	include/tokenize.h	/^	bool		stop;$/;"	m	struct:s_token_state
+stop_banner	test_minishell/run_test.sh	/^stop_banner() {$/;"	f
+stop_event	test_minishell/animated_banner.py	/^    stop_event = threading.Event()$/;"	v
+subshell	include/ast.h	/^	t_subshell_node		subshell;$/;"	m	union:u_node_data
+subshell_child_process	src/exec/ms_execute_subshell.c	/^static void	subshell_child_process(t_subshell_exec_params *params)$/;"	f	file:
+subshell_node	include/exec.h	/^	t_subshell_node	*subshell_node;$/;"	m	struct:s_subshell_exec_params
+subshell_parent_process	src/exec/ms_execute_subshell.c	/^static int	subshell_parent_process(pid_t pid, t_exec_context *context)$/;"	f	file:
+suppress_leading_patterns	test_minishell/remove_escape_codes.sh	/^    suppress_leading_patterns() {$/;"	f
+swipe_paths	src/exec/ms_parse_cmd_path.c	/^static	char	*swipe_paths(const char *command, char **paths, t_shell *shell)$/;"	f	file:
+t_ast_node	include/ast.h	/^}				t_ast_node;$/;"	t	typeref:struct:s_ast_node
+t_buffer	lib/libft/include/printf.h	/^}			t_buffer;$/;"	t	typeref:struct:s_buffer
+t_cmd_node	include/ast.h	/^}				t_cmd_node;$/;"	t	typeref:struct:s_cmd_node
+t_copy_state	include/tokenize.h	/^}				t_copy_state;$/;"	t	typeref:struct:s_copy_state
+t_directory_context	include/expand.h	/^}				t_directory_context;$/;"	t	typeref:struct:s_directory_context
+t_echo_utils	include/builtins.h	/^}				t_echo_utils;$/;"	t	typeref:struct:s_echo_utils
+t_env	include/minishell.h	/^}				t_env;$/;"	t	typeref:struct:s_env
+t_env_data	include/minishell.h	/^}				t_env_data;$/;"	t	typeref:struct:s_env_data
+t_error	lib/libft/include/printf.h	/^}	t_error;$/;"	t	typeref:enum:e_error
+t_exec_context	include/exec.h	/^}				t_exec_context;$/;"	t	typeref:struct:s_exec_context
+t_expand_utils	include/expand.h	/^}				t_expand_utils;$/;"	t	typeref:struct:s_expand_utils
+t_export_utils	include/builtins.h	/^}				t_export_utils;$/;"	t	typeref:struct:s_export_utils
+t_external_exec_params	include/exec.h	/^}				t_external_exec_params;$/;"	t	typeref:struct:s_external_exec_params
+t_format_spec	lib/libft/include/printf.h	/^}				t_format_spec;$/;"	t	typeref:struct:s_format_spec
+t_gc	lib/libgc/include/libgc.h	/^}				t_gc;$/;"	t	typeref:struct:s_garbage_collector
+t_gc_node	lib/libgc/include/libgc.h	/^}				t_gc_node;$/;"	t	typeref:struct:s_gc_node
+t_here_helper	include/exec.h	/^}				t_here_helper;$/;"	t	typeref:struct:s_here_helper
+t_heredoc_node	include/ast.h	/^}				t_heredoc_node;$/;"	t	typeref:struct:s_heredoc_node
+t_heredoc_node	include/minishell.h	/^typedef struct s_heredoc_node	t_heredoc_node;$/;"	t	typeref:struct:s_heredoc_node
+t_heredoc_params	include/exec.h	/^}				t_heredoc_params;$/;"	t	typeref:struct:s_heredoc_params
+t_logic_node	include/ast.h	/^}				t_logic_node;$/;"	t	typeref:struct:s_logic_node
+t_node_data	include/ast.h	/^}						t_node_data;$/;"	t	typeref:union:u_node_data
+t_node_type	include/ast.h	/^}			t_node_type;$/;"	t	typeref:enum:e_node_type
+t_op_state	include/tokenize.h	/^}				t_op_state;$/;"	t	typeref:struct:s_op_state
+t_operator_map	include/tokenize.h	/^}					t_operator_map;$/;"	t	typeref:struct:s_operator_map
+t_pipe_exec_params	include/exec.h	/^}				t_pipe_exec_params;$/;"	t	typeref:struct:s_pipe_exec_params
+t_pipe_helper	include/exec.h	/^}				t_pipe_helper;$/;"	t	typeref:struct:s_pipe_helper
+t_pipe_node	include/ast.h	/^}				t_pipe_node;$/;"	t	typeref:struct:s_pipe_node
+t_redir	include/exec.h	/^}				t_redir;$/;"	t	typeref:struct:s_redir
+t_redir_type	include/exec.h	/^}				t_redir_type;$/;"	t	typeref:enum:e_redir_type
+t_redirect_node	include/ast.h	/^}				t_redirect_node;$/;"	t	typeref:struct:s_redirect_node
+t_shell	include/minishell.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
+t_sort_token_helper	include/tokenize.h	/^}				t_sort_token_helper;$/;"	t	typeref:struct:s_sort_token_helper
+t_subshell_exec_params	include/exec.h	/^}				t_subshell_exec_params;$/;"	t	typeref:struct:s_subshell_exec_params
+t_subshell_node	include/ast.h	/^}				t_subshell_node;$/;"	t	typeref:struct:s_subshell_node
+t_syntax	include/syntax.h	/^}	t_syntax;$/;"	t	typeref:struct:s_syntax
+t_testresult	test_src/builtins/test_ms_echo.c	/^} t_testresult;$/;"	t	typeref:struct:s_testresult	file:
+t_testresult	test_src/builtins/test_ms_exit.c	/^} t_testresult;$/;"	t	typeref:struct:s_testresult	file:
+t_testresult	test_src/builtins/test_ms_pwd.c	/^} t_testresult;$/;"	t	typeref:struct:s_testresult	file:
+t_testresult	test_src/syntax_error/test_ms_syntax_error.c	/^} t_testresult;$/;"	t	typeref:struct:s_testresult	file:
+t_token	include/tokenize.h	/^}			t_token;$/;"	t	typeref:struct:s_token
+t_token_state	include/tokenize.h	/^}				t_token_state;$/;"	t	typeref:struct:s_token_state
+t_token_type	include/tokenize.h	/^}			t_token_type;$/;"	t	typeref:enum:e_token_type
+t_wildcard_context	include/expand.h	/^}				t_wildcard_context;$/;"	t	typeref:struct:s_wildcard_context
+teardown	lib/libft/check_testunit_template.c	/^void teardown(void)$/;"	f
+teardown	lib/libft/test_src/printf/test_ft_snprintf.c	/^void teardown(void)$/;"	f
+teardown	test_src/ast/test_ms_parse_tokens.c	/^void teardown(void)$/;"	f
+teardown	test_src/builtins/test_ms_echo.c	/^static void teardown(void)$/;"	f	file:
+teardown	test_src/builtins/test_ms_exit.c	/^static void teardown(void)$/;"	f	file:
+teardown	test_src/builtins/test_ms_export.c	/^void teardown(void)$/;"	f
+teardown	test_src/builtins/test_ms_pwd.c	/^static void teardown(void)$/;"	f	file:
+teardown	test_src/builtins/test_ms_unset.c	/^void teardown(void)$/;"	f
+teardown	test_src/check_testunit_template.c	/^void teardown(void)$/;"	f
+teardown	test_src/expand/test_ms_expand_args.c	/^void	teardown(void)$/;"	f
+teardown	test_src/shell/test_ms_get_envp.c	/^void teardown(void)$/;"	f
+teardown	test_src/shell/test_ms_getenv.c	/^void teardown(void)$/;"	f
+teardown	test_src/syntax_error/test_ms_syntax_error.c	/^static void teardown(void)$/;"	f	file:
+teardown	test_src/token/test_ms_tokenize.c	/^void    teardown(void)$/;"	f
+teardown_shell	test_src/builtins/test_ms_env.c	/^void teardown_shell(t_shell *shell) {$/;"	f
+temp_file	lib/libgc/include/libgc.h	/^	char				*temp_file;$/;"	m	struct:s_gc_node
+term	include/minishell.h	/^	char	*term;$/;"	m	struct:s_env_data
+test_ms_init_shell_exit	test_src/shell/test_ms_init_shell.c	/^int test_ms_init_shell_exit(int argc, char **argv, char **envp)$/;"	f
+test_signal_handling	test_src/signal/test_ms_init_std_signal.c	/^int test_signal_handling(void (*init_signal_func)(void), int signal_to_send)$/;"	f
+test_signal_handling	test_src/signal/test_ms_stop_std_signal.c	/^int test_signal_handling(void (*init_signal_func)(void), int signal_to_send)$/;"	f
+tmp	include/exec.h	/^	char	*tmp;$/;"	m	struct:s_here_helper
+tmpfile_counter	include/exec.h	/^	int			tmpfile_counter;$/;"	m	struct:s_exec_context
+token	include/tokenize.h	/^	char			*token;$/;"	m	struct:s_token
+token_len	src/token/tokenize_word_helper.c	/^int	token_len(const char *current, char start_quote, bool *is_expand)$/;"	f
+tokenize_frame	src/token/tokenize_frame.c	/^t_token	*tokenize_frame(const char **input, t_gc *gcl)$/;"	f
+tokenize_operator	src/token/tokenize_operator.c	/^t_token	*tokenize_operator(const char **input, t_gc *gcl)$/;"	f
+tokenize_suite	test_src/token/test_ms_tokenize.c	/^Suite *tokenize_suite(void)$/;"	f
+tokenize_word	src/token/tokenize_word.c	/^t_token	*tokenize_word(const char **input, t_gc *gcl)$/;"	f
+tokenize_word_suite	test_src/token/test_tokenize_frame.c	/^Suite *tokenize_word_suite(void)$/;"	f
+tokenize_word_suite	test_src/token/test_tokenize_operator.c	/^Suite *tokenize_word_suite(void)$/;"	f
+tokenize_word_suite	test_src/token/test_tokenize_word.c	/^Suite *tokenize_word_suite(void)$/;"	f
+top	include/tokenize.h	/^	t_token	*top;$/;"	m	struct:s_sort_token_helper
+total_len	include/expand.h	/^	int		total_len;$/;"	m	struct:s_expand_utils
+trigger	include/builtins.h	/^	int	trigger;$/;"	m	struct:s_echo_utils
+trigger	include/tokenize.h	/^	bool	trigger;$/;"	m	struct:s_sort_token_helper
+type	include/ast.h	/^	t_node_type				type;$/;"	m	struct:s_heredoc_node
+type	include/ast.h	/^	t_node_type			type;$/;"	m	struct:s_redirect_node
+type	include/ast.h	/^	t_node_type	type;$/;"	m	struct:s_ast_node
+type	include/exec.h	/^	t_redir_type	type;$/;"	m	struct:s_redir
+type	include/tokenize.h	/^	t_token_type			type;$/;"	m	struct:s_op_state
+type	include/tokenize.h	/^	t_token_type	type;$/;"	m	struct:s_operator_map
+type	include/tokenize.h	/^	t_token_type	type;$/;"	m	struct:s_token
+type	lib/libft/include/printf.h	/^	char		type;$/;"	m	struct:s_format_spec
+u_node_data	include/ast.h	/^typedef union u_node_data$/;"	u
+user	include/minishell.h	/^	char	*user;$/;"	m	struct:s_env_data
+user_input	include/minishell.h	/^	char			*user_input;$/;"	m	struct:s_shell
+valide_dollar	src/expand/ms_expand_utils.c	/^int	valide_dollar(char *input)$/;"	f
+valide_var	src/builtins/builtins_utils.c	/^int	valide_var(char *input)$/;"	f
+value	include/builtins.h	/^	char	*value;$/;"	m	struct:s_export_utils
+value	include/minishell.h	/^	char			*value;$/;"	m	struct:s_env
+value	include/tokenize.h	/^	char					*value;$/;"	m	struct:s_op_state
+value	include/tokenize.h	/^	char		*value;$/;"	m	struct:s_copy_state
+var	include/builtins.h	/^	char	*var;$/;"	m	struct:s_export_utils
+var	include/expand.h	/^	char	*var;$/;"	m	struct:s_expand_utils
+var	include/minishell.h	/^	char			*var;$/;"	m	struct:s_env
+var_len	src/expand/ms_expand_args.c	/^static int	var_len(char *arg, t_gc *gcl)$/;"	f	file:
+varline	include/exec.h	/^	char	*varline;$/;"	m	struct:s_here_helper
+volatile	lib/libft/test_src/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c	11;"	d	file:
+width	lib/libft/include/printf.h	/^	int			width;$/;"	m	struct:s_format_spec

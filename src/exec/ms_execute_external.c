@@ -6,38 +6,12 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 10:12:46 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 11:37:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 #include <sys/stat.h>
-
-static void	st_handle_execve_error(const char *cmd_path)
-{
-	if (errno == EISDIR)
-		ft_dprintf(2, "minishell: is a directory: %s\n", cmd_path);
-	else if (errno == EACCES)
-		ft_dprintf(2, "minishell: permission denied: %s\n", cmd_path);
-	else if (errno == EFAULT)
-		ft_dprintf(2, "minishell: bad address: %s\n", cmd_path);
-	else if (errno == EINVAL)
-		ft_dprintf(2, "minishell: invalid argument: %s\n", cmd_path);
-	else if (errno == EIO)
-		ft_dprintf(2, "minishell: input/output error: %s\n", cmd_path);
-	else if (errno == ELIBBAD)
-		ft_dprintf(2, "minishell: bad shared library: %s\n", cmd_path);
-	else if (errno == ENOENT)
-		ft_dprintf(2, "minishell: no such file or directory: %s\n", cmd_path);
-	else if (errno == ENOMEM)
-		ft_dprintf(2, "minishell: out of memory: %s\n", cmd_path);
-	else if (errno == ENOTDIR)
-		ft_dprintf(2, "minishell: not a directory in path: %s\n", cmd_path);
-	else if (errno == ETXTBSY)
-		ft_dprintf(2, "minishell: text file busy: %s\n", cmd_path);
-	else
-		ft_dprintf(2, "minishell: unknown error (%d): %s\n", errno, cmd_path);
-}
 
 static int	is_directory(const char *path)
 {
@@ -73,7 +47,6 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 		exit(EXIT_FAILURE);
 	}
 	execve(cmd_path, cmd_node->argv, envp);
-	st_handle_execve_error(cmd_path);
 	exit(EXIT_FAILURE);
 }
 
