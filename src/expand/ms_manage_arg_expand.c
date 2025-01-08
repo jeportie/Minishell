@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:12:43 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 15:46:44 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:44:21 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ms_manage_arg_expand(t_cmd_node *cmd_node,
 	{
 		while (i < cmd_node->argc)
 		{
-			if (is_var(cmd_node->argv[i]))
+			if (is_var(cmd_node->argv[i]) && cmd_node->is_expand == false)
 			{
 				cmd_node->argv[i] = nested_vars(cmd_node->argv[i],
 						context->shell);

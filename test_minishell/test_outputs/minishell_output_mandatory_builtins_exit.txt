@@ -1,25 +1,23 @@
-gmarquis@minishell $> (exit 1)
-gmarquis@minishell $> echo $?
+jeportie@minishell $> (exit 1)
 1
-gmarquis@minishell $> (exit 0)
-gmarquis@minishell $> echo $?
+jeportie@minishell $> (exit 0)
 0
-gmarquis@minishell $> (exit 42)
-gmarquis@minishell $> echo $?
+jeportie@minishell $> (exit 42)
 42
-gmarquis@minishell $> (exit 999)
-gmarquis@minishell $> echo $?
+jeportie@minishell $> (exit 999)
 231
-gmarquis@minishell $> (exit 424242)
-gmarquis@minishell $> echo $?
+jeportie@minishell $> (exit 424242)
 50
-gmarquis@minishell $> (exit 9999999999999999)
-gmarquis@minishell $> echo $?
+jeportie@minishell $> (exit 9999999999999999)
 255
+<<<<<<< HEAD
 gmarquis@minishell $> (exit 999999999999999999999999999999999999999999999999999)
 bash: exit: 999999999999999999999999999999999999999999999999999: numeric argument required
 gmarquis@minishell $> echo $?
+=======
+jeportie@minishell $> (exit 999999999999999999999999999999999999999999999999999)
+bash: exit: 999999999999999999999999999999999999999999999999999: numeric argument required
+>>>>>>> develop
 2
-gmarquis@minishell $> (exit 9999999999999999)
-gmarquis@minishell $> echo $?
+jeportie@minishell $> (exit 9999999999999999)
 255

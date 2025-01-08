@@ -1,119 +1,84 @@
-gmarquis@minishell $> echo
+jeportie@minishell $> echo
 
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo Hello
+jeportie@minishell $> echo Hello
 Hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo je suis un test
+jeportie@minishell $> echo je suis un test
 je suis un test
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo "Helo"
+jeportie@minishell $> echo "Helo"
 Helo
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo "je suis un test"
+jeportie@minishell $> echo "je suis un test"
 je suis un test
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo 'Hello'
+jeportie@minishell $> echo 'Hello'
 Hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo 'je suis un test'
+jeportie@minishell $> echo 'je suis un test'
 je suis un test
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo "Hello" "je suis un test"
+jeportie@minishell $> echo "Hello" "je suis un test"
 Hello je suis un test
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo 'Hello' 'je suis un test'
+jeportie@minishell $> echo 'Hello' 'je suis un test'
 Hello je suis un test
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo Hello "je suis un test"
+jeportie@minishell $> echo Hello "je suis un test"
 Hello je suis un test
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo Hello 'je suis un test'
+jeportie@minishell $> echo Hello 'je suis un test'
 Hello je suis un test
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo -n
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n
 0
-gmarquis@minishell $> echo -n Hello
-Hellogmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n Hello
 0
-gmarquis@minishell $> echo -n je suis un test
-je suis un testgmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n je suis un test
 0
-gmarquis@minishell $> echo -n "Helo"
-Helogmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n "Helo"
 0
-gmarquis@minishell $> echo -n "je suis un test"
-je suis un testgmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n "je suis un test"
 0
-gmarquis@minishell $> echo -n 'Hello'
-Hellogmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n 'Hello'
 0
-gmarquis@minishell $> echo -n 'je suis un test'
-je suis un testgmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n 'je suis un test'
 0
-gmarquis@minishell $> echo -n "Hello" "je suis un test"
-Hello je suis un testgmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n "Hello" "je suis un test"
 0
-gmarquis@minishell $> echo -n 'Hello' 'je suis un test'
-Hello je suis un testgmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n 'Hello' 'je suis un test'
 0
-gmarquis@minishell $> echo -n Hello "je suis un test"
-Hello je suis un testgmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n Hello "je suis un test"
 0
-gmarquis@minishell $> echo -n Hello 'je suis un test'
-Hello je suis un testgmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n Hello 'je suis un test'
 0
-gmarquis@minishell $> echo -nnnnnnnnnnnnnnnn -n -n
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo -nnnnnnnnnnnnnnnn -n -n
 0
-gmarquis@minishell $> echo -nnnnnnnnnnnnnnnn n-n -n Hello
-n-n -n Hellogmarquis@minishell $> echo $?
+jeportie@minishell $> echo -nnnnnnnnnnnnnnnn n-n -n Hello
 0
-gmarquis@minishell $> echo -nnnnnnnnnnnnnnnn -n -nnnnnn-nnnnnnn je suis un test
--nnnnnn-nnnnnnn je suis un testgmarquis@minishell $> echo $?
+jeportie@minishell $> echo -nnnnnnnnnnnnnnnn -n -nnnnnn-nnnnnnn je suis un test
 0
-gmarquis@minishell $> echo Hello > test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo Hello > test
 0
-gmarquis@minishell $> cat test
+jeportie@minishell $> cat test
 Hello
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo -n Hello > test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n Hello > test
 0
-gmarquis@minishell $> cat test
-Hellogmarquis@minishell $> echo $?
+jeportie@minishell $> cat test
 0
-gmarquis@minishell $> echo Hello je suis un test > test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo Hello je suis un test > test
 0
-gmarquis@minishell $> cat test
+jeportie@minishell $> cat test
 Hello je suis un test
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> echo -n Hello je suis un test > test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> echo -n Hello je suis un test > test
 0
-gmarquis@minishell $> cat test
-Hello je suis un testgmarquis@minishell $> echo $?
+jeportie@minishell $> cat test
 0
-gmarquis@minishell $> echo < test
+jeportie@minishell $> echo < test
 
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> rm test
 0
