@@ -1,19 +1,19 @@
 --------------------------------------------------------------------------------
 TOKENS:
 token  0 | type = 0
-value = echo
+value = echo.
 token  1 | type = 1
-value =  $a
+value =  $a .
 token  2 | type = 3
-value = |
+value = |.
 token  3 | type = 0
-value = cat
+value = cat.
 token  4 | type = 0
-value = -e
+value = -e.
 --------------------------------------------------------------------------------
 AST:
 └── [1;34m{|}[0m
-    ├── [1;32m[CMD][0m (echo,  $a)
+    ├── [1;32m[CMD][0m (echo,  $a )
     └── [1;32m[CMD][0m (cat, -e)
 --------------------------------------------------------------------------------
 Process Manager - Active Processes:

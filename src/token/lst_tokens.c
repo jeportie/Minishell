@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:39:47 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/05 17:57:29 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:03:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	print_token(t_token *head)
 	fd = open(PRINT_INFOS, O_WRONLY | O_APPEND, COPY_MODE);
 	while (current)
 	{
-		ft_dprintf(fd, "token %2d | type = %d\nvalue = %s\n", i,
+		ft_dprintf(fd, "token %2d | type = %d\nvalue = %s.\n", i,
 			current->type, current->token);
 		current = current->next;
 		i++;

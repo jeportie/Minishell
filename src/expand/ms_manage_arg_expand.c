@@ -6,12 +6,61 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:12:43 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 12:44:21 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:35:27 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 #include "../../include/expand.h"
+
+int	var_len(char *arg, t_gc *gcl)
+{
+	int (i) = 0;
+	int (len) = 0;
+	if (!ft_strncmp(arg, "?", 2))
+		return (1);
+	if (arg[i] == '{')
+	{
+		i++;
+		while (arg[i] && arg[i] != '}')
+		{
+			len++;
+			i++;
+		}
+		if (arg[i] != '}')
+			ms_handle_error("minishell: error: "
+				"unexpected token near {", 127, gcl);
+	}
+	else
+	{
+		while (arg[i] && (ft_isalnum(arg[i]) || arg[i] == '_'))
+		{
+			len++;
+			i++;
+		}
+	}
+	return (len);
+}
+
+char	*ms_extract_var(char *arg, t_gc *gcl)
+{
+	int (i) = 0;
+	int (j) = 0;
+	int (len) = var_len(arg, gcl);
+	char *(var) = (char *)gc_malloc(sizeof(char) * (len + 1), gcl);
+	if (arg[i] == '{')
+	{
+		i++;
+		while (arg[i] && arg[i] != '}')
+			var[j++] = arg[i++];
+	}
+	else if (len == 1 && !ft_strncmp(arg, "?", 2))
+		var[j++] = '?';
+	else
+		while (arg[i] && (ft_isalnum(arg[i]) || arg[i] == '_'))
+			var[j++] = arg[i++];
+	return (var[j] = '\0', var);
+}
 
 static	void	expand_argv(char **new_argv, char **argv,
 		t_wildcard_context *match_ctx)
