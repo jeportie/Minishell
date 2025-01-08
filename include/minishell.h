@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 08:56:02 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/08 09:01:16 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define PRINT_INFOS "assets/infos.txt"
 # define COPY_MODE 0644
 
-# define SHELL "minishell"
+# define SHELL "bash"
 
 extern int						g_signal;
 typedef struct s_heredoc_node	t_heredoc_node;
