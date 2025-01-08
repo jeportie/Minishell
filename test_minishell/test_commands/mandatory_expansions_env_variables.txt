@@ -1,7 +1,7 @@
 export a=test
 echo $a
+echo " $a "
 echo $USER $HOME
-echo 'User is $USERNAME'
 export USERNAME=testuser
 echo $USERNAME
 echo $USER $HOME

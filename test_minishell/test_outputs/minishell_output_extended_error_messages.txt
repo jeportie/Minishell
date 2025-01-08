@@ -11,8 +11,8 @@ jeportie@minishell $> mkdir test_dir
 mkdir: cannot create directory 'test_dir': File exists
 1
 jeportie@minishell $> ./test_dir
-bash: ./test_dir: is a directory
-1
+bash: ./test_dir: Is a directory
+126
 jeportie@minishell $> touch test_file
 0
 jeportie@minishell $> rm -rf test_file
