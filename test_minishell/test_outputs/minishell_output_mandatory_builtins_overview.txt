@@ -1,47 +1,36 @@
-gmarquis@minishell $> pwd > test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd > test
+bash: test: No such file or directory
+1
+jeportie@minishell $> cat test
+cat: test: Is a directory
+1
+jeportie@minishell $> rm test
+rm: cannot remove 'test': Is a directory
+1
+jeportie@minishell $> cd ..
 0
-gmarquis@minishell $> cat test
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell
 0
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd -
+/root/projects/minishell/test_minishell
 0
-gmarquis@minishell $> cd ..
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell
 0
-gmarquis@minishell $> cd -
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd test_dir
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell/test_dir
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd ..
 0
-gmarquis@minishell $> cd test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell/test_dir
-gmarquis@minishell $> echo $?
-0
-gmarquis@minishell $> cd ..
-gmarquis@minishell $> echo $?
-0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
-0
-gmarquis@minishell $> echo "Testing echo builtin"
+jeportie@minishell $> echo "Testing echo builtin"
 Testing echo builtin
-gmarquis@minishell $> echo $?
 0

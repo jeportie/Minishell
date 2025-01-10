@@ -1,48 +1,36 @@
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell
 0
-gmarquis@minishell $> cd test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd test_dir
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell/test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell/test_dir
 0
-gmarquis@minishell $> cd src
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd src
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell/test_dir/src
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell/test_dir/src
 0
-gmarquis@minishell $> cd ../..
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd ../..
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell
 0
-gmarquis@minishell $> pwd -
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd -
+/root/projects/minishell/test_minishell
 0
-gmarquis@minishell $> pwd 123
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd 123
+/root/projects/minishell/test_minishell
 0
-gmarquis@minishell $> pwd > test
-gmarquis@minishell $> echo $?
-0
-gmarquis@minishell $> cat < test
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
-0
-gmarquis@minishell $> pwd >> test
-gmarquis@minishell $> echo $?
-0
-gmarquis@minishell $> cat < test
-/root/projects/Minishell/test_minishell
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
-0
+jeportie@minishell $> pwd > test
+bash: test: Is a directory
+1
+jeportie@minishell $> cat < test
+cat: -: Is a directory
+1
+jeportie@minishell $> pwd >> test
+bash: test: Is a directory
+1
+jeportie@minishell $> cat < test
+cat: -: Is a directory
+1

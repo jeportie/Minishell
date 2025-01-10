@@ -1,62 +1,45 @@
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell
 0
-gmarquis@minishell $> cd test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd test_dir
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell/test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell/test_dir
 0
-gmarquis@minishell $> cd src
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd src
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell/test_dir/src
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell/test_dir/src
 0
-gmarquis@minishell $> cd ..
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd ..
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell/test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell/test_dir
 0
-gmarquis@minishell $> cd .
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd .
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell/test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell/test_dir
 0
-gmarquis@minishell $> cd -
-/root/projects/Minishell/test_minishell/test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd -
+/root/projects/minishell/test_minishell/test_dir
 0
-gmarquis@minishell $> pwd
-/root/projects/Minishell/test_minishell/test_dir
-gmarquis@minishell $> echo $?
+jeportie@minishell $> pwd
+/root/projects/minishell/test_minishell/test_dir
 0
-gmarquis@minishell $> cd ~
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd ~
 0
-gmarquis@minishell $> pwd
+jeportie@minishell $> pwd
 /root
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cd - -
+jeportie@minishell $> cd - -
 bash: cd: too many arguments
-gmarquis@minishell $> echo $?
 1
-gmarquis@minishell $> pwd
+jeportie@minishell $> pwd
 /root
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> cd
-gmarquis@minishell $> echo $?
+jeportie@minishell $> cd
 0
-gmarquis@minishell $> pwd
+jeportie@minishell $> pwd
 /root
-gmarquis@minishell $> echo $?
 0

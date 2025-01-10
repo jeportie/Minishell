@@ -1,21 +1,15 @@
-gmarquis@minishell $> export MYVAR=42
-gmarquis@minishell $> echo $?
+jeportie@minishell $> export MYVAR=42
 0
-gmarquis@minishell $> echo $MYVAR
+jeportie@minishell $> echo $MYVAR
 42
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> export MYVAR="Hello World"
-gmarquis@minishell $> echo $?
+jeportie@minishell $> export MYVAR="Hello World"
 0
-gmarquis@minishell $> echo $MYVAR
+jeportie@minishell $> echo $MYVAR
 Hello World
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> unset MYVAR
-gmarquis@minishell $> echo $?
+jeportie@minishell $> unset MYVAR
 0
-gmarquis@minishell $> echo $MYVAR
+jeportie@minishell $> echo $MYVAR
 
-gmarquis@minishell $> echo $?
 0

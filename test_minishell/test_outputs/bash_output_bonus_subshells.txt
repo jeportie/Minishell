@@ -1,17 +1,14 @@
-gmarquis@minishell $> ( echo "Inside subshell" && pwd )
+jeportie@minishell $> ( echo "Inside subshell" && pwd )
 Inside subshell
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
+/root/projects/minishell/test_minishell
 0
-gmarquis@minishell $> ( cd test_dir && ls )
+jeportie@minishell $> ( cd test_dir && ls )
 a1  a2	a3  a4	b1  b2	b3  b4	src
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> ( env | grep SHLVL )
+jeportie@minishell $> ( env | grep SHLVL )
 SHLVL=3
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> ls | (cat)
+jeportie@minishell $> ls | (cat)
 animated_banner.py
 noanimated_banner.py
 process_outputs.sh
@@ -19,36 +16,22 @@ remove_escape_codes.sh
 run_bash.expect
 run_minishell.expect
 run_test.sh
+test
 test_commands
 test_dir
 test_outputs
-gmarquis@minishell $> echo $?
 0
-gmarquis@minishell $> ls | (cat | (cat -e > test))
-gmarquis@minishell $> echo $?
-0
-gmarquis@minishell $> cat test
-animated_banner.py$
-noanimated_banner.py$
-process_outputs.sh$
-remove_escape_codes.sh$
-run_bash.expect$
-run_minishell.expect$
-run_test.sh$
-test$
-test_commands$
-test_dir$
-test_outputs$
-gmarquis@minishell $> echo $?
-0
-gmarquis@minishell $> rm test
-gmarquis@minishell $> echo $?
-0
-gmarquis@minishell $> (export TEST=ok) && env | grep TEST
-gmarquis@minishell $> echo $?
+jeportie@minishell $> ls | (cat | (cat -e > test))
+bash: test: Is a directory
 1
-gmarquis@minishell $> (mkdir test && cd test && pwd) && pwd && rm -rf test
-/root/projects/Minishell/test_minishell/test
-/root/projects/Minishell/test_minishell
-gmarquis@minishell $> echo $?
-0
+jeportie@minishell $> cat test
+cat: test: Is a directory
+1
+jeportie@minishell $> rm test
+rm: cannot remove 'test': Is a directory
+1
+jeportie@minishell $> (export TEST=ok) && env | grep TEST
+1
+jeportie@minishell $> (mkdir test && cd test && pwd) && pwd && rm -rf test
+mkdir: cannot create directory 'test': File exists
+1
