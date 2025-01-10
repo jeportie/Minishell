@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:29:40 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/10 13:14:09 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:23:34 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ms_parse_cmd_path(const char *command, t_shell *shell)
 	paths = ft_split(shell->env_data->path, ':');
 	if (!paths)
 	{
-		perror("minishell: memory allocation error");
+		ft_dprintf(STDERR_FILENO, "%s: memory allocation error", SHELL);
 		gc_cleanup(shell->gcl);
 		exit(EXIT_FAILURE);
 	}

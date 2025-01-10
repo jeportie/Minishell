@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 17:50:08 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 13:11:09 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:37:27 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	st_process_entry(struct dirent *entry, t_directory_context *dctx)
 	struct stat	st;
 	char		full_path[512];
 
-	snprintf(full_path, sizeof(full_path), "%s/%s",
+	ft_snprintf(full_path, sizeof(full_path), "%s/%s",
 		dctx->base_path, entry->d_name);
 	if (stat(full_path, &st) == -1)
 		return (1);
@@ -122,7 +122,7 @@ t_wildcard_context	*ms_expand_wild(const char *pattern, t_gc *gcl)
 	gc_lock(ctx, gcl);
 	if (!ctx)
 		return (NULL);
-	memset(ctx, 0, sizeof(t_wildcard_context));
+	ft_memset(ctx, 0, sizeof(t_wildcard_context));
 	ctx->pattern = pattern;
 	ctx->gcl = gcl;
 	expand_glob_recursive(".", pattern, ctx);

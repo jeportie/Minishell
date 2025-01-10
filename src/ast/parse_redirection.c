@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:59:50 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/03 19:14:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:47:52 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static t_node_type	define_type(t_token **current_token)
 {
 	t_node_type	redir_type;
 
-	if (strcmp((*current_token)->token, "<") == 0)
+	if (ft_strncmp((*current_token)->token, "<", 2) == 0)
 		redir_type = NODE_REDIRECT_IN;
-	else if (strcmp((*current_token)->token, ">") == 0)
+	else if (ft_strncmp((*current_token)->token, ">", 2) == 0)
 		redir_type = NODE_REDIRECT_OUT;
-	else if (strcmp((*current_token)->token, ">>") == 0)
+	else if (ft_strncmp((*current_token)->token, ">>", 3) == 0)
 		redir_type = NODE_REDIRECT_APPEND;
-	else if (strcmp((*current_token)->token, "<<") == 0)
+	else if (ft_strncmp((*current_token)->token, "<<", 3) == 0)
 		redir_type = NODE_REDIRECT_HEREDOC;
 	else
 	{

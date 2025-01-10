@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:41:20 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 16:40:36 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:27:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_token	*tokenize_word(const char **input, t_gc *gcl)
 	if (!input || !*input)
 	{
 		gc_cleanup(gcl);
-		perror("Minishell: Error: Null Input");
+		ft_dprintf(STDERR_FILENO, "Minishell: Error: Null Input");
 		exit(EXIT_FAILURE);
 	}
 	if (**input == '\'' || **input == '\"')
