@@ -6,12 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:30:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 14:29:23 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:47:15 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-#include "../../include/exec.h"
 
 char	*ms_getenv(const char *name, t_env_data *env_data)
 {

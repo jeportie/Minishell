@@ -20,5 +20,3 @@ jeportie@minishell $> df -h | wc -l | cat -e
 jeportie@minishell $> echo test | cat | cat | cat | cat | cat | cat -e
 test$
 0
-jeportie@minishell $> sleep 10 | sleep 5 | sleep 1
-echo $?

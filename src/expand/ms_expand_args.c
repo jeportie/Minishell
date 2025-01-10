@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:04:44 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 15:35:43 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:52:49 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*ms_expand_arg(char *arg, t_shell *shell, bool is_nested)
 		ex_utils.start_var = arg;
 	ex_utils.var = ms_extract_var(ex_utils.start_var, shell->gcl);
 	ex_utils.expand_var = ms_get_env_value(shell->env_data->env,
-			ex_utils.var, shell->error_code);
+			ex_utils.var, shell->error_code, shell);
 	if (!ex_utils.expand_var)
 		return (NULL);
 	ex_utils.total_len = ft_strlen(arg) + ft_strlen(ex_utils.expand_var)

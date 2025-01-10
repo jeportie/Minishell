@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:08:10 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/07 12:57:16 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:50:48 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ static void	st_check_env_var(t_shell *shell, t_here_helper *help)
 	{
 		free(help->line);
 		help->line = ms_get_env_value(shell->env_data->env, help->tmp + 1,
-				shell->error_code);
+				shell->error_code, shell);
 		if (help->line)
 		{
 			help->varline = help->line;
-			help->line = ft_strjoin_free(help->varline, "\n");
+			help->line = ft_strjoin(help->varline, "\n");
 		}
 		else
 			help->line = ft_strdup("\n");
 	}
 	else
-		help->line = ft_strjoin_free(help->line, "\n");
+		help->line = ft_strjoin(help->line, "\n");
 }
 
 static int	st_process_heredoc_line(t_shell *shell, t_here_helper *help)
@@ -96,9 +96,11 @@ void	st_heredoc_child_process(t_shell *shell,
 			else
 				close(help.fd);
 			exit (130);
+			gc_cleanup(shell->gcl);
 		}
 		if (!st_process_heredoc_line(shell, &help))
 			break ;
 	}
+	gc_cleanup(shell->gcl);
 	exit(0);
 }
