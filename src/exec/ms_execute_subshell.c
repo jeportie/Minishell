@@ -6,13 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:47:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/27 21:07:10 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:43:24 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 
-static t_redir	*append_redir_list(t_redir *list1, t_redir *list2)
+static t_redir	*st_append_redir_list(t_redir *list1, t_redir *list2)
 {
 	t_redir	*tmp;
 
@@ -25,7 +25,7 @@ static t_redir	*append_redir_list(t_redir *list1, t_redir *list2)
 	return (list1);
 }
 
-static void	subshell_child_process(t_subshell_exec_params *params)
+static void	st_subshell_child_process(t_subshell_exec_params *params)
 {
 	t_exec_context	child_context;
 
@@ -38,7 +38,7 @@ static void	subshell_child_process(t_subshell_exec_params *params)
 	exit(ms_execute_ast(params->subshell_node->child, &child_context));
 }
 
-static int	subshell_parent_process(pid_t pid, t_exec_context *context)
+static int	st_subshell_parent_process(pid_t pid, t_exec_context *context)
 {
 	int	status;
 
@@ -65,12 +65,12 @@ int	ms_execute_subshell(t_subshell_node *subshell_node,
 	parent_redirs = context->redir_list;
 	subshell_redirs = ms_collect_redirections(subshell_node->child,
 			context->shell->gcl, context->shell);
-	merged_redirs = append_redir_list(parent_redirs, subshell_redirs);
+	merged_redirs = st_append_redir_list(parent_redirs, subshell_redirs);
 	params.subshell_node = subshell_node;
 	params.context = context;
 	context->redir_list = merged_redirs;
 	pid = fork();
 	if (pid == 0)
-		subshell_child_process(&params);
-	return (subshell_parent_process(pid, context));
+		st_subshell_child_process(&params);
+	return (st_subshell_parent_process(pid, context));
 }

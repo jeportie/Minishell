@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 15:06:50 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:30:14 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_shell
 /* Init_shell */
 t_shell		ms_init_shell(int argc, char **argv, char **envp);
 void		ms_get_user_input(t_shell *shell);
-void		init_fix_value(t_env_data *env_data);
+void		ms_init_fix_value(t_env_data *env_data);
 t_env_data	*ms_init_env(char **envp, t_shell *shell);
 
 /* env_lst_utils */
@@ -72,7 +72,7 @@ void		ms_env_add_back(t_env **env, t_env *new_node);
 
 /* signal */
 void		ms_heredoc_signal(int sig);
-void		st_parent_here_signal(int sig);
+void		ms_parent_here_signal(int sig);
 int			rl_event_dummy(void);
 void		ms_init_parent_cmd_signal(void);
 void		ms_init_child_cmd_signal(void);

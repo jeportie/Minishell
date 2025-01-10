@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 10:33:09 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/10/31 14:18:07 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:21:49 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ typedef struct s_syntax
 /* Main fonction */
 int	ms_syntax_error(const char *input);
 
-int	find_close_par(char *current, int i);
-int	check_error(t_syntax **syntax);
-int	check_reinit(t_syntax **syntax);
-int	operator_gestion(t_syntax **syntax);
-int	parenthesis_gestion(t_syntax **syntax);
-int	quote_gestion(t_syntax **syntax);
-int	redir_gestion(t_syntax **syntax);
+int	ms_find_close_par(char *current, int i);
+int	ms_check_error(t_syntax **syntax);
+int	ms_check_reinit(t_syntax **syntax);
+int	ms_operator_gestion(t_syntax **syntax);
+int	ms_parenthesis_gestion(t_syntax **syntax);
+int	ms_quote_gestion(t_syntax **syntax);
+int	ms_redir_gestion(t_syntax **syntax);
 
 #endif /*SYNTAX_H*/

@@ -6,14 +6,14 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:04:44 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 15:35:43 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:52:19 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/expand.h"
 #include "../../include/minishell.h"
 
-static int	get_prefix_len(char *arg, bool is_nested)
+static int	st_get_prefix_len(char *arg, bool is_nested)
 {
 	char	*dollar_ptr;
 
@@ -25,7 +25,7 @@ static int	get_prefix_len(char *arg, bool is_nested)
 	return (0);
 }
 
-static int	get_var_len_with_braces(t_expand_utils *ex_utils)
+static int	st_get_var_len_with_braces(t_expand_utils *ex_utils)
 {
 	int	len;
 
@@ -38,8 +38,8 @@ static int	get_var_len_with_braces(t_expand_utils *ex_utils)
 	return (len);
 }
 
-static void	copy_parts(char *dest, char *arg, t_expand_utils *ex_utils,
-		int prefix_len)
+static void	st_copy_parts(char *dest, char *arg, t_expand_utils *ex_utils,
+	int prefix_len)
 {
 	int	expanded_len;
 	int	suffix_index;
@@ -47,18 +47,18 @@ static void	copy_parts(char *dest, char *arg, t_expand_utils *ex_utils,
 	expanded_len = ft_strlen(ex_utils->expand_var);
 	ft_memcpy(dest, arg, prefix_len);
 	ft_memcpy(dest + prefix_len, ex_utils->expand_var, expanded_len);
-	suffix_index = prefix_len + get_var_len_with_braces(ex_utils);
+	suffix_index = prefix_len + st_get_var_len_with_braces(ex_utils);
 	ft_strlcpy(dest + prefix_len + expanded_len, arg + suffix_index,
 		ex_utils->total_len);
 }
 
-void	assemble_expanded_arg(char *arg, bool is_nested,
+void	ms_assemble_expanded_arg(char *arg, bool is_nested,
 			t_expand_utils *ex_utils)
 {
 	int	prefix_len;
 
-	prefix_len = get_prefix_len(arg, is_nested);
-	copy_parts(ex_utils->new_arg, arg, ex_utils, prefix_len);
+	prefix_len = st_get_prefix_len(arg, is_nested);
+	st_copy_parts(ex_utils->new_arg, arg, ex_utils, prefix_len);
 	ex_utils->new_arg[ex_utils->total_len] = '\0';
 }
 
@@ -68,7 +68,7 @@ char	*ms_expand_arg(char *arg, t_shell *shell, bool is_nested)
 
 	ex_utils.total_len = 0;
 	if (!is_nested)
-		ex_utils.start_var = find_dollar(arg);
+		ex_utils.start_var = ms_find_dollar(arg);
 	else
 		ex_utils.start_var = arg;
 	ex_utils.var = ms_extract_var(ex_utils.start_var, shell->gcl);
@@ -82,8 +82,8 @@ char	*ms_expand_arg(char *arg, t_shell *shell, bool is_nested)
 				+ 1), shell->gcl);
 	if (!ex_utils.new_arg)
 		ms_handle_error("minishell: memory allocation error", 127, shell->gcl);
-	assemble_expanded_arg(arg, is_nested, &ex_utils);
-	if (is_var(ex_utils.new_arg))
-		ex_utils.new_arg = nested_vars(ex_utils.new_arg, shell);
+	ms_assemble_expanded_arg(arg, is_nested, &ex_utils);
+	if (ms_is_var(ex_utils.new_arg))
+		ex_utils.new_arg = ms_nested_vars(ex_utils.new_arg, shell);
 	return (ex_utils.new_arg);
 }

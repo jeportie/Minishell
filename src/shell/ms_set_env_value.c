@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:49:42 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/11/22 15:11:25 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:27:21 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static void	st_add_new_env_value(t_shell *shell, char *name, char *value)
 
 	var = gc_strjoin(name, "=", shell->gcl);
 	if (!var)
-		echec_malloc(shell->gcl, "var");
+		ms_echec_malloc(shell->gcl, "var");
 	var = gc_strjoin(var, value, shell->gcl);
 	if (!var)
-		echec_malloc(shell->gcl, "var");
+		ms_echec_malloc(shell->gcl, "var");
 	node = ms_env_create_node(shell, var);
 	ms_env_add_back(&shell->env_data->env, node);
 }
@@ -57,7 +57,7 @@ void	ms_set_env_value(t_shell *shell, char *name, char *value)
 		{
 			tmp_env->value = gc_strdup(value, shell->gcl);
 			if (!tmp_env->value)
-				echec_malloc(shell->gcl, "tmp_env->value");
+				ms_echec_malloc(shell->gcl, "tmp_env->value");
 			gc_lock(tmp_env->value, shell->gcl);
 			return ;
 		}

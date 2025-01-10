@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   ms_check_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:12:29 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/12/03 13:29:14 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:33:48 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/syntax.h"
 
-int	find_close_par(char *current, int i)
+int	ms_find_close_par(char *current, int i)
 {
 	if (!current[i])
 		return (0);
@@ -47,7 +47,7 @@ static void	st_print_error_operator_redir(int error)
 		ft_dprintf(2, "`|'\n");
 }
 
-int	check_error(t_syntax **syntax)
+int	ms_check_error(t_syntax **syntax)
 {
 	t_syntax	*synt;
 
@@ -59,7 +59,7 @@ int	check_error(t_syntax **syntax)
 	else if (synt->p_trigger > 0 || synt->sq_trigger || synt->dq_trigger
 		|| synt->error > 0)
 	{
-		ft_dprintf(2, "Minishell: syntax error near unexpected token ");
+		ft_dprintf(2, SHELL ": syntax error near unexpected token ");
 		if (synt->error > 0)
 			st_print_error_operator_redir(synt->error);
 		else if (synt->sq_trigger == 1)

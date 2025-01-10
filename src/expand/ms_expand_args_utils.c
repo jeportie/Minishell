@@ -6,13 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:46:34 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 11:27:20 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:53:05 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/expand.h"
 
-int	count_dollars(char *arg)
+int	ms_count_dollars(char *arg)
 {
 	int	i;
 	int	dollars;
@@ -30,7 +30,7 @@ int	count_dollars(char *arg)
 	return (dollars);
 }
 
-char	*copy_argv_to_str(char *dest, int argc, char **argv)
+char	*ms_copy_argv_to_str(char *dest, int argc, char **argv)
 {
 	int		result_index;
 	int		i;
@@ -72,11 +72,11 @@ char	*ft_strsjoin(int argc, char **argv, t_gc *gcl)
 	}
 	result = gc_malloc(sizeof(char) * (len + 1), gcl);
 	gc_lock(result, gcl);
-	copy_argv_to_str(result, argc, argv);
+	ms_copy_argv_to_str(result, argc, argv);
 	return (result);
 }
 
-char	**expand_nested_vars(char *arg, int dollars, t_shell *shell)
+char	**ms_expand_nested_vars(char *arg, int dollars, t_shell *shell)
 {
 	char	**expanded_vars;
 	int		i;
@@ -105,17 +105,17 @@ char	**expand_nested_vars(char *arg, int dollars, t_shell *shell)
 	return (expanded_vars);
 }
 
-char	*nested_vars(char *arg, t_shell *shell)
+char	*ms_nested_vars(char *arg, t_shell *shell)
 {
 	char	*result;
 	char	**expanded_vars;
 
-	int (dollars) = count_dollars(arg);
+	int (dollars) = ms_count_dollars(arg);
 	if (dollars < 2)
 		return (ms_expand_arg(arg, shell, false));
 	else
-		expanded_vars = expand_nested_vars(arg, dollars, shell);
-	if (is_equal(expanded_vars[0]))
+		expanded_vars = ms_expand_nested_vars(arg, dollars, shell);
+	if (ms_is_equal(expanded_vars[0]))
 		result = ft_strsjoin(dollars, &expanded_vars[1], shell->gcl);
 	else
 		result = ft_strsjoin(dollars, expanded_vars, shell->gcl);

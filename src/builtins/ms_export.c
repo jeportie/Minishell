@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:38 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/12/05 10:59:10 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:00:11 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)
 {
 	t_export_utils	utils;
 
-	t_env *(tmp_env) = copy_env_list(context->shell->env_data->env,
+	t_env *(tmp_env) = ms_copy_env_list(context->shell->env_data->env,
 			context->shell->gcl);
 	int (i) = 1;
 	st_init_utils(&utils, context->shell);
@@ -87,12 +87,12 @@ int	ms_export(t_cmd_node *cmd_node, t_exec_context *context)
 	while (cmd_node->argv[i])
 	{
 		utils.flag = 0;
-		utils.var = extract_folder(&utils, cmd_node->argv[i]);
+		utils.var = ms_extract_folder(&utils, cmd_node->argv[i]);
 		if (!utils.var)
 			return (1);
-		utils.value = extract_value(&utils, cmd_node->argv[i],
+		utils.value = ms_extract_value(&utils, cmd_node->argv[i],
 				ft_strlen(utils.var) - 1);
-		add_export(&utils, &context->shell->env_data->env, utils.var,
+		ms_add_export(&utils, &context->shell->env_data->env, utils.var,
 			utils.value);
 		i++;
 	}

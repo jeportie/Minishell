@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operator_gestion.c                                 :+:      :+:    :+:   */
+/*   ms_operator_gestion.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:39:00 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/10/29 13:30:31 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:34:27 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static int	st_pipe_verif(t_syntax **syntax)
 	return (0);
 }
 
-int	operator_gestion(t_syntax **syntax)
+int	ms_operator_gestion(t_syntax **syntax)
 {
 	t_syntax	*synt;
 

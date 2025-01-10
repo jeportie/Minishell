@@ -1,19 +1,26 @@
-jeportie@minishell $> true && echo "Success"
+gmarquis@minishell $> true && echo "Success"
 Success
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> false && echo "Won't print"
+gmarquis@minishell $> false && echo "Won't print"
+gmarquis@minishell $> echo $?
 1
-jeportie@minishell $> false || echo "Fallback"
+gmarquis@minishell $> false || echo "Fallback"
 Fallback
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> true || echo "Won't print"
+gmarquis@minishell $> true || echo "Won't print"
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo "hello" && echo "world"
+gmarquis@minishell $> echo "hello" && echo "world"
 hello
 world
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> clear && export a=onj b=jej c=o d && ((ls -la | cat -e > test.txt) && unset a | echo -nnnnnnnnnn B) && export d=m && (((unset a b c d) && echo -n -n -n -n $a$c) && (cat test.txt | (wc -w | (echo > test.txt)) && (cat --e < test.txt > test_2.txt && (rm -rf test.txt)))) && echo -n "ur " && (export d+=on && (echo -n -nnnn -n $d)) && (unset a) &&cd |  unset a && (export b=bon && echo -n " $b ") && unset b c d | (echo J || echo greg)
+gmarquis@minishell $> clear && export a=onj b=jej c=o d && ((ls -la | cat -e > test.txt) && unset a | echo -nnnnnnnnnn B) && export d=m && (((unset a b c d) && echo -n -n -n -n $a$c) && (cat  test.txt | (wc -w | (echo > test.txt)) && (cat -e < test.txt > test_2.txt && (rm -rf test.txt)))) && echo -n "ur " && (export d+=on && (echo -n -nnnn -n $d)) && (unset a) &&cd |  unset a &&  (export b=bon && echo -n " $b ") && unset b c d | (echo J || echo greg)
 Bonjour mon bon J
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> rm test_2.txt
+gmarquis@minishell $> rm test_2.txt
+gmarquis@minishell $> echo $?
 0

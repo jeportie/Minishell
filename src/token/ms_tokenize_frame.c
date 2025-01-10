@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenize_frame.c                                   :+:      :+:    :+:   */
+/*   ms_tokenize_frame.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:40:25 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 16:21:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:46:36 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/tokenize.h"
 
-t_token	*tokenize_frame(const char **input, t_gc *gcl)
+t_token	*ms_tokenize_frame(const char **input, t_gc *gcl)
 {
 	char	*value;
 	char	*current;
@@ -29,7 +29,7 @@ t_token	*tokenize_frame(const char **input, t_gc *gcl)
 	value[1] = '\0';
 	(*input)++;
 	if (value[0] == '(')
-		return (create_token(TOKEN_SUBSHELL_START, value, gcl));
+		return (ms_create_token(TOKEN_SUBSHELL_START, value, gcl));
 	else
-		return (create_token(TOKEN_SUBSHELL_STOP, value, gcl));
+		return (ms_create_token(TOKEN_SUBSHELL_STOP, value, gcl));
 }

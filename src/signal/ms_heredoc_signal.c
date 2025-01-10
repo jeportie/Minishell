@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:22:00 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/12/17 14:04:55 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:27:36 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ms_heredoc_signal(int sig)
 	}
 }
 
-void	st_parent_here_signal(int sig)
+void	ms_parent_here_signal(int sig)
 {
 	if (sig == SIGINT)
 	{

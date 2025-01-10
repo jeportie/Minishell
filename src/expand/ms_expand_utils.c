@@ -6,13 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:52:30 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/19 13:49:29 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:16:58 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/expand.h"
 
-bool	is_var(char *cmd)
+bool	ms_is_var(char *cmd)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ bool	is_var(char *cmd)
 	return (false);
 }
 
-bool	is_wild(char *cmd)
+bool	ms_is_wild(char *cmd)
 {
 	int	i;
 
@@ -44,7 +44,7 @@ bool	is_wild(char *cmd)
 	return (false);
 }
 
-bool	is_equal(char *cmd)
+bool	ms_is_equal(char *cmd)
 {
 	int	i;
 
@@ -60,17 +60,17 @@ bool	is_equal(char *cmd)
 	return (false);
 }
 
-int	valide_dollar(char *input)
+int	ms_valide_dollar(char *input)
 {
 	if (!input)
 	{
-		ft_dprintf(2, "minishell: %s\': no input\n", input);
+		ft_dprintf(2, SHELL ": %s\': no input\n", input);
 		return (0);
 	}
 	int (i) = 0;
 	if (ft_isdigit(input[i]))
 	{
-		ft_dprintf(2, "minishell: %s\': command not found\n", input);
+		ft_dprintf(2, SHELL ": %s\': command not found\n", input);
 		return (0);
 	}
 	while (input[i])
@@ -81,14 +81,14 @@ int	valide_dollar(char *input)
 			return (i);
 		else
 		{
-			ft_dprintf(2, "minishell: %s\':command not found\n", input);
+			ft_dprintf(2, SHELL ": %s\':command not found\n", input);
 			return (0);
 		}
 	}
 	return (i);
 }
 
-char	*find_dollar(char *arg)
+char	*ms_find_dollar(char *arg)
 {
 	int		i;
 

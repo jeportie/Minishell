@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:07:30 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/27 21:01:07 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:53:07 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include "../../include/builtins.h"
 
 static void	st_set_underscore_value(t_cmd_node *cmd_node,
-		t_exec_context *context, t_gc *gcl)
+	t_exec_context *context, t_gc *gcl)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	ms_manage_arg_expand(cmd_node, context, gcl);
@@ -49,7 +49,7 @@ int	ms_execute_command(t_cmd_node *cmd_node, t_exec_context *context, t_gc *gcl)
 	}
 	else if (ft_strncmp(cmd, "exit", 5) == 0)
 		return (ms_exit(cmd_node, context));
-	else if (is_equal(cmd))
+	else if (ms_is_equal(cmd))
 		return (ms_value_assign(context->shell, cmd_node, gcl));
 	else
 		return (ms_execute_external(cmd_node, context, gcl));

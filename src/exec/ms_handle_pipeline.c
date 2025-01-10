@@ -6,13 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:21:40 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/06 09:09:35 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:44:11 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 
-int	**prepare_pipes(int num_commands, t_gc *gcl)
+int	**ms_prepare_pipes(int num_commands, t_gc *gcl)
 {
 	int	**pipes;
 	int	i;
@@ -24,7 +24,7 @@ int	**prepare_pipes(int num_commands, t_gc *gcl)
 	while (i < num_commands - 1)
 	{
 		pipes[i] = gc_malloc(sizeof(int) * 2, gcl);
-		if (safe_pipe(pipes[i]) == -1)
+		if (ms_safe_pipe(pipes[i]) == -1)
 			return (NULL);
 		i++;
 	}
@@ -65,7 +65,7 @@ static int	st_child_exit(t_ast_node *final_node, t_exec_context *context)
 }
 
 //refactored with struct for only 4 parameters in the function
-void	pipe_process(t_pipe_helper *args, t_ast_node *final_node,
+void	ms_pipe_process(t_pipe_helper *args, t_ast_node *final_node,
 				t_exec_context *context, int **pipes)
 {
 	args->pids[args->i] = fork();
@@ -101,14 +101,14 @@ pid_t	*ms_fork_pipeline_commands(t_ast_node **commands, int **pipes,
 				context->shell->gcl, context->shell);
 		context->redir_list = redir_list;
 		final_node = commands[args.i];
-		while (final_node && is_redirect_node(final_node))
+		while (final_node && ms_is_redirect_node(final_node))
 		{
 			if (final_node->type == NODE_REDIRECT_HEREDOC)
 				final_node = final_node->data.heredoc.child;
 			else
 				final_node = final_node->data.redirect.child;
 		}
-		pipe_process(&args, final_node, context, pipes);
+		ms_pipe_process(&args, final_node, context, pipes);
 		args.i++;
 	}
 	return (args.pids);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parenthesis_gestion.c                              :+:      :+:    :+:   */
+/*   ms_parenthesis_gestion.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:44:36 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/12/04 09:12:19 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:35:39 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int	st_close_parenthesis(t_syntax **syntax)
 	else if (!synt->dq_trigger && !synt->sq_trigger && !synt->p_trigger)
 	{
 		synt->p_close++;
-		if (find_close_par(synt->current, synt->i) || synt->i == synt->len_end)
+		if (ms_find_close_par(synt->current, synt->i)
+			|| synt->i == synt->len_end)
 			return (synt->p_trigger = 0, 0);
 		return (synt->p_trigger = 2, 1);
 	}
@@ -50,7 +51,7 @@ static int	st_in_parenthesis(t_syntax **syntax)
 	if (synt->current[i + 1] && synt->current[i + 1] != ')')
 	{
 		i++;
-		ft_dprintf(2, "Minishell: syntax error near unexpected token `");
+		ft_dprintf(2, SHELL ": syntax error near unexpected token `");
 		while (synt->current[i] && synt->current[i] != ')')
 		{
 			ft_dprintf(2, "%c", synt->current[i]);
@@ -70,7 +71,7 @@ static int	st_in_par(t_syntax **syntax)
 	int (i) = synt->i;
 	if (synt->current[i + 1])
 		i++;
-	if (find_close_par(synt->current, i))
+	if (ms_find_close_par(synt->current, i))
 	{
 		synt->p_open++;
 		return (0);
@@ -78,7 +79,7 @@ static int	st_in_par(t_syntax **syntax)
 	else if (synt->current[i + 1] && (synt->current[i + 1] != ')'
 			&& synt->current[i] != '('))
 	{
-		ft_dprintf(2, "Minishell: syntax error near unexpected token `");
+		ft_dprintf(2, SHELL ": syntax error near unexpected token `");
 		while (synt->current[i] && (synt->current[i] != ')'
 				&& synt->current[i] != '('))
 		{
@@ -119,7 +120,7 @@ static int	st_open_parenthesis(t_syntax **syntax)
 	return (0);
 }
 
-int	parenthesis_gestion(t_syntax **syntax)
+int	ms_parenthesis_gestion(t_syntax **syntax)
 {
 	t_syntax	*synt;
 

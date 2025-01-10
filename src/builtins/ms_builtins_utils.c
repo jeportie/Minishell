@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_utils.c                                   :+:      :+:    :+:   */
+/*   ms_builtins_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 10:47:09 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/12/04 10:50:26 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:54:04 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,20 @@ int	ms_safe_putstr_fd(char *s, int fd)
 	error = write(fd, s, len);
 	if (error < 0)
 	{
-		write(2, "minishell: write error: ", 24);
+		write(2, SHELL, ft_strlen(SHELL));
+		write(2, ": write error: ", 15);
 		write(2, "no space left on device\n", 24);
 		return (1);
 	}
 	return (0);
 }
 
-int	valide_var(char *input)
+int	ms_valide_var(char *input)
 {
 	int (i) = 0;
 	if (ft_isdigit(input[i]))
 	{
-		ft_dprintf(2, "minishell: export: `%s\':"
+		ft_dprintf(2, SHELL ": export: `%s\':"
 			" not a valid identifier\n", input);
 		return (0);
 	}
@@ -48,7 +49,7 @@ int	valide_var(char *input)
 			return (i);
 		else
 		{
-			ft_dprintf(2, "minishell: export: `%s\':"
+			ft_dprintf(2, SHELL ": export: `%s\':"
 				" not a valid identifier\n", input);
 			return (0);
 		}

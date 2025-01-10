@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_command_node.c                              :+:      :+:    :+:   */
+/*   ms_create_command_node.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:10:28 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 12:58:43 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:32:51 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ static bool	st_is_expand(t_token *current_token)
 	return (false);
 }
 
-static bool	assign_token_to_argv(t_token **current, char **argv)
+static bool	st_assign_token_to_argv(t_token **current, char **argv)
 {
 	int		i;
 	bool	is_expand;
 
 	i = 0;
 	is_expand = false;
-	while (*current && is_command_op(*current))
+	while (*current && ms_is_command_op(*current))
 	{
 		argv[i] = (*current)->token;
 		if (st_is_expand(*current))
@@ -38,14 +38,14 @@ static bool	assign_token_to_argv(t_token **current, char **argv)
 	return (is_expand);
 }
 
-static int	argc_count(t_token **current)
+static int	st_argc_count(t_token **current)
 {
 	int		i;
 	t_token	*head;
 
 	i = 0;
 	head = *current;
-	while (head && is_command_op(head))
+	while (head && ms_is_command_op(head))
 	{
 		i++;
 		head = head->next;
@@ -53,18 +53,18 @@ static int	argc_count(t_token **current)
 	return (i);
 }
 
-t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl)
+t_ast_node	*ms_create_command_node(t_token **current_token, t_gc *gcl)
 {
 	t_cmd_node	command;
 	t_ast_node	*command_node;
 	int			argc;
 	char		**argv;
 
-	argc = argc_count(current_token);
+	argc = st_argc_count(current_token);
 	argv = (char **)gc_malloc(sizeof(char *) * (argc + 1), gcl);
 	gc_lock(argv, gcl);
 	command.is_expand = false;
-	if (!assign_token_to_argv(current_token, argv))
+	if (!st_assign_token_to_argv(current_token, argv))
 		command.is_expand = true;
 	argv[argc] = NULL;
 	command.argv = argv;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_reinit.c                                     :+:      :+:    :+:   */
+/*   ms_check_reinit.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:18:39 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/10/29 13:30:19 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:34:10 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	st_is_and(t_syntax **syntax)
 	return (0);
 }
 
-int	check_reinit(t_syntax **syntax)
+int	ms_check_reinit(t_syntax **syntax)
 {
 	t_syntax	*synt;
 
@@ -71,7 +71,7 @@ int	check_reinit(t_syntax **syntax)
 	}
 	if (!synt->dq_trigger && !synt->sq_trigger
 		&& (synt->current[synt->i] == '<' || synt->current[synt->i] == '>'))
-		if (redir_gestion(&synt))
+		if (ms_redir_gestion(&synt))
 			return (1);
 	return (0);
 }

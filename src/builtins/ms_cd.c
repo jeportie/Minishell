@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:20:22 by gmarquis          #+#    #+#             */
-/*   Updated: 2025/01/08 10:02:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:40:22 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static char	*st_cd_with_option(char *cd, t_shell *shell, char *argv)
 	if (!cd)
 		cd = gc_strdup(argv, shell->gcl);
 	if (!cd)
-		echec_malloc(shell->gcl, "cd");
+		ms_echec_malloc(shell->gcl, "cd");
 	return (cd);
 }
 

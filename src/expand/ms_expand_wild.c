@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 17:50:08 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 13:11:09 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:57:28 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,16 @@ static int	st_process_entry(struct dirent *entry, t_directory_context *dctx)
 	struct stat	st;
 	char		full_path[512];
 
-	snprintf(full_path, sizeof(full_path), "%s/%s",
+	ft_snprintf(full_path, sizeof(full_path), "%s/%s",
 		dctx->base_path, entry->d_name);
 	if (stat(full_path, &st) == -1)
 		return (1);
-	if (dctx->slash && S_ISDIR(st.st_mode)
+	if (dctx->slash && ms_is_directory(full_path)
 		&& st_matches_p(entry->d_name, dctx->c_p))
-		expand_glob_recursive(full_path, dctx->r_p, dctx->ctx);
+		ms_expand_glob_recursive(full_path, dctx->r_p, dctx->ctx);
 	else if (!dctx->slash && st_matches_p(entry->d_name, dctx->c_p))
 	{
-		if (!add_matches(dctx->ctx, full_path + 2))
+		if (!ms_add_matches(dctx->ctx, full_path + 2))
 		{
 			ft_dprintf(2, "Echec: ajout match\n");
 			return (0);
@@ -87,8 +87,8 @@ static void	st_process_directory(DIR *dir, t_directory_context *dctx)
 	}
 }
 
-void	expand_glob_recursive(const char *base_path, const char *pattern,
-		t_wildcard_context *ctx)
+void	ms_expand_glob_recursive(const char *base_path, const char *pattern,
+	t_wildcard_context *ctx)
 {
 	DIR	*dir;
 
@@ -122,10 +122,10 @@ t_wildcard_context	*ms_expand_wild(const char *pattern, t_gc *gcl)
 	gc_lock(ctx, gcl);
 	if (!ctx)
 		return (NULL);
-	memset(ctx, 0, sizeof(t_wildcard_context));
+	ft_memset(ctx, 0, sizeof(t_wildcard_context));
 	ctx->pattern = pattern;
 	ctx->gcl = gcl;
-	expand_glob_recursive(".", pattern, ctx);
-	sort_wild(ctx);
+	ms_expand_glob_recursive(".", pattern, ctx);
+	ms_sort_wild(ctx);
 	return (ctx);
 }

@@ -1,28 +1,38 @@
-jeportie@minishell $> export a=test
+gmarquis@minishell $> export a=test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo $a
+gmarquis@minishell $> echo $a
 test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo " $a "
+gmarquis@minishell $> echo " $a "
  test 
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo $USER $HOME
-jeportie /root
+gmarquis@minishell $> echo $USER $HOME
+gmarquis /root
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> export USERNAME=testuser
+gmarquis@minishell $> export USERNAME=testuser
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo $USERNAME
+gmarquis@minishell $> echo $USERNAME
 testuser
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo $USER $HOME
-jeportie /root
+gmarquis@minishell $> echo $USER $HOME
+gmarquis /root
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo "User is $USERNAME"
+gmarquis@minishell $> echo "User is $USERNAME"
 User is testuser
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo 'User is $USERNAME'
+gmarquis@minishell $> echo 'User is $USERNAME'
 User is $USERNAME
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> echo $INVALIDE
+gmarquis@minishell $> echo $INVALIDE
 
+gmarquis@minishell $> echo $?
 0

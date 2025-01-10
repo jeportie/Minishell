@@ -1,14 +1,17 @@
-jeportie@minishell $> ( echo "Inside subshell" && pwd )
+gmarquis@minishell $> ( echo "Inside subshell" && pwd )
 Inside subshell
-/root/projects/minishell/test_minishell
+/root/projects/Minishell/test_minishell
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ( cd test_dir && ls )
+gmarquis@minishell $> ( cd test_dir && ls )
 a1  a2	a3  a4	b1  b2	b3  b4	src
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ( env | grep SHLVL )
+gmarquis@minishell $> ( env | grep SHLVL )
 SHLVL=3
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ls | (cat)
+gmarquis@minishell $> ls | (cat)
 animated_banner.py
 noanimated_banner.py
 process_outputs.sh
@@ -19,10 +22,12 @@ run_test.sh
 test_commands
 test_dir
 test_outputs
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> ls | (cat | (cat -e > test))
+gmarquis@minishell $> ls | (cat | (cat -e > test))
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> cat test
+gmarquis@minishell $> cat test
 animated_banner.py$
 noanimated_banner.py$
 process_outputs.sh$
@@ -34,12 +39,16 @@ test$
 test_commands$
 test_dir$
 test_outputs$
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> rm test
+gmarquis@minishell $> rm test
+gmarquis@minishell $> echo $?
 0
-jeportie@minishell $> (export TEST=ok) && env | grep TEST
+gmarquis@minishell $> (export TEST=ok) && env | grep TEST
+gmarquis@minishell $> echo $?
 1
-jeportie@minishell $> (mkdir test && cd test && pwd) && pwd && rm -rf test
-/root/projects/minishell/test_minishell/test
-/root/projects/minishell/test_minishell
+gmarquis@minishell $> (mkdir test && cd test && pwd) && pwd && rm -rf test
+/root/projects/Minishell/test_minishell/test
+/root/projects/Minishell/test_minishell
+gmarquis@minishell $> echo $?
 0

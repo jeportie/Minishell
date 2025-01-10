@@ -6,23 +6,23 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:07:45 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/05 18:28:36 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:55:08 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 
-int	safe_pipe(int pipefd[2])
+int	ms_safe_pipe(int pipefd[2])
 {
 	if (pipe(pipefd) == -1)
 	{
-		ft_dprintf(STDERR_FILENO, "minishell: error: pipe failed\n");
+		ft_dprintf(STDERR_FILENO, SHELL ": error: pipe failed\n");
 		return (-1);
 	}
 	return (0);
 }
 
-int	safe_open(const char *filepath, int flags, int mode)
+int	ms_safe_open(const char *filepath, int flags, int mode)
 {
 	int		fd;
 
@@ -35,7 +35,7 @@ int	safe_open(const char *filepath, int flags, int mode)
 	return (fd);
 }
 
-int	safe_close(int fd)
+int	ms_safe_close(int fd)
 {
 	if (close(fd) == -1)
 	{
@@ -45,7 +45,7 @@ int	safe_close(int fd)
 	return (fd);
 }
 
-bool	is_redirect_node(t_ast_node *node)
+bool	ms_is_redirect_node(t_ast_node *node)
 {
 	return (node->type == NODE_REDIRECT_IN
 		|| node->type == NODE_REDIRECT_OUT

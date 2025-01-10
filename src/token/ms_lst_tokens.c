@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_tokens.c                                       :+:      :+:    :+:   */
+/*   ms_lst_tokens.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:39:47 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 15:03:45 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:45:36 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/tokenize.h"
 #include <fcntl.h>
 
-void	add_token(t_token **head, t_token *new_token, t_gc *gcl)
+void	ms_add_token(t_token **head, t_token *new_token, t_gc *gcl)
 {
 	t_token	*current;
 
@@ -34,7 +34,7 @@ void	add_token(t_token **head, t_token *new_token, t_gc *gcl)
 	current->next = new_token;
 }
 
-t_token	*create_token(t_token_type type, const char *value, t_gc *gcl)
+t_token	*ms_create_token(t_token_type type, const char *value, t_gc *gcl)
 {
 	t_token	*new_token;
 
@@ -45,7 +45,7 @@ t_token	*create_token(t_token_type type, const char *value, t_gc *gcl)
 	return (new_token);
 }
 
-void	print_token(t_token *head)
+static void	st_print_token(t_token *head)
 {
 	t_token	*current;
 	int		i;
@@ -64,7 +64,7 @@ void	print_token(t_token *head)
 	close(fd);
 }
 
-void	print_token_delimit(t_token *tokens)
+void	ms_print_token_delimit(t_token *tokens)
 {
 	int	fd;
 
@@ -73,6 +73,6 @@ void	print_token_delimit(t_token *tokens)
 	fd = open(PRINT_INFOS, O_WRONLY | O_TRUNC | O_CREAT, COPY_MODE);
 	ft_dprintf(fd, "-----------------------------------------------------");
 	ft_dprintf(fd, "---------------------------\nTOKENS:\n");
-	print_token(tokens);
+	st_print_token(tokens);
 	close(fd);
 }

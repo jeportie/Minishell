@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:00:21 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/07 12:29:46 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:43:53 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	st_dup_helper(int fd, int std_fileno)
 {
 	if (dup2(fd, std_fileno) == -1)
 	{
-		dprintf(STDERR_FILENO, "minishell: dup2 error on STDIN\n");
+		ft_dprintf(STDERR_FILENO, SHELL ": dup2 error on STDIN\n");
 		close(fd);
 		return (0);
 	}

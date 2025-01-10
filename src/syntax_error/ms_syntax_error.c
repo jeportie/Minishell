@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student->42->fr>          +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:11:22 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/10/28 10:33:16 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:36:46 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@ static int	st_line_check(t_syntax *synt)
 {
 	while (synt->current[synt->i])
 	{
-		if (check_reinit(&synt))
+		if (ms_check_reinit(&synt))
 			break ;
-		if (quote_gestion(&synt))
+		if (ms_quote_gestion(&synt))
 			;
 		else if ((synt->current[synt->i] == '(' && !synt->dq_trigger
 				&& !synt->sq_trigger) || (synt->current[synt->i] == ')'))
 		{
-			if (parenthesis_gestion(&synt))
+			if (ms_parenthesis_gestion(&synt))
 				break ;
 		}
 		else if (!synt->dq_trigger && !synt->sq_trigger
 			&& (synt->current[synt->i] == '&' || synt->current[synt->i] == '|'))
 		{
-			if (operator_gestion(&synt))
+			if (ms_operator_gestion(&synt))
 				break ;
 		}
 		else if (synt->current[synt->i] != ' '
@@ -37,7 +37,7 @@ static int	st_line_check(t_syntax *synt)
 			synt->p_char++;
 		synt->i++;
 	}
-	return (check_error(&synt));
+	return (ms_check_error(&synt));
 }
 
 int	ms_syntax_error(const char *input)

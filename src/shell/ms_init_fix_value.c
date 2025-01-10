@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_fix_value.c                                   :+:      :+:    :+:   */
+/*   ms_init_fix_value.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/04 13:50:33 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:26:20 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static char	*st_get_user(t_env_data *env_data)
 	return (NULL);
 }
 
-void	init_fix_value(t_env_data *env_data)
+void	ms_init_fix_value(t_env_data *env_data)
 {
 	env_data->path = st_get_path(env_data);
 	env_data->term = st_get_term(env_data);

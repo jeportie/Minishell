@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:45:53 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/07 12:17:27 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:27:29 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,34 +89,40 @@ typedef struct s_ast_node
 t_ast_node	*ms_parse_tokens(t_token *tokens, t_shell *shell, t_gc *gcl);
 
 /* Parsing functions */
-t_ast_node	*parse_sequence(t_token **current_token, t_gc *gcl);
-t_ast_node	*parse_logical(t_token **current_token, t_shell *shell, t_gc *gcl);
-t_ast_node	*parse_pipeline(t_token **current_token, t_shell *shell, t_gc *gcl);
-t_ast_node	*parse_command(t_token **current_token, t_shell *shell, t_gc *gcl);
-t_ast_node	*parse_redirection(t_token **current_token,
+t_ast_node	*ms_parse_sequence(t_token **current_token, t_gc *gcl);
+t_ast_node	*ms_parse_logical(t_token **current_token, t_shell *shell,
+				t_gc *gcl);
+t_ast_node	*ms_parse_pipeline(t_token **current_token, t_shell *shell,
+				t_gc *gcl);
+t_ast_node	*ms_parse_command(t_token **current_token, t_shell *shell,
+				t_gc *gcl);
+t_ast_node	*ms_parse_redirection(t_token **current_token,
 				t_ast_node *child, t_shell *shell, t_gc *gcl);
-t_ast_node	*parse_subshell(t_token **current_token, t_shell *shell, t_gc *gcl);
+t_ast_node	*ms_parse_subshell(t_token **current_token, t_shell *shell,
+				t_gc *gcl);
 
 /* Node Functions*/
-t_ast_node	*create_command_node(t_token **current_token, t_gc *gcl);
-t_ast_node	*create_pipe_node(t_ast_node *left, t_ast_node *right, t_gc *gcl);
-t_ast_node	*create_redirect_node(t_node_type type, t_ast_node *child,
+t_ast_node	*ms_create_command_node(t_token **current_token, t_gc *gcl);
+t_ast_node	*ms_create_pipe_node(t_ast_node *left, t_ast_node *right,
+				t_gc *gcl);
+t_ast_node	*ms_create_redirect_node(t_node_type type, t_ast_node *child,
 				char *filename, t_gc *gcl);
-t_ast_node	*create_heredoc_node(t_node_type type, t_ast_node *child,
+t_ast_node	*ms_create_heredoc_node(t_node_type type, t_ast_node *child,
 				char *delimiter, t_gc *gcl);
-t_ast_node	*create_logical_node(t_node_type type, t_ast_node *left,
+t_ast_node	*ms_create_logical_node(t_node_type type, t_ast_node *left,
 				t_ast_node *right, t_gc *gcl);
-t_ast_node	*create_subshell_node(t_ast_node *child, t_gc *gcl);
+t_ast_node	*ms_create_subshell_node(t_ast_node *child, t_gc *gcl);
 
 /* Utils Functions */
-bool		is_pipe_op(t_token *current_token);
-bool		is_logical_op(t_token *current_token);
-bool		is_command_op(t_token *current_token);
-bool		is_redir_op(t_token *current_token);
-bool		is_sbs_start(t_token *current_token);
-bool		is_sbs_stop(t_token *current_token);
-void		print_ast(t_ast_node *node, int depth, char *prefix, int is_left);
-void		print_branch(int depth, int is_left, int fd);
-void		print_ast_delimit(t_ast_node *root);
+bool		ms_is_pipe_op(t_token *current_token);
+bool		ms_is_logical_op(t_token *current_token);
+bool		ms_is_command_op(t_token *current_token);
+bool		ms_is_redir_op(t_token *current_token);
+bool		ms_is_sbs_start(t_token *current_token);
+bool		ms_is_sbs_stop(t_token *current_token);
+void		ms_print_ast(t_ast_node *node, int depth, char *prefix,
+				int is_left);
+void		ms_print_branch(int depth, int is_left, int fd);
+void		ms_print_ast_delimit(t_ast_node *root);
 
 #endif /*AST_H*/

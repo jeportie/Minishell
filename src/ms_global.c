@@ -1,20 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echec_malloc.c                                     :+:      :+:    :+:   */
+/*   ms_global.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 20:58:08 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/11/12 15:40:06 by gmarquis         ###   ########.fr       */
+/*   Created: 2024/10/18 10:07:47 by jeportie          #+#    #+#             */
+/*   Updated: 2025/01/07 09:09:02 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/builtins.h"
+#include "../include/minishell.h"
 
-void	echec_malloc(t_gc *gcl, char *message)
-{
-	gc_cleanup(gcl);
-	ft_dprintf(2, "Error: echec malloc %s\n", message);
-	exit (ENOMEM);
-}
+int	g_signal;

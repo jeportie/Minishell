@@ -6,14 +6,14 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:12:43 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 15:35:27 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:19:41 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 #include "../../include/expand.h"
 
-int	var_len(char *arg, t_gc *gcl)
+int	ms_var_len(char *arg, t_gc *gcl)
 {
 	int (i) = 0;
 	int (len) = 0;
@@ -46,7 +46,7 @@ char	*ms_extract_var(char *arg, t_gc *gcl)
 {
 	int (i) = 0;
 	int (j) = 0;
-	int (len) = var_len(arg, gcl);
+	int (len) = ms_var_len(arg, gcl);
 	char *(var) = (char *)gc_malloc(sizeof(char) * (len + 1), gcl);
 	if (arg[i] == '{')
 	{
@@ -62,7 +62,7 @@ char	*ms_extract_var(char *arg, t_gc *gcl)
 	return (var[j] = '\0', var);
 }
 
-static	void	expand_argv(char **new_argv, char **argv,
+static	void	st_expand_argv(char **new_argv, char **argv,
 		t_wildcard_context *match_ctx)
 {
 	int		argv_index;
@@ -90,7 +90,7 @@ static	void	expand_argv(char **new_argv, char **argv,
 	}
 }
 
-char	**cmd_arg_expansion(char **argv, t_wildcard_context *match_ctx,
+char	**ms_cmd_arg_expansion(char **argv, t_wildcard_context *match_ctx,
 			t_gc *gcl)
 {
 	char	**new_argv;
@@ -106,7 +106,7 @@ char	**cmd_arg_expansion(char **argv, t_wildcard_context *match_ctx,
 	}
 	new_argv = (char **)gc_malloc(sizeof(char *) * total_args, gcl);
 	ft_memset(new_argv, 0, sizeof(char *) * total_args);
-	expand_argv(new_argv, argv, match_ctx);
+	st_expand_argv(new_argv, argv, match_ctx);
 	return (new_argv);
 }
 
@@ -115,22 +115,22 @@ void	ms_manage_arg_expand(t_cmd_node *cmd_node,
 {
 	t_wildcard_context *(matches) = NULL;
 	int (i) = 0;
-	if (!is_equal(cmd_node->argv[0]))
+	if (!ms_is_equal(cmd_node->argv[0]))
 	{
 		while (i < cmd_node->argc)
 		{
-			if (is_var(cmd_node->argv[i]) && cmd_node->is_expand == false)
+			if (ms_is_var(cmd_node->argv[i]) && cmd_node->is_expand == false)
 			{
-				cmd_node->argv[i] = nested_vars(cmd_node->argv[i],
+				cmd_node->argv[i] = ms_nested_vars(cmd_node->argv[i],
 						context->shell);
 			}
-			if (is_wild(cmd_node->argv[i]))
+			if (ms_is_wild(cmd_node->argv[i]))
 			{
 				matches = ms_expand_wild(cmd_node->argv[i], gcl);
 				if (matches->matches)
 				{
 					cmd_node->argc += matches->match_count - 1;
-					cmd_node->argv = cmd_arg_expansion(cmd_node->argv,
+					cmd_node->argv = ms_cmd_arg_expansion(cmd_node->argv,
 							matches, gcl);
 				}
 			}

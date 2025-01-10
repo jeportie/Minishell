@@ -6,14 +6,14 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:12:26 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/07 12:57:22 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:45:06 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 #include "../../include/expand.h"
 
-static t_redir_type	ms_node_type_to_redir_type(t_node_type ntype)
+static t_redir_type	st_node_type_to_redir_type(t_node_type ntype)
 {
 	if (ntype == NODE_REDIRECT_IN)
 		return (REDIR_IN);
@@ -26,7 +26,7 @@ static t_redir_type	ms_node_type_to_redir_type(t_node_type ntype)
 	return (-1);
 }
 
-static t_redir	*ms_add_redir(t_redir **head, int ntype,
+static t_redir	*st_add_redir(t_redir **head, int ntype,
 		char *filename, t_gc *gcl)
 {
 	t_redir	*new_node;
@@ -60,16 +60,16 @@ t_redir	*ms_collect_redirections(t_ast_node *node, t_gc *gcl, t_shell *shell)
 		ntype = node->type;
 		if (ntype == NODE_REDIRECT_HEREDOC)
 		{
-			ms_add_redir(&redir_list, ms_node_type_to_redir_type(ntype),
+			st_add_redir(&redir_list, st_node_type_to_redir_type(ntype),
 				node->data.heredoc.filename, gcl);
 			node = node->data.heredoc.child;
 		}
 		else
 		{
 			filename = node->data.redirect.filename;
-			if (is_var(filename))
-				filename = nested_vars(filename, shell);
-			ms_add_redir(&redir_list, ms_node_type_to_redir_type(ntype),
+			if (ms_is_var(filename))
+				filename = ms_nested_vars(filename, shell);
+			st_add_redir(&redir_list, st_node_type_to_redir_type(ntype),
 				filename, gcl);
 			node = node->data.redirect.child;
 		}

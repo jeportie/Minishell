@@ -6,12 +6,11 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:30:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/04 14:29:23 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:25:34 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-#include "../../include/exec.h"
 
 char	*ms_getenv(const char *name, t_env_data *env_data)
 {
@@ -24,7 +23,7 @@ char	*ms_getenv(const char *name, t_env_data *env_data)
 	name_len = ft_strlen(name);
 	while (current)
 	{
-		if (ft_strncmp(current->var, name, name_len) == 0
+		if (ft_strncmp(current->var, name, name_len + 1) == 0
 			&& current->var[name_len] == '\0')
 			return (current->value);
 		current = current->next;

@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:24:12 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/12/05 09:50:29 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:43:22 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ms_pwd(int fd)
 	pwd = getcwd(NULL, 0);
 	if (!pwd)
 	{
-		ft_dprintf(2, "minishell: pwd: error retrieving current directory:"
+		ft_dprintf(2, SHELL ": pwd: error retrieving current directory:"
 			" getcwd: cannot access parent directories: No such file"
 			" or directory\n");
 		return (1);
@@ -29,7 +29,7 @@ int	ms_pwd(int fd)
 	error_w = ms_safe_putstr_fd(pwd, fd);
 	if (error_w < 0)
 	{
-		ft_dprintf(2, "minishell: echo: write error:"
+		ft_dprintf(2, SHELL ": echo: write error:"
 			" no space left on device\n");
 		free(pwd);
 		return (1);

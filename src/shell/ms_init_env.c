@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/04 09:10:42 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:25:55 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ t_env_data	*ms_init_env(char **envp, t_shell *shell)
 			ms_env_add_back(&env_data->env, node);
 	}
 	ms_increment_shell_lvl(env_data->env, shell->gcl);
-	init_fix_value(env_data);
+	ms_init_fix_value(env_data);
 	gc_collect(shell->gcl);
 	return (env_data);
 }

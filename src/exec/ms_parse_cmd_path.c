@@ -6,14 +6,15 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:29:40 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 11:46:13 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:51:09 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 #include "../../include/minishell.h"
 
-static	char	*swipe_paths(const char *command, char **paths, t_shell *shell)
+static	char	*st_swipe_paths(const char *command, char **paths,
+	t_shell *shell)
 {
 	char	*cmd_path;
 	int		i;
@@ -58,5 +59,5 @@ char	*ms_parse_cmd_path(const char *command, t_shell *shell)
 	}
 	gc_nest_register(paths, shell->gcl);
 	gc_nest_lock(paths, shell->gcl);
-	return (swipe_paths(command, paths, shell));
+	return (st_swipe_paths(command, paths, shell));
 }

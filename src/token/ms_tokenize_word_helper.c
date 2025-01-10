@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenize_word_helper.c                             :+:      :+:    :+:   */
+/*   ms_tokenize_word_helper.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 08:34:30 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/31 12:54:46 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:50:06 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/tokenize.h"
 
-static void	initialize_token_state(t_token_state *state, const char *current,
+static void	st_initialize_token_state(t_token_state *state, const char *current,
 	char start_quote)
 {
 	state->current = current;
@@ -25,7 +25,7 @@ static void	initialize_token_state(t_token_state *state, const char *current,
 	state->stop = false;
 }
 
-static void	handle_in_quote(t_token_state *state)
+static void	st_handle_in_quote(t_token_state *state)
 {
 	char	c;
 
@@ -45,12 +45,12 @@ static void	handle_in_quote(t_token_state *state)
 	}
 }
 
-static void	handle_not_in_quote(t_token_state *state)
+static void	st_handle_not_in_quote(t_token_state *state)
 {
 	char	c;
 
 	c = state->current[state->i];
-	if (is_whitespace(c) || is_operator(c) || is_frame(c))
+	if (ms_is_whitespace(c) || ms_is_operator(c) || ms_is_frame(c))
 	{
 		state->stop = true;
 		return ;
@@ -71,17 +71,17 @@ static void	handle_not_in_quote(t_token_state *state)
 	}
 }
 
-int	token_len(const char *current, char start_quote, bool *is_expand)
+int	ms_token_len(const char *current, char start_quote, bool *is_expand)
 {
 	t_token_state	state;
 
-	initialize_token_state(&state, current, start_quote);
+	st_initialize_token_state(&state, current, start_quote);
 	while (state.current[state.i] && !state.stop)
 	{
 		if (state.in_quote)
-			handle_in_quote(&state);
+			st_handle_in_quote(&state);
 		else
-			handle_not_in_quote(&state);
+			st_handle_not_in_quote(&state);
 	}
 	*is_expand = state.is_expand;
 	return (state.len);

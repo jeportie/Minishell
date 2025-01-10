@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_node.c                                      :+:      :+:    :+:   */
+/*   ms_create_node.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:58:26 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/07 12:17:57 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:34:10 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ast.h"
 
-t_ast_node	*create_logical_node(t_node_type type, t_ast_node *left,
+t_ast_node	*ms_create_logical_node(t_node_type type, t_ast_node *left,
 	t_ast_node *right, t_gc *gcl)
 {
 	t_ast_node	*node;
@@ -25,7 +25,7 @@ t_ast_node	*create_logical_node(t_node_type type, t_ast_node *left,
 	return (node);
 }
 
-t_ast_node	*create_pipe_node(t_ast_node *left, t_ast_node *right, t_gc *gcl)
+t_ast_node	*ms_create_pipe_node(t_ast_node *left, t_ast_node *right, t_gc *gcl)
 {
 	t_ast_node	*node;
 
@@ -37,7 +37,7 @@ t_ast_node	*create_pipe_node(t_ast_node *left, t_ast_node *right, t_gc *gcl)
 	return (node);
 }
 
-t_ast_node	*create_redirect_node(t_node_type type, t_ast_node *child,
+t_ast_node	*ms_create_redirect_node(t_node_type type, t_ast_node *child,
 	char *filename, t_gc *gcl)
 {
 	t_ast_node	*node;
@@ -51,7 +51,7 @@ t_ast_node	*create_redirect_node(t_node_type type, t_ast_node *child,
 	return (node);
 }
 
-t_ast_node	*create_heredoc_node(t_node_type type, t_ast_node *child,
+t_ast_node	*ms_create_heredoc_node(t_node_type type, t_ast_node *child,
 	char *delimiter, t_gc *gcl)
 {
 	t_ast_node	*node;
@@ -66,7 +66,7 @@ t_ast_node	*create_heredoc_node(t_node_type type, t_ast_node *child,
 	return (node);
 }
 
-t_ast_node	*create_subshell_node(t_ast_node *child, t_gc *gcl)
+t_ast_node	*ms_create_subshell_node(t_ast_node *child, t_gc *gcl)
 {
 	t_ast_node	*node;
 

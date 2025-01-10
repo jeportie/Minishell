@@ -6,13 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/06 15:02:46 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:52:34 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/exec.h"
 
-void	init_context(t_exec_context *data, t_shell *shell)
+void	ms_init_context(t_exec_context *data, t_shell *shell)
 {
 	data->stdin_fd = STDIN_FILENO;
 	data->stdout_fd = STDOUT_FILENO;
@@ -27,7 +27,7 @@ void	init_context(t_exec_context *data, t_shell *shell)
 	data->tmpfile_counter = 0;
 }
 
-bool	is_builtin_that_must_run_in_parent(t_cmd_node *cmd_node)
+bool	ms_is_builtin_that_must_run_in_parent(t_cmd_node *cmd_node)
 {
 	if (!cmd_node || !cmd_node->argv[0])
 		return (false);
@@ -42,7 +42,7 @@ bool	is_builtin_that_must_run_in_parent(t_cmd_node *cmd_node)
 	return (false);
 }
 
-static int	redir_in_command(t_ast_node *node, t_exec_context *context,
+static int	st_redir_in_command(t_ast_node *node, t_exec_context *context,
 		t_redir *redir_list)
 {
 	int	saved_stdin;
@@ -91,7 +91,7 @@ int	ms_execute_redirection(t_ast_node *node, t_exec_context *context)
 		return (ms_handle_error("Redirection with no command\n", 1,
 				context->shell->gcl));
 	if (node->type == NODE_COMMAND)
-		return (redir_in_command(node, context, redir_list));
+		return (st_redir_in_command(node, context, redir_list));
 	else
 	{
 		context->redir_list = redir_list;

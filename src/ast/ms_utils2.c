@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   ms_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:52:26 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 11:01:05 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:37:36 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ast.h"
 #include "../../include/tokenize.h"
 
-bool	is_redir_op(t_token *current_token)
+bool	ms_is_redir_op(t_token *current_token)
 {
 	return (current_token->type == TOKEN_REDIRECTION);
 }
 
-bool	is_sbs_start(t_token *current_token)
+bool	ms_is_sbs_start(t_token *current_token)
 {
 	return (current_token->type == TOKEN_SUBSHELL_START);
 }
 
-bool	is_sbs_stop(t_token *current_token)
+bool	ms_is_sbs_stop(t_token *current_token)
 {
 	return (current_token->type == TOKEN_SUBSHELL_STOP);
 }
 
-void	print_branch(int depth, int is_left, int fd)
+void	ms_print_branch(int depth, int is_left, int fd)
 {
 	if (depth > 0)
 	{

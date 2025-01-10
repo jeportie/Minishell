@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:23:54 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 15:35:13 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:29:46 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,27 @@ typedef struct s_directory_context
 	t_wildcard_context	*ctx;
 }				t_directory_context;
 
-void				sort_wild(t_wildcard_context *ctx);
-int					add_matches(t_wildcard_context *ctx, const char *match);
-void				expand_glob_recursive(const char *base_path,
+void				ms_sort_wild(t_wildcard_context *ctx);
+int					ms_add_matches(t_wildcard_context *ctx, const char *match);
+void				ms_expand_glob_recursive(const char *base_path,
 						const char *pattern, t_wildcard_context *ctx);
 t_wildcard_context	*ms_expand_wild(const char *pattern, t_gc *gcl);
 
-bool				is_var(char *cmd);
-bool				is_wild(char *cmd);
-bool				is_equal(char *cmd);
-int					valide_dollar(char *input);
+bool				ms_is_var(char *cmd);
+bool				ms_is_wild(char *cmd);
+bool				ms_is_equal(char *cmd);
+int					ms_valide_dollar(char *input);
 
-char				*find_dollar(char *arg);
+char				*ms_find_dollar(char *arg);
 int					ms_value_assign(t_shell *shell, t_cmd_node *cmd_node,
 						t_gc *gcl);
 char				*ms_expand_arg(char *arg, t_shell *shell, bool is_nested);
-char				*nested_vars(char *arg, t_shell *shell);
+char				*ms_nested_vars(char *arg, t_shell *shell);
 
 void				ms_manage_arg_expand(t_cmd_node *cmd_node,
 						t_exec_context *context, t_gc *gcl);
 
-int					var_len(char *arg, t_gc *gcl);
+int					ms_var_len(char *arg, t_gc *gcl);
 
 char				*ms_extract_var(char *arg, t_gc *gcl);
 

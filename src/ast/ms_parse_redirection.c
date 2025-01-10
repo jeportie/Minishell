@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_redirection.c                                :+:      :+:    :+:   */
+/*   ms_parse_redirection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:59:50 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/03 19:14:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:33:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 #include "../../include/tokenize.h"
 #include <readline/readline.h>
 
-static t_node_type	define_type(t_token **current_token)
+static t_node_type	st_define_type(t_token **current_token)
 {
 	t_node_type	redir_type;
 
-	if (strcmp((*current_token)->token, "<") == 0)
+	if (ft_strncmp((*current_token)->token, "<", 2) == 0)
 		redir_type = NODE_REDIRECT_IN;
-	else if (strcmp((*current_token)->token, ">") == 0)
+	else if (ft_strncmp((*current_token)->token, ">", 2) == 0)
 		redir_type = NODE_REDIRECT_OUT;
-	else if (strcmp((*current_token)->token, ">>") == 0)
+	else if (ft_strncmp((*current_token)->token, ">>", 3) == 0)
 		redir_type = NODE_REDIRECT_APPEND;
-	else if (strcmp((*current_token)->token, "<<") == 0)
+	else if (ft_strncmp((*current_token)->token, "<<", 3) == 0)
 		redir_type = NODE_REDIRECT_HEREDOC;
 	else
 	{
@@ -40,7 +40,7 @@ static t_ast_node	*st_redirect_helper(t_ast_node *child,
 {
 	int			i;
 
-	child = create_heredoc_node(redir_type, child, filename, shell->gcl);
+	child = ms_create_heredoc_node(redir_type, child, filename, shell->gcl);
 	i = 0;
 	while (shell->heredocs[i])
 		i++;
@@ -56,19 +56,19 @@ static t_ast_node	*st_redirect_helper(t_ast_node *child,
 	return (child);
 }
 
-t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child,
+t_ast_node	*ms_parse_redirection(t_token **current_token, t_ast_node *child,
 	t_shell *shell, t_gc *gcl)
 {
 	t_node_type	redir_type;
 	char		*filename;
 
-	while (*current_token && is_redir_op(*current_token))
+	while (*current_token && ms_is_redir_op(*current_token))
 	{
-		redir_type = define_type(current_token);
+		redir_type = st_define_type(current_token);
 		if (redir_type == ERR)
 			return (NULL);
 		*current_token = (*current_token)->next;
-		if (!*current_token || !is_command_op(*current_token))
+		if (!*current_token || !ms_is_command_op(*current_token))
 		{
 			ft_dprintf(STDERR, "Error: Expected filename after redirection.\n");
 			return (NULL);
@@ -78,7 +78,7 @@ t_ast_node	*parse_redirection(t_token **current_token, t_ast_node *child,
 		if (redir_type == NODE_REDIRECT_HEREDOC)
 			child = st_redirect_helper(child, redir_type, shell, filename);
 		else
-			child = create_redirect_node(redir_type, child, filename, gcl);
+			child = ms_create_redirect_node(redir_type, child, filename, gcl);
 		if (!child)
 			return (NULL);
 	}

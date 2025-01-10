@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   copy_env_list.c                                    :+:      :+:    :+:   */
+/*   ms_copy_env_list.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:55:31 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/11/20 12:15:39 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:40:47 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ static char	*st_get_value(t_env *current, t_gc *gcl)
 	{
 		str = gc_strdup(current->value, gcl);
 		if (!str)
-			echec_malloc(gcl, "new_node->value");
+			ms_echec_malloc(gcl, "new_node->value");
 		return (str);
 	}
 	return (NULL);
 }
 
-t_env	*copy_env_list(t_env *env, t_gc *gcl)
+t_env	*ms_copy_env_list(t_env *env, t_gc *gcl)
 {
 	t_env *(new_node) = NULL;
 	t_env *(new_list) = NULL;
@@ -36,10 +36,10 @@ t_env	*copy_env_list(t_env *env, t_gc *gcl)
 	{
 		new_node = gc_malloc(sizeof(t_env), gcl);
 		if (!new_node)
-			echec_malloc(gcl, "new_node");
+			ms_echec_malloc(gcl, "new_node");
 		new_node->var = gc_strdup(current->var, gcl);
 		if (!new_node->var)
-			echec_malloc(gcl, "new_node->var");
+			ms_echec_malloc(gcl, "new_node->var");
 		if (current->value)
 			new_node->value = st_get_value(current, gcl);
 		new_node->next = NULL;

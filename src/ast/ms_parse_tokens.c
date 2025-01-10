@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 08:31:06 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/02 16:47:21 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:18:10 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@ t_ast_node	*ms_parse_tokens(t_token *tokens, t_shell *shell, t_gc *gcl)
 
 	if (tokens == NULL)
 	{
-		ft_dprintf(STDERR, "Minishell: Error: No Input provided.\n");
+		ft_dprintf(STDERR, SHELL ": Error: No Input provided.\n");
 		return (NULL);
 	}
 	current_token = tokens;
-	ast_root = parse_logical(&current_token, shell, gcl);
+	ast_root = ms_parse_logical(&current_token, shell, gcl);
 	if (!ast_root)
 	{
-		ft_dprintf(STDERR, "Minishell: Error: Failed to parse tokens.\n");
+		ft_dprintf(STDERR, SHELL ": Error: Failed to parse tokens.\n");
 		return (NULL);
 	}
 	return (ast_root);
 }
 
-void	print_ast_delimit(t_ast_node *root)
+void	ms_print_ast_delimit(t_ast_node *root)
 {
 	int	fd;
 
@@ -42,7 +42,7 @@ void	print_ast_delimit(t_ast_node *root)
 	fd = open(PRINT_INFOS, O_WRONLY | O_APPEND, COPY_MODE);
 	ft_dprintf(fd, "------------------------------------------------");
 	ft_dprintf(fd, "--------------------------------\nAST:\n");
-	print_ast(root, 0, "", 0);
+	ms_print_ast(root, 0, "", 0);
 	ft_dprintf(fd, "-------------------------------------------"
 		"---------------------");
 	ft_dprintf(fd, "----------------\n");

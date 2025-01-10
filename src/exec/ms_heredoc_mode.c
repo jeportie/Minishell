@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 08:41:55 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:50:26 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void	st_fork_heredoc(t_heredoc_node *node, t_exec_context *context)
 	status = 0;
 	pid_t (pid) = fork();
 	if (pid == 0)
-		st_heredoc_child_process(context->shell, node->delimiter,
+		ms_heredoc_child_process(context->shell, node->delimiter,
 			node->filename);
 	else if (pid > 0)
 	{
-		signal(SIGQUIT, st_parent_here_signal);
+		signal(SIGQUIT, ms_parent_here_signal);
 		signal(SIGQUIT, SIG_IGN);
 		waitpid(pid, &status, 0);
 	}

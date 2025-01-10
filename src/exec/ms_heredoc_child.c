@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:08:10 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/07 12:57:16 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:45:44 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	st_check_env_var(t_shell *shell, t_here_helper *help)
 {
-	if (is_var(help->tmp) && ft_strlen(help->tmp) > 1)
+	if (ms_is_var(help->tmp) && ft_strlen(help->tmp) > 1)
 	{
 		free(help->line);
 		help->line = ms_get_env_value(shell->env_data->env, help->tmp + 1,
@@ -76,7 +76,7 @@ static void	st_init_here_helper(t_here_helper *help, t_shell *shell,
 	}
 }
 
-void	st_heredoc_child_process(t_shell *shell,
+void	ms_heredoc_child_process(t_shell *shell,
 	char *delimiter, char *filename)
 {
 	t_here_helper	help;

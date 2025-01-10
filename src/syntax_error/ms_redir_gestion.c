@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redir_gestion.c                                    :+:      :+:    :+:   */
+/*   ms_redir_gestion.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:33:27 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/10/24 16:28:10 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:36:19 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	st_redir_out(t_syntax **syntax)
 	return (0);
 }
 
-int	redir_gestion(t_syntax **syntax)
+int	ms_redir_gestion(t_syntax **syntax)
 {
 	t_syntax	*synt;
 

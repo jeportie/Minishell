@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:47 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/07 14:05:53 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:21:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ static void	st_delete_tmp_files(void)
 	}
 }
 
-static void	run(t_shell *shell, t_token *tokens, t_ast_node *root)
+static void	st_run(t_shell *shell, t_token *tokens, t_ast_node *root)
 {
 	t_exec_context	context;
 
 	tokens = ms_tokenize(shell->user_input, shell->gcl);
-	print_token_delimit(tokens);
+	ms_print_token_delimit(tokens);
 	root = ms_parse_tokens(tokens, shell, shell->gcl);
 	if (!root)
 		return ;
-	print_ast_delimit(root);
+	ms_print_ast_delimit(root);
 	gc_collect(shell->gcl);
-	init_context(&context, shell);
+	ms_init_context(&context, shell);
 	ms_preprocess_heredocs(&context);
 	shell->error_code = ms_execute_ast(root, &context);
 	gc_collect(shell->gcl);
@@ -77,7 +77,7 @@ int	main(int argc, char **argv, char **envp)
 		if (ms_syntax_error(shell.user_input))
 			shell.error_code = 2;
 		else
-			run(&shell, tokens, root);
+			st_run(&shell, tokens, root);
 		ft_bzero(shell.heredocs, 16);
 	}
 	return (0);

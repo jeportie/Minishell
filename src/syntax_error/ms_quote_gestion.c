@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quote_gestion.c                                    :+:      :+:    :+:   */
+/*   ms_quote_gestion.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:29:03 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/10/24 16:31:04 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:35:52 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/syntax.h"
 
-int	quote_gestion(t_syntax **syntax)
+int	ms_quote_gestion(t_syntax **syntax)
 {
 	t_syntax	*synt;
 

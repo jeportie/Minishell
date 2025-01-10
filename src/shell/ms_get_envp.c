@@ -6,14 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:28:24 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 11:58:49 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:24:07 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-#include "../../include/exec.h"
 
-static int	count_envlines(t_env *envi)
+static int	st_count_envlines(t_env *envi)
 {
 	int		i;
 	t_env	*current;
@@ -28,14 +27,14 @@ static int	count_envlines(t_env *envi)
 	return (i);
 }
 
-void	malloc_error(t_gc *gcl)
+void	ms_malloc_error(t_gc *gcl)
 {
 	ft_dprintf(STDERR_FILENO, "minishell: error: malloc failed.\n");
 	gc_cleanup(gcl);
 	exit(EXIT_FAILURE);
 }
 
-void	parse_env(char **result, int *i, t_env *env, t_gc *gcl)
+void	ms_parse_env(char **result, int *i, t_env *env, t_gc *gcl)
 {
 	int		line_len;
 	int		var_len;
@@ -47,7 +46,7 @@ void	parse_env(char **result, int *i, t_env *env, t_gc *gcl)
 	line_len = var_len + 1 + value_len + 1;
 	result[*i] = gc_malloc(sizeof(char) * line_len, gcl);
 	if (!result[*i])
-		malloc_error(gcl);
+		ms_malloc_error(gcl);
 	dest_ptr = result[*i];
 	ft_memcpy(dest_ptr, env->var, var_len);
 	dest_ptr += var_len;
@@ -64,10 +63,10 @@ char	**ms_get_envp(t_env *env, t_gc *gcl)
 	char	**result;
 	int		i;
 
-	env_lines = count_envlines(env);
+	env_lines = st_count_envlines(env);
 	result = (char **)gc_malloc(sizeof(char *) * (env_lines + 1), gcl);
 	if (!result)
-		malloc_error(gcl);
+		ms_malloc_error(gcl);
 	i = 0;
 	while (env)
 	{
@@ -75,7 +74,7 @@ char	**ms_get_envp(t_env *env, t_gc *gcl)
 			env->var = "";
 		if (!env->value)
 			env->value = "";
-		parse_env(result, &i, env, gcl);
+		ms_parse_env(result, &i, env, gcl);
 		i++;
 		env = env->next;
 	}

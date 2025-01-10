@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 20:49:16 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/05 17:57:35 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:46:18 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,25 +108,25 @@ t_token	*ms_tokenize(const char *command_line, t_gc *gcl)
 	t_token *(new_token) = NULL;
 	t_token *(tokens) = NULL;
 	const char *(input) = command_line;
-	skip_whitespace(&input);
+	ms_skip_whitespace(&input);
 	while (*input)
 	{
 		new_token = NULL;
-		if (is_frame(*input))
-			new_token = tokenize_frame(&input, gcl);
-		else if (is_operator(*input))
-			new_token = tokenize_operator(&input, gcl);
+		if (ms_is_frame(*input))
+			new_token = ms_tokenize_frame(&input, gcl);
+		else if (ms_is_operator(*input))
+			new_token = ms_tokenize_operator(&input, gcl);
 		else
-			new_token = tokenize_word(&input, gcl);
+			new_token = ms_tokenize_word(&input, gcl);
 		if (new_token)
-			add_token(&tokens, new_token, gcl);
+			ms_add_token(&tokens, new_token, gcl);
 		else
 		{
 			perror("Failed to tokenize input");
 			gc_cleanup(gcl);
 			exit(EXIT_FAILURE);
 		}
-		skip_whitespace(&input);
+		ms_skip_whitespace(&input);
 	}
 	st_sort_token_list(&tokens);
 	return (tokens);

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:01:00 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/02 16:24:40 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:21:02 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,27 +91,27 @@ typedef struct s_copy_state
 
 /* Main Function */
 t_token	*ms_tokenize(const char *commant_line, t_gc *gcl);
-int		token_len(const char *current, char start_quote, bool *is_expand);
+int		ms_token_len(const char *current, char start_quote, bool *is_expand);
 
 /* Token List Functions */
-t_token	*create_token(t_token_type type, const char *value, t_gc *gcl);
-void	add_token(t_token **head, t_token *new_token, t_gc *gcl);
+t_token	*ms_create_token(t_token_type type, const char *value, t_gc *gcl);
+void	ms_add_token(t_token **head, t_token *new_token, t_gc *gcl);
 
 /* Utils functions*/
-bool	is_whitespace(char c);
-bool	is_operator(char c);
-bool	is_quote(char c);
-bool	is_frame(char c);
-void	skip_whitespace(const char **input);
-void	print_token(t_token *head);
+bool	ms_is_whitespace(char c);
+bool	ms_is_operator(char c);
+bool	ms_is_quote(char c);
+bool	ms_is_frame(char c);
+void	ms_skip_whitespace(const char **input);
+void	ms_print_token(t_token *head);
 
 /* Tokenize Functions */
-t_token	*tokenize_word(const char **input, t_gc *gcl);
-t_token	*tokenize_operator(const char **input, t_gc *gcl);
-t_token	*tokenize_quote(const char **input, t_gc *gcl);
-t_token	*tokenize_frame(const char **input, t_gc *gcl);
+t_token	*ms_tokenize_word(const char **input, t_gc *gcl);
+t_token	*ms_tokenize_operator(const char **input, t_gc *gcl);
+t_token	*ms_tokenize_quote(const char **input, t_gc *gcl);
+t_token	*ms_tokenize_frame(const char **input, t_gc *gcl);
 
 /* Debug Log Functions */
-void	print_token_delimit(t_token *tokens);
+void	ms_print_token_delimit(t_token *tokens);
 
 #endif /*TOKENIZE_H*/

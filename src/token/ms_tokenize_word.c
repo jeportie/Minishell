@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenize_word.c                                    :+:      :+:    :+:   */
+/*   ms_tokenize_word.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:41:20 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 16:40:36 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:56:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/tokenize.h"
 
-static void	handle_in_quote(t_copy_state *state)
+static void	st_handle_in_quote(t_copy_state *state)
 {
 	char	c;
 
@@ -27,12 +27,12 @@ static void	handle_in_quote(t_copy_state *state)
 		state->value[state->j++] = state->current[state->i++];
 }
 
-static void	handle_not_in_quote(t_copy_state *state)
+static void	st_handle_not_in_quote(t_copy_state *state)
 {
 	char	c;
 
 	c = state->current[state->i];
-	if (is_whitespace(c) || is_operator(c) || is_frame(c))
+	if (ms_is_whitespace(c) || ms_is_operator(c) || ms_is_frame(c))
 	{
 		state->stop = true;
 		return ;
@@ -47,7 +47,8 @@ static void	handle_not_in_quote(t_copy_state *state)
 		state->value[state->j++] = state->current[state->i++];
 }
 
-static int	copy_token_value(char *value, const char *current, char start_quote)
+static int	st_copy_token_value(char *value, const char *current,
+	char start_quote)
 {
 	t_copy_state	state;
 
@@ -61,23 +62,23 @@ static int	copy_token_value(char *value, const char *current, char start_quote)
 	while (state.current[state.i] && !state.stop)
 	{
 		if (state.in_quote)
-			handle_in_quote(&state);
+			st_handle_in_quote(&state);
 		else
-			handle_not_in_quote(&state);
+			st_handle_not_in_quote(&state);
 	}
 	state.value[state.j] = '\0';
 	return (state.i);
 }
 
-t_token	*help_word(char *value, t_gc *gcl, bool is_expand)
+t_token	*st_help_word(char *value, t_gc *gcl, bool is_expand)
 {
 	if (is_expand == true)
-		return (create_token(TOKEN_EXPAND, value, gcl));
+		return (ms_create_token(TOKEN_EXPAND, value, gcl));
 	else
-		return (create_token(TOKEN_WORD, value, gcl));
+		return (ms_create_token(TOKEN_WORD, value, gcl));
 }
 
-t_token	*tokenize_word(const char **input, t_gc *gcl)
+t_token	*ms_tokenize_word(const char **input, t_gc *gcl)
 {
 	char	*value;
 	bool	is_expand;
@@ -98,10 +99,10 @@ t_token	*tokenize_word(const char **input, t_gc *gcl)
 	}
 	current = (char *)*input;
 	is_expand = false;
-	len = token_len(current, quote, &is_expand);
+	len = ms_token_len(current, quote, &is_expand);
 	value = (char *)gc_malloc(sizeof(char) * len + 1, gcl);
 	gc_lock(value, gcl);
-	len = copy_token_value(value, current, quote);
+	len = st_copy_token_value(value, current, quote);
 	*input += len;
-	return (help_word(value, gcl, is_expand));
+	return (st_help_word(value, gcl, is_expand));
 }
