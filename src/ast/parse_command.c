@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:59:01 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/03 16:19:43 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:33:54 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_ast_node	*parse_command(t_token **current_token, t_shell *shell, t_gc *gcl)
 	node = create_command_node(current_token, gcl);
 	if (!node)
 	{
-		printf("Node was null\n");
+		ft_dprintf(STDERR, "Node was null\n");
 		return (NULL);
 	}
 	while (*current_token && is_redir_op(*current_token))

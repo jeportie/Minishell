@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 20:49:16 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/05 17:57:35 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:26:13 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ t_token	*ms_tokenize(const char *command_line, t_gc *gcl)
 			add_token(&tokens, new_token, gcl);
 		else
 		{
-			perror("Failed to tokenize input");
+			ft_dprintf(STDERR_FILENO, "Failed to tokenize input");
 			gc_cleanup(gcl);
 			exit(EXIT_FAILURE);
 		}

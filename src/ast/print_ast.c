@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:17:41 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/04 08:08:15 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:33:08 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,9 @@ void	print_ast(t_ast_node *node, int depth, char *prefix, int is_left)
 			|| node->type == NODE_REDIRECT_HEREDOC
 			|| node->type == NODE_SUBSHELL);
 	if (!single_branch && is_left)
-		snprintf(new_prefix, sizeof(new_prefix), "%s│   ", prefix);
+		ft_snprintf(new_prefix, sizeof(new_prefix), "%s│   ", prefix);
 	else
-		snprintf(new_prefix, sizeof(new_prefix), "%s    ", prefix);
+		ft_snprintf(new_prefix, sizeof(new_prefix), "%s    ", prefix);
 	if (!single_branch)
 	{
 		print_ast(get_left_child(node), depth + 1, new_prefix, 1);

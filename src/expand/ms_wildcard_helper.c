@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 20:43:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/12 11:12:09 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:41:45 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	sort_wild(t_wildcard_context *ctx)
 		return ;
 	while (ctx->match_count > 1 && ctx->matches[i])
 	{
-		if (strcmp(ctx->matches[i - 1], ctx->matches[i]) > 0)
+		if (ft_strncmp(ctx->matches[i - 1], ctx->matches[i],
+				ft_strlen(ctx->matches[i]) + 1) > 0)
 		{
 			swap = ctx->matches[i];
 			ctx->matches[i] = ctx->matches[i - 1];

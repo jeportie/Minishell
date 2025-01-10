@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:55:03 by gmarquis          #+#    #+#             */
-/*   Updated: 2024/11/06 15:39:34 by gmarquis         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:36:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 static void	st_sigint_cmd_handler(int sig)
 {
 	if (sig == SIGINT)
-		printf("\n");
+		ft_printf("\n");
 	g_signal = 130;
 }
 
 static void	st_sigquit_cmd_handler(int sig)
 {
 	if (sig == SIGQUIT)
-		printf("Quitter (core dumped).\n");
+		ft_printf("Quitter (core dumped).\n");
 	g_signal = 131;
 }
 
