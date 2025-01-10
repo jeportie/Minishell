@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:45:22 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/20 14:41:42 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:11:13 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ START_TEST(test_create_token)
     ck_assert_ptr_null(token->next);
 
     gc_cleanup(gcl);
-    free(gcl);
 }
 END_TEST
 
@@ -50,7 +49,6 @@ START_TEST(test_add_token)
     ck_assert_ptr_null(head->next->next);
 
     gc_cleanup(gcl);
-    free(gcl);
 }
 END_TEST
 
@@ -83,7 +81,6 @@ START_TEST(test_add_token_null_head)
     ck_assert_int_ne(result, -1); // Check that no segfault occurred
 
     gc_cleanup(gcl);
-    free(gcl);
 }
 END_TEST
 
@@ -96,7 +93,6 @@ START_TEST(test_add_token_null_token)
     ck_assert_ptr_null(head); // Head should remain NULL since no token was added
 
     gc_cleanup(gcl);
-    free(gcl);
 }
 END_TEST
 
@@ -121,7 +117,6 @@ START_TEST(test_add_multiple_tokens)
     ck_assert_ptr_null(head->next->next->next);
 
     gc_cleanup(gcl);
-    free(gcl);
 }
 END_TEST
 

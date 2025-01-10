@@ -1,0 +1,62 @@
+==40078== Memcheck, a memory error detector
+==40078== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==40078== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==40078== Command: ../minishell
+==40078== Parent PID: 34073
+==40078== 
+==40079== 
+==40079== HEAP SUMMARY:
+==40079==     in use at exit: 4,073 bytes in 5 blocks
+==40079==   total heap usage: 557 allocs, 552 frees, 22,440 bytes allocated
+==40079== 
+==40079== 1 bytes in 1 blocks are still reachable in loss record 1 of 5
+==40079==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==40079==    by 0x117412: ft_update_buffer (in /root/projects/minishell/minishell)
+==40079==    by 0x1175A1: get_next_line (in /root/projects/minishell/minishell)
+==40079==    by 0x1113FE: ms_get_user_input (in /root/projects/minishell/minishell)
+==40079==    by 0x114B5A: main (in /root/projects/minishell/minishell)
+==40079== 
+==40079== LEAK SUMMARY:
+==40079==    definitely lost: 0 bytes in 0 blocks
+==40079==    indirectly lost: 0 bytes in 0 blocks
+==40079==      possibly lost: 0 bytes in 0 blocks
+==40079==    still reachable: 1 bytes in 1 blocks
+==40079==         suppressed: 4,072 bytes in 4 blocks
+==40079== 
+==40079== For lists of detected and suppressed errors, rerun with: -s
+==40079== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 4 from 4)
+==40080== 
+==40080== HEAP SUMMARY:
+==40080==     in use at exit: 4,073 bytes in 5 blocks
+==40080==   total heap usage: 593 allocs, 588 frees, 23,452 bytes allocated
+==40080== 
+==40080== 1 bytes in 1 blocks are still reachable in loss record 1 of 5
+==40080==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==40080==    by 0x117412: ft_update_buffer (in /root/projects/minishell/minishell)
+==40080==    by 0x1175A1: get_next_line (in /root/projects/minishell/minishell)
+==40080==    by 0x1113FE: ms_get_user_input (in /root/projects/minishell/minishell)
+==40080==    by 0x114B5A: main (in /root/projects/minishell/minishell)
+==40080== 
+==40080== LEAK SUMMARY:
+==40080==    definitely lost: 0 bytes in 0 blocks
+==40080==    indirectly lost: 0 bytes in 0 blocks
+==40080==      possibly lost: 0 bytes in 0 blocks
+==40080==    still reachable: 1 bytes in 1 blocks
+==40080==         suppressed: 4,072 bytes in 4 blocks
+==40080== 
+==40080== For lists of detected and suppressed errors, rerun with: -s
+==40080== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 4 from 4)
+==40078== 
+==40078== HEAP SUMMARY:
+==40078==     in use at exit: 4,016 bytes in 1 blocks
+==40078==   total heap usage: 812 allocs, 811 frees, 25,357 bytes allocated
+==40078== 
+==40078== LEAK SUMMARY:
+==40078==    definitely lost: 0 bytes in 0 blocks
+==40078==    indirectly lost: 0 bytes in 0 blocks
+==40078==      possibly lost: 0 bytes in 0 blocks
+==40078==    still reachable: 0 bytes in 0 blocks
+==40078==         suppressed: 4,016 bytes in 1 blocks
+==40078== 
+==40078== For lists of detected and suppressed errors, rerun with: -s
+==40078== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

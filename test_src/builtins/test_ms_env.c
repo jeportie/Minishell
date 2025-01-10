@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:56:24 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/12 18:15:22 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:07:49 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void setup_shell(t_shell *shell) {
 // Fonction de nettoyage de l'environnement après chaque test
 void teardown_shell(t_shell *shell) {
     gc_cleanup(shell->gcl);
-    free(shell->gcl);
 }
 
 // Test pour afficher les variables d'environnement sans option

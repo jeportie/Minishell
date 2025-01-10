@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:20:22 by gmarquis          #+#    #+#             */
-/*   Updated: 2025/01/08 10:02:26 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:52:16 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	st_none_chdir(t_shell *shell)
 	cwd = getcwd(NULL, 0);
 	if (cwd)
 	{
-		pwd = ms_get_env_value(tmp_env, "PWD", shell->error_code);
+		pwd = ms_get_env_value(tmp_env, "PWD", shell->error_code, shell);
 		gc_unlock(pwd, shell->gcl);
 		ms_set_env_value(shell, "OLDPWD", pwd);
 		ms_set_env_value(shell, "PWD", cwd);
@@ -46,14 +46,14 @@ static char	*st_cd_with_option(char *cd, t_shell *shell, char *argv)
 		if (!ft_strncmp(argv, "~", 2))
 		{
 			cd = ms_get_env_value(shell->env_data->env, "HOME",
-					shell->error_code);
+					shell->error_code, shell);
 			if (!cd)
 				return (ft_dprintf(2, "%s: cd: HOME not set\n", SHELL), NULL);
 		}
 		else if (!ft_strncmp(argv, "-", 2))
 		{
 			cd = ms_get_env_value(shell->env_data->env, "OLDPWD",
-					shell->error_code);
+					shell->error_code, shell);
 			if (!cd)
 				return (ft_dprintf(2, "%s: cd: OLDPWD not set\n", SHELL), NULL);
 			ft_dprintf(1, "%s\n", cd);
@@ -71,7 +71,8 @@ int	ms_cd(t_cmd_node *cmd_node, t_shell *shell)
 	char *(cd) = NULL;
 	if (cmd_node->argc == 1)
 	{
-		cd = ms_get_env_value(shell->env_data->env, "HOME", shell->error_code);
+		cd = ms_get_env_value(shell->env_data->env, "HOME",
+				shell->error_code, shell);
 		if (!cd)
 			return (ft_dprintf(2, "%s: cd: HOME not set\n", SHELL), 1);
 	}

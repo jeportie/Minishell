@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:43:01 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 14:47:16 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:25:39 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,15 @@ static void	ms_child_process(t_cmd_node *cmd_node, t_exec_context *context,
 			char *cmd_path, t_gc *gcl)
 {
 	char	**envp;
-	t_gc	*child_gcl;
 
 	ms_init_child_cmd_signal();
-	child_gcl = gc_init();
 	if (!init_io(context->stdin_fd, context->stdout_fd, context->stderr_fd))
 		exit(ms_handle_error("minishell: redirection error: dup2\n",
 				EXIT_FAILURE, gcl));
-	envp = ms_get_envp(context->shell->env_data->env, child_gcl);
+	envp = ms_get_envp(context->shell->env_data->env, gcl);
 	if (!envp)
 		exit(ms_handle_error("memory allocation error\n", EXIT_FAILURE, gcl));
-	gc_nest_register(envp, child_gcl);
+	gc_nest_register(envp, gcl);
 	if (is_directory(cmd_path))
 	{
 		ft_dprintf(2, SHELL ": %s: Is a directory\n", cmd_path);

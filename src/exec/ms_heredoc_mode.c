@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 08:41:55 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:36:49 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ static char	*st_generate_tmp_filename(t_exec_context *context)
 	int (fd) = 0;
 	char *(base_name) = "/tmp/.ms_tmpfile_";
 	char *(file_index) = ft_itoa(context->tmpfile_counter++);
+	gc_register(file_index, context->shell->gcl);
+	gc_lock(file_index, context->shell->gcl);
 	int (len) = ft_strlen(base_name) + ft_strlen(file_index);
-	char *(filename) = malloc(len + 1);
+	char *(filename) = gc_malloc(len + 1, context->shell->gcl);
+	gc_lock(filename, context->shell->gcl);
 	if (context->tmpfile_counter > 256)
 		context->tmpfile_counter = 0;
 	ft_memset(filename, 0, len + 1);

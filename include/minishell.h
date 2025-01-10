@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:48:33 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/08 15:06:50 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:46:40 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void		ms_init_child_cmd_signal(void);
 void		ms_init_std_signal(void);
 void		ms_stop_std_signal(void);
 
-char		*ms_get_env_value(t_env *env, char *name, int error_code);
+char		*ms_get_env_value(t_env *env, char *name, int error_code,
+				t_shell *shell);
 void		ms_set_env_value(t_shell *shell, char *name, char *value);
 char		**ms_get_envp(t_env *env, t_gc *gcl);
 char		*ms_getenv(const char *name, t_env_data *env_data);

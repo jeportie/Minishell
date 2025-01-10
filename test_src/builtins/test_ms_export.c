@@ -6,14 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:00:32 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/25 13:33:29 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:08:22 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <check.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../../include/builtins.h"
 #include "../../include/exec.h"  // pour le t_exec_context
 
 static t_gc *gcl;
@@ -31,7 +30,6 @@ void setup(void)
 void teardown(void)
 {
     gc_cleanup(gcl);
-    free(gcl);
 }
 
 // Test pour vérifier si ms_export ajoute une nouvelle variable
