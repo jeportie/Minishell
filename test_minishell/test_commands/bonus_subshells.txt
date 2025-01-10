@@ -7,3 +7,5 @@ cat test
 rm test
 (export TEST=ok) && env | grep TEST
 (mkdir test && cd test && pwd) && pwd && rm -rf test
+(echo hello | cat -e) > test && cat test && rm test
+echo end

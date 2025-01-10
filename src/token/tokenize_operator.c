@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:52:27 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/26 16:21:40 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:29:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	init_op_state(const char **input, t_op_state *op_state)
 {
 	const t_operator_map	*operator_map;
 
-	memset(op_state, 0, sizeof(t_op_state));
+	ft_memset(op_state, 0, sizeof(t_op_state));
 	operator_map = get_operator_map();
 	op_state->op_map = operator_map;
 	op_state->current = (char *)*input;
@@ -58,7 +58,7 @@ t_token	*tokenize_operator(const char **input, t_gc *gcl)
 	if (!input || !*input)
 	{
 		gc_cleanup(gcl);
-		perror("Minishell: Error: null input\n");
+		ft_dprintf(STDERR_FILENO, "Minishell: Error: null input\n");
 		exit(EXIT_FAILURE);
 	}
 	v.i = 0;
