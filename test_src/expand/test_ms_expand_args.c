@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:24:48 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/25 10:49:03 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:08:47 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	setup(void)
 void	teardown(void)
 {
 	gc_cleanup(gcl);
-	free(gcl);
 }
 
 START_TEST(test_ms_expand_arg_simple_expand)

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:00:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/22 17:02:25 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:08:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void setup(void)
 void teardown(void)
 {
 	gc_cleanup(gcl);
-	free(gcl);
 }
 
 START_TEST(test_ms_unset_first_value)
