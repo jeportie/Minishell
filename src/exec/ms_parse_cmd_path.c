@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:29:40 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/06 11:46:13 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:14:09 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,16 @@ static	char	*swipe_paths(const char *command, char **paths, t_shell *shell)
 char	*ms_parse_cmd_path(const char *command, t_shell *shell)
 {
 	char	**paths;
+	char	*result;
 
 	if (ft_strchr(command, '/'))
 	{
 		if (access(command, X_OK) == 0)
-			return (ft_strdup(command));
+		{
+			result = ft_strdup(command);
+			gc_register(result, shell->gcl);
+			return (result);
+		}
 		else
 			return (NULL);
 	}

@@ -6,7 +6,7 @@
 /*   By: gmarquis <gmarquis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:51:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/17 13:42:19 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:47:36 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,6 @@ char	*st_make_input(t_shell *shell)
 		return ("minishell> ");
 	return (shell_prompt);
 }
-
-/*
-char	*st_make_input(t_shell *shell)
-{
-	char	*shell_prompt;
-	char	*error_code;
-	char	*cwd;
-
-	error_code = ft_itoa(shell->error_code);
-	gc_register(error_code, shell->gcl);
-	cwd = getcwd(NULL, 0);
-	gc_register(cwd, shell->gcl);
-	shell_prompt = gc_strjoin("(", error_code, shell->gcl);
-	shell_prompt = gc_strjoin(shell_prompt, ") ", shell->gcl);
-	shell_prompt = gc_strjoin(shell_prompt, shell->env_data->user, shell->gcl);
-	shell_prompt = gc_strjoin(shell_prompt, "@minishell", shell->gcl);
-	shell_prompt = gc_strjoin(shell_prompt, " | ", shell->gcl);
-	shell_prompt = gc_strjoin(shell_prompt, cwd, shell->gcl);
-	shell_prompt = gc_strjoin(shell_prompt, " $> ", shell->gcl);
-	if (!shell_prompt)
-		return ("minishell> ");
-	return(shell_prompt);
-}
-*/
 
 void	ms_get_user_input(t_shell *shell)
 {

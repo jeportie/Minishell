@@ -1,0 +1,20 @@
+==40011== Memcheck, a memory error detector
+==40011== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==40011== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==40011== Command: ../minishell
+==40011== Parent PID: 34073
+==40011== 
+==40011== 
+==40011== HEAP SUMMARY:
+==40011==     in use at exit: 4,016 bytes in 1 blocks
+==40011==   total heap usage: 820 allocs, 819 frees, 25,469 bytes allocated
+==40011== 
+==40011== LEAK SUMMARY:
+==40011==    definitely lost: 0 bytes in 0 blocks
+==40011==    indirectly lost: 0 bytes in 0 blocks
+==40011==      possibly lost: 0 bytes in 0 blocks
+==40011==    still reachable: 0 bytes in 0 blocks
+==40011==         suppressed: 4,016 bytes in 1 blocks
+==40011== 
+==40011== For lists of detected and suppressed errors, rerun with: -s
+==40011== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

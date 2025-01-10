@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2025/01/07 12:52:00 by jeportie         ###   ########.fr        #
+#    Updated: 2025/01/10 12:59:22 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,8 +100,8 @@ CC = 		cc
 CFLAGS = 	-Wall -Wextra -Werror
 VFLAGS = 	-g3 -fPIC 
 SANITIZE = 	-g3 -fPIC -fsanitize=thread
-VALG =		valgrind --leak-check=full --show-leak-kinds=all \
-			--track-origins=yes --error-exitcode=1 \
+VALG =		valgrind -s --leak-check=full \
+			--track-origins=yes --error-exitcode=1 --leak-check=full\
 			--suppressions=assets/supp.supp
 HELG =      valgrind --tool=helgrind --history-level=full \
 			--track-lockorders=yes --show-below-main=yes --free-is-write=yes

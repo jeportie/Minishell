@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 22:47:38 by jeportie          #+#    #+#             */
-/*   Updated: 2024/12/27 21:07:10 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:43:17 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ static t_redir	*append_redir_list(t_redir *list1, t_redir *list2)
 	return (list1);
 }
 
-static void	subshell_child_process(t_subshell_exec_params *params)
+static void	subshell_child_process(t_subshell_exec_params *params,
+		t_exec_context *context)
 {
 	t_exec_context	child_context;
+	int				error_code;
 
 	child_context = *params->context;
 	child_context.is_subprocess = true;
@@ -35,7 +37,9 @@ static void	subshell_child_process(t_subshell_exec_params *params)
 	if (child_context.redir_list
 		&& ms_apply_redirections(child_context.redir_list) != 0)
 		exit(1);
-	exit(ms_execute_ast(params->subshell_node->child, &child_context));
+	error_code = ms_execute_ast(params->subshell_node->child, &child_context);
+	gc_cleanup(context->shell->gcl);
+	exit (error_code);
 }
 
 static int	subshell_parent_process(pid_t pid, t_exec_context *context)
@@ -71,6 +75,6 @@ int	ms_execute_subshell(t_subshell_node *subshell_node,
 	context->redir_list = merged_redirs;
 	pid = fork();
 	if (pid == 0)
-		subshell_child_process(&params);
+		subshell_child_process(&params, context);
 	return (subshell_parent_process(pid, context));
 }

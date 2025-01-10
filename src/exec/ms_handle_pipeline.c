@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:21:40 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/06 09:09:35 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:50:06 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ static int	st_child_exit(t_ast_node *final_node, t_exec_context *context)
 	if (context->redir_list && ms_apply_redirections(context->redir_list) != 0)
 		exit(1);
 	exit_code = ms_execute_ast(final_node, context);
+	gc_cleanup(context->shell->gcl);
 	exit(exit_code);
 }
 
-//refactored with struct for only 4 parameters in the function
 void	pipe_process(t_pipe_helper *args, t_ast_node *final_node,
 				t_exec_context *context, int **pipes)
 {
@@ -84,7 +84,6 @@ void	pipe_process(t_pipe_helper *args, t_ast_node *final_node,
 		context->redir_list = NULL;
 }
 
-//refactored with struct init
 pid_t	*ms_fork_pipeline_commands(t_ast_node **commands, int **pipes,
 		int num_commands, t_exec_context *context)
 {

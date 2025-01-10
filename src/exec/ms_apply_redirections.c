@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:00:21 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/07 12:29:46 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:49:32 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,3 @@ int	ms_apply_redirections(t_redir *redir_list)
 	}
 	return (0);
 }
-
-/*
-			//if (current->type == REDIR_HEREDOC)
-			//	unlink(current->filename);
-*/

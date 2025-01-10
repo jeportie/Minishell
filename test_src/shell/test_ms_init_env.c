@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:38:15 by jeportie          #+#    #+#             */
-/*   Updated: 2024/11/27 11:05:18 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:09:40 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ START_TEST(test_ms_init_env_with_envp)
     ck_assert_ptr_null(current->next);
 
     gc_cleanup(gcl);
-    free(gcl);
 }
 END_TEST
 
@@ -78,7 +77,6 @@ START_TEST(test_ms_init_env_without_envp)
     ck_assert_ptr_null(current->next);
 
     gc_cleanup(gcl);
-    free(gcl);
 }
 END_TEST
 

@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:41:52 by jeportie          #+#    #+#             */
-/*   Updated: 2024/10/21 14:24:37 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:11:30 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ START_TEST(test_tokenize_frame_basic)
     ck_assert_ptr_null(token->next);
 
     gc_cleanup(gcl);
-    free(gcl);
 }
 END_TEST
 
@@ -71,7 +70,6 @@ START_TEST(test_tokenize_frame_null_input)
     ck_assert_int_ne(result, -1); // Check that no segfault occurred
 
     gc_cleanup(gcl);
-    free(gcl);
 }
 END_TEST
 

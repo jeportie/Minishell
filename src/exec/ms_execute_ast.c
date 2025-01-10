@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:32:42 by jeportie          #+#    #+#             */
-/*   Updated: 2025/01/06 15:02:46 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:32:12 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_context(t_exec_context *data, t_shell *shell)
 	data->redirected = false;
 	data->original_stdin = STDIN_FILENO;
 	data->original_stdout = STDOUT_FILENO;
+	data->redir_list = NULL;
 	data->tmpfile_counter = 0;
 }
 

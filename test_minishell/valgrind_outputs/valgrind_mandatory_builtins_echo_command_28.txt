@@ -1,0 +1,20 @@
+==39507== Memcheck, a memory error detector
+==39507== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==39507== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==39507== Command: ../minishell
+==39507== Parent PID: 34073
+==39507== 
+==39507== 
+==39507== HEAP SUMMARY:
+==39507==     in use at exit: 4,016 bytes in 1 blocks
+==39507==   total heap usage: 824 allocs, 823 frees, 25,618 bytes allocated
+==39507== 
+==39507== LEAK SUMMARY:
+==39507==    definitely lost: 0 bytes in 0 blocks
+==39507==    indirectly lost: 0 bytes in 0 blocks
+==39507==      possibly lost: 0 bytes in 0 blocks
+==39507==    still reachable: 0 bytes in 0 blocks
+==39507==         suppressed: 4,016 bytes in 1 blocks
+==39507== 
+==39507== For lists of detected and suppressed errors, rerun with: -s
+==39507== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

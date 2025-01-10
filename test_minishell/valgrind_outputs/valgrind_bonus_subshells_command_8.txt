@@ -1,0 +1,41 @@
+==38989== Memcheck, a memory error detector
+==38989== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==38989== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==38989== Command: ../minishell
+==38989== Parent PID: 34073
+==38989== 
+==38990== 
+==38990== HEAP SUMMARY:
+==38990==     in use at exit: 4,106 bytes in 5 blocks
+==38990==   total heap usage: 659 allocs, 654 frees, 33,788 bytes allocated
+==38990== 
+==38990== 1 bytes in 1 blocks are still reachable in loss record 1 of 5
+==38990==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==38990==    by 0x117412: ft_update_buffer (in /root/projects/minishell/minishell)
+==38990==    by 0x1175A1: get_next_line (in /root/projects/minishell/minishell)
+==38990==    by 0x1113FE: ms_get_user_input (in /root/projects/minishell/minishell)
+==38990==    by 0x114B5A: main (in /root/projects/minishell/minishell)
+==38990== 
+==38990== LEAK SUMMARY:
+==38990==    definitely lost: 0 bytes in 0 blocks
+==38990==    indirectly lost: 0 bytes in 0 blocks
+==38990==      possibly lost: 0 bytes in 0 blocks
+==38990==    still reachable: 1 bytes in 1 blocks
+==38990==         suppressed: 4,105 bytes in 4 blocks
+==38990== 
+==38990== For lists of detected and suppressed errors, rerun with: -s
+==38990== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 4 from 4)
+==38989== 
+==38989== HEAP SUMMARY:
+==38989==     in use at exit: 4,016 bytes in 1 blocks
+==38989==   total heap usage: 864 allocs, 863 frees, 27,100 bytes allocated
+==38989== 
+==38989== LEAK SUMMARY:
+==38989==    definitely lost: 0 bytes in 0 blocks
+==38989==    indirectly lost: 0 bytes in 0 blocks
+==38989==      possibly lost: 0 bytes in 0 blocks
+==38989==    still reachable: 0 bytes in 0 blocks
+==38989==         suppressed: 4,016 bytes in 1 blocks
+==38989== 
+==38989== For lists of detected and suppressed errors, rerun with: -s
+==38989== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
