@@ -15,8 +15,18 @@ jeportie@minishell $> echo "line1\nline2" | wc -l
 1
 0
 jeportie@minishell $> df -h | wc -l | cat -e
-11$
+10$
 0
 jeportie@minishell $> echo test | cat | cat | cat | cat | cat | cat -e
 test$
+0
+jeportie@minishell $> ls | cat -e | cat
+anim_scripts$
+expect_scripts$
+run_test.sh$
+scripts$
+test$
+test_commands$
+test_dir$
+test_outputs$
 0

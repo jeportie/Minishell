@@ -11,9 +11,10 @@ fi
 
 # Iterate over each group in the args
 for group_name in "$@"; do
-    BASH_OUTPUT="test_outputs/bash_output_${group_name}.txt"
-    MINISHELL_OUTPUT="test_outputs/minishell_output_${group_name}.txt"
-    COMMAND_FILE="test_commands/${group_name}.txt"
+    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    BASH_OUTPUT="$SCRIPT_DIR/../test_outputs/bash_output_${group_name}.txt"
+    MINISHELL_OUTPUT="$SCRIPT_DIR/../test_outputs/minishell_output_${group_name}.txt"
+    COMMAND_FILE="$SCRIPT_DIR/../test_commands/${group_name}.txt"
 
     # Check if all required files exist
     for file in "$BASH_OUTPUT" "$MINISHELL_OUTPUT" "$COMMAND_FILE"; do
