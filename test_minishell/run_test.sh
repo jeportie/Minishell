@@ -1,6 +1,5 @@
 #!/bin/bash
 # run_test.sh
-# Script to automate testing of the 42 School Minishell project
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/scripts/colors.sh"
@@ -15,48 +14,69 @@ test_failed_global=0
 BUILD_LOG=""
 
 RUN_VALGRIND=false
+RUN_ONLY_SECTION=""
+SINGLE_TEST=""
 
-for arg in "$@"; do
-    if [ "$arg" == "--valgrind" ]; then
-        RUN_VALGRIND=true
-    fi
+# Parse flags
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --valgrind)
+            RUN_VALGRIND=true
+            shift
+            ;;
+        --mandatory)
+            RUN_ONLY_SECTION="mandatory"
+            shift
+            ;;
+        --bonus)
+            RUN_ONLY_SECTION="bonus"
+            shift
+            ;;
+        --extended)
+            RUN_ONLY_SECTION="extended"
+            shift
+            ;;
+        --single)
+            SINGLE_TEST="$2"
+            shift 2
+            ;;
+        *)
+            echo "Usage: $0 [--valgrind] [--mandatory|--bonus|--extended] [--single test_name.txt]"
+            exit 1
+            ;;
+    esac
 done
 
 main() {
     clear
     start_banner
+    echo "\n"
     clean_outputs
     build_project
 
-    # Start Time Capture
     local start_time=$(date +%s%N)
 
-    run_expect_scripts
-    process_outputs
+    run_expect_scripts "$RUN_ONLY_SECTION" "$SINGLE_TEST"
+    process_outputs "$RUN_ONLY_SECTION" "$SINGLE_TEST"
     stop_banner
     clear
     "$SCRIPT_DIR/anim_scripts/noanimated_banner.py"
 
-    # End Time Capture
     local end_time=$(date +%s%N)
-
-    # Calculate elapsed time in milliseconds
     local elapsed=$(( (end_time - start_time)/1000000 ))
 
-    # Pass elapsed time to report_results
-    report_results "$elapsed"
+    report_results "$elapsed" "$RUN_ONLY_SECTION" "$SINGLE_TEST"
+
     if [ "$RUN_VALGRIND" == true ]; then
         run_valgrind_tests
     fi
-    make -C .. fullclean >> "$BUILD_LOG" 
+    make -C .. fullclean >> "$BUILD_LOG"
 
-    # Exit the script based on the test results
     if [ "$test_failed_global" -gt 0 ]; then
         exit 1
     else
         exit 0
     fi
- }
+}
 
-# Execute the main function
 main
