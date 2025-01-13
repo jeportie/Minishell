@@ -8,63 +8,58 @@ if { [llength $argv] != 1 } {
     puts "Usage: $argv0 <command_file>"
     exit 1
 }
-set output_dir "test_outputs"
 set command_file [lindex $argv 0]
-set output_file "$output_dir/bash_output_[file rootname [file tail $command_file]].txt"
 
+# Figure out subdir from the command_file path
+# e.g. test_commands/bonus/bonus_subshells.txt => subdir="bonus"
+set subdir [file tail [file dirname $command_file]]
+set base_name [file rootname [file tail $command_file]]
+# Now place outputs in test_outputs/<subdir>/
+set output_file "test_outputs/$subdir/bash_output_${base_name}.txt"
+
+# Desired prompt
 set prompt "\$USER@minishell \$> "
 
-# Open bash to execute commands
+# Start bash
 spawn bash --posix
 
-# Redirect output to the output file in truncation mode
+# Truncate the output file
 log_file -noappend $output_file
 
-# Wait for initial shell prompt (default bash prompt)
+# Wait for initial shell prompt
 expect -re ".*\$ "
 sleep 0.1
 
-# Change bash prompt to $USER@minishell
+# Change bash prompt
 send "export PS1='$prompt'\r"
 expect -re "^$prompt"
 sleep 0.1
 
-# Read and execute each command from the command file
 set file [open $command_file r]
-
-# Initialize heredoc_mode to 0 (false)
 set heredoc_mode 0
 set heredoc_delimiter ""
 
 while {[gets $file line] != -1} {
-    # Skip empty lines
-    if {[string trim $line] == ""} {
+    if {[string trim $line] eq ""} {
         continue
     }
-    # Send the command to minishell
     send "$line\r"
     expect -re "^$prompt"
     sleep 0.1
 
-    # Check if entering heredoc mode
     if {[regexp {<<\s*(\S+)} $line match delim]} {
-        # We're entering heredoc mode. Store delimiter.
+        # Entering heredoc mode
         set heredoc_mode 1
         set heredoc_delimiter $delim
         continue
     }
-    
-    # Check if exiting heredoc mode
-    if {$heredoc_mode && [string trim $line] == $heredoc_delimiter} {
+    if {$heredoc_mode && [string trim $line] eq $heredoc_delimiter} {
         set heredoc_mode 0
-        # Send echo $? after exiting heredoc mode
         send "echo \$?\r"
         expect -re "^$prompt"
         sleep 0.1
         continue
     }
-
-    # If not in heredoc mode, send echo $?
     if {!$heredoc_mode} {
         send "echo \$?\r"
         expect -re "^$prompt"
@@ -76,7 +71,4 @@ close $file
 # Exit bash
 send "exit\r"
 expect eof
-
-# Stop logging after script completes
 log_file
-
