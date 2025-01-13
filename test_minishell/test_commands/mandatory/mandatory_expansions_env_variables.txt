@@ -8,3 +8,5 @@ echo $USER $HOME
 echo "User is $USERNAME"
 echo 'User is $USERNAME'
 echo $INVALIDE
+$prout
+$?+ $?

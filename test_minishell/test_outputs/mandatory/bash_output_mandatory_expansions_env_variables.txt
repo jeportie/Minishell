@@ -1,28 +1,47 @@
-jeportie@minishell $> export a=test
-0
-jeportie@minishell $> echo $a
-test
-0
-jeportie@minishell $> echo " $a "
- test 
-0
-jeportie@minishell $> echo $USER $HOME
-jeportie /root
-0
-jeportie@minishell $> export USERNAME=testuser
-0
-jeportie@minishell $> echo $USERNAME
-testuser
-0
-jeportie@minishell $> echo $USER $HOME
-jeportie /root
-0
-jeportie@minishell $> echo "User is $USERNAME"
-User is testuser
-0
-jeportie@minishell $> echo 'User is $USERNAME'
-User is $USERNAME
-0
-jeportie@minishell $> echo $INVALIDE
-
-0
+[?2004hbash-5.2# export PS1='$USER@minishell $> '
+[?2004l[?2004hjeportie@minishell $> export a=test
+[?2004l[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo $a
+[?2004ltest
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo " $a "
+[?2004l test 
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo $USER $HOME
+[?2004ljeportie /root
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> export USERNAME=testuser
+[?2004l[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo $USERNAME
+[?2004ltestuser
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo $USER $HOME
+[?2004ljeportie /root
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo "User is $USERNAME"
+[?2004lUser is testuser
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo 'User is $USERNAME'
+[?2004lUser is $USERNAME
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> echo $INVALIDE
+[?2004l
+[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> $prout
+[?2004l[?2004hjeportie@minishell $> echo $?
+[?2004l0
+[?2004hjeportie@minishell $> $?+ $?
+[?2004lbash: 0+: command not found
+[?2004hjeportie@minishell $> echo $?
+[?2004l127
+[?2004hjeportie@minishell $> 

@@ -27,3 +27,9 @@ test
 0
 jeportie@minishell $> rm "out"
 0
+jeportie@minishell $> echo "'"$USER"'""l"""""""""'$USER'
+'jeportiel
+0
+jeportie@minishell $> echo "'"'"$USER"''"$USER"'"'"
+'"jeportie"
+0

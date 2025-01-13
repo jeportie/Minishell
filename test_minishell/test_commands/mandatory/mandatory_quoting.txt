@@ -9,3 +9,5 @@ rm 'out'
 echo test > "out"
 cat "out"
 rm "out"
+echo "'"$USER"'""l"""""""""'$USER'
+echo "'"'"$USER"''"$USER"'"'"

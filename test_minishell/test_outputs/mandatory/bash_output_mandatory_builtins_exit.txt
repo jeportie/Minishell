@@ -13,5 +13,8 @@ jeportie@minishell $> (exit 9999999999999999)
 jeportie@minishell $> (exit 999999999999999999999999999999999999999999999999999)
 bash: exit: 999999999999999999999999999999999999999999999999999: numeric argument required
 2
+jeportie@minishell $> (exit a 1 1 1 1 1)
+bash: exit: a: numeric argument required
+2
 jeportie@minishell $> (exit 9999999999999999)
 255
