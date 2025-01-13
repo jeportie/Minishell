@@ -1,28 +1,30 @@
 #!/bin/bash
-
-# Ensure the script exits if any command fails
+# process_outputs.sh
 set -e
 
-# Check if at least one group name is provided
 if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 <group_name1> [group_name2] ..."
+    echo "Usage: $0 subdir:groupname1 [subdir:groupname2] ..."
     exit 1
 fi
 
 # Iterate over each group in the args
-for group_name in "$@"; do
-    BASH_OUTPUT="test_outputs/bash_output_${group_name}.txt"
-    MINISHELL_OUTPUT="test_outputs/minishell_output_${group_name}.txt"
-    COMMAND_FILE="test_commands/${group_name}.txt"
+for pair in "$@"; do
+    # e.g. "bonus:bonus_subshells"
+    subdir="${pair%%:*}"
+    group_name="${pair#*:}"
 
-    # Check if all required files exist
-    for file in "$BASH_OUTPUT" "$MINISHELL_OUTPUT" "$COMMAND_FILE"; do
-        if [[ ! -f "$file" ]]; then
-            echo "Error: File '$file' not found."
+    # Now point to the correct files in subfolders
+    COMMAND_FILE="test_commands/$subdir/${group_name}.txt"
+    BASH_OUTPUT="test_outputs/$subdir/bash_output_${group_name}.txt"
+    MINISHELL_OUTPUT="test_outputs/$subdir/minishell_output_${group_name}.txt"
+
+    # Validate existence
+    for f in "$COMMAND_FILE" "$BASH_OUTPUT" "$MINISHELL_OUTPUT"; do
+        if [[ ! -f "$f" ]]; then
+            echo "Error: '$f' not found for $pair"
             exit 1
         fi
     done
-
     # Step 1: Clean hidden characters from the files
     clean_files() {
         sed -i 's/\r//g' "$1"  # Remove carriage return characters (^M)

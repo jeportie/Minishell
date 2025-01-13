@@ -1,5 +1,5 @@
 jeportie@minishell $> ls
-animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test_commands  test_dir  test_outputs  valgrind_outputs
+anim_scripts  expect_scripts  run_test.sh  scripts  test_commands  test_dir  test_outputs
 0
 jeportie@minishell $> man
 This system has been minimized by removing packages and content that are
@@ -23,7 +23,7 @@ jeportie@minishell $> expr $? + $?
 0
 1
 jeportie@minishell $> /bin/ls
-animated_banner.py  noanimated_banner.py  process_outputs.sh  remove_escape_codes.sh  run_bash.expect  run_minishell.expect  run_test.sh  test	test_commands  test_dir  test_outputs  valgrind_outputs
+anim_scripts  expect_scripts  run_test.sh  scripts  test  test_commands  test_dir  test_outputs
 0
 jeportie@minishell $> /usr/bin/cat test
 test
